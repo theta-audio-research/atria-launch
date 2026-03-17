@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB NOTE #001 | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.8; }
+        
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; }
+
+        article { max-width: 800px; margin: 100px auto; padding: 0 20px; }
+        .note-header { margin-bottom: 60px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .note-tag { font-family: 'Montserrat'; color: var(--gold); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; }
+        h1 { font-family: 'Montserrat'; font-size: 36px; letter-spacing: 2px; text-transform: uppercase; margin: 10px 0; color: #fff; }
+
+        .meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 40px 0; padding: 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); font-size: 11px; }
+        .meta-label { color: var(--gold); display: block; margin-bottom: 5px; opacity: 0.6; }
+
+        h2 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-top: 60px; }
+        p { opacity: 0.8; font-size: 15px; margin-bottom: 30px; }
+        
+        .code-block { background: #000; border: 1px solid var(--border); padding: 30px; margin: 40px 0; font-size: 13px; color: var(--gold); overflow-x: auto; }
+
+        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-group">
+            <svg width="40" height="40" viewBox="0 0 100 100">
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
+            </svg>
+            <h2 class="logo-text">THETA</h2>
+        </a>
+        <div style="display: flex; gap: 30px;">
+            <a href="atria.html">ATRIA ENGINE</a>
+            <a href="index.html">RETURN TO LAB</a>
+        </div>
+    </nav>
+
+    <article>
+        <header class="note-header">
+            <div class="note-tag">Lab Note #001 // Internal Protocol</div>
+            <h1>The Theta-Gate Protocol</h1>
+        </header>
+
+        <div class="meta-grid">
+            <div><span class="meta-label">TARGET FREQUENCY</span>6.2 Hz (Standard Theta)</div>
+            <div><span class="meta-label">ENGINE BLOCK</span>ATRIA // Varispeed</div>
+            <div><span class="meta-label">STATUS</span>Calibrated</div>
+        </div>
+
+        <section>
+            <h2>01. Theoretical Mapping</h2>
+            <p>
+                To achieve true hypnagogic immersion, the signal path must mirror the neural oscillations of the listener. 
+                Our research identified 6.2 Hz as the optimal "sweet spot" within the 4–8 Hz Theta range. 
+                At this frequency, the brain transitions from external processing to internal imagery construction.
+            </p>
+        </section>
+
+        <section>
+            <h2>02. Buffer Reconstruction</h2>
+            <p>
+                In the ATRIA engine, we utilize a proprietary "Time-Sag" buffer. Unlike standard digital delays that prioritize 
+                clock stability, the Theta-Gate protocol introduces purposeful instability. By oscillating the read-head 
+                at 6.2 Hz, we create a rhythmic degeneration that the subconscious recognizes as "natural drift".
+            </p>
+            
+            <div class="code-block">
+                // ATRIA // THETA OSCILLATION LOGIC<br>
+                float thetaMod = sin(x * 0.01 + offset) * 20.0;<br>
+                buffer.sag = currentSample + (thetaMod * research_constant);
+            </div>
+        </section>
+
+        <section>
+            <h2>03. Observed Artifacts</h2>
+            <p>
+                Listeners exposed to the 6.2 Hz protocol during the ATRIA beta-test reported a significant 
+                detachment from linear time. The "Warble" and "Grime" modules in ATRIA were specifically 
+                tuned to accentuate the artifacts generated at this threshold, resulting in a soundscape 
+                that feels both ancient and advanced.
+            </p>
+        </section>
+
+        <p style="margin-top: 100px; font-size: 11px; opacity: 0.4;">
+            End of Note. For foundational data, refer to <a href="archive-01.html" style="color: var(--gold);">Archive-01</a>.
+        </p>
+    </article>
+
+    <footer>© 2026 THETA AUDIO RESEARCH. EXPERIMENTAL SIGNAL DIVISION.</footer>
+</body>
+</html>
