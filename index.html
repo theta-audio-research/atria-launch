@@ -8,64 +8,104 @@
     <style>
         :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
         @keyframes thetaBreath { 0% { background-color: var(--void); } 50% { background-color: var(--twilight); } 100% { background-color: var(--void); } }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; animation: thetaBreath 10s infinite ease-in-out; overflow-x: hidden; }
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-        .logo-group { display: flex; align-items: center; gap: 15px; }
-        .logo-text { font-weight: 700; letter-spacing: 5px; font-size: 18px; color: #fff; margin: 0; }
-        .logo-sub { font-weight: 300; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-top: -5px; }
-        .hero { padding: 120px 10% 60px 10%; text-align: center; }
-        .hero h1 { font-size: clamp(40px, 8vw, 72px); margin: 0; letter-spacing: -2px; font-weight: 700; }
-        .hero p { opacity: 0.5; max-width: 650px; margin: 25px auto; font-size: 14px; letter-spacing: 1px; }
-        .plugin-display { margin: 80px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
-        .plugin-display img { width: 100%; display: block; }
-        .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; text-align: left; align-items: center; }
-        .study-title { color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
-        .founder-note { padding: 150px 15%; font-style: italic; opacity: 0.9; position: relative; text-align: center; font-size: 18px; color: #fff; }
-        .cta-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 22px 60px; cursor: pointer; font-family: inherit; font-size: 13px; letter-spacing: 4px; transition: 0.4s; text-transform: uppercase; }
-        .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 50px rgba(200, 168, 107, 0.3); }
-        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; animation: thetaBreath 10s infinite ease-in-out; overflow-x: hidden; }
+        
+        nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.9); position: sticky; top: 0; z-index: 100; }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-text { font-weight: 700; letter-spacing: 4px; color: #fff; margin: 0; }
+        .logo-sub { font-weight: 300; font-size: 9px; color: var(--gold); margin-top: -4px; letter-spacing: 2px; }
+
+        .hero { padding: 80px 5%; text-align: center; }
+        
+        /* THE RESEARCH TERMINAL (Live SVG version of your JUCE Rings) */
+        .terminal-container {
+            max-width: 1000px; margin: 40px auto; background: #000; border: 1px solid var(--border);
+            padding: 60px; border-radius: 12px; display: flex; justify-content: space-around;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+        }
+
+        .reel-unit { position: relative; width: 220px; height: 220px; cursor: crosshair; }
+        .reel-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .ring-outer { fill: none; stroke: var(--border); stroke-width: 1; }
+        .ring-active { fill: none; stroke: var(--gold); stroke-width: 3; stroke-linecap: round; transition: 0.3s ease; stroke-dasharray: 628; stroke-dashoffset: 628; }
+        .hub { fill: #fff; filter: drop-shadow(0 0 5px #fff); }
+        
+        .label-strip { margin-top: 15px; font-size: 10px; color: var(--gold); letter-spacing: 3px; opacity: 0.6; }
+
+        .study-section { padding: 100px 10%; border-top: 1px solid var(--border); background: rgba(0,0,0,0.4); }
+        .cta-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 18px 45px; cursor: pointer; font-family: inherit; letter-spacing: 3px; transition: 0.3s; }
+        .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 40px rgba(200, 168, 107, 0.4); }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="logo-group">
-            <svg width="45" height="45" viewBox="0 0 100 100">
+            <svg width="35" height="35" viewBox="0 0 100 100">
                 <path d="M75 80L25 80L40 65L60 65L75 80Z" fill="#1A1B23"/>
                 <path d="M50 20L75 80L65 70L50 35L50 20Z" fill="#C8A86B"/>
                 <rect x="25" y="48" width="50" height="8" fill="#C8A86B" />
             </svg>
-            <div>
-                <h2 class="logo-text">THETA</h2>
-                <p class="logo-sub">AUDIO RESEARCH</p>
+            <div><h2 class="logo-text">THETA</h2><p class="logo-sub">AUDIO RESEARCH</p></div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 style="font-size: 48px; margin: 0;">ATRIA <span style="opacity:0.3; font-weight:300;">v25.4</span></h1>
+        <p style="opacity:0.5; font-size:14px; margin-top:10px;">The 4-8 Hz Macro Performance Engine. Live Interface Preview.</p>
+
+        <div class="terminal-container">
+            <div class="reel-unit" onmousemove="updateReel(event, 0)">
+                <svg class="reel-svg" viewBox="0 0 220 220">
+                    <circle class="ring-outer" cx="110" cy="110" r="100"/>
+                    <circle class="ring-active" id="arc0" cx="110" cy="110" r="85"/>
+                    <circle class="hub" cx="110" cy="110" r="3"/>
+                </svg>
+                <div class="label-strip">A: SPEED / PITCH</div>
+            </div>
+
+            <div class="reel-unit" onmousemove="updateReel(event, 1)">
+                <svg class="reel-svg" viewBox="0 0 220 220">
+                    <circle class="ring-outer" cx="110" cy="110" r="100"/>
+                    <circle class="ring-active" id="arc1" cx="110" cy="110" r="85"/>
+                    <circle class="hub" cx="110" cy="110" r="3"/>
+                </svg>
+                <div class="label-strip">C: TRANS / FLPH</div>
+            </div>
+
+            <div class="reel-unit" onmousemove="updateReel(event, 2)">
+                <svg class="reel-svg" viewBox="0 0 220 220">
+                    <circle class="ring-outer" cx="110" cy="110" r="100"/>
+                    <circle class="ring-active" id="arc2" cx="110" cy="110" r="85"/>
+                    <circle class="hub" cx="110" cy="110" r="3"/>
+                </svg>
+                <div class="label-strip">E: DRIVE / TONE</div>
             </div>
         </div>
-        <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">LAB NOTES | ARCHIVE | SUPPORT</div>
-    </nav>
-    <div class="hero">
-        <h1>ATRIA <span style="font-weight: 300; opacity: 0.3;">v25.4</span></h1>
-        <p>Advanced Signal Degeneration & Reconstruction. An engine meticulously calibrated for the 4–8 Hz hypnagogic threshold.</p>
-        <div class="plugin-display">
-            <img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA v25.4 UI">
-        </div>
+
         <button class="cta-btn">Initialize Download</button>
     </div>
-    <section class="study-section">
-        <div class="study-grid">
-            <div>
-                <div class="study-title">THE 4–8 Hz STUDY</div>
-                <h3 style="font-size: 28px; margin-bottom: 30px;">Engineering the Hypnagogic Threshold</h3>
-                <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. ATRIA is a signal laboratory built to explore this liminal space.</p>
-            </div>
-            <div style="border: 1px solid var(--border); height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
-                <div style="color: var(--gold); font-size: 9px; letter-spacing: 4px; opacity: 0.6;">[ EEG THETA WAVEFORM ANALYSIS ]</div>
-            </div>
-        </div>
-    </section>
-    <section class="founder-note">
-        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality."</p>
-        <div style="margin-top: 40px; font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 700;">— FOUNDER, THETA AUDIO RESEARCH</div>
-    </section>
-    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
+
+    <script>
+        function updateReel(e, id) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const y = e.clientY - rect.top;
+            const percent = Math.min(Math.max(1 - (y / rect.height), 0), 1);
+            
+            // Math for the SVG Arc Offset (based on 2*PI*R)
+            const radius = 85;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (percent * circumference);
+            
+            document.getElementById(`arc${id}`).style.strokeDashoffset = offset;
+        }
+
+        // Initial "Research State" positions
+        setTimeout(() => {
+            document.getElementById('arc0').style.strokeDashoffset = 300;
+            document.getElementById('arc1').style.strokeDashoffset = 450;
+            document.getElementById('arc2').style.strokeDashoffset = 150;
+        }, 500);
+    </script>
 </body>
 </html>
