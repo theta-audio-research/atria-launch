@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THETA Audio Research | The 4–8 Hz Study</title>
+    <title>THETA Audio Research | Institutional Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
         html { scroll-behavior: smooth; }
         @keyframes thetaBreath { 0% { background-color: var(--void); } 50% { background-color: var(--twilight); } 100% { background-color: var(--void); } }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; animation: thetaBreath 10s infinite ease-in-out; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; animation: thetaBreath 10s infinite ease-in-out; overflow-x: hidden; }
         
         nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .logo-group { display: flex; align-items: center; gap: 20px; }
@@ -18,15 +18,23 @@
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
         nav a:hover { opacity: 1; }
 
-        .hero { padding: 150px 10%; text-align: center; border-bottom: 1px solid var(--border); }
+        .hero { padding: 150px 10% 100px 10%; text-align: center; border-bottom: 1px solid var(--border); }
         .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(32px, 7vw, 60px); margin: 0; letter-spacing: 18px; font-weight: 700; text-transform: uppercase; text-indent: 18px; color: #fff; }
         .hero p { opacity: 0.5; max-width: 800px; margin: 40px auto; font-size: 14px; letter-spacing: 1px; line-height: 2; }
 
         .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border); }
         .study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .study-title { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
+        
         #wave-container { border: 1px solid var(--border); height: 300px; background: rgba(0,0,0,0.8); position: relative; overflow: hidden; }
         canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* RESEARCH VAULT */
+        .research-vault { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .vault-card { border: 1px solid var(--border); padding: 40px; background: rgba(255,255,255,0.02); transition: 0.3s; text-decoration: none; color: inherit; display: block; }
+        .vault-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.05); transform: translateY(-5px); }
+        .vault-tag { font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 15px; }
+        .vault-card h4 { font-family: 'Montserrat'; text-transform: uppercase; margin: 0 0 15px 0; letter-spacing: 2px; color: #fff; }
 
         .cta-container { padding: 100px 10%; text-align: center; }
         .cta-btn { font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; transition: 0.4s ease; text-transform: uppercase; text-decoration: none; display: inline-block; }
@@ -48,7 +56,7 @@
         </div>
         <div style="display: flex; gap: 30px;">
             <a href="atria.html">ATRIA ENGINE</a>
-            <a href="#study">4-8Hz STUDY</a>
+            <a href="#vault">RESEARCH VAULT</a>
             <a href="mailto:support@theta-research.io">CONTACT</a>
         </div>
     </nav>
@@ -64,17 +72,31 @@
                 <div class="study-title">THE 4–8 Hz STUDY</div>
                 <h3 style="font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 3px;">Engineering the Threshold</h3>
                 <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. Our research translates neural frequencies into sonic architectures, allowing the subconscious to anchor within the signal path.</p>
+                
             </div>
             <div id="wave-container"><canvas id="thetaWave"></canvas></div>
         </div>
     </section>
 
+    <section id="vault" class="research-vault">
+        <div class="vault-card">
+            <div class="vault-tag">LAB NOTE #001</div>
+            <h4>Protocol: 6.2Hz</h4>
+            <p style="font-size: 12px; opacity: 0.6;">Theoretical mapping of varispeed buffers to neural oscillations. Status: Internal Review.</p>
+        </div>
+        <a href="archive-01.html" class="vault-card">
+            <div class="vault-tag">ARCHIVE ENTRY: 01-THETA</div>
+            <h4>The Hypnagogic Threshold</h4>
+            <p style="font-size: 12px; opacity: 0.6;">A declassified briefing on the characteristics of 4–8 Hz oscillations. Read full analysis →</p>
+        </a>
+    </section>
+
     <div class="cta-container">
-        <p style="font-size: 11px; letter-spacing: 3px; opacity: 0.4; margin-bottom: 30px;">ACTIVE ENGINE: ATRIA</p>
+        <p style="font-size: 11px; letter-spacing: 3px; opacity: 0.4; margin-bottom: 30px;">ACTIVE RESEARCH ENGINE</p>
         <a href="atria.html" class="cta-btn">Initialize ATRIA Terminal</a>
     </div>
 
-    <footer>© 2026 THETA AUDIO RESEARCH. DESIGNED FOR SONIC EXPLORATION.</footer>
+    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
 
     <script>
         const canvas = document.getElementById('thetaWave');
