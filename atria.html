@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATRIA | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+        
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; }
+
+        .hero { padding: 100px 10%; text-align: center; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 68px; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; margin: 0; }
+        
+        .plugin-display { margin: 60px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
+        .plugin-display img { width: 100%; display: block; }
+
+        .founder-note { padding: 100px 20%; font-style: italic; opacity: 0.9; position: relative; text-align: center; font-size: 18px; color: #fff; }
+        .cta-btn { font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; transition: 0.4s ease; text-transform: uppercase; }
+        .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 60px rgba(200, 168, 107, 0.4); }
+        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-group">
+            <svg width="40" height="40" viewBox="0 0 100 100">
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
+            </svg>
+            <h2 class="logo-text">THETA</h2>
+        </a>
+        <div style="display: flex; gap: 30px;">
+            <a href="index.html">BACK TO LAB</a>
+            <a href="mailto:support@theta-research.io">SUPPORT</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>ATRIA</h1>
+        <p style="opacity:0.5; font-size: 12px; letter-spacing: 4px; margin-top: 20px;">MACRO PERFORMANCE ENGINE</p>
+        <div class="plugin-display"><img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA UI"></div>
+        <button class="cta-btn">Initialize Download</button>
+    </div>
+
+    <section class="founder-note">
+        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality."</p>
+        <div style="margin-top: 40px; font-size: 11px; color: var(--gold); letter-spacing: 5px; font-weight: 700; font-family: 'Montserrat';">— FOUNDER, THETA AUDIO RESEARCH</div>
+    </section>
+
+    <footer>© 2026 THETA AUDIO RESEARCH. ATRIA ENGINE.</footer>
+</body>
+</html>
