@@ -3,92 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THETA Audio Research | ATRIA</title>
+    <title>THETA Audio Research | The 4–8 Hz Study</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --void: #040406; 
-            --twilight: #0D0E20; 
-            --gold: #C8A86B; 
-            --text: #E0E0E0; 
-            --border: #1A1B23; 
-        }
-
-        @keyframes thetaBreath { 
-            0% { background-color: var(--void); } 
-            50% { background-color: var(--twilight); } 
-            100% { background-color: var(--void); } 
-        }
-
-        body { 
-            background-color: var(--void); 
-            color: var(--text); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            line-height: 1.6; 
-            animation: thetaBreath 10s infinite ease-in-out; 
-            overflow-x: hidden; 
-        }
-
-        nav { 
-            padding: 40px 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid var(--border); 
-            background: rgba(4, 4, 6, 0.8); 
-            backdrop-filter: blur(10px); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-
+        :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        html { scroll-behavior: smooth; }
+        @keyframes thetaBreath { 0% { background-color: var(--void); } 50% { background-color: var(--twilight); } 100% { background-color: var(--void); } }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; animation: thetaBreath 10s infinite ease-in-out; }
+        
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .logo-group { display: flex; align-items: center; gap: 20px; }
         .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
         .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: -3px; text-transform: uppercase; opacity: 0.8; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
+        nav a:hover { opacity: 1; }
 
-        .hero { padding: 120px 10% 60px 10%; text-align: center; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(42px, 9vw, 68px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
-        .hero p { opacity: 0.5; max-width: 650px; margin: 30px auto; font-size: 14px; letter-spacing: 1px; }
+        .hero { padding: 150px 10%; text-align: center; border-bottom: 1px solid var(--border); }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(32px, 7vw, 60px); margin: 0; letter-spacing: 18px; font-weight: 700; text-transform: uppercase; text-indent: 18px; color: #fff; }
+        .hero p { opacity: 0.5; max-width: 800px; margin: 40px auto; font-size: 14px; letter-spacing: 1px; line-height: 2; }
 
-        .plugin-display { margin: 80px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
-        .plugin-display img { width: 100%; display: block; }
-
-        .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; text-align: left; align-items: center; }
+        .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border); }
+        .study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .study-title { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
-        .study-grid h3 { font-family: 'Montserrat', sans-serif; font-size: 32px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 3px; }
-
-        /* WAVEFORM CONTAINER */
-        #wave-container { 
-            border: 1px solid var(--border); 
-            height: 240px; 
-            background: rgba(0,0,0,0.8); 
-            position: relative; 
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        #wave-container { border: 1px solid var(--border); height: 300px; background: rgba(0,0,0,0.8); position: relative; overflow: hidden; }
         canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .wave-overlay { 
-            position: absolute; 
-            width: 100%; 
-            height: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            padding: 20px; 
-            box-sizing: border-box; 
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .founder-note { padding: 150px 20%; font-style: italic; opacity: 0.9; position: relative; text-align: center; font-size: 18px; color: #fff; }
-        .cta-btn { font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; transition: 0.4s ease; text-transform: uppercase; }
+        .cta-container { padding: 100px 10%; text-align: center; }
+        .cta-btn { font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; transition: 0.4s ease; text-transform: uppercase; text-decoration: none; display: inline-block; }
         .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 60px rgba(200, 168, 107, 0.4); }
+
         footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
     </style>
 </head>
@@ -103,74 +46,53 @@
             </svg>
             <div><h2 class="logo-text">THETA</h2><p class="logo-sub">AUDIO RESEARCH</p></div>
         </div>
-        <div style="font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat';">LAB NOTES | ARCHIVE | SUPPORT</div>
+        <div style="display: flex; gap: 30px;">
+            <a href="atria.html">ATRIA ENGINE</a>
+            <a href="#study">4-8Hz STUDY</a>
+            <a href="mailto:support@theta-research.io">CONTACT</a>
+        </div>
     </nav>
 
     <div class="hero">
-        <h1>ATRIA</h1>
-        <p>Advanced Signal Degeneration & Reconstruction. An engine meticulously calibrated for the 4–8 Hz hypnagogic threshold.</p>
-        <div class="plugin-display"><img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA UI"></div>
-        <button class="cta-btn">Initialize Download</button>
+        <h1>THETA</h1>
+        <p>Advanced Signal Degeneration & Reconstruction. An institutional laboratory meticulously calibrated for the 4–8 Hz hypnagogic threshold. We do not chase perfection; we chase the artifact.</p>
     </div>
 
-    <section class="study-section">
+    <section id="study" class="study-section">
         <div class="study-grid">
             <div>
                 <div class="study-title">THE 4–8 Hz STUDY</div>
-                <h3>Engineering the Threshold</h3>
-                <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. ATRIA is a signal laboratory built to explore this liminal space—translating neural frequencies into sonic artifacts.</p>
+                <h3 style="font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 3px;">Engineering the Threshold</h3>
+                <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. Our research translates neural frequencies into sonic architectures, allowing the subconscious to anchor within the signal path.</p>
             </div>
-            
-            <div id="wave-container">
-                <canvas id="thetaWave"></canvas>
-                <div class="wave-overlay">
-                    <div style="color: var(--gold); font-size: 9px; letter-spacing: 5px; opacity: 0.6; text-align: center;">[ EEG THETA WAVEFORM ANALYSIS ]</div>
-                    <div style="font-size: 8px; opacity: 0.3; font-family: 'JetBrains Mono'; text-align: right;">STATE: HYPNAGOGIC // 6.2Hz</div>
-                </div>
-            </div>
+            <div id="wave-container"><canvas id="thetaWave"></canvas></div>
         </div>
     </section>
 
-    <section class="founder-note">
-        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality. When the signal breaks, you are accessing the subconscious."</p>
-        <div style="margin-top: 40px; font-size: 11px; color: var(--gold); letter-spacing: 5px; font-weight: 700; font-family: 'Montserrat';">— FOUNDER, THETA AUDIO RESEARCH</div>
-    </section>
+    <div class="cta-container">
+        <p style="font-size: 11px; letter-spacing: 3px; opacity: 0.4; margin-bottom: 30px;">ACTIVE ENGINE: ATRIA</p>
+        <a href="atria.html" class="cta-btn">Initialize ATRIA Terminal</a>
+    </div>
 
-    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
+    <footer>© 2026 THETA AUDIO RESEARCH. DESIGNED FOR SONIC EXPLORATION.</footer>
 
     <script>
         const canvas = document.getElementById('thetaWave');
         const ctx = canvas.getContext('2d');
-        let width, height, animationFrame;
-
-        function resize() {
-            width = canvas.width = canvas.offsetWidth;
-            height = canvas.height = canvas.offsetHeight;
-        }
-
+        let width, height, offset = 0;
+        function resize() { width = canvas.width = canvas.offsetWidth; height = canvas.height = canvas.offsetHeight; }
         window.addEventListener('resize', resize);
         resize();
-
-        let offset = 0;
         function draw() {
             ctx.clearRect(0, 0, width, height);
             ctx.beginPath();
             ctx.strokeStyle = '#C8A86B';
-            ctx.lineWidth = 1.5;
-            ctx.globalAlpha = 0.4;
-
-            // Drawing a 6.2Hz-style Theta wave
+            ctx.lineWidth = 1.5; ctx.globalAlpha = 0.4;
             for (let x = 0; x < width; x++) {
-                const y = height / 2 + 
-                          Math.sin(x * 0.01 + offset) * 20 + 
-                          Math.sin(x * 0.02 + offset * 1.5) * 10; // Harmonic complexity
-                if (x === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
+                const y = height / 2 + Math.sin(x * 0.01 + offset) * 20 + Math.sin(x * 0.02 + offset * 1.5) * 10;
+                if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             }
-
-            ctx.stroke();
-            offset += 0.03; // Controls the "speed" of the frequency
-            animationFrame = requestAnimationFrame(draw);
+            ctx.stroke(); offset += 0.03; requestAnimationFrame(draw);
         }
         draw();
     </script>
