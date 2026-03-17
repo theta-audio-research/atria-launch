@@ -2,164 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THETA Audio Research | ATRIA v25.4</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>THETA | Font Research Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Montserrat:wght@700&family=Inter:wght@700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --void: #040406; 
-            --twilight: #0D0E20; 
-            --gold: #C8A86B; 
-            --text: #E0E0E0; 
-            --border: #1A1B23; 
-        }
-
-        /* THETA PULSE ANIMATION (Slow meditative 0.1Hz) */
-        @keyframes thetaBreath { 
-            0% { background-color: var(--void); } 
-            50% { background-color: var(--twilight); } 
-            100% { background-color: var(--void); } 
-        }
-
-        body { 
-            background-color: var(--void); 
-            color: var(--text); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            line-height: 1.6; 
-            animation: thetaBreath 10s infinite ease-in-out; 
-            overflow-x: hidden; 
-        }
-
-        nav { 
-            padding: 40px 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid var(--border); 
-            background: rgba(4, 4, 6, 0.8); 
-            backdrop-filter: blur(10px); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-
-        .logo-group { display: flex; align-items: center; gap: 15px; }
-        .logo-text { font-weight: 700; letter-spacing: 5px; font-size: 18px; color: #fff; margin: 0; }
-        .logo-sub { font-weight: 300; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-top: -5px; }
-
-        .hero { padding: 120px 10% 60px 10%; text-align: center; }
-
-        /* REFINED RESEARCH TYPOGRAPHY */
-        .hero h1 { 
-            font-size: clamp(40px, 8vw, 64px); 
-            margin: 0; 
-            letter-spacing: 14px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            text-indent: 14px; /* Proper centering for wide tracking */
-            color: #fff;
-        }
-
-        .hero p { opacity: 0.5; max-width: 650px; margin: 25px auto; font-size: 14px; letter-spacing: 1px; }
-
-        .plugin-display { 
-            margin: 80px auto; 
-            max-width: 1100px; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 80px 150px rgba(0,0,0,0.9); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            background: #000; 
-        }
-
-        .plugin-display img { width: 100%; display: block; }
-
-        .study-section { 
-            padding: 120px 10%; 
-            background: rgba(0,0,0,0.4); 
-            border-top: 1px solid var(--border); 
-            border-bottom: 1px solid var(--border); 
-        }
-
-        .study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; text-align: left; align-items: center; }
-        .study-title { color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
-
-        .founder-note { 
-            padding: 150px 15%; 
-            font-style: italic; 
-            opacity: 0.9; 
-            position: relative; 
-            text-align: center; 
-            font-size: 18px; 
-            color: #fff; 
-        }
-
-        .cta-btn { 
-            background: transparent; 
-            border: 1px solid var(--gold); 
-            color: var(--gold); 
-            padding: 22px 60px; 
-            cursor: pointer; 
-            font-family: inherit; 
-            font-size: 13px; 
-            letter-spacing: 4px; 
-            transition: 0.4s; 
-            text-transform: uppercase; 
-        }
-
-        .cta-btn:hover { 
-            background: var(--gold); 
-            color: #000; 
-            box-shadow: 0 0 50px rgba(200, 168, 107, 0.3); 
-        }
-
-        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+        body { background: #040406; color: #fff; padding: 100px; text-align: center; }
+        .option { margin-bottom: 80px; padding-bottom: 40px; border-bottom: 1px solid #1A1B23; }
+        .label { color: #C8A86B; font-size: 10px; letter-spacing: 4px; margin-bottom: 20px; font-family: sans-serif; }
+        
+        /* The CSS for each style */
+        .style-1 { font-family: 'JetBrains Mono'; letter-spacing: 12px; text-transform: uppercase; }
+        .style-2 { font-family: 'Montserrat'; letter-spacing: 22px; text-transform: uppercase; }
+        .style-3 { font-family: 'Inter'; letter-spacing: 10px; text-transform: uppercase; }
+        .style-4 { font-family: 'Space Mono'; letter-spacing: 14px; text-transform: uppercase; }
+        
+        h1 { font-size: 60px; margin: 0; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="logo-group">
-            <svg width="45" height="45" viewBox="0 0 100 100">
-                <path d="M75 80L25 80L40 65L60 65L75 80Z" fill="#1A1B23"/>
-                <path d="M50 20L75 80L65 70L50 35L50 20Z" fill="#C8A86B"/>
-                <rect x="25" y="48" width="50" height="8" fill="#C8A86B" />
-            </svg>
-            <div>
-                <h2 class="logo-text">THETA</h2>
-                <p class="logo-sub">AUDIO RESEARCH</p>
-            </div>
-        </div>
-        <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">LAB NOTES | ARCHIVE | SUPPORT</div>
-    </nav>
 
-    <div class="hero">
-        <h1>ATRIA <span style="font-weight: 300; opacity: 0.3;">v25.4</span></h1>
-        <p>Advanced Signal Degeneration & Reconstruction. An engine meticulously calibrated for the 4–8 Hz hypnagogic threshold.</p>
-        <div class="plugin-display">
-            <img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA v25.4 UI">
-        </div>
-        <button class="cta-btn">Initialize Download</button>
+    <div class="option">
+        <div class="label">OPTION 1: THE ENGINEER (JETBRAINS MONO)</div>
+        <h1 class="style-1">ATRIA</h1>
     </div>
 
-    <section class="study-section">
-        <div class="study-grid">
-            <div>
-                <div class="study-title">THE 4–8 Hz STUDY</div>
-                <h3 style="font-size: 28px; margin-bottom: 30px;">Engineering the Hypnagogic Threshold</h3>
-                <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. ATRIA is a signal laboratory built to explore this liminal space.</p>
-            </div>
-            <div style="border: 1px solid var(--border); height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
-                <div style="color: var(--gold); font-size: 9px; letter-spacing: 4px; opacity: 0.6;">[ EEG THETA WAVEFORM ANALYSIS ]</div>
-            </div>
-        </div>
-    </section>
+    <div class="option">
+        <div class="label">OPTION 2: THE INSTITUTION (MONTSERRAT)</div>
+        <h1 class="style-2">ATRIA</h1>
+    </div>
 
-    <section class="founder-note">
-        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality."</p>
-        <div style="margin-top: 40px; font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 700;">— FOUNDER, THETA AUDIO RESEARCH</div>
-    </section>
+    <div class="option">
+        <div class="label">OPTION 3: THE SCHOLAR (INTER)</div>
+        <h1 class="style-3">ATRIA</h1>
+    </div>
 
-    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
+    <div class="option">
+        <div class="label">OPTION 4: THE BOUTIQUE (SPACE MONO)</div>
+        <h1 class="style-4">ATRIA</h1>
+    </div>
+
 </body>
 </html>
