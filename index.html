@@ -4,205 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THETA Audio Research | ATRIA v25.4</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        @keyframes thetaBreath { 0% { background-color: var(--void); } 50% { background-color: var(--twilight); } 100% { background-color: var(--void); } }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; animation: thetaBreath 10s infinite ease-in-out; overflow-x: hidden; }
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .logo-group { display: flex; align-items: center; gap: 15px; }
+        .logo-text { font-weight: 700; letter-spacing: 5px; font-size: 18px; color: #fff; margin: 0; }
+        .logo-sub { font-weight: 300; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-top: -5px; }
+        .hero { padding: 120px 10% 60px 10%; text-align: center; }
+        .hero h1 { font-size: clamp(40px, 8vw, 72px); margin: 0; letter-spacing: -2px; font-weight: 700; }
+        .hero p { opacity: 0.5; max-width: 650px; margin: 25px auto; font-size: 14px; letter-spacing: 1px; }
+        .plugin-display { margin: 80px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
+        .plugin-display img { width: 100%; display: block; }
+        .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; text-align: left; align-items: center; }
+        .study-title { color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
+        .founder-note { padding: 150px 15%; font-style: italic; opacity: 0.9; position: relative; text-align: center; font-size: 18px; color: #fff; }
+        .cta-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 22px 60px; cursor: pointer; font-family: inherit; font-size: 13px; letter-spacing: 4px; transition: 0.4s; text-transform: uppercase; }
+        .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 50px rgba(200, 168, 107, 0.3); }
+        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;THETA Audio Research | ATRIA v25.4&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--void: #040406;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--twilight: #0D0E20;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--gold: #C8A86B;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--text: #E0E0E0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--border: #1A1B23;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* THETA PULSE ANIMATION (6Hz Meditative Rhythm) */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes thetaBreath {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0% { background-color: var(--void); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% { background-color: var(--twilight); }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>100% { background-color: var(--void); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--void);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'JetBrains Mono', monospace;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: thetaBreath 10s infinite ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px 5%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(4, 4, 6, 0.8);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-group { display: flex; align-items: center; gap: 15px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-text { font-weight: 700; letter-spacing: 5px; font-size: 18px; color: #fff; margin: 0; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-sub { font-weight: 300; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-top: -5px; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* HERO SECTION */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero { padding: 120px 10% 60px 10%; text-align: center; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 { font-size: clamp(40px, 8vw, 72px); margin: 0; letter-spacing: -2px; font-weight: 700; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero p { opacity: 0.5; max-width: 650px; margin: 25px auto; font-size: 14px; letter-spacing: 1px; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.plugin-display {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 80px auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1100px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 80px 150px rgba(0,0,0,0.9);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.5s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.plugin-display:hover { transform: scale(1.01); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.plugin-display img { width: 100%; display: block; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* THE 4-8 Hz STUDY SECTION */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.study-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 120px 10%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(0,0,0,0.4);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.study-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 80px; text-align: left; align-items: center; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.study-title { color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* FOUNDER'S NOTE */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-note {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 150px 15%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founder-note::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: "“";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 10%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.15;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: serif;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-container { margin: 80px 0; text-align: center; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: var(--gold);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 22px 60px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 13px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-btn:hover {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: var(--gold);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #000;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 50px rgba(200, 168, 107, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;svg width="45" height="45" viewBox="0 0 100 100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M75 80L25 80L40 65L60 65L75 80Z" fill="#1A1B23"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;path d="M50 20L75 80L65 70L50 35L50 20Z" fill="#C8A86B"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;rect x="25" y="48" width="50" height="8" fill="#C8A86B" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="logo-text"&gt;THETA&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="logo-sub"&gt;AUDIO RESEARCH&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>LAB NOTES | ARCHIVE | SUPPORT</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;ATRIA &lt;span style="font-weight: 300; opacity: 0.3;"&gt;v25.4&lt;/span&gt;&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Advanced Signal Degeneration &amp; Reconstruction. An engine meticulously calibrated for the 4–8 Hz hypnagogic threshold.&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="plugin-display"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA v25.4 - Macro Performance Engine Interface"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cta-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="cta-btn"&gt;Initialize Download&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="study-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="study-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="study-title"&gt;THE 4–8 Hz STUDY&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 style="font-size: 28px; margin-bottom: 30px;"&gt;Engineering the Hypnagogic Threshold&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p style="font-size: 14px; opacity: 0.7; max-width: 500px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>The Theta dream state is the mental gateway experienced just before sleep.<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>It is characterized by vivid imagery, intense creativity, and a detached, floating sensation.<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>ATRIA is a signal laboratory built to explore this liminal space—translating neural frequencies into sonic artifacts.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="border: 1px solid var(--border); height: 250px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); position: relative;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="color: var(--gold); font-size: 9px; letter-spacing: 4px; opacity: 0.6;"&gt;[ EEG THETA WAVEFORM ANALYSIS ]&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="position: absolute; bottom: 10px; right: 10px; font-size: 8px; opacity: 0.3;"&gt;FREQ: 6.2Hz // STATE: HYPNAGOGIC&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="founder-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that heavy,<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>drifting 'twilight' where the mind starts inventing reality. When the pitch sags and the<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>signal breaks, you are accessing the subconscious."</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="margin-top: 40px; font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 700; opacity: 1;"&gt;— FOUNDER, THETA AUDIO RESEARCH&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED. &lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>DESIGNED FOR SONIC EXPLORATION. ACCESS THE BREAKTHROUGH.</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <nav>
+        <div class="logo-group">
+            <svg width="45" height="45" viewBox="0 0 100 100">
+                <path d="M75 80L25 80L40 65L60 65L75 80Z" fill="#1A1B23"/>
+                <path d="M50 20L75 80L65 70L50 35L50 20Z" fill="#C8A86B"/>
+                <rect x="25" y="48" width="50" height="8" fill="#C8A86B" />
+            </svg>
+            <div>
+                <h2 class="logo-text">THETA</h2>
+                <p class="logo-sub">AUDIO RESEARCH</p>
+            </div>
+        </div>
+        <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">LAB NOTES | ARCHIVE | SUPPORT</div>
+    </nav>
+    <div class="hero">
+        <h1>ATRIA <span style="font-weight: 300; opacity: 0.3;">v25.4</span></h1>
+        <p>Advanced Signal Degeneration & Reconstruction. An engine meticulously calibrated for the 4–8 Hz hypnagogic threshold.</p>
+        <div class="plugin-display">
+            <img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA v25.4 UI">
+        </div>
+        <button class="cta-btn">Initialize Download</button>
+    </div>
+    <section class="study-section">
+        <div class="study-grid">
+            <div>
+                <div class="study-title">THE 4–8 Hz STUDY</div>
+                <h3 style="font-size: 28px; margin-bottom: 30px;">Engineering the Hypnagogic Threshold</h3>
+                <p style="font-size: 14px; opacity: 0.7;">The Theta dream state is the mental gateway experienced just before sleep. ATRIA is a signal laboratory built to explore this liminal space.</p>
+            </div>
+            <div style="border: 1px solid var(--border); height: 200px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.5);">
+                <div style="color: var(--gold); font-size: 9px; letter-spacing: 4px; opacity: 0.6;">[ EEG THETA WAVEFORM ANALYSIS ]</div>
+            </div>
+        </div>
+    </section>
+    <section class="founder-note">
+        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality."</p>
+        <div style="margin-top: 40px; font-size: 10px; color: var(--gold); letter-spacing: 4px; font-weight: 700;">— FOUNDER, THETA AUDIO RESEARCH</div>
+    </section>
+    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
 </body>
 </html>
