@@ -8,8 +8,9 @@
     <style>
         :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
         
+        /* MASTER NAVIGATION - SYNCED LOGO ALIGNMENT */
         nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
         .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
@@ -20,17 +21,29 @@
         .nav-links a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
         .nav-links a:hover { opacity: 1; }
 
+        /* MASTER HERO - SYNCED SIZE & CENTERING */
         .hero { padding: 150px 10% 100px 10%; text-align: center; border-bottom: 1px solid var(--border); }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(42px, 10vw, 80px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
+        .hero h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: clamp(42px, 10vw, 80px); 
+            margin: 0; 
+            letter-spacing: 24px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            text-indent: 24px; 
+            color: #fff; 
+        }
         .hero .sub-brand { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 12px; letter-spacing: 12px; text-transform: uppercase; margin-top: 10px; font-weight: 400; opacity: 0.9; }
+        .hero p { opacity: 0.5; max-width: 800px; margin: 50px auto; font-size: 14px; letter-spacing: 1px; line-height: 2; }
 
+        /* STUDY SECTION - REWRITTEN RESEARCH */
         .study-section { padding: 120px 10%; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border); }
         .study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .study-title { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 11px; letter-spacing: 6px; margin-bottom: 25px; font-weight: 700; }
-        
         #wave-container { border: 1px solid var(--border); height: 300px; background: rgba(0,0,0,0.8); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* ENGINE SELECTION */
         .engine-select { padding: 100px 10%; text-align: center; }
         .engine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; }
         .engine-card { border: 1px solid var(--border); padding: 60px 40px; background: rgba(255,255,255,0.02); text-decoration: none; color: inherit; transition: 0.4s; }
@@ -38,8 +51,9 @@
         .engine-card h4 { font-family: 'Montserrat'; font-size: 24px; letter-spacing: 8px; text-transform: uppercase; color: #fff; margin: 0 0 10px 0; }
         .engine-card p { font-size: 10px; opacity: 0.4; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
 
-        .vault-section { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .vault-card { border: 1px solid var(--border); padding: 40px; background: rgba(255,255,255,0.01); text-decoration: none; color: inherit; transition: 0.3s; }
+        /* RESEARCH VAULT - COMPLETED TRILOGY */
+        .vault-section { padding: 100px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .vault-card { border: 1px solid var(--border); padding: 40px; background: rgba(255,255,255,0.01); text-decoration: none; color: inherit; transition: 0.3s; display: block; }
         .vault-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.05); }
         .vault-tag { font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 15px; }
 
@@ -70,9 +84,7 @@
     <div class="hero">
         <h1>THETA</h1>
         <div class="sub-brand">Audio Research</div>
-        <p style="opacity: 0.5; max-width: 800px; margin: 50px auto; font-size: 14px; letter-spacing: 1px; line-height: 2;">
-            Advanced Signal Degeneration & Reconstruction. An institutional laboratory meticulously calibrated for the 4–8 Hz hypnagogic threshold.
-        </p>
+        <p>Advanced Signal Degeneration & Reconstruction. An institutional laboratory meticulously calibrated for the 4–8 Hz hypnagogic threshold.</p>
     </div>
 
     <section class="study-section">
@@ -103,12 +115,17 @@
         <a href="archive-01.html" class="vault-card">
             <div class="vault-tag">ARCHIVE ENTRY: 01-THETA</div>
             <h4 style="color: #fff; text-transform: uppercase; font-family: 'Montserrat'; letter-spacing: 2px;">The Threshold</h4>
-            <p style="font-size: 12px; opacity: 0.5;">Declassified briefing on 4–8 Hz cognitive attributes.</p>
+            <p style="font-size: 12px; opacity: 0.5;">Declassified briefing on the 4–8 Hz subconscious gateway.</p>
         </a>
         <a href="archive-02.html" class="vault-card">
             <div class="vault-tag">ARCHIVE ENTRY: 02-THETA</div>
             <h4 style="color: #fff; text-transform: uppercase; font-family: 'Montserrat'; letter-spacing: 2px;">Induction Protocols</h4>
-            <p style="font-size: 12px; opacity: 0.5;">Methods for crossing the threshold via acoustic entrainment.</p>
+            <p style="font-size: 12px; opacity: 0.5;">Intentional methods for threshold crossing via acoustic entrainment.</p>
+        </a>
+        <a href="archive-03.html" class="vault-card">
+            <div class="vault-tag">ARCHIVE ENTRY: 03-THETA</div>
+            <h4 style="color: #fff; text-transform: uppercase; font-family: 'Montserrat'; letter-spacing: 2px;">Bio-Mechanical Tuning</h4>
+            <p style="font-size: 12px; opacity: 0.5;">Leveraging respiratory cycles to override Beta-state interference.</p>
         </a>
     </section>
 
