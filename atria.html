@@ -6,184 +6,47 @@
     <title>ATRIA | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --void: #040406; 
-            --gold: #C8A86B; 
-            --text: #E0E0E0; 
-            --border: #1A1B23; 
-        }
-
-        body { 
-            background-color: var(--void); 
-            color: var(--text); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }
-
-        nav { 
-            padding: 40px 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid var(--border); 
-            background: rgba(4, 4, 6, 0.8); 
-            backdrop-filter: blur(10px); 
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-        }
-
+        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
         .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        
-        .logo-text { 
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700; 
-            letter-spacing: 6px; 
-            font-size: 19px; 
-            color: #fff; 
-            margin: 0; 
-            text-transform: uppercase;
-        }
-
-        nav a { 
-            color: var(--gold); 
-            text-decoration: none; 
-            font-size: 10px; 
-            opacity: 0.4; 
-            letter-spacing: 3px; 
-            font-family: 'Montserrat'; 
-            transition: 0.3s; 
-        }
-
-        nav a:hover { opacity: 1; }
-
-        .hero { padding: 100px 10%; text-align: center; }
-
-        .hero h1 { 
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(42px, 10vw, 80px); 
-            margin: 0; 
-            letter-spacing: 24px; 
-            font-weight: 700; 
-            text-transform: uppercase;
-            text-indent: 24px; 
-            color: #fff;
-        }
-
-        .hero p { 
-            opacity: 0.5; 
-            font-size: 12px; 
-            letter-spacing: 4px; 
-            margin-top: 20px; 
-            text-transform: uppercase; 
-        }
-
-        .plugin-display { 
-            margin: 60px auto; 
-            max-width: 1100px; 
-            border: 1px solid var(--border); 
-            box-shadow: 0 80px 150px rgba(0,0,0,0.9); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            background: #000; 
-        }
-
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
+        .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: -3px; text-transform: uppercase; opacity: 0.8; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
+        .hero { padding: 150px 10% 100px 10%; text-align: center; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(42px, 10vw, 80px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
+        .hero .sub-brand { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 12px; letter-spacing: 12px; text-transform: uppercase; margin-top: 10px; font-weight: 400; opacity: 0.9; }
+        .plugin-display { margin: 60px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
         .plugin-display img { width: 100%; display: block; }
-
-        .info-grid { 
-            padding: 80px 10%; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 80px; 
-            border-top: 1px solid var(--border); 
-        }
-
-        .info-header { 
-            font-family: 'Montserrat'; 
-            font-size: 11px; 
-            color: var(--gold); 
-            letter-spacing: 4px; 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
-        }
-
-        .info-body { 
-            font-size: 14px; 
-            opacity: 0.7; 
-            line-height: 2; 
-        }
-
-        .cta-btn { 
-            font-family: 'Montserrat', sans-serif; 
-            background: transparent; 
-            border: 1px solid var(--gold); 
-            color: var(--gold); 
-            padding: 24px 70px; 
-            cursor: pointer; 
-            font-size: 14px; 
-            letter-spacing: 5px; 
-            transition: 0.4s ease; 
-            text-transform: uppercase; 
-            margin: 60px 0; 
-        }
-
-        .cta-btn:hover { 
-            background: var(--gold); 
-            color: #000; 
-            box-shadow: 0 0 60px rgba(200, 168, 107, 0.4); 
-        }
-
-        footer { 
-            padding: 100px 5%; 
-            font-size: 9px; 
-            opacity: 0.3; 
-            letter-spacing: 3px; 
-            text-align: center; 
-            border-top: 1px solid var(--border); 
-        }
+        .info-grid { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; border-top: 1px solid var(--border); }
+        .info-header { font-family: 'Montserrat'; font-size: 11px; color: var(--gold); letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
+        .info-body { font-size: 14px; opacity: 0.7; line-height: 2; }
+        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo-group">
-            <svg width="40" height="40" viewBox="0 0 100 100">
-                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
-                <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
+                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
             </svg>
-            <h2 class="logo-text">THETA</h2>
+            <div><h2 class="logo-text">THETA</h2><p class="logo-sub">AUDIO RESEARCH</p></div>
         </a>
-        <div style="display: flex; gap: 30px;">
-            <a href="twilight.html">TWILIGHT</a>
-            <a href="index.html">RETURN TO LAB</a>
-        </div>
+        <div style="display: flex; gap: 30px;"><a href="twilight.html">TWILIGHT</a><a href="index.html">RETURN TO LAB</a></div>
     </nav>
-
     <div class="hero">
         <h1>ATRIA</h1>
-        <p>Sonic Exploration Engine</p>
-        <div class="plugin-display">
-            <img src="ATRIA_v25.17 - CLOSED.png" alt="ATRIA Terminal Interface">
-        </div>
-        <button class="cta-btn">Initialize Download</button>
+        <div class="sub-brand">Sonic Exploration Engine</div>
+        <div class="plugin-display"><img src="ATRIA_v25.17 - CLOSED.png" alt="ATRIA Terminal Interface"></div>
+        <button style="font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; text-transform: uppercase;">Initialize Download</button>
     </div>
-
     <section class="info-grid">
-        <div>
-            <div class="info-header">The Architecture</div>
-            <div class="info-body">
-                ATRIA is a sonic exploration engine utilizing saturation, pitch manipulation, and variable speed changes. It is built upon a proprietary signal chain that can be swapped between Parallel and Serial modes—enabling either surgical reinforcement or total atmospheric degeneration.
-            </div>
-        </div>
-        <div>
-            <div class="info-header">The Modules</div>
-            <div class="info-body">
-                The terminal utilizes twelve research modules including hardware-grade tape emulation, modulation effects, and stuttering. By controlling the space between volume reductions and playback speed, ATRIA anchors signal processing within the 4–8 Hz hypnagogic threshold.
-            </div>
-        </div>
+        <div><div class="info-header">The Architecture</div><div class="info-body">ATRIA is a sonic exploration engine utilizing saturation, pitch manipulation, and variable speed changes. It can be swapped between Parallel and Serial modes.</div></div>
+        <div><div class="info-header">The Modules</div><div class="info-body">Twelve research modules including tape emulation and stuttering, anchoring processing within the 4–8 Hz threshold.</div></div>
     </section>
-
-    <footer>© 2026 THETA AUDIO RESEARCH. ATRIA DIVISION. ALL RIGHTS RESERVED.</footer>
+    <footer>© 2026 THETA AUDIO RESEARCH. ATRIA DIVISION.</footer>
 </body>
 </html>
