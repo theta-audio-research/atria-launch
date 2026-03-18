@@ -6,53 +6,196 @@
     <title>ATRIA | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #040406; --twilight: #0D0E20; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
-        
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        :root { 
+            --void: #040406; 
+            --twilight: #0D0E20; 
+            --gold: #C8A86B; 
+            --text: #E0E0E0; 
+            --border: #1A1B23; 
+        }
+
+        body { 
+            background-color: var(--void); 
+            color: var(--text); 
+            font-family: 'JetBrains Mono', monospace; 
+            margin: 0; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+
+        nav { 
+            padding: 40px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border); 
+            background: rgba(4, 4, 6, 0.8); 
+            backdrop-filter: blur(10px); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+
         .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; }
+        
+        .logo-text { 
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700; 
+            letter-spacing: 6px; 
+            font-size: 19px; 
+            color: #fff; 
+            margin: 0; 
+            text-transform: uppercase;
+        }
+
+        nav a { 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 10px; 
+            opacity: 0.4; 
+            letter-spacing: 3px; 
+            font-family: 'Montserrat'; 
+            transition: 0.3s; 
+        }
+
+        nav a:hover { opacity: 1; }
 
         .hero { padding: 100px 10%; text-align: center; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 68px; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; margin: 0; }
-        
-        .plugin-display { margin: 60px auto; max-width: 1100px; border: 1px solid var(--border); box-shadow: 0 80px 150px rgba(0,0,0,0.9); border-radius: 12px; overflow: hidden; background: #000; }
+
+        /* ATRIA INSTITUTIONAL WORDMARK */
+        .hero h1 { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(42px, 10vw, 80px); 
+            margin: 0; 
+            letter-spacing: 24px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            text-indent: 24px; 
+            color: #fff;
+        }
+
+        .hero p { 
+            opacity: 0.5; 
+            font-size: 12px; 
+            letter-spacing: 4px; 
+            margin-top: 20px; 
+            text-transform: uppercase; 
+        }
+
+        .plugin-display { 
+            margin: 60px auto; 
+            max-width: 1100px; 
+            border: 1px solid var(--border); 
+            box-shadow: 0 80px 150px rgba(0,0,0,0.9); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            background: #000; 
+        }
+
         .plugin-display img { width: 100%; display: block; }
 
-        .founder-note { padding: 100px 20%; font-style: italic; opacity: 0.9; position: relative; text-align: center; font-size: 18px; color: #fff; }
-        .cta-btn { font-family: 'Montserrat', sans-serif; background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 24px 70px; cursor: pointer; font-size: 14px; letter-spacing: 5px; transition: 0.4s ease; text-transform: uppercase; }
-        .cta-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 60px rgba(200, 168, 107, 0.4); }
-        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+        /* SPECIFICATION GRID */
+        .spec-grid { 
+            padding: 80px 10%; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 60px; 
+            border-top: 1px solid var(--border); 
+            background: rgba(255,255,255,0.01);
+        }
+
+        .spec-item h4 { 
+            font-family: 'Montserrat'; 
+            color: var(--gold); 
+            font-size: 10px; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+        }
+
+        .spec-item p { 
+            font-size: 13px; 
+            opacity: 0.6; 
+            line-height: 1.8;
+        }
+
+        .cta-btn { 
+            font-family: 'Montserrat', sans-serif; 
+            background: transparent; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            padding: 24px 70px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            letter-spacing: 5px; 
+            transition: 0.4s ease; 
+            text-transform: uppercase; 
+            margin-top: 40px; 
+        }
+
+        .cta-btn:hover { 
+            background: var(--gold); 
+            color: #000; 
+            box-shadow: 0 0 60px rgba(200, 168, 107, 0.4); 
+        }
+
+        footer { 
+            padding: 100px 5%; 
+            font-size: 9px; 
+            opacity: 0.3; 
+            letter-spacing: 3px; 
+            text-align: center; 
+            border-top: 1px solid var(--border); 
+        }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo-group">
             <svg width="40" height="40" viewBox="0 0 100 100">
-                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
-                <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4" filter="url(#glow)"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
             </svg>
             <h2 class="logo-text">THETA</h2>
         </a>
         <div style="display: flex; gap: 30px;">
-            <a href="index.html">BACK TO LAB</a>
-            <a href="mailto:support@theta-research.io">SUPPORT</a>
+            <a href="twilight.html">TWILIGHT GEN</a>
+            <a href="index.html">RETURN TO LAB</a>
         </div>
     </nav>
 
     <div class="hero">
         <h1>ATRIA</h1>
-        <p style="opacity:0.5; font-size: 12px; letter-spacing: 4px; margin-top: 20px;">MACRO PERFORMANCE ENGINE</p>
-        <div class="plugin-display"><img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA UI"></div>
+        <p>Macro Performance Engine</p>
+        <div class="plugin-display">
+            <img src="ATRIA_v25.4 - CLOSED.png" alt="ATRIA Main Interface Terminal">
+        </div>
         <button class="cta-btn">Initialize Download</button>
     </div>
 
-    <section class="founder-note">
-        <p>"I built ATRIA because I wanted a tool that lived in that moment just before sleep—that drifting 'twilight' where the mind starts inventing reality."</p>
-        <div style="margin-top: 40px; font-size: 11px; color: var(--gold); letter-spacing: 5px; font-weight: 700; font-family: 'Montserrat';">— FOUNDER, THETA AUDIO RESEARCH</div>
+    <section class="spec-grid">
+        <div class="spec-item">
+            <h4>Signal Degeneration</h4>
+            <p>Non-linear recursive artifacts modeled after hardware-grade tape instability and vacuum tube saturation. Designed to break gracefully under high-gain pressure.</p>
+        </div>
+        <div class="spec-item">
+            <h4>Macro Control</h4>
+            <p>The "Constellation" mapping logic allows for complex multi-parameter modulation via a single interface node, enabling real-time performative sound design.</p>
+        </div>
+        <div class="spec-item">
+            <h4>Theta Optimization</h4>
+            <p>Internal signal sag and LFO clocking are meticulously hard-coded to the 6.2 Hz threshold, ensuring psychological resonance with the 4–8 Hz dream state.</p>
+        </div>
     </section>
 
-    <footer>© 2026 THETA AUDIO RESEARCH. ATRIA ENGINE.</footer>
+    <footer>© 2026 THETA AUDIO RESEARCH. ATRIA DIVISION. ALL RIGHTS RESERVED.</footer>
 </body>
 </html>
