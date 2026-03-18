@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSMISSION CONFIRMED | THETA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        
+        .container { text-align: center; border: 1px solid var(--border); padding: 60px; background: rgba(255,255,255,0.02); max-width: 600px; position: relative; }
+        
+        .status-tag { font-family: 'Montserrat'; color: var(--gold); font-size: 10px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 30px; }
+        
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 32px; letter-spacing: 12px; font-weight: 700; text-transform: uppercase; margin: 0 0 20px 0; color: #fff; }
+        
+        p { opacity: 0.5; font-size: 13px; line-height: 1.8; margin-bottom: 40px; }
+
+        /* LOADING BAR ANIMATION */
+        .progress-container { width: 100%; height: 2px; background: var(--border); margin-bottom: 40px; position: relative; }
+        .progress-bar { height: 100%; background: var(--gold); width: 0; animation: fillBar 3s forwards ease-in-out; }
+        
+        @keyframes fillBar { 0% { width: 0; } 100% { width: 100%; } }
+
+        .nav-back { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 3px; font-family: 'Montserrat'; text-transform: uppercase; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .nav-back:hover { border-bottom: 1px solid var(--gold); }
+
+        /* DECLASSIFIED STAMP */
+        .stamp { position: absolute; top: -20px; right: -20px; border: 2px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.1); padding: 10px; font-family: 'Montserrat'; transform: rotate(15deg); font-size: 10px; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="stamp">PACKET_099_RCVD</div>
+        <div class="status-tag">Transmission Complete</div>
+        <h1>DECODED</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p>
+            Your distress signal has been successfully routed to the THETA Technical Recovery Division. 
+            A researcher will review your signal drift and respond within 24–48 hours. 
+            Maintain current breath cycles.
+        </p>
+
+        <a href="index.html" class="nav-back">Return to Institutional Home</a>
+    </div>
+
+</body>
+</html>
