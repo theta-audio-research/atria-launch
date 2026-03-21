@@ -38,10 +38,35 @@
         .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
         .version-tag { font-family: 'Montserrat'; color: var(--gold); font-size: 12px; letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
 
-        /* UPDATED ASSET FRAME (v1.5) */
-        .plugin-display { max-width: 1000px; margin: 60px auto; padding: 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.01); position: relative; }
-        .plugin-display img { width: 100%; height: auto; display: block; filter: saturate(0.6) contrast(1.1); }
-        .display-label { position: absolute; top: -10px; left: 20px; background: var(--void); padding: 0 15px; font-size: 10px; color: var(--gold); letter-spacing: 3px; }
+        /* --- UPDATED PLUGIN DISPLAY (FLOATING & SCALED) --- */
+        .plugin-display-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            text-align: center; /* Centers the floating image */
+            position: relative;
+        }
+
+        .plugin-display-container img {
+            width: 80%; /* SCALED DOWN TO 80% */
+            height: auto;
+            display: inline-block; /* Allows text-align to work */
+            
+            /* REMOVED BORDER, LABEL, AND BACKGROUND */
+            border: none;
+            background: none;
+            
+            /* ADDED SUBTLE GLOW TO MAKE IT FLOAT */
+            filter: saturate(0.8) contrast(1.1) drop-shadow(0 0 30px rgba(200, 168, 107, 0.15));
+            
+            transition: transform 0.5s ease;
+        }
+
+        /* Subtle lift on hover for the "floating" effect */
+        .plugin-display-container img:hover {
+            transform: translateY(-5px);
+            filter: saturate(1.0) contrast(1.1) drop-shadow(0 0 40px rgba(200, 168, 107, 0.25));
+        }
+        /* ------------------------------------------------ */
 
         .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
         .spec-header { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
@@ -81,8 +106,7 @@
         <div class="version-tag">Digital Degeneration Engine // v1.5.0</div>
     </div>
 
-    <section class="plugin-display">
-        <div class="display-label">DECAY_PROTOCOL_v1.5_FINAL</div>
+    <section class="plugin-display-container">
         <img src="EROSION_v1.5.png" alt="EROSION v1.5 Plugin Interface">
     </section>
 
