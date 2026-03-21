@@ -3,109 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATHODE v1.0 | THETA Audio Research Archive</title>
+    <title>CATHODE | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; --phosphor: #33FF66; }
-        
+        :root { --void: #020204; --gold: #C8A86B; --text: #E0E0E0; --border: #121320; }
         body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
-
-        /* ARCHIVE OVERLAY */
-        body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.05; pointer-events: none; z-index: 999;
-        }
-
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.95); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; }
+        
+        /* INSTITUTIONAL HEADER */
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(2, 2, 4, 0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; }
         .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
         .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
         .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; line-height: 1; }
         .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 5px; text-transform: uppercase; opacity: 0.8; line-height: 1; }
-        .nav-links a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; margin-left: 30px; }
-        .nav-links a:hover { opacity: 1; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
+        nav a:hover { opacity: 1; }
 
-        .hero { padding: 120px 10% 60px 10%; text-align: center; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; color: #fff; text-indent: 24px; }
-        .hero p { color: var(--gold); font-size: 12px; letter-spacing: 8px; margin-top: 15px; opacity: 0.9; text-transform: uppercase; }
+        /* HERO SECTION */
+        .hero { padding: 120px 10% 40px 10%; text-align: center; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
+        .sub-brand { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 12px; letter-spacing: 12px; text-transform: uppercase; margin-top: 20px; font-weight: 400; opacity: 0.9; }
 
-        /* ASSET FRAME */
-        .asset-frame { max-width: 1100px; margin: 60px auto; padding: 30px; border: 1px solid var(--border); background: #08080A; position: relative; }
-        .asset-frame img { width: 100%; height: auto; display: block; border: 1px solid rgba(200, 168, 107, 0.1); filter: contrast(1.1); }
-        .label { position: absolute; top: -10px; left: 30px; background: var(--void); padding: 0 15px; font-size: 9px; color: var(--gold); letter-spacing: 4px; }
+        /* FLOATING ASSET WINDOW */
+        .floating-window-container { max-width: 1200px; margin: 40px auto; text-align: center; }
+        .floating-window-container img {
+            width: 80%; height: auto; display: inline-block;
+            filter: contrast(1.05) drop-shadow(0 0 40px rgba(200, 168, 107, 0.18));
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .floating-window-container img:hover { transform: translateY(-12px); filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.3)); }
 
-        /* ARCHIVE DATA */
-        .archive-grid { padding: 80px 10%; display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; border-top: 1px solid var(--border); }
-        .schematic-entry h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
-        
-        .component-item { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
-        .component-item span { color: var(--gold); font-weight: 700; margin-right: 15px; }
-        .component-item p { margin: 5px 0 0 0; opacity: 0.5; }
+        /* TECHNICAL SPECS */
+        .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
+        .spec-item { margin-bottom: 25px; border-left: 2px solid #1A1B23; padding-left: 20px; transition: 0.3s; }
+        .spec-item:hover { border-left: 2px solid var(--gold); background: rgba(200, 168, 107, 0.02); }
+        .spec-item strong { display: block; font-size: 12px; color: #fff; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; }
+        .spec-item p { font-size: 13px; opacity: 0.5; margin: 0; }
 
-        .glow-text { color: var(--phosphor); text-shadow: 0 0 10px rgba(51, 255, 102, 0.5); }
-
-        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+        footer { padding: 100px 5%; font-size: 9px; opacity: 0.2; letter-spacing: 4px; text-align: center; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo-group">
             <svg width="50" height="50" viewBox="0 0 100 100">
-                <path d="M50 15 L90 85 L10 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
-                <path d="M50 35 L75 75 L25 75 Z" fill="none" stroke="#C8A86B" stroke-width="3"/>
-                <path d="M50 55 L60 70 L40 70 Z" fill="#C8A86B"/>
+                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
+                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
             </svg>
             <div class="logo-text-stack">
                 <h2 class="logo-text">THETA</h2>
                 <p class="logo-sub">AUDIO RESEARCH</p>
             </div>
         </a>
-        <div class="nav-links">
+        <div style="display: flex; gap: 30px;">
             <a href="atria.html">ATRIA</a>
-            <a href="erosion.html">EROSION</a>
+            <a href="twilight.html">TWILIGHT</a>
             <a href="index.html">RETURN TO LAB</a>
         </div>
     </nav>
 
     <div class="hero">
         <h1>CATHODE</h1>
-        <p>Vacuum-State Emulation // ARCHIVE NODE C-01</p>
+        <div class="sub-brand">Vacuum Emulation Engine</div>
     </div>
 
-    <section class="asset-frame">
-        <div class="label">TECHNICAL_DIAGRAM_006_FINAL</div>
-        <img src="LAB_NOTE_006_DIAGRAM.png" alt="CATHODE Technical Breakdown">
+    <section class="floating-window-container">
+        <img src="CATHODE_v1.0.png" alt="CATHODE Floating Window">
     </section>
 
-    <section class="archive-grid">
-        <div class="schematic-data">
-            <h3>Component Signal Path</h3>
-            <div class="component-item">
-                <span>[A] THE CATHODE (K)</span>
-                <p>Initial heat simulation. Controls the "thickness" of the saturation through simulated electron boiling.</p>
+    <section class="spec-section">
+        <div>
+            <div class="spec-item">
+                <strong>Anode Saturation</strong>
+                <p>High-voltage bias simulation for organic harmonic grit and frequency-dependent compression.</p>
             </div>
-            <div class="component-item">
-                <span>[B] GRID BIAS (G)</span>
-                <p>Governs the asymmetry of the clip. Adjusts how the signal breaks under high-voltage pressure.</p>
-            </div>
-            <div class="component-item">
-                <span>[C] ANODE DRIVE (A1)</span>
-                <p>The output stage gain. Simulates the final acceleration of the signal before phosphor interaction.</p>
+            <div class="spec-item">
+                <strong>Grid Bias Control</strong>
+                <p>Fine-tune the response curve of the virtual tube, ranging from clinical to catastrophic.</p>
             </div>
         </div>
-
-        <div class="lab-notes">
-            <h3>Lab Note #006</h3>
-            <p style="font-size: 12px; color: var(--gold); opacity: 0.8;">"With CATHODE, we have achieved a stable emulation of high-voltage signal decay. The artifacts produced are not digital—they are physical."</p>
-            <p style="margin-top: 30px; font-size: 11px; color: var(--phosphor);" class="glow-text">
-                STATUS: DEPLOYED<br>
-                FILAMENT_TEMP: 2400K<br>
-                BEAM_FOCUS: SHARP
-            </p>
+        <div>
+            <div class="spec-item">
+                <strong>Institutional Note #006</strong>
+                <p>Archive-grade distortion modeling. CATHODE captures the inherent instability of physical hardware.</p>
+            </div>
         </div>
     </section>
 
-    <footer>© 2026 THETA AUDIO RESEARCH | CATHODE TERMINAL</footer>
+    <footer>© 2026 THETA AUDIO RESEARCH.</footer>
 </body>
 </html>
