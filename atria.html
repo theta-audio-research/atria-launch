@@ -3,6 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATRIA v25.39 | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        
+        /* MASTER NAVIGATION */
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; }
+        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; line-height: 1; }
+        .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 5px; text-transform: uppercase; opacity: 0.8; line-height: 1; }
+        .nav-links a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; margin-left: 30px; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* HERO SECTION */
+        .hero { padding: 120px 10% 60px 10%; text-align: center; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 20px; font-weight: 700; text-transform: uppercase; text-indent: 20px; color: #fff; }
+        .version-tag { font-family: 'Montserrat'; color: var(--gold); font-size: 12px; letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
+
+        /* IMAGE DISPLAY - UPDATED TO v25.39 */
+        .plugin-display { max-width: 1000px; margin: 60px auto; padding: 20px; border: 1px solid var(--border); background: rgba(255,255,255,0.01); position: relative; }
+        .plugin-display img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 30px rgba(0,0,0,0.5)); }
+        .display-label { position: absolute; top: -10px; left: 20px; background: var(--void); padding: 0 15px; font-size: 10px; color: var(--gold); letter-spacing: 3px; }
+
+        /* SPECIFICATIONS GRID */
+        .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
+        .spec-header { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
+        .spec-item { margin-bottom: 25px; border-left: 2px solid var(--border); padding-left: 20px; }
+        .spec-item strong { display: block; font-size: 12px; color: #fff; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; }
+        .spec-item p { font-size: 13px; opacity: 0.5; margin: 0; }
+
+        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-group">
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
+                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
+            </svg>
+            <div class="logo-text-stack">
+                <h2 class="logo-text">THETA</h2>
+                <p class="logo-sub">AUDIO RESEARCH</p>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="twilight.html">TWILIGHT</a>
+            <a href="index.html">RETURN TO LAB</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>ATRIA</h1>
+        <div class="version-tag">Sonic Exploration Engine // v25.39</div>
+    </div>
+
+    <section class="plugin-display">
+        <div class="display-label">GUI_RENDER_STILL</div>
+        <img src="ATRIA_v25.39 - CLOSED.png" alt="ATRIA v25.39 Plugin Interface">
+    </section>
+
+    <section class="spec-section">
+        <div>
+            <div class="spec-header">Engine Architecture</div>
+            <div class="spec-item">
+                <strong>Signal Degeneration</strong>
+                <p>Proprietary algorithms for variable-speed tape emulation and germanium-style saturation.</p>
+            </div>
+            <div class="spec-item">
+                <strong>Temporal Modulation</strong>
+                <p>Pitch-variable stutter engines and modulated delay lines for subconscious rhythmic artifacts.</p>
+            </div>
+        </div>
+        <div>
+            <div class="spec-header">Research Nodes</div>
+            <div class="spec-item">
+                <strong>Hypnagogic Processing</strong>
+                <p>Engineered specifically to inhabit the 4–8 Hz threshold via phase-coherent modulation.</p>
+            </div>
+            <div class="spec-item">
+                <strong>Status: Operational</strong>
+                <p>Build 25.39 verified for institutional deployment across all primary DAWs.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATRIA | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
