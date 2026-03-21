@@ -17,7 +17,7 @@
             overflow-x: hidden; 
         }
 
-        /* RESTORED INSTITUTIONAL HEADER */
+        /* INSTITUTIONAL HEADER - MASTER STANDARD */
         nav { 
             padding: 40px 5%; 
             display: flex; 
@@ -31,12 +31,10 @@
             z-index: 100; 
         }
         .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        .nav-logo-img { height: 40px; width: auto; }
         .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
         .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; line-height: 1; }
         .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 5px; text-transform: uppercase; opacity: 0.8; line-height: 1; }
         
-        .nav-links { display: flex; gap: 30px; }
         .nav-links a { 
             color: var(--gold); 
             text-decoration: none; 
@@ -48,7 +46,7 @@
         }
         .nav-links a:hover { opacity: 1; }
 
-        /* CENTERED HERO LOGO */
+        /* HERO SECTION - MASTER BRANDING */
         .hero { 
             padding: 100px 10% 60px 10%;
             display: flex; 
@@ -57,9 +55,9 @@
             align-items: center; 
             text-align: center; 
         }
-        .main-logo-hero { 
+        .hero-logo-svg { 
+            width: 180px; 
             height: 180px; 
-            width: auto; 
             margin-bottom: 40px; 
             filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.2));
         }
@@ -133,20 +131,29 @@
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo-group">
-            <img src="  JUST THE LOGO .png" alt="THETA" class="nav-logo-img">
+        <div class="logo-group">
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
+                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
+                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
+            </svg>
             <div class="logo-text-stack">
                 <h2 class="logo-text">THETA</h2>
                 <p class="logo-sub">AUDIO RESEARCH</p>
             </div>
-        </a>
+        </div>
         <div class="nav-links">
             <a href="mailto:lofiluxury66@gmail.com">SUPPORT_CONTACT</a>
         </div>
     </nav>
 
     <div class="hero">
-        <img src="  JUST THE LOGO .png" alt="THETA NORTH STAR" class="main-logo-hero">
+        <svg class="hero-logo-svg" viewBox="0 0 100 100">
+            <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
+            <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
+            <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
+        </svg>
         <h1>THETA</h1>
         <p>Laboratory Access Terminal</p>
     </div>
