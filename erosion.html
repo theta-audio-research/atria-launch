@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EROSION v1.0 | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; --decay: #2A2C35; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        
+        /* MASTER NAVIGATION */
+        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; }
+        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
+        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; line-height: 1; }
+        .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 5px; text-transform: uppercase; opacity: 0.8; line-height: 1; }
+        .nav-links a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; margin-left: 30px; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* HERO SECTION */
+        .hero { padding: 120px 10% 60px 10%; text-align: center; }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
+        .version-tag { font-family: 'Montserrat'; color: var(--gold); font-size: 12px; letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
+
+        /* EROSION VISUALIZER */
+        .plugin-display { max-width: 1000px; margin: 60px auto; padding: 20px; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(200,168,107,0.02) 0%, rgba(4,4,6,1) 100%); position: relative; }
+        .plugin-display img { width: 100%; height: auto; display: block; filter: grayscale(20%) contrast(110%); }
+        .display-label { position: absolute; top: -10px; left: 20px; background: var(--void); padding: 0 15px; font-size: 10px; color: var(--gold); letter-spacing: 3px; }
+
+        /* DEGENERATION SPECS */
+        .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
+        .spec-header { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
+        .spec-item { margin-bottom: 25px; border-left: 2px solid var(--decay); padding-left: 20px; transition: 0.5s; }
+        .spec-item:hover { border-left: 2px solid var(--gold); }
+        .spec-item strong { display: block; font-size: 12px; color: #fff; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; }
+        .spec-item p { font-size: 13px; opacity: 0.5; margin: 0; }
+
+        .terminal-block { background: #08080A; border: 1px solid var(--border); padding: 40px; margin-top: 40px; grid-column: span 2; }
+        .terminal-text { font-size: 12px; color: var(--gold); opacity: 0.7; border-left: 3px solid var(--gold); padding-left: 20px; }
+
+        footer { padding: 80px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-group">
+            <svg width="50" height="50" viewBox="0 0 100 100">
+                <path d="M50 15 L90 85 L10 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
+                <path d="M50 35 L75 75 L25 75 Z" fill="none" stroke="#C8A86B" stroke-width="3"/>
+                <path d="M50 55 L60 70 L40 70 Z" fill="#C8A86B"/>
+            </svg>
+            <div class="logo-text-stack">
+                <h2 class="logo-text">THETA</h2>
+                <p class="logo-sub">AUDIO RESEARCH</p>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="atria.html">ATRIA</a>
+            <a href="twilight.html">TWILIGHT</a>
+            <a href="index.html">RETURN TO LAB</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>EROSION</h1>
+        <div class="version-tag">Digital Degeneration Engine // v1.0.0</div>
+    </div>
+
+    <section class="plugin-display">
+        <div class="display-label">DECAY_PROTOCOL_RENDER</div>
+        <img src="EROSION_GUI_v1.png" alt="EROSION Plugin Interface">
+    </section>
+
+    <section class="spec-section">
+        <div>
+            <div class="spec-header">Degeneration Matrix</div>
+            <div class="spec-item">
+                <strong>Spectral Entropy</strong>
+                <p>Non-linear frequency stripping that surgically removes harmonic content based on amplitude thresholds.</p>
+            </div>
+            <div class="spec-item">
+                <strong>Aliasing Kernels</strong>
+                <p>Custom-built resampling algorithms that introduce synthetic digital artifacts without losing low-end punch.</p>
+            </div>
+        </div>
+        <div>
+            <div class="spec-header">Institutional Data</div>
+            <div class="spec-item">
+                <strong>Bit-Depth Sabotage</strong>
+                <p>A variable resolution engine that mimics the catastrophic failure of vintage AD/DA converters.</p>
+            </div>
+            <div class="spec-item">
+                <strong>Artifact Status: Active</strong>
+                <p>Designed to introduce surgical noise floors to clinical audio environments.</p>
+            </div>
+        </div>
+
+        <div class="terminal-block">
+            <div class="terminal-text">
+                "EROSION exists to remind us that perfection is a digital illusion. To find the soul of a sound, you must first watch it begin to fall apart." — Lab Note #004
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2026 THETA AUDIO RESEARCH. ALL RIGHTS RESERVED.</footer>
+</body>
+</html>
