@@ -26,8 +26,12 @@
         .quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
         .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
 
-        /* INTERFACE BOX - POSITIONED UPWARD */
-        .interface-container { margin: 20px 0 60px 0; border: 1px solid var(--border); padding: 40px; display: inline-block; background: rgba(255,255,255,0.02); }
+        /* PLUGIN IMAGE - SYMMETRICAL UPWARD POSITION */
+        .image-container { margin: 20px 0 60px 0; max-width: 800px; }
+        .plugin-display { display: block; width: 100%; height: auto; }
+
+        /* INTERFACE CONTROLS */
+        .interface-container { margin: 40px 0; border: 1px solid var(--border); padding: 40px; display: inline-block; background: rgba(255,255,255,0.02); }
         .status-light { width: 8px; height: 8px; background: #333; border-radius: 50%; display: inline-block; margin-right: 10px; }
         .status-light.active { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
         .control-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 20px; display: block; }
@@ -73,6 +77,10 @@
 
     <div class="quote-box">
         <p class="quote-text">"I built TWILIGHT because I wanted a tool that lived in that moment just before sleep—that drifting where the mind starts inventing reality."</p>
+    </div>
+
+    <div class="image-container">
+        <img src="TWILIGHT_v1.3.png" alt="TWILIGHT Interface" class="plugin-display">
     </div>
 
     <div class="interface-container">
