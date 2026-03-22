@@ -4,100 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPPORT | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #040406; --gold: #C8A86B; --text: #E0E0E0; --border: #1A1B23; }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
-        
-        /* SYNCHRONIZED MASTER NAVIGATION */
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(4, 4, 6, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; }
-        .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: -3px; text-transform: uppercase; opacity: 0.8; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
-        nav a:hover { opacity: 1; }
+        :root {
+            --void: #020204;
+            --gold: #C8A86B;
+            --border: #121320;
+            --silver: #B0B0B0;
+        }
 
-        /* SYNCHRONIZED MASTER HERO */
-        .hero { padding: 150px 10% 80px 10%; text-align: center; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(42px, 10vw, 80px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
-        .hero .sub-brand { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 12px; letter-spacing: 12px; text-transform: uppercase; margin-top: 10px; font-weight: 400; opacity: 0.9; }
+        body {
+            background-color: var(--void);
+            color: var(--silver);
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        .support-content { max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px; }
-        .support-intro { text-align: center; opacity: 0.5; font-size: 13px; margin-bottom: 80px; letter-spacing: 1px; }
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
 
-        /* TROUBLESHOOTING GRID */
-        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
-        .faq-item { border: 1px solid var(--border); padding: 30px; background: rgba(255,255,255,0.02); }
-        .faq-item h4 { font-family: 'Montserrat'; font-size: 11px; color: var(--gold); letter-spacing: 2px; margin: 0 0 15px 0; text-transform: uppercase; }
-        .faq-item p { font-size: 12px; opacity: 0.6; margin: 0; }
+        .return-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
 
-        /* DISTRESS FORM */
-        .distress-form { border: 1px solid var(--border); padding: 50px; background: rgba(0,0,0,0.5); }
-        .form-group { margin-bottom: 30px; }
-        label { display: block; font-size: 10px; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; text-transform: uppercase; }
-        input, select, textarea { width: 100%; background: #000; border: 1px solid var(--border); color: #fff; padding: 15px; font-family: 'JetBrains Mono'; font-size: 13px; box-sizing: border-box; }
-        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+        .return-link:hover {
+            opacity: 1;
+            letter-spacing: 5px;
+        }
 
-        .submit-btn { font-family: 'Montserrat', sans-serif; background: var(--gold); color: #000; border: none; padding: 20px 40px; cursor: pointer; font-size: 12px; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; width: 100%; transition: 0.3s; }
-        .submit-btn:hover { background: #fff; box-shadow: 0 0 40px rgba(255,255,255,0.2); }
+        /* --- SUPPORT CONTENT --- */
+        main {
+            flex: 1;
+            padding: 100px 10%;
+            max-width: 800px;
+        }
 
-        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 3px; text-align: center; border-top: 1px solid var(--border); }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            letter-spacing: 12px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .support-card {
+            border-left: 2px solid var(--gold);
+            padding: 30px;
+            background: rgba(200, 168, 107, 0.02);
+            margin-bottom: 60px;
+        }
+
+        .support-card h2 {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-top: 0;
+        }
+
+        .email-link {
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-top: 15px;
+        }
+
+        /* --- LARGE RETURN BUTTON --- */
+        .big-return {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 40px;
+            border: 1px solid var(--border);
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 6px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .big-return:hover {
+            background: var(--gold);
+            color: var(--void);
+        }
+
+        footer {
+            padding: 40px 60px;
+            font-size: 10px;
+            opacity: 0.3;
+            letter-spacing: 4px;
+            border-top: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo-group">
-            <svg width="50" height="50" viewBox="0 0 100 100">
-                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
-                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
-                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
-            </svg>
-            <div><h2 class="logo-text">THETA</h2><p class="logo-sub">AUDIO RESEARCH</p></div>
-        </a>
-        <div style="display: flex; gap: 30px;">
-            <a href="atria.html">ATRIA</a>
-            <a href="twilight.html">TWILIGHT</a>
-            <a href="index.html">RETURN TO LAB</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <h1>SUPPORT</h1>
-        <div class="sub-brand">Signal Recovery</div>
+<nav>
+    <a href="index.html" class="return-link">← Return to Lab</a>
+    <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">THETA // TERMINAL 001</div>
+</nav>
+
+<main>
+    <h1>Support</h1>
+    
+    <div class="support-card">
+        <h2>Inquiry Protocol</h2>
+        <p>For technical assistance, licensing recovery, or hardware emulation queries, contact the research lead directly:</p>
+        <a href="mailto:lofiluxury66@gmail.com" class="email-link">lofiluxury66@gmail.com</a>
     </div>
 
-    <div class="support-content">
-        <p class="support-intro">Technician response window: 24–48 hours. Report all calibration drift or engine instability here.</p>
+    <p style="opacity: 0.5; font-size: 13px;">Please include your System OS and Plugin Version (e.g., CATHODE v4.6) in the subject line for priority routing.</p>
 
-        <section class="faq-grid">
-            <div class="faq-item">
-                <h4>Engine Initialization</h4>
-                <p>Ensure your DAW is running at a supported sample rate (44.1kHz - 96kHz). Verify license keys in the Archive.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Signal Instability</h4>
-                <p>If the 4–8 Hz pulse causes excessive signal sag, increase your buffer size to manage computational overhead.</p>
-            </div>
-        </section>
+    <a href="index.html" class="big-return">EXIT TO INDEX</a>
+</main>
 
-        <form action="https://formspree.io/f/lofiluxury66@gmail.com" method="POST" class="distress-form">
-            <div class="form-group">
-                <label>Researcher Email</label>
-                <input type="email" name="email" placeholder="researcher@institute.io" required>
-            </div>
-            <div class="form-group">
-                <label>Environment (OS / DAW)</label>
-                <input type="text" name="environment" placeholder="e.g. Windows 11 / Reaper" required>
-            </div>
-            <div class="form-group">
-                <label>Observations</label>
-                <textarea name="message" rows="5" placeholder="Describe the artifact or engine error observed..."></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Transmit Distress Signal</button>
-        </form>
-    </div>
+<footer>
+    © 2026 THETA AUDIO RESEARCH // INSTITUTIONAL ACCESS ONLY
+</footer>
 
-    <footer>© 2026 THETA AUDIO RESEARCH. TECHNICAL RECOVERY PORTAL.</footer>
 </body>
 </html>
