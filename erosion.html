@@ -8,24 +8,36 @@
     <style>
         :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+
         header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .brand-link { text-decoration: none; color: inherit; transition: 0.3s; }
-        .brand-link:hover { opacity: 0.8; }
+        .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 30px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
         .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
+
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
+
         main { padding: 0 60px; }
         .title-section { margin-top: 20px; }
         .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
         .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
-        .image-container { margin-top: 80px; }
-        .plugin-display { display: block; max-width: 100%; height: auto; border: 1px solid var(--border); }
+
+        .quote-box { max-width: 600px; margin: 60px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
+        .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
+
+        .lab-note-container { margin: 40px 0; border: 1px solid var(--border); padding: 20px; max-width: 500px; background: rgba(200, 168, 107, 0.02); }
+        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
+        .lab-content { font-size: 12px; opacity: 0.7; font-family: 'JetBrains Mono'; }
+
+        .image-container { margin-top: 40px; border: 1px solid var(--border); display: inline-block; line-height: 0; }
+        .plugin-display { display: block; max-width: 100%; height: auto; }
+
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
     </style>
 </head>
 <body>
+
 <header>
     <a href="index.html" class="brand-link">
         <div class="brand-block">
@@ -37,13 +49,31 @@
     </a>
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
 </header>
+
 <main>
     <div class="title-section">
         <h2 class="plugin-name">EROSION</h2>
         <p class="plugin-tagline">Digital Degeneration Engine</p>
     </div>
-    <div class="image-container"><img src="EROSION_v1.7.png" alt="EROSION Interface" class="plugin-display"></div>
+
+    <div class="quote-box">
+        <p class="quote-text">"Everything decays. Digital audio just does it with more precision. EROSION is the sound of data losing its grip on reality."</p>
+    </div>
+
+    <div class="lab-note-container">
+        <span class="lab-header">LAB NOTE #002 // STRETCH_ARTIFACTS</span>
+        <p class="lab-content">Observations on the variable speed buffer: The aliasing occurring at 0.5x speed creates a unique harmonic profile. We aren't filtering these—we're framing them.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="EROSION_v1.7.png" alt="EROSION Interface" class="plugin-display">
+    </div>
 </main>
-<footer><span>LAB NOTE #001 // SYSTEM STABLE</span><span>TERMINAL ACCESS // 2026</span></footer>
+
+<footer>
+    <span>LAB NOTE #001 // SYSTEM STABLE</span>
+    <span>TERMINAL ACCESS // 2026</span>
+</footer>
+
 </body>
 </html>
