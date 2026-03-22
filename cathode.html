@@ -6,7 +6,7 @@
     <title>CATHODE | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #020204; --gold: #C8A86B; --text: #E0E0E0; --border: #121320; }
+        :root { --void: #020204; --gold: #C8A86B; --text: #B0B0B0; --border: #121320; }
         body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
         
         /* INSTITUTIONAL HEADER */
@@ -27,19 +27,19 @@
         .floating-window-container { max-width: 1200px; margin: 40px auto; text-align: center; }
         .floating-window-container img {
             width: 80%; height: auto; display: inline-block;
-            filter: contrast(1.05) drop-shadow(0 0 40px rgba(200, 168, 107, 0.18));
+            filter: contrast(1.05) drop-shadow(0 0 40px rgba(200, 168, 107, 0.15));
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .floating-window-container img:hover { transform: translateY(-12px); filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.3)); }
+        .floating-window-container img:hover { transform: translateY(-12px); filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.25)); }
 
-        /* TECHNICAL SPECS */
+        /* TECHNICAL SPECS: THE BASEMENT GRID */
         .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
         .spec-item { margin-bottom: 25px; border-left: 2px solid #1A1B23; padding-left: 20px; transition: 0.3s; }
         .spec-item:hover { border-left: 2px solid var(--gold); background: rgba(200, 168, 107, 0.02); }
-        .spec-item strong { display: block; font-size: 12px; color: #fff; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; }
-        .spec-item p { font-size: 13px; opacity: 0.5; margin: 0; }
+        .spec-item strong { display: block; font-size: 13px; color: #fff; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
+        .spec-item p { font-size: 14px; opacity: 0.7; margin: 0; }
 
-        footer { padding: 100px 5%; font-size: 9px; opacity: 0.2; letter-spacing: 4px; text-align: center; border-top: 1px solid var(--border); }
+        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 4px; text-align: center; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -65,7 +65,7 @@
 
     <div class="hero">
         <h1>CATHODE</h1>
-        <div class="sub-brand">Vacuum Emulation Engine</div>
+        <div class="sub-brand">Analog Degradation & Harmonic Drift</div>
     </div>
 
     <section class="floating-window-container">
@@ -75,18 +75,22 @@
     <section class="spec-section">
         <div>
             <div class="spec-item">
-                <strong>Anode Saturation</strong>
-                <p>High-voltage bias simulation for organic harmonic grit and frequency-dependent compression.</p>
+                <strong>Phosphor Smear</strong>
+                <p>Simulating the slow decay of CRT screens to create natural, blooming transients and softened high-end. The "after-image" of a signal that lingers.</p>
             </div>
             <div class="spec-item">
-                <strong>Grid Bias Control</strong>
-                <p>Fine-tune the response curve of the virtual tube, ranging from clinical to catastrophic.</p>
+                <strong>Magnetic Wear & Flutter</strong>
+                <p>Mechanical pitch instability and tape-head friction. Captures the specific 'wow' of a worn-out VHS ribbon struggling against the spindles.</p>
             </div>
         </div>
         <div>
             <div class="spec-item">
-                <strong>Institutional Note #006</strong>
-                <p>Archive-grade distortion modeling. CATHODE captures the inherent instability of physical hardware.</p>
+                <strong>Wood-Case Resonance</strong>
+                <p>A specialized EQ curve modeled after the acoustic 'thump' of 1970s floor-console televisions. Adds thick, boxy low-mid weight.</p>
+            </div>
+            <div class="spec-item">
+                <strong>Institutional Note #007</strong>
+                <p>CATHODE captures the "Ghosting" effect of 1980s broadcast equipment. It isn't just noise; it’s memory.</p>
             </div>
         </div>
     </section>
