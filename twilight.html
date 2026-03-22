@@ -8,26 +8,38 @@
     <style>
         :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+
         header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .brand-link { text-decoration: none; color: inherit; transition: 0.3s; }
-        .brand-link:hover { opacity: 0.8; }
+        .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 30px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
         .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; cursor: pointer; }
         nav a:hover { background: var(--gold); color: var(--void); }
+
         main { padding: 0 60px; }
         .title-section { margin-top: 20px; }
         .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
         .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
+
         .quote-box { max-width: 600px; margin: 60px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
         .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
-        .image-container { margin-top: 40px; border: 1px solid var(--border); display: inline-block; }
-        .plugin-display { display: block; max-width: 100%; height: auto; }
+
+        /* GENERATOR INTERFACE */
+        .interface-container { margin-top: 40px; border: 1px solid var(--border); padding: 40px; display: inline-block; background: rgba(255,255,255,0.02); }
+        .status-light { width: 8px; height: 8px; background: #333; border-radius: 50%; display: inline-block; margin-right: 10px; }
+        .status-light.active { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+        .control-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; margin-bottom: 20px; display: block; }
+        
+        button#toggle-audio { background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: 'JetBrains Mono'; padding: 15px 30px; cursor: pointer; letter-spacing: 2px; }
+        button#toggle-audio:hover { background: var(--gold); color: var(--void); }
+
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
     </style>
 </head>
 <body>
+
 <header>
     <a href="index.html" class="brand-link">
         <div class="brand-block">
@@ -39,16 +51,80 @@
     </a>
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
 </header>
+
 <main>
     <div class="title-section">
         <h2 class="plugin-name">TWILIGHT</h2>
         <p class="plugin-tagline">Ambience Generator</p>
     </div>
+
     <div class="quote-box">
         <p class="quote-text">"I built TWILIGHT because I wanted a tool that lived in that moment just before sleep—that drifting where the mind starts inventing reality."</p>
     </div>
-    <div class="image-container"><img src="TWILIGHT.png" alt="TWILIGHT Interface" class="plugin-display"></div>
+
+    <div class="interface-container">
+        <span class="control-label"><div id="light" class="status-light"></div> SYSTEM_READY</span>
+        <button id="toggle-audio">INITIALIZE_DRFT_OSC</button>
+    </div>
 </main>
+
 <footer><span>LAB NOTE #001 // SYSTEM STABLE</span><span>TERMINAL ACCESS // 2026</span></footer>
+
+<script>
+    let audioCtx;
+    let osc;
+    let lfo;
+    let gainNode;
+    let active = false;
+
+    const btn = document.getElementById('toggle-audio');
+    const light = document.getElementById('light');
+
+    btn.addEventListener('click', () => {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        if (!active) {
+            osc = audioCtx.createOscillator();
+            lfo = audioCtx.createOscillator();
+            gainNode = audioCtx.createGain();
+            let lfoGain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(110, audioCtx.currentTime); // Deep drone
+
+            lfo.type = 'sine';
+            lfo.frequency.setValueAtTime(0.2, audioCtx.currentTime); // Very slow drift
+            lfoGain.gain.setValueAtTime(5, audioCtx.currentTime); // Pitch deviation range
+
+            lfo.connect(lfoGain);
+            lfoGain.connect(osc.frequency);
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 2);
+
+            osc.start();
+            lfo.start();
+            
+            btn.innerText = "TERMINATE_SIGNAL";
+            light.classList.add('active');
+            active = true;
+        } else {
+            gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+            setTimeout(() => {
+                osc.stop();
+                lfo.stop();
+            }, 500);
+            btn.innerText = "INITIALIZE_DRFT_OSC";
+            light.classList.remove('active');
+            active = false;
+        }
+    });
+</script>
+
 </body>
 </html>
