@@ -3,124 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THETA AUDIO RESEARCH | Laboratory Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <title>THETA | Laboratory Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --void: #06080C;
-            --gold: #C8A86B;
-            --border: #121320;
-            --silver: #B0B0B0;
-        }
+        :root { --void: #020204; --gold: #C8A86B; --text: #B0B0B0; --border: #121320; }
+        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; overflow-x: hidden; }
 
-        body {
-            background-color: var(--void);
-            color: var(--silver);
-            font-family: 'JetBrains Mono', monospace;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        /* MINIMAL TOP NAV */
+        nav { padding: 30px 5%; display: flex; justify-content: flex-end; }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 3px; opacity: 0.5; transition: 0.3s; }
+        nav a:hover { opacity: 1; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            padding: 40px 60px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-        }
+        /* CENTERED LOGO STAGE */
+        .hero-stage { text-align: center; padding: 60px 0; }
+        .main-logo { width: 120px; height: auto; filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.1)); }
 
-        .logo-svg {
-            width: 50px;
-            height: 50px;
-            margin-right: 30px;
-        }
-
-        .brand-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 38px;
-            letter-spacing: 28px;
-            text-transform: uppercase;
-        }
-
-        /* --- MAIN HUB --- */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .lab-gate {
-            text-decoration: none;
-            color: var(--gold);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            letter-spacing: 8px;
-            padding: 20px 40px;
+        /* ENGINE DIRECTORY GRID */
+        .directory-grid { 
+            max-width: 1000px; 
+            margin: 0 auto 100px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 2px; /* Thin border-look lines */
+            background-color: var(--border);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
         }
+        
+        .node { 
+            background-color: var(--void); 
+            padding: 60px 40px; 
+            text-decoration: none; 
+            text-align: center;
+            transition: 0.4s;
+        }
+        
+        .node:hover { background-color: rgba(200, 168, 107, 0.03); }
+        .node h2 { font-family: 'Montserrat', sans-serif; font-size: 22px; letter-spacing: 12px; color: #fff; margin: 0; text-transform: uppercase; }
+        .node p { font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 15px; opacity: 0.6; text-transform: uppercase; }
 
-        .lab-gate:hover {
-            background: var(--gold);
-            color: var(--void);
-            box-shadow: 0 0 30px rgba(200, 168, 107, 0.3);
-        }
-
-        /* --- FOOTER (FIXED SUPPORT LINK) --- */
-        footer {
-            padding: 40px 60px;
-            border-top: 1px solid var(--border);
-            font-size: 11px;
-            letter-spacing: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .support-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 700;
-            border-bottom: 1px solid transparent;
-            transition: 0.3s;
-        }
-
-        .support-link:hover {
-            border-bottom: 1px solid var(--gold);
-            opacity: 1;
-        }
-
-        .institutional-note {
-            opacity: 0.4;
-        }
+        footer { padding: 60px 5%; text-align: center; font-size: 9px; opacity: 0.2; letter-spacing: 5px; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
 <nav>
-    <svg class="logo-svg" viewBox="0 0 100 100">
-        <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="4"/>
-        <path d="M42 35 L15 85 L85 85 L58 35" fill="#06080C"/>
-        <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
-    </svg>
-    <div class="brand-title">THETA</div>
+    <a href="support.html">SUPPORT_CONTACT</a>
 </nav>
 
-<main>
-    <a href="cathode.html" class="lab-gate">ENTER CATHODE</a>
-    <a href="atria.html" class="lab-gate">ENTER ATRIA</a>
-    <a href="twilight.html" class="lab-gate">ENTER TWILIGHT</a>
+<div class="hero-stage">
+    <svg class="main-logo" viewBox="0 0 100 100">
+        <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5"/>
+        <path d="M42 35 L15 85 L85 85 L58 35" fill="#020204"/>
+        <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
+    </svg>
+</div>
+
+<main class="directory-grid">
+    <a href="atria.html" class="node">
+        <h2>ATRIA</h2>
+        <p>Exploration</p>
+    </a>
+    <a href="twilight.html" class="node">
+        <h2>TWILIGHT</h2>
+        <p>Ambience</p>
+    </a>
+    <a href="erosion.html" class="node">
+        <h2>EROSION</h2>
+        <p>Degeneration</p>
+    </a>
+    <a href="cathode.html" class="node">
+        <h2>CATHODE</h2>
+        <p>Analog</p>
+    </a>
 </main>
 
 <footer>
-    <div class="institutional-note">LAB NOTE #001 // SYSTEM STABLE</div>
-    <div><a href="support.html" class="support-link">ACCESS SUPPORT TERMINAL</a></div>
+    © 2026 THETA AUDIO RESEARCH // LAB_INDEX_v2.1
 </footer>
 
 </body>
