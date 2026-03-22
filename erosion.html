@@ -23,17 +23,28 @@
         .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
         .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
 
-        .quote-box { max-width: 600px; margin: 60px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
+        .quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
         .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
 
-        .lab-note-container { margin: 40px 0; border: 1px solid var(--border); padding: 20px; max-width: 500px; background: rgba(200, 168, 107, 0.02); }
-        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
-        .lab-content { font-size: 12px; opacity: 0.7; font-family: 'JetBrains Mono'; }
+        /* PLUGIN IMAGE - MOVED UP, NO BORDER, SYMMETRICAL */
+        .image-container { margin: 20px 0 60px 0; max-width: 800px; }
+        .plugin-display { display: block; width: 100%; height: auto; }
 
-        .image-container { margin-top: 40px; border: 1px solid var(--border); display: inline-block; line-height: 0; }
-        .plugin-display { display: block; max-width: 100%; height: auto; }
+        /* LAB NOTE - AT THE BOTTOM */
+        .lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; }
+        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
+        .lab-content { font-size: 13px; opacity: 0.7; font-family: 'JetBrains Mono'; margin: 0; border-left: 2px solid var(--border); padding-left: 20px; }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
+        /* RELEVANT RESEARCH GRID - FILTERED FOR EROSION */
+        .archive-section { margin-top: 100px; padding-bottom: 100px; }
+        .archive-header { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
+        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .archive-card { border: 1px solid var(--border); padding: 30px; text-decoration: none; color: inherit; transition: 0.3s; }
+        .archive-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.03); }
+        .archive-id { font-size: 10px; color: var(--gold); letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        .archive-title { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; }
+
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -60,18 +71,32 @@
         <p class="quote-text">"Everything decays. Digital audio just does it with more precision. EROSION is the sound of data losing its grip on reality."</p>
     </div>
 
-    <div class="lab-note-container">
+    <div class="image-container">
+        <img src="EROSION_v1.7.png" alt="EROSION Interface" class="plugin-display">
+    </div>
+
+    <div class="lab-note-anchor">
         <span class="lab-header">LAB NOTE #002 // STRETCH_ARTIFACTS</span>
         <p class="lab-content">Observations on the variable speed buffer: The aliasing occurring at 0.5x speed creates a unique harmonic profile. We aren't filtering these—we're framing them.</p>
     </div>
 
-    <div class="image-container">
-        <img src="EROSION_v1.7.png" alt="EROSION Interface" class="plugin-display">
-    </div>
+    <section class="archive-section">
+        <h3 class="archive-header">RESEARCH_RESOURCES</h3>
+        <div class="archive-grid">
+            <a href="archive-01.html" class="archive-card">
+                <span class="archive-id">ARCHIVE-01</span>
+                <span class="archive-title">Characteristics of the Hypnagogic Threshold</span>
+            </a>
+            <a href="archive-02.html" class="archive-card">
+                <span class="archive-id">ARCHIVE-02</span>
+                <span class="archive-title">Methods of Intentional Theta Induction</span>
+            </a>
+        </div>
+    </section>
 </main>
 
 <footer>
-    <span>LAB NOTE #001 // SYSTEM STABLE</span>
+    <span>THETA AUDIO RESEARCH</span>
     <span>TERMINAL ACCESS // 2026</span>
 </footer>
 
