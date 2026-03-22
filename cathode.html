@@ -4,97 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATHODE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #020204; --gold: #C8A86B; --text: #B0B0B0; --border: #121320; }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; overflow-x: hidden; }
+        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+
+        /* HEADER: MASTER INDEX STYLE */
+        header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .brand-block { display: flex; align-items: center; gap: 30px; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
+        .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
+
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
+
+        /* MAIN CONTENT */
+        main { padding: 0 60px; }
         
-        /* INSTITUTIONAL HEADER */
-        nav { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(2, 2, 4, 0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; }
-        .logo-group { display: flex; align-items: center; gap: 20px; text-decoration: none; }
-        .logo-text-stack { display: flex; flex-direction: column; justify-content: center; }
-        .logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 6px; font-size: 19px; color: #fff; margin: 0; text-transform: uppercase; line-height: 1; }
-        .logo-sub { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 5px; text-transform: uppercase; opacity: 0.8; line-height: 1; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; opacity: 0.4; letter-spacing: 3px; font-family: 'Montserrat'; transition: 0.3s; }
-        nav a:hover { opacity: 1; }
+        .title-section { margin-top: 20px; }
+        .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
+        .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
 
-        /* HERO SECTION */
-        .hero { padding: 120px 10% 40px 10%; text-align: center; }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 70px); margin: 0; letter-spacing: 24px; font-weight: 700; text-transform: uppercase; text-indent: 24px; color: #fff; }
-        .sub-brand { font-family: 'Montserrat', sans-serif; color: var(--gold); font-size: 12px; letter-spacing: 12px; text-transform: uppercase; margin-top: 20px; font-weight: 400; opacity: 0.9; }
+        .image-container { margin-top: 80px; }
+        .plugin-display { display: block; max-width: 100%; height: auto; border: 1px solid var(--border); }
 
-        /* FLOATING ASSET WINDOW */
-        .floating-window-container { max-width: 1200px; margin: 40px auto; text-align: center; }
-        .floating-window-container img {
-            width: 80%; height: auto; display: inline-block;
-            filter: contrast(1.05) drop-shadow(0 0 40px rgba(200, 168, 107, 0.15));
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .floating-window-container img:hover { transform: translateY(-12px); filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.25)); }
-
-        /* TECHNICAL SPECS: THE BASEMENT GRID */
-        .spec-section { padding: 80px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; border-top: 1px solid var(--border); }
-        .spec-item { margin-bottom: 25px; border-left: 2px solid #1A1B23; padding-left: 20px; transition: 0.3s; }
-        .spec-item:hover { border-left: 2px solid var(--gold); background: rgba(200, 168, 107, 0.02); }
-        .spec-item strong { display: block; font-size: 13px; color: #fff; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
-        .spec-item p { font-size: 14px; opacity: 0.7; margin: 0; }
-
-        footer { padding: 100px 5%; font-size: 9px; opacity: 0.3; letter-spacing: 4px; text-align: center; border-top: 1px solid var(--border); }
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo-group">
-            <svg width="50" height="50" viewBox="0 0 100 100">
-                <defs><filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-                <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5" filter="url(#glow)"/>
-                <path d="M42 35 L15 85 L85 85 L58 35" fill="none" stroke="#040406" stroke-width="6"/>
-                <rect x="15" y="58" width="70" height="10" fill="#C8A86B" filter="url(#glow)"/>
-            </svg>
-            <div class="logo-text-stack">
-                <h2 class="logo-text">THETA</h2>
-                <p class="logo-sub">AUDIO RESEARCH</p>
-            </div>
-        </a>
-        <div style="display: flex; gap: 30px;">
-            <a href="atria.html">ATRIA</a>
-            <a href="twilight.html">TWILIGHT</a>
-            <a href="index.html">RETURN TO LAB</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <h1>CATHODE</h1>
-        <div class="sub-brand">Analog Degradation & Harmonic Drift</div>
+<header>
+    <div class="brand-block">
+        <div class="brand-text">
+            <h1>THETA</h1>
+            <p>Audio Research & Development</p>
+        </div>
+    </div>
+    <nav>
+        <a href="index.html">RETURN_TO_LAB</a>
+    </nav>
+</header>
+
+<main>
+    <div class="title-section">
+        <h2 class="plugin-name">CATHODE</h2>
+        <p class="plugin-tagline">Analog Degradation & Drift</p>
     </div>
 
-    <section class="floating-window-container">
-        <img src="CATHODE_v4.6.png" alt="CATHODE Floating Window">
-    </section>
+    <div class="image-container">
+        <img src="CATHODE_v4.6.png" alt="CATHODE Interface" class="plugin-display">
+    </div>
+</main>
 
-    <section class="spec-section">
-        <div>
-            <div class="spec-item">
-                <strong>Phosphor Smear</strong>
-                <p>Simulating the slow decay of CRT screens to create natural, blooming transients and softened high-end. The "after-image" of a signal that lingers.</p>
-            </div>
-            <div class="spec-item">
-                <strong>Magnetic Wear & Flutter</strong>
-                <p>Mechanical pitch instability and tape-head friction. Captures the specific 'wow' of a worn-out VHS ribbon struggling against the spindles.</p>
-            </div>
-        </div>
-        <div>
-            <div class="spec-item">
-                <strong>Wood-Case Resonance</strong>
-                <p>A specialized EQ curve modeled after the acoustic 'thump' of 1970s floor-console televisions. Adds thick, boxy low-mid weight.</p>
-            </div>
-            <div class="spec-item">
-                <strong>Institutional Note #007</strong>
-                <p>CATHODE captures the "Ghosting" effect of 1980s broadcast equipment. It isn't just noise; it’s memory.</p>
-            </div>
-        </div>
-    </section>
+<footer>
+    <span>LAB NOTE #001 // SYSTEM STABLE</span>
+    <span>TERMINAL ACCESS // 2026</span>
+</footer>
 
-    <footer>© 2026 THETA AUDIO RESEARCH.</footer>
 </body>
 </html>
