@@ -4,81 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THETA | Laboratory Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #020204; --gold: #C8A86B; --text: #B0B0B0; --border: #121320; }
-        body { background-color: var(--void); color: var(--text); font-family: 'JetBrains Mono', monospace; margin: 0; overflow-x: hidden; }
+        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
 
-        /* MINIMAL TOP NAV */
-        nav { padding: 30px 5%; display: flex; justify-content: flex-end; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 3px; opacity: 0.5; transition: 0.3s; }
-        nav a:hover { opacity: 1; }
+        /* HEADER: THETA NORTH STAR */
+        header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .brand-block { display: flex; align-items: center; gap: 30px; }
+        .main-logo { width: 80px; height: auto; opacity: 0.9; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
+        .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
 
-        /* CENTERED LOGO STAGE */
-        .hero-stage { text-align: center; padding: 60px 0; }
-        .main-logo { width: 120px; height: auto; filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.1)); }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
 
-        /* ENGINE DIRECTORY GRID */
-        .directory-grid { 
-            max-width: 1000px; 
-            margin: 0 auto 100px auto; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 2px; /* Thin border-look lines */
-            background-color: var(--border);
-            border: 1px solid var(--border);
-        }
+        /* THE NODES: VERTICAL LIST WITH HIGH-CONTRAST DATA */
+        main { flex: 1; padding: 0 60px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
         
-        .node { 
-            background-color: var(--void); 
-            padding: 60px 40px; 
-            text-decoration: none; 
-            text-align: center;
-            transition: 0.4s;
+        .node-row { 
+            display: flex; align-items: baseline; text-decoration: none; color: inherit; 
+            padding: 20px 0; border-bottom: 1px solid rgba(26, 27, 35, 0.5); transition: 0.4s;
         }
+        .node-row:hover { padding-left: 20px; border-bottom: 1px solid var(--gold); }
         
-        .node:hover { background-color: rgba(200, 168, 107, 0.03); }
-        .node h2 { font-family: 'Montserrat', sans-serif; font-size: 22px; letter-spacing: 12px; color: #fff; margin: 0; text-transform: uppercase; }
-        .node p { font-size: 9px; letter-spacing: 4px; color: var(--gold); margin-top: 15px; opacity: 0.6; text-transform: uppercase; }
+        .node-id { font-size: 10px; color: var(--gold); width: 80px; font-weight: 700; opacity: 0.5; }
+        .node-name { font-family: 'Montserrat'; font-size: 48px; letter-spacing: 12px; color: #fff; text-transform: uppercase; margin-right: 40px; }
+        .node-desc { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; }
+        
+        .node-row:hover .node-name { color: var(--gold); }
+        .node-row:hover .node-desc { opacity: 1; color: #fff; }
 
-        footer { padding: 60px 5%; text-align: center; font-size: 9px; opacity: 0.2; letter-spacing: 5px; border-top: 1px solid var(--border); }
+        /* FOOTER STATUS */
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="support.html">SUPPORT_CONTACT</a>
-</nav>
+<header>
+    <div class="brand-block">
+        <img src="JUST THE LOGO .png" alt="THETA" class="main-logo">
+        <div class="brand-text">
+            <h1>THETA</h1>
+            <p>Audio Research & Development</p>
+        </div>
+    </div>
+    <nav>
+        <a href="support.html">SUPPORT_CONTACT</a>
+    </nav>
+</header>
 
-<div class="hero-stage">
-    <svg class="main-logo" viewBox="0 0 100 100">
-        <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="#C8A86B" stroke-width="3.5"/>
-        <path d="M42 35 L15 85 L85 85 L58 35" fill="#020204"/>
-        <rect x="15" y="58" width="70" height="10" fill="#C8A86B"/>
-    </svg>
-</div>
-
-<main class="directory-grid">
-    <a href="atria.html" class="node">
-        <h2>ATRIA</h2>
-        <p>Exploration</p>
+<main>
+    <a href="atria.html" class="node-row">
+        <span class="node-id">001_ARC</span>
+        <span class="node-name">ATRIA</span>
+        <span class="node-desc">Sonic Exploration Engine</span>
     </a>
-    <a href="twilight.html" class="node">
-        <h2>TWILIGHT</h2>
-        <p>Ambience</p>
+    <a href="twilight.html" class="node-row">
+        <span class="node-id">002_GEN</span>
+        <span class="node-name">TWILIGHT</span>
+        <span class="node-desc">Ambience Generator</span>
     </a>
-    <a href="erosion.html" class="node">
-        <h2>EROSION</h2>
-        <p>Degeneration</p>
+    <a href="erosion.html" class="node-row">
+        <span class="node-id">003_DEG</span>
+        <span class="node-name">EROSION</span>
+        <span class="node-desc">Digital Degeneration Engine</span>
     </a>
-    <a href="cathode.html" class="node">
-        <h2>CATHODE</h2>
-        <p>Analog</p>
+    <a href="cathode.html" class="node-row">
+        <span class="node-id">004_VTR</span>
+        <span class="node-name">CATHODE</span>
+        <span class="node-desc">Analog Degradation & Drift</span>
     </a>
 </main>
 
 <footer>
-    © 2026 THETA AUDIO RESEARCH // LAB_INDEX_v2.1
+    <span>LAB NOTE #001 // SYSTEM STABLE</span>
+    <span>TERMINAL ACCESS // 2026</span>
 </footer>
 
 </body>
