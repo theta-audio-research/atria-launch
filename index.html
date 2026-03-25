@@ -9,7 +9,6 @@
         :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
 
-        /* HEADER: LOGO REMOVED */
         header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
         .brand-block { display: flex; align-items: center; gap: 30px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
@@ -18,7 +17,6 @@
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
-        /* THE NODES */
         main { flex: 1; padding: 0 60px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
         
         .node-row { 
@@ -34,7 +32,6 @@
         .node-row:hover .node-name { color: var(--gold); }
         .node-row:hover .node-desc { opacity: 1; color: #fff; }
 
-        /* FOOTER */
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
     </style>
 </head>
@@ -73,10 +70,15 @@
         <span class="node-name">CATHODE</span>
         <span class="node-desc">Analog Degradation & Drift</span>
     </a>
+    <a href="arecibo.html" class="node-row">
+        <span class="node-id">005_ISR</span>
+        <span class="node-name">ARECIBO</span>
+        <span class="node-desc">Interstellar Granular Processor</span>
+    </a>
 </main>
 
 <footer>
-    <span>LAB NOTE #001 // SYSTEM STABLE</span>
+    <span>LAB NOTE #004 // SYSTEM STABLE</span>
     <span>TERMINAL ACCESS // 2026</span>
 </footer>
 
