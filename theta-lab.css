@@ -1,0 +1,88 @@
+/* --- THETA CORE VARIABLES --- */
+:root {
+    --void: #06080C;
+    --paper: #f4f1ea;
+    --ink: #1a1a1a;
+    --gold: #C8A86B;
+    --silver: #B0B0B0;
+    --border: #1A1B23;
+    --doc-border: #d1cfc8;
+}
+
+/* --- GLOBAL RESET --- */
+body { 
+    background-color: var(--void); 
+    color: var(--silver); 
+    font-family: 'JetBrains Mono', monospace; 
+    margin: 0; 
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- SHARED HEADER & FOOTER --- */
+header, nav.main-nav { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+.brand-block { display: flex; align-items: center; gap: 30px; text-decoration: none; color: inherit; }
+.brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
+.brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
+
+nav a, .big-return { 
+    color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; 
+    font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; 
+}
+nav a:hover, .big-return:hover { background: var(--gold); color: var(--void); }
+
+footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: auto; }
+
+/* --- INDEX PAGE (THE NODES) --- */
+.node-container { flex: 1; padding: 0 60px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.node-row { display: flex; align-items: baseline; text-decoration: none; color: inherit; padding: 20px 0; border-bottom: 1px solid rgba(26, 27, 35, 0.5); transition: 0.4s; }
+.node-row:hover { padding-left: 20px; border-bottom: 1px solid var(--gold); }
+.node-id { font-size: 10px; color: var(--gold); width: 80px; font-weight: 700; opacity: 0.5; flex-shrink: 0; }
+.node-name { font-family: 'Montserrat'; font-size: 48px; letter-spacing: 12px; color: #fff; text-transform: uppercase; margin-right: 40px; }
+.node-desc { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; }
+.node-row:hover .node-name { color: var(--gold); }
+
+/* --- PLUGIN PAGES (ATRIA, ARECIBO, ETC) --- */
+main.plugin-content { padding: 0 60px; }
+.title-section { margin-top: 20px; }
+.plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
+.plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
+.quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
+.quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
+.image-container { margin: 20px 0 60px 0; max-width: 900px; }
+.plugin-display { display: block; width: 100%; height: auto; }
+.lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; }
+.lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
+.lab-content { font-size: 13px; opacity: 0.7; font-family: 'JetBrains Mono'; margin: 0; border-left: 2px solid var(--border); padding-left: 20px; }
+
+/* --- ARCHIVE GRID --- */
+.archive-section { margin-top: 100px; padding-bottom: 100px; }
+.archive-header { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
+.archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.archive-card { border: 1px solid var(--border); padding: 30px; text-decoration: none; color: inherit; transition: 0.3s; background: rgba(255,255,255,0.01); }
+.archive-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.05); }
+
+/* --- ARCHIVE DOCUMENTS (PAPER STYLE) --- */
+.archive-body { background-color: var(--void); display: flex; justify-content: center; padding: 60px 20px; }
+.document { background-color: var(--paper); color: var(--ink); width: 100%; max-width: 850px; padding: 80px; border: 1px solid var(--doc-border); position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
+.stamp { position: absolute; top: 100px; right: 80px; border: 3px solid rgba(200, 168, 107, 0.4); color: rgba(200, 168, 107, 0.4); padding: 10px; font-family: 'Montserrat'; transform: rotate(15deg); pointer-events: none; }
+
+/* --- MOBILE RESPONSIVE MASTER --- */
+@media (max-width: 768px) {
+    header, nav.main-nav { padding: 30px 20px; flex-direction: column; gap: 30px; }
+    .brand-text h1 { font-size: 20px; letter-spacing: 10px; }
+    
+    .node-container, main.plugin-content { padding: 0 20px; }
+    .node-row { flex-direction: column; gap: 10px; }
+    .node-name { font-size: 28px; letter-spacing: 6px; }
+    
+    .plugin-name { font-size: 32px; letter-spacing: 10px; }
+    .quote-box { margin: 20px 0; }
+    
+    .document { padding: 40px 20px; }
+    .archive-grid { grid-template-columns: 1fr; }
+    
+    footer { padding: 30px 20px; flex-direction: column; gap: 15px; text-align: center; }
+}
