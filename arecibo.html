@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARECIBO | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
+
+        header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .brand-link { text-decoration: none; color: inherit; }
+        .brand-block { display: flex; align-items: center; gap: 30px; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
+        .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
+
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
+
+        main { padding: 0 60px; }
+        .title-section { margin-top: 20px; }
+        .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
+        .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
+
+        .quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
+        .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
+
+        /* PLUGIN IMAGE - MOVED UP, NO BORDERS */
+        .image-container { margin: 20px 0 60px 0; max-width: 900px; }
+        .plugin-display { display: block; width: 100%; height: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+        /* LAB NOTE - ANCHORED AT BOTTOM */
+        .lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; margin-bottom: 100px; }
+        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
+        .lab-content { font-size: 13px; opacity: 0.7; font-family: 'JetBrains Mono'; margin: 0; border-left: 2px solid var(--border); padding-left: 20px; }
+
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="brand-link">
+        <div class="brand-block">
+            <div class="brand-text">
+                <h1>THETA</h1>
+                <p>Audio Research & Development</p>
+            </div>
+        </div>
+    </a>
+    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
+</header>
+
+<main>
+    <div class="title-section">
+        <h2 class="plugin-name">ARECIBO</h2>
+        <p class="plugin-tagline">Interstellar Granular Processor</p>
+    </div>
+
+    <div class="quote-box">
+        <p class="quote-text">"The signal isn't lost—it's just traveling. ARECIBO captures the resonance of empty space and re-assembles it into something tangible."</p>
+    </div>
+
+    <div class="image-container">
+        <img src="arecibo_v1.0.png" alt="ARECIBO Interface" class="plugin-display">
+    </div>
+
+    <div class="lab-note-anchor">
+        <span class="lab-header">LAB NOTE #004 // ORBITAL_RECEPTION</span>
+        <p class="lab-content">Transmission Array stabilized. By mapping grain density to the 'Field' parameter, we've successfully simulated the textural drift of deep-space radio interference. Shimmer harmonics are tracking at 1.0x with zero phase-cancellation.</p>
+    </div>
+</main>
+
+<footer>
+    <span>THETA AUDIO RESEARCH</span>
+    <span>TERMINAL ACCESS // 2026</span>
+</footer>
+
+</body>
+</html>
