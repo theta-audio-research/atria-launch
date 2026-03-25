@@ -26,14 +26,21 @@
         .quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
         .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
 
-        /* PLUGIN IMAGE - MOVED UP, NO BORDERS */
         .image-container { margin: 20px 0 60px 0; max-width: 900px; }
-        .plugin-display { display: block; width: 100%; height: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .plugin-display { display: block; width: 100%; height: auto; }
 
-        /* LAB NOTE - ANCHORED AT BOTTOM */
-        .lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; margin-bottom: 100px; }
+        .lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; }
         .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
         .lab-content { font-size: 13px; opacity: 0.7; font-family: 'JetBrains Mono'; margin: 0; border-left: 2px solid var(--border); padding-left: 20px; }
+
+        /* RESEARCH GRID - ARECIBO EXCLUSIVE */
+        .archive-section { margin-top: 100px; padding-bottom: 100px; }
+        .archive-header { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
+        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .archive-card { border: 1px solid var(--border); padding: 30px; text-decoration: none; color: inherit; transition: 0.3s; }
+        .archive-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.03); }
+        .archive-id { font-size: 10px; color: var(--gold); letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        .archive-title { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; }
 
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
     </style>
@@ -68,8 +75,22 @@
 
     <div class="lab-note-anchor">
         <span class="lab-header">LAB NOTE #004 // ORBITAL_RECEPTION</span>
-        <p class="lab-content">Transmission Array stabilized. By mapping grain density to the 'Field' parameter, we've successfully simulated the textural drift of deep-space radio interference. Shimmer harmonics are tracking at 1.0x with zero phase-cancellation.</p>
+        <p class="lab-content">Transmission Array stabilized. By mapping grain density to the 'Field' parameter, we've successfully simulated the textural drift of deep-space radio interference.</p>
     </div>
+
+    <section class="archive-section">
+        <h3 class="archive-header">RESEARCH_RESOURCES</h3>
+        <div class="archive-grid">
+            <a href="archive-04.html" class="archive-card">
+                <span class="archive-id">ARCHIVE-04</span>
+                <span class="archive-title">Sonification of Spectral Light-Curves</span>
+            </a>
+            <a href="archive-05.html" class="archive-card">
+                <span class="archive-id">ARCHIVE-05</span>
+                <span class="archive-title">Atmospheric Hum: Planetary Resonances</span>
+            </a>
+        </div>
+    </section>
 </main>
 
 <footer>
