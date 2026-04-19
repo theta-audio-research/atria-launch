@@ -17,27 +17,49 @@
 
         /* --- RECALIBRATED HEADER --- */
         header { 
-            padding: 60px; 
+            padding: 40px 60px; /* Reduced vertical padding for a sleeker bar */
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            position: relative; /* Required for absolute centering of module name */
+            position: relative; 
+            border-bottom: 1px solid var(--border);
         }
+        
         .brand-link { text-decoration: none; color: inherit; }
-        .brand-block { display: flex; align-items: center; gap: 30px; }
-        .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
-        .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
+        .brand-block { display: flex; align-items: center; gap: 20px; }
+        
+        /* SHRUNK LOGO SECTION */
+        .brand-text h1 { 
+            font-family: 'Montserrat'; 
+            font-size: 18px; /* Down from 32px */
+            letter-spacing: 12px; /* Down from 24px */
+            margin: 0; 
+            color: #fff; 
+            text-transform: uppercase; 
+            opacity: 0.8;
+        }
+        .brand-text p { 
+            font-size: 8px; 
+            letter-spacing: 4px; 
+            color: var(--gold); 
+            margin: 4px 0 0 0; 
+            text-transform: uppercase; 
+            opacity: 0.5; 
+        }
 
+        /* ENLARGED MODULE NAME */
         .header-module-name h2 {
             font-family: 'Montserrat';
-            font-size: 24px;
-            letter-spacing: 16px;
+            font-size: 42px; /* Up from 24px */
+            letter-spacing: 32px; /* Up from 16px */
             color: #fff;
             text-transform: uppercase;
             margin: 0;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            /* Slight glow to match the ember theme */
+            text-shadow: 0 0 20px rgba(255, 87, 34, 0.2);
         }
 
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
@@ -45,17 +67,17 @@
 
         /* --- MAIN CONTENT --- */
         main { padding: 0 60px; max-width: 1200px; }
-        .title-section { margin-top: 20px; }
-        .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--ember); text-transform: uppercase; margin-top: 10px; opacity: 0.9; }
+        .title-section { margin-top: 40px; text-align: center; } /* Center the tagline under the new large header */
+        .plugin-tagline { font-size: 12px; letter-spacing: 12px; color: var(--ember); text-transform: uppercase; margin-top: 10px; opacity: 0.9; }
 
-        .image-container { margin: 60px 0; max-width: 1000px; }
-        .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 50px rgba(255, 87, 34, 0.15); }
+        .image-container { margin: 60px 0; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 80px rgba(255, 87, 34, 0.15); }
 
-        .description-box { max-width: 850px; margin-bottom: 80px; border-left: 2px solid var(--ember); padding-left: 40px; }
+        .description-box { max-width: 850px; margin: 0 auto 80px auto; border-left: 2px solid var(--ember); padding-left: 40px; }
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
 
-        .acquisition-anchor { margin-bottom: 120px; max-width: 600px; }
+        .acquisition-anchor { margin: 0 auto 120px auto; max-width: 600px; }
         .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(255, 87, 34, 0.03); border: 1px solid var(--border); padding: 40px; margin-top: 20px; }
         .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
@@ -72,9 +94,13 @@
 
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
 
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 28px; letter-spacing: 16px; }
+        }
+
         @media (max-width: 900px) {
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
-            .header-module-name h2 { position: relative; left: 0; transform: none; font-size: 18px; letter-spacing: 8px; }
+            .header-module-name h2 { position: relative; left: 0; transform: none; font-size: 22px; letter-spacing: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -142,8 +168,8 @@
             <h3>XY_PERFORMANCE</h3>
             <ul class="spec-list">
                 <li><b>Grain Scatter</b> Time-scattered micro-grains with subtle pitch randomization and swarm density control.</li>
-                <li><b>Stutter Gate</b> Physical drag-velocity rhythm. Signal chops into patterns based on cursor movement.</li>
-                <li><b>Feedback Smear</b> Resonant comb filtering with self-oscillating feedback feeding into the tube stages.</li>
+                <li><b>Stutter Gate</b> Physical drag-velocity rhythm. Signal chops into patterns based on movement.</li>
+                <li><b>Feedback Smear</b> Resonant comb filtering with self-oscillating feedback feeding the tube stages.</li>
             </ul>
         </div>
 
