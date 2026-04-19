@@ -8,30 +8,43 @@
     <style>
         :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
-        
+
         header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .brand-link { text-decoration: none; color: inherit; transition: 0.3s; }
-        .brand-link:hover { opacity: 0.8; }
+        .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 30px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
         .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
-        
+
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
-        
-        main { padding: 0 60px; }
+
+        main { padding: 0 60px; max-width: 1200px; }
         .title-section { margin-top: 20px; }
         .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
         .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
 
-        /* IMAGE CONTAINER - UPWARD POSITION, NO BORDER */
-        .image-container { margin: 40px 0 60px 0; max-width: 900px; display: block; }
+        .image-container { margin: 60px 0; max-width: 1000px; }
         .plugin-display { display: block; width: 100%; height: auto; }
 
-        .quote-box { max-width: 800px; margin: 60px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
-        .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: normal; white-space: pre-line; }
+        .description-box { max-width: 850px; margin-bottom: 80px; border-left: 1px solid var(--gold); padding-left: 40px; }
+        .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
+
+        .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 120px; padding-top: 60px; border-top: 1px solid var(--border); }
+        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
         
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-size: 13px; margin-bottom: 18px; padding-left: 20px; position: relative; opacity: 0.8; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--gold); font-weight: 700; opacity: 0.5; }
+
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+
+        @media (max-width: 900px) {
+            header { padding: 30px 20px; flex-direction: column; gap: 30px; }
+            .brand-text h1 { font-size: 20px; letter-spacing: 12px; }
+            main { padding: 0 20px; }
+            .plugin-name { font-size: 38px; letter-spacing: 12px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+        }
     </style>
 </head>
 <body>
@@ -58,19 +71,51 @@
         <img src="ATRIA_v29.4.png" alt="ATRIA Interface" class="plugin-display">
     </div>
 
-    <div class="quote-box">
-        <p class="quote-text">ATRIA is a performance-driven creative FX instrument from THETA Audio Research built around one core idea: sound should feel playable, not programmed. Instead of presenting a wall of technical parameters, ATRIA turns motion itself into the instrument. At the center of the experience are three macro rings designed to reshape time, motion, and energy with immediate, musical feedback. The goal is not to make the user think in terms of setup and routing, but to make them reach for a gesture and hear something alive happen. That design philosophy is baked directly into the product definition: “Shape motion. Not parameters.”
-ATRIA is designed to transform static material into expressive movement. It is not meant to feel like a conventional multi-effect rack or a technical modular lab. It is built as a creative FX instrument: a tool for producers and sound designers who want immediacy, surprise, and a strong sonic identity. The intended experience is simple: load the plugin, touch a ring, and hear a meaningful transformation right away. The underlying system can be deep, but the surface stays focused on performance, discovery, and musical response rather than menu-diving.
-At the heart of ATRIA is a macro-based control system organized into three musical dimensions. The left ring governs time, shaping flow, drift, pitch displacement, and playback instability. The center ring controls motion, bringing out pulse, rhythmic articulation, gating energy, and internal movement. The right ring handles energy, pushing harmonic intensity, compression, tonal tilt, and physical impact. These are not arbitrary parameter groups; each ring is defined as a musical behavior, so turning it gives the user more of a recognizable expressive quality rather than just “more effect.”
-Under the hood, ATRIA combines a focused set of processing modules that can create everything from subtle movement to aggressive transformation. Its architecture includes transient shaping, stutter processing, pitch/speed manipulation, crush, flange, phase, warble, premium drive, and compression/limiting stages. Together, those modules let ATRIA move between rhythmic interruption, tape-like instability, spectral displacement, modulation, harmonic coloration, and controlled impact without losing its performance-first identity.
-A major part of ATRIA’s character comes from how these processes are exposed. The interface is intentionally layered. The primary layer is always the ring surface, where the user performs. The secondary layer is contextual: touch a ring and ATRIA reveals only the most relevant controls for that gesture. A fuller, more technical view can exist beneath that, but it is never the first thing the user has to confront. This gives ATRIA a rare combination of depth and clarity: powerful processing when you want it, but a surface that always prioritizes instinct, feel, and speed.
-Visually, ATRIA follows the THETA Audio Research design language: dark, restrained, technical, and premium. The plugin use</p>
+    <div class="description-box">
+        <p class="description-text">ATRIA is a performance-driven creative FX instrument from THETA Audio Research built around one core idea: sound should feel playable, not programmed. Instead of a wall of technical parameters, ATRIA turns motion itself into the instrument. 
+
+        Organized into three macro rings, ATRIA reshapes time, motion, and energy with immediate, musical feedback. The goal is not to force the user into complex routing, but to encourage instinctive gestures that result in living sound. 
+        
+        Design philosophy: “Shape motion. Not parameters.”
+
+        Visually, ATRIA follows the THETA canonical “Void” design system: deep black backgrounds, restrained metallic accents, and thin vector detail. The interface is built to feel like a high-performance instrument panel—disciplined, premium, and focused entirely on the signal.
+
+        ATRIA is especially effective on:
+        • rhythmic stems and percussion
+        • melodic loops needing movement
+        • static pads and atmospheric drones
+        • sound design layers requiring instability
+        
+        ATRIA doesn't just process sound; it gives it breath and instinct.</p>
     </div>
+
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>CORE_SYSTEMS</h3>
+            <ul class="spec-list">
+                <li>Three-Ring Macro System: Gestural control over Time (flow/pitch), Motion (pulse/gate), and Energy (intensity/impact).</li>
+                <li>Performance Engine: Contextual UI that reveals deeper parameters only when a ring is engaged.</li>
+                <li>Modular Architecture: Built-in transient shaping, stutter processing, and pitch/speed manipulation.</li>
+                <li>Transformation Chain: Integrated crush, flange, phase, and tape-style warble stages.</li>
+                <li>Output Stage: High-fidelity drive and a dedicated compression/limiting circuit for final impact.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>USE_CASES</h3>
+            <ul class="spec-list">
+                <li>Transform static tones into expressive, living movement.</li>
+                <li>Add rhythmic articulation and gating energy to linear tracks.</li>
+                <li>Explore pitch displacement and tape-like playback instability.</li>
+                <li>Create aggressive harmonic coloration or subtle dimensional shifts.</li>
+            </ul>
+        </div>
+    </section>
 </main>
 
 <footer>
-    <span>LAB NOTE #002 // SYSTEM STABLE</span>
-    <span>TERMINAL ACCESS // 2026</span>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #002 // TERMINAL_VERIFIED</span>
 </footer>
 
 </body>
