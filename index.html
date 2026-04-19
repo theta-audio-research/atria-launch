@@ -7,143 +7,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--silver); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-        }
+        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
 
-        /* --- HERO BRANDING SECTION --- */
-        header { 
-            padding: 100px 60px 60px 60px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
+        header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .brand-block { display: flex; align-items: center; gap: 30px; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
+        .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
 
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 110px; /* Hero Scale */
-            letter-spacing: 64px; /* Cinematic Tracking */
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            padding-left: 64px; /* Offset for perfect centering */
-            line-height: 1;
-        }
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
 
-        .brand-text p { 
-            font-size: 12px; 
-            letter-spacing: 12px; 
-            color: var(--gold); 
-            margin: 24px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.8; 
-            padding-left: 12px;
-        }
-
-        /* --- TOP NAV (UNOBTRUSIVE) --- */
-        .top-nav {
-            position: absolute;
-            top: 40px;
-            right: 60px;
-        }
-        .top-nav a { 
-            color: var(--gold); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700; 
-            border: 1px solid var(--border); 
-            padding: 12px 24px; 
-            transition: 0.3s; 
-        }
-        .top-nav a:hover { background: var(--gold); color: var(--void); }
-
-        /* --- MODULE LIST --- */
-        main { 
-            flex: 1; 
-            padding: 60px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; /* Center the list */
-            gap: 10px; 
-        }
+        main { flex: 1; padding: 0 60px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
         
         .node-row { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-            color: inherit; 
-            padding: 25px 40px; 
-            width: 100%;
-            max-width: 900px;
-            border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
-            transition: 0.4s ease;
+            display: flex; align-items: baseline; text-decoration: none; color: inherit; 
+            padding: 20px 0; border-bottom: 1px solid rgba(26, 27, 35, 0.5); transition: 0.4s;
         }
-
-        .node-row:hover { 
-            background: rgba(200, 168, 107, 0.02);
-            border-bottom: 1px solid var(--gold); 
-            transform: scale(1.02);
-        }
+        .node-row:hover { padding-left: 20px; border-bottom: 1px solid var(--gold); }
         
-        .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
-        .node-name { 
-            font-family: 'Montserrat'; 
-            font-size: 38px; 
-            letter-spacing: 16px; 
-            color: #fff; 
-            text-transform: uppercase; 
-            flex: 1;
-        }
-        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
+        .node-id { font-size: 10px; color: var(--gold); width: 80px; font-weight: 700; opacity: 0.5; }
+        .node-name { font-family: 'Montserrat'; font-size: 48px; letter-spacing: 12px; color: #fff; text-transform: uppercase; margin-right: 40px; }
+        .node-desc { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; }
         
         .node-row:hover .node-name { color: var(--gold); }
         .node-row:hover .node-desc { opacity: 1; color: #fff; }
 
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.3; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--border); 
-        }
-
-        /* --- RESPONSIVE FIXES --- */
-        @media (max-width: 1100px) {
-            .brand-text h1 { font-size: 60px; letter-spacing: 32px; padding-left: 32px; }
-            .node-name { font-size: 24px; letter-spacing: 8px; }
-        }
-
-        @media (max-width: 700px) {
-            header { padding-top: 80px; }
-            .top-nav { position: relative; top: 0; right: 0; margin-bottom: 40px; }
-            .node-row { flex-direction: column; text-align: center; gap: 15px; }
-            .node-desc { text-align: center; }
-        }
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-<nav class="top-nav">
-    <a href="support.html">SUPPORT_CONTACT</a>
-</nav>
-
 <header>
-    <div class="brand-text">
-        <h1>THETA</h1>
-        <p>Audio Research & Development</p>
+    <div class="brand-block">
+        <div class="brand-text">
+            <h1>THETA</h1>
+            <p>Audio Research & Development</p>
+        </div>
     </div>
+    <nav>
+        <a href="support.html">SUPPORT_CONTACT</a>
+    </nav>
 </header>
 
 <main>
@@ -155,28 +58,28 @@
     <a href="atria.html" class="node-row">
         <span class="node-id">002_ARC</span>
         <span class="node-name">ATRIA</span>
-        <span class="node-desc">Sonic Exploration Instrument</span>
+        <span class="node-desc">Sonic Exploration Engine</span>
     </a>
     <a href="cathode.html" class="node-row">
         <span class="node-id">003_VTR</span>
         <span class="node-name">CATHODE</span>
-        <span class="node-desc">Character & Degradation Engine</span>
+        <span class="node-desc">Analog Degradation & Drift</span>
     </a>
     <a href="erosion.html" class="node-row">
         <span class="node-id">004_DEG</span>
         <span class="node-name">EROSION</span>
-        <span class="node-desc">Four-Stage Saturation Engine</span>
+        <span class="node-desc">Digital Degeneration Engine</span>
     </a>
     <a href="twilight.html" class="node-row">
         <span class="node-id">005_GEN</span>
         <span class="node-name">TWILIGHT</span>
-        <span class="node-desc">Regenerative Ambience Engine</span>
+        <span class="node-desc">Ambience Generator</span>
     </a>
 </main>
 
 <footer>
-    <span>SYSTEM_STABLE // 2026</span>
-    <span>LABORATORY_ACCESS_GRANTED</span>
+    <span>LAB NOTE #005 // REORDER COMPLETE</span>
+    <span>TERMINAL ACCESS // 2026</span>
 </footer>
 
 </body>
