@@ -87,10 +87,18 @@
         .description-text b { color: #fff; font-weight: 700; }
 
         /* --- VISUALS GALLERY --- */
-        .visuals-gallery { margin-bottom: 100px; }
+        .visuals-gallery { margin-bottom: 60px; }
         .gallery-item { margin-bottom: 40px; border: 1px solid var(--border); background: rgba(200, 168, 107, 0.01); padding: 20px; }
         .gallery-label { font-size: 10px; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; display: block; opacity: 0.6; }
         .gallery-img { width: 100%; height: auto; display: block; }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 40px; }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 10px 0; }
+        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0; }
 
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
@@ -111,6 +119,7 @@
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
+            .header-module-name .plugin-tagline { padding-left: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -150,17 +159,72 @@
         The <b>Macro Performance System</b> is organized into three dimensions:
         • <b>Left: Time.</b> Governing drift, timing instability, and playback displacement.
         • <b>Center: Motion.</b> The groove dimension: rhythmic energy, and stereo spread.
-        • <b>Right: Energy.</b> Physical impact: harmonic density, pressure, and saturation.
-
-        Linked meta-macros extend this behavior: <b>Flow Link</b> ties inner rings for rhythmic energy, while <b>Form Link</b> ties outer rings for tonal and spatial reshaping.
-
-        Visually, ATRIA follows the THETA “Void” palette with dedicated module families: Teal (Transient/Warble), Coral (Drive/Crush), and Purple (Modulation/Output). Contextual controls appear only when needed, ensuring instinct always leads over engineering.</p>
+        • <b>Right: Energy.</b> Physical impact: harmonic density, pressure, and saturation.</p>
     </div>
 
     <section class="visuals-gallery">
         <div class="gallery-item">
             <span class="gallery-label">Engine Intel // Internal Modules</span>
             <img src="ATRIA_v29.4_MODULES.png" alt="ATRIA Module Architecture" class="gallery-img">
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>THE_MODULES</h3>
+        
+        <div class="module-block">
+            <h4>TRANSIENT</h4>
+            <p>Transient is ATRIA’s pulse-shaping front end. It is designed to emphasize or soften the attack behavior of incoming material so the signal can feel tighter, more percussive, or more flowing before it enters the rest of the motion engine. In the ATRIA macro plan, the Pulse dimension is explicitly routed here first because it is one of the fastest ways to make the instrument feel immediately rhythmic and alive.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>STUTTER A</h4>
+            <p>Stutter A is the primary rhythmic interruption stage. It introduces gated movement and timing patterning early in the chain, giving ATRIA its immediate chopped, pulsed, and animated character. In the macro system, Pulse is routed here as part of ATRIA’s “immediate rhythmic identity” pass.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>PITCH / SPEED</h4>
+            <p>This stage handles playback displacement and identity shift. ATRIA’s Shift macro is defined as pitch and playback displacement with a centered neutral position, making this module the point where stable material can become warped, displaced, or time-stretched in a musically performative way. The current system treats this as the trickiest stage in the engine because it has the strongest effect on perceived level and identity.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>CRUSH</h4>
+            <p>Crush is the digital reduction stage in ATRIA’s motion chain. Earlier ATRIA builds defined it with bit depth reduction, rate reduction, and mix, making it the stage for turning clean signal into stepped, fragmented, or degraded texture without leaving the instrument’s performance framework.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>FLANGE</h4>
+            <p>Flange provides short-delay modulation, movement, and comb-filter animation. Earlier ATRIA DSP definitions describe it as a short delay with LFO modulation and feedback, giving it the role of adding width, sweep, and motion rather than pure coloration. In the macro system, Space is routed here as part of ATRIA’s width-and-movement layer.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>PHASE</h4>
+            <p>Phase is ATRIA’s spectral motion stage. Earlier ATRIA DSP definitions specify an allpass-based phaser with rate, depth, and stage controls, making it the counterpart to Flange: less about obvious delay motion, more about internal swirl, image movement, and phase-based animation. Space is routed here alongside Flange in the recommended macro order.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>STUTTER B</h4>
+            <p>Stutter B is the secondary rhythmic branch. In the simplified ATRIA architecture, it remains as the dedicated Chain B processor and feeds the summing stage before Warble and the output coloration path. Its role is not to mirror Stutter A, but to provide a second rhythmic voice that can be balanced independently against the main modulation path.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>SUMMING AMP</h4>
+            <p>The summing stage recombines ATRIA’s split movement paths before they continue into the master coloration chain. It is part of how ATRIA preserves clarity while still allowing layered modulation and rhythmic interference to feel unified rather than disconnected. The design language also classifies Summing with the modulation / master family in the ATRIA visual system.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>WARBLE</h4>
+            <p>Warble is ATRIA’s tape-style movement stage. Earlier ATRIA definitions describe it through wow, flutter, and age, combining LFO-driven motion with tonal softening and saturation behavior. In the macro system, Flow is routed here because Warble is one of the main engines for temporal drift and unstable motion.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>PREMIUM DRIVE</h4>
+            <p>Premium Drive is ATRIA’s main saturation and pressure stage in the current architecture. After the removal of earlier saturation modules, Premium Drive became the sole dedicated color stage, and the Energy macro is explicitly rewired toward it. Its purpose is to add harmonic intensity, weight, and physical pressure while keeping that behavior tied to performance rather than deep engineering.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>COMP / LIM / LIMITER</h4>
+            <p>ATRIA ends with a dynamics and protection stage. Earlier ATRIA DSP definitions describe this section with threshold, ratio, and attack behavior, followed by limiting at the output. In practice, this is the stage that turns movement and saturation into controlled impact so the instrument can stay bold and performative without collapsing into chaos.</p>
         </div>
     </section>
 
