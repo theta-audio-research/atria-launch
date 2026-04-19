@@ -15,18 +15,37 @@
         }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
 
-        header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
+        /* --- RECALIBRATED HEADER --- */
+        header { 
+            padding: 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative; /* Required for absolute centering of module name */
+        }
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 30px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; margin: 0; color: #fff; text-transform: uppercase; }
         .brand-text p { font-size: 10px; letter-spacing: 6px; color: var(--gold); margin: 8px 0 0 0; text-transform: uppercase; opacity: 0.7; }
 
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 24px;
+            letter-spacing: 16px;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
+        /* --- MAIN CONTENT --- */
         main { padding: 0 60px; max-width: 1200px; }
         .title-section { margin-top: 20px; }
-        .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
         .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--ember); text-transform: uppercase; margin-top: 10px; opacity: 0.9; }
 
         .image-container { margin: 60px 0; max-width: 1000px; }
@@ -54,10 +73,9 @@
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
 
         @media (max-width: 900px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 30px; }
-            .brand-text h1 { font-size: 20px; letter-spacing: 12px; }
+            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
+            .header-module-name h2 { position: relative; left: 0; transform: none; font-size: 18px; letter-spacing: 8px; }
             main { padding: 0 20px; }
-            .plugin-name { font-size: 38px; letter-spacing: 12px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
@@ -73,12 +91,16 @@
             </div>
         </div>
     </a>
+
+    <div class="header-module-name">
+        <h2>EROSION</h2>
+    </div>
+
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
 </header>
 
 <main>
     <div class="title-section">
-        <h2 class="plugin-name">EROSION</h2>
         <p class="plugin-tagline">Four-Stage Saturation Engine</p>
     </div>
 
@@ -91,9 +113,7 @@
 
         Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment. The four-voice engine covers the full spectrum of nonlinear transformation—from invisible germanium warmth to aggressive HG-2 tube destruction.
 
-        Character is anchored by the <b>GRIME XY pad</b>—a functional surface that simultaneously sets tube character (Pentode, Triode, 12AT7) and drives performance effects like Grain Scatter and Stutter Gate.
-
-        Everything is finished in a master output section with soft-clipping transients and a brick-wall limiter. EROSION does not just color sound; it steers it through a signal path built for technical beauty and controlled failure.</p>
+        Character is anchored by the <b>GRIME XY pad</b>—a functional surface that simultaneously sets tube character (Pentode, Triode, 12AT7) and drives performance effects like Grain Scatter and Stutter Gate.</p>
     </div>
 
     <section class="acquisition-anchor">
