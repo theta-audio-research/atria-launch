@@ -15,9 +15,9 @@
         }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
 
-        /* --- RECALIBRATED HEADER --- */
+        /* --- PERSISTENT HARDWARE HEADER --- */
         header { 
-            padding: 40px 60px; /* Reduced vertical padding for a sleeker bar */
+            padding: 40px 60px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -28,11 +28,11 @@
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
         
-        /* SHRUNK LOGO SECTION */
+        /* SHRUNK BRANDING */
         .brand-text h1 { 
             font-family: 'Montserrat'; 
-            font-size: 18px; /* Down from 32px */
-            letter-spacing: 12px; /* Down from 24px */
+            font-size: 18px; 
+            letter-spacing: 12px; 
             margin: 0; 
             color: #fff; 
             text-transform: uppercase; 
@@ -47,30 +47,42 @@
             opacity: 0.5; 
         }
 
-        /* ENLARGED MODULE NAME */
-        .header-module-name h2 {
-            font-family: 'Montserrat';
-            font-size: 42px; /* Up from 24px */
-            letter-spacing: 32px; /* Up from 16px */
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
+        /* CENTERED MODULE CHASSIS */
+        .header-module-name {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            /* Slight glow to match the ember theme */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 42px; 
+            letter-spacing: 32px; 
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
             text-shadow: 0 0 20px rgba(255, 87, 34, 0.2);
+        }
+        .header-module-name .plugin-tagline { 
+            font-size: 10px; 
+            letter-spacing: 12px; 
+            color: var(--ember); 
+            text-transform: uppercase; 
+            margin: 10px 0 0 0; 
+            opacity: 0.9; 
+            padding-left: 32px; /* Offsets the letter-spacing of the last char to center accurately */
         }
 
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
         /* --- MAIN CONTENT --- */
-        main { padding: 0 60px; max-width: 1200px; }
-        .title-section { margin-top: 40px; text-align: center; } /* Center the tagline under the new large header */
-        .plugin-tagline { font-size: 12px; letter-spacing: 12px; color: var(--ember); text-transform: uppercase; margin-top: 10px; opacity: 0.9; }
+        main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
 
-        .image-container { margin: 60px 0; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 80px rgba(255, 87, 34, 0.15); }
 
         .description-box { max-width: 850px; margin: 0 auto 80px auto; border-left: 2px solid var(--ember); padding-left: 40px; }
@@ -96,11 +108,14 @@
 
         @media (max-width: 1100px) {
             .header-module-name h2 { font-size: 28px; letter-spacing: 16px; }
+            .header-module-name .plugin-tagline { font-size: 8px; letter-spacing: 8px; }
         }
 
         @media (max-width: 900px) {
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
-            .header-module-name h2 { position: relative; left: 0; transform: none; font-size: 22px; letter-spacing: 8px; }
+            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
+            .header-module-name .plugin-tagline { padding-left: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -120,16 +135,13 @@
 
     <div class="header-module-name">
         <h2>EROSION</h2>
+        <p class="plugin-tagline">Four-Stage Saturation Engine</p>
     </div>
 
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
 </header>
 
 <main>
-    <div class="title-section">
-        <p class="plugin-tagline">Four-Stage Saturation Engine</p>
-    </div>
-
     <div class="image-container">
         <img src="EROSION_v15.7.png" alt="EROSION Interface" class="plugin-display">
     </div>
