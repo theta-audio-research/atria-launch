@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EROSION | THETA Audio Research</title>
+    <title>TWILIGHT | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        :root { 
+            --void: #06080C; 
+            --gold: #C8A86B; 
+            --cyan: #00E5FF; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
+        }
         body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
 
         header { padding: 60px; display: flex; justify-content: space-between; align-items: flex-start; }
@@ -18,33 +24,35 @@
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
-        main { padding: 0 60px; }
+        main { padding: 0 60px; max-width: 1200px; }
         .title-section { margin-top: 20px; }
         .plugin-name { font-family: 'Montserrat'; font-size: 82px; letter-spacing: 32px; color: #fff; text-transform: uppercase; margin: 0; }
-        .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
+        .plugin-tagline { font-size: 12px; letter-spacing: 8px; color: var(--cyan); text-transform: uppercase; margin-top: 10px; opacity: 0.8; }
 
-        .quote-box { max-width: 600px; margin: 40px 0; border-left: 1px solid var(--gold); padding-left: 30px; }
-        .quote-text { font-size: 14px; line-height: 1.8; opacity: 0.6; font-style: italic; }
+        .image-container { margin: 60px 0; max-width: 1000px; }
+        .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); }
 
-        /* PLUGIN IMAGE - MOVED UP, NO BORDER */
-        .image-container { margin: 20px 0 60px 0; max-width: 800px; }
-        .plugin-display { display: block; width: 100%; height: auto; filter: grayscale(20%); }
+        .description-box { max-width: 850px; margin-bottom: 80px; border-left: 1px solid var(--cyan); padding-left: 40px; }
+        .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
+        .description-text b { color: #fff; font-weight: 700; }
 
-        /* LAB NOTE - AT THE BOTTOM */
-        .lab-note-anchor { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); max-width: 600px; }
-        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
-        .lab-content { font-size: 13px; opacity: 0.7; font-family: 'JetBrains Mono'; margin: 0; border-left: 2px solid var(--border); padding-left: 20px; }
+        .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
+        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
+        .spec-list li b { color: var(--cyan); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--cyan); font-weight: 700; opacity: 0.5; }
 
-        /* RESEARCH RESOURCES GRID */
-        .archive-section { margin-top: 100px; padding-bottom: 100px; }
-        .archive-header { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
-        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .archive-card { border: 1px solid var(--border); padding: 30px; text-decoration: none; color: inherit; transition: 0.3s; }
-        .archive-card:hover { border-color: var(--gold); background: rgba(200, 168, 107, 0.03); }
-        .archive-id { font-size: 10px; color: var(--gold); letter-spacing: 2px; display: block; margin-bottom: 10px; }
-        .archive-title { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; }
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+        @media (max-width: 900px) {
+            header { padding: 30px 20px; flex-direction: column; gap: 30px; }
+            .brand-text h1 { font-size: 20px; letter-spacing: 12px; }
+            main { padding: 0 20px; }
+            .plugin-name { font-size: 32px; letter-spacing: 12px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+        }
     </style>
 </head>
 <body>
@@ -63,45 +71,56 @@
 
 <main>
     <div class="title-section">
-        <h2 class="plugin-name">EROSION</h2>
-        <p class="plugin-tagline">Digital Degeneration Engine</p>
-    </div>
-
-    <div class="quote-box">
-        <p class="quote-text">"Everything decays. Digital audio just does it with more precision. EROSION is the sound of data losing its grip on reality."</p>
+        <h2 class="plugin-name">TWILIGHT</h2>
+        <p class="plugin-tagline">Regenerative Ambience Engine</p>
     </div>
 
     <div class="image-container">
-        <img src="EROSION_v1.7.png" alt="EROSION Interface" class="plugin-display">
+        <img src="TWILIGHT_v15.15.png" alt="TWILIGHT Interface" class="plugin-display">
     </div>
 
-    <div class="lab-note-anchor">
-        <span class="lab-header">LAB NOTE #002 // STRETCH_ARTIFACTS</span>
-        <p class="lab-content">Observations on the variable speed buffer: The aliasing occurring at 0.5x speed creates a unique harmonic profile. We aren't filtering these—we're framing them.</p>
+    <div class="description-box">
+        <p class="description-text"><b>TWILIGHT is a living signal environment built for drones, motion, and harmonic atmosphere.</b> 
+
+        At its core is <b>THETA</b>, a four-voice binaural engine built for sustained tone and psychoacoustic interaction. Linked together or driven as a coordinated system, the voices move from meditative tonal beds to immense, architectural harmonic fields.
+
+        The <b>Signal Lattice</b> turns TWILIGHT from a drone machine into a generative pattern instrument. Editable lanes for gate, pitch, probability, velocity, and swing allow the signal to evolve into pulsing, stepped repetitions and shifting melodic drift.
+
+        Character is anchored by <b>DRIFT</b>—a harmony-doubler reimagined as a "body-and-halo" architecture. It creates lush, expensive-feeling widening via UNI, OCT, 5TH, MAJ, MIN, SUS, and CLSTR interval families, avoiding the clutter of traditional feedback clouds.
+
+        The <b>Master Output Section</b> provides final-stage treatment: spatial modulation, luxurious stutter behavior, and a true brick-wall limiter designed to act as a deliberate end stage at the edge of the instrument.
+
+        TWILIGHT is for the space between structure and emergence.</p>
     </div>
 
-    <section class="archive-section">
-        <h3 class="archive-header">RESEARCH_RESOURCES</h3>
-        <div class="archive-grid">
-            <a href="archive-01.html" class="archive-card">
-                <span class="archive-id">ARCHIVE-01</span>
-                <span class="archive-title">Characteristics of the Hypnagogic Threshold</span>
-            </a>
-            <a href="archive-02.html" class="archive-card">
-                <span class="archive-id">ARCHIVE-02</span>
-                <span class="archive-title">Methods of Intentional Theta Induction</span>
-            </a>
-            <a href="archive-03.html" class="archive-card">
-                <span class="archive-id">ARCHIVE-03</span>
-                <span class="archive-title">Bio-Mechanical Calibration: Breathwork</span>
-            </a>
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>CORE_SYSTEMS</h3>
+            <ul class="spec-list">
+                <li><b>Four-Voice THETA Engine</b> Binaural drone system with interval snapping, note behavior, and psychoacoustic motion.</li>
+                <li><b>Signal Lattice</b> Pattern-driven sequencing with per-voice gate, pitch, probability, velocity, and swing.</li>
+                <li><b>DRIFT Harmony Doubler</b> Body-and-halo architecture for musical thickening and ensemble-style widening.</li>
+                <li><b>V5 Sample Layer + THRU</b> Hybrid processing for loaded audio or external tracks routed through the THETA chain.</li>
+                <li><b>Master Output Matrix</b> Integrated flanger, stutter, and spatial modulation leading to a true brick-wall limiter.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Platform</b> macOS [AU / VST3]</li>
+                <li><b>JUCE Version</b> 8.0.12</li>
+                <li><b>Engine Type</b> Regenerative Ambience / Hybrid Synthesis</li>
+                <li><b>Direct Capture</b> Real-time output recording to WAV via REC function.</li>
+                <li><b>Visual Identity</b> Neo-noir HUD interface with per-voice telemetry color-coding.</li>
+            </ul>
         </div>
     </section>
 </main>
 
 <footer>
-    <span>THETA AUDIO RESEARCH</span>
-    <span>TERMINAL ACCESS // 2026</span>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #005 // REGENERATION_ACTIVE</span>
 </footer>
 
 </body>
