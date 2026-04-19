@@ -36,7 +36,6 @@
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
 
-        /* PURCHASE MODULE */
         .acquisition-anchor { margin-bottom: 120px; max-width: 600px; }
         .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(255, 87, 34, 0.03); border: 1px solid var(--border); padding: 40px; margin-top: 20px; }
@@ -90,9 +89,11 @@
     <div class="description-box">
         <p class="description-text"><b>EROSION treats degradation as a physical process.</b> Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface.
 
-        From invisible warmth to aggressive destruction, EROSION covers the full spectrum of nonlinear transformation in a single insert.
+        Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment. The four-voice engine covers the full spectrum of nonlinear transformation—from invisible germanium warmth to aggressive HG-2 tube destruction.
 
-        Whether used for subtle mood layering or full signal collapse, EROSION steers sound through a signal path built for technical beauty and controlled failure.</p>
+        Character is anchored by the <b>GRIME XY pad</b>—a functional surface that simultaneously sets tube character (Pentode, Triode, 12AT7) and drives performance effects like Grain Scatter and Stutter Gate.
+
+        Everything is finished in a master output section with soft-clipping transients and a brick-wall limiter. EROSION does not just color sound; it steers it through a signal path built for technical beauty and controlled failure.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -108,21 +109,41 @@
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>ANALOG_CIRCUITS</h3>
+            <h3>ANALOG_MODELS</h3>
             <ul class="spec-list">
-                <li><b>DISTRESS [GERMANIUM]</b> Biased asymmetric clipping and gain reduction for unpredictable harmonic crunch.</li>
-                <li><b>AMBER [TAPE]</b> Even-harmonic saturation topology with frequency-dependent tilt weighting.</li>
-                <li><b>GRIME [TUBE]</b> Parallel Pentode/Triode/12AT7 stages controlled via 2D heat mapping.</li>
-                <li><b>GRIT [TANH]</b> Symmetrical soft-clipping stage for clean edge and transient definition.</li>
+                <li><b>DISTRESS [GERMANIUM]</b> Transistor compressor-saturator with asymmetric clipping and unpredictable harmonic crunch.</li>
+                <li><b>AMBER [TAPE]</b> Phoenix-style tape saturation with frequency-dependent tilt weighting.</li>
+                <li><b>GRIME [TUBE]</b> Three-path HG-2 simulation (Pentode, Triode, 12AT7) driven by an XY heat pad.</li>
+                <li><b>GRIT [TANH]</b> Symmetrical soft-clipping waveshaper for clean edge and presence.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>XY_PERFORMANCE</h3>
             <ul class="spec-list">
-                <li><b>Grain Scatter</b> Time-scattered micro-grains with subtle pitch randomization and cloud density control.</li>
+                <li><b>Grain Scatter</b> Time-scattered micro-grains with subtle pitch randomization and swarm density control.</li>
                 <li><b>Stutter Gate</b> Physical drag-velocity rhythm. Signal chops into patterns based on cursor movement.</li>
-                <li><b>Feedback Smear</b> Resonant comb filtering with controllable pitch and self-oscillation feedback.</li>
+                <li><b>Feedback Smear</b> Resonant comb filtering with self-oscillating feedback feeding into the tube stages.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>SIGNAL_ROUTING</h3>
+            <ul class="spec-list">
+                <li><b>Series</b> Sequential chain (Distress → Amber → Grime → Grit) for compound character development.</li>
+                <li><b>A/B Split</b> Parallel paths (Distress/Amber vs Grime/Grit) for character balancing.</li>
+                <li><b>Parallel Summing</b> Independent level and phase control for all four modules feeding a master summation.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Platform</b> macOS [AU / VST3] // 64-bit Architecture</li>
+                <li><b>Oversampling</b> Selectable OFF / 2x / 4x / 8x [Per-Preset]</li>
+                <li><b>Latency</b> Zero [oversampling adds minimal unreported latency]</li>
+                <li><b>Output Stage</b> Composite Compressor + Tanh Soft Clipper + Brick-wall Safety Limiter</li>
+                <li><b>Interface</b> Concentric Knobs with Brightness-Graded Value Arcs</li>
             </ul>
         </div>
     </section>
