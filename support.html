@@ -4,142 +4,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPPORT | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --void: #020204;
-            --gold: #C8A86B;
-            --border: #121320;
-            --silver: #B0B0B0;
+        :root { 
+            --void: #06080C; 
+            --gold: #C8A86B; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
         }
-
-        body {
-            background-color: var(--void);
-            color: var(--silver);
-            font-family: 'JetBrains Mono', monospace;
-            margin: 0;
+        body { 
+            background-color: var(--void); 
+            color: var(--silver); 
+            font-family: 'JetBrains Mono', monospace; 
+            margin: 0; 
+            line-height: 1.6; 
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* --- PERSISTENT HARDWARE HEADER --- */
+        header { 
+            padding: 40px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative; 
             border-bottom: 1px solid var(--border);
         }
-
-        .return-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.6;
-            transition: 0.3s;
+        
+        .brand-link { text-decoration: none; color: inherit; }
+        .brand-block { display: flex; align-items: center; gap: 20px; }
+        
+        .brand-text h1 { 
+            font-family: 'Montserrat'; 
+            font-size: 18px; 
+            letter-spacing: 12px; 
+            margin: 0; 
+            color: #fff; 
+            text-transform: uppercase; 
+            opacity: 0.8;
+        }
+        .brand-text p { 
+            font-size: 8px; 
+            letter-spacing: 4px; 
+            color: var(--gold); 
+            margin: 4px 0 0 0; 
+            text-transform: uppercase; 
+            opacity: 0.5; 
         }
 
-        .return-link:hover {
-            opacity: 1;
-            letter-spacing: 5px;
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
-
-        /* --- SUPPORT CONTENT --- */
-        main {
-            flex: 1;
-            padding: 100px 10%;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 42px;
-            letter-spacing: 12px;
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 42px; 
+            letter-spacing: 32px; 
             color: #fff;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(200, 168, 107, 0.1);
+        }
+        .header-module-name .plugin-tagline { 
+            font-size: 10px; 
+            letter-spacing: 12px; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin: 10px 0 0 0; 
+            opacity: 0.9; 
+            padding-left: 32px;
         }
 
-        .support-card {
-            border-left: 2px solid var(--gold);
-            padding: 30px;
+        nav a { 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            border: 1px solid var(--border); 
+            padding: 12px 24px; 
+            transition: 0.3s; 
+        }
+        nav a:hover { background: var(--gold); color: var(--void); }
+
+        /* --- MAIN SUPPORT CONTENT --- */
+        main { 
+            flex: 1;
+            padding: 80px 60px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .service-box {
             background: rgba(200, 168, 107, 0.02);
-            margin-bottom: 60px;
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: 0.4s;
+        }
+        .service-box:hover {
+            border-color: var(--gold);
+            background: rgba(200, 168, 107, 0.04);
         }
 
-        .support-card h2 {
-            font-size: 14px;
+        .service-box h3 {
+            font-family: 'Montserrat';
+            font-size: 12px;
             letter-spacing: 4px;
             color: var(--gold);
-            margin-top: 0;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
         }
 
-        .email-link {
-            font-size: 24px;
-            color: #fff;
-            text-decoration: none;
+        .service-box p {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* CONTACT CTA */
+        .contact-link {
             display: block;
-            margin-top: 15px;
-            transition: 0.3s;
-        }
-        
-        .email-link:hover {
+            text-align: center;
+            border: 1px solid var(--gold);
             color: var(--gold);
-        }
-
-        /* --- LARGE RETURN BUTTON --- */
-        .big-return {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 20px 40px;
-            border: 1px solid var(--border);
-            color: var(--gold);
+            padding: 20px;
             text-decoration: none;
-            letter-spacing: 6px;
-            font-size: 12px;
-            transition: 0.3s;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 4px;
+            transition: 0.4s;
+            text-transform: uppercase;
         }
-
-        .big-return:hover {
+        .contact-link:hover {
             background: var(--gold);
             color: var(--void);
+            box-shadow: 0 0 30px rgba(200, 168, 107, 0.2);
         }
 
-        footer {
-            padding: 40px 60px;
-            font-size: 10px;
-            opacity: 0.3;
-            letter-spacing: 4px;
-            border-top: 1px solid var(--border);
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.3; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--border); 
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
+            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
+            .support-grid { grid-template-columns: 1fr; }
+            main { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="index.html" class="return-link">← Return to Lab</a>
-    <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">THETA // TERMINAL 001</div>
-</nav>
+<header>
+    <a href="index.html" class="brand-link">
+        <div class="brand-block">
+            <div class="brand-text">
+                <h1>THETA</h1>
+                <p>Audio Research & Development</p>
+            </div>
+        </div>
+    </a>
 
-<main>
-    <h1>Support</h1>
-    
-    <div class="support-card">
-        <h2>Inquiry Protocol</h2>
-        <p>For technical assistance, licensing recovery, or hardware emulation queries, contact the research lead directly:</p>
-        <a href="mailto:info@theta.audio" class="email-link">lofiluxury66@gmail.com</a>
+    <div class="header-module-name">
+        <h2>SUPPORT</h2>
+        <p class="plugin-tagline">Technical Service Terminal</p>
     </div>
 
-    <p style="opacity: 0.5; font-size: 13px;">Please include your System OS and Plugin Version (e.g., CATHODE v4.6) in the subject line for priority routing.</p>
+    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
+</header>
 
-    <a href="index.html" class="big-return">EXIT TO INDEX</a>
+<main>
+    <div class="support-grid">
+        <div class="service-box">
+            <h3>RESEARCH_ASSISTANCE</h3>
+            <p>For inquiries regarding plugin authorization, installer errors, or workstation compatibility within macOS environments.</p>
+            <a href="mailto:info@theta.audio" class="contact-link">OPEN_COMM_CHANNEL</a>
+        </div>
+
+        <div class="service-box">
+            <h3>GENERAL_CONTACT</h3>
+            <p>For business inquiries, collaboration proposals, or feedback regarding current THETA Audio Research modules.</p>
+            <a href="mailto:info@theta.audio" class="contact-link">INFO@THETA.AUDIO</a>
+        </div>
+    </div>
 </main>
 
 <footer>
-    © 2026 THETA AUDIO RESEARCH // INSTITUTIONAL ACCESS ONLY
+    <span>COMM_STATUS: STABLE // 2026</span>
+    <span>TERMINAL_VERIFIED</span>
 </footer>
 
 </body>
