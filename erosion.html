@@ -8,8 +8,8 @@
     <style>
         :root { 
             --void: #06080C; 
-            --gold: #C8A86B; /* Standard Brand Gold */
-            --ember: #FF5722; /* Erosion Specific Warm Ember-Red */
+            --gold: #C8A86B; 
+            --ember: #FF5722; 
             --silver: #B0B0B0; 
             --border: #1A1B23; 
         }
@@ -35,6 +35,14 @@
         .description-box { max-width: 850px; margin-bottom: 80px; border-left: 2px solid var(--ember); padding-left: 40px; }
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
+
+        /* PURCHASE MODULE */
+        .acquisition-anchor { margin-bottom: 120px; max-width: 600px; }
+        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(255, 87, 34, 0.03); border: 1px solid var(--border); padding: 40px; margin-top: 20px; }
+        .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
+        .authorize-btn { display: block; text-align: center; border: 1px solid var(--ember); color: var(--ember); padding: 25px; text-decoration: none; font-weight: 700; font-size: 12px; letter-spacing: 6px; transition: 0.4s; }
+        .authorize-btn:hover { background: var(--ember); color: var(--void); box-shadow: 0 0 30px rgba(255, 87, 34, 0.2); }
 
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
@@ -82,16 +90,21 @@
     <div class="description-box">
         <p class="description-text"><b>EROSION treats degradation as a physical process.</b> Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface.
 
-        From invisible warmth to aggressive destruction, EROSION covers the full spectrum of nonlinear transformation in a single insert. The system is designed around four hero modules:
-        • <b>Distress:</b> Germanium transistor compressor-saturator with asymmetric clipping.
-        • <b>Amber:</b> Tape saturation topology with tilt EQ for bass warmth or upper-mid air.
-        • <b>Grime:</b> Parallel tube simulator (Pentode, Triode, 12AT7) driven by an XY heat pad.
-        • <b>Grit:</b> Clean tanh waveshaping for symmetrical edge and presence.
-
-        The visual centerpiece is the <b>GRIME XY pad</b>—a functional surface that simultaneously sets tube character and drives performance-grade effects like Grain Scatter, Stutter Gate, and Feedback Smear.
+        From invisible warmth to aggressive destruction, EROSION covers the full spectrum of nonlinear transformation in a single insert.
 
         Whether used for subtle mood layering or full signal collapse, EROSION steers sound through a signal path built for technical beauty and controlled failure.</p>
     </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Authorization includes VST3/AU formats, 48kHz internal oversampling, 
+                and Factory Presets.
+            </p>
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
+        </div>
+    </section>
 
     <section class="specs-container">
         <div class="spec-group">
@@ -112,27 +125,10 @@
                 <li><b>Feedback Smear</b> Resonant comb filtering with controllable pitch and self-oscillation feedback.</li>
             </ul>
         </div>
-
-        <div class="spec-group">
-            <h3>ROUTING_INTEL</h3>
-            <ul class="spec-list">
-                <li><b>Series</b> Sequential chain (Distress → Amber → Grime → Grit) for compound character.</li>
-                <li><b>A/B Split</b> Parallel paths (Distress/Amber vs Grime/Grit) for surgical character balancing.</li>
-                <li><b>Parallel</b> Fully independent summing of all four modules for maximum depth and movement.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TECHNICAL_SPEC</h3>
-            <ul class="spec-list">
-                <li>Architecture: Stereo 64-bit // Zero Latency (Base)</li>
-                <li>Oversampling: Selectable OFF / 2x / 4x / 8x (Per-Preset)</li>
-                <li>Transients: Post-Saturation Clipper + Tanh Soft Limiter</li>
-                <li>Interface: Composite Concentric Knobs with Gradient Value Arcs</li>
-            </ul>
-        </div>
     </section>
 </main>
+
+<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
