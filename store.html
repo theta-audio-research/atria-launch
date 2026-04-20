@@ -62,14 +62,53 @@
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- STORE GRID --- */
+        /* --- STORE CONTAINER --- */
         main { 
             flex: 1;
-            padding: 80px 60px; 
+            padding: 60px; 
             max-width: 1400px; 
             margin: 0 auto; 
         }
 
+        /* --- BUNDLE HIGHLIGHT --- */
+        .bundle-container {
+            margin-bottom: 80px;
+            width: 100%;
+        }
+        .bundle-card {
+            background: linear-gradient(180deg, rgba(200, 168, 107, 0.05) 0%, rgba(6, 8, 12, 0) 100%);
+            border: 1px solid var(--gold);
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+            transition: 0.4s;
+        }
+        .bundle-card:hover {
+            box-shadow: 0 0 50px rgba(200, 168, 107, 0.1);
+        }
+
+        .bundle-visual {
+            width: 100%;
+            height: 300px;
+            background: var(--void);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bundle-visual::after {
+            content: "TOTAL_COLLECTION";
+            font-family: 'Montserrat';
+            font-size: 10px;
+            letter-spacing: 20px;
+            opacity: 0.2;
+        }
+
+        /* --- STORE GRID --- */
         .store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -170,6 +209,7 @@
             text-decoration: none;
             text-transform: uppercase;
             transition: 0.3s;
+            cursor: pointer;
         }
         .buy-btn:hover {
             background: var(--gold);
@@ -199,9 +239,10 @@
             margin-top: 80px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+            .bundle-card { grid-template-columns: 1fr; padding: 40px 20px; }
             .store-grid { grid-template-columns: 1fr; }
             main { padding: 40px 20px; }
         }
@@ -227,6 +268,23 @@
 </header>
 
 <main>
+    <section class="bundle-container">
+        <div class="bundle-card">
+            <div class="bundle-visual">
+                </div>
+            <div class="bundle-intel">
+                <span class="plugin-id">BDL_001_TOTAL</span>
+                <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: #fff; margin: 10px 0;">TOTAL COLLECTION</h3>
+                <p class="tagline" style="opacity: 0.8;">The Complete Research Environment</p>
+                <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT. The definitive suite for cinematic sound sculpting and regenerative ambience.</p>
+                <div class="price-row" style="border: none; padding: 0;">
+                    <span class="price" style="font-size: 32px;">$249.00</span>
+                    <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE_ALL</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="store-grid">
         
         <article class="plugin-card">
@@ -316,7 +374,7 @@
 
 <footer>
     <span>SYSTEM_STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED // MULTI_FLAGSHIP_SYNC</span>
+    <span>TERMINAL_VERIFIED // BUNDLE_RECALIBRATED</span>
 </footer>
 
 </body>
