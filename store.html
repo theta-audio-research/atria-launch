@@ -24,7 +24,7 @@
             flex-direction: column;
         }
 
-        /* --- PERSISTENT HARDWARE HEADER --- */
+        /* --- HEADER --- */
         header { 
             padding: 40px 60px; 
             display: flex; 
@@ -33,171 +33,46 @@
             position: relative; 
             border-bottom: 1px solid var(--border);
         }
-        
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
         .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
         .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
-
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .header-module-name h2 {
-            font-family: 'Montserrat';
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-
+        .header-module-name { position: absolute; left: 50%; transform: translateX(-50%); text-align: center; }
+        .header-module-name h2 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; color: #fff; text-transform: uppercase; margin: 0; padding-left: 24px; }
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
         nav a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- STORE CONTAINER --- */
-        main { 
-            flex: 1;
-            padding: 60px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-        }
+        main { flex: 1; padding: 60px; max-width: 1400px; margin: 0 auto; }
 
-        /* --- BUNDLE HIGHLIGHT --- */
-        .bundle-container {
-            margin-bottom: 80px;
-            width: 100%;
-        }
-        .bundle-card {
-            background: linear-gradient(180deg, rgba(200, 168, 107, 0.05) 0%, rgba(6, 8, 12, 0) 100%);
-            border: 1px solid var(--gold);
-            padding: 60px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 60px;
-            align-items: center;
-            transition: 0.4s;
-        }
-        .bundle-card:hover {
-            box-shadow: 0 0 50px rgba(200, 168, 107, 0.1);
-        }
-
-        .bundle-visual {
-            width: 100%;
-            height: 300px;
-            background: var(--void);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .bundle-visual::after {
-            content: "TOTAL_COLLECTION";
-            font-family: 'Montserrat';
-            font-size: 10px;
-            letter-spacing: 20px;
-            opacity: 0.2;
-        }
-
-        /* --- STORE GRID --- */
-        .store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 40px;
-            width: 100%;
-        }
-
-        .plugin-card {
+        /* --- INTERACTIVE CARD LOGIC --- */
+        .plugin-card, .bundle-card {
+            position: relative; /* Necessary for absolute overlay */
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border);
             padding: 30px;
             display: flex;
             flex-direction: column;
             transition: 0.4s;
+            cursor: pointer;
         }
 
-        .plugin-card:hover {
-            border-color: var(--gold);
+        .plugin-card:hover, .bundle-card:hover {
+            border-color: rgba(200, 168, 107, 0.5);
             background: rgba(200, 168, 107, 0.02);
         }
 
-        .image-link {
-            display: block;
-            width: 100%;
-            margin-bottom: 25px;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
-            transition: 0.4s;
-        }
-        .image-link:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-        .image-link img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(0.2) contrast(1.1);
-            transition: 0.4s;
-        }
-        .image-link:hover img {
-            filter: grayscale(0) contrast(1.2);
+        /* GHOST LINK (Covers card) */
+        .card-link-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1; /* Below the button */
+            text-decoration: none;
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-        .card-header h3 {
-            font-family: 'Montserrat';
-            font-size: 20px;
-            letter-spacing: 8px;
-            color: #fff;
-            margin: 0;
-            text-transform: uppercase;
-        }
-        .plugin-id {
-            font-size: 9px;
-            color: var(--gold);
-            font-weight: 700;
-            opacity: 0.6;
-        }
-
-        .tagline {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--silver);
-            opacity: 0.4;
-        }
-
-        .price-row {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 25px;
-            border-top: 1px solid var(--border);
-        }
-        .price {
-            font-family: 'Montserrat';
-            font-size: 18px;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
+        /* BUTTON (Priority Layer) */
         .buy-btn {
+            position: relative;
+            z-index: 2; /* ABOVE the ghost link */
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
@@ -208,42 +83,42 @@
             text-decoration: none;
             text-transform: uppercase;
             transition: 0.3s;
-            cursor: pointer;
         }
-        .buy-btn:hover {
-            background: var(--gold);
-            color: var(--void);
-        }
+        .buy-btn:hover { background: var(--gold); color: var(--void); }
 
-        .detail-link {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: var(--silver);
-            text-decoration: none;
-            opacity: 0.3;
-            margin-top: 10px;
-            text-align: center;
-            transition: 0.3s;
+        /* BUNDLE STYLE */
+        .bundle-container { margin-bottom: 80px; width: 100%; }
+        .bundle-card { 
+            border: 1px solid var(--gold); 
+            padding: 60px; 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr; 
+            gap: 60px; 
+            align-items: center; 
+            background: linear-gradient(180deg, rgba(200, 168, 107, 0.05) 0%, rgba(6, 8, 12, 0) 100%);
         }
-        .detail-link:hover { opacity: 1; color: var(--gold); }
+        .bundle-visual { width: 100%; height: 300px; background: var(--void); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .bundle-visual::after { content: "TOTAL_COLLECTION"; font-family: 'Montserrat'; font-size: 10px; letter-spacing: 20px; opacity: 0.2; }
 
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.3; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--border); 
-            margin-top: 80px;
-        }
+        /* GRID STYLE */
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; width: 100%; }
+        .plugin-image { width: 100%; height: auto; display: block; margin-bottom: 25px; border-bottom: 1px solid var(--border); filter: grayscale(0.2); transition: 0.4s; }
+        .plugin-card:hover .plugin-image { filter: grayscale(0); transform: translateY(-5px); }
+        
+        .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+        .card-header h3 { font-family: 'Montserrat'; font-size: 20px; letter-spacing: 8px; color: #fff; margin: 0; text-transform: uppercase; }
+        .plugin-id { font-size: 9px; color: var(--gold); font-weight: 700; opacity: 0.6; }
+        .tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--silver); opacity: 0.4; }
+        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
+        .price { font-family: 'Montserrat'; font-size: 18px; color: #fff; letter-spacing: 2px; }
+
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 80px; }
 
         @media (max-width: 1000px) {
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .bundle-card { grid-template-columns: 1fr; padding: 40px 20px; }
             .store-grid { grid-template-columns: 1fr; }
-            main { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -258,54 +133,48 @@
             </div>
         </div>
     </a>
-
-    <div class="header-module-name">
-        <h2>STORE</h2>
-    </div>
-
+    <div class="header-module-name"><h2>STORE</h2></div>
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
 </header>
 
 <main>
     <section class="bundle-container">
-        <div class="bundle-card">
-            <div class="bundle-visual">
-                </div>
-            <div class="bundle-intel">
+        <article class="bundle-card">
+            <a href="index.html" class="card-link-overlay"></a>
+            
+            <div class="bundle-visual"></div>
+            <div class="bundle-intel" style="position: relative; z-index: 2;">
                 <span class="plugin-id">BDL_001_TOTAL</span>
                 <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: #fff; margin: 10px 0;">TOTAL COLLECTION</h3>
                 <p class="tagline" style="opacity: 0.8;">The Complete Research Environment</p>
-                <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT. The definitive suite for cinematic sound sculpting and regenerative ambience.</p>
+                <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT.</p>
                 <div class="price-row" style="border: none; padding: 0;">
                     <span class="price" style="font-size: 32px;">$249.00</span>
                     <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE_ALL</a>
                 </div>
             </div>
-        </div>
+        </article>
     </section>
 
     <div class="store-grid">
         
         <article class="plugin-card">
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="image-link lemon-squeezy-button">
-                <img src="arecibo_15.10_main.png" alt="ARECIBO">
-            </a>
+            <a href="arecibo.html" class="card-link-overlay"></a>
+            <img src="arecibo_main.png" alt="ARECIBO" class="plugin-image">
             <div class="card-header">
                 <h3>ARECIBO</h3>
                 <span class="plugin-id">001_ISR</span>
             </div>
             <p class="tagline">Interstellar Granular Processor</p>
             <div class="price-row">
-                <span class="price">$79.00</span>
+                <span class="price">$79.99</span>
                 <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
             </div>
-            <a href="arecibo.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
         </article>
 
         <article class="plugin-card">
-            <a href="#" class="image-link lemon-squeezy-button">
-                <img src="ATRIA_v29.4_CLOSED.png" alt="ATRIA">
-            </a>
+            <a href="atria.html" class="card-link-overlay"></a>
+            <img src="ATRIA_v29.4_CLOSED.png" alt="ATRIA" class="plugin-image">
             <div class="card-header">
                 <h3>ATRIA</h3>
                 <span class="plugin-id">002_ARC</span>
@@ -315,13 +184,11 @@
                 <span class="price">$129.00</span>
                 <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
             </div>
-            <a href="atria.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
         </article>
 
         <article class="plugin-card">
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="image-link lemon-squeezy-button">
-                <img src="CATHODE_v14.2.png" alt="CATHODE">
-            </a>
+            <a href="cathode.html" class="card-link-overlay"></a>
+            <img src="CATHODE_v14.2.png" alt="CATHODE" class="plugin-image">
             <div class="card-header">
                 <h3>CATHODE</h3>
                 <span class="plugin-id">003_VTR</span>
@@ -331,13 +198,11 @@
                 <span class="price">$49.99</span>
                 <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
             </div>
-            <a href="cathode.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
         </article>
 
         <article class="plugin-card">
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="image-link lemon-squeezy-button">
-                <img src="EROSION_v15.7.png" alt="EROSION">
-            </a>
+            <a href="erosion.html" class="card-link-overlay"></a>
+            <img src="EROSION_v15.7.png" alt="EROSION" class="plugin-image">
             <div class="card-header">
                 <h3>EROSION</h3>
                 <span class="plugin-id">004_DEG</span>
@@ -347,13 +212,11 @@
                 <span class="price">$49.99</span>
                 <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
             </div>
-            <a href="erosion.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
         </article>
 
         <article class="plugin-card">
-            <a href="#" class="image-link lemon-squeezy-button">
-                <img src="TWILIGHT_v15.15.png" alt="TWILIGHT">
-            </a>
+            <a href="twilight.html" class="card-link-overlay"></a>
+            <img src="TWILIGHT_v15.15.png" alt="TWILIGHT" class="plugin-image">
             <div class="card-header">
                 <h3>TWILIGHT</h3>
                 <span class="plugin-id">005_GEN</span>
@@ -363,7 +226,6 @@
                 <span class="price">$129.00</span>
                 <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
             </div>
-            <a href="twilight.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
         </article>
 
     </div>
@@ -373,7 +235,7 @@
 
 <footer>
     <span>SYSTEM_STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED // ARECIBO_REVALUATED</span>
+    <span>TERMINAL_VERIFIED // LAYER_INTERACTION_ACTIVE</span>
 </footer>
 
 </body>
