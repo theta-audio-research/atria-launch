@@ -27,24 +27,8 @@
         
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
-        
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 18px; 
-            letter-spacing: 12px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        .brand-text p { 
-            font-size: 8px; 
-            letter-spacing: 4px; 
-            color: var(--gold); 
-            margin: 4px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.5; 
-        }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
 
         .header-module-name {
             position: absolute;
@@ -83,9 +67,14 @@
         .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 80px rgba(0, 229, 255, 0.1); }
 
-        .description-box { max-width: 850px; margin: 0 auto 80px auto; border-left: 2px solid var(--cyan); padding-left: 40px; }
+        .description-box { max-width: 850px; margin: 0 auto 60px auto; border-left: 2px solid var(--cyan); padding-left: 40px; }
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
+
+        /* --- SYSTEM NARRATIVE BLOCKS --- */
+        .system-intel { max-width: 900px; margin: 0 auto 80px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid var(--border); padding-top: 40px; }
+        .intel-block h3 { font-family: 'Montserrat'; font-size: 10px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 15px; }
+        .intel-block p { font-size: 13px; opacity: 0.5; line-height: 1.7; margin: 0; }
 
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
@@ -93,7 +82,7 @@
         .module-block { margin-bottom: 60px; }
         .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
         .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block p b { color: var(--cyan); }
+        .module-block b { color: var(--cyan); }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
@@ -108,6 +97,7 @@
         @media (max-width: 1100px) {
             .header-module-name h2 { font-size: 28px; letter-spacing: 16px; }
             .header-module-name .plugin-tagline { font-size: 8px; letter-spacing: 8px; }
+            .system-intel { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 900px) {
@@ -145,63 +135,87 @@
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>TWILIGHT is a living signal environment built for drones, motion, and harmonic atmosphere.</b> 
+        <p class="description-text"><b>TWILIGHT is a regenerative ambience instrument from THETA Audio Research.</b> 
 
-        At its core is <b>THETA</b>, a four-voice binaural engine built for sustained tone and psychoacoustic interaction. Linked together or driven as a coordinated system, the voices move from meditative tonal beds to immense, architectural harmonic fields.
+        Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument. 
 
-        The <b>Signal Lattice</b> turns TWILIGHT from a drone machine into a generative pattern instrument, allowing the signal to evolve into pulsing, stepped repetitions and shifting melodic drift.</p>
+        Instead of behaving like a standard effect or synth, TWILIGHT functions more like a living signal environment — one that can generate, transform, widen, sequence, and finish sound from within the same space.</p>
     </div>
 
+    <section class="system-intel">
+        <div class="intel-block">
+            <h3>RECORDING_AND_CAPTURE</h3>
+            <p>TWILIGHT includes a built-in REC function that can capture the plugin’s output directly to a chosen WAV file. This makes it easy to print long drones, evolving lattice performances, or processed output without leaving the laboratory workflow.</p>
+        </div>
+        <div class="intel-block">
+            <h3>INTERFACE_LOGIC</h3>
+            <p>Following the THETA Void language: dark backgrounds, gold/cyan telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a dedicated per-voice color system to define visual identities within the larger field.</p>
+        </div>
+    </section>
+
     <section class="module-deep-dive">
-        <h3>ENGINE_INTEL</h3>
+        <h3>ENGINE_ARCHITECTURE</h3>
         
         <div class="module-block">
-            <h4>T H E T A</h4>
-            <p>Four-Voice Binaural Engine. THETA is the central organism inside TWILIGHT. It is designed for sustained tone, psychoacoustic motion, and generative evolution. Each voice carries not only pitch information, but <b>beat-rate interaction</b>—the slow internal movement that gives the sound a breathing quality.</p>
+            <h4>T H E T A // THE HEART</h4>
+            <p><b>Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction—internal movement that gives the sound a breathing quality.</p>
+            <p>Voices can function independently as cluster layers or as a linked body that preserves intervals as you shift the field. The <b>Signal Lattice</b> turns this engine into a generative pattern instrument where voices can pulse, step, and swing across probabilistic timelines.</p>
         </div>
 
         <div class="module-block">
-            <h4>HARMONIC RELATIONSHIPS</h4>
-            <p>Voices can be independent clusters or linked bodies. This allowed us to preserve intervallic structures: as you shift the field, notes snap into relationships and the whole four-voice body moves together without losing musical logic. It supports both direct <b>Frequency</b> and <b>Note-based</b> behavior.</p>
+            <h4>D R I F T // HARMONY & ENSEMBLE</h4>
+            <p><b>Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles or add shimmer and cinematic instability.</p>
+            <p>Modes include: <b>UNI, OCT+, OCT-, 5TH, MAJ, MIN, SUS,</b> and <b>CLSTR</b>. It features a humanization system (HUMAN/TRACK/GLIDE) to ensure doubles feel alive rather than machine-locked.</p>
         </div>
 
         <div class="module-block">
-            <h4>SIGNAL LATTICE</h4>
-            <p>Generative Sequencing system. Each voice is given pattern behavior, allowing it to pulse, step, accent, and swing. The ability to have one voice flicker in steps while another holds a slow bloom is what defines the generative emergence of the instrument.</p>
+            <h4>F I E L D // SPATIAL BLOOM</h4>
+            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment. It includes a dedicated <b>SHIMMER</b> control for luminous harmonic lift, creating atmosphere with a vertical dimension.</p>
         </div>
 
         <div class="module-block">
-            <h4>INTERFACE</h4>
-            <p>Designed for relationship-thinking. Each row behaves like its own voice lane, encouraging you to balance pitch against pitch and beat against beat. It is a research environment for building signal fields rather than a rigid synth module.</p>
+            <h4>F A D E // MOTION ENGINE</h4>
+            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats. Beyond simple tremolo, FADE uses <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes, swung pulses, and broken mechanical grooves.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>M A S T E R B U S // OUTPUT MATRIX</h4>
+            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized as a finished stereo field. Features four core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>. This stage binds the layers together before they reach the finishing wall.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>O U T P U T // FINISHING STAGE</h4>
+            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section. Includes the <b>THRU</b> system for processing external audio, a center-neutral <b>TONE</b> tilt shaper, and the final <b>LIMIT</b> boundary. It is designed to catch a dense harmonic field and make it feel intentional and finished.</p>
         </div>
     </section>
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>ENGINE_SPECIFICATIONS</h3>
+            <h3>WHOLE_PLUGIN_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Engine Type</b> Four-voice binaural drone engine</li>
-                <li><b>Pitch Control</b> Frequency-based and note-based operation</li>
-                <li><b>Psychoacoustic Motion</b> Per-voice binaural beat interaction</li>
-                <li><b>Signal Lattice</b> Gate, Pitch, Probability, Velocity, and Swing per voice</li>
-                <li><b>V5 Layer</b> Hybrid processing for loaded audio or external THRU tracks</li>
+                <li><b>Core Engine</b> 4-voice THETA binaural drone engine + V5 sample layer</li>
+                <li><b>Sequencer</b> Signal Lattice [Gate / Pitch / Prob / Velocity / Swing]</li>
+                <li><b>Harmony Modes</b> UNI, OCT+/-, 5TH, MAJ, MIN, SUS, CLSTR</li>
+                <li><b>Master Bus</b> Flanger, Stutter, Reverb, Brick-Wall Limiter</li>
+                <li><b>Signal Flow</b> THETA → DRIFT → V5 → FIELD → FADE → MASTER → OUTPUT</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TELEMETRY</h3>
             <ul class="spec-list">
-                <li><b>Platform</b> macOS [AU / VST3]</li>
-                <li><b>Direct Capture</b> Real-time output recording to WAV via REC function</li>
-                <li><b>Visual Identity</b> Neo-noir HUD with per-voice telemetry color-coding</li>
-                <li><b>Primary Role</b> Drones, harmonic fields, and generative textures</li>
+                <li><b>Platform</b> macOS [AU / VST3] // 64-bit</li>
+                <li><b>Recording</b> Direct output capture to WAV via REC function</li>
+                <li><b>Aesthetic</b> THETA Void [Flat Rendering / Scientific HUD]</li>
+                <li><b>Data Location</b> ~/Library/Audio/Presets/THETA/TWILIGHT</li>
+                <li><b>Manufacturer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
     </section>
 </main>
 
 <footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>SYSTEM_STABLE // 2026</span>
     <span>LAB NOTE #005 // REGENERATION_ACTIVE</span>
 </footer>
 
