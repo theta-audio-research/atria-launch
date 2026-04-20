@@ -27,24 +27,8 @@
         
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
-        
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 18px; 
-            letter-spacing: 12px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        .brand-text p { 
-            font-size: 8px; 
-            letter-spacing: 4px; 
-            color: var(--gold); 
-            margin: 4px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.5; 
-        }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
 
         .header-module-name {
             position: absolute;
@@ -83,19 +67,34 @@
         .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 80px rgba(0, 229, 255, 0.1); }
 
-        .description-box { max-width: 850px; margin: 0 auto 80px auto; border-left: 2px solid var(--cyan); padding-left: 40px; }
+        .description-box { max-width: 850px; margin: 0 auto 60px auto; border-left: 2px solid var(--cyan); padding-left: 40px; }
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
 
+        /* PURCHASE MODULE */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; }
+        .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(0, 229, 255, 0.03); border: 1px solid var(--border); padding: 40px; margin-top: 20px; }
+        .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
+        .authorize-btn { display: block; text-align: center; border: 1px solid var(--cyan); color: var(--cyan); padding: 25px; text-decoration: none; font-weight: 700; font-size: 12px; letter-spacing: 6px; transition: 0.4s; }
+        .authorize-btn:hover { background: var(--cyan); color: var(--void); box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); }
+
         /* --- VISUALS GALLERY --- */
-        .visuals-gallery { margin-bottom: 100px; }
+        .visuals-gallery { margin-bottom: 60px; }
         .gallery-item { margin-bottom: 40px; border: 1px solid var(--border); background: rgba(0, 229, 255, 0.01); padding: 20px; }
         .gallery-label { font-size: 10px; color: var(--cyan); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; display: block; opacity: 0.6; }
         .gallery-img { width: 100%; height: auto; display: block; }
 
-        .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
+        /* --- NARRATIVE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0; }
+
+        /* --- SPECS --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
-        
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
         .spec-list li b { color: var(--cyan); display: block; margin-bottom: 4px; letter-spacing: 1px; }
@@ -131,7 +130,7 @@
 
     <div class="header-module-name">
         <h2>ARECIBO</h2>
-        <p class="plugin-tagline">Interstellar Granular Processor</p>
+        <p class="plugin-tagline">Cinematic Signal-Sculpting Instrument</p>
     </div>
 
     <nav><a href="index.html">RETURN_TO_LAB</a></nav>
@@ -139,17 +138,28 @@
 
 <main>
     <div class="image-container">
-        <span class="gallery-label">Primary Chassis // Closed State</span>
+        <span class="gallery-label">Primary Chassis // Initial State</span>
         <img src="arecibo_closed_1.png" alt="ARECIBO Interface Closed" class="plugin-display">
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>ARECIBO is a cinematic sound-transformation plugin from THETA Audio Research.</b> At its core is a layered source engine and motion chain that moves through THETA Source Array → DRIFT → BREATHE → FIELD → FADE → PAN.
+        <p class="description-text"><b>ARECIBO is a cinematic signal-sculpting instrument built around a layered Source Array.</b> 
 
-        The architecture is built around pre-QUORRA tone shaping, the <b>QUORRA motion engine</b>, and a final Wall Stage for transient control and limiting. 
+        Built around a motion-focused transformation chain, a pre-QUORRA surgical EQ stage, the QUORRA modulation engine, and a final Wall Stage for transient shaping and limiting. Instead of behaving like a generic rack of separate effects, ARECIBO is designed as one continuous transmission system: shape the source, destabilize it, then force it into a controlled boundary.
 
-        Use it to create spectral movement, unstable harmonics, evolving texture, and cinematic transformation across a single continuous chain. ARECIBO does not just color sound — it steers it.</p>
+        At its core, ARECIBO is about movement. The signal flows through the main engine stages — THETA, DRIFT, BREATHE, FIELD, FADE, and PAN — before entering the more surgical output section. That architecture lets the plugin move from subtle spatial drift and spectral focus to pressure, warp, blur, and controlled collapse, all inside a single insert.</p>
     </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Authorization includes VST3/AU formats, macOS compatibility, 
+                and XML research presets.
+            </p>
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
+        </div>
+    </section>
 
     <section class="visuals-gallery">
         <div class="gallery-item">
@@ -158,29 +168,67 @@
         </div>
     </section>
 
+    <section class="module-deep-dive">
+        <h3>SYSTEM_ARCHITECTURE</h3>
+        
+        <div class="module-block">
+            <h4>THE SYSTEM</h4>
+            <p>SOURCE ARRAY is the front end of the instrument — the stage where the source behavior is established before it enters the motion chain. In the current interface, Source Array sits as one of the major top-level sections alongside Receiver Chamber, Tweak Array, and Output Surgery, establishing the plugin’s input character before deeper transformation begins. 
+
+            DRIFT introduces temporal instability and motion. It is the first clear step away from static playback, adding movement and looseness before the signal becomes more atmospheric or structural downstream. BREATHE and FIELD continue that process, pushing the signal toward evolving motion and spatial life rather than fixed tone shaping. FADE and PAN complete the core movement chain before the signal reaches the output transformation stages.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>OUTPUT SURGERY</h4>
+            <p>OUTPUT SURGERY is the pre-QUORRA shaping section. It was specifically reworked to become a fuller, more interactive stage before QUORRA, rather than a simple broad tone stack. The current design direction places a full 8-band EQ here, including HP, LS, Bell 1–4, HS, and LP, so the signal can be frequency-shaped before it is pushed into deeper modulation and final limiting. 
+
+            This section exists because QUORRA responds best when the input has already been sculpted. High-pass and low-pass filtering with resonance/Q, surgical band shaping, and dynamic movement all happen before the signal is destabilized downstream, making the later stages feel more intentional and more dramatic.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>QUORRA</h4>
+            <p>QUORRA is the defining transformation stage in ARECIBO. It sits after Output Surgery and before the final wall stage, acting as the last major character engine before limiting. Its purpose is not subtle correction — it is where the sound becomes animated, unstable, and transmitted. The stage was specifically developed around stronger shuffle, doppler-like motion, flange displacement, sweep movement, and node-focused resonance behavior so the signal feels alive rather than simply processed.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>WALL STAGE</h4>
+            <p>WALL STAGE is the final output control system. It was simplified so there is only one true final limiter stage, with the EQ remaining fully upstream. In its current structure, Wall Stage combines a small transient design section with the final limiter controls: Attack, Sustain, Input, and Ceiling. 
+
+            This makes the final stage feel more like a mastering wall than simple gain into distortion. The transient section shapes what actually hits the limiter, while Input and Ceiling define the final push and hard boundary before output.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>INTERFACE</h4>
+            <p>ARECIBO uses THETA Audio Research’s Void design language: dark backgrounds, flat fills, thin vector treatment, restrained metallic accents, and a scientific control-surface aesthetic. The manual defines this visual system around the Void palette, Montserrat for major UI text, JetBrains Mono for values and technical readouts, and a strict no-gradients / no-drop-shadows approach. 
+
+            The visible UI is built around major subsystem cards such as Source Array, Receiver Chamber, Tweak Array, and Output Surgery, with contextual deeper editing revealed only when needed. That keeps the main view focused while still allowing deeper control when the user wants to push into the internals.</p>
+        </div>
+    </section>
+
     <section class="specs-container">
         <div class="spec-group">
-            <h3>CORE_SYSTEMS</h3>
+            <h3>CORE_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Source Array Engine</b> Layered voice architecture with sample-based source capability and clinical routing.</li>
-                <li><b>Interstellar Motion Chain</b> Spatial transformation via DRIFT, BREATHE, FIELD, FADE, and PAN.</li>
-                <li><b>QUORRA Transformation</b> Advanced stage for warp, shuffle, and node-focused character.</li>
-                <li><b>Pre-QUORRA Shaping</b> Signal preparation stage to define spectral content before entering the motion engine.</li>
-                <li><b>Wall Stage Architecture</b> Transient shaping and final limiter behavior for clinical impact control.</li>
+                <li><b>Signal Flow</b> Source Array → THETA → DRIFT → BREATHE → FIELD → FADE → PAN → Output Surgery → QUORRA → Wall Stage → Output</li>
+                <li><b>Output Surgery</b> 8-band EQ [HP / LS / Bell 1–4 / HS / LP]</li>
+                <li><b>QUORRA Engine</b> Amount, Warp Rate, Warp Depth, Sweep, Node</li>
+                <li><b>Wall Stage</b> Attack, Sustain, Input, Ceiling [Limiter Boundary]</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>SIGNAL_INTEL</h3>
+            <h3>TELEMETRY</h3>
             <ul class="spec-list">
-                <li>Turn static tones into living atmospheres.</li>
-                <li>Add cinematic instability to pads, drones, and vocals.</li>
-                <li>Shape sound before motion, then push it into controlled collapse.</li>
-                <li>Create pressure, blur, drift, and sweep inside one continuous chain.</li>
+                <li><b>Architecture</b> macOS [AU / VST3] // 64-bit</li>
+                <li><b>UI System</b> THETA Void [Flat Rendering / Vector Styling]</li>
+                <li><b>Data Location</b> XML presets stored in ~/Library/Audio/Presets/THETA/ARECIBO</li>
+                <li><b>Aesthetic</b> Scientific HUD Console // Dark Research Styling</li>
             </ul>
         </div>
     </section>
 </main>
+
+<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
