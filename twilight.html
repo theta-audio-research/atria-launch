@@ -28,7 +28,6 @@
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
         
-        /* SHRUNK BRANDING */
         .brand-text h1 { 
             font-family: 'Montserrat'; 
             font-size: 18px; 
@@ -47,7 +46,6 @@
             opacity: 0.5; 
         }
 
-        /* CENTERED MODULE CHASSIS */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -73,7 +71,7 @@
             text-transform: uppercase; 
             margin: 10px 0 0 0; 
             opacity: 0.9; 
-            padding-left: 32px; /* Offsets letter-spacing to center accurately */
+            padding-left: 32px;
         }
 
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
@@ -89,9 +87,17 @@
         .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
         .description-text b { color: #fff; font-weight: 700; }
 
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0 0 15px 0; }
+        .module-block p b { color: var(--cyan); }
+
+        /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
-        
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
         .spec-list li b { color: var(--cyan); display: block; margin-bottom: 4px; letter-spacing: 1px; }
@@ -108,7 +114,6 @@
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
-            .header-module-name .plugin-tagline { padding-left: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -144,34 +149,52 @@
 
         At its core is <b>THETA</b>, a four-voice binaural engine built for sustained tone and psychoacoustic interaction. Linked together or driven as a coordinated system, the voices move from meditative tonal beds to immense, architectural harmonic fields.
 
-        The <b>Signal Lattice</b> turns TWILIGHT from a drone machine into a generative pattern instrument. Editable lanes for gate, pitch, probability, velocity, and swing allow the signal to evolve into pulsing, stepped repetitions and shifting melodic drift.
-
-        Character is anchored by <b>DRIFT</b>—a harmony-doubler reimagined as a "body-and-halo" architecture. It creates lush, expensive-feeling widening via UNI, OCT, 5TH, MAJ, MIN, SUS, and CLSTR interval families.
-
-        The <b>Master Output Section</b> provides final-stage treatment: spatial modulation, luxurious stutter behavior, and a true brick-wall limiter designed to act as a deliberate end stage at the edge of the instrument.
-
-        TWILIGHT is for the space between structure and emergence.</p>
+        The <b>Signal Lattice</b> turns TWILIGHT from a drone machine into a generative pattern instrument, allowing the signal to evolve into pulsing, stepped repetitions and shifting melodic drift.</p>
     </div>
+
+    <section class="module-deep-dive">
+        <h3>ENGINE_INTEL</h3>
+        
+        <div class="module-block">
+            <h4>T H E T A</h4>
+            <p>Four-Voice Binaural Engine. THETA is the central organism inside TWILIGHT. It is designed for sustained tone, psychoacoustic motion, and generative evolution. Each voice carries not only pitch information, but <b>beat-rate interaction</b>—the slow internal movement that gives the sound a breathing quality.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>HARMONIC RELATIONSHIPS</h4>
+            <p>Voices can be independent clusters or linked bodies. This allowed us to preserve intervallic structures: as you shift the field, notes snap into relationships and the whole four-voice body moves together without losing musical logic. It supports both direct <b>Frequency</b> and <b>Note-based</b> behavior.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>SIGNAL LATTICE</h4>
+            <p>Generative Sequencing system. Each voice is given pattern behavior, allowing it to pulse, step, accent, and swing. The ability to have one voice flicker in steps while another holds a slow bloom is what defines the generative emergence of the instrument.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>INTERFACE</h4>
+            <p>Designed for relationship-thinking. Each row behaves like its own voice lane, encouraging you to balance pitch against pitch and beat against beat. It is a research environment for building signal fields rather than a rigid synth module.</p>
+        </div>
+    </section>
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>CORE_SYSTEMS</h3>
+            <h3>ENGINE_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Four-Voice THETA Engine</b> Binaural drone system with interval snapping, note behavior, and psychoacoustic motion.</li>
-                <li><b>Signal Lattice</b> Pattern-driven sequencing with per-voice gate, pitch, probability, velocity, and swing.</li>
-                <li><b>DRIFT Harmony Doubler</b> Body-and-halo architecture for musical thickening and ensemble-style widening.</li>
-                <li><b>V5 Sample Layer + THRU</b> Hybrid processing for loaded audio or external tracks routed through the THETA chain.</li>
-                <li><b>Master Output Matrix</b> Integrated flanger, stutter, and spatial modulation leading to a true brick-wall limiter.</li>
+                <li><b>Engine Type</b> Four-voice binaural drone engine</li>
+                <li><b>Pitch Control</b> Frequency-based and note-based operation</li>
+                <li><b>Psychoacoustic Motion</b> Per-voice binaural beat interaction</li>
+                <li><b>Signal Lattice</b> Gate, Pitch, Probability, Velocity, and Swing per voice</li>
+                <li><b>V5 Layer</b> Hybrid processing for loaded audio or external THRU tracks</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>SPECIFICATIONS</h3>
+            <h3>TELEMETRY</h3>
             <ul class="spec-list">
                 <li><b>Platform</b> macOS [AU / VST3]</li>
-                <li><b>Engine Type</b> Regenerative Ambience / Hybrid Synthesis</li>
-                <li><b>Direct Capture</b> Real-time output recording to WAV via REC function.</li>
-                <li><b>Visual Identity</b> Neo-noir HUD interface with per-voice telemetry color-coding.</li>
+                <li><b>Direct Capture</b> Real-time output recording to WAV via REC function</li>
+                <li><b>Visual Identity</b> Neo-noir HUD with per-voice telemetry color-coding</li>
+                <li><b>Primary Role</b> Drones, harmonic fields, and generative textures</li>
             </ul>
         </div>
     </section>
