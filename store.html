@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STORE | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #06080C; 
+            --gold: #C8A86B; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
+            --cyan: #00E5FF;
+            --ember: #FF5722;
+        }
+        body { 
+            background-color: var(--void); 
+            color: var(--silver); 
+            font-family: 'JetBrains Mono', monospace; 
+            margin: 0; 
+            line-height: 1.6; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- PERSISTENT HARDWARE HEADER --- */
+        header { 
+            padding: 40px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative; 
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .brand-link { text-decoration: none; color: inherit; }
+        .brand-block { display: flex; align-items: center; gap: 20px; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
+
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
+
+        /* --- STORE GRID --- */
+        main { 
+            flex: 1;
+            padding: 80px 60px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+            width: 100%;
+        }
+
+        .plugin-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.4s;
+        }
+
+        .plugin-card:hover {
+            border-color: var(--gold);
+            background: rgba(200, 168, 107, 0.02);
+        }
+
+        /* CLICKABLE IMAGE RACK */
+        .image-link {
+            display: block;
+            width: 100%;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+            transition: 0.4s;
+        }
+        .image-link:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        .image-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(0.2) contrast(1.1);
+            transition: 0.4s;
+        }
+        .image-link:hover img {
+            filter: grayscale(0) contrast(1.2);
+        }
+
+        /* CARD INTEL */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+        .card-header h3 {
+            font-family: 'Montserrat';
+            font-size: 20px;
+            letter-spacing: 8px;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .plugin-id {
+            font-size: 9px;
+            color: var(--gold);
+            font-weight: 700;
+            opacity: 0.6;
+        }
+
+        .tagline {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--silver);
+            opacity: 0.4;
+        }
+
+        .price-row {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+        .price {
+            font-family: 'Montserrat';
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .buy-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 24px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .buy-btn:hover {
+            background: var(--gold);
+            color: var(--void);
+        }
+
+        .detail-link {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--silver);
+            text-decoration: none;
+            opacity: 0.3;
+            margin-top: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .detail-link:hover { opacity: 1; color: var(--gold); }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.3; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--border); 
+            margin-top: 80px;
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
+            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+            .store-grid { grid-template-columns: 1fr; }
+            main { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="brand-link">
+        <div class="brand-block">
+            <div class="brand-text">
+                <h1>THETA</h1>
+                <p>Audio Research & Development</p>
+            </div>
+        </div>
+    </a>
+
+    <div class="header-module-name">
+        <h2>STORE</h2>
+    </div>
+
+    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
+</header>
+
+<main>
+    <div class="store-grid">
+        
+        <article class="plugin-card">
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="image-link lemon-squeezy-button">
+                <img src="ARECIBO_v15.10%20CLOSED.png" alt="ARECIBO">
+            </a>
+            <div class="card-header">
+                <h3>ARECIBO</h3>
+                <span class="plugin-id">001_ISR</span>
+            </div>
+            <p class="tagline">Interstellar Granular Processor</p>
+            <div class="price-row">
+                <span class="price">$49.99</span>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+            </div>
+            <a href="arecibo.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
+        </article>
+
+        <article class="plugin-card">
+            <a href="#" class="image-link lemon-squeezy-button">
+                <img src="ATRIA_v29.4_CLOSED.png" alt="ATRIA">
+            </a>
+            <div class="card-header">
+                <h3>ATRIA</h3>
+                <span class="plugin-id">002_ARC</span>
+            </div>
+            <p class="tagline">Performance-Driven Creative FX Instrument</p>
+            <div class="price-row">
+                <span class="price">$49.99</span>
+                <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+            </div>
+            <a href="atria.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
+        </article>
+
+        <article class="plugin-card">
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="image-link lemon-squeezy-button">
+                <img src="CATHODE_v14.2.png" alt="CATHODE">
+            </a>
+            <div class="card-header">
+                <h3>CATHODE</h3>
+                <span class="plugin-id">003_VTR</span>
+            </div>
+            <p class="tagline">Analog Degradation & Drift Instrument</p>
+            <div class="price-row">
+                <span class="price">$49.99</span>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+            </div>
+            <a href="cathode.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
+        </article>
+
+        <article class="plugin-card">
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="image-link lemon-squeezy-button">
+                <img src="EROSION_v15.7.png" alt="EROSION">
+            </a>
+            <div class="card-header">
+                <h3>EROSION</h3>
+                <span class="plugin-id">004_DEG</span>
+            </div>
+            <p class="tagline">Four-Stage Saturation Engine</p>
+            <div class="price-row">
+                <span class="price">$49.99</span>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+            </div>
+            <a href="erosion.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
+        </article>
+
+        <article class="plugin-card">
+            <a href="#" class="image-link lemon-squeezy-button">
+                <img src="TWILIGHT_v15.15.png" alt="TWILIGHT">
+            </a>
+            <div class="card-header">
+                <h3>TWILIGHT</h3>
+                <span class="plugin-id">005_GEN</span>
+            </div>
+            <p class="tagline">Regenerative Ambience Engine</p>
+            <div class="price-row">
+                <span class="price">$49.99</span>
+                <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+            </div>
+            <a href="twilight.html" class="detail-link">// VIEW_TECHNICAL_DATA</a>
+        </article>
+
+    </div>
+</main>
+
+<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+
+<footer>
+    <span>SYSTEM_STABLE // 2026</span>
+    <span>TERMINAL_VERIFIED // ACQUISITION_READY</span>
+</footer>
+
+</body>
+</html>
