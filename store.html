@@ -46,7 +46,7 @@
 
         /* --- INTERACTIVE CARD LOGIC --- */
         .plugin-card, .bundle-card {
-            position: relative; /* Necessary for absolute overlay */
+            position: relative;
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border);
             padding: 30px;
@@ -61,18 +61,17 @@
             background: rgba(200, 168, 107, 0.02);
         }
 
-        /* GHOST LINK (Covers card) */
         .card-link-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1; /* Below the button */
+            z-index: 1;
             text-decoration: none;
         }
 
-        /* BUTTON (Priority Layer) */
+        /* BUTTON STYLES */
         .buy-btn {
             position: relative;
-            z-index: 2; /* ABOVE the ghost link */
+            z-index: 2;
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
@@ -85,6 +84,15 @@
             transition: 0.3s;
         }
         .buy-btn:hover { background: var(--gold); color: var(--void); }
+
+        /* LOCKED STATE */
+        .btn-locked {
+            border-color: var(--border);
+            color: var(--border);
+            cursor: not-allowed;
+            pointer-events: none; /* Disables click */
+        }
+        .buy-btn:hover.btn-locked { background: transparent; color: var(--border); }
 
         /* BUNDLE STYLE */
         .bundle-container { margin-bottom: 80px; width: 100%; }
@@ -141,7 +149,6 @@
     <section class="bundle-container">
         <article class="bundle-card">
             <a href="index.html" class="card-link-overlay"></a>
-            
             <div class="bundle-visual"></div>
             <div class="bundle-intel" style="position: relative; z-index: 2;">
                 <span class="plugin-id">BDL_001_TOTAL</span>
@@ -150,7 +157,7 @@
                 <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT.</p>
                 <div class="price-row" style="border: none; padding: 0;">
                     <span class="price" style="font-size: 32px;">$249.00</span>
-                    <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE_ALL</a>
+                    <a href="#" class="buy-btn btn-locked">COMING SOON</a>
                 </div>
             </div>
         </article>
@@ -168,7 +175,7 @@
             <p class="tagline">Interstellar Granular Processor</p>
             <div class="price-row">
                 <span class="price">$79.99</span>
-                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
             </div>
         </article>
 
@@ -182,7 +189,7 @@
             <p class="tagline">Performance-Driven Creative FX Instrument</p>
             <div class="price-row">
                 <span class="price">$129.00</span>
-                <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
             </div>
         </article>
 
@@ -224,7 +231,7 @@
             <p class="tagline">Regenerative Ambience Engine</p>
             <div class="price-row">
                 <span class="price">$129.00</span>
-                <a href="#" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
             </div>
         </article>
 
@@ -235,7 +242,7 @@
 
 <footer>
     <span>SYSTEM_STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED // LAYER_INTERACTION_ACTIVE</span>
+    <span>TERMINAL_VERIFIED // STATUS_LOCKED</span>
 </footer>
 
 </body>
