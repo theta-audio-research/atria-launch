@@ -27,27 +27,9 @@
         
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
-        
-        /* SHRUNK BRANDING */
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 18px; 
-            letter-spacing: 12px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        .brand-text p { 
-            font-size: 8px; 
-            letter-spacing: 4px; 
-            color: var(--gold); 
-            margin: 4px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.5; 
-        }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
 
-        /* CENTERED MODULE CHASSIS */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -73,7 +55,7 @@
             text-transform: uppercase; 
             margin: 10px 0 0 0; 
             opacity: 0.9; 
-            padding-left: 32px; /* Offsets letter-spacing to center accurately */
+            padding-left: 32px;
         }
 
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
@@ -90,16 +72,24 @@
         .description-text b { color: #fff; font-weight: 700; }
 
         /* PURCHASE MODULE */
-        .acquisition-anchor { margin: 0 auto 120px auto; max-width: 600px; }
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; }
         .lab-header { font-size: 10px; letter-spacing: 2px; color: var(--gold); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(0, 229, 255, 0.03); border: 1px solid var(--border); padding: 40px; margin-top: 20px; }
         .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
         .authorize-btn { display: block; text-align: center; border: 1px solid var(--cyan); color: var(--cyan); padding: 25px; text-decoration: none; font-weight: 700; font-size: 12px; letter-spacing: 6px; transition: 0.4s; }
         .authorize-btn:hover { background: var(--cyan); color: var(--void); box-shadow: 0 0 30px rgba(0, 229, 255, 0.2); }
 
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0 0 15px 0; }
+        .module-block p b { color: var(--cyan); }
+
+        /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
-        
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
         .spec-list li b { color: var(--cyan); display: block; margin-bottom: 4px; letter-spacing: 1px; }
@@ -116,7 +106,6 @@
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
-            .header-module-name .plugin-tagline { padding-left: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -148,14 +137,11 @@
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>CATHODE treats degradation as one coherent system.</b> Instead of generic lo-fi modules, it operates on the premise that the sound is the transmission, and the plugin is the unstable machine carrying it.
+        <p class="description-text"><b>CATHODE treats degradation as one coherent system.</b> 
 
-        At the core of CATHODE is a signal path built around heat, instability, interruption, and control. It can add tube-like weight and asymmetry, induce worn-playback movement, capture fractured glitch states, and push material into forms of failure that still feel musical. 
+        Instead of generic lo-fi modules, it operates on the premise that the sound is the transmission, and the plugin is the unstable machine carrying it. At the core of CATHODE is a signal path built around heat, instability, interruption, and control. 
 
-        What sets CATHODE apart is the identity of its modules:
-        • <b>Receiver:</b> head wear, lock stress, AGC breathing, and contact failure.
-        • <b>Phosphor:</b> thermal heat, fatigue, bloom, and monitor chemistry.
-        • <b>Interference:</b> rival signals, takeover moments, and static seizure.</p>
+        It can add tube-like weight and asymmetry, induce worn-playback movement, capture fractured glitch states, and push material into forms of failure that still feel musical.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -166,6 +152,42 @@
                 and Factory Presets.
             </p>
             <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>MODULE_DETAIL</h3>
+        
+        <div class="module-block">
+            <h4>LOCK</h4>
+            <p>Unstable continuity, sync stress, and relock behavior. LOCK is the part of CATHODE that makes audio feel like a signal that cannot quite hold together. It is not just movement. It is continuity under stress.</p>
+            <p>At its core, LOCK is about the behavior of a receiver trying to remain coherent while vertical hold, timing, and slip start to fail. The composite LOCK control combines: <b>WARP</b> (the bending of continuity), <b>SLIP</b> (alignment sliding), and <b>RECOVER</b> (the return-to-composition path).</p>
+        </div>
+
+        <div class="module-block">
+            <h4>HEAD</h4>
+            <p>Wear, drift, and imperfect contact. This module is about mechanical uncertainty: worn contact, alignment drift, and mistracking. The goal was to move away from rhythmic pumping and toward irregular, physical instability.</p>
+            <p>The composite HEAD control combines: <b>WEAR</b> (aging of the path), <b>DRIFT</b> (unstable slow wander), and <b>MIX</b> (amount of folded-back damage).</p>
+        </div>
+
+        <div class="module-block">
+            <h4>RECEIVER</h4>
+            <p>Automatic gain behavior and continuity failure. This section combines AGC compensation and dropout failure. <b>AGC</b> (Automatic Gain Control) creates brightness pump and panel breathing via <b>PUMP</b> and <b>SPEED</b>. <b>DROP</b> handles broken continuity, moving from missing rows to complete blackout via <b>RATE</b> and <b>DEPTH</b>.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>PHOSPHOR</h4>
+            <p>Heat, fatigue, width, and display chemistry. This is where the plugin starts to feel aged and luminous. <b>AGE</b> combines phosphor fatigue (<b>DULL</b>) and signal <b>LOSS</b>. <b>HEAT</b> pushes the chemistry and bloom via <b>WARM</b> and presence <b>BUMP</b>. Includes <b>WIDTH</b> smear and <b>MIX</b> controls.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>INTERFERENCE</h4>
+            <p>Bursts, static, competing stations, and takeover. Developed around the "dueling stations" concept. <b>BURST</b> controls incident behavior, <b>NOISE</b> governs the contamination bed, and <b>COMPETE</b> determines how aggressively the loaded rival station fights for the channel. Includes <b>TUNE</b> (receiver position) and <b>LOAD/CLEAR</b> for rival signals.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>TRANSIENT</h4>
+            <p>Attack, sustain, and physical impact. A surgical shaping module used to keep broken systems punchy. <b>ATTACK</b> pushes the front edge, <b>SUSTAIN</b> defines the body length, and <b>MIX</b> handles the final shape-control balance.</p>
         </div>
     </section>
 
