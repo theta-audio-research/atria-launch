@@ -27,27 +27,9 @@
         
         .brand-link { text-decoration: none; color: inherit; }
         .brand-block { display: flex; align-items: center; gap: 20px; }
-        
-        /* SHRUNK BRANDING */
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 18px; 
-            letter-spacing: 12px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        .brand-text p { 
-            font-size: 8px; 
-            letter-spacing: 4px; 
-            color: var(--gold); 
-            margin: 4px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.5; 
-        }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
 
-        /* CENTERED MODULE CHASSIS */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -73,7 +55,7 @@
             text-transform: uppercase; 
             margin: 10px 0 0 0; 
             opacity: 0.9; 
-            padding-left: 32px; /* Offsets the letter-spacing of the last char to center accurately */
+            padding-left: 32px;
         }
 
         nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
@@ -96,9 +78,17 @@
         .authorize-btn { display: block; text-align: center; border: 1px solid var(--ember); color: var(--ember); padding: 25px; text-decoration: none; font-weight: 700; font-size: 12px; letter-spacing: 6px; transition: 0.4s; }
         .authorize-btn:hover { background: var(--ember); color: var(--void); box-shadow: 0 0 30px rgba(255, 87, 34, 0.2); }
 
+        /* --- NARRATIVE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0; }
+        .module-block b { color: var(--ember); }
+
+        /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
-        
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
         .spec-list li b { color: var(--ember); display: block; margin-bottom: 4px; letter-spacing: 1px; }
@@ -106,16 +96,10 @@
 
         footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
 
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 28px; letter-spacing: 16px; }
-            .header-module-name .plugin-tagline { font-size: 8px; letter-spacing: 8px; }
-        }
-
         @media (max-width: 900px) {
             header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
-            .header-module-name .plugin-tagline { padding-left: 8px; }
             main { padding: 0 20px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
         }
@@ -147,11 +131,11 @@
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>EROSION treats degradation as a physical process.</b> Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface.
+        <p class="description-text"><b>EROSION treats degradation as a physical process.</b> 
 
-        Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment. The four-voice engine covers the full spectrum of nonlinear transformation—from invisible germanium warmth to aggressive tube destruction.
+        Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface. Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment. 
 
-        Character is anchored by the <b>GRIME XY pad</b>—a functional surface that simultaneously sets tube character (Pentode, Triode, 12AT7) and drives performance effects like Grain Scatter and Stutter Gate.</p>
+        The engine covers the full spectrum of nonlinear transformation—from invisible germanium warmth to aggressive vacuum tube destruction.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -165,43 +149,53 @@
         </div>
     </section>
 
+    <section class="module-deep-dive">
+        <h3>SYSTEM_ARCHITECTURE</h3>
+        
+        <div class="module-block">
+            <h4>THE SYSTEM</h4>
+            <p>EROSION is a nonlinear signal environment built around four distinct analog modeling engines: <b>DISTRESS</b>, <b>AMBER</b>, <b>GRIME</b>, and <b>GRIT</b>. It treats saturation not as a simple effect, but as a physical process of material degradation. The internal routing architecture allows the four voices to be deployed in <b>Series</b> for compound transformation, an <b>A/B Split</b> for parallel balancing, or full <b>Parallel Summing</b> with independent phase control.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>INTERFACE</h4>
+            <p>Following the THETA Void design language, the EROSION interface is a focused research terminal utilizing flat rendering and scientific telemetry. Control is anchored by a <b>dual-concentric knob architecture</b> with brightness-graded value arcs, providing immediate visual feedback of signal stress. The primary interaction surface is the multi-functional <b>GRIME XY Heat Pad</b>, designed for performance-grade control over tube character and the associated performance buffers.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>ANALOG MODELS [STAGES 1 & 2]</h4>
+            <p><b>DISTRESS [GERMANIUM]</b> is a transistor compressor-saturator model featuring asymmetric clipping and unpredictable harmonic crunch, ideal for adding "hair" and instability to transients. <b>AMBER [TAPE]</b> provides frequency-dependent tape saturation, utilizing a tilt-weighted model to simulate the tonal softening and compression characteristics of vintage transport paths.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>ANALOG MODELS [STAGES 3 & 4]</h4>
+            <p><b>GRIME [TUBE]</b> is a three-path vacuum tube simulation allowing users to move between Pentode, Triode, and 12AT7 topologies. It is the most reactive stage in the engine, responding dynamically to input gain and XY positioning. <b>GRIT [TANH]</b> acts as the final clinical stage, utilizing a high-precision Tanh soft-clipping model to add a clean edge and harmonic density.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>XY PERFORMANCE</h4>
+            <p>Beyond pure saturation, EROSION includes three performance-driven buffers mapped to the XY movement: <b>Grain Scatter</b> utilizes micro-granular time-shifting to create harmonic smear; <b>Stutter Gate</b> applies physical drag-velocity rhythm, chopping the signal based on speed of interaction; and <b>Feedback Smear</b> introduces a resonant comb filter that feeds directly back into the tube stages.</p>
+        </div>
+    </section>
+
     <section class="specs-container">
         <div class="spec-group">
-            <h3>ANALOG_MODELS</h3>
+            <h3>CORE_LOGIC</h3>
             <ul class="spec-list">
-                <li><b>DISTRESS [GERMANIUM]</b> Transistor compressor-saturator with asymmetric clipping and unpredictable harmonic crunch.</li>
-                <li><b>AMBER [TAPE]</b> Tape saturation with frequency-dependent tilt weighting.</li>
-                <li><b>GRIME [TUBE]</b> Three-path Tubesimulation (Pentode, Triode, 12AT7) driven by an XY heat pad.</li>
-                <li><b>GRIT [TANH]</b> Symmetrical soft-clipping waveshaper for clean edge and presence.</li>
+                <li><b>Routing Modes</b> Series, A/B Split, and Parallel Summing with Phase Inv.</li>
+                <li><b>Oversampling</b> Selectable 2x / 4x / 8x High-Definition Linear Phase.</li>
+                <li><b>Performance Buffer</b> XY-driven Grain Scatter and Stutter Gate logic.</li>
+                <li><b>Output Wall</b> Composite Tanh Clipper + Brick-wall Safety Limiter.</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>XY_PERFORMANCE</h3>
+            <h3>TELEMETRY</h3>
             <ul class="spec-list">
-                <li><b>Grain Scatter</b> Time-scattered micro-grains with subtle pitch randomization and swarm density control.</li>
-                <li><b>Stutter Gate</b> Physical drag-velocity rhythm. Signal chops into patterns based on movement.</li>
-                <li><b>Feedback Smear</b> Resonant comb filtering with self-oscillating feedback feeding the tube stages.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>SIGNAL_ROUTING</h3>
-            <ul class="spec-list">
-                <li><b>Series</b> Sequential chain (Distress → Amber → Grime → Grit) for compound character development.</li>
-                <li><b>A/B Split</b> Parallel paths (Distress/Amber vs Grime/Grit) for character balancing.</li>
-                <li><b>Parallel Summing</b> Independent level and phase control for all four modules feeding a master summation.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Platform</b> macOS [AU / VST3] // 64-bit Architecture</li>
-                <li><b>Oversampling</b> Selectable OFF / 2x / 4x / 8x [Per-Preset]</li>
-                <li><b>Latency</b> Zero [oversampling adds minimal unreported latency]</li>
-                <li><b>Output Stage</b> Composite Compressor + Tanh Soft Clipper + Brick-wall Safety Limiter</li>
-                <li><b>Interface</b> Concentric Knobs with Brightness-Graded Value Arcs</li>
+                <li><b>Architecture</b> macOS [AU / VST3] // 64-bit</li>
+                <li><b>Interface</b> THETA Void [Flat Vector Styling / Arced Value Readouts]</li>
+                <li><b>Input/Output</b> Level-matched signal path with global bypass.</li>
+                <li><b>Developer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
     </section>
