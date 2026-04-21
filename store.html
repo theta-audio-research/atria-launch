@@ -13,6 +13,7 @@
             --border: #1A1B23; 
             --cyan: #00E5FF;
         }
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--void); 
             color: var(--silver); 
@@ -53,22 +54,12 @@
             display: flex;
             flex-direction: column;
             transition: 0.4s;
-            cursor: pointer;
         }
+        .plugin-card:hover, .bundle-card:hover { border-color: rgba(200, 168, 107, 0.5); background: rgba(200, 168, 107, 0.02); }
 
-        .plugin-card:hover, .bundle-card:hover {
-            border-color: rgba(200, 168, 107, 0.5);
-            background: rgba(200, 168, 107, 0.02);
-        }
+        .card-link-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; text-decoration: none; }
 
-        .card-link-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            text-decoration: none;
-        }
-
-        /* BUTTON STYLES */
+        /* BUTTONS */
         .buy-btn {
             position: relative;
             z-index: 2;
@@ -82,23 +73,19 @@
             text-decoration: none;
             text-transform: uppercase;
             transition: 0.3s;
+            text-align: center;
         }
         .buy-btn:hover { background: var(--gold); color: var(--void); }
 
-        /* LOCKED STATE */
-        .btn-locked {
-            border-color: var(--border);
-            color: var(--border);
-            cursor: not-allowed;
-            pointer-events: none; /* Disables click */
-        }
-        .buy-btn:hover.btn-locked { background: transparent; color: var(--border); }
+        /* NOTIFY STATE */
+        .btn-notify { border-color: var(--silver); color: var(--silver); opacity: 0.6; cursor: pointer; }
+        .btn-notify:hover { border-color: var(--cyan); color: var(--cyan); background: transparent; opacity: 1; }
 
         /* BUNDLE STYLE */
         .bundle-container { margin-bottom: 80px; width: 100%; }
         .bundle-card { 
             border: 1px solid var(--gold); 
-            padding: 60px; 
+            padding: 60 -px; 
             display: grid; 
             grid-template-columns: 1.5fr 1fr; 
             gap: 60px; 
@@ -120,13 +107,55 @@
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
         .price { font-family: 'Montserrat'; font-size: 18px; color: #fff; letter-spacing: 2px; }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 80px; }
+        /* --- NOTIFICATION PORTAL --- */
+        .notify-section {
+            padding: 100px 60px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 229, 255, 0.01);
+        }
+        .notify-header { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 8px; color: var(--cyan); text-transform: uppercase; margin-bottom: 20px; }
+        .notify-desc { font-size: 11px; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; text-align: center; }
+        
+        .notify-form { display: flex; gap: 0; width: 100%; max-width: 500px; border: 1px solid var(--border); }
+        .notify-input { 
+            flex: 1; 
+            background: transparent; 
+            border: none; 
+            padding: 20px; 
+            color: #fff; 
+            font-family: 'JetBrains Mono'; 
+            font-size: 11px; 
+            letter-spacing: 1px; 
+            outline: none;
+        }
+        .notify-submit { 
+            background: var(--border); 
+            color: var(--cyan); 
+            border: none; 
+            padding: 0 30px; 
+            font-family: 'Montserrat'; 
+            font-weight: 700; 
+            font-size: 10px; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .notify-submit:hover { background: var(--cyan); color: var(--void); }
+
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
 
         @media (max-width: 1000px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
+            header { padding: 30px 20px; flex-direction: column; gap: 20px; }
             .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
             .bundle-card { grid-template-columns: 1fr; padding: 40px 20px; }
             .store-grid { grid-template-columns: 1fr; }
+            .notify-form { flex-direction: column; border: none; gap: 10px; }
+            .notify-input { border: 1px solid var(--border); }
+            .notify-submit { padding: 20px; }
         }
     </style>
 </head>
@@ -157,7 +186,7 @@
                 <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT.</p>
                 <div class="price-row" style="border: none; padding: 0;">
                     <span class="price" style="font-size: 32px;">$249.00</span>
-                    <a href="#" class="buy-btn btn-locked">COMING SOON</a>
+                    <a href="#notification-portal" class="buy-btn btn-notify">NOTIFY_UPON_RELEASE</a>
                 </div>
             </div>
         </article>
@@ -175,7 +204,7 @@
             <p class="tagline">Interstellar Granular Processor</p>
             <div class="price-row">
                 <span class="price">$79.99</span>
-                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
             </div>
         </article>
 
@@ -189,7 +218,7 @@
             <p class="tagline">Performance-Driven Creative FX Instrument</p>
             <div class="price-row">
                 <span class="price">$129.00</span>
-                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
             </div>
         </article>
 
@@ -231,18 +260,27 @@
             <p class="tagline">Regenerative Ambience Engine</p>
             <div class="price-row">
                 <span class="price">$129.00</span>
-                <a href="#" class="buy-btn btn-locked">COMING SOON</a>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
             </div>
         </article>
 
     </div>
 </main>
 
+<section class="notify-section" id="notification-portal">
+    <h3 class="notify-header">RESEARCH_MAILING_LIST</h3>
+    <p class="notify-desc">Register your identity to receive transmission alerts upon flagship module authorization.</p>
+    <form class="notify-form">
+        <input type="email" class="notify-input" placeholder="ENTER_EMAIL_ADDRESS..." required>
+        <button type="submit" class="notify-submit">SUBMIT_INTEL</button>
+    </form>
+</section>
+
 <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 
 <footer>
     <span>SYSTEM_STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED // STATUS_LOCKED</span>
+    <span>TERMINAL_VERIFIED // SUBSCRIPTION_ACTIVE</span>
 </footer>
 
 </body>
