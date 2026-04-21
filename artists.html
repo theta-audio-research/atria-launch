@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTISTS | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #06080C; 
+            --gold: #C8A86B; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
+            --cyan: #00E5FF;
+        }
+        body { 
+            background-color: var(--void); 
+            color: var(--silver); 
+            font-family: 'JetBrains Mono', monospace; 
+            margin: 0; 
+            line-height: 1.6; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- PERSISTENT HARDWARE HEADER --- */
+        header { 
+            padding: 40px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative; 
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .brand-link { text-decoration: none; color: inherit; }
+        .brand-block { display: flex; align-items: center; gap: 20px; }
+        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
+        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
+
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
+        nav a:hover { background: var(--gold); color: var(--void); }
+
+        /* --- ARTIST LISTING (LANDSCAPE) --- */
+        main { 
+            flex: 1;
+            padding: 80px 60px; 
+            max-width: 1600px; 
+            margin: 0 auto; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .artist-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Stacks banners vertically */
+            gap: 80px;
+            width: 100%;
+        }
+
+        .personnel-file {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Image wider than text */
+            gap: 0; /* Flush alignment */
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border);
+            transition: 0.4s;
+            position: relative;
+            align-items: stretch;
+        }
+
+        .personnel-file:hover {
+            border-color: rgba(0, 229, 255, 0.5);
+            background: rgba(0, 229, 255, 0.02);
+            box-shadow: 0 0 60px rgba(0, 229, 255, 0.05);
+        }
+
+        /* SPECIMEN PHOTO (LANDSCAPE OBSERVATION BAY) */
+        .specimen-photo {
+            width: 100%;
+            background: var(--void);
+            border-right: 1px solid var(--border);
+            overflow: hidden;
+            filter: grayscale(1) contrast(1.2);
+            transition: 0.5s ease-in-out;
+            position: relative;
+        }
+        .personnel-file:hover .specimen-photo {
+            filter: grayscale(0) contrast(1.1);
+            border-color: var(--cyan);
+        }
+        .specimen-photo img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+        }
+        /* Static effect on photo */
+        .specimen-photo::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* PERSONNEL DATA (Right side block) */
+        .file-data {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .file-data h3 {
+            font-family: 'Montserrat';
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: #fff;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+        }
+        .file-role {
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: block;
+            opacity: 0.8;
+            font-weight: 700;
+        }
+        .file-bio {
+            font-size: 14px;
+            opacity: 0.6;
+            line-height: 1.9;
+            margin-bottom: auto; /* Pushes modules to bottom */
+            padding-bottom: 40px;
+        }
+
+        /* AUTHORIZED MODULES */
+        .authorized-modules {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+        .modules-label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .module-tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .module-tag {
+            font-size: 10px;
+            letter-spacing: 1px;
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            color: var(--silver);
+            text-decoration: none;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.01);
+        }
+        .module-tag:hover {
+            border-color: var(--gold);
+            color: #fff;
+            background: rgba(200, 168, 107, 0.05);
+        }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.3; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--border); 
+            margin-top: 80px;
+        }
+
+        @media (max-width: 1200px) {
+            .file-data { padding: 30px; }
+            .file-data h3 { font-size: 18px; letter-spacing: 6px; }
+        }
+
+        @media (max-width: 1000px) {
+            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
+            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+            .header-module-name h2 { font-size: 24px; letter-spacing: 12px; }
+            main { padding: 40px 20px; }
+            .artist-grid { gap: 40px; }
+            .personnel-file { grid-template-columns: 1fr; }
+            .specimen-photo { border-right: none; border-bottom: 1px solid var(--border); aspect-ratio: 16/9; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="brand-link">
+        <div class="brand-block">
+            <div class="brand-text">
+                <h1>THETA</h1>
+                <p>Audio Research & Development</p>
+            </div>
+        </div>
+    </a>
+
+    <div class="header-module-name">
+        <h2>AFFILIATES</h2>
+    </div>
+
+    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
+</header>
+
+<main>
+    <div class="artist-grid">
+        
+        <article class="personnel-file">
+            <div class="specimen-photo">
+                </div>
+            <div class="file-data">
+                <span class="file-role">Lead Research Operative // Deployment Specialist</span>
+                <h3>ARTIST_NAME_01</h3>
+                <p class="file-bio">
+                    Technical sound designer and modular synthesist. Their work focuses on granular manipulation and the development of immersive, spatial ambient structures within complex film scores.
+                </p>
+                <div class="authorized-modules">
+                    <span class="modules-label">DEPLOYED_MODULES</span>
+                    <div class="module-tag-list">
+                        <a href="arecibo.html" class="module-tag">001_ISR</a>
+                        <a href="twilight.html" class="module-tag">005_GEN</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="personnel-file">
+            <div class="specimen-photo">
+                </div>
+            <div class="file-data">
+                <span class="file-role">Signal Degradation Expert // Nonlinear Theory</span>
+                <h3>ARTIST_NAME_02</h3>
+                <p class="file-bio">
+                    Composer and mixing engineer. Utilizing analog circuit models to explore the emotional boundary between sterile digital precision and controlled mechanical failure.
+                </p>
+                <div class="authorized-modules">
+                    <span class="modules-label">DEPLOYED_MODULES</span>
+                    <div class="module-tag-list">
+                        <a href="cathode.html" class="module-tag">003_VTR</a>
+                        <a href="erosion.html" class="module-tag">004_DEG</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<footer>
+    <span>RESEARCH_NETWORK_STABLE // 2026</span>
+    <span>AFFILIATE_CLEARANCE_LEVEL_01 // STUDIO_OBSERVATION</span>
+</footer>
+
+</body>
+</html>
