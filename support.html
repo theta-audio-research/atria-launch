@@ -4,56 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPPORT | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --void: #06080C; 
-            --gold: #C8A86B; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
         }
+        
         body { 
             background-color: var(--void); 
-            color: var(--silver); 
+            color: var(--secondary); 
             font-family: 'JetBrains Mono', monospace; 
             margin: 0; 
             line-height: 1.6; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* --- PERSISTENT HARDWARE HEADER --- */
-        header { 
-            padding: 40px 60px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: relative; 
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .brand-link { text-decoration: none; color: inherit; }
-        .brand-block { display: flex; align-items: center; gap: 20px; }
-        
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 18px; 
-            letter-spacing: 12px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            opacity: 0.8;
-        }
-        .brand-text p { 
-            font-size: 8px; 
-            letter-spacing: 4px; 
-            color: var(--gold); 
-            margin: 4px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.5; 
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -62,92 +59,96 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            pointer-events: none;
         }
         .header-module-name h2 {
             font-family: 'Montserrat';
-            font-size: 42px; 
-            letter-spacing: 32px; 
-            color: #fff;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
             text-transform: uppercase;
             margin: 0;
-            text-shadow: 0 0 20px rgba(200, 168, 107, 0.1);
+            padding-left: 24px;
         }
         .header-module-name .plugin-tagline { 
-            font-size: 10px; 
-            letter-spacing: 12px; 
-            color: var(--gold); 
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
             text-transform: uppercase; 
-            margin: 10px 0 0 0; 
-            opacity: 0.9; 
-            padding-left: 32px;
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
         }
 
-        nav a { 
-            color: var(--gold); 
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
             text-decoration: none; 
             font-size: 10px; 
             letter-spacing: 4px; 
             font-weight: 700; 
-            border: 1px solid var(--border); 
-            padding: 12px 24px; 
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
             transition: 0.3s; 
+            text-transform: uppercase;
         }
-        nav a:hover { background: var(--gold); color: var(--void); }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
 
         /* --- MAIN SUPPORT CONTENT --- */
         main { 
             flex: 1;
-            padding: 80px 60px; 
+            padding: 40px 60px; 
             max-width: 1000px; 
             margin: 0 auto; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 100%;
         }
 
         .support-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px;
             width: 100%;
-            margin-top: 40px;
         }
 
         .service-box {
-            background: rgba(200, 168, 107, 0.02);
-            border: 1px solid var(--border);
+            background: rgba(220, 205, 191, 0.01);
+            border: 1px solid var(--charcoal);
             padding: 40px;
             transition: 0.4s;
+            display: flex;
+            flex-direction: column;
         }
         .service-box:hover {
-            border-color: var(--gold);
-            background: rgba(200, 168, 107, 0.04);
+            border-color: var(--accent);
+            background: rgba(220, 205, 191, 0.03);
+            transform: translateY(-2px);
         }
 
         .service-box h3 {
             font-family: 'Montserrat';
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 4px;
-            color: var(--gold);
+            color: var(--accent);
             text-transform: uppercase;
             margin-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--charcoal);
             padding-bottom: 15px;
         }
 
         .service-box p {
             font-size: 13px;
-            opacity: 0.6;
+            color: var(--secondary);
             margin-bottom: 30px;
             line-height: 1.8;
+            flex: 1;
         }
 
         /* CONTACT CTA */
         .contact-link {
             display: block;
             text-align: center;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            border: 1px solid var(--accent);
+            color: var(--accent);
             padding: 20px;
             text-decoration: none;
             font-weight: 700;
@@ -157,25 +158,28 @@
             text-transform: uppercase;
         }
         .contact-link:hover {
-            background: var(--gold);
+            background: var(--accent);
             color: var(--void);
-            box-shadow: 0 0 30px rgba(200, 168, 107, 0.2);
         }
 
         footer { 
             padding: 40px 60px; 
             font-size: 9px; 
             letter-spacing: 6px; 
-            opacity: 0.3; 
+            opacity: 0.4; 
             display: flex; 
             justify-content: space-between; 
-            border-top: 1px solid var(--border); 
+            border-top: 1px solid var(--charcoal); 
+        }
+
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
+            nav.nav-terminal { padding: 10px 20px; }
         }
 
         @media (max-width: 900px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
-            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
-            .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
+            .header-module-name { display: none; }
             .support-grid { grid-template-columns: 1fr; }
             main { padding: 40px 20px; }
         }
@@ -183,14 +187,9 @@
 </head>
 <body>
 
-<header>
-    <a href="index.html" class="brand-link">
-        <div class="brand-block">
-            <div class="brand-text">
-                <h1>THETA</h1>
-                <p>Audio Research & Development</p>
-            </div>
-        </div>
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
 
     <div class="header-module-name">
@@ -198,8 +197,11 @@
         <p class="plugin-tagline">Technical Service Terminal</p>
     </div>
 
-    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
-</header>
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
 
 <main>
     <div class="support-grid">
@@ -219,7 +221,7 @@
 
 <footer>
     <span>COMM_STATUS: STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED</span>
+    <span>TERMINAL_VERIFIED // SYSTEM_STABLE</span>
 </footer>
 
 </body>
