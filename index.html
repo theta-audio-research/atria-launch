@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THETA | Laboratory Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --void: #000000; 
-            --gold: #C8A86B; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
+            --structure: #B0B2B7; /* Light Structure Gray */
+            --secondary: #81848A; /* Secondary Text Gray */
+            --charcoal: #54575C;  /* Dark Emblem Charcoal */
+            --accent: #DCCDBF;    /* Muted Champagne / Stone */
+            --stroke: #CFC5B6;    /* Pale Warm Accent Stroke */
         }
         
         body { 
             background-color: var(--void); 
-            color: var(--silver); 
+            color: var(--secondary); 
             font-family: 'JetBrains Mono', monospace; 
             margin: 0; 
             min-height: 100vh; 
@@ -30,7 +32,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--charcoal);
             background: var(--void);
             position: sticky;
             top: 0;
@@ -43,43 +45,33 @@
             align-items: center;
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
             backface-visibility: hidden;
-            -webkit-font-smoothing: subpixel-antialiased;
         }
-        
-        .header-logo-link:hover { 
-            transform: scale(1.08);
-        }
-        
-        .header-logo-link img { 
-            height: 100%; 
-            width: auto; 
-            display: block;
-        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
-            color: var(--gold); 
+            color: var(--accent); 
             text-decoration: none; 
             font-size: 10px; 
             letter-spacing: 4px; 
             font-weight: 700; 
-            border: 1px solid var(--border); 
+            border: 1px solid var(--charcoal); 
             padding: 10px 20px; 
             transition: 0.3s; 
             text-transform: uppercase;
         }
-        .nav-links a:hover { background: var(--gold); color: var(--void); }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- HERO SECTION (Dead Space Stripped) --- */
+        /* --- HERO SECTION (Compressed) --- */
         header.hero-section { 
-            /* Top padding removed to snap logo to header border */
             padding: 0 60px 10px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             text-align: center;
             background: var(--void);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--charcoal);
         }
 
         .hero-logo-container {
@@ -88,21 +80,12 @@
             transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
             backface-visibility: hidden;
         }
-        
-        .hero-logo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .hero-logo-container:hover {
-            transform: scale(1.03);
-        }
+        .hero-logo-container img { width: 100%; height: auto; display: block; }
+        .hero-logo-container:hover { transform: scale(1.03); }
 
-        /* --- MODULE LIST (Dead Space Stripped) --- */
+        /* --- MODULE LIST --- */
         main { 
             flex: 1; 
-            /* Reduced vertical padding to snap list to hero border */
             padding: 10px 60px 60px 60px; 
             display: flex; 
             flex-direction: column; 
@@ -119,37 +102,38 @@
             padding: 25px 40px; 
             width: 100%;
             max-width: 900px;
-            border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
+            border-bottom: 1px solid rgba(84, 87, 92, 0.3); /* Charcoal opacity */
             transition: 0.4s;
         }
 
         .node-row:hover { 
-            background: rgba(200, 168, 107, 0.03);
-            border-bottom: 1px solid var(--gold); 
+            background: rgba(220, 205, 191, 0.03); /* Subtle Champagne Tint */
+            border-bottom: 1px solid var(--stroke); 
             transform: translateX(30px); 
         }
         
-        .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
+        .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.6; }
         .node-name { 
             font-family: 'Montserrat'; 
             font-size: 38px; 
             letter-spacing: 16px; 
-            color: #fff; 
+            color: var(--structure); 
             text-transform: uppercase; 
             flex: 1;
         }
-        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
+        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; text-align: right; }
         
-        .node-row:hover .node-name { color: var(--gold); }
+        .node-row:hover .node-name { color: var(--accent); }
+        .node-row:hover .node-desc { color: var(--structure); opacity: 1; }
 
         footer { 
             padding: 40px 60px; 
             font-size: 9px; 
             letter-spacing: 6px; 
-            opacity: 0.3; 
+            opacity: 0.4; 
             display: flex; 
             justify-content: space-between; 
-            border-top: 1px solid var(--border); 
+            border-top: 1px solid var(--charcoal); 
             background: var(--void);
         }
 
