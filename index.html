@@ -19,7 +19,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- STICKY NAVIGATION (Every Page) --- */
+        /* --- STICKY NAVIGATION --- */
         nav.nav-terminal {
             padding: 10px 60px;
             display: flex;
@@ -33,22 +33,22 @@
         }
 
         .header-logo-link { 
-            height: 70px; /* Calibrated for the Square Insignia */
+            height: 70px; 
             display: flex;
             align-items: center;
-            transition: 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            /* Zoom transition only */
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
         }
         
         .header-logo-link:hover { 
-            filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); 
-            transform: scale(1.05);
+            /* GOW REMOVED: Scaling zoom only */
+            transform: scale(1.08);
         }
         
         .header-logo-link img { 
             height: 100%; 
             width: auto; 
             display: block;
-            /* Clinical fallback for edge-transparency blending */
             mix-blend-mode: screen; 
         }
 
@@ -66,7 +66,7 @@
         }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO SECTION (Home Page Only) --- */
+        /* --- HERO SECTION --- */
         header.hero-section { 
             padding: 100px 60px 80px 60px; 
             display: flex; 
@@ -78,8 +78,9 @@
 
         .hero-logo-container {
             width: 100%;
-            max-width: 800px; /* Expanded for the Main horizontal logo */
-            transition: 0.8s ease;
+            max-width: 800px; 
+            /* Zoom transition only */
+            transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
         }
         
         .hero-logo-container img {
@@ -87,11 +88,12 @@
             height: auto;
             display: block;
             mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.1));
+            /* GLOW REMOVED */
         }
         
         .hero-logo-container:hover {
-            filter: drop-shadow(0 0 50px rgba(200, 168, 107, 0.25));
+            /* GLOW REMOVED: Subtler cinematic zoom for main logo */
+            transform: scale(1.03);
         }
 
         /* --- MODULE LIST --- */
