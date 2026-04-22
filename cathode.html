@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* --- STICKY NAVIGATION (Unified) --- */
+        /* --- STICKY HARDWARE HEADER --- */
         nav.nav-terminal {
             padding: 10px 60px;
             display: flex;
@@ -41,7 +41,7 @@
         }
 
         .header-logo-link { 
-            height: 50px; /* Synchronized height for sub-pages */
+            height: 50px; 
             display: flex;
             align-items: center;
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
@@ -49,6 +49,36 @@
         }
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
@@ -64,34 +94,14 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MODULE HERO --- */
-        header.module-hero {
-            padding: 40px 60px 20px 60px;
-            text-align: center;
-            border-bottom: 1px solid var(--charcoal);
-        }
-        .module-hero h2 {
-            font-family: 'Montserrat';
-            font-size: 62px; 
-            letter-spacing: 48px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 48px;
-        }
-        .plugin-tagline { 
-            font-size: 10px; 
-            letter-spacing: 10px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 15px 0 0 0; 
-            opacity: 0.8;
+        /* --- MAIN CONTENT (Compressed Spacing) --- */
+        main { 
+            padding: 20px 60px 60px 60px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
-        /* --- MAIN CONTENT --- */
-        main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
             display: block; 
             width: 100%; 
@@ -103,7 +113,7 @@
 
         .description-box { 
             max-width: 850px; 
-            margin: 0 auto 80px auto; 
+            margin: 0 auto 60px auto; 
             border-left: 1px solid var(--stroke); 
             padding-left: 40px; 
         }
@@ -153,12 +163,18 @@
             display: flex; 
             justify-content: space-between; 
             border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
         }
 
         @media (max-width: 1100px) {
-            .module-hero h2 { font-size: 32px; letter-spacing: 16px; padding-left: 16px; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
         }
     </style>
 </head>
@@ -168,16 +184,17 @@
     <a href="index.html" class="header-logo-link">
         <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
+
+    <div class="header-module-name">
+        <h2>CATHODE</h2>
+        <p class="plugin-tagline">Character Processor and Creative Degradation Instrument</p>
+    </div>
+
     <div class="nav-links">
         <a href="index.html">RETURN_TO_LAB</a>
         <a href="store.html">STORE</a>
     </div>
 </nav>
-
-<header class="module-hero">
-    <h2>CATHODE</h2>
-    <p class="plugin-tagline">Character Processor and Creative Degradation Instrument</p>
-</header>
 
 <main>
     <div class="image-container">
@@ -199,7 +216,7 @@
                 Authorization includes VST3/AU formats, 48kHz internal oversampling, 
                 and Factory Presets.
             </p>
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
         </div>
     </section>
 
@@ -208,14 +225,12 @@
         
         <div class="module-block">
             <h4>LOCK</h4>
-            <p>Unstable continuity, sync stress, and relock behavior. LOCK is the part of CATHODE that makes audio feel like a signal that cannot quite hold together. It is not just movement. It is continuity under stress.</p>
-            <p>At its core, LOCK is about the behavior of a receiver trying to remain coherent while vertical hold, timing, and slip start to fail. The composite LOCK control combines: <b>WARP</b>, <b>SLIP</b>, and <b>RECOVER</b>.</p>
+            <p>Unstable continuity, sync stress, and relock behavior. LOCK is the part of CATHODE that makes audio feel like a signal that cannot quite hold together. At its core, LOCK is about the behavior of a receiver trying to remain coherent while vertical hold, timing, and slip start to fail.</p>
         </div>
 
         <div class="module-block">
             <h4>HEAD</h4>
             <p>Wear, drift, and imperfect contact. This module is about mechanical uncertainty: worn contact, alignment drift, and mistracking. The goal was to move away from rhythmic pumping and toward irregular, physical instability.</p>
-            <p>The composite HEAD control combines: <b>WEAR</b>, <b>DRIFT</b>, and <b>MIX</b>.</p>
         </div>
 
         <div class="module-block">
@@ -225,7 +240,7 @@
 
         <div class="module-block">
             <h4>PHOSPHOR</h4>
-            <p>Heat, fatigue, width, and display chemistry. This is where the plugin starts to feel aged and luminous. <b>AGE</b> combines phosphor fatigue (<b>DULL</b>) and signal <b>LOSS</b>. <b>HEAT</b> pushes the chemistry via <b>WARM</b> and presence <b>BUMP</b>.</p>
+            <p>Heat, fatigue, width, and display chemistry. This is where the plugin starts to feel aged and luminous. <b>AGE</b> combines phosphor fatigue (<b>DULL</b>) and signal <b>LOSS</b>. <b>HEAT</b> pushes the chemistry and bloom via <b>WARM</b> and presence <b>BUMP</b>.</p>
         </div>
 
         <div class="module-block">
