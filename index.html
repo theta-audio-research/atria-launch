@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THETA | Laboratory Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; /* Light Structure Gray */
-            --secondary: #81848A; /* Secondary Text Gray */
-            --charcoal: #54575C;  /* Dark Emblem Charcoal */
-            --accent: #DCCDBF;    /* Muted Champagne / Stone */
-            --stroke: #CFC5B6;    /* Pale Warm Accent Stroke */
+            --void: #06080C;       /* Warm Deep Void */
+            --true-black: #000000; /* For Logo Blending */
+            --silver: #B0B3B8;     /* Research Silver */
+            --gray: #7C8087;       /* Signal Gray */
+            --charcoal: #4A4E54;   /* Cavity Charcoal */
+            --accent: #D9D0C2;     /* Muted Champagne */
         }
         
         body { 
             background-color: var(--void); 
-            color: var(--secondary); 
+            color: var(--gray); 
             font-family: 'JetBrains Mono', monospace; 
             margin: 0; 
             min-height: 100vh; 
@@ -33,7 +33,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
+            background: var(--true-black);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -61,7 +61,7 @@
             transition: 0.3s; 
             text-transform: uppercase;
         }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
+        .nav-links a:hover { background: var(--accent); color: var(--true-black); }
 
         /* --- HERO SECTION (Compressed) --- */
         header.hero-section { 
@@ -70,7 +70,7 @@
             flex-direction: column; 
             align-items: center; 
             text-align: center;
-            background: var(--void);
+            background: var(--true-black); /* Snaps logo to black base */
             border-bottom: 1px solid var(--charcoal);
         }
 
@@ -102,29 +102,30 @@
             padding: 25px 40px; 
             width: 100%;
             max-width: 900px;
-            border-bottom: 1px solid rgba(84, 87, 92, 0.3); /* Charcoal opacity */
+            border-bottom: 1px solid rgba(74, 78, 84, 0.3); /* Charcoal edge */
             transition: 0.4s;
         }
 
         .node-row:hover { 
-            background: rgba(220, 205, 191, 0.03); /* Subtle Champagne Tint */
-            border-bottom: 1px solid var(--stroke); 
+            background: rgba(217, 208, 194, 0.03); /* Subtle Champagne Tint */
+            border-bottom: 1px solid var(--accent); 
             transform: translateX(30px); 
         }
         
-        .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.6; }
+        .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.8; }
         .node-name { 
             font-family: 'Montserrat'; 
             font-size: 38px; 
             letter-spacing: 16px; 
-            color: var(--structure); 
+            color: var(--silver); 
             text-transform: uppercase; 
             flex: 1;
+            transition: color 0.4s;
         }
-        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; text-align: right; }
+        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.6; text-align: right; }
         
         .node-row:hover .node-name { color: var(--accent); }
-        .node-row:hover .node-desc { color: var(--structure); opacity: 1; }
+        .node-row:hover .node-desc { color: var(--silver); opacity: 1; }
 
         footer { 
             padding: 40px 60px; 
