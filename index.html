@@ -6,7 +6,12 @@
     <title>THETA | Laboratory Index</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        :root { 
+            --void: #06080C; 
+            --gold: #C8A86B; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
+        }
         
         body { 
             background-color: var(--void); 
@@ -19,124 +24,155 @@
             overflow-x: hidden; 
         }
 
-        /* --- HERO BRANDING SECTION --- */
-        header { 
-            padding: 80px 60px 60px 60px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center;
+        /* --- STICKY NAV TERMINAL --- */
+        nav.nav-terminal {
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--border);
+            background: rgba(6, 8, 12, 0.9);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* LOGO ARCHITECTURE (SVG) */
-        .logo-container {
-            margin-bottom: 40px;
-            width: 140px;
-            height: auto;
-            transition: 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
-            cursor: crosshair;
-        }
+        .header-brand-link { height: 30px; transition: 0.4s; }
+        .header-brand-link:hover { opacity: 0.8; filter: drop-shadow(0 0 10px rgba(200, 168, 107, 0.2)); }
+        .header-brand-link img { height: 100%; width: auto; display: block; }
 
-        .brand-logo-svg {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.15));
-        }
-
-        .logo-container:hover {
-            transform: scale(1.08) translateY(-5px);
-        }
-        
-        .logo-container:hover .brand-logo-svg {
-            filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.5));
-        }
-
-        .brand-text h1 { 
-            font-family: 'Montserrat'; 
-            font-size: 110px; 
-            letter-spacing: 64px; 
-            margin: 0; 
-            color: #fff; 
-            text-transform: uppercase; 
-            padding-left: 64px; 
-            line-height: 1;
-        }
-
-        .brand-text p { 
-            font-size: 12px; 
-            letter-spacing: 12px; 
-            color: var(--gold); 
-            margin: 24px 0 0 0; 
-            text-transform: uppercase; 
-            opacity: 0.8; 
-            padding-left: 12px;
-        }
-
-        /* --- NAVIGATION --- */
-        .left-nav { position: absolute; top: 40px; left: 60px; }
-        .top-nav { position: absolute; top: 40px; right: 60px; }
-        .left-nav a, .top-nav a { 
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
             color: var(--gold); 
             text-decoration: none; 
             font-size: 10px; 
             letter-spacing: 4px; 
             font-weight: 700; 
             border: 1px solid var(--border); 
-            padding: 12px 24px; 
+            padding: 10px 20px; 
             transition: 0.3s; 
             text-transform: uppercase;
         }
-        .left-nav a:hover, .top-nav a:hover { background: var(--gold); color: var(--void); }
+        .nav-links a:hover { background: var(--gold); color: var(--void); }
+
+        /* --- HERO SECTION --- */
+        header.hero-section { 
+            padding: 140px 60px 100px 60px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: radial-gradient(circle at center, rgba(200, 168, 107, 0.03) 0%, transparent 70%);
+        }
+
+        .hero-logo-container {
+            width: 100%;
+            max-width: 800px; /* Horizontal layout needs more width */
+            margin-bottom: 20px;
+            transition: 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+        }
+        .hero-logo-container img {
+            width: 100%;
+            height: auto;
+            /* Matches the metallic gold glow */
+            filter: drop-shadow(0 0 35px rgba(200, 168, 107, 0.15));
+        }
+        .hero-logo-container:hover {
+            transform: scale(1.01);
+            filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.25));
+        }
 
         /* --- MODULE LIST --- */
-        main { flex: 1; padding: 60px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        main { 
+            flex: 1; 
+            padding: 60px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 10px; 
+        }
         
         .node-row { 
             display: flex; 
             align-items: center; 
             text-decoration: none; 
             color: inherit; 
-            padding: 25px 40px; 
+            padding: 30px 40px; 
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s, border-color 0.4s;
         }
 
-        .node-row:hover { background: rgba(200, 168, 107, 0.03); border-bottom: 1px solid var(--gold); transform: translateX(30px); }
-        .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
-        .node-name { font-family: 'Montserrat'; font-size: 38px; letter-spacing: 16px; color: #fff; text-transform: uppercase; flex: 1; }
-        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
+        .node-row:hover { 
+            background: rgba(200, 168, 107, 0.02);
+            border-bottom: 1px solid var(--gold); 
+            transform: translateX(20px); 
+        }
+        
+        .node-id { font-size: 10px; color: var(--gold); width: 120px; font-weight: 700; opacity: 0.5; }
+        .node-name { 
+            font-family: 'Montserrat'; 
+            font-size: 32px; 
+            letter-spacing: 16px; 
+            color: #fff; 
+            text-transform: uppercase; 
+            flex: 1;
+            transition: color 0.4s;
+        }
+        .node-desc { 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            opacity: 0.4; 
+            text-align: right; 
+        }
+        
         .node-row:hover .node-name { color: var(--gold); }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.3; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--border); 
+        }
 
         @media (max-width: 1100px) {
-            .brand-text h1 { font-size: 60px; letter-spacing: 32px; padding-left: 32px; }
             .node-name { font-size: 24px; letter-spacing: 8px; }
-            .left-nav, .top-nav { position: relative; top: 0; left: 0; right: 0; margin-bottom: 20px; text-align: center; }
-            .logo-container { width: 100px; }
+            nav.nav-terminal { padding: 25px 30px; }
+            .hero-logo-container { max-width: 90%; }
+        }
+
+        @media (max-width: 700px) {
+            header.hero-section { padding-top: 100px; }
+            .node-row { flex-direction: column; text-align: center; gap: 15px; }
+            .node-row:hover { transform: translateY(-5px); } 
+            .node-desc { text-align: center; }
+            nav.nav-terminal { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-<nav class="left-nav"><a href="store.html">ACQUISITION_STORE</a></nav>
-<nav class="top-nav"><a href="support.html">SUPPORT_CONTACT</a></nav>
-
-<header>
-    <div class="logo-container">
-        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 15L15 80" stroke="#C8A86B" stroke-width="6" stroke-linecap="round"/>
-            <path d="M50 15L85 80" stroke="#C8A86B" stroke-width="6" stroke-linecap="round"/>
-            <rect x="25" y="48" width="50" height="8" fill="#C8A86B"/>
-            <path d="M10 85H25V95H75V85H90" stroke="#2A2B33" stroke-width="4" stroke-linejoin="round"/>
-        </svg>
+<nav class="nav-terminal">
+    <a href="index.html" class="header-brand-link">
+        <img src="theta_main_logo.png" alt="THETA AUDIO RESEARCH">
+    </a>
+    <div class="nav-links">
+        <a href="store.html">STORE</a>
+        <a href="artists.html">AFFILIATES</a>
+        <a href="support.html">SUPPORT</a>
     </div>
-    <div class="brand-text">
-        <h1>THETA</h1>
-        <p>Audio Research & Development</p>
+</nav>
+
+<header class="hero-section">
+    <div class="hero-logo-container">
+        <img src="theta_main_logo.png" alt="THETA Laboratory Index">
     </div>
 </header>
 
