@@ -21,12 +21,11 @@
 
         /* --- STICKY NAVIGATION TERMINAL --- */
         nav.nav-terminal {
-            padding: 30px 60px;
+            padding: 20px 60px; /* Tightened padding for square logo */
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            /* Standard laboratory translucent blend */
             background: rgba(6, 8, 12, 0.9);
             backdrop-filter: blur(15px);
             position: sticky;
@@ -34,16 +33,23 @@
             z-index: 100;
         }
 
-        .header-brand-link { height: 35px; transition: 0.4s; }
+        .header-brand-link { 
+            height: 60px; /* Increased height to accommodate the square insignia */
+            display: flex;
+            align-items: center;
+            transition: 0.4s; 
+            text-decoration: none;
+        }
         
-        /* Gold drop-shadow on hover for the header logo */
-        .header-brand-link:hover { filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); }
+        .header-brand-link:hover { 
+            filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); 
+            transform: scale(1.02);
+        }
         
         .header-brand-link img { 
             height: 100%; 
             width: auto; 
             display: block;
-            /* Ensures white background is removed in flattened PNGs for this context */
             background: transparent;
         }
 
@@ -61,9 +67,9 @@
         }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO BRANDING SECTION --- */
+        /* --- HERO SECTION --- */
         header.hero-section { 
-            padding: 120px 60px 80px 60px; 
+            padding: 100px 60px 80px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -73,34 +79,24 @@
 
         .hero-logo-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             margin-bottom: 20px;
             transition: 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
         }
         
-        /* The main logo is on a transparent background */
         .hero-logo-container img {
             width: 100%;
             height: auto;
-            /* Clinical Gold/Ember drop-shadow */
             filter: drop-shadow(0 0 30px rgba(255, 87, 34, 0.15));
         }
         
         .hero-logo-container:hover {
             transform: scale(1.02);
-            /* Amber/Ember "Seize" effect on hover */
             filter: drop-shadow(0 0 50px rgba(255, 87, 34, 0.3));
         }
 
         /* --- MODULE LIST --- */
-        main { 
-            flex: 1; 
-            padding: 60px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 10px; 
-        }
+        main { flex: 1; padding: 60px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
         
         .node-row { 
             display: flex; 
@@ -111,8 +107,7 @@
             width: 100%;
             max-width: 900px;
             border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s, border-color 0.4s;
-            transform: translateX(0);
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s;
         }
 
         .node-row:hover { 
@@ -129,7 +124,6 @@
             color: #fff; 
             text-transform: uppercase; 
             flex: 1;
-            transition: color 0.4s;
         }
         .node-desc { 
             font-size: 10px; 
@@ -154,14 +148,7 @@
         @media (max-width: 1100px) {
             .node-name { font-size: 24px; letter-spacing: 8px; }
             .hero-logo-container { max-width: 350px; }
-            nav.nav-terminal { flex-direction: column; gap: 20px; }
-        }
-
-        @media (max-width: 700px) {
-            header.hero-section { padding-top: 100px; }
-            .node-row { flex-direction: column; text-align: center; gap: 15px; }
-            .node-row:hover { transform: translateY(-5px); } 
-            .node-desc { text-align: center; }
+            nav.nav-terminal { padding: 20px; flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
@@ -169,7 +156,7 @@
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-brand-link">
-        <img src="theta_horizontal_transparent.png" alt="THETA AUDIO RESEARCH">
+        <img src="theta_square_transparent.png" alt="THETA AUDIO RESEARCH">
     </a>
     <div class="nav-links">
         <a href="store.html">STORE</a>
