@@ -19,33 +19,36 @@
             overflow-x: hidden; 
         }
 
-        /* --- STICKY NAVIGATION --- */
+        /* --- STICKY NAVIGATION (Every Page) --- */
         nav.nav-terminal {
-            padding: 15px 60px;
+            padding: 10px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            /* FORCED BLACK BACKGROUND */
-            background-color: #000000 !important;
+            background: #000000;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .header-logo-link { 
-            height: 55px; 
+            height: 70px; /* Calibrated for the Square Insignia */
             display: flex;
             align-items: center;
-            background: #000; /* Masking white edges */
-            transition: 0.4s; 
+            transition: 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+        }
+        
+        .header-logo-link:hover { 
+            filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); 
+            transform: scale(1.05);
         }
         
         .header-logo-link img { 
             height: 100%; 
             width: auto; 
-            display: block; 
-            /* This filter helps blend images with dark backgrounds */
+            display: block;
+            /* Clinical fallback for edge-transparency blending */
             mix-blend-mode: screen; 
         }
 
@@ -63,30 +66,32 @@
         }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Home Page Only) --- */
         header.hero-section { 
             padding: 100px 60px 80px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             text-align: center;
-            background-color: #000; /* Forced Black */
             border-bottom: 1px solid var(--border);
         }
 
         .hero-logo-container {
             width: 100%;
-            max-width: 500px;
-            background: #000;
-            transition: 0.6s ease;
+            max-width: 800px; /* Expanded for the Main horizontal logo */
+            transition: 0.8s ease;
         }
         
         .hero-logo-container img {
             width: 100%;
             height: auto;
             display: block;
-            /* Removes black from the image, keeping only the gold/white */
             mix-blend-mode: screen; 
+            filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.1));
+        }
+        
+        .hero-logo-container:hover {
+            filter: drop-shadow(0 0 50px rgba(200, 168, 107, 0.25));
         }
 
         /* --- MODULE LIST --- */
@@ -128,6 +133,8 @@
         }
         .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
         
+        .node-row:hover .node-name { color: var(--gold); }
+
         footer { 
             padding: 40px 60px; 
             font-size: 9px; 
@@ -137,13 +144,19 @@
             justify-content: space-between; 
             border-top: 1px solid var(--border); 
         }
+
+        @media (max-width: 1100px) {
+            .node-name { font-size: 24px; letter-spacing: 8px; }
+            .hero-logo-container { max-width: 90%; }
+            nav.nav-terminal { padding: 20px; flex-direction: column; gap: 20px; }
+        }
     </style>
 </head>
 <body>
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-logo-link">
-        <img src="theta_square_transparent.png" alt="THETA">
+        <img src="theta_main_square_logo.png" alt="THETA Insignia">
     </a>
     <div class="nav-links">
         <a href="store.html">STORE</a>
@@ -153,7 +166,7 @@
 
 <header class="hero-section">
     <div class="hero-logo-container">
-        <img src="theta_primary_transparent.png" alt="THETA">
+        <img src="theta_main_logo.png" alt="THETA Audio Research">
     </div>
 </header>
 
