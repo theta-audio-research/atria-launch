@@ -4,58 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STORE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --void: #06080C; 
-            --gold: #C8A86B; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
-            --cyan: #00E5FF;
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
         }
         html { scroll-behavior: smooth; }
         body { 
             background-color: var(--void); 
-            color: var(--silver); 
+            color: var(--secondary); 
             font-family: 'JetBrains Mono', monospace; 
             margin: 0; 
             line-height: 1.6; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* --- HEADER --- */
-        header { 
-            padding: 40px 60px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: relative; 
-            border-bottom: 1px solid var(--border);
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .brand-link { text-decoration: none; color: inherit; }
-        .brand-block { display: flex; align-items: center; gap: 20px; }
-        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
-        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
-        .header-module-name { position: absolute; left: 50%; transform: translateX(-50%); text-align: center; }
-        .header-module-name h2 { font-family: 'Montserrat'; font-size: 32px; letter-spacing: 24px; color: #fff; text-transform: uppercase; margin: 0; padding-left: 24px; }
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
-        nav a:hover { background: var(--gold); color: var(--void); }
 
-        main { flex: 1; padding: 60px; max-width: 1400px; margin: 0 auto; }
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
 
-        /* --- INTERACTIVE CARD LOGIC --- */
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { flex: 1; padding: 20px 60px 60px 60px; max-width: 1400px; margin: 0 auto; }
+
+        /* --- CARDS --- */
         .plugin-card, .bundle-card {
             position: relative;
             background: rgba(255, 255, 255, 0.01);
-            border: 1px solid var(--border);
+            border: 1px solid var(--charcoal);
             padding: 30px;
             display: flex;
             flex-direction: column;
             transition: 0.4s;
         }
-        .plugin-card:hover, .bundle-card:hover { border-color: rgba(200, 168, 107, 0.5); background: rgba(200, 168, 107, 0.02); }
+        .plugin-card:hover, .bundle-card:hover { border-color: var(--accent); background: rgba(220, 205, 191, 0.02); }
 
         .card-link-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; text-decoration: none; }
 
@@ -64,8 +107,8 @@
             position: relative;
             z-index: 2;
             background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+            border: 1px solid var(--accent);
+            color: var(--accent);
             padding: 12px 24px;
             font-size: 10px;
             letter-spacing: 3px;
@@ -75,51 +118,49 @@
             transition: 0.3s;
             text-align: center;
         }
-        .buy-btn:hover { background: var(--gold); color: var(--void); }
+        .buy-btn:hover { background: var(--accent); color: var(--void); }
 
-        /* NOTIFY STATE */
-        .btn-notify { border-color: var(--silver); color: var(--silver); opacity: 0.6; cursor: pointer; }
-        .btn-notify:hover { border-color: var(--cyan); color: var(--cyan); background: transparent; opacity: 1; }
+        .btn-notify { border-color: var(--secondary); color: var(--secondary); opacity: 0.6; cursor: pointer; }
+        .btn-notify:hover { border-color: var(--accent); color: var(--accent); background: transparent; opacity: 1; }
 
         /* BUNDLE STYLE */
-        .bundle-container { margin-bottom: 80px; width: 100%; }
+        .bundle-container { margin-bottom: 60px; width: 100%; }
         .bundle-card { 
-            border: 1px solid var(--gold); 
-            padding: 60 -px; 
+            border: 1px solid var(--accent); 
             display: grid; 
             grid-template-columns: 1.5fr 1fr; 
             gap: 60px; 
             align-items: center; 
-            background: linear-gradient(180deg, rgba(200, 168, 107, 0.05) 0%, rgba(6, 8, 12, 0) 100%);
+            background: linear-gradient(180deg, rgba(220, 205, 191, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
         }
-        .bundle-visual { width: 100%; height: 300px; background: var(--void); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .bundle-visual::after { content: "TOTAL_COLLECTION"; font-family: 'Montserrat'; font-size: 10px; letter-spacing: 20px; opacity: 0.2; }
+        .bundle-visual { width: 100%; height: 300px; background: var(--void); border: 1px solid var(--charcoal); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .bundle-visual::after { content: "TOTAL_COLLECTION"; font-family: 'Montserrat'; font-size: 10px; letter-spacing: 20px; color: var(--charcoal); opacity: 0.5; }
 
         /* GRID STYLE */
         .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; width: 100%; }
-        .plugin-image { width: 100%; height: auto; display: block; margin-bottom: 25px; border-bottom: 1px solid var(--border); filter: grayscale(0.2); transition: 0.4s; }
-        .plugin-card:hover .plugin-image { filter: grayscale(0); transform: translateY(-5px); }
+        .plugin-image { width: 100%; height: auto; display: block; margin-bottom: 25px; border-bottom: 1px solid var(--charcoal); transition: transform 0.6s ease; }
+        .plugin-card:hover .plugin-image { transform: scale(1.02); }
         
         .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-        .card-header h3 { font-family: 'Montserrat'; font-size: 20px; letter-spacing: 8px; color: #fff; margin: 0; text-transform: uppercase; }
-        .plugin-id { font-size: 9px; color: var(--gold); font-weight: 700; opacity: 0.6; }
-        .tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--silver); opacity: 0.4; }
-        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--border); }
-        .price { font-family: 'Montserrat'; font-size: 18px; color: #fff; letter-spacing: 2px; }
+        .card-header h3 { font-family: 'Montserrat'; font-size: 20px; letter-spacing: 8px; color: var(--structure); margin: 0; text-transform: uppercase; }
+        .plugin-id { font-size: 9px; color: var(--accent); font-weight: 700; opacity: 0.6; }
+        .tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--secondary); opacity: 0.6; }
+        .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--charcoal); }
+        .price { font-family: 'Montserrat'; font-size: 18px; color: var(--structure); letter-spacing: 2px; }
 
         /* --- NOTIFICATION PORTAL --- */
         .notify-section {
-            padding: 100px 60px;
-            border-top: 1px solid var(--border);
+            padding: 80px 60px;
+            border-top: 1px solid var(--charcoal);
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(0, 229, 255, 0.01);
+            background: rgba(220, 205, 191, 0.01);
         }
-        .notify-header { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 8px; color: var(--cyan); text-transform: uppercase; margin-bottom: 20px; }
-        .notify-desc { font-size: 11px; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; text-align: center; }
+        .notify-header { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 8px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; }
+        .notify-desc { font-size: 11px; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; text-align: center; opacity: 0.7; }
         
-        .notify-form { display: flex; gap: 0; width: 100%; max-width: 500px; border: 1px solid var(--border); }
+        .notify-form { display: flex; gap: 0; width: 100%; max-width: 500px; border: 1px solid var(--charcoal); }
         .notify-input { 
             flex: 1; 
             background: transparent; 
@@ -132,8 +173,8 @@
             outline: none;
         }
         .notify-submit { 
-            background: var(--border); 
-            color: var(--cyan); 
+            background: var(--charcoal); 
+            color: var(--accent); 
             border: none; 
             padding: 0 30px; 
             font-family: 'Montserrat'; 
@@ -144,35 +185,44 @@
             transition: 0.3s;
             text-transform: uppercase;
         }
-        .notify-submit:hover { background: var(--cyan); color: var(--void); }
+        .notify-submit:hover { background: var(--accent); color: var(--void); }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+        }
 
-        @media (max-width: 1000px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 20px; }
-            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
             .bundle-card { grid-template-columns: 1fr; padding: 40px 20px; }
             .store-grid { grid-template-columns: 1fr; }
             .notify-form { flex-direction: column; border: none; gap: 10px; }
-            .notify-input { border: 1px solid var(--border); }
+            .notify-input { border: 1px solid var(--charcoal); }
             .notify-submit { padding: 20px; }
+            nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="index.html" class="brand-link">
-        <div class="brand-block">
-            <div class="brand-text">
-                <h1>THETA</h1>
-                <p>Audio Research & Development</p>
-            </div>
-        </div>
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
     <div class="header-module-name"><h2>STORE</h2></div>
-    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
-</header>
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+    </div>
+</nav>
 
 <main>
     <section class="bundle-container">
@@ -181,9 +231,9 @@
             <div class="bundle-visual"></div>
             <div class="bundle-intel" style="position: relative; z-index: 2;">
                 <span class="plugin-id">BDL_001_TOTAL</span>
-                <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: #fff; margin: 10px 0;">TOTAL COLLECTION</h3>
-                <p class="tagline" style="opacity: 0.8;">The Complete Research Environment</p>
-                <p style="font-size: 13px; opacity: 0.5; margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT.</p>
+                <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: var(--structure); margin: 10px 0;">TOTAL COLLECTION</h3>
+                <p class="tagline" style="opacity: 0.8; color: var(--accent);">The Complete Research Environment</p>
+                <p style="font-size: 13px; color: var(--secondary); margin-bottom: 40px;">Includes all five THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, EROSION, and TWILIGHT.</p>
                 <div class="price-row" style="border: none; padding: 0;">
                     <span class="price" style="font-size: 32px;">$249.00</span>
                     <a href="#notification-portal" class="buy-btn btn-notify">NOTIFY_UPON_RELEASE</a>
@@ -193,7 +243,6 @@
     </section>
 
     <div class="store-grid">
-        
         <article class="plugin-card">
             <a href="arecibo.html" class="card-link-overlay"></a>
             <img src="arecibo_15.10_main.png" alt="ARECIBO" class="plugin-image">
@@ -215,7 +264,7 @@
                 <h3>ATRIA</h3>
                 <span class="plugin-id">002_ARC</span>
             </div>
-            <p class="tagline">Performance-Driven Creative FX Instrument</p>
+            <p class="tagline">Performance-Driven FX Instrument</p>
             <div class="price-row">
                 <span class="price">$129.00</span>
                 <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
@@ -229,10 +278,10 @@
                 <h3>CATHODE</h3>
                 <span class="plugin-id">003_VTR</span>
             </div>
-            <p class="tagline">Analog Degradation & Drift Instrument</p>
+            <p class="tagline">Analog Degradation Instrument</p>
             <div class="price-row">
                 <span class="price">$49.99</span>
-                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn">ACQUIRE</a>
             </div>
         </article>
 
@@ -246,7 +295,7 @@
             <p class="tagline">Four-Stage Saturation Engine</p>
             <div class="price-row">
                 <span class="price">$49.99</span>
-                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn lemon-squeezy-button">ACQUIRE</a>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn">ACQUIRE</a>
             </div>
         </article>
 
@@ -263,13 +312,12 @@
                 <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
             </div>
         </article>
-
     </div>
 </main>
 
 <section class="notify-section" id="notification-portal">
     <h3 class="notify-header">RESEARCH_MAILING_LIST</h3>
-    <p class="notify-desc">Register your identity to receive transmission alerts upon flagship module authorization.</p>
+    <p class="notify-desc">Register your identity to receive transmission alerts.</p>
     <form class="notify-form">
         <input type="email" class="notify-input" placeholder="ENTER_EMAIL_ADDRESS..." required>
         <button type="submit" class="notify-submit">SUBMIT_INTEL</button>
@@ -279,8 +327,8 @@
 <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 
 <footer>
-    <span>SYSTEM_STABLE // 2026</span>
-    <span>TERMINAL_VERIFIED // SUBSCRIPTION_ACTIVE</span>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>TERMINAL_VERIFIED // SYSTEM_STABLE</span>
 </footer>
 
 </body>
