@@ -31,7 +31,6 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            /* UPDATED: Unified with page background */
             background: var(--void);
             position: sticky;
             top: 0;
@@ -42,7 +41,11 @@
             height: 70px; 
             display: flex;
             align-items: center;
+            /* Precise transition for hardware-style feel */
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            /* Prevents flickering during scale */
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
         
         .header-logo-link:hover { 
@@ -53,8 +56,7 @@
             height: 100%; 
             width: auto; 
             display: block;
-            /* Screen mode effectively hides #000000 or #06080C backgrounds in the image */
-            mix-blend-mode: screen; 
+            /* REMOVED mix-blend-mode to prevent the "black-out" glitch */
         }
 
         .nav-links { display: flex; gap: 20px; }
@@ -86,13 +88,14 @@
             width: 100%;
             max-width: 800px; 
             transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
         }
         
         .hero-logo-container img {
             width: 100%;
             height: auto;
             display: block;
-            mix-blend-mode: screen; 
+            /* REMOVED mix-blend-mode */
         }
         
         .hero-logo-container:hover {
