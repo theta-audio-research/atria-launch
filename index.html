@@ -41,9 +41,7 @@
             height: 70px; 
             display: flex;
             align-items: center;
-            /* Precise transition for hardware-style feel */
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            /* Prevents flickering during scale */
             backface-visibility: hidden;
             -webkit-font-smoothing: subpixel-antialiased;
         }
@@ -56,7 +54,6 @@
             height: 100%; 
             width: auto; 
             display: block;
-            /* REMOVED mix-blend-mode to prevent the "black-out" glitch */
         }
 
         .nav-links { display: flex; gap: 20px; }
@@ -73,9 +70,10 @@
         }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Compressed) --- */
         header.hero-section { 
-            padding: 100px 60px 80px 60px; 
+            /* Top padding reduced from 100px to 20px */
+            padding: 20px 60px 40px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -95,7 +93,6 @@
             width: 100%;
             height: auto;
             display: block;
-            /* REMOVED mix-blend-mode */
         }
         
         .hero-logo-container:hover {
@@ -159,6 +156,7 @@
             .node-name { font-size: 24px; letter-spacing: 8px; }
             .hero-logo-container { max-width: 90%; }
             nav.nav-terminal { padding: 20px; flex-direction: column; gap: 20px; }
+            header.hero-section { padding: 20px 20px 40px 20px; }
         }
     </style>
 </head>
