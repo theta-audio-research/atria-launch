@@ -7,17 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --void: #06080C;       /* Warm Deep Void */
-            --true-black: #000000; /* For Logo Blending */
-            --silver: #B0B3B8;     /* Research Silver */
-            --gray: #7C8087;       /* Signal Gray */
-            --charcoal: #4A4E54;   /* Cavity Charcoal */
-            --accent: #D9D0C2;     /* Muted Champagne */
+            --void: #000000; 
+            --gold: #C8A86B; 
+            --silver: #B0B0B0; 
+            --border: #1A1B23; 
         }
         
         body { 
             background-color: var(--void); 
-            color: var(--gray); 
+            color: var(--silver); 
             font-family: 'JetBrains Mono', monospace; 
             margin: 0; 
             min-height: 100vh; 
@@ -32,8 +30,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--true-black);
+            border-bottom: 1px solid var(--border);
+            background: var(--void);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -45,33 +43,43 @@
             align-items: center;
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
             backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
+        
+        .header-logo-link:hover { 
+            transform: scale(1.08);
+        }
+        
+        .header-logo-link img { 
+            height: 100%; 
+            width: auto; 
+            display: block;
+        }
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
-            color: var(--accent); 
+            color: var(--gold); 
             text-decoration: none; 
             font-size: 10px; 
             letter-spacing: 4px; 
             font-weight: 700; 
-            border: 1px solid var(--charcoal); 
+            border: 1px solid var(--border); 
             padding: 10px 20px; 
             transition: 0.3s; 
             text-transform: uppercase;
         }
-        .nav-links a:hover { background: var(--accent); color: var(--true-black); }
+        .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO SECTION (Compressed) --- */
+        /* --- HERO SECTION (Dead Space Stripped) --- */
         header.hero-section { 
+            /* Top padding removed to snap logo to header border */
             padding: 0 60px 10px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             text-align: center;
-            background: var(--true-black); /* Snaps logo to black base */
-            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            border-bottom: 1px solid var(--border);
         }
 
         .hero-logo-container {
@@ -80,12 +88,21 @@
             transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
             backface-visibility: hidden;
         }
-        .hero-logo-container img { width: 100%; height: auto; display: block; }
-        .hero-logo-container:hover { transform: scale(1.03); }
+        
+        .hero-logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-logo-container:hover {
+            transform: scale(1.03);
+        }
 
-        /* --- MODULE LIST --- */
+        /* --- MODULE LIST (Dead Space Stripped) --- */
         main { 
             flex: 1; 
+            /* Reduced vertical padding to snap list to hero border */
             padding: 10px 60px 60px 60px; 
             display: flex; 
             flex-direction: column; 
@@ -102,39 +119,37 @@
             padding: 25px 40px; 
             width: 100%;
             max-width: 900px;
-            border-bottom: 1px solid rgba(74, 78, 84, 0.3); /* Charcoal edge */
+            border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
             transition: 0.4s;
         }
 
         .node-row:hover { 
-            background: rgba(217, 208, 194, 0.03); /* Subtle Champagne Tint */
-            border-bottom: 1px solid var(--accent); 
+            background: rgba(200, 168, 107, 0.03);
+            border-bottom: 1px solid var(--gold); 
             transform: translateX(30px); 
         }
         
-        .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.8; }
+        .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
         .node-name { 
             font-family: 'Montserrat'; 
             font-size: 38px; 
             letter-spacing: 16px; 
-            color: var(--silver); 
+            color: #fff; 
             text-transform: uppercase; 
             flex: 1;
-            transition: color 0.4s;
         }
-        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.6; text-align: right; }
+        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
         
-        .node-row:hover .node-name { color: var(--accent); }
-        .node-row:hover .node-desc { color: var(--silver); opacity: 1; }
+        .node-row:hover .node-name { color: var(--gold); }
 
         footer { 
             padding: 40px 60px; 
             font-size: 9px; 
             letter-spacing: 6px; 
-            opacity: 0.4; 
+            opacity: 0.3; 
             display: flex; 
             justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
+            border-top: 1px solid var(--border); 
             background: var(--void);
         }
 
