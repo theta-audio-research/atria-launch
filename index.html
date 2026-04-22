@@ -6,12 +6,7 @@
     <title>THETA | Laboratory Index</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --void: #06080C; 
-            --gold: #C8A86B; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
-        }
+        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         
         body { 
             background-color: var(--void); 
@@ -24,13 +19,14 @@
             overflow-x: hidden; 
         }
 
-        /* --- STICKY NAV TERMINAL --- */
+        /* --- STICKY NAVIGATION TERMINAL --- */
         nav.nav-terminal {
-            padding: 25px 60px;
+            padding: 30px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
+            /* Standard laboratory translucent blend */
             background: rgba(6, 8, 12, 0.9);
             backdrop-filter: blur(15px);
             position: sticky;
@@ -38,9 +34,18 @@
             z-index: 100;
         }
 
-        .header-brand-link { height: 30px; transition: 0.4s; }
-        .header-brand-link:hover { opacity: 0.8; filter: drop-shadow(0 0 10px rgba(200, 168, 107, 0.2)); }
-        .header-brand-link img { height: 100%; width: auto; display: block; }
+        .header-brand-link { height: 35px; transition: 0.4s; }
+        
+        /* Gold drop-shadow on hover for the header logo */
+        .header-brand-link:hover { filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); }
+        
+        .header-brand-link img { 
+            height: 100%; 
+            width: auto; 
+            display: block;
+            /* Ensures white background is removed in flattened PNGs for this context */
+            background: transparent;
+        }
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
@@ -56,32 +61,35 @@
         }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO BRANDING SECTION --- */
         header.hero-section { 
-            padding: 140px 60px 100px 60px; 
+            padding: 120px 60px 80px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             text-align: center;
             border-bottom: 1px solid var(--border);
-            background: radial-gradient(circle at center, rgba(200, 168, 107, 0.03) 0%, transparent 70%);
         }
 
         .hero-logo-container {
             width: 100%;
-            max-width: 800px; /* Horizontal layout needs more width */
+            max-width: 500px;
             margin-bottom: 20px;
             transition: 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
         }
+        
+        /* The main logo is on a transparent background */
         .hero-logo-container img {
             width: 100%;
             height: auto;
-            /* Matches the metallic gold glow */
-            filter: drop-shadow(0 0 35px rgba(200, 168, 107, 0.15));
+            /* Clinical Gold/Ember drop-shadow */
+            filter: drop-shadow(0 0 30px rgba(255, 87, 34, 0.15));
         }
+        
         .hero-logo-container:hover {
-            transform: scale(1.01);
-            filter: drop-shadow(0 0 60px rgba(200, 168, 107, 0.25));
+            transform: scale(1.02);
+            /* Amber/Ember "Seize" effect on hover */
+            filter: drop-shadow(0 0 50px rgba(255, 87, 34, 0.3));
         }
 
         /* --- MODULE LIST --- */
@@ -99,23 +107,24 @@
             align-items: center; 
             text-decoration: none; 
             color: inherit; 
-            padding: 30px 40px; 
+            padding: 25px 40px; 
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
             border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
             transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s, border-color 0.4s;
+            transform: translateX(0);
         }
 
         .node-row:hover { 
-            background: rgba(200, 168, 107, 0.02);
+            background: rgba(200, 168, 107, 0.03);
             border-bottom: 1px solid var(--gold); 
-            transform: translateX(20px); 
+            transform: translateX(30px); 
         }
         
-        .node-id { font-size: 10px; color: var(--gold); width: 120px; font-weight: 700; opacity: 0.5; }
+        .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
         .node-name { 
             font-family: 'Montserrat'; 
-            font-size: 32px; 
+            font-size: 38px; 
             letter-spacing: 16px; 
             color: #fff; 
             text-transform: uppercase; 
@@ -144,8 +153,8 @@
 
         @media (max-width: 1100px) {
             .node-name { font-size: 24px; letter-spacing: 8px; }
-            nav.nav-terminal { padding: 25px 30px; }
-            .hero-logo-container { max-width: 90%; }
+            .hero-logo-container { max-width: 350px; }
+            nav.nav-terminal { flex-direction: column; gap: 20px; }
         }
 
         @media (max-width: 700px) {
@@ -153,7 +162,6 @@
             .node-row { flex-direction: column; text-align: center; gap: 15px; }
             .node-row:hover { transform: translateY(-5px); } 
             .node-desc { text-align: center; }
-            nav.nav-terminal { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
@@ -161,18 +169,17 @@
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-brand-link">
-        <img src="theta_main_logo.png" alt="THETA AUDIO RESEARCH">
+        <img src="theta_horizontal_transparent.png" alt="THETA AUDIO RESEARCH">
     </a>
     <div class="nav-links">
         <a href="store.html">STORE</a>
-        <a href="artists.html">AFFILIATES</a>
         <a href="support.html">SUPPORT</a>
     </div>
 </nav>
 
 <header class="hero-section">
     <div class="hero-logo-container">
-        <img src="theta_main_logo.png" alt="THETA Laboratory Index">
+        <img src="theta_primary_transparent.png" alt="THETA Laboratory Index">
     </div>
 </header>
 
