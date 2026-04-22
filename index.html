@@ -4,159 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THETA | Laboratory Index</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; --dark-grey: #3A3A3A; }
         
-        body { 
-            background-color: var(--void); 
-            color: var(--silver); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-        }
+        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-        /* --- STICKY NAVIGATION TERMINAL --- */
+        /* --- STICKY NAVIGATION --- */
         nav.nav-terminal {
-            padding: 20px 60px; /* Tightened padding for square logo */
+            padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            background: rgba(6, 8, 12, 0.9);
+            background: rgba(6, 8, 12, 0.95);
             backdrop-filter: blur(15px);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-brand-link { 
-            height: 60px; /* Increased height to accommodate the square insignia */
-            display: flex;
-            align-items: center;
-            transition: 0.4s; 
-            text-decoration: none;
-        }
-        
-        .header-brand-link:hover { 
-            filter: drop-shadow(0 0 15px rgba(200, 168, 107, 0.4)); 
-            transform: scale(1.02);
-        }
-        
-        .header-brand-link img { 
-            height: 100%; 
-            width: auto; 
-            display: block;
-            background: transparent;
-        }
+        /* HEADER LOGO (HORIZONTAL SVG) */
+        .header-logo-svg { height: 45px; width: auto; transition: 0.4s; cursor: pointer; }
+        .header-logo-svg:hover { filter: drop-shadow(0 0 10px rgba(200, 168, 107, 0.4)); transform: scale(1.02); }
 
         .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--gold); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700; 
-            border: 1px solid var(--border); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
+        .nav-links a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 10px 20px; transition: 0.3s; text-transform: uppercase; }
         .nav-links a:hover { background: var(--gold); color: var(--void); }
 
         /* --- HERO SECTION --- */
-        header.hero-section { 
-            padding: 100px 60px 80px 60px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
+        header.hero-section { padding: 100px 60px 80px 60px; display: flex; flex-direction: column; align-items: center; text-align: center; border-bottom: 1px solid var(--border); }
 
-        .hero-logo-container {
-            width: 100%;
-            max-width: 450px;
-            margin-bottom: 20px;
-            transition: 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
-        }
-        
-        .hero-logo-container img {
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 30px rgba(255, 87, 34, 0.15));
-        }
-        
-        .hero-logo-container:hover {
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 50px rgba(255, 87, 34, 0.3));
-        }
+        /* HERO LOGO (VERTICAL SVG) */
+        .hero-logo-container { width: 100%; max-width: 500px; margin-bottom: 20px; transition: 0.8s cubic-bezier(0.2, 0.6, 0.2, 1); }
+        .hero-logo-svg { width: 100%; height: auto; filter: drop-shadow(0 0 30px rgba(200, 168, 107, 0.15)); }
+        .hero-logo-container:hover { transform: scale(1.02); }
 
         /* --- MODULE LIST --- */
         main { flex: 1; padding: 60px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        
-        .node-row { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-            color: inherit; 
-            padding: 25px 40px; 
-            width: 100%;
-            max-width: 900px;
-            border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s;
-        }
-
-        .node-row:hover { 
-            background: rgba(200, 168, 107, 0.03);
-            border-bottom: 1px solid var(--gold); 
-            transform: translateX(30px); 
-        }
-        
+        .node-row { display: flex; align-items: center; text-decoration: none; color: inherit; padding: 25px 40px; width: 100%; max-width: 900px; border-bottom: 1px solid rgba(26, 27, 35, 0.5); transition: 0.4s; }
+        .node-row:hover { background: rgba(200, 168, 107, 0.03); border-bottom: 1px solid var(--gold); transform: translateX(30px); }
         .node-id { font-size: 10px; color: var(--gold); width: 100px; font-weight: 700; opacity: 0.5; }
-        .node-name { 
-            font-family: 'Montserrat'; 
-            font-size: 38px; 
-            letter-spacing: 16px; 
-            color: #fff; 
-            text-transform: uppercase; 
-            flex: 1;
-        }
-        .node-desc { 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
-            opacity: 0.4; 
-            text-align: right; 
-        }
-        
+        .node-name { font-family: 'Montserrat'; font-size: 38px; letter-spacing: 16px; color: #fff; text-transform: uppercase; flex: 1; }
+        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
         .node-row:hover .node-name { color: var(--gold); }
 
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.3; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--border); 
-        }
-
+        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+        
         @media (max-width: 1100px) {
             .node-name { font-size: 24px; letter-spacing: 8px; }
             .hero-logo-container { max-width: 350px; }
-            nav.nav-terminal { padding: 20px; flex-direction: column; gap: 20px; }
+            nav.nav-terminal { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
 <nav class="nav-terminal">
-    <a href="index.html" class="header-brand-link">
-        <img src="theta_square_transparent.png" alt="THETA AUDIO RESEARCH">
+    <a href="index.html">
+        <svg class="header-logo-svg" viewBox="0 0 450 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 80 L45 15" stroke="var(--dark-grey)" stroke-width="6" fill="none"/>
+            <path d="M45 15 L75 80" stroke="var(--gold)" stroke-width="6" fill="none"/>
+            <rect x="15" y="45" width="60" height="10" fill="var(--gold)"/>
+            <path d="M10 82 L10 90 L85 90 L85 82" stroke="var(--dark-grey)" stroke-width="4" fill="none"/>
+            <text x="110" y="55" font-family="Montserrat" font-weight="700" font-size="52" letter-spacing="15" fill="var(--gold)">THET<tspan dx="-5">Λ</tspan></text>
+            <text x="112" y="85" font-family="Montserrat" font-weight="300" font-size="16" letter-spacing="8" fill="var(--silver)">AUDIO RESEARCH</text>
+        </svg>
     </a>
     <div class="nav-links">
         <a href="store.html">STORE</a>
@@ -166,7 +79,14 @@
 
 <header class="hero-section">
     <div class="hero-logo-container">
-        <img src="theta_primary_transparent.png" alt="THETA Laboratory Index">
+        <svg class="hero-logo-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M120 250 L200 40" stroke="var(--dark-grey)" stroke-width="15" fill="none" stroke-linecap="butt"/>
+            <path d="M200 40 L280 250" stroke="var(--gold)" stroke-width="15" fill="none" stroke-linecap="butt"/>
+            <rect x="110" y="150" width="180" height="28" fill="var(--gold)"/>
+            <path d="M100 255 L100 280 L300 280 L300 255" stroke="var(--dark-grey)" stroke-width="10" fill="none"/>
+            <text x="200" y="340" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="65" letter-spacing="25" fill="var(--gold)">THET<tspan dx="-5">Λ</tspan></text>
+            <text x="200" y="385" text-anchor="middle" font-family="Montserrat" font-weight="300" font-size="22" letter-spacing="12" fill="var(--silver)">AUDIO RESEARCH</text>
+        </svg>
     </div>
 </header>
 
