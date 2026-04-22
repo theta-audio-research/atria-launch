@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* --- STICKY NAVIGATION (Unified) --- */
+        /* --- STICKY HARDWARE HEADER --- */
         nav.nav-terminal {
             padding: 10px 60px;
             display: flex;
@@ -50,6 +50,36 @@
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
 
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
             color: var(--accent); 
@@ -64,34 +94,14 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MODULE HERO --- */
-        header.module-hero {
-            padding: 40px 60px 20px 60px;
-            text-align: center;
-            border-bottom: 1px solid var(--charcoal);
-        }
-        .module-hero h2 {
-            font-family: 'Montserrat';
-            font-size: 62px; 
-            letter-spacing: 48px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 48px;
-        }
-        .plugin-tagline { 
-            font-size: 10px; 
-            letter-spacing: 10px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 15px 0 0 0; 
-            opacity: 0.8;
+        /* --- MAIN CONTENT (Compressed Spacing) --- */
+        main { 
+            padding: 20px 60px 60px 60px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
-        /* --- MAIN CONTENT --- */
-        main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
             display: block; 
             width: 100%; 
@@ -103,7 +113,7 @@
 
         .description-box { 
             max-width: 850px; 
-            margin: 0 auto 80px auto; 
+            margin: 0 auto 60px auto; 
             border-left: 1px solid var(--stroke); 
             padding-left: 40px; 
         }
@@ -157,9 +167,14 @@
         }
 
         @media (max-width: 1100px) {
-            .module-hero h2 { font-size: 32px; letter-spacing: 16px; padding-left: 16px; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
         }
     </style>
 </head>
@@ -169,16 +184,17 @@
     <a href="index.html" class="header-logo-link">
         <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
+
+    <div class="header-module-name">
+        <h2>EROSION</h2>
+        <p class="plugin-tagline">Four-Stage Saturation Engine</p>
+    </div>
+
     <div class="nav-links">
         <a href="index.html">RETURN_TO_LAB</a>
         <a href="store.html">STORE</a>
     </div>
 </nav>
-
-<header class="module-hero">
-    <h2>EROSION</h2>
-    <p class="plugin-tagline">Four-Stage Saturation Engine</p>
-</header>
 
 <main>
     <div class="image-container">
@@ -188,9 +204,7 @@
     <div class="description-box">
         <p class="description-text"><b>EROSION treats degradation as a physical process.</b> 
 
-        Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface. Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment. 
-
-        The engine covers the full spectrum of nonlinear transformation—from invisible germanium warmth to aggressive vacuum tube destruction.</p>
+        Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface. Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -209,27 +223,22 @@
         
         <div class="module-block">
             <h4>THE SYSTEM</h4>
-            <p>EROSION is a nonlinear signal environment built around four distinct analog modeling engines: <b>DISTRESS</b>, <b>AMBER</b>, <b>GRIME</b>, and <b>GRIT</b>. It treats saturation not as a simple effect, but as a physical process of material degradation. The internal routing architecture allows the four voices to be deployed in <b>Series</b> for compound transformation, an <b>A/B Split</b> for parallel balancing, or full <b>Parallel Summing</b> with independent phase control.</p>
+            <p>EROSION is a nonlinear signal environment built around four distinct analog modeling engines: <b>DISTRESS</b>, <b>AMBER</b>, <b>GRIME</b>, and <b>GRIT</b>. It treats saturation not as a simple effect, but as a physical process of material degradation.</p>
         </div>
 
         <div class="module-block">
             <h4>INTERFACE</h4>
-            <p>Following the THETA Void design language, the EROSION interface is a focused research terminal utilizing flat rendering and scientific telemetry. Control is anchored by a <b>dual-concentric knob architecture</b> with brightness-graded value arcs, providing immediate visual feedback of signal stress. The primary interaction surface is the multi-functional <b>GRIME XY Heat Pad</b>, designed for performance-grade control over tube character.</p>
+            <p>Following the THETA Void design language, the EROSION interface is a focused research terminal utilizing flat rendering and scientific telemetry. Control is anchored by a <b>dual-concentric knob architecture</b> with brightness-graded value arcs.</p>
         </div>
 
         <div class="module-block">
-            <h4>ANALOG MODELS [STAGES 1 & 2]</h4>
-            <p><b>DISTRESS [GERMANIUM]</b> is a transistor compressor-saturator model featuring asymmetric clipping and unpredictable harmonic crunch, ideal for adding "hair" and instability to transients. <b>AMBER [TAPE]</b> provides frequency-dependent tape saturation, utilizing a tilt-weighted model to simulate the tonal softening and compression characteristics of vintage transport paths.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>ANALOG MODELS [STAGES 3 & 4]</h4>
-            <p><b>GRIME [TUBE]</b> is a three-path vacuum tube simulation allowing users to move between Pentode, Triode, and 12AT7 topologies. It is the most reactive stage in the engine, responding dynamically to input gain and XY positioning. <b>GRIT [TANH]</b> acts as the final clinical stage, utilizing a high-precision Tanh soft-clipping model to add a clean edge and harmonic density.</p>
+            <h4>ANALOG MODELS</h4>
+            <p><b>DISTRESS [GERMANIUM]</b> features asymmetric clipping, while <b>AMBER [TAPE]</b> provides frequency-dependent tape saturation. <b>GRIME [TUBE]</b> offers Pentode and Triode topologies, and <b>GRIT [TANH]</b> acts as the final clinical stage.</p>
         </div>
 
         <div class="module-block">
             <h4>XY PERFORMANCE</h4>
-            <p>Beyond pure saturation, EROSION includes three performance-driven buffers mapped to the XY movement: <b>Grain Scatter</b> utilizes micro-granular time-shifting to create harmonic smear; <b>Stutter Gate</b> applies physical drag-velocity rhythm, chopping the signal based on speed of interaction; and <b>Feedback Smear</b> introduces a resonant comb filter that feeds directly back into the tube stages.</p>
+            <p>The XY movement maps to three performance-driven buffers: <b>Grain Scatter</b> for harmonic smear, <b>Stutter Gate</b> for physical drag-velocity rhythm, and <b>Feedback Smear</b> for resonant comb filtering.</p>
         </div>
     </section>
 
