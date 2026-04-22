@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* --- STICKY NAVIGATION (Unified) --- */
+        /* --- STICKY HARDWARE HEADER --- */
         nav.nav-terminal {
             padding: 10px 60px;
             display: flex;
@@ -50,6 +50,36 @@
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
 
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-family: 'Montserrat';
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
             color: var(--accent); 
@@ -64,34 +94,14 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MODULE HERO --- */
-        header.module-hero {
-            padding: 40px 60px 20px 60px;
-            text-align: center;
-            border-bottom: 1px solid var(--charcoal);
-        }
-        .module-hero h2 {
-            font-family: 'Montserrat';
-            font-size: 62px; 
-            letter-spacing: 48px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 48px;
-        }
-        .plugin-tagline { 
-            font-size: 10px; 
-            letter-spacing: 10px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 15px 0 0 0; 
-            opacity: 0.8;
+        /* --- MAIN CONTENT (Compressed Spacing) --- */
+        main { 
+            padding: 20px 60px 60px 60px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
-        /* --- MAIN CONTENT --- */
-        main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
             display: block; 
             width: 100%; 
@@ -103,7 +113,7 @@
 
         .description-box { 
             max-width: 850px; 
-            margin: 0 auto 80px auto; 
+            margin: 0 auto 60px auto; 
             border-left: 1px solid var(--stroke); 
             padding-left: 40px; 
         }
@@ -147,9 +157,14 @@
         }
 
         @media (max-width: 1100px) {
-            .module-hero h2 { font-size: 32px; letter-spacing: 16px; padding-left: 16px; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
         }
     </style>
 </head>
@@ -159,16 +174,17 @@
     <a href="index.html" class="header-logo-link">
         <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
+
+    <div class="header-module-name">
+        <h2>ATRIA</h2>
+        <p class="plugin-tagline">Performance-Driven Creative FX Instrument</p>
+    </div>
+
     <div class="nav-links">
         <a href="index.html">RETURN_TO_LAB</a>
         <a href="store.html">STORE</a>
     </div>
 </nav>
-
-<header class="module-hero">
-    <h2>ATRIA</h2>
-    <p class="plugin-tagline">Performance-Driven Creative FX Instrument</p>
-</header>
 
 <main>
     <div class="image-container">
@@ -199,17 +215,17 @@
         
         <div class="module-block">
             <h4>TRANSIENT</h4>
-            <p>Transient is ATRIA’s pulse-shaping front end. It is designed to emphasize or soften the attack behavior of incoming material so the signal can feel tighter, more percussive, or more flowing before it enters the rest of the motion engine. In the ATRIA macro plan, the <b>Pulse</b> dimension is explicitly routed here first because it is one of the fastest ways to make the instrument feel immediately rhythmic and alive.</p>
+            <p>Transient is ATRIA’s pulse-shaping front end. It is designed to emphasize or soften the attack behavior of incoming material so the signal can feel tighter, more percussive, or more flowing before it enters the rest of the motion engine.</p>
         </div>
 
         <div class="module-block">
             <h4>STUTTER A</h4>
-            <p>Stutter A is the primary rhythmic interruption stage. It introduces gated movement and timing patterning early in the chain, giving ATRIA its immediate chopped, pulsed, and animated character. In the macro system, <b>Pulse</b> is routed here as part of ATRIA’s “immediate rhythmic identity” pass.</p>
+            <p>Stutter A is the primary rhythmic interruption stage. It introduces gated movement and timing patterning early in the chain, giving ATRIA its immediate chopped, pulsed, and animated character.</p>
         </div>
 
         <div class="module-block">
             <h4>PITCH / SPEED</h4>
-            <p>This stage handles playback displacement and identity shift. ATRIA’s <b>Shift</b> macro is defined as pitch and playback displacement with a centered neutral position, making this module the point where stable material can become warped, displaced, or time-stretched in a musically performative way.</p>
+            <p>This stage handles playback displacement and identity shift. ATRIA’s <b>Shift</b> macro is defined as pitch and playback displacement with a centered neutral position, making this module the point where stable material can become warped, displaced, or time-stretched.</p>
         </div>
 
         <div class="module-block">
@@ -224,7 +240,7 @@
 
         <div class="module-block">
             <h4>PHASE</h4>
-            <p>Phase is ATRIA’s spectral motion stage. It is the counterpart to Flange: less about obvious delay motion, more about internal swirl, image movement, and phase-based animation. <b>Space</b> is routed here alongside Flange in the recommended macro order.</p>
+            <p>Phase is ATRIA’s spectral motion stage. It is the counterpart to Flange: less about obvious delay motion, more about internal swirl, image movement, and phase-based animation.</p>
         </div>
 
         <div class="module-block">
