@@ -50,7 +50,7 @@
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
 
-        /* CENTERED MODULE TITLE */
+        /* HEADER CENTRIC TITLE */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -59,7 +59,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            pointer-events: none; /* Allows clicking through to navigation if needed */
+            pointer-events: none;
         }
         .header-module-name h2 {
             font-family: 'Montserrat';
@@ -94,8 +94,12 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MAIN CONTENT --- */
-        main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
+        /* --- MAIN CONTENT (Compressed Spacing) --- */
+        main { 
+            padding: 20px 60px 60px 60px; /* Snaps interface to header */
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
 
         .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
@@ -172,7 +176,7 @@
         }
 
         @media (max-width: 900px) {
-            .header-module-name { display: none; } /* Hide center title on mobile for nav clearance */
+            .header-module-name { display: none; }
         }
     </style>
 </head>
@@ -202,19 +206,17 @@
     <div class="description-box">
         <p class="description-text"><b>TWILIGHT is a regenerative ambience instrument from THETA Audio Research.</b> 
 
-        Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument. 
-
-        Instead of behaving like a standard effect or synth, TWILIGHT functions more like a living signal environment — one that can generate, transform, widen, sequence, and finish sound from within the same space.</p>
+        Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument.</p>
     </div>
 
     <section class="system-intel">
         <div class="intel-block">
             <h3>RECORDING_AND_CAPTURE</h3>
-            <p>TWILIGHT includes a built-in REC function that can capture the plugin’s output directly to a chosen WAV file. This makes it easy to print long drones, evolving lattice performances, or processed output without leaving the laboratory workflow.</p>
+            <p>TWILIGHT includes a built-in REC function that can capture the plugin’s output directly to a chosen WAV file. This makes it easy to print long drones or processed output without leaving the laboratory workflow.</p>
         </div>
         <div class="intel-block">
             <h3>INTERFACE_LOGIC</h3>
-            <p>Following the THETA Void language: dark backgrounds, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity within the larger field.</p>
+            <p>Following the THETA Void language: absolute black, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity.</p>
         </div>
     </section>
 
@@ -223,34 +225,32 @@
         
         <div class="module-block">
             <h4>T H E T A // THE HEART</h4>
-            <p><b>Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction—internal movement that gives the sound a breathing quality.</p>
-            <p>Voices can function independently as cluster layers or as a linked body that preserves intervals as you shift the field. The <b>Signal Lattice</b> turns this engine into a generative pattern instrument.</p>
+            <p><b>Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction.</p>
         </div>
 
         <div class="module-block">
             <h4>D R I F T // HARMONY & ENSEMBLE</h4>
-            <p><b>Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles or add shimmer and cinematic instability.</p>
-            <p>Modes include: <b>UNI, OCT+, OCT-, 5TH, MAJ, MIN, SUS,</b> and <b>CLSTR</b>. It features a humanization system (<b>HUMAN/TRACK/GLIDE</b>) to ensure doubles feel alive.</p>
+            <p><b>Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles.</p>
         </div>
 
         <div class="module-block">
             <h4>F I E L D // SPATIAL BLOOM</h4>
-            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment. It includes a dedicated <b>SHIMMER</b> control for luminous harmonic lift.</p>
+            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment.</p>
         </div>
 
         <div class="module-block">
             <h4>F A D E // MOTION ENGINE</h4>
-            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats. Beyond simple tremolo, FADE uses <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes and broken mechanical grooves.</p>
+            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats using <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes.</p>
         </div>
 
         <div class="module-block">
             <h4>M A S T E R B U S // OUTPUT MATRIX</h4>
-            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized as a finished stereo field. Features four core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>.</p>
+            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized. Features core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>.</p>
         </div>
 
         <div class="module-block">
             <h4>O U T P U T // FINISHING STAGE</h4>
-            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section. Includes the <b>THRU</b> system for processing external audio, a center-neutral <b>TONE</b> tilt shaper, and the final <b>LIMIT</b> boundary.</p>
+            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section including the <b>THRU</b> system for external audio processing and the final <b>LIMIT</b> boundary.</p>
         </div>
     </section>
 
@@ -262,7 +262,6 @@
                 <li><b>Sequencer</b> Signal Lattice [Gate / Pitch / Prob / Velocity / Swing]</li>
                 <li><b>Harmony Modes</b> UNI, OCT+/-, 5TH, MAJ, MIN, SUS, CLSTR</li>
                 <li><b>Master Bus</b> Flanger, Stutter, Reverb, Brick-Wall Limiter</li>
-                <li><b>Signal Flow</b> THETA → DRIFT → V5 → FIELD → FADE → MASTER → OUTPUT</li>
             </ul>
         </div>
 
