@@ -6,7 +6,7 @@
     <title>THETA | Laboratory Index</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        :root { --void: #06080C; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
+        :root { --void: #000000; --gold: #C8A86B; --silver: #B0B0B0; --border: #1A1B23; }
         
         body { 
             background-color: var(--void); 
@@ -19,23 +19,35 @@
             overflow-x: hidden; 
         }
 
-        /* --- NAVIGATION TERMINAL --- */
+        /* --- STICKY NAVIGATION --- */
         nav.nav-terminal {
             padding: 15px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
-            background: var(--void);
+            /* FORCED BLACK BACKGROUND */
+            background-color: #000000 !important;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        /* Top Left Header Logo */
-        .header-logo-link { height: 50px; transition: 0.4s; }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-        .header-logo-link:hover { opacity: 0.8; filter: drop-shadow(0 0 10px rgba(200, 168, 107, 0.3)); }
+        .header-logo-link { 
+            height: 55px; 
+            display: flex;
+            align-items: center;
+            background: #000; /* Masking white edges */
+            transition: 0.4s; 
+        }
+        
+        .header-logo-link img { 
+            height: 100%; 
+            width: auto; 
+            display: block; 
+            /* This filter helps blend images with dark backgrounds */
+            mix-blend-mode: screen; 
+        }
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
@@ -58,19 +70,23 @@
             flex-direction: column; 
             align-items: center; 
             text-align: center;
+            background-color: #000; /* Forced Black */
             border-bottom: 1px solid var(--border);
         }
 
         .hero-logo-container {
             width: 100%;
-            max-width: 550px; /* Scaled for high impact */
-            margin-bottom: 20px;
+            max-width: 500px;
+            background: #000;
             transition: 0.6s ease;
         }
+        
         .hero-logo-container img {
             width: 100%;
             height: auto;
             display: block;
+            /* Removes black from the image, keeping only the gold/white */
+            mix-blend-mode: screen; 
         }
 
         /* --- MODULE LIST --- */
@@ -92,7 +108,7 @@
             width: 100%;
             max-width: 900px;
             border-bottom: 1px solid rgba(26, 27, 35, 0.5); 
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1), background 0.4s;
+            transition: 0.4s;
         }
 
         .node-row:hover { 
@@ -110,16 +126,8 @@
             text-transform: uppercase; 
             flex: 1;
         }
-        .node-desc { 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
-            opacity: 0.4; 
-            text-align: right; 
-        }
+        .node-desc { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; text-align: right; }
         
-        .node-row:hover .node-name { color: var(--gold); }
-
         footer { 
             padding: 40px 60px; 
             font-size: 9px; 
@@ -129,18 +137,13 @@
             justify-content: space-between; 
             border-top: 1px solid var(--border); 
         }
-
-        @media (max-width: 1100px) {
-            .node-name { font-size: 24px; letter-spacing: 8px; }
-            nav.nav-terminal { flex-direction: column; gap: 20px; }
-        }
     </style>
 </head>
 <body>
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-logo-link">
-        <img src="theta_horizontal.png" alt="THETA AUDIO RESEARCH">
+        <img src="theta_square_transparent.png" alt="THETA">
     </a>
     <div class="nav-links">
         <a href="store.html">STORE</a>
@@ -150,7 +153,7 @@
 
 <header class="hero-section">
     <div class="hero-logo-container">
-        <img src="theta_square_transparent.png" alt="THETA Laboratory Index">
+        <img src="theta_primary_transparent.png" alt="THETA">
     </div>
 </header>
 
