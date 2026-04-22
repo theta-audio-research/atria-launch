@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TWILIGHT | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --void: #06080C; 
-            --gold: #C8A86B; 
-            --cyan: #00E5FF; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
-        }
-        body { background-color: var(--void); color: var(--silver); font-family: 'JetBrains Mono', monospace; margin: 0; line-height: 1.6; }
-
-        /* --- PERSISTENT HARDWARE HEADER --- */
-        header { 
-            padding: 40px 60px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: relative; 
-            border-bottom: 1px solid var(--border);
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
         }
         
-        .brand-link { text-decoration: none; color: inherit; }
-        .brand-block { display: flex; align-items: center; gap: 20px; }
-        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
-        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'JetBrains Mono', monospace; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
 
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* CENTERED MODULE TITLE */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -38,87 +59,128 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            pointer-events: none; /* Allows clicking through to navigation if needed */
         }
         .header-module-name h2 {
             font-family: 'Montserrat';
-            font-size: 42px; 
-            letter-spacing: 32px; 
-            color: #fff;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
             text-transform: uppercase;
             margin: 0;
-            text-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+            padding-left: 24px;
         }
         .header-module-name .plugin-tagline { 
-            font-size: 10px; 
-            letter-spacing: 12px; 
-            color: var(--cyan); 
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
             text-transform: uppercase; 
-            margin: 10px 0 0 0; 
-            opacity: 0.9; 
-            padding-left: 32px;
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
         }
 
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
-        nav a:hover { background: var(--gold); color: var(--void); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700; 
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
 
         /* --- MAIN CONTENT --- */
         main { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
 
-        .image-container { margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .plugin-display { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--border); box-shadow: 0 10px 80px rgba(0, 229, 255, 0.1); }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
 
-        .description-box { max-width: 850px; margin: 0 auto 60px auto; border-left: 2px solid var(--cyan); padding-left: 40px; }
-        .description-text { font-size: 15px; line-height: 1.9; opacity: 0.7; white-space: pre-line; }
-        .description-text b { color: #fff; font-weight: 700; }
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
+        .description-text b { color: var(--structure); font-weight: 700; }
 
-        /* --- SYSTEM NARRATIVE BLOCKS --- */
-        .system-intel { max-width: 900px; margin: 0 auto 80px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid var(--border); padding-top: 40px; }
-        .intel-block h3 { font-family: 'Montserrat'; font-size: 10px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 15px; }
-        .intel-block p { font-size: 13px; opacity: 0.5; line-height: 1.7; margin: 0; }
+        /* --- SYSTEM INTEL --- */
+        .system-intel { 
+            max-width: 900px; 
+            margin: 0 auto 80px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            border-top: 1px solid var(--charcoal); 
+            padding-top: 40px; 
+        }
+        .intel-block h3 { font-family: 'Montserrat'; font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
+        .intel-block p { font-size: 13px; color: var(--secondary); opacity: 0.7; line-height: 1.7; margin: 0; }
 
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
-        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: #fff; text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; opacity: 0.6; line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block b { color: var(--cyan); }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
+        .module-block b { color: var(--accent); }
 
         /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--border); }
-        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; }
+        .specs-container { 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 80px; 
+            margin-bottom: 100px; 
+            padding-top: 60px; 
+            border-top: 1px solid var(--charcoal); 
+        }
+        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
         .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; opacity: 0.8; }
-        .spec-list li b { color: var(--cyan); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--cyan); font-weight: 700; opacity: 0.5; }
+        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
+        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
 
-        footer { padding: 40px 60px; font-size: 9px; letter-spacing: 6px; opacity: 0.3; display: flex; justify-content: space-between; border-top: 1px solid var(--border); margin-top: 100px; }
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
 
         @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 28px; letter-spacing: 16px; }
-            .header-module-name .plugin-tagline { font-size: 8px; letter-spacing: 8px; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .system-intel { grid-template-columns: 1fr; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
         }
 
         @media (max-width: 900px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
-            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
-            .header-module-name h2 { font-size: 22px; letter-spacing: 8px; }
-            main { padding: 0 20px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            .header-module-name { display: none; } /* Hide center title on mobile for nav clearance */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="index.html" class="brand-link">
-        <div class="brand-block">
-            <div class="brand-text">
-                <h1>THETA</h1>
-                <p>Audio Research & Development</p>
-            </div>
-        </div>
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
     </a>
 
     <div class="header-module-name">
@@ -126,8 +188,11 @@
         <p class="plugin-tagline">Regenerative Ambience Engine</p>
     </div>
 
-    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
-</header>
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
 
 <main>
     <div class="image-container">
@@ -149,7 +214,7 @@
         </div>
         <div class="intel-block">
             <h3>INTERFACE_LOGIC</h3>
-            <p>Following the THETA Void language: dark backgrounds, gold/cyan telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a dedicated per-voice color system to define visual identities within the larger field.</p>
+            <p>Following the THETA Void language: dark backgrounds, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity within the larger field.</p>
         </div>
     </section>
 
@@ -159,33 +224,33 @@
         <div class="module-block">
             <h4>T H E T A // THE HEART</h4>
             <p><b>Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction—internal movement that gives the sound a breathing quality.</p>
-            <p>Voices can function independently as cluster layers or as a linked body that preserves intervals as you shift the field. The <b>Signal Lattice</b> turns this engine into a generative pattern instrument where voices can pulse, step, and swing across probabilistic timelines.</p>
+            <p>Voices can function independently as cluster layers or as a linked body that preserves intervals as you shift the field. The <b>Signal Lattice</b> turns this engine into a generative pattern instrument.</p>
         </div>
 
         <div class="module-block">
             <h4>D R I F T // HARMONY & ENSEMBLE</h4>
             <p><b>Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles or add shimmer and cinematic instability.</p>
-            <p>Modes include: <b>UNI, OCT+, OCT-, 5TH, MAJ, MIN, SUS,</b> and <b>CLSTR</b>. It features a humanization system (HUMAN/TRACK/GLIDE) to ensure doubles feel alive rather than machine-locked.</p>
+            <p>Modes include: <b>UNI, OCT+, OCT-, 5TH, MAJ, MIN, SUS,</b> and <b>CLSTR</b>. It features a humanization system (<b>HUMAN/TRACK/GLIDE</b>) to ensure doubles feel alive.</p>
         </div>
 
         <div class="module-block">
             <h4>F I E L D // SPATIAL BLOOM</h4>
-            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment. It includes a dedicated <b>SHIMMER</b> control for luminous harmonic lift, creating atmosphere with a vertical dimension.</p>
+            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment. It includes a dedicated <b>SHIMMER</b> control for luminous harmonic lift.</p>
         </div>
 
         <div class="module-block">
             <h4>F A D E // MOTION ENGINE</h4>
-            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats. Beyond simple tremolo, FADE uses <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes, swung pulses, and broken mechanical grooves.</p>
+            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats. Beyond simple tremolo, FADE uses <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes and broken mechanical grooves.</p>
         </div>
 
         <div class="module-block">
             <h4>M A S T E R B U S // OUTPUT MATRIX</h4>
-            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized as a finished stereo field. Features four core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>. This stage binds the layers together before they reach the finishing wall.</p>
+            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized as a finished stereo field. Features four core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>.</p>
         </div>
 
         <div class="module-block">
             <h4>O U T P U T // FINISHING STAGE</h4>
-            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section. Includes the <b>THRU</b> system for processing external audio, a center-neutral <b>TONE</b> tilt shaper, and the final <b>LIMIT</b> boundary. It is designed to catch a dense harmonic field and make it feel intentional and finished.</p>
+            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section. Includes the <b>THRU</b> system for processing external audio, a center-neutral <b>TONE</b> tilt shaper, and the final <b>LIMIT</b> boundary.</p>
         </div>
     </section>
 
@@ -206,8 +271,7 @@
             <ul class="spec-list">
                 <li><b>Platform</b> macOS [AU / VST3] // 64-bit</li>
                 <li><b>Recording</b> Direct output capture to WAV via REC function</li>
-                <li><b>Aesthetic</b> THETA Void [Flat Rendering / Scientific HUD]</li>
-                <li><b>Data Location</b> ~/Library/Audio/Presets/THETA/TWILIGHT</li>
+                <li><b>Aesthetic</b> THETA Void [Brutalist Grayscale / Scientific HUD]</li>
                 <li><b>Manufacturer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
