@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EROSION | THETA Audio Research</title>
+    <title>CREOSOTE | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -94,12 +94,8 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MAIN CONTENT (Compressed Spacing) --- */
-        main { 
-            padding: 20px 60px 60px 60px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
         .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
@@ -139,17 +135,19 @@
         }
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
-        /* --- NARRATIVE DEEP DIVE --- */
+        /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
         .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
         .module-block { margin-bottom: 60px; }
         .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0; }
+        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
         .module-block b { color: var(--accent); }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
         .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
         .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
@@ -163,7 +161,7 @@
             display: flex; 
             justify-content: space-between; 
             border-top: 1px solid var(--charcoal); 
-            margin-top: 100px;
+            margin-top: 100px; 
         }
 
         @media (max-width: 1100px) {
@@ -186,8 +184,8 @@
     </a>
 
     <div class="header-module-name">
-        <h2>EROSION</h2>
-        <p class="plugin-tagline">Four-Stage Saturation Engine</p>
+        <h2>CREOSOTE</h2>
+        <p class="plugin-tagline">Three-stage analog character processor</p>
     </div>
 
     <div class="nav-links">
@@ -198,23 +196,23 @@
 
 <main>
     <div class="image-container">
-        <img src="EROSION_v15.7.png" alt="EROSION Interface" class="plugin-display">
+        <img src="EROSION_v15.7.png" alt="CREOSOTE Interface" class="plugin-display">
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>EROSION treats degradation as a physical process.</b> 
+        <p class="description-text"><b>CREOSOTE is built around how records actually got their sound.</b> 
 
-        Built around four distinct analog circuit models, it provides a flexible routing architecture paired with a performance-grade XY control surface. Instead of offering disconnected modules, EROSION treats saturation as a coherent signal environment.</p>
+        A tape machine, a tube preamp, and a compressor, in that order. Each stage models a specific generation of hardware in detail, and each opens into an expert view when you want to dial in the same combinations the records you like were made with.</p>
     </div>
 
     <section class="acquisition-anchor">
         <span class="lab-header">SYSTEM_AUTHORIZATION</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Authorization includes VST3/AU formats, 48kHz internal oversampling, 
-                and Factory Presets.
+                Authorization includes VST3, AU, and AAX formats, macOS Apple Silicon support, 
+                and XML research presets.
             </p>
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $49.99</a>
+            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $129.00</a>
         </div>
     </section>
 
@@ -222,23 +220,25 @@
         <h3>SYSTEM_ARCHITECTURE</h3>
         
         <div class="module-block">
-            <h4>THE SYSTEM</h4>
-            <p>EROSION is a nonlinear signal environment built around four distinct analog modeling engines: <b>DISTRESS</b>, <b>AMBER</b>, <b>GRIME</b>, and <b>GRIT</b>. It treats saturation not as a simple effect, but as a physical process of material degradation.</p>
+            <h4>GRIT — TAPE</h4>
+            <p><b>Seven machines + Nine tape formulas.</b> Models tape’s magnetic memory (hysteresis) so transients soften and sustained content blooms slightly behind itself. Includes transport flutter at three depths and playback head gap scaling based on IPS (7.5, 15, or 30).</p>
         </div>
 
         <div class="module-block">
-            <h4>INTERFACE</h4>
-            <p>Following the THETA Void design language, the EROSION interface is a focused research terminal utilizing flat rendering and scientific telemetry. Control is anchored by a <b>dual-concentric knob architecture</b> with brightness-graded value arcs.</p>
+            <h4>AMBER — TUBE PREAMP CHAIN</h4>
+            <p><b>Three stages in series (Preamp, Power, Rectifier).</b> Each features historical axes: <b>CONDITION</b> (New to Microphonic), <b>BIAS</b> (Cold to Hot), <b>PLATE</b> (Headroom control), and <b>LOAD</b> (Impedance damping). Includes historical contexts like REDD-47, V72, and Pultec.</p>
         </div>
 
         <div class="module-block">
-            <h4>ANALOG MODELS</h4>
-            <p><b>DISTRESS [GERMANIUM]</b> features asymmetric clipping, while <b>AMBER [TAPE]</b> provides frequency-dependent tape saturation. <b>GRIME [TUBE]</b> offers Pentode and Triode topologies, and <b>GRIT [TANH]</b> acts as the final clinical stage.</p>
+            <h4>COMPRESS — TOPOLOGIES</h4>
+            <p><b>Eight distinct compressors.</b> Includes LEVEL CELL (Optical), BLACK FET (1176), FAIR MU (Vari-Mu), SSL BUS, and NEVE BRIDGE. Each topology uses unique envelope physics rather than simple preset values.</p>
         </div>
 
         <div class="module-block">
-            <h4>XY PERFORMANCE</h4>
-            <p>The XY movement maps to three performance-driven buffers: <b>Grain Scatter</b> for harmonic smear, <b>Stutter Gate</b> for physical drag-velocity rhythm, and <b>Feedback Smear</b> for resonant comb filtering.</p>
+            <h4>ROUTING MODES</h4>
+            <p>• <b>SERIES:</b> Tape → Tubes → Compressor (Classic Path).<br>
+               • <b>A/B:</b> Path A (Tape) vs Path B (Tubes + Comp).<br>
+               • <b>PARALLEL:</b> Surgical blending of all three modules from the input.</p>
         </div>
     </section>
 
@@ -246,19 +246,19 @@
         <div class="spec-group">
             <h3>CORE_LOGIC</h3>
             <ul class="spec-list">
-                <li><b>Routing Modes</b> Series, A/B Split, and Parallel Summing with Phase Inv.</li>
-                <li><b>Oversampling</b> Selectable 2x / 4x / 8x High-Definition Linear Phase.</li>
-                <li><b>Performance Buffer</b> XY-driven Grain Scatter and Stutter Gate logic.</li>
-                <li><b>Output Wall</b> Composite Tanh Clipper + Brick-wall Safety Limiter.</li>
+                <li><b>Interface</b> TWEAK overlay for expert-level axis control.</li>
+                <li><b>Saturation</b> Magnetic memory hysteresis and rectifier sag modeling.</li>
+                <li><b>Dynamics</b> Eight topological engines with Feedforward/Feedback toggle.</li>
+                <li><b>Oversampling</b> Toggleable HQ mode for saturation stage precision.</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>TELEMETRY</h3>
+            <h3>TECHNICAL_SPEC</h3>
             <ul class="spec-list">
-                <li><b>Architecture</b> macOS [AU / VST3] // 64-bit</li>
-                <li><b>Interface</b> THETA Void [Flat Vector Styling / Arced Value Readouts]</li>
-                <li><b>Input/Output</b> Level-matched signal path with global bypass.</li>
+                <li><b>Formats</b> VST3, AU, AAX [macOS Apple Silicon + Intel]</li>
+                <li><b>Latency</b> Zero-latency (Lookahead-dependent: 3ms / 10ms).</li>
+                <li><b>Presets</b> 12 research-anchored factory configurations.</li>
                 <li><b>Developer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
@@ -269,7 +269,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #002 // TERMINAL_VERIFIED</span>
+    <span>LAB NOTE #004 // CREOSOTE_STABLE</span>
 </footer>
 
 </body>
