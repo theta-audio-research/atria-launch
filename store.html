@@ -50,7 +50,6 @@
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
 
-        /* HEADER CENTRIC TITLE */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -133,8 +132,23 @@
             align-items: center; 
             background: linear-gradient(180deg, rgba(220, 205, 191, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
         }
-        .bundle-visual { width: 100%; height: 300px; background: var(--void); border: 1px solid var(--charcoal); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .bundle-visual::after { content: "TOTAL_COLLECTION"; font-family: 'Montserrat'; font-size: 10px; letter-spacing: 20px; color: var(--charcoal); opacity: 0.5; }
+        .bundle-visual { 
+            width: 100%; 
+            height: 350px; 
+            background: var(--void); 
+            border: 1px solid var(--charcoal); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+        .bundle-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s ease;
+        }
+        .bundle-card:hover .bundle-img { transform: scale(1.03); }
 
         /* GRID STYLE */
         .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; width: 100%; }
@@ -200,6 +214,7 @@
         @media (max-width: 1100px) {
             .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
             .bundle-card { grid-template-columns: 1fr; padding: 40px 20px; }
+            .bundle-visual { height: 250px; }
             .store-grid { grid-template-columns: 1fr; }
             .notify-form { flex-direction: column; border: none; gap: 10px; }
             .notify-input { border: 1px solid var(--charcoal); }
@@ -228,7 +243,9 @@
     <section class="bundle-container">
         <article class="bundle-card">
             <a href="index.html" class="card-link-overlay"></a>
-            <div class="bundle-visual"></div>
+            <div class="bundle-visual">
+                <img src="TOTAL BUNDLE.png" alt="THETA TOTAL COLLECTION" class="bundle-img">
+            </div>
             <div class="bundle-intel" style="position: relative; z-index: 2;">
                 <span class="plugin-id">BDL_001_TOTAL</span>
                 <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: var(--structure); margin: 10px 0;">TOTAL COLLECTION</h3>
