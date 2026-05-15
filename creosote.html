@@ -136,7 +136,7 @@
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 60px; }
@@ -221,24 +221,52 @@
         
         <div class="module-block">
             <h4>GRIT — TAPE</h4>
-            <p><b>Seven machines + Nine tape formulas.</b> Models tape’s magnetic memory (hysteresis) so transients soften and sustained content blooms slightly behind itself. Includes transport flutter at three depths and playback head gap scaling based on IPS (7.5, 15, or 30).</p>
+            <p><b>Seven machines + Nine tape formulas.</b> Models tape’s magnetic memory (hysteresis) so transients soften and sustained content blooms slightly behind itself. Transport flutter at three depths (modern direct-drive through worn-capstan vintage). Playback head gap auto-scales with IPS, the way real hardware does.</p>
         </div>
 
         <div class="module-block">
             <h4>AMBER — TUBE PREAMP CHAIN</h4>
-            <p><b>Three stages in series (Preamp, Power, Rectifier).</b> Each features historical axes: <b>CONDITION</b> (New to Microphonic), <b>BIAS</b> (Cold to Hot), <b>PLATE</b> (Headroom control), and <b>LOAD</b> (Impedance damping). Includes historical contexts like REDD-47, V72, and Pultec.</p>
+            <p><b>Three stages in series (Preamp, Power, Rectifier).</b> Each features period-correct tube types and historical manufacturing eras. Hardware-context macros (REDD-47, V72, Pultec, Tweed) shape the front end of the signal chain.</p>
         </div>
 
         <div class="module-block">
             <h4>COMPRESS — TOPOLOGIES</h4>
-            <p><b>Eight distinct compressors.</b> Includes LEVEL CELL (Optical), BLACK FET (1176), FAIR MU (Vari-Mu), SSL BUS, and NEVE BRIDGE. Each topology uses unique envelope physics rather than simple preset values.</p>
+            <p><b>Eight distinct compressors.</b> Includes LEVEL CELL (LA-2A optical), BLACK FET (1176), FAIR MU (Fairchild), SSL BUS, NEVE BRIDGE (33609), PYE PWM, and TG ZENER. Each topology carries its own envelope physics, attack/release range, and harmonic character.</p>
         </div>
 
         <div class="module-block">
             <h4>ROUTING MODES</h4>
             <p>• <b>SERIES:</b> Tape → Tubes → Compressor (Classic Path).<br>
-               • <b>A/B:</b> Path A (Tape) vs Path B (Tubes + Comp).<br>
-               • <b>PARALLEL:</b> Surgical blending of all three modules from the input.</p>
+               • <b>A/B:</b> Path A (Tape) vs Path B (Tubes + Comp) with independent level and phase per path.<br>
+               • <b>PARALLEL:</b> All three modules fed from the input; master strip blends them for surgical control.</p>
+        </div>
+    </section>
+
+    <section class="module-deep-dive" style="border-top: 1px solid var(--charcoal); padding-top: 40px;">
+        <h3>THE_TWEAK_PANEL</h3>
+        <div class="image-container">
+            <img src="CREOSOTE_v18_TWEAK_TUBE.png" alt="CREOSOTE Tweak Panel Overlay" class="plugin-display">
+        </div>
+        <p style="font-size: 14px; color: var(--secondary); margin-bottom: 40px;">Click <b>TWEAK</b> in the top bar to open the expert overlay — five tabs of deep controls that sit underneath the main module controls. The plugin is fully usable without ever opening this panel; everything here is for users who want to shape the response at a finer level than the front-panel knobs allow.</p>
+        
+        <div class="module-block">
+            <h4>TAPE</h4>
+            <p>The physics behind GRIT. <b>HYSTERESIS</b> cycles through the magnetic memory curve; deeper curves smear transients and add "weight" to the low end. <b>FLUTTER</b> mimic's mechanical transport instability via three slow LFOs. <b>HEAD GAP</b> is an IPS-scaled low-pass that simulates frequency roll-off to dial in real-machine response curves.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>TUBE</h4>
+            <p>The character behind AMBER. Exposes four sub-parameters independently for the PREAMP, POWER, and RECT stages. <b>CONDITION</b> handles aging and stereo drift. <b>BIAS</b> shifts operating points for even or odd harmonic emphasis. <b>PLATE</b> adjusts supply headroom, while <b>LOAD</b> simulates output stage impedance (Warm/Smooth vs Fast/Bright).</p>
+        </div>
+
+        <div class="module-block">
+            <h4>COMPRESS</h4>
+            <p>Sidechain and envelope shaping. <b>LOOKAHEAD</b> offers OFF, SHORT (3ms), or LONG (10ms) detection with constant reported latency. <b>AUTO REL</b> overlays a fixed slow-release envelope (~1500ms) for LA-2A-style settling. <b>TOPOLOGY</b> toggles between modern input-driven FORWARD and vintage output-driven FEEDBACK physics.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>MASTER</h4>
+            <p>Whole-mix global shaping. <b>CHARACTER</b> is an always-on tube saturator (Subtle/Warm/Rich) at the input stage. <b>STEREO GLUE</b> applies mid-channel cross-saturation to tighten imaging cohesion. <b>OUT CLIP</b> acts as a post-limiter soft ceiling with three transparency tiers (-0.3dB to -3.0dB).</p>
         </div>
     </section>
 
