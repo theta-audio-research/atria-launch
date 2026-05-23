@@ -94,7 +94,7 @@
         }
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MAIN CONTENT (Compressed Spacing) --- */
+        /* --- MAIN CONTENT --- */
         main { 
             padding: 20px 60px 60px 60px; 
             max-width: 1200px; 
@@ -140,7 +140,7 @@
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
+        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         .module-block { margin-bottom: 60px; }
         .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
@@ -226,8 +226,8 @@
             <img src="CATHODE_16_47_ADV.png" alt="CATHODE Advanced LFO Configuration View" class="plugin-display">
         </div>
         <div class="module-block">
-            <h4>ADVANCED LFO MODE</h4>
-            <p>Engaging the secondary configuration panel exposes the complex modulation matrix behind CATHODE's structural breakdowns. This mode unlocks multi-phase LFO configurations, customizable chaos variables, and cycle-interruption patterns that morph standard time-based shifts into organic hardware failures.</p>
+            <h4>MOTION EDIT / MOTION LFO</h4>
+            <p>Engaging the modulation editor exposes the precise internal configuration engine behind the receiver's breakdown state. Choosing <b>SINE</b>, <b>TRIANGLE</b>, <b>SAW</b>, <b>SQUARE</b>, <b>RANDOM</b>, or <b>DRIFT</b> shapes routes live structural shifts directly to burst rate, length, frequency, or takeover destination vectors. When active, the main CRT display redraws into an 8-second timebase view showcasing cyclic tracking, rate in Hz, and afterimage tracking curves.</p>
         </div>
     </section>
 
@@ -236,59 +236,52 @@
         
         <div class="module-block">
             <h4>LOCK</h4>
-            <p>Unstable continuity, sync stress, and relock behavior. LOCK is the part of CATHODE that makes audio feel like a signal that cannot quite hold together. At its core, LOCK is about the behavior of a receiver trying to remain coherent while vertical hold, timing, and slip start to fail.</p>
+            <p>Unstable continuity, sync stress, and recovery behavior. LOCK handles the structural posture of the transmission under duress. <b>WARP</b> bends timing layout while <b>SLIP</b> generates crisp alignment displacement, making the program slide out from under its own timeline before <b>RECOVER</b> controls map back to a calibrated stable phase.</p>
         </div>
 
         <div class="module-block">
             <h4>HEAD</h4>
-            <p>Wear, drift, and imperfect contact. This module is about mechanical uncertainty: worn contact, alignment drift, and mistracking. The goal was to move away from rhythmic pumping and toward irregular, physical instability.</p>
+            <p>Wear, drift, and imperfect contact. Anchors mechanical uncertainty and physical tracking inconsistencies. <b>WEAR</b> ages the structural trustworthiness of the transport path, while <b>DRIFT</b> introduces slow, non-periodic spatial wanders that avoid generic lfo repetition.</p>
         </div>
 
         <div class="module-block">
             <h4>RECEIVER</h4>
-            <p>Automatic gain behavior and continuity failure. This section combines AGC compensation and dropout failure. <b>AGC</b> creates brightness pump via <b>PUMP</b> and <b>SPEED</b>. <b>DROP</b> handles broken continuity via <b>RATE</b> and <b>DEPTH</b>.</p>
+            <p>Automatic gain behavior and continuity failure. The <b>AGC</b> network forces panel breathing through input-driven <b>PUMP</b> dynamics and calibrated tracking <b>SPEED</b> updates. Concurrently, the <b>DROP</b> stage induces real missing metrics via discrete failure <b>RATE</b> and <b>DEPTH</b> parameters.</p>
         </div>
 
         <div class="module-block">
             <h4>CRUSH</h4>
-            <p>Digital fragmentation and telemetry reduction. A surgical structural degradation pass designed to shatter pristine sample definitions into distinct linear stages. Combined with variable rate tracking and vintage conversions, it provides an uncompromising layer of historical transformation.</p>
+            <p>Bit depth, sample-rate damage, aliasing, jitter, and broken converter behavior. Replacing the legacy utilities with wide horizontal expansion controls, <b>BITS</b> forces definitive degradation metrics while <b>RATE</b> drives precision holds shown in raw Hz/kHz telemetry arcs. Accessing the advanced panel yields deeper <b>FILTER</b> selections, <b>DITHER</b> calculations, and peak crossfade <b>FOLD</b> curves.</p>
         </div>
 
         <div class="module-block">
             <h4>PHOSPHOR</h4>
-            <p>Heat, fatigue, width, and display chemistry. This is where the plugin starts to feel aged and luminous. <b>AGE</b> combines phosphor fatigue (<b>DULL</b>) and signal <b>LOSS</b>. <b>HEAT</b> pushes the chemistry and bloom via <b>WARM</b> and presence <b>BUMP</b>.</p>
+            <p>Heat, fatigue, width, and display chemistry. Controls thermal persistence and panel fatigue. <b>DULL</b> and <b>LOSS</b> step down modern top-end clarity into an authenticated aged response while <b>WARM</b> pushes upper-mid tracking and lit glass energy layers across a variable <b>WIDTH</b> field.</p>
         </div>
 
         <div class="module-block">
             <h4>INTERFERENCE</h4>
-            <p>Bursts, static, competing stations, and takeover. Developed around the "dueling stations" concept. <b>BURST</b> controls incident behavior, <b>NOISE</b> governs the contamination bed, and <b>COMPETE</b> determines takeover aggressiveness.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>TRANSIENT</h4>
-            <p>Attack, sustain, and physical impact. A surgical shaping module used to keep broken systems punchy. <b>ATTACK</b> pushes the front edge, <b>SUSTAIN</b> defines the body length, and <b>MIX</b> handles the final balance.</p>
+            <p>Bursts, static, competing stations, and takeover. Modeled explicitly around a contested broadcast engine. Independent <b>RATE</b>, <b>LENGTH</b>, and <b>FREQ</b> settings clash with a baseline <b>STATIC</b> matrix, enabling external file payloads to aggressively battle for channel ownership.</p>
         </div>
     </section>
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>CORE_MODULES</h3>
+            <h3>SIGNAL_DAMAGE_DISPLAY</h3>
             <ul class="spec-list">
-                <li><b>Receiver Engine</b> Dedicated continuity control for head wear, AGC breathing, and lock stress.</li>
-                <li><b>Crush Protocol</b> Surgical structural reduction pass with multi-tier sampling definitions.</li>
-                <li><b>Phosphor Monitor</b> Thermal fatigue and persistence modeling for authentic monitor chemistry.</li>
-                <li><b>Interference Stage</b> Simulates rival signals, static seizure, and relock behavior.</li>
-                <li><b>Scientific Display</b> Reactive phosphor screen with sync drift and glow driven by audio conditions.</li>
+                <li><b>Procedural Raster</b> Monitors clean input against gain-matched processed outputs to generate real-time visual degradation data.</li>
+                <li><b>Chroma Artifacts</b> Drives immediate scanline agitation, horizontal raster tearing, and sync breakdown blocks directly from sound stress.</li>
+                <li><b>Telemetry readouts</b> Integrates minimal ALT / HARM / SMEAR / NOISE tracking metrics in the screen footer.</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>HERO_STATES</h3>
+            <h3>TECHNICAL_SPEC</h3>
             <ul class="spec-list">
-                <li>LOCK STRESS // WORN HEAD DRIFT</li>
-                <li>DESERT DUEL // GHOST STATION</li>
-                <li>HEATED GLASS // AGED MONITOR</li>
-                <li>FULL IDENTITY // BURNED ARCHIVE</li>
+                <li><b>Formats</b> VST3, AU, AAX [macOS Apple Silicon + Intel Native]</li>
+                <li><b>Oversampling</b> 48kHz internal conversion engine with toggleable HQ mode.</li>
+                <li><b>Latency</b> Zero baseline processing structure (3ms / 10ms with lookahead).</li>
+                <li><b>Developer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
     </section>
