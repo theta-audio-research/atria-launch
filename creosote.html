@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREOSOTE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
     <style>
         /* --- THETA CUSTOM DISPLAY TYPEFACE INITIALIZATION --- */
         @font-face {
@@ -61,7 +61,7 @@
         .header-logo-link:hover { transform: scale(1.08); }
         .header-logo-link img { height: 100%; width: auto; display: block; }
 
-        /* HEADER CENTRIC TITLE */
+        /* HEADER CENTRIC TITLE (Custom Display) */
         .header-module-name {
             position: absolute;
             left: 50%;
@@ -75,21 +75,21 @@
         .header-module-name h2 {
             font-family: "THETA Custom Display", system-ui, sans-serif;
             font-size: 32px; 
-            letter-spacing: 0.16em; 
+            letter-spacing: 0.24em; 
             color: var(--structure);
             text-transform: uppercase;
             margin: 0;
-            padding-left: 0.16em;
+            padding-left: 0.24em;
         }
         .header-module-name .plugin-tagline { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 10px; 
-            letter-spacing: 0.12em; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8px; 
+            letter-spacing: 6px; 
             color: var(--accent); 
             text-transform: uppercase; 
             margin: 5px 0 0 0; 
             opacity: 0.8;
-            padding-left: 0.12em;
+            padding-left: 6px;
         }
 
         .nav-links { display: flex; gap: 20px; }
@@ -97,9 +97,8 @@
             font-family: "THETA Custom Display", system-ui, sans-serif;
             color: var(--accent); 
             text-decoration: none; 
-            font-size: 11px; 
-            letter-spacing: 0.12em; 
-            font-weight: 400; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
             border: 1px solid var(--charcoal); 
             padding: 10px 20px; 
             transition: 0.3s; 
@@ -127,19 +126,11 @@
             padding-left: 40px; 
         }
         .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
-        .description-text b { color: var(--structure); font-family: "THETA Custom Display", sans-serif; letter-spacing: 0.05em; }
+        .description-text b { color: var(--structure); font-weight: 700; }
 
         /* PURCHASE MODULE */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 11px; 
-            letter-spacing: 0.12em; 
-            color: var(--accent); 
-            margin-bottom: 15px; 
-            display: block; 
-            text-transform: uppercase;
-        }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
         .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
         .authorize-btn { 
@@ -149,67 +140,35 @@
             color: var(--accent); 
             padding: 25px; 
             text-decoration: none; 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 13px; 
-            letter-spacing: 0.12em; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
             transition: 0.4s; 
-            text-transform: uppercase;
         }
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 12px; 
-            letter-spacing: 0.14em; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin-bottom: 40px; 
-            border-bottom: 1px solid var(--charcoal); 
-            padding-bottom: 10px;
-        }
+        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 60px; }
-        .module-block h4 { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 16px; 
-            letter-spacing: 0.12em; 
-            color: var(--structure); 
-            text-transform: uppercase; 
-            margin: 0 0 15px 0; 
-        }
+        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
         .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block b { font-family: "THETA Custom Display", sans-serif; color: var(--accent); letter-spacing: 0.05em; }
+        .module-block b { color: var(--accent); }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 12px; 
-            letter-spacing: 0.14em; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin-bottom: 30px; 
-        }
+        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
         
         .spec-list { list-style: none; padding: 0; margin: 0; }
         .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
-        .spec-list li b { 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            color: var(--structure); 
-            display: block; 
-            margin-bottom: 4px; 
-        }
+        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
         .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
 
         footer { 
             padding: 40px 60px; 
-            font-family: "THETA Custom Display", system-ui, sans-serif;
-            font-size: 10px; 
-            letter-spacing: 0.14em; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
             opacity: 0.4; 
             display: flex; 
             justify-content: space-between; 
@@ -218,8 +177,8 @@
         }
 
         @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 0.12em; }
-            .header-module-name .plugin-tagline { font-size: 7px; letter-spacing: 0.08em; }
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
         }
@@ -253,7 +212,7 @@
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>CREOSOTE IS BUILT AROUND HOW RECORDS ACTUALLY GOT THEIR SOUND.</b> 
+        <p class="description-text"><b>CREOSOTE is built around how records actually got their sound.</b> 
 
         A tape machine, a tube preamp, and a compressor, in that order. Each stage models a specific generation of hardware in detail, and each opens into an expert view when you want to dial in the same combinations the records you like were made with.</p>
     </div>
@@ -327,20 +286,20 @@
         <div class="spec-group">
             <h3>CORE_LOGIC</h3>
             <ul class="spec-list">
-                <li><b>INTERFACE</b> TWEAK overlay for expert-level axis control.</li>
-                <li><b>SATURATION</b> Magnetic memory hysteresis and rectifier sag modeling.</li>
-                <li><b>DYNAMICS</b> Eight topological engines with Feedforward/Feedback toggle.</li>
-                <li><b>OVERSAMPLING</b> Toggleable HQ mode for saturation stage precision.</li>
+                <li><b>Interface</b> TWEAK overlay for expert-level axis control.</li>
+                <li><b>Saturation</b> Magnetic memory hysteresis and rectifier sag modeling.</li>
+                <li><b>Dynamics</b> Eight topological engines with Feedforward/Feedback toggle.</li>
+                <li><b>Oversampling</b> Toggleable HQ mode for saturation stage precision.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPEC</h3>
             <ul class="spec-list">
-                <li><b>FORMATS</b> VST3, AU, AAX [macOS Apple Silicon + Intel]</li>
-                <li><b>LATENCY</b> Zero-latency (Lookahead-dependent: 3ms / 10ms).</li>
-                <li><b>PRESETS</b> 12 research-anchored factory configurations.</li>
-                <li><b>DEVELOPER</b> THETA Audio Research // 2026</li>
+                <li><b>Formats</b> VST3, AU, AAX [macOS Apple Silicon + Intel]</li>
+                <li><b>Latency</b> Zero-latency (Lookahead-dependent: 3ms / 10ms).</li>
+                <li><b>Presets</b> 12 research-anchored factory configurations.</li>
+                <li><b>Developer</b> THETA Audio Research // 2026</li>
             </ul>
         </div>
     </section>
