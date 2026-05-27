@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREOSOTE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --void: #000000; 
@@ -18,7 +18,7 @@
         body { 
             background-color: var(--void); 
             color: var(--secondary); 
-            font-family: 'JetBrains Mono', monospace; 
+            font-family: 'Montserrat', sans-serif; 
             margin: 0; 
             min-height: 100vh; 
             display: flex; 
@@ -62,7 +62,7 @@
             pointer-events: none;
         }
         .header-module-name h2 {
-            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 32px; 
             letter-spacing: 24px; 
             color: var(--structure);
@@ -71,7 +71,7 @@
             padding-left: 24px;
         }
         .header-module-name .plugin-tagline { 
-            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
             font-size: 8px; 
             letter-spacing: 6px; 
             color: var(--accent); 
@@ -83,7 +83,6 @@
 
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
-            font-family: 'JetBrains Mono', monospace;
             color: var(--accent); 
             text-decoration: none; 
             font-size: 10px; 
@@ -115,14 +114,14 @@
             border-left: 1px solid var(--stroke); 
             padding-left: 40px; 
         }
-        .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
-        .description-text b { color: var(--structure); font-weight: 700; }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
 
         /* PURCHASE MODULE */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
         .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
         .authorize-btn { 
             display: block; 
             text-align: center; 
@@ -139,20 +138,20 @@
 
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block b { color: var(--accent); }
+        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
+        .module-block b { color: var(--accent); font-weight: 700; }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
         
         .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
-        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
         .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
 
         footer { 
