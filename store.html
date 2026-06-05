@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STORE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --void: #000000; 
@@ -13,12 +13,15 @@
             --charcoal: #54575C;  
             --accent: #DCCDBF;    
             --stroke: #CFC5B6;    
+            /* 29% DARK GREEN ARCHITECTURE TINTS */
+            --shipping-tint: rgba(22, 38, 22, 0.29);
+            --shipping-hover: rgba(33, 59, 33, 0.45);
         }
         html { scroll-behavior: smooth; }
         body { 
             background-color: var(--void); 
             color: var(--secondary); 
-            font-family: 'JetBrains Mono', monospace; 
+            font-family: 'Montserrat', sans-serif; 
             margin: 0; 
             line-height: 1.6; 
             min-height: 100vh;
@@ -61,13 +64,13 @@
             pointer-events: none;
         }
         .header-module-name h2 {
-            font-family: 'Montserrat';
             font-size: 32px; 
             letter-spacing: 24px; 
             color: var(--structure);
             text-transform: uppercase;
             margin: 0;
             padding-left: 24px;
+            font-weight: 700;
         }
 
         .nav-links { display: flex; gap: 20px; }
@@ -85,7 +88,20 @@
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
         /* --- MAIN CONTENT --- */
-        main { flex: 1; padding: 20px 60px 60px 60px; max-width: 1400px; margin: 0 auto; }
+        main { flex: 1; padding: 20px 60px 60px 60px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+        .store-tier-heading {
+            width: 100%;
+            font-size: 10px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            padding: 40px 0 15px 0;
+            font-weight: 700;
+            color: var(--charcoal);
+            border-bottom: 1px solid rgba(84, 87, 92, 0.2);
+            margin-bottom: 30px;
+        }
+        .store-tier-heading.shipping-heading { color: #5B825B; border-color: rgba(91, 130, 91, 0.2); }
 
         /* --- CARDS --- */
         .plugin-card, .bundle-card {
@@ -98,6 +114,16 @@
             transition: 0.4s;
         }
         .plugin-card:hover, .bundle-card:hover { border-color: var(--accent); background: rgba(220, 205, 191, 0.02); }
+
+        /* SHIPPING CARD BASES */
+        .plugin-card.shipping-active {
+            background: var(--shipping-tint);
+            border-color: rgba(91, 130, 91, 0.4);
+        }
+        .plugin-card.shipping-active:hover {
+            background: var(--shipping-hover);
+            border-color: #739E73;
+        }
 
         .card-link-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; text-decoration: none; }
 
@@ -118,12 +144,21 @@
             text-align: center;
         }
         .buy-btn:hover { background: var(--accent); color: var(--void); }
+        
+        .shipping-active .buy-btn {
+            border-color: #6E9B6E;
+            color: #A6DCA6;
+        }
+        .shipping-active .buy-btn:hover {
+            background: #6E9B6E;
+            color: var(--void);
+        }
 
         .btn-notify { border-color: var(--secondary); color: var(--secondary); opacity: 0.6; cursor: pointer; }
         .btn-notify:hover { border-color: var(--accent); color: var(--accent); background: transparent; opacity: 1; }
 
         /* BUNDLE STYLE */
-        .bundle-container { margin-bottom: 60px; width: 100%; }
+        .bundle-container { margin-bottom: 40px; width: 100%; }
         .bundle-card { 
             border: 1px solid var(--accent); 
             display: grid; 
@@ -151,16 +186,33 @@
         .bundle-card:hover .bundle-img { transform: scale(1.03); }
 
         /* GRID STYLE */
-        .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; width: 100%; }
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; width: 100%; margin-bottom: 60px; }
         .plugin-image { width: 100%; height: auto; display: block; margin-bottom: 25px; border-bottom: 1px solid var(--charcoal); transition: transform 0.6s ease; }
         .plugin-card:hover .plugin-image { transform: scale(1.02); }
         
+        /* PLUGINS VISUAL FILL FOR UPCOMING MODULES */
+        .visual-pending-block {
+            width: 100%;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.01);
+            border-bottom: 1px solid var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
         .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-        .card-header h3 { font-family: 'Montserrat'; font-size: 20px; letter-spacing: 8px; color: var(--structure); margin: 0; text-transform: uppercase; }
+        .card-header h3 { font-size: 20px; letter-spacing: 8px; color: var(--structure); margin: 0; text-transform: uppercase; font-weight: 700; }
         .plugin-id { font-size: 9px; color: var(--accent); font-weight: 700; opacity: 0.6; }
-        .tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--secondary); opacity: 0.6; }
+        .shipping-active .plugin-id { color: #87B387; opacity: 0.9; }
+        
+        .tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--secondary); opacity: 0.6; font-weight: 400; }
         .price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid var(--charcoal); }
-        .price { font-family: 'Montserrat'; font-size: 18px; color: var(--structure); letter-spacing: 2px; }
+        .price { font-size: 18px; color: var(--structure); letter-spacing: 2px; font-weight: 700; }
 
         /* --- NOTIFICATION PORTAL --- */
         .notify-section {
@@ -171,7 +223,7 @@
             align-items: center;
             background: rgba(220, 205, 191, 0.01);
         }
-        .notify-header { font-family: 'Montserrat'; font-size: 12px; letter-spacing: 8px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; }
+        .notify-header { font-size: 12px; letter-spacing: 8px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 700; }
         .notify-desc { font-size: 11px; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; text-align: center; opacity: 0.7; }
         
         .notify-form { display: flex; gap: 0; width: 100%; max-width: 500px; border: 1px solid var(--charcoal); }
@@ -181,7 +233,7 @@
             border: none; 
             padding: 20px; 
             color: #fff; 
-            font-family: 'JetBrains Mono'; 
+            font-family: 'Montserrat', sans-serif; 
             font-size: 11px; 
             letter-spacing: 1px; 
             outline: none;
@@ -191,7 +243,7 @@
             color: var(--accent); 
             border: none; 
             padding: 0 30px; 
-            font-family: 'Montserrat'; 
+            font-family: 'Montserrat', sans-serif; 
             font-weight: 700; 
             font-size: 10px; 
             letter-spacing: 2px; 
@@ -248,9 +300,9 @@
             </div>
             <div class="bundle-intel" style="position: relative; z-index: 2;">
                 <span class="plugin-id">BDL_001_TOTAL</span>
-                <h3 style="font-family: 'Montserrat'; font-size: 32px; letter-spacing: 12px; color: var(--structure); margin: 10px 0;">TOTAL BUNDLE</h3>
+                <h3 style="font-size: 32px; letter-spacing: 12px; color: var(--structure); margin: 10px 0; font-weight: 700;">TOTAL BUNDLE</h3>
                 <p class="tagline" style="opacity: 0.8; color: var(--accent);">The Complete Research Environment</p>
-                <p style="font-size: 13px; color: var(--secondary); margin-bottom: 40px;">Includes all five flagship THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, CREOSOTE, and TWILIGHT.</p>
+                <p style="font-size: 13px; color: var(--secondary); margin-bottom: 40px; font-weight: 300;">Includes all five core THETA Audio Research modules: ARECIBO, ATRIA, CATHODE, CREOSOTE, and TWILIGHT.</p>
                 <div class="price-row" style="border: none; padding: 0;">
                     <span class="price" style="font-size: 32px;">$499.00</span>
                     <a href="#notification-portal" class="buy-btn btn-notify">NOTIFY_UPON_RELEASE</a>
@@ -259,8 +311,41 @@
         </article>
     </section>
 
+    <div class="store-tier-heading shipping-heading">AUTHORIZED_MODULES // DEPLOYED_NOW</div>
+    
     <div class="store-grid">
-        
+        <article class="plugin-card shipping-active">
+            <a href="cathode.html" class="card-link-overlay"></a>
+            <img src="CATHODE_v14.2.png" alt="CATHODE" class="plugin-image">
+            <div class="card-header">
+                <h3>CATHODE</h3>
+                <span class="plugin-id">003_VTR</span>
+            </div>
+            <p class="tagline">Character Processor & Creative Degradation Instrument</p>
+            <div class="price-row">
+                <span class="price">$129.00</span>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn">ACQUIRE</a>
+            </div>
+        </article>
+
+        <article class="plugin-card shipping-active">
+            <a href="creosote.html" class="card-link-overlay"></a>
+            <img src="CREOSOTE_v18_MAIN.png" alt="CREOSOTE" class="plugin-image">
+            <div class="card-header">
+                <h3>CREOSOTE</h3>
+                <span class="plugin-id">004_DEG</span>
+            </div>
+            <p class="tagline">Three-stage analog character processor</p>
+            <div class="price-row">
+                <span class="price">$129.00</span>
+                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn">ACQUIRE</a>
+            </div>
+        </article>
+    </div>
+
+    <div class="store-tier-heading">RESEARCH_UNDERWAY // COMING_SOON</div>
+
+    <div class="store-grid">
         <article class="plugin-card">
             <a href="arecibo.html" class="card-link-overlay"></a>
             <img src="arecibo_15.10_main.png" alt="ARECIBO" class="plugin-image">
@@ -290,34 +375,6 @@
         </article>
 
         <article class="plugin-card">
-            <a href="cathode.html" class="card-link-overlay"></a>
-            <img src="CATHODE_v14.2.png" alt="CATHODE" class="plugin-image">
-            <div class="card-header">
-                <h3>CATHODE</h3>
-                <span class="plugin-id">003_VTR</span>
-            </div>
-            <p class="tagline">Analog Degradation Instrument</p>
-            <div class="price-row">
-                <span class="price">$129.00</span>
-                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="buy-btn">ACQUIRE</a>
-            </div>
-        </article>
-
-        <article class="plugin-card">
-            <a href="creosote.html" class="card-link-overlay"></a>
-            <img src="CREOSOTE_v18_MAIN.png" alt="CREOSOTE" class="plugin-image">
-            <div class="card-header">
-                <h3>CREOSOTE</h3>
-                <span class="plugin-id">004_DEG</span>
-            </div>
-            <p class="tagline">Three-stage analog character processor</p>
-            <div class="price-row">
-                <span class="price">$129.00</span>
-                <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="buy-btn">ACQUIRE</a>
-            </div>
-        </article>
-
-        <article class="plugin-card">
             <a href="twilight.html" class="card-link-overlay"></a>
             <img src="TWILIGHT_v15.15.png" alt="TWILIGHT" class="plugin-image">
             <div class="card-header">
@@ -331,6 +388,47 @@
             </div>
         </article>
 
+        <article class="plugin-card">
+            <a href="compliance.html" class="card-link-overlay"></a>
+            <img src="COMPLIANCE_v3.3.4_1170.png" alt="COMPLIANCE" class="plugin-image">
+            <div class="card-header">
+                <h3>COMPLIANCE</h3>
+                <span class="plugin-id">006_QC</span>
+            </div>
+            <p class="tagline">True-Peak Limiter // Loudness QC Engine</p>
+            <div class="price-row">
+                <span class="price">TBD</span>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
+            </div>
+        </article>
+
+        <article class="plugin-card">
+            <a href="ariadne.html" class="card-link-overlay"></a>
+            <div class="visual-pending-block">ARIADNE_VISUAL_PENDING</div>
+            <div class="card-header">
+                <h3>ARIADNE</h3>
+                <span class="plugin-id">007_DLY</span>
+            </div>
+            <p class="tagline">Spatial Delay Instrument</p>
+            <div class="price-row">
+                <span class="price">TBD</span>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
+            </div>
+        </article>
+
+        <article class="plugin-card">
+            <a href="prism_form.html" class="card-link-overlay"></a>
+            <div class="visual-pending-block">PRISM_FORM_VISUAL_PENDING</div>
+            <div class="card-header">
+                <h3>PRISM FORM</h3>
+                <span class="plugin-id">009_SMP</span>
+            </div>
+            <p class="tagline">Spectral Sound-Shaping Instrument</p>
+            <div class="price-row">
+                <span class="price">TBD</span>
+                <a href="#notification-portal" class="buy-btn btn-notify">COMING SOON</a>
+            </div>
+        </article>
     </div>
 </main>
 
