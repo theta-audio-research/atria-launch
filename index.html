@@ -8,11 +8,14 @@
     <style>
         :root { 
             --void: #000000; 
-            --structure: #B0B2B7; /* Light Structure Gray */
-            --secondary: #81848A; /* Secondary Text Gray */
-            --charcoal: #54575C;  /* Dark Emblem Charcoal */
-            --accent: #DCCDBF;    /* Muted Champagne / Stone */
-            --stroke: #CFC5B6;    /* Pale Warm Accent Stroke */
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+            /* 29% DARK GREEN SIGNAL IDENTIFIER */
+            --shipping-tint: rgba(22, 38, 22, 0.29);
+            --shipping-hover: rgba(33, 59, 33, 0.45);
         }
         
         body { 
@@ -83,16 +86,28 @@
         .hero-logo-container img { width: 100%; height: auto; display: block; }
         .hero-logo-container:hover { transform: scale(1.03); }
 
-        /* --- MODULE LIST --- */
+        /* --- MASTER DISTRIBUTION MATRIX --- */
         main { 
             flex: 1; 
-            padding: 10px 60px 60px 60px; 
+            padding: 30px 60px 60px 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             gap: 0; 
             background: var(--void);
         }
+
+        .tier-label {
+            width: 100%;
+            max-width: 900px;
+            font-size: 9px;
+            letter-spacing: 6px;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            padding: 20px 40px 10px 40px;
+            font-weight: 700;
+        }
+        .tier-label.shipping-label { color: #5B825B; }
         
         .node-row { 
             display: flex; 
@@ -103,16 +118,30 @@
             width: 100%;
             max-width: 900px;
             border-bottom: 1px solid rgba(84, 87, 92, 0.3); 
-            transition: 0.4s;
+            transition: all 0.4s ease;
         }
 
+        /* COMING SOON DEFAULT STATE */
         .node-row:hover { 
             background: rgba(220, 205, 191, 0.03); 
             border-bottom: 1px solid var(--stroke); 
             transform: translateX(30px); 
         }
+
+        /* SHIPPING STATUS SPECIFICS */
+        .node-row.shipping-active {
+            background: var(--shipping-tint);
+            border-left: 2px solid #486E48;
+        }
+        .node-row.shipping-active:hover {
+            background: var(--shipping-hover);
+            border-bottom: 1px solid #739E73;
+            transform: translateX(30px);
+        }
         
         .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.6; letter-spacing: 1px; }
+        .node-row.shipping-active .node-id { color: #87B387; opacity: 0.9; }
+
         .node-name { 
             font-size: 38px; 
             letter-spacing: 16px; 
@@ -122,8 +151,11 @@
             font-weight: 700;
         }
         .node-desc { font-weight: 300; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; text-align: right; }
+        .status-badge { font-weight: 700; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding-left: 20px; color: var(--charcoal); }
+        .shipping-active .status-badge { color: #6E9B6E; }
         
         .node-row:hover .node-name { color: var(--accent); }
+        .node-row.shipping-active:hover .node-name { color: #A6DCA6; }
         .node-row:hover .node-desc { color: var(--structure); opacity: 1; }
 
         footer { 
@@ -143,6 +175,7 @@
             .hero-logo-container { max-width: 90%; }
             nav.nav-terminal { padding: 10px 20px; flex-direction: column; gap: 20px; }
             header.hero-section { padding: 0 20px 10px 20px; }
+            .status-badge { display: none; }
         }
     </style>
 </head>
@@ -165,36 +198,48 @@
 </header>
 
 <main>
+    <!-- PHASE I: SHIPPING LAB STABILIZATION -->
+    <div class="tier-label">DEPLOYED_MODULES // SHIPPING_NOW</div>
+    
+    <a href="cathode.html" class="node-row shipping-active">
+        <span class="node-id">003_VTR</span>
+        <span class="node-name">CATHODE</span>
+        <span class="node-desc">Character & Degradation Engine</span>
+        <span class="status-badge">[AVAILABLE]</span>
+    </a>
+    <a href="creosote.html" class="node-row shipping-active">
+        <span class="node-id">004_DEG</span>
+        <span class="node-name">CREOSOTE</span>
+        <span class="node-desc">Three-stage analog character processor</span>
+        <span class="status-badge">[AVAILABLE]</span>
+    </a>
+
+    <!-- PHASE II: FUTURE TELEMETRY TARGETS -->
+    <div class="tier-label" style="margin-top: 40px;">RESEARCH_UNDERWAY // COMING_SOON</div>
+
     <a href="arecibo.html" class="node-row">
         <span class="node-id">001_ISR</span>
         <span class="node-name">ARECIBO</span>
         <span class="node-desc">Interstellar Granular Processor</span>
+        <span class="status-badge">[DEVELOPMENT]</span>
     </a>
     <a href="atria.html" class="node-row">
         <span class="node-id">002_ARC</span>
         <span class="node-name">ATRIA</span>
         <span class="node-desc">Sonic Exploration Instrument</span>
-    </a>
-    <a href="cathode.html" class="node-row">
-        <span class="node-id">003_VTR</span>
-        <span class="node-name">CATHODE</span>
-        <span class="node-desc">Character & Degradation Engine</span>
-    </a>
-    <a href="creosote.html" class="node-row">
-        <span class="node-id">004_DEG</span>
-        <span class="node-name">CREOSOTE</span>
-        <span class="node-desc">Three-stage analog character processor</span>
+        <span class="status-badge">[DEVELOPMENT]</span>
     </a>
     <a href="twilight.html" class="node-row">
         <span class="node-id">005_GEN</span>
         <span class="node-name">TWILIGHT</span>
         <span class="node-desc">Regenerative Ambience Engine</span>
+        <span class="status-badge">[DEVELOPMENT]</span>
     </a>
-    <!-- NEW ARCHITECTURE BLOCK: COMPLIANCE -->
     <a href="compliance.html" class="node-row">
         <span class="node-id">006_QC</span>
         <span class="node-name">COMPLIANCE</span>
         <span class="node-desc">True-Peak Limiter // Loudness QC</span>
+        <span class="status-badge">[TESTING]</span>
     </a>
 </main>
 
