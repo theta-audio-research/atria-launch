@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATHODE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --void: #000000; 
@@ -18,7 +18,7 @@
         body { 
             background-color: var(--void); 
             color: var(--secondary); 
-            font-family: 'JetBrains Mono', monospace; 
+            font-family: 'Montserrat', sans-serif; 
             margin: 0; 
             min-height: 100vh; 
             display: flex; 
@@ -62,7 +62,7 @@
             pointer-events: none;
         }
         .header-module-name h2 {
-            font-family: 'Montserrat';
+            font-weight: 700;
             font-size: 32px; 
             letter-spacing: 24px; 
             color: var(--structure);
@@ -71,6 +71,7 @@
             padding-left: 24px;
         }
         .header-module-name .plugin-tagline { 
+            font-weight: 400;
             font-size: 8px; 
             letter-spacing: 6px; 
             color: var(--accent); 
@@ -86,7 +87,7 @@
             text-decoration: none; 
             font-size: 10px; 
             letter-spacing: 4px; 
-            font-weight: 700; 
+            font-weight: 700;
             border: 1px solid var(--charcoal); 
             padding: 10px 20px; 
             transition: 0.3s; 
@@ -95,11 +96,7 @@
         .nav-links a:hover { background: var(--accent); color: var(--void); }
 
         /* --- MAIN CONTENT --- */
-        main { 
-            padding: 20px 60px 60px 60px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
         .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         .plugin-display { 
@@ -117,14 +114,14 @@
             border-left: 1px solid var(--stroke); 
             padding-left: 40px; 
         }
-        .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
-        .description-text b { color: var(--structure); font-weight: 700; }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
 
         /* PURCHASE MODULE */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
         .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
         .authorize-btn { 
             display: block; 
             text-align: center; 
@@ -141,18 +138,20 @@
 
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
         .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block p b { color: var(--accent); }
+        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
+        .module-block b { color: var(--accent); font-weight: 700; }
 
         /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
         .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
-        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
         .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
 
         footer { 
@@ -187,7 +186,7 @@
 
     <div class="header-module-name">
         <h2>CATHODE</h2>
-        <p class="plugin-tagline">Character Processor and Creative Degradation Instrument</p>
+        <p class="plugin-tagline">A damaged receiver for sound.</p>
     </div>
 
     <div class="nav-links">
@@ -202,9 +201,9 @@
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>CATHODE treats degradation as one coherent system.</b> 
+        <p class="description-text"><b>CATHODE treats degradation as one coherent system.</b>
 
-        Instead of generic lo-fi modules, it operates on the premise that the sound is the transmission, and the plugin is the unstable machine carrying it. At the core of CATHODE is a signal path built around heat, instability, interruption, and control. 
+        Instead of generic lo-fi modules, it operates on the premise that the sound is the transmission, and the plugin is the unstable machine carrying it. At the core of CATHODE is a signal path built around heat, instability, interruption, and control.
 
         It can add tube-like weight and asymmetry, induce worn-playback movement, capture fractured glitch states, and push material into forms of failure that still feel musical.</p>
     </div>
@@ -213,21 +212,21 @@
         <span class="lab-header">SYSTEM_AUTHORIZATION</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Authorization includes VST3, AU, and AAX formats, 48kHz internal oversampling, 
-                and Factory Presets.
+                Authorization includes VST3, AU, and AAX formats, standalone target support, 
+                and per-module factory/user preset menus.
             </p>
             <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $129.00</a>
         </div>
     </section>
 
     <section class="module-deep-dive" style="border-top: 1px solid var(--charcoal); padding-top: 40px;">
-        <h3>ADVANCED_LFO_INTERFACE</h3>
+        <h3>CONTEXTUAL_VISUAL_BAYS</h3>
         <div class="image-container">
-            <img src="CATHODE_16_47_ADV.png" alt="CATHODE Advanced LFO Configuration View" class="plugin-display">
+            <img src="CATHODE_16_47_ADV.png" alt="CATHODE Dual Contextual Visual Bays" class="plugin-display">
         </div>
         <div class="module-block">
-            <h4>MOTION EDIT / MOTION LFO</h4>
-            <p>Engaging the modulation editor exposes the precise internal configuration engine behind the receiver's breakdown state. Choosing <b>SINE</b>, <b>TRIANGLE</b>, <b>SAW</b>, <b>SQUARE</b>, <b>RANDOM</b>, or <b>DRIFT</b> shapes routes live structural shifts directly to burst rate, length, frequency, or takeover destination vectors. When active, the main CRT display redraws into an 8-second timebase view showcasing cyclic tracking, rate in Hz, and afterimage tracking curves.</p>
+            <h4>MOTION LFO LEFT BAY + CRUSH SCOPE</h4>
+            <p>The updated wide 1x layout hosts two independent contextual visual bays that can run concurrently. When INTERFERENCE’s MOTION EDIT is open, the LFO maps directly across a dedicated left visual engine positioned over the LOCK and HEAD areas. Simultaneously opening CRUSH ADVANCED converts the main CRT center from standard SIGNAL DAMAGE into a hardware-calibrated CRUSH SCOPE.</p>
         </div>
     </section>
 
@@ -236,62 +235,70 @@
         
         <div class="module-block">
             <h4>LOCK</h4>
-            <p>Unstable continuity, sync stress, and recovery behavior. LOCK handles the structural posture of the transmission under duress. <b>WARP</b> bends timing layout while <b>SLIP</b> generates crisp alignment displacement, making the program slide out from under its own timeline before <b>RECOVER</b> controls map back to a calibrated stable phase.</p>
+            <p><b>Unstable continuity, sync stress, and recovery behavior.</b> Bends the timing and posture of the signal as if the playback track or raster line is being forced away from its baseline lock. <b>WARP</b> skews the structural alignment, while <b>SLIP</b> causes the program timeline to slide out from beneath itself, leaving <b>RECOVER</b> to govern the exact timing of its return to stability.</p>
         </div>
 
         <div class="module-block">
             <h4>HEAD</h4>
-            <p>Wear, drift, and imperfect contact. Anchors mechanical uncertainty and physical tracking inconsistencies. <b>WEAR</b> ages the structural trustworthiness of the transport path, while <b>DRIFT</b> introduces slow, non-periodic spatial wanders that avoid generic lfo repetition.</p>
+            <p><b>Wear, drift, and imperfect contact.</b> Grounded entirely in physical and mechanical uncertainty rather than generic LFO movements. <b>WEAR</b> decays the trustworthiness of the path, while <b>DRIFT</b> introduces slow, non-periodic alignment sweeps to replicate mechanical aging.</p>
         </div>
 
         <div class="module-block">
             <h4>RECEIVER</h4>
-            <p>Automatic gain behavior and continuity failure. The <b>AGC</b> network forces panel breathing through input-driven <b>PUMP</b> dynamics and calibrated tracking <b>SPEED</b> updates. Concurrently, the <b>DROP</b> stage induces real missing metrics via discrete failure <b>RATE</b> and <b>DEPTH</b> parameters.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>CRUSH</h4>
-            <p>Bit depth, sample-rate damage, aliasing, jitter, and broken converter behavior. Replacing the legacy utilities with wide horizontal expansion controls, <b>BITS</b> forces definitive degradation metrics while <b>RATE</b> drives precision holds shown in raw Hz/kHz telemetry arcs. Accessing the advanced panel yields deeper <b>FILTER</b> selections, <b>DITHER</b> calculations, and peak crossfade <b>FOLD</b> curves.</p>
+            <p><b>AGC breathing and broken continuity.</b> The AGC network mimics compensation stress in an unstable receiver circuit. <b>PUMP</b> drives the depth of the signal's gain swell, while <b>SPEED</b> adjusts response and recovery times. On the alternate channel, the <b>DROP</b> path cuts continuity entirely via discrete <b>RATE</b> and <b>DEPTH</b> interruption gates.</p>
         </div>
 
         <div class="module-block">
             <h4>PHOSPHOR</h4>
-            <p>Heat, fatigue, width, and display chemistry. Controls thermal persistence and panel fatigue. <b>DULL</b> and <b>LOSS</b> step down modern top-end clarity into an authenticated aged response while <b>WARM</b> pushes upper-mid tracking and lit glass energy layers across a variable <b>WIDTH</b> field.</p>
+            <p><b>Heat, fatigue, glow, and display chemistry.</b> Delivers a distinct overheated monitor character. <b>DULL / LOSS</b> systematically robs the transmission of transient freshness and local energy to emulate component fatigue. <b>WARM / BUMP</b> generates rich, lit-glass pressure bands across the upper mids. Stereo <b>WIDTH</b> has been detached globally as an always-active mix control.</p>
         </div>
 
         <div class="module-block">
             <h4>INTERFERENCE</h4>
-            <p>Bursts, static, competing stations, and takeover. Modeled explicitly around a contested broadcast engine. Independent <b>RATE</b>, <b>LENGTH</b>, and <b>FREQ</b> settings clash with a baseline <b>STATIC</b> matrix, enabling external file payloads to aggressively battle for channel ownership.</p>
+            <p><b>Bursts, static, rival signals, takeover, and motion.</b> Transforms CATHODE into a contested transmission path. Features a smoothed, non-looping random RF static bed shaped by <b>STATIC DRIFT</b> and <b>STATIC SMOOTH</b>. Supports external file injection to fight for channel ownership via <b>TAKEOVER</b> depths. Contains a dedicated per-module factory/user preset system (RF DRIFT, STATIC BED, RIVAL BURST, TAKEOVER).</p>
+        </div>
+
+        <div class="module-block">
+            <h4>MOTION EDIT / MOTION LFO</h4>
+            <p><b>Tempo-synced modulation environment.</b> Unlocks deep, re-triggerable parameter movement across six shapes: SINE, TRIANGLE, SAW, SQUARE, RANDOM, and DRIFT. <b>SYNC</b> offers FREE, HOST, BAR, and BEAT timing curves to explicitly lock cycles onto host tempo, while <b>RETRIG</b> maps re-trigger behaviors per NOTE, BAR, LOAD, or FREE. When active, it displays cycle ticks, rate in Hz, and afterimage drift inside the left visual bay.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>CRUSH</h4>
+            <p><b>Converter damage and digital destruction.</b> Spans the lower-right quadrant as a comprehensive digital destruction bay. <b>BITS</b> drops converter tracking depth down to low-bit failure tiers, while <b>RATE</b> steps down the effective clock shown in absolute Hz/kHz units. Parameter paths are smoothed to glide seamlessly and eliminate zipper noise. Features discrete module presets (12 BIT, DARK CVTR, ALIAS MIR, FOLDED).</p>
+        </div>
+
+        <div class="module-block">
+            <h4>CRUSH ADVANCED</h4>
+            <p><b>Broken hardware logic.</b> Opens the secondary converter design suite. Links variable post-crush <b>FILTER</b> selections (LP, HP, BP) and resonant Q parameters with adjustable <b>DITHER</b> caps. Integrates LFO/Envelope modulation tracking to drive depth targets. <b>DRIVE</b> forces input saturation directly ahead of the quantizer, while <b>FOLD</b> crossfades peak linear limits into complex signal folding curves.</p>
         </div>
     </section>
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>SIGNAL_DAMAGE_DISPLAY</h3>
+            <h3>SIGNAL_DAMAGE_CRT</h3>
             <ul class="spec-list">
-                <li><b>Procedural Raster</b> Monitors clean input against gain-matched processed outputs to generate real-time visual degradation data.</li>
-                <li><b>Chroma Artifacts</b> Drives immediate scanline agitation, horizontal raster tearing, and sync breakdown blocks directly from sound stress.</li>
-                <li><b>Telemetry readouts</b> Integrates minimal ALT / HARM / SMEAR / NOISE tracking metrics in the screen footer.</li>
+                <li><b>Procedural Analysis</b> Evaluates dry input taps against gain-matched processed outputs to alter raster behavior.</li>
+                <li><b>Raster Trauma</b> Sound pressure translates dynamically into scanline motion, RGB splitting, horizontal tearing, bloom, and sync instability.</li>
+                <li><b>CRUSH SCOPE Mode</b> Secondary contextual display displaying bit-depth stairs, sample grids, alias shards, and dither floors.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPEC</h3>
             <ul class="spec-list">
-                <li><b>Formats</b> VST3, AU, AAX [macOS Apple Silicon + Intel Native]</li>
-                <li><b>Oversampling</b> 48kHz internal conversion engine with toggleable HQ mode.</li>
-                <li><b>Latency</b> Zero baseline processing structure (3ms / 10ms with lookahead).</li>
-                <li><b>Developer</b> THETA Audio Research // 2026</li>
+                <li><b>Formats</b> VST3, AU, AAX, Standalone [macOS Intel & Apple Silicon Native]</li>
+                <li><b>Oversampling</b> 48kHz internal conversion layer with zero baseline footprint.</li>
+                <li><b>Global Strips</b> Header-level REC capture to WAV and soft dry/wet global BYPASS.</li>
+                <li><b>Engineering</b> THETA Audio Research // v16.72 Master Deployment</li>
             </ul>
         </div>
     </section>
 </main>
 
-<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #003 // TERMINAL_VERIFIED</span>
+    <span>LAB NOTE #003 // v16.72_STABLE</span>
 </footer>
 
 </body>
