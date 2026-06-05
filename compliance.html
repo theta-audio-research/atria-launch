@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPLIANCE | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-weight: 700;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-weight: 400;
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700;
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
+
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
+
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+
+        /* PURCHASE MODULE */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .authorize-btn { 
+            display: block; 
+            text-align: center; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
+            transition: 0.4s; 
+        }
+        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
+        .module-block b { color: var(--accent); font-weight: 700; }
+
+        /* --- SPECS --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
+
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
+    </a>
+
+    <div class="header-module-name">
+        <h2>COMPLIANCE</h2>
+        <p class="plugin-tagline">True-Peak Limiter // Multiband Dynamics Engine</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
+
+<main>
+    <div class="image-container">
+        <img src="COMPLIANCE_v3.3.4_1170.png" alt="COMPLIANCE Interface Specimen" class="plugin-display">
+    </div>
+
+    <div class="description-box">
+        <p class="description-text"><b>COMPLIANCE is a delivery-grade true-peak limiter and loudness environment.</b> 
+
+        Built directly around ITU-R BS.1770 specifications, it pairs an uncompromised bricks-wall safety ceiling with a complete cross-over multiband dynamics engine. It allows sound designers and engineers to drive mixes cleanly to broadcast, streaming, and immersive cinema specs while maintaining absolute clarity over localized band pressure variables.</p>
+    </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Authorization grants unified license for VST3, AU, and AAX architectures. 
+                Universal binary tracking supports Apple Silicon and Intel machines.
+            </p>
+            <a href="#notification-portal" class="authorize-btn">NOTIFY_UPON_RELEASE // AUTHORIZATION_PENDING</a>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>SYSTEM_ARCHITECTURE</h3>
+        
+        <div class="module-block">
+            <h4>TRUE-PEAK LIMITING</h4>
+            <p><b>Catch the peaks samples miss.</b> Oversampled true-peak processing algorithms clamp final destination limits precisely to your selected dBTP ceiling, hunting down hidden inter-sample overshoots. Program-dependent auto-release logic, adjustable lookahead matrices, and strict envelope tracking structures keep the ceiling transparent under immense loudness pressure.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>1770 LOUDNESS QC</h4>
+            <p><b>Check against spec, in place.</b> An integrated, real-time analyzer monitoring Integrated (gated), Short-Term, and Loudness Range (LRA) characteristics. Eliminate the requirement for redundant standalone visual measurement utilities by tracking broadcast target constraints directly inside the processing chassis.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>DIALOG-TARGET WORKFLOW</h4>
+            <p><b>Know exactly where the pressure is.</b> Map calibrated platform baselines—such as the standard -27 LKFS target for dialog pipelines. COMPLIANCE continuously traces real-time metric variance alongside cross-over allocation metrics, identifying which frequency zone is handling the bulk of attenuation resistance.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>MULTIBAND DYNAMICS</h4>
+            <p><b>A true crossover engine.</b> A perfect-reconstruction Linkwitz-Riley crossover matrix parses incoming audio channels into five isolated engineering bands: <b>RUMBLE</b>, <b>WEIGHT</b>, <b>BODY</b>, <b>CLARITY</b>, and <b>AIR</b>. Each processing band provides dedicated thresholds, ratios, attack/release profiles, range parameters, and surgical solo/bypass capabilities.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>SURROUND & IMMERSIVE</h4>
+            <p><b>Coherent across every channel.</b> Scalable architecture handling channel configurations from mono through immersive 9.1.6 arrays. Intelligent linking parameters maintain multi-channel phase alignment and lock imaging stability across complex arrays without element drift.</p>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>CORE_LOGIC</h3>
+            <ul class="spec-list">
+                <li><b>Crossover Network</b> Linkwitz-Riley perfect-reconstruction path filters.</li>
+                <li><b>Loudness Baseline</b> ITU-R BS.1770-4 gated integration analysis tracking.</li>
+                <li><b>Ballistic Vectors</b> Selectable visual response fields (Fast / Medium / Slow / Broadcast).</li>
+                <li><b>Gain Reduction</b> Integrated spectral painting indicating in-band attenuation variables.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>TECHNICAL_SPEC</h3>
+            <ul class="spec-list">
+                <li><b>Formats</b> VST3, AU, AAX, Standalone [macOS Intel & Apple Silicon Native]</li>
+                <li><b>Multichannel</b> Complete tracking up to 9.1.6 Dolby Atmos configurations.</li>
+                <li><b>Security</b> Serial key authentication tier. Zero iLok constraints required.</li>
+                <li><b>Developer</b> THETA Audio Research // 2026 Master Engine</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #006 // COMPLIANCE_PENDING</span>
+</footer>
+
+</body>
+</html>
