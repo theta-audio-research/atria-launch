@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIADNE | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-weight: 700;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-weight: 400;
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700;
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
+
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
+
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+
+        /* ACQUISITION STATUS MODULE */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .authorize-btn { 
+            display: block; 
+            text-align: center; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
+            transition: 0.4s; 
+        }
+        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 60px; }
+        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
+        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
+        .module-block b { color: var(--accent); font-weight: 700; }
+
+        /* --- SPECS --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
+
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
+    </a>
+
+    <div class="header-module-name">
+        <h2>ARIADNE</h2>
+        <p class="plugin-tagline">Spatial Delay Instrument</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
+
+<main>
+    <div class="image-container">
+        <!-- Placeholder for upcoming visual panel block -->
+        <div style="width: 100%; height: 400px; background: rgba(255,255,255,0.01); border: 1px solid var(--charcoal); display: flex; align-items: center; justify-content: center; color: var(--charcoal); font-size: 11px; letter-spacing: 4px;">ARIADNE_INTERFACE_PENDING</div>
+    </div>
+
+    <div class="description-box">
+        <p class="description-text"><b>ARIADNE is a delay built like a space, not a knob on an echo.</b> 
+
+        A stereo delay field with spectral tone-shaping, complex modulation motion, and a destructive character signal generation section. Developed specifically as the structural delay counterpart to our reverb engine, THESEUS, this environment charts reflections into spatial narratives.</p>
+    </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">SYSTEM_STATUS</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Chassis is undergoing laboratory configuration tracking. Formats targeted include universal macOS VST3, AU, and Standalone layers, with native Pro Tools optimization slated for core milestones.
+            </p>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=ARIADNE%20updates" class="authorize-btn">NOTIFY_UPON_RELEASE // DEVELOPMENT_ACTIVE</a>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>SYSTEM_ARCHITECTURE // CURRENT_BUILD</h3>
+        
+        <div class="module-block">
+            <h4>STEREO DELAY FIELD</h4>
+            <p>Tempo-syncable delay architecture tracking up to multi-second parameters. Feedback pathways are safety-limited deep within the DSP engine, allowing tail regeneration loops to run aggressively hot without forcing signal cascading failures.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>MOTION ENGINE</h4>
+            <p>A multi-target LFO modulation network. Instantly map parameters to delay timings, wet amplitude tiers, structural filtration matrices, or dedicated feedback EQ blocks to shift movement profiles from subtle drift to severe pitch modulation.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>SPATIAL & WIDTH</h4>
+            <p>Dedicated space configurations tracking stereo offset definitions and system crossfeed networks. The channel path orientation is specifically built around a listener-centric topology map for seamless tracking within modern immersive formats.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>SPECTRAL TONE-SHAPING</h4>
+            <p>Features integrated color tilt, high/low filtering boundaries, and a tunable resonant band nestled directly inside the feedback loop. repeats actively mutate and evolve over time rather than simply dissipating into conventional degradation arrays.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>DARKEN & DAMAGE</h4>
+            <p><b>Darken</b> continuously draws late-stage reflection tails into dense high-frequency shadows as decay routines execute. Conversely, <b>Damage</b> drives a hard saturation stage that spans cleanly from subtle tube warmth up to destructive clipped formats at extreme parameter thresholds.</p>
+        </div>
+
+        <div class="module-block">
+            <h4>GATE & CHOP</h4>
+            <p>A rhythmic gating component driven by discrete MIDI trigger and retrigger modes. Ideal for shaping gated-reverb delay topologies, synchronized chop metrics, and transient stutters locked directly onto specific host session lines.</p>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>DEVELOPMENT_ROADMAP</h3>
+            <ul class="spec-list">
+                <li><b>AAX Implementation</b> Signed asset structures ensuring native Pro Tools utility support.</li>
+                <li><b>Immersive Expansion</b> Multi-channel listener-centric maps tracking direct surround configurations.</li>
+                <li><b>Advanced Modulation</b> Independent LFO speed variables paired with custom shape selections.</li>
+                <li><b>Character Modification</b> Continuous refinements mapping feedback character and saturation traits.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>TARGETED_SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Platform Matrix</b> Universal macOS [Apple Silicon + Intel Architecture Support]</li>
+                <li><b>Processing Core</b> Real-time data-driven spectral visualization readout layer.</li>
+                <li><b>Security Framework</b> Seamless serial-key asset authentication tier. Zero iLok constraints.</li>
+                <li><b>Engineering Group</b> THETA Audio Research // Laboratory Target 2026</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #007 // ARIADNE_IN_DEVELOPMENT</span>
+</footer>
+
+</body>
+</html>
