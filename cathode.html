@@ -139,7 +139,15 @@
         /* --- MODULE DEEP DIVE --- */
         .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        .module-deep-dive .module-shot { width: 100%; height: auto; border: 1px solid var(--charcoal); margin: 20px 0 30px 0; }
+        
+        /* SCALED DOWN COMPANION IMAGE CLASS */
+        .module-deep-dive .module-shot { 
+            display: block;
+            max-width: 50%; 
+            height: auto; 
+            border: 1px solid var(--charcoal); 
+            margin: 20px 0 30px 0; 
+        }
         
         .module-block { margin-bottom: 60px; }
         .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
@@ -170,6 +178,7 @@
             .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
             .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            .module-deep-dive .module-shot { max-width: 100%; }
             nav.nav-terminal { padding: 10px 20px; }
         }
 
@@ -249,6 +258,7 @@
             <p>• <b>WEAR</b> Head-wear amount: progressive high-frequency dulling and a softer, rounder top.<br>
                • <b>DRIFT</b> Slow tonal/level drift, like azimuth wandering over a long take.<br>
                • <b>MIX</b> Blend against clean internal lines.</p>
+            <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Module Focus View" class="module-shot">
         </div>
 
         <!-- RECEIVER -->
@@ -266,7 +276,7 @@
         <!-- INTERFERENCE -->
         <div class="module-block">
             <h4>INTERFERENCE — RF noise, static & signal takeover</h4>
-            <p>The most aggressive module, and the most fun. Bursts of RF interference, a bed of drifting static, and—the centrepiece—TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
+            <p>Bursts of RF interference, a bed of drifting static, and—the centrepiece—TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
             <p>• <b>BURST › RATE / LENGTH</b> Frequency and duration of interference bursts.<br>
                • <b>TAKEOVER › FILE / DEPTH</b> Load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)<br>
                • <b>NOISE › FREQ / STATIC / TUNE</b> The character, level, and pitch of the noise bed.<br>
