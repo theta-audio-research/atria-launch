@@ -150,29 +150,40 @@
             align-items: flex-start;
         }
 
-        /* --- HARDWARE INTERACTIVE ROLLOVER MAGNIFIER ENGINE --- */
         .module-split-row .visual-bay {
             flex: 0 0 250px;
             width: 250px;
-            height: 250px; /* Force locked square chassis frame mapping */
             border: 1px solid var(--charcoal); 
-            overflow: hidden;
-            position: relative;
-            cursor: zoom-in;
+            cursor: pointer;
             background: var(--void);
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .module-split-row .visual-bay:hover {
+            border-color: var(--accent);
         }
         .module-split-row .visual-bay .module-shot { 
             display: block;
             width: 100%; 
-            height: 100%; 
-            object-fit: cover;
-            transform-origin: center center;
-            transition: transform 0.2s cubic-bezier(0.2, 0.6, 0.2, 1);
+            height: auto; 
         }
-        /* Active magnification telemetry scale state (+65%) */
-        .module-split-row .visual-bay.magnified .module-shot {
-            transform: scale(1.65);
-            transition: none; /* Kills animation lag during manual scroll tracking */
+
+        /* --- MICROSCOPIC HARDWARE OVERLAY TELEMETRY INDICATOR --- */
+        .module-split-row .visual-bay::after {
+            content: "CLICK_TO_EXPLORE";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 6px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module-split-row .visual-bay:hover::after {
+            opacity: 1;
         }
 
         .module-split-row .text-bay {
@@ -183,6 +194,51 @@
         .module-split-row .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
         .module-split-row .text-bay .parameter-list li { margin-bottom: 8px; }
         .module-split-row .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- DIAGNOSTIC LIGHTBOX VAULT OVERLAY STYLE --- */
+        .diagnostic-lightbox-vault {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            overflow: auto; /* Activates natural browser bidirectional scroll pools */
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        .diagnostic-lightbox-vault.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-canvas-scroller {
+            max-width: none;
+            max-height: none;
+            /* Injects your exact metric: 100% of frame parent + 65% explosion */
+            width: 165%; 
+            height: auto;
+            border: 1px solid var(--charcoal);
+            display: block;
+            margin: auto;
+        }
+        .lightbox-close-telemetry {
+            position: fixed;
+            top: 24px; right: 60px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: var(--void);
+            border: 1px solid var(--charcoal);
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .lightbox-close-telemetry:hover {
+            background: var(--accent);
+            color: var(--void);
+        }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
@@ -207,13 +263,19 @@
         @media (max-width: 900px) {
             .header-module-name { display: none; }
             .module-split-row { flex-direction: column; gap: 30px; }
-            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; height: 320px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { width: 200%; } /* Extra scaling allocation on mobile layouts */
         }
     </style>
 </head>
 <body>
+
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-logo-link">
@@ -267,7 +329,7 @@
         <div class="module-block">
             <div class="section-header-title">LOCK — transport & sync instability</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_LOCK.png" alt="LOCK Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -285,7 +347,7 @@
         <div class="module-block">
             <div class="section-header-title">HEAD — worn tape head</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -302,7 +364,7 @@
         <div class="module-block">
             <div class="section-header-title">RECEIVER — reception & dropout</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_RECEIVER.png" alt="RECEIVER Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -321,7 +383,7 @@
         <div class="module-block">
             <div class="section-header-title">INTERFERENCE — RF noise, static & signal takeover</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_INTERFERENCE.png" alt="INTERFERENCE Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -341,7 +403,7 @@
         <div class="module-block">
             <div class="section-header-title">PHOSPHOR — CRT burn, cable loss & hum</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_PHOSPHOR.png" alt="PHOSPHOR Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -360,7 +422,7 @@
         <div class="module-block">
             <div class="section-header-title">CRUSH — converter damage</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_CRUSH_ADV.png" alt="CRUSH Advanced Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -379,7 +441,7 @@
         <div class="module-block">
             <div class="section-header-title">LFO TOOLS — the modulation & transient toolkit</div>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_LFO_MAIN.png" alt="LFO TOOLS Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -395,9 +457,9 @@
         </div>
 
         <div class="module-block">
-            <div class="section-header-title">TRANS — the transient designer</div>
+            <h4>TRANS — the transient designer</h4>
             <div class="module-split-row">
-                <div class="visual-bay HTML-magnify-chassis">
+                <div class="visual-bay">
                     <img src="CATHODE_v16.72_TRANS_METER.png" alt="TRANS Processing Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
@@ -438,32 +500,41 @@
 <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 
 <script>
-    // --- REAL-TIME COORD POSITIONING CALCULATION ENGINE ---
-    document.querySelectorAll('.HTML-magnify-chassis').forEach(chassis => {
-        const targetImage = chassis.querySelector('.module-shot');
-        
-        chassis.addEventListener('mouseenter', () => {
-            chassis.classList.add('magnified');
-        });
-        
-        chassis.addEventListener('mousemove', (e) => {
-            const boundary = chassis.getBoundingClientRect();
-            // Trace mouse position relative to local frame boundaries
-            const positionX = e.clientX - boundary.left;
-            const positionY = e.clientY - boundary.top;
+    // --- ASYNCHRONOUS DIAGNOSTIC LIGHTBOX VAULT CONTROLLER ENGINE ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    // Attach click listeners across all hardware grid panel elements
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        bay.addEventListener('click', () => {
+            const rawAssetSource = bay.querySelector('.module-shot').src;
             
-            // Map coordinates directly to percentage weights
-            const percentageX = (positionX / boundary.width) * 100;
-            const percentageY = (positionY / boundary.height) * 100;
+            // Prime the full-scale canvas scroller image destination path
+            vaultCanvas.src = rawAssetSource;
             
-            // Shift perspective mapping vectors smoothly
-            targetImage.style.transformOrigin = `${percentageX}% ${percentageY}%`;
+            // Fire the overlay portal
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Freeze index page tracking threads
         });
-        
-        chassis.addEventListener('mouseleave', () => {
-            chassis.classList.remove('magnified');
-            targetImage.style.transformOrigin = 'center center';
-        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; // Flush payload to save rendering allocation footprint
+        document.body.style.overflow = ''; // Unfreeze baseline scroll channels
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    // Wire up standard physical hardware escape trigger listener [ESC Key]
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
     });
 </script>
 
