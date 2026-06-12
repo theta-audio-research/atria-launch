@@ -137,22 +137,36 @@
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
+        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
-        /* SCALED DOWN COMPANION IMAGE CLASS */
-        .module-deep-dive .module-shot { 
+        .module-block { margin-bottom: 80px; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+
+        /* --- REF ALIGNED SIDE-BY-SIDE GRID SPLIT --- */
+        .module-split-row {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        .module-split-row .visual-bay {
+            flex: 0 0 250px; /* Locked compact width framework */
+            width: 250px;
+        }
+        .module-split-row .visual-bay .module-shot { 
             display: block;
-            max-width: 50%; 
+            width: 100%; 
             height: auto; 
             border: 1px solid var(--charcoal); 
-            margin: 20px 0 30px 0; 
         }
-        
-        .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
-        .module-block b { color: var(--accent); font-weight: 700; }
+        .module-split-row .text-bay {
+            flex: 1;
+        }
+        .module-split-row .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
+        .module-split-row .text-bay p b { color: var(--structure); font-weight: 700; }
+        .module-split-row .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .module-split-row .text-bay .parameter-list li { margin-bottom: 8px; }
+        .module-split-row .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
@@ -174,16 +188,12 @@
             margin-top: 100px; 
         }
 
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
-            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            .module-deep-dive .module-shot { max-width: 100%; }
-            nav.nav-terminal { padding: 10px 20px; }
-        }
-
         @media (max-width: 900px) {
             .header-module-name { display: none; }
+            .module-split-row { flex-direction: column; gap: 30px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
         }
     </style>
 </head>
@@ -207,149 +217,214 @@
 
 <main>
     <div class="image-container">
-        <img src="CATHODE_v16.72_FULL.png" alt="CATHODE Flagship User Interface" class="plugin-display">
+        <img src="CATHODE_v16.72_FULL.png" alt="CATHODE User Interface" class="plugin-display">
     </div>
 
     <div class="description-box">
         <p class="description-text"><b>Run anything through a signal chain that's falling apart on purpose.</b>
 
-        CATHODE is seven stages of analog-to-digital rot—worn tape, drifting transport, a panicking receiver, RF interference, phosphor burn, converter damage—with a full modulation-and-transient toolkit bolted to the end so you can make the decay move. Subtle enough to age a vocal, violent enough to liquefy a drum loop.</p>
+        CATHODE is seven stages of analog-to-digital rot — worn tape, drifting transport, a panicking receiver, RF interference, phosphor burn, converter damage — with a full modulation-and-transient toolkit bolted to the end so you can make the decay move. Subtle enough to age a vocal, violent enough to liquefy a drum loop.</p>
     </div>
 
     <section class="acquisition-anchor">
         <span class="lab-header">SYSTEM_AUTHORIZATION</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Authorization includes VST3, AU, AAX, and Standalone formats. Includes full-plugin presets plus granular per-module starting patches.
+                Authorization includes VST3, AU, and AAX formats. Full-plugin configurations plus granular independent stage preset mapping.
             </p>
             <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $129.00</a>
         </div>
     </section>
 
-    <!-- CORE DESIGNS PHILOSOPHY -->
+    <!-- CORE CONCEPT -->
     <section class="module-deep-dive">
-        <h3>THE_CONCEPT</h3>
+        <h3>THE_IDEA</h3>
         <div class="module-block">
-            <p>Most "lo-fi" plugins give you one flavor of broken. CATHODE gives you the whole broadcast path, stage by stage, the way a signal actually degrades on its way from a tape machine to a CRT to a cheap converter. Each module models a different failure, and because they're chained, the damage compounds—dropouts feed into interference, interference feeds into bitcrushing, and the LFO TOOLS section can sweep, wobble, and re-shape whatever comes out.</p>
-            <p>Every module is true bypass-by-crossfade (the DSP always runs; bypass is a 5 ms wet/dry fade, so toggling never clicks), and every module has its own MIX so you can dial the exact amount of ruin.</p>
-            <p><b>Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output. (You can leave any stage off; the order is fixed and modelled to compound naturally.)</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Most "lo-fi" plugins give you one flavor of broken. CATHODE gives you the whole broadcast path, stage by stage, the way a signal actually degrades on its way from a tape machine to a CRT to a cheap converter. Each module models a different failure, and because they're chained, the damage compounds — dropouts feed into interference, interference feeds into bitcrushing, and the LFO TOOLS section can sweep, wobble, and re-shape whatever comes out.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Every module is true bypass-by-crossfade (the DSP always runs; bypass is a 5 ms wet/dry fade, so toggling never clicks), and every module has its own MIX so you can dial the exact amount of ruin.</p>
+            <p style="font-weight: 300; font-size: 14px; color: var(--secondary); margin-top: 25px;"><b>Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output. (You can leave any stage off; the order is fixed and modelled to compound naturally.)</p>
         </div>
     </section>
 
-    <!-- PROCESSING STAGES SUITE -->
+    <!-- TWIN BAY HARDWARE DIRECTORY -->
     <section class="module-deep-dive">
-        <h3>FAILURE_FAMILIES // COMPANION_MODULES</h3>
+        <h3>THE_MODULES</h3>
         
         <!-- LOCK -->
         <div class="module-block">
-            <h4>LOCK — transport & sync instability</h4>
-            <p>The tape isn't tracking. LOCK destabilises pitch and timing the way a transport losing servo lock does—slow wow, sudden slips, and a recovery that chases the speed back into place.</p>
-            <p>• <b>WARP</b> Depth of the pitch/time instability. Low is a gentle drift; high is seasick.<br>
-               • <b>SLIP</b> Sudden sync slips on top of the warp—the moment the tape lets go.<br>
-               • <b>RECOVER</b> How aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.<br>
-               • <b>MIX</b> Blend against dry texturing paths.</p>
-            <img src="CATHODE_v16.72_LOCK.png" alt="LOCK Module Focus View" class="module-shot">
+            <div class="section-header-title">LOCK — transport & sync instability</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_LOCK.png" alt="LOCK Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>The tape isn't tracking. LOCK destabilises pitch and timing the way a transport losing servo lock does — slow wow, sudden slips, and a recovery that chases the speed back into place.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>WARP</b> Depth of the pitch/time instability. Low is a gentle drift; high is seasick.</li>
+                        <li>· <b>SLIP</b> Sudden sync slips on top of the warp — the moment the tape lets go.</li>
+                        <li>· <b>RECOVER</b> How aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.</li>
+                        <li>· <b>MIX</b> Blend against dry texturing paths.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- HEAD -->
         <div class="module-block">
-            <h4>HEAD — worn tape head</h4>
-            <p>A playback head that's seen too many passes. HEAD rolls off the top end and lets the level and tone drift the way a dirty, magnetised head does.</p>
-            <p>• <b>WEAR</b> Head-wear amount: progressive high-frequency dulling and a softer, rounder top.<br>
-               • <b>DRIFT</b> Slow tonal/level drift, like azimuth wandering over a long take.<br>
-               • <b>MIX</b> Blend against clean internal lines.</p>
-            <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Module Focus View" class="module-shot">
+            <div class="section-header-title">HEAD — worn tape head</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>A playback head that's seen too many passes. HEAD rolls off the top end and lets the level and tone drift the way a dirty, magnetised head does.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>WEAR</b> Head-wear amount: progressive high-frequency dulling and a softer, rounder top.</li>
+                        <li>· <b>DRIFT</b> Slow tonal/level drift, like azimuth wandering over a long take.</li>
+                        <li>· <b>MIX</b> Blend against clean internal lines.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- RECEIVER -->
         <div class="module-block">
-            <h4>RECEIVER — reception & dropout</h4>
-            <p>The broadcast stage. A receiver fighting to hold onto a weak signal: automatic gain control that pumps and breathes, plus intermittent dropouts when the signal cuts out.</p>
-            <p>• <b>AGC › PUMP</b> How hard the automatic gain control rides the level—the classic broadcast "breathing."<br>
-               • <b>AGC › SPEED</b> How fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.<br>
-               • <b>DROP › RATE</b> How often the signal drops out.<br>
-               • <b>DROP › DEPTH</b> How far it drops—a dip, or a full momentary cut.<br>
-               • <b>MIX</b> Blend against incoming program source parameters.</p>
-            <img src="CATHODE_v16.72_RECEIVER.png" alt="RECEIVER Module Focus View" class="module-shot">
+            <div class="section-header-title">RECEIVER — reception & dropout</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_RECEIVER.png" alt="RECEIVER Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>The broadcast stage. A receiver fighting to hold onto a weak signal: automatic gain control that pumps and breathes, plus intermittent dropouts when the signal cuts out.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>AGC › PUMP</b> How hard the automatic gain control rides the level — the classic broadcast "breathing."</li>
+                        <li>· <b>AGC › SPEED</b> How fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.</li>
+                        <li>· <b>DROP › RATE</b> How often the signal drops out.</li>
+                        <li>· <b>DROP › DEPTH</b> How far it drops — a dip, or a full momentary cut.</li>
+                        <li>· <b>MIX</b> Blend against incoming program source parameters.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- INTERFERENCE -->
         <div class="module-block">
-            <h4>INTERFERENCE — RF noise, static & signal takeover</h4>
-            <p>Bursts of RF interference, a bed of drifting static, and—the centrepiece—TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
-            <p>• <b>BURST › RATE / LENGTH</b> Frequency and duration of interference bursts.<br>
-               • <b>TAKEOVER › FILE / DEPTH</b> Load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)<br>
-               • <b>NOISE › FREQ / STATIC / TUNE</b> The character, level, and pitch of the noise bed.<br>
-               • <b>STATIC › DRIFT / SMOOTH</b> Movement and smoothing of the static over time.<br>
-               • <b>LFO</b> Opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.<br>
-               • <b>MIX</b> Master module dry/wet summing boundary.</p>
-            <img src="CATHODE_v16.72_INTERFERENCE.png" alt="INTERFERENCE Module Panel Configuration" class="module-shot">
+            <div class="section-header-title">INTERFERENCE — RF noise, static & signal takeover</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_INTERFERENCE.png" alt="INTERFERENCE Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>The most aggressive module, and the most fun. Bursts of RF interference, a bed of drifting static, and — the centrepiece — TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>BURST › RATE / LENGTH</b> Frequency and duration of interference bursts.</li>
+                        <li>· <b>TAKEOVER › FILE / DEPTH</b> Load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)</li>
+                        <li>· <b>NOISE › FREQ / STATIC / TUNE</b> The character, level, and pitch of the noise bed.</li>
+                        <li>· <b>STATIC › DRIFT / SMOOTH</b> Movement and smoothing of the static over time.</li>
+                        <li>· <b>LFO</b> Opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.</li>
+                        <li>· <b>MIX</b> Master module dry/wet summing boundary.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- PHOSPHOR -->
         <div class="module-block">
-            <h4>PHOSPHOR — CRT burn, cable loss & hum</h4>
-            <p>The display end of the chain. Phosphor that's been dulled by years of the same image, cable loss bleeding off the highs, and a touch of mains hum sitting under everything.</p>
-            <p>• <b>AGE › DULL</b> Phosphor dulling: the slow loss of brightness and high-end sparkle.<br>
-               • <b>AGE › LOSS</b> Cable loss: high-frequency roll-off and softening, as if down a long, cheap run.<br>
-               • <b>HEAT › WARM</b> Phosphor warmth—a glowing low-mid lift.<br>
-               • <b>HEAT › BUMP</b> A low-frequency bump for weight and body.<br>
-               • <b>MIX</b> Frame blend parameters.</p>
-            <img src="CATHODE_v16.72_PHOSPHOR.png" alt="PHOSPHOR Module Focus View" class="module-shot">
+            <div class="section-header-title">PHOSPHOR — CRT burn, cable loss & hum</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_PHOSPHOR.png" alt="PHOSPHOR Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>The display end of the chain. Phosphor that's been dulled by years of the same image, cable loss bleeding off the highs, and a touch of mains hum sitting under everything.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>AGE › DULL</b> Phosphor dulling: the slow loss of brightness and high-end sparkle.</li>
+                        <li>· <b>AGE › LOSS</b> Cable loss: high-frequency roll-off and softening, as if down a long, cheap run.</li>
+                        <li>· <b>HEAT › WARM</b> Phosphor warmth — a glowing low-mid lift.</li>
+                        <li>· <b>HEAT › BUMP</b> A low-frequency bump for weight and body.</li>
+                        <li>· <b>MIX</b> Frame blend parameters.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- CRUSH -->
         <div class="module-block">
-            <h4>CRUSH — converter damage</h4>
-            <p>Where the analog chain hits a failing digital converter. Bit reduction, sample-rate crushing, aliasing, clock jitter, drive and wavefolding—plus a dedicated filter and an internal modulator. CRUSH has an ADVANCED panel with a live CRUSH SCOPE that draws the damaged waveform as crisp vectors so you can see exactly what the converter is doing to your signal.</p>
-            <p>• <b>BITS / RATE</b> Definitive bit-depth reduction and sample-rate decimation curves.<br>
-               • <b>ALIAS / JITTER</b> Aliasing flavor adjustments paired with raw clock timing instability grit.<br>
-               • <b>DRIVE / FOLD / DITHER</b> Input saturation over drive states, clipping crossfades, and pre-quantizer layout floor patterns.<br>
-               • <b>Filter / Mod Matrix</b> Multi-mode cutoff networks linked to assignable internal target sources.</p>
-            <img src="CATHODE_v16.72_CRUSH_ADV.png" alt="CRUSH Advanced Active Vectors Screen" class="module-shot">
+            <div class="section-header-title">CRUSH — converter damage</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_CRUSH_ADV.png" alt="CRUSH Advanced Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Where the analog chain hits a failing digital converter. Bit reduction, sample-rate crushing, aliasing, clock jitter, drive and wavefolding — plus a dedicated filter and an internal modulator. CRUSH has an ADVANCED panel with a live CRUSH SCOPE that draws the damaged waveform as crisp vectors so you can see exactly what the converter is doing to your signal.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>BITS / RATE</b> Bit-depth reduction and sample-rate decimation thresholds.</li>
+                        <li>· <b>ALIAS / JITTER</b> Aliasing signatures combined with raw clock timing instability grit.</li>
+                        <li>· <b>DRIVE / FOLD / DITHER</b> Clipping threshold pushes, wavefolding mix balances, and noise metrics.</li>
+                        <li>· <b>Filter / Mod Mechanics</b> Variable cutoff parameters routed to assignable modulation curves.</li>
+                        <li>· <b>MIX</b> Blend against dry.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- LFO TOOLS -->
         <div class="module-block">
-            <h4>LFO TOOLS — the modulation & transient toolkit</h4>
-            <p>The final stage, and the deepest. LFO TOOLS is two tools in one: a fully-featured LFO that can modulate five aspects of the output, and a three-band transient designer with live metering. It's where you turn static damage into something that breathes, pulses, and hits.</p>
-            <p>A single LFO with nine shapes—sine, triangle, saw, square, random sample-and-hold, ramp-down, drift, exponential, and stairs—that you can run free or sync to host tempo.</p>
-            <p>• <b>VOL / PAN / WIDTH</b> Standard parameters tracing tremolos, auto-pan contours, and global field breathing.<br>
-               • <b>TONE</b> A swept tilt EQ. Centre is flat; the LFO sweeps it dark↔bright moving in opposition up to a hard ±15 dB throw—five times more aggressive than a typical tilt knob.<br>
-               • <b>WARBLE</b> Pitch/time warble for organic hardware-style wow variations on final output summing phases.</p>
-            <img src="CATHODE_v16.72_LFO_MAIN.png" alt="LFO TOOLS Active Vector Matrix View" class="module-shot">
+            <div class="section-header-title">LFO TOOLS — the modulation & transient toolkit</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_LFO_MAIN.png" alt="LFO TOOLS Hardware Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>The final stage, and the deepest. LFO TOOLS is two tools in one: a fully-featured LFO that can modulate five aspects of the output, and a three-band transient designer with live metering. It's where you turn static damage into something that breathes, pulses, and hits.</p>
+                    <p>A single LFO with nine shapes — sine, triangle, saw, square, random sample-and-hold, ramp-down, drift, exponential, and stairs — that you can run free or sync to host tempo.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>SHAPE / SYNC / RATE</b> Pick the waveform, free-vs-host timing structures, and divisions.</li>
+                        <li>· <b>PHASE / SMOOTH</b> Offset the LFO's start point and smooth its motion from instant to heavily slewed.</li>
+                        <li>· <b>Five Destinations</b> Depth is the switch. <b>VOL</b> (tremolo), <b>PAN</b> (auto-pan), <b>WIDTH</b> (field breathing), <b>TONE</b> (swept ±15 dB tilt EQ shelf), and <b>WARBLE</b> (pitch tape wow).</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- TRANS MODULE DEEP DIVE -->
+        <!-- TRANS -->
         <div class="module-block">
-            <h4>TRANS — the transient designer</h4>
-            <p>Hit the TRANS button and LFO TOOLS becomes a three-band transient shaper with a live "gain applied over time" meter across the top—you watch exactly how much the processor is boosting or cutting, moment to moment, scrolling left to right with now at the right edge.</p>
-            <p>• <b>ATTACK / SUSTAIN / DECAY</b> Bipolar shapes governing onset curves, frame length bodies, and release terminations.<br>
-               • <b>Routing Toggle</b> Place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output, after every other module).<br>
-               • <b>AUTO LEVEL</b> A soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot—toggle it on to keep aggressive settings usable.</p>
-            <img src="CATHODE_v16.72_TRANS_METER.png" alt="TRANS Transient Gain Applied Matrix View" class="module-shot">
+            <div class="section-header-title">TRANS — the transient designer</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CATHODE_v16.72_TRANS_METER.png" alt="TRANS Processing Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Hit the TRANS button and LFO TOOLS becomes a three-band transient shaper with a live "gain applied over time" meter across the top — you watch exactly how much the processor is boosting or cutting, moment to moment, scrolling left to right with now at the right edge.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>ATTACK / SUSTAIN / DECAY</b> Bipolar parameters governing transient onset, frame body, and tail tighteners.</li>
+                        <li>· <b>Routing toggle</b> Place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output).</li>
+                        <li>· <b>AUTO LEVEL</b> A soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ANALYTICAL DATA MATRIX -->
+    <!-- CORE TELEMETRY SPECIFICATIONS -->
     <section class="specs-container">
         <div class="spec-group">
             <h3>WORKFLOW_INTELLIGENCE</h3>
             <ul class="spec-list">
-                <li><b>Dual Preset Logic</b> Independent full plugin patches tracking standalone modular parameter files.</li>
-                <li><b>Vector Scopes</b> High-DPI hardware paths calculating actual data fields without upscale lag.</li>
-                <li><b>Compounds Structure</b> Fixed signal layout keeping processing strings structurally compounding.</li>
-                <li><b>Anti-Aliasing</b> Clean oversampling engine components tracking high distortion states effortlessly.</li>
+                <li><b>Two-Tier Presets</b> Save full system setups or map modular patch properties to individual slots.</li>
+                <li><b>Vector Scopes</b> Real-time high-DPI vector rendering maps parameters flawlessly without blurry upscaling.</li>
+                <li><b>DSP Architecture</b> Compounding signal chains run loops continuously to avoid phase crossfade clicks.</li>
+                <li><b>Oversampling</b> HQ interpolation engine captures absolute digital grit while shielding out harsh aliasing.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Formats</b> VST3, AU, AAX, Standalone</li>
-                <li><b>Platform Support</b> macOS [Apple Silicon & Intel Native Deployment]</li>
-                <li><b>Interface Properties</b> Locked 1280 × 640 fixed footprint with crisp retina optimization.</li>
-                <li><b>Developer</b> THETA Audio Research // v16.72 Production Master</li>
+                <li><b>Formats</b> VST3, AU, AAX [Native plug-in frameworks]</li>
+                <li><b>Platform Support</b> macOS [Apple Silicon & Intel Native Core Matrices]</li>
+                <li><b>Interface Properties</b> Fixed 1280 × 640 footprint featuring crisp high-DPI vector paths.</li>
+                <li><b>Engineering Group</b> THETA Audio Research // 2026 Release Framework</li>
             </ul>
         </div>
     </section>
