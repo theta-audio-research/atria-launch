@@ -143,22 +143,38 @@
         .module-block { margin-bottom: 80px; }
         .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
 
-        /* --- REF ALIGNED SIDE-BY-SIDE GRID SPLIT --- */
+        /* --- SIDE-BY-SIDE GRID SPLIT --- */
         .module-split-row {
             display: flex;
             gap: 50px;
             align-items: flex-start;
         }
+
+        /* --- HARDWARE INTERACTIVE ROLLOVER MAGNIFIER ENGINE --- */
         .module-split-row .visual-bay {
-            flex: 0 0 250px; /* Locked compact width framework */
+            flex: 0 0 250px;
             width: 250px;
+            height: 250px; /* Force locked square chassis frame mapping */
+            border: 1px solid var(--charcoal); 
+            overflow: hidden;
+            position: relative;
+            cursor: zoom-in;
+            background: var(--void);
         }
         .module-split-row .visual-bay .module-shot { 
             display: block;
             width: 100%; 
-            height: auto; 
-            border: 1px solid var(--charcoal); 
+            height: 100%; 
+            object-fit: cover;
+            transform-origin: center center;
+            transition: transform 0.2s cubic-bezier(0.2, 0.6, 0.2, 1);
         }
+        /* Active magnification telemetry scale state (+65%) */
+        .module-split-row .visual-bay.magnified .module-shot {
+            transform: scale(1.65);
+            transition: none; /* Kills animation lag during manual scroll tracking */
+        }
+
         .module-split-row .text-bay {
             flex: 1;
         }
@@ -191,7 +207,7 @@
         @media (max-width: 900px) {
             .header-module-name { display: none; }
             .module-split-row { flex-direction: column; gap: 30px; }
-            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; height: 320px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
         }
@@ -236,7 +252,6 @@
         </div>
     </section>
 
-    <!-- CORE CONCEPT -->
     <section class="module-deep-dive">
         <h3>THE_IDEA</h3>
         <div class="module-block">
@@ -246,167 +261,157 @@
         </div>
     </section>
 
-    <!-- TWIN BAY HARDWARE DIRECTORY -->
     <section class="module-deep-dive">
         <h3>THE_MODULES</h3>
         
-        <!-- LOCK -->
         <div class="module-block">
             <div class="section-header-title">LOCK — transport & sync instability</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_LOCK.png" alt="LOCK Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>The tape isn't tracking. LOCK destabilises pitch and timing the way a transport losing servo lock does — slow wow, sudden slips, and a recovery that chases the speed back into place.</p>
                     <ul class="parameter-list">
-                        <li>· <b>WARP</b> Depth of the pitch/time instability. Low is a gentle drift; high is seasick.</li>
-                        <li>· <b>SLIP</b> Sudden sync slips on top of the warp — the moment the tape lets go.</li>
-                        <li>· <b>RECOVER</b> How aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.</li>
-                        <li>· <b>MIX</b> Blend against dry texturing paths.</li>
+                        <li>· <b>WARP</b> — depth of the pitch/time instability. Low is a gentle drift; high is seasick.</li>
+                        <li>· <b>SLIP</b> — sudden sync slips on top of the warp — the moment the tape lets go.</li>
+                        <li>· <b>RECOVER</b> — how aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- HEAD -->
         <div class="module-block">
             <div class="section-header-title">HEAD — worn tape head</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>A playback head that's seen too many passes. HEAD rolls off the top end and lets the level and tone drift the way a dirty, magnetised head does.</p>
                     <ul class="parameter-list">
-                        <li>· <b>WEAR</b> Head-wear amount: progressive high-frequency dulling and a softer, rounder top.</li>
-                        <li>· <b>DRIFT</b> Slow tonal/level drift, like azimuth wandering over a long take.</li>
-                        <li>· <b>MIX</b> Blend against clean internal lines.</li>
+                        <li>· <b>WEAR</b> — head-wear amount: progressive high-frequency dulling and a softer, rounder top.</li>
+                        <li>· <b>DRIFT</b> — slow tonal/level drift, like azimuth wandering over a long take.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- RECEIVER -->
         <div class="module-block">
             <div class="section-header-title">RECEIVER — reception & dropout</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_RECEIVER.png" alt="RECEIVER Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>The broadcast stage. A receiver fighting to hold onto a weak signal: automatic gain control that pumps and breathes, plus intermittent dropouts when the signal cuts out.</p>
                     <ul class="parameter-list">
-                        <li>· <b>AGC › PUMP</b> How hard the automatic gain control rides the level — the classic broadcast "breathing."</li>
-                        <li>· <b>AGC › SPEED</b> How fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.</li>
-                        <li>· <b>DROP › RATE</b> How often the signal drops out.</li>
-                        <li>· <b>DROP › DEPTH</b> How far it drops — a dip, or a full momentary cut.</li>
-                        <li>· <b>MIX</b> Blend against incoming program source parameters.</li>
+                        <li>· <b>AGC › PUMP</b> — how hard the automatic gain control rides the level — the classic broadcast "breathing."</li>
+                        <li>· <b>AGC › SPEED</b> — how fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.</li>
+                        <li>· <b>DROP › RATE</b> — how often the signal drops out.</li>
+                        <li>· <b>DROP › DEPTH</b> — how far it drops — a dip, or a full momentary cut.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- INTERFERENCE -->
         <div class="module-block">
             <div class="section-header-title">INTERFERENCE — RF noise, static & signal takeover</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_INTERFERENCE.png" alt="INTERFERENCE Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>The most aggressive module, and the most fun. Bursts of RF interference, a bed of drifting static, and — the centrepiece — TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
                     <ul class="parameter-list">
-                        <li>· <b>BURST › RATE / LENGTH</b> Frequency and duration of interference bursts.</li>
-                        <li>· <b>TAKEOVER › FILE / DEPTH</b> Load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)</li>
-                        <li>· <b>NOISE › FREQ / STATIC / TUNE</b> The character, level, and pitch of the noise bed.</li>
-                        <li>· <b>STATIC › DRIFT / SMOOTH</b> Movement and smoothing of the static over time.</li>
-                        <li>· <b>LFO</b> Opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.</li>
-                        <li>· <b>MIX</b> Master module dry/wet summing boundary.</li>
+                        <li>· <b>BURST › RATE / LENGTH</b> — frequency and duration of interference bursts.</li>
+                        <li>· <b>TAKEOVER › FILE / DEPTH</b> — load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)</li>
+                        <li>· <b>NOISE › FREQ / STATIC / TUNE</b> — the character, level, and pitch of the noise bed.</li>
+                        <li>· <b>STATIC › DRIFT / SMOOTH</b> — movement and smoothing of the static over time.</li>
+                        <li>· <b>LFO</b> — opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- PHOSPHOR -->
         <div class="module-block">
             <div class="section-header-title">PHOSPHOR — CRT burn, cable loss & hum</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_PHOSPHOR.png" alt="PHOSPHOR Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>The display end of the chain. Phosphor that's been dulled by years of the same image, cable loss bleeding off the highs, and a touch of mains hum sitting under everything.</p>
                     <ul class="parameter-list">
-                        <li>· <b>AGE › DULL</b> Phosphor dulling: the slow loss of brightness and high-end sparkle.</li>
-                        <li>· <b>AGE › LOSS</b> Cable loss: high-frequency roll-off and softening, as if down a long, cheap run.</li>
-                        <li>· <b>HEAT › WARM</b> Phosphor warmth — a glowing low-mid lift.</li>
-                        <li>· <b>HEAT › BUMP</b> A low-frequency bump for weight and body.</li>
-                        <li>· <b>MIX</b> Frame blend parameters.</li>
+                        <li>· <b>AGE › DULL</b> — phosphor dulling: the slow loss of brightness and high-end sparkle.</li>
+                        <li>· <b>AGE › LOSS</b> — cable loss: high-frequency roll-off and softening, as if down a long, cheap run.</li>
+                        <li>· <b>HEAT › WARM</b> — phosphor warmth — a glowing low-mid lift.</li>
+                        <li>· <b>HEAT › BUMP</b> — a low-frequency bump for weight and body.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- CRUSH -->
         <div class="module-block">
             <div class="section-header-title">CRUSH — converter damage</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_CRUSH_ADV.png" alt="CRUSH Advanced Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>Where the analog chain hits a failing digital converter. Bit reduction, sample-rate crushing, aliasing, clock jitter, drive and wavefolding — plus a dedicated filter and an internal modulator. CRUSH has an ADVANCED panel with a live CRUSH SCOPE that draws the damaged waveform as crisp vectors so you can see exactly what the converter is doing to your signal.</p>
                     <ul class="parameter-list">
-                        <li>· <b>BITS / RATE</b> Bit-depth reduction and sample-rate decimation thresholds.</li>
-                        <li>· <b>ALIAS / JITTER</b> Aliasing signatures combined with raw clock timing instability grit.</li>
-                        <li>· <b>DRIVE / FOLD / DITHER</b> Clipping threshold pushes, wavefolding mix balances, and noise metrics.</li>
-                        <li>· <b>Filter / Mod Mechanics</b> Variable cutoff parameters routed to assignable modulation curves.</li>
-                        <li>· <b>MIX</b> Blend against dry.</li>
+                        <li>· <b>BITS / RATE</b> — bit-depth reduction and sample-rate decimation thresholds.</li>
+                        <li>· <b>ALIAS / JITTER</b> — aliasing signatures combined with raw clock timing instability grit.</li>
+                        <li>· <b>DRIVE / FOLD / DITHER</b> — clipping threshold pushes, wavefolding mix balances, and noise metrics.</li>
+                        <li>· <b>Filter / Mod Mechanics</b> — variable cutoff parameters routed to assignable modulation curves.</li>
+                        <li>· <b>MIX</b> — blend against dry.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- LFO TOOLS -->
         <div class="module-block">
             <div class="section-header-title">LFO TOOLS — the modulation & transient toolkit</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_LFO_MAIN.png" alt="LFO TOOLS Hardware Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>The final stage, and the deepest. LFO TOOLS is two tools in one: a fully-featured LFO that can modulate five aspects of the output, and a three-band transient designer with live metering. It's where you turn static damage into something that breathes, pulses, and hits.</p>
                     <p>A single LFO with nine shapes — sine, triangle, saw, square, random sample-and-hold, ramp-down, drift, exponential, and stairs — that you can run free or sync to host tempo.</p>
                     <ul class="parameter-list">
-                        <li>· <b>SHAPE / SYNC / RATE</b> Pick the waveform, free-vs-host timing structures, and divisions.</li>
-                        <li>· <b>PHASE / SMOOTH</b> Offset the LFO's start point and smooth its motion from instant to heavily slewed.</li>
-                        <li>· <b>Five Destinations</b> Depth is the switch. <b>VOL</b> (tremolo), <b>PAN</b> (auto-pan), <b>WIDTH</b> (field breathing), <b>TONE</b> (swept ±15 dB tilt EQ shelf), and <b>WARBLE</b> (pitch tape wow).</li>
+                        <li>· <b>SHAPE / SYNC / RATE</b> — pick the waveform, free-vs-host timing structures, and divisions.</li>
+                        <li>· <b>PHASE / SMOOTH</b> — offset the LFO's start point and smooth its motion from instant to heavily slewed.</li>
+                        <li>· <b>Five Destinations</b> — depth is the switch. <b>VOL</b> (tremolo), <b>PAN</b> (auto-pan), <b>WIDTH</b> (field breathing), <b>TONE</b> (swept ±15 dB tilt EQ shelf), and <b>WARBLE</b> (pitch tape wow).</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- TRANS -->
         <div class="module-block">
             <div class="section-header-title">TRANS — the transient designer</div>
             <div class="module-split-row">
-                <div class="visual-bay">
+                <div class="visual-bay HTML-magnify-chassis">
                     <img src="CATHODE_v16.72_TRANS_METER.png" alt="TRANS Processing Panel" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>Hit the TRANS button and LFO TOOLS becomes a three-band transient shaper with a live "gain applied over time" meter across the top — you watch exactly how much the processor is boosting or cutting, moment to moment, scrolling left to right with now at the right edge.</p>
                     <ul class="parameter-list">
-                        <li>· <b>ATTACK / SUSTAIN / DECAY</b> Bipolar parameters governing transient onset, frame body, and tail tighteners.</li>
-                        <li>· <b>Routing toggle</b> Place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output).</li>
-                        <li>· <b>AUTO LEVEL</b> A soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot.</li>
+                        <li>· <b>ATTACK / SUSTAIN / DECAY</b> — bipolar parameters governing transient onset, frame body, and tail tighteners.</li>
+                        <li>· <b>Routing toggle</b> — place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output).</li>
+                        <li>· <b>AUTO LEVEL</b> — a soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CORE TELEMETRY SPECIFICATIONS -->
     <section class="specs-container">
         <div class="spec-group">
             <h3>WORKFLOW_INTELLIGENCE</h3>
@@ -431,6 +436,36 @@
 </main>
 
 <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+
+<script>
+    // --- REAL-TIME COORD POSITIONING CALCULATION ENGINE ---
+    document.querySelectorAll('.HTML-magnify-chassis').forEach(chassis => {
+        const targetImage = chassis.querySelector('.module-shot');
+        
+        chassis.addEventListener('mouseenter', () => {
+            chassis.classList.add('magnified');
+        });
+        
+        chassis.addEventListener('mousemove', (e) => {
+            const boundary = chassis.getBoundingClientRect();
+            // Trace mouse position relative to local frame boundaries
+            const positionX = e.clientX - boundary.left;
+            const positionY = e.clientY - boundary.top;
+            
+            // Map coordinates directly to percentage weights
+            const percentageX = (positionX / boundary.width) * 100;
+            const percentageY = (positionY / boundary.height) * 100;
+            
+            // Shift perspective mapping vectors smoothly
+            targetImage.style.transformOrigin = `${percentageX}% ${percentageY}%`;
+        });
+        
+        chassis.addEventListener('mouseleave', () => {
+            chassis.classList.remove('magnified');
+            targetImage.style.transformOrigin = 'center center';
+        });
+    });
+</script>
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
