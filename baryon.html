@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARYON | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-weight: 700;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-weight: 400;
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700;
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
+
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
+
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+
+        /* PURCHASE MODULE */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .authorize-btn { 
+            display: block; 
+            text-align: center; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
+            transition: 0.4s; 
+        }
+        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 80px; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+
+        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        .module-split-row {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .module-split-row .visual-bay {
+            flex: 0 0 250px;
+            width: 250px;
+            height: 180px;
+            border: 1px solid var(--charcoal); 
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.01);
+            position: relative;
+            transition: border-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .module-split-row .visual-bay:hover {
+            border-color: var(--accent);
+        }
+        .module-split-row .visual-bay .module-shot { 
+            display: block;
+            width: 100%; 
+            height: auto; 
+        }
+
+        .module-split-row .visual-bay::after {
+            content: "CLICK_TO_EXPLORE";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 6px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module-split-row .visual-bay:hover::after {
+            opacity: 1;
+        }
+
+        .text-bay {
+            flex: 1;
+        }
+        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
+        .text-bay p b { color: var(--structure); font-weight: 700; }
+        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .text-bay .parameter-list li { margin-bottom: 8px; }
+        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
+        .diagnostic-lightbox-vault {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            overflow: auto; 
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        .diagnostic-lightbox-vault.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-canvas-scroller {
+            max-width: none;
+            max-height: none;
+            width: 165%; 
+            height: auto;
+            border: 1px solid var(--charcoal);
+            display: block;
+            margin: auto;
+        }
+        .lightbox-close-telemetry {
+            position: fixed;
+            top: 24px; right: 60px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: var(--void);
+            border: 1px solid var(--charcoal);
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .lightbox-close-telemetry:hover {
+            background: var(--accent);
+            color: var(--void);
+        }
+
+        /* --- SPECS --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
+            .module-split-row { flex-direction: column; gap: 30px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { width: 200%; } 
+        }
+    </style>
+</head>
+<body>
+
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
+
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
+    </a>
+
+    <div class="header-module-name">
+        <h2>BARYON</h2>
+        <p class="plugin-tagline">Subharmonic Generator & Low-Frequency Engine</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
+
+<main>
+    <div class="image-container">
+        <div style="width: 100%; height: 380px; background: rgba(255,255,255,0.01); border-bottom: 1px solid var(--charcoal); display: flex; align-items: center; justify-content: center; color: var(--charcoal); font-size: 11px; letter-spacing: 4px;">BARYON_INTERFACE_MASTER_VIEW_PENDING</div>
+    </div>
+
+    <div class="description-box">
+        <p class="description-text"><b>Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b>
+
+        Baryon is a subharmonic generator and dedicated low-frequency processor for producers and engineers who treat the bottom octave as an instrument, not an afterthought. It synthesizes brand-new sub-bass locked to the pitch and rhythm of your source, then runs it through a focused, end-to-end signal chain so you can turn raw weight into tight, deep, translation-proof architecture on any playback platform.</p>
+    </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">DEVELOPMENT_STATUS</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Chassis is undergoing low-frequency calibration. Initial deployment targets mono and stereo mapping structures across VST3, AU, and Standalone frameworks.
+            </p>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>THE_OVERVIEW</h3>
+        <div class="module-block">
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Named for the heavy particles that make up the mass of ordinary matter, the name is the brief: where a normal EQ can only boost what's already there, Baryon creates what isn't. Feed it a thin kick, a bass that disappears on small speakers, an 808 that won't sit, or a full mix that needs a reinforced foundation — and it builds a controlled, musical sub that breathes with the performance instead of booming over it.</p>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>THE_SUBHARMONIC_ENGINE</h3>
+        
+        <div class="module-block">
+            <div class="section-header-title">THE THREE-BAND ENGINE</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    ENGINE_BANDS_PENDING
+                    <img src="" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>At the heart of Baryon is a three-band generator. Each band is independently tunable so you can target the exact region you want to reinforce and leave the rest alone, tracking three core generation philosophies:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>DIVIDE</b> — The classic hardware divider approach. The source band is squared and flip-flopped on every zero crossing to yield a waveform exactly one octave down, smoothed into a fat, gritty, rhythmically-locked sub layer.</li>
+                        <li>· <b>SYNTH</b> — Clean waveform modeling. Tracks the dominant pitch in the band and drives a continuous-phase sine oscillator at one octave, a fifth (÷3), or two octaves (÷4) below. Pure and artifact-free.</li>
+                        <li>· <b>HYBRID</b> — Blends the grit and transient attack of the divider seamlessly with the body and weight of the sine oscillator.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">ENVELOPE AND HARMONIC SCULPTING</div>
+            <div class="text-bay">
+                <p>The generated sub tracks the envelope of your source to swell and decay naturally with the performance. A built-in bass gate blocks tracking on low-level rumble or signal bleed. Tone shursh parameters include:</p>
+                <ul class="parameter-list">
+                    <li>· <b>Tight Punch</b> — A resonant high-pass filter that adds focused impact at the very bottom boundary.</li>
+                    <li>· <b>Sub-Tone Control</b> — Dials weight dynamically from round and subby to highly present and aggressive.</li>
+                    <li>· <b>Per-Engine Saturation</b> — Adds dedicated upper-harmonics so your low-end updates stay perfectly legible on smaller headphones and mobile speaker nodes. Features multiple tracking curves paired with an inverse "round" mode.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">DUAL DYNAMIC EQ — INPUT AND OUTPUT</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    EQ_MATRIX_PENDING
+                    <img src="" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>Baryon gives you two complete EQ stages: one to clean and prep the source before generation, and one to polish the result after. Both feature steep 24 dB/octave high- and low-pass filters for surgical band-limiting, plus a true dynamic bell filter. Each bell carries static gain alongside an independent dynamic range to react like a frequency-conscious compressor.</p>
+                    <p style="margin-top: 15px;"><b>Draggable Curve Modifier Logic:</b></p>
+                    <ul class="parameter-list">
+                        <li>· <b>Drag Node</b> — Direct calibration of Frequency and Gain.</li>
+                        <li>· <b>⌘-Drag</b> — Surgical scale adjustments of Bandwidth (Q).</li>
+                        <li>· <b>⌥-Drag</b> — Independent tracking of localized Dynamic Range metrics.</li>
+                        <li>· <b>Shift-Click</b> — Solos and auditions the specific frequency band instantly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">DYNAMICS & HARDWARE CHARACTER</div>
+            <div class="text-bay">
+                <p>Once the subharmonic matrix is compiled and shaped, Baryon targets the final output block with a dedicated processing chain:</p>
+                <ul class="parameter-list">
+                    <li>· <b>RMS Compressor</b> — Smooth, musical tracking in the spirit of the classic dbx 160 compressor. Complete with threshold, soft knee, ratio (up to infinity), attack/release, auto-release, makeup, parallel mix, and an input drive stage for extra grit.</li>
+                    <li>· <b>Harmonic Saturation</b> — Six selectable shaping curves (Tanh, Arctan, Tube, Tape, Diode, and Hard clip) plus an inverse "round" mode for warmth. Linked with adjustable drive, mix, and 2× / 4× oversampling tiers for clean, alias-free harmonics.</li>
+                    <li>· <b>Brickwall Limiter</b> — A transparent look-ahead limiter with adjustable ceiling, release, look-ahead times, and an optional clip stage to clamp down on final output peak transients.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>TRANSLATION_INTELLIGENCE</h3>
+            <ul class="spec-list">
+                <li><b>Spectrum Overlays</b> Live spectrum analyzer displaying the original source, generated output, and each of the three sub bands in distinct translucent colored tracks.</li>
+                <li><b>Chassis Design</b> Dark neumorphic layout featuring bronze-gold metering rails optimized for mapping frequencies below 100 Hz.</li>
+                <li><b>Global Blends</b> Master wet/dry parallel controls paired with input/output trim fields for clean translation matching across cars, clubs, and smaller earbud systems.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>TECHNICAL_SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Subharmonic Scaling</b> Division modes down across ÷2, ÷3, and ÷4 behaviors independently per band.</li>
+                <li><b>Filter Metrics</b> 24 dB/octave attenuation walls on dynamic equalization stages.</li>
+                <li><b>Formats</b> VST3 · Audio Unit (AU) · Standalone [Native Apple Silicon & Intel Mac Binary Core]</li>
+                <li><b>Architecture Engine</b> 64-bit internal precision pathways with optional oversampling filters.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<script>
+    // --- DIAGNOSTIC LIGHTBOX VAULT CONTROLLER ENGINE ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        const targetImage = bay.querySelector('.module-shot');
+        
+        // Block action if the visual asset source link is still pending initialization
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+
+        bay.addEventListener('click', () => {
+            vaultCanvas.src = targetImage.src;
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; 
+        document.body.style.overflow = ''; 
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
+    });
+</script>
+
+<footer>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #013 // BARYON_DEVELOPMENT_SPEC</span>
+</footer>
+
+</body>
+</html>
