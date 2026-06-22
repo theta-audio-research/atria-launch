@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANANKE | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-weight: 700;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-weight: 400;
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700;
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
+
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
+
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+
+        /* PURCHASE MODULE */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .authorize-btn { 
+            display: block; 
+            text-align: center; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
+            transition: 0.4s; 
+        }
+        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 80px; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+
+        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        .module-split-row {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .module-split-row .visual-bay {
+            flex: 0 0 250px;
+            width: 250px;
+            border: 1px solid var(--charcoal); 
+            cursor: pointer;
+            background: var(--void);
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .module-split-row .visual-bay:hover {
+            border-color: var(--accent);
+        }
+        .module-split-row .visual-bay .module-shot { 
+            display: block;
+            width: 100%; 
+            height: auto; 
+        }
+
+        .module-split-row .visual-bay::after {
+            content: "CLICK_TO_EXPLORE";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 6px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module-split-row .visual-bay:hover::after {
+            opacity: 1;
+        }
+
+        .text-bay {
+            flex: 1;
+        }
+        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
+        .text-bay p b { color: var(--structure); font-weight: 700; }
+        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .text-bay .parameter-list li { margin-bottom: 8px; }
+        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
+        .diagnostic-lightbox-vault {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            overflow: auto; 
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        .diagnostic-lightbox-vault.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-canvas-scroller {
+            max-width: none;
+            max-height: none;
+            width: 165%; 
+            height: auto;
+            border: 1px solid var(--charcoal);
+            display: block;
+            margin: auto;
+        }
+        .lightbox-close-telemetry {
+            position: fixed;
+            top: 24px; right: 60px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: var(--void);
+            border: 1px solid var(--charcoal);
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .lightbox-close-telemetry:hover {
+            background: var(--accent);
+            color: var(--void);
+        }
+
+        /* --- SPECS --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
+            .module-split-row { flex-direction: column; gap: 30px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { width: 200%; } 
+        }
+    </style>
+</head>
+<body>
+
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
+
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
+    </a>
+
+    <div class="header-module-name">
+        <h2>ANANKE</h2>
+        <p class="plugin-tagline">Decoupled feed-forward compressor engine</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
+
+<main>
+    <div class="image-container">
+        <img src="ANANKE_v0.1.4_MAIN.png" alt="ANANKE Compressor Master Surface" class="plugin-display">
+    </div>
+
+    <div class="description-box">
+        <p class="description-text"><b>The quiet discipline that keeps a performance under absolute control.</b>
+
+        ANANKE is the uncompromised compression engine extracted from the ROGERIAN Dialogue Suite and configured as a focused, single-purpose processor. Voiced for dialogue yet equally at home tightening drum busses, vocals, or master outputs, it represents the primordial force of necessity and constraint.</p>
+    </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">DEVELOPMENT_STATUS</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Component extracted from the Rogerian core lineage. Runs completely independent of a parent shell layer. Authorization tracks universal macOS VST3 and AU formats.
+            </p>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=ANANKE%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>DESIGN_PHILOSOPHY</h3>
+        <div class="module-block">
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Under the hood is a modern feed-forward compressor with a smooth, program-dependent decoupled peak detector and a soft-knee gain computer. Detection is stereo-linked — one gain reduction value is applied across both channels, so ANANKE clamps down hard without ever shifting or smearing the stereo image. It runs in mono or stereo, and the engine is mono-first by design: predictable, surgical, and transparent when you want it to be.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">At its default settings, with drive at zero, ANANKE is bit-transparent — a clean, uncoloured compressor. Everything beyond that is a deliberate choice you reach for.</p>
+        </div>
+    </section>
+
+    <section class="module-deep-dive">
+        <h3>CHASSIS_CONTROLS</h3>
+        
+        <div class="module-block">
+            <div class="section-header-title">VOICE — Three Dynamics Characters</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="ANANKE_v0.1.4_MAIN.png" alt="ANANKE Dynamics Visual Panel" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>A single control maps the ballistics behavior of the compressor, decoupled completely from any harmonic coloration curves:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>CLEAN</b> — Faithful, transparent gain reduction. The compressor, out of the way.</li>
+                        <li>· <b>WARM</b> — Rounder, more forgiving dynamics that ease onto the signal timeline gracefully.</li>
+                        <li>· <b>PUNCH</b> — Faster, transient-forward tracking behavior that prioritizes snap and energy up front.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">CHARACTER — Saturation without clipping</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>The coloration network is entirely decoupled from the dynamics engine, allowing you to dial in tone and harmonics completely independent of attenuation depth. Includes three analogue-modeled voicings:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>TUBE</b> — Even-harmonic warmth, weight, and a soft, rounded top.</li>
+                        <li>· <b>DIODE</b> — A grittier blend of even and odd harmonics with a controlled high end response.</li>
+                        <li>· <b>BRIGHT</b> — A lean, odd-harmonic edge that keeps air and high-frequency bite intact.</li>
+                        <li>· <b>High-Frequency Softening</b> — The <b>DRIVE</b> control adds rich harmonic weight without digital harshness. Built-in post-saturation softening dynamically tracks the drive to clip out brittle, fizzy upper overtones. Coloration routing can be toggled pre or post compression.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">DETECTION AND PARALLEL BLENDING</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>Surgically fit the compression envelope to any dialogue or mix material with deep circuit controls:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Detector Blend</b> — Sweep continuously from lightning-fast peak-accurate detection to smooth RMS tracking.</li>
+                        <li>· <b>Auto-Release</b> — An optical, program-dependent release that breathes organically with source performance.</li>
+                        <li>· <b>Sidechain High-Pass</b> — Prevents low-frequency anchors from triggering threshold attenuation, eliminating low-end pumping.</li>
+                        <li>· <b>Range Floor</b> — Sets a hard ceiling on total gain reduction to prevent over-compression.</li>
+                        <li>· <b>Fixed-Budget Lookahead</b> — Offers up to 3.5 ms of lookahead to catch fast transients. Budgeted latency remains fixed, avoiding plug-in delay re-sync artifacts during automation.</li>
+                        <li>· <b>Parallel Wet/Dry Mix</b> — Full internal blending for instant New York-style parallel compression.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-block">
+            <div class="section-header-title">LOUDNESS METERING & ANALYSIS</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>Features an integrated <b>ITU-R BS.1770-4 loudness meter</b> directly on the output path. Level stems, full dialogue passes, or instrument mixes straight to EBU R128, streaming, or broadcast delivery specifications in real time without external analyzers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>VISUALIZATION_FEEDBACK</h3>
+            <ul class="spec-list">
+                <li><b>Live Transfer Curve</b> Draws real-time input-to-output mapping as you shape threshold, ratio, and knee parameters.</li>
+                <li><b>History Scrolling</b> Real-time rolling strip showing gain-reduction and input levels plotted over time.</li>
+                <li><b>Architecture Matrix</b> Signature graphiteneumorphic surface layout divided cleanly into Dynamics, Character, and Output zones.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>TECHNICAL_SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Type</b> Feed-forward compressor with decoupled peak/RMS detection, saturation, and parallel mix grids.</li>
+                <li><b>Loudness Specification</b> ITU-R BS.1770-4 integrated measurement system (LUFS) with tracking panel reset.</li>
+                <li><b>Latency Engine</b> Fixed ~3.5 ms lookahead budget—constant, glitch-free automation parameters.</li>
+                <li><b>Formats Matrix</b> VST3 · Audio Unit (AU) · Standalone [Slated for native macOS formats].</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<script>
+    // --- LIGHTBOX CONTROL SCRIPTS ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        bay.addEventListener('click', () => {
+            const rawAssetSource = bay.querySelector('.module-shot').src;
+            vaultCanvas.src = rawAssetSource;
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; 
+        document.body.style.overflow = ''; 
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
+    });
+</script>
+
+<footer>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #012 // ANANKE_STABLE_ALPHA</span>
+</footer>
+
+</body>
+</html>
