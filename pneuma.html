@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNEUMA | THETA Audio Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --void: #000000; 
+            --structure: #B0B2B7; 
+            --secondary: #81848A; 
+            --charcoal: #54575C;  
+            --accent: #DCCDBF;    
+            --stroke: #CFC5B6;    
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: var(--secondary); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+
+        /* --- STICKY HARDWARE HEADER --- */
+        nav.nav-terminal {
+            padding: 10px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--charcoal);
+            background: var(--void);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo-link { 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            backface-visibility: hidden;
+        }
+        .header-logo-link:hover { transform: scale(1.08); }
+        .header-logo-link img { height: 100%; width: auto; display: block; }
+
+        /* HEADER CENTRIC TITLE */
+        .header-module-name {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+        .header-module-name h2 {
+            font-weight: 700;
+            font-size: 32px; 
+            letter-spacing: 24px; 
+            color: var(--structure);
+            text-transform: uppercase;
+            margin: 0;
+            padding-left: 24px;
+        }
+        .header-module-name .plugin-tagline { 
+            font-weight: 400;
+            font-size: 8px; 
+            letter-spacing: 6px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 5px 0 0 0; 
+            opacity: 0.8;
+            padding-left: 6px;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            font-weight: 700;
+            border: 1px solid var(--charcoal); 
+            padding: 10px 20px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MAIN CONTENT --- */
+        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
+
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .plugin-display { 
+            display: block; 
+            width: 100%; 
+            height: auto; 
+            border-bottom: 1px solid var(--charcoal); 
+            transition: transform 0.6s ease;
+        }
+        .plugin-display:hover { transform: scale(1.01); }
+
+        .description-box { 
+            max-width: 850px; 
+            margin: 0 auto 60px auto; 
+            border-left: 1px solid var(--stroke); 
+            padding-left: 40px; 
+        }
+        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
+        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+
+        /* ACQUISITION ANCHOR */
+        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
+        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
+        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .authorize-btn { 
+            display: block; 
+            text-align: center; 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            padding: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 12px; 
+            letter-spacing: 6px; 
+            transition: 0.4s; 
+        }
+        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+
+        /* --- MODULE DEEP DIVE --- */
+        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
+        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
+        
+        .module-block { margin-bottom: 80px; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+
+        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        .module-split-row {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .module-split-row .visual-bay {
+            flex: 0 0 250px;
+            width: 250px;
+            border: 1px solid var(--charcoal); 
+            cursor: pointer;
+            background: var(--void);
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .module-split-row .visual-bay:hover {
+            border-color: var(--accent);
+        }
+        .module-split-row .visual-bay .module-shot { 
+            display: block;
+            width: 100%; 
+            height: auto; 
+        }
+
+        .module-split-row .visual-bay::after {
+            content: "CLICK_TO_EXPLORE";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-anchor: center;
+            text-align: center;
+            padding: 6px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module-split-row .visual-bay:hover::after {
+            opacity: 1;
+        }
+
+        .text-bay {
+            flex: 1;
+        }
+        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
+        .text-bay p b { color: var(--structure); font-weight: 700; }
+        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .text-bay .parameter-list li { margin-bottom: 8px; }
+        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
+        .diagnostic-lightbox-vault {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            overflow: auto; 
+            padding: 60px;
+            box-sizing: border-box;
+        }
+        .diagnostic-lightbox-vault.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-canvas-scroller {
+            max-width: none;
+            max-height: none;
+            width: 165%; 
+            height: auto;
+            border: 1px solid var(--charcoal);
+            display: block;
+            margin: auto;
+        }
+        .lightbox-close-telemetry {
+            position: fixed;
+            top: 24px; right: 60px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: var(--void);
+            border: 1px solid var(--charcoal);
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .lightbox-close-telemetry:hover {
+            background: var(--accent);
+            color: var(--void);
+        }
+
+        /* --- SPECS SCADDOLD --- */
+        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
+        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
+        
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
+        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
+        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
+
+        footer { 
+            padding: 40px 60px; 
+            font-size: 9px; 
+            letter-spacing: 6px; 
+            opacity: 0.4; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid var(--charcoal); 
+            margin-top: 100px; 
+        }
+
+        @media (max-width: 900px) {
+            .header-module-name { display: none; }
+            .module-split-row { flex-direction: column; gap: 30px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { width: 200%; } 
+        }
+    </style>
+</head>
+<body>
+
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
+
+<nav class="nav-terminal">
+    <a href="index.html" class="header-logo-link">
+        <img src="theta_logo_square_black.png" alt="THETA Insignia">
+    </a>
+
+    <div class="header-module-name">
+        <h2>PNEUMA</h2>
+        <p class="plugin-tagline">Parametric EQ · Per-Band Dynamics · Harmonic Colour</p>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">RETURN_TO_LAB</a>
+        <a href="store.html">STORE</a>
+    </div>
+</nav>
+
+<main>
+    <div class="image-container">
+        <img src="PNEUMA_v0.1.23_MAIN.png" alt="PNEUMA Interface Frame" class="plugin-display">
+    </div>
+
+    <div class="description-box">
+        <p class="description-text"><b>PNEUMA is the tonal heart of ROGERIAN, lifted out and rebuilt as a focused standalone.</b>
+
+        A seven-band parametric equalizer with program-dependent dynamics on every band and a parallel harmonic-saturation stage underneath. It is surgical enough for corrective work and characterful enough to be the reason a track finally sits — and it carries the same matched-analog curves and gold-on-graphite look as the suite it comes from.</p>
+    </div>
+
+    <section class="acquisition-anchor">
+        <span class="lab-header">DEVELOPMENT_STATUS</span>
+        <div class="purchase-box">
+            <p class="purchase-intel">
+                Component extracted from the Rogerian core lineage. Runs completely independent of a parent shell layer. Authorization tracks universal macOS VST3 and AU formats.
+            </p>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=PNEUMA%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+        </div>
+    </section>
+
+    <!-- CORE CHASSIS DETOUR -->
+    <section class="module-deep-dive">
+        <h3>SUITE_CONTEXT</h3>
+        <div class="module-block">
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">PNEUMA — Greek for breath — is the voice of the suite: the stage where a sound is shaped and given air. It shares the Rogerian Dialog Suite's design language and DSP lineage, and runs as a completely independent plugin. Open it on a single channel, a bus, or the mix — no parent plugin required.</p>
+        </div>
+    </section>
+
+    <!-- SPECIFIC STAGES -->
+    <section class="module-deep-dive">
+        <h3>THE_FOUR_ENGINE_STAGES</h3>
+        
+        <!-- STAGE 1 -->
+        <div class="module-block">
+            <div class="section-header-title">ANALOG-MATCHED EQUALIZATION</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="PNEUMA_v0.1.23_MAIN.png" alt="PNEUMA Graph Curve Node Layout" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Seven fully parametric bands handling bells, high/low shelves, and filtration boundaries. digital response tracks structural analog prototypes directly up to Nyquist limits via <b>Matched-Z curve design</b>, ensuring high-frequency adjustments preserve absolute clarity without naive smearing.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Minimum-Phase Topology</b> Zero processing delay structure—safe for live tracking and mastering setups.</li>
+                        <li>· <b>Phase-Preserving Gain</b> Calculus-locked gain paths ensure overall phase alignment stays entirely intact while riding a band parameter in real time.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 2 -->
+        <div class="module-block">
+            <div class="section-header-title">THREE CURVE CHARACTERS</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>Bell filters can be instantly morph-mapped across three target response behaviors without shifting your core frequency, gain, or width attributes:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>NEUTRAL</b> — The classic, analog-matched bell curve. True bit-for-bit mathematical restoration.</li>
+                        <li>· <b>COOL</b> — Splits the band into dual offset parameters to enforce a flat-topped plateau. Lowers overall resonance across wide paths to keep broad tonal sweeps from sounding shouty.</li>
+                        <li>· <b>SHARP</b> — Stacks a narrow, resonant apex on top of a foundational base curve. Groups energy directly at the center frequency for targeted resonance carving.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div class="module-block">
+            <div class="section-header-title">PER-BAND DYNAMICS</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>Engaging the <b>DYN</b> control turns any individual band node into an active dynamic engine. Target filters scale dynamically to program level triggers—enforcing boosts that only bloom on performance swells or cuts that clamp down tightly as harmonic resonances go hot. Tames vocals, anchors low end, and opens high sheen using transparent tracking ballistics.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 4 -->
+        <div class="module-block">
+            <div class="section-header-title">AIR & BODY HARMONIC COLOUR</div>
+            <div class="module-split-row">
+                <div class="text-bay" style="flex: 1;">
+                    <p>A dual parallel saturation engine running separate paths to eliminate intermodulation artifacts:</p>
+                    <ul class="parameter-list">
+                        <li>· <b>BODY Generator</b> Even-harmonic warmth targeting the low mids. Adds low tube-style weight, with a BIAS macro that sweeps characters between tube and tape responses.</li>
+                        <li>· <b>AIR Generator</b> Odd-harmonic high-frequency sheen tracking top-end air. Includes custom TILT and localized FOCUS width control.</li>
+                        <li>· <b>Chassis Control Mapping</b> Adjust parameters via combined <b>AMOUNT</b> wet/dry macros, input stage texture <b>DRIVE</b> (with automatic internal make-up ceilings), and three distinct saturation curves: **Tube**, **Tape**, or **Clip**. Switch processing routing seamlessly from **PRE** or **POST** equalization blocks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIFICATIONS DIRECTORY -->
+    <section class="specs-container">
+        <div class="spec-group">
+            <h3>VISUALIZATION_TELEMETRY</h3>
+            <ul class="spec-list">
+                <li><b>Spectral Graph</b> Live spectrum analyzer displaying incoming dry fields against processed curves.</li>
+                <li><b>Node Controls</b> Seven interactive dragging nodes; simple modifier shifts adjust Q widths quickly.</li>
+                <li><b>Range Toggles</b> Switchable visual scales mapping spans from mastering fractions up to ±36 dB sound design arcs.</li>
+            </ul>
+        </div>
+
+        <div class="spec-group">
+            <h3>TECHNICAL_SPECIFICATIONS</h3>
+            <ul class="spec-list">
+                <li><b>Type</b> Parametric dynamic equalizer with integrated parallel harmonic color blocks.</li>
+                <li><b>Engine</b> Matched-Z analog curve translation matrix · minimum-phase · zero delay baseline.</li>
+                <li><b>Formats</b> VST3 · Audio Unit (AU) [Slated for core Mac system architecture layers].</li>
+                <li><b>Development</b> THETA Audio Research // Part of the Rogerian lineage.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<script>
+    // --- LIGHTBOX CONTROL SCRIPTS ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        bay.addEventListener('click', () => {
+            const rawAssetSource = bay.querySelector('.module-shot').src;
+            vaultCanvas.src = rawAssetSource;
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; 
+        document.body.style.overflow = ''; 
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
+    });
+</script>
+
+<footer>
+    <span>THETA AUDIO RESEARCH // 2026</span>
+    <span>LAB NOTE #011 // PNEUMA_STABLE_ALPHA</span>
+</footer>
+
+</body>
+</html>
