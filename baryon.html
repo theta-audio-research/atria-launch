@@ -99,14 +99,43 @@
         main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
         .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
+        
+        /* --- DYNAMIC SUBHARMONIC CANVAS STAGE --- */
+        .subharmonic-stage-container {
+            width: 100%;
+            height: 380px;
+            background: #050505;
+            border: 1px solid var(--charcoal);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
-        .plugin-display:hover { transform: scale(1.01); }
+        .subharmonic-stage-container canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .canvas-telemetry-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+        .canvas-interactive-prompt {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: #c8a86b; /* Gold accent link hint */
+            text-transform: uppercase;
+            pointer-events: none;
+            opacity: 0.6;
+        }
 
         .description-box { 
             max-width: 850px; 
@@ -300,8 +329,13 @@
 </nav>
 
 <main>
+    <!-- DYNAMIC WAVE GENERATOR CONTAINER -->
     <div class="image-container">
-        <div style="width: 100%; height: 380px; background: rgba(255,255,255,0.01); border-bottom: 1px solid var(--charcoal); display: flex; align-items: center; justify-content: center; color: var(--charcoal); font-size: 11px; letter-spacing: 4px;">BARYON_INTERFACE_MASTER_VIEW_PENDING</div>
+        <div class="subharmonic-stage-container" id="baryonWaveStage">
+            <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // TRACKING_READY</span>
+            <span class="canvas-interactive-prompt">CLICK_OR_HOVER_TO_PULSE_SUBHARMONICS</span>
+            <canvas id="waveCanvas"></canvas>
+        </div>
     </div>
 
     <div class="description-box">
@@ -320,6 +354,7 @@
         </div>
     </section>
 
+    <!-- OVERVIEW -->
     <section class="module-deep-dive">
         <h3>THE_OVERVIEW</h3>
         <div class="module-block">
@@ -327,9 +362,11 @@
         </div>
     </section>
 
+    <!-- MODULE SUITE SPECIFICS -->
     <section class="module-deep-dive">
         <h3>THE_SUBHARMONIC_ENGINE</h3>
         
+        <!-- ENGINE SECTION -->
         <div class="module-block">
             <div class="section-header-title">THE THREE-BAND ENGINE</div>
             <div class="module-split-row">
@@ -348,6 +385,7 @@
             </div>
         </div>
 
+        <!-- CONTROL EXTRACTIONS -->
         <div class="module-block">
             <div class="section-header-title">ENVELOPE AND HARMONIC SCULPTING</div>
             <div class="text-bay">
@@ -360,6 +398,7 @@
             </div>
         </div>
 
+        <!-- STAGE 2: EQUALIZATION -->
         <div class="module-block">
             <div class="section-header-title">DUAL DYNAMIC EQ — INPUT AND OUTPUT</div>
             <div class="module-split-row">
@@ -380,6 +419,7 @@
             </div>
         </div>
 
+        <!-- STAGE 3: COLORATION -->
         <div class="module-block">
             <div class="section-header-title">DYNAMICS & HARDWARE CHARACTER</div>
             <div class="text-bay">
@@ -393,6 +433,7 @@
         </div>
     </section>
 
+    <!-- CORE TECHNICAL SPECS GRID -->
     <section class="specs-container">
         <div class="spec-group">
             <h3>TRANSLATION_INTELLIGENCE</h3>
@@ -415,16 +456,105 @@
     </section>
 </main>
 
+<!-- REAL-TIME SUBHARMONIC OSCILLATOR WAVE SCRIPT -->
 <script>
-    // --- DIAGNOSTIC LIGHTBOX VAULT CONTROLLER ENGINE ---
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('baryonWaveStage');
+
+    let width = canvas.width = container.offsetWidth;
+    let height = canvas.height = container.offsetHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = container.offsetWidth;
+        height = canvas.height = container.offsetHeight;
+    });
+
+    let phase = 0;
+    let pulseProgress = 0;
+    let isTriggered = false;
+
+    // Trigger pulse on user interaction points
+    function triggerSubPulse() {
+        isTriggered = true;
+        pulseProgress = 1.0; // Instantly go hot on attack threshold
+    }
+
+    container.addEventListener('click', triggerSubPulse);
+    container.addEventListener('mousemove', () => {
+        if(Math.random() < 0.15) triggerSubPulse(); // Stochastically pick up slider tracking motions
+    });
+
+    function loop() {
+        ctx.fillStyle = '#050505';
+        ctx.fillRect(0, 0, width, height);
+
+        // Slow operational phase movement speed for low frequencies
+        phase += 0.04; 
+
+        // Exponential decay algorithm mimicking natural engine gate tracking
+        if (isTriggered) {
+            pulseProgress *= 0.96; 
+            if (pulseProgress < 0.01) {
+                pulseProgress = 0;
+                isTriggered = false;
+            }
+        }
+
+        ctx.beginPath();
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#DCCDBF'; // Default Accent Tone Line
+
+        // Core calculation vector pass across local coordinate space
+        for (let x = 0; x < width; x++) {
+            // High frequency baseline components
+            let baseFrequency = 0.015;
+            let baseAmplitude = 25;
+            
+            // Subharmonic division parameters (simulating /2 synthesis maps)
+            let subFrequency = 0.004; 
+            let subAmplitude = pulseProgress * 95; // Massive, highly-exaggerated pulse peaks
+
+            let y = (height / 2) + 
+                    Math.sin(x * baseFrequency + phase) * baseAmplitude + 
+                    Math.sin(x * subFrequency + phase * 0.5) * subAmplitude;
+
+            // Injects micro-variations on tracking hits to simulate divider grit
+            if (isTriggered) {
+                y += (Math.random() - 0.5) * (pulseProgress * 6);
+            }
+
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+
+        // Pulse shading trace layers for deep mass presentation
+        if (pulseProgress > 0.05) {
+            ctx.strokeStyle = '#c8a86b'; // Flash gold line during peak synthesis
+            ctx.shadowColor = 'rgba(200, 168, 107, 0.15)';
+            ctx.shadowBlur = 20;
+        } else {
+            ctx.shadowBlur = 0;
+        }
+
+        ctx.stroke();
+        requestAnimationFrame(loop);
+    }
+
+    loop();
+</script>
+
+<script>
+    // --- LIGHTBOX CONTROL SCRIPTS ---
     const vaultOverlay = document.getElementById('diagnosticVault');
     const vaultCanvas = document.getElementById('vaultCanvas');
     const closeVaultBtn = document.getElementById('closeVaultBtn');
 
     document.querySelectorAll('.visual-bay').forEach(bay => {
         const targetImage = bay.querySelector('.module-shot');
-        
-        // Block action if the visual asset source link is still pending initialization
         if(!targetImage || !targetImage.getAttribute('src')) return;
 
         bay.addEventListener('click', () => {
