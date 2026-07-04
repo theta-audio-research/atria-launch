@@ -166,6 +166,7 @@
             display: block;
             width: 100%; 
             height: auto; 
+            background: #0a0a0a;
         }
 
         .module-split-row .visual-bay::after {
@@ -189,20 +190,20 @@
             flex: 1;
         }
         .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
-        .text-bay p b { color: var(--structure); font-weight: 700; }
+        .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
         .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
 
-        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
+        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
         .diagnostic-lightbox-vault {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: 9999;
             display: none;
             overflow: auto; 
-            padding: 60px;
+            padding: 40px;
             box-sizing: border-box;
         }
         .diagnostic-lightbox-vault.active {
@@ -211,17 +212,17 @@
             justify-content: center;
         }
         .lightbox-canvas-scroller {
-            max-width: none;
-            max-height: none;
-            width: 165%; 
-            height: auto;
+            max-width: 40vw; /* Bounded precisely at 40% of page scale */
+            max-height: 80vh;
             border: 1px solid var(--charcoal);
             display: block;
             margin: auto;
+            background: #000;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
         .lightbox-close-telemetry {
             position: fixed;
-            top: 24px; right: 60px;
+            top: 24px; right: 40px;
             color: var(--accent);
             font-size: 10px;
             letter-spacing: 4px;
@@ -264,7 +265,7 @@
             .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { width: 200%; } 
+            .lightbox-canvas-scroller { max-width: 80vw; } 
         }
     </style>
 </head>
@@ -293,7 +294,7 @@
 
 <main>
     <div class="image-container">
-        <img src="ROGERIAN_WHITE_EQ.png" alt="ROGERIAN User Interface Frame" class="plugin-display">
+        <img src="ROGERIAN_SPEC_MAIN.png" alt="ROGERIAN User Interface Frame" class="plugin-display">
     </div>
 
     <div class="description-box">
@@ -312,7 +313,6 @@
         </div>
     </section>
 
-    <!-- CORE SYSTEM INTEL -->
     <section class="module-deep-dive">
         <h3>THE_OVERVIEW</h3>
         <div class="module-block">
@@ -321,7 +321,6 @@
         </div>
     </section>
 
-    <!-- PROBLEM INTERCEPT MATRIX -->
     <section class="module-deep-dive">
         <h3>THE_PROBLEM_IT_SOLVES</h3>
         <div class="module-block">
@@ -330,16 +329,14 @@
         </div>
     </section>
 
-    <!-- SUB-MODULE COMPANION DECKS -->
     <section class="module-deep-dive">
         <h3>THE_FOUR_STAGES</h3>
         
-        <!-- STAGE 1 -->
         <div class="module-block">
             <div class="section-header-title">1 · Noise Reduction</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGERIAN_WHITE_NR.png" alt="Noise Reduction Module Section" class="module-shot">
+                    <img src="ROGERIAN_SPEC_REFINE_NR.png" alt="Noise Reduction Module Section" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>A real spectral denoiser — not a meter. Pulls down hiss, room tone and hum across a multiband floor, with automatic noise profiling and a one-click Suggest to set it for you. Runs zero-latency by default (safe for picture sync and tracking), with a higher-resolution spectral tier for offline detail work. Routable before or after the resonance stage.</p>
@@ -347,12 +344,11 @@
             </div>
         </div>
 
-        <!-- STAGE 2 -->
         <div class="module-block">
             <div class="section-header-title">2 · Resonance Suppression — the hero</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGERIAN_WHITE_RES.png" alt="Resonance Suppression Core" class="module-shot">
+                    <img src="ROGERIAN_SPEC_MAIN.png" alt="Resonance Suppression Core" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p>Dynamic, cut-only spectral processing that detects resonant peaks and reduces them only when they're present — the steady ring, the harsh consonant, the boxy room mode — while leaving everything else untouched. You shape where it works with five movable bands (drag to set frequency and amount, adjust width, bypass per band).</p>
@@ -368,12 +364,11 @@
             </div>
         </div>
 
-        <!-- STAGE 3 & 4 -->
         <div class="module-block">
             <div class="section-header-title">3 & 4 · EQ & Compression Modules</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGERIAN_WHITE_COMP.png" alt="EQ and Compression Panel Interface" class="module-shot">
+                    <img src="ROGERIAN_SPEC_EQ_COMP.png" alt="EQ and Compression Panel Interface" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>Corrective Equalization Chain:</b> A 7-band parametric EQ with an interactive curve and live spectrum, per-band dynamic behavior, and selectable phase modes (zero / natural / linear) — corrective when you need precision, musical when you need shape.</p>
@@ -383,7 +378,6 @@
         </div>
     </section>
 
-    <!-- CORE ARCHITECTURAL SYSTEM LOGS -->
     <section class="specs-container">
         <div class="spec-group">
             <h3>DIFFERENTIAL_ANALYSIS</h3>
@@ -408,15 +402,17 @@
 </main>
 
 <script>
-    // --- LIGHTBOX CONTROL SCRIPTS ---
+    // --- DIAGNOSTIC LIGHTBOX CONTROLLER ENGINE ---
     const vaultOverlay = document.getElementById('diagnosticVault');
     const vaultCanvas = document.getElementById('vaultCanvas');
     const closeVaultBtn = document.getElementById('closeVaultBtn');
 
     document.querySelectorAll('.visual-bay').forEach(bay => {
+        const targetImage = bay.querySelector('.module-shot');
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+
         bay.addEventListener('click', () => {
-            const rawAssetSource = bay.querySelector('.module-shot').src;
-            vaultCanvas.src = rawAssetSource;
+            vaultCanvas.src = targetImage.src;
             vaultOverlay.classList.add('active');
             document.body.style.overflow = 'hidden'; 
         });
