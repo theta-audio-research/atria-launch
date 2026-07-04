@@ -1,4 +1,3 @@
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -469,19 +468,23 @@ HTML
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>TRANSLATION_INTELLIGENCE</h3>
+            <h3>MEASURED_NOT_MARKETED</h3>
             <ul class="spec-list">
-                <li><b>Spectrum Overlays</b> Live spectrum analyzer displaying the original source, generated output, and each of the three sub bands in distinct translucent colored tracks.</li>
-                <li><b>Chassis Design</b> Dark neumorphic layout featuring bronze-gold metering rails optimized for mapping frequencies below 100 Hz.</li>
-                <li><b>Global Blends</b> Master wet/dry parallel controls paired with input/output trim fields for clean translation matching across cars, clubs, and smaller earbud systems.</li>
+                <li><b>Build Verification Suite</b> 77 assertions run automatically on every single build, including the eleven-test generator torture suite.</li>
+                <li><b>Generator Attack</b> Onset from silence locks in 13.6 ms to half level; silence in results in literal zero output.</li>
+                <li><b>Octave Stability</b> Wrong-octave content on a pure tone measures > 200 dB down; no octave flip on harmonic-rich basses.</li>
+                <li><b>Gate Ballistics</b> Opens in 1.2 ms, RANGE floor accurate to 0.05 dB, absolute zero threshold flutter.</li>
+                <li><b>Modulation Smoothness</b> LFO square chops parameter maps maintain a maximum per-sample gain step of 0.007 — mathematically click-free.</li>
+                <li><b>Anti-Phase Parameter</b> 180° stereo phase calculation features channel gains anti-phase with gL + gR pinned at 1.000.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Subharmonic Scaling</b> Division modes down across ÷2, ÷3, and ÷4 behaviors independently per band.</li>
-                <li><b>Filter Metrics</b> 24 dB/octave attenuation walls on dynamic equalization stages.</li>
+                <li><b>Type Matrix</b> 3-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate, and look-ahead limiter</li>
+                <li><b>Signal Flow</b> IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
+                <li><b>Latency Engine</b> Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
                 <li><b>Formats</b> VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
                 <li><b>Parameter Interaction</b> Fixed 1116 × 640 footprint; double-click resets knobs, hold Shift for fine adjustment, and trailing value bubbles follow every drag.</li>
             </ul>
@@ -513,40 +516,43 @@ HTML
 
     container.addEventListener('click', triggerSubPulse);
     container.addEventListener('mousemove', () => {
-        if(Math.random() < 0.15) triggerSubPulse(); 
+        if(Math.random() < 0.25) triggerSubPulse(); 
     });
 
     function loop() {
         ctx.fillStyle = '#050505';
         ctx.fillRect(0, 0, width, height);
 
-        phase += 0.04; 
+        phase += 0.08; 
 
         if (isTriggered) {
-            pulseProgress *= 0.96; 
-            if (pulseProgress < 0.01) {
+            pulseProgress *= 0.95; 
+            if (pulseProgress < 0.005) {
                 pulseProgress = 0;
                 isTriggered = false;
             }
         }
 
         ctx.beginPath();
-        ctx.lineWidth = 1.5;
-        ctx.strokeStyle = '#DCCDBF'; 
+        ctx.lineWidth = 2.0;
+        ctx.strokeStyle = '#B0B2B7'; 
 
         for (let x = 0; x < width; x++) {
-            let baseFrequency = 0.015;
-            let baseAmplitude = 25;
+            let baseFrequency = 0.02;
+            let baseAmplitude = 15;
             
-            let subFrequency = 0.004; 
-            let subAmplitude = pulseProgress * 95; 
+            let subFrequency = 0.005; 
+            let subAmplitude = pulseProgress * 140; 
 
             let y = (height / 2) + 
                     Math.sin(x * baseFrequency + phase) * baseAmplitude + 
-                    Math.sin(x * subFrequency + phase * 0.5) * subAmplitude;
+                    Math.cos(x * subFrequency + phase * 0.4) * subAmplitude;
 
-            if (isTriggered) {
-                y += (Math.random() - 0.5) * (pulseProgress * 6);
+            if (isTriggered && pulseProgress > 0.3) {
+                y += (Math.random() - 0.5) * (pulseProgress * 15);
+                
+                if (y < 40) y = 40 + Math.sin(x) * 4;
+                if (y > height - 40) y = height - 40 - Math.sin(x) * 4;
             }
 
             if (x === 0) {
@@ -554,12 +560,27 @@ HTML
             } else {
                 ctx.lineTo(x, y);
             }
+
+            let peakThreshold = 65; 
+            if (Math.abs(y - (height / 2)) > peakThreshold && pulseProgress > 0.1) {
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(x, y, pulseProgress * 4.5, 0, Math.PI * 2);
+                ctx.fillStyle = '#FF2A2A'; 
+                ctx.shadowColor = '#FF0000';
+                ctx.shadowBlur = 15;
+                ctx.fill();
+                ctx.restore();
+            }
         }
 
-        if (pulseProgress > 0.05) {
-            ctx.strokeStyle = '#c8a86b'; 
-            ctx.shadowColor = 'rgba(200, 168, 107, 0.15)';
-            ctx.shadowBlur = 20;
+        if (pulseProgress > 0.4) {
+            ctx.strokeStyle = '#FF3333'; 
+            ctx.shadowColor = 'rgba(255, 0, 0, 0.3)';
+            ctx.shadowBlur = 25;
+        } else if (pulseProgress > 0.1) {
+            ctx.strokeStyle = '#DCCDBF'; 
+            ctx.shadowBlur = 5;
         } else {
             ctx.shadowBlur = 0;
         }
