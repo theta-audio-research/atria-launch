@@ -100,7 +100,7 @@
 
         .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
         
-        /* --- DYNAMIC SUBHARMONIC CANVAS STAGE --- */
+        /* --- DYNAMIC TRANS-SPECTRUM STAGE --- */
         .subharmonic-stage-container {
             width: 100%;
             height: 380px;
@@ -131,7 +131,7 @@
             right: 20px;
             font-size: 8px;
             letter-spacing: 2px;
-            color: #c8a86b; /* Gold accent link hint */
+            color: #c8a86b; 
             text-transform: uppercase;
             pointer-events: none;
             opacity: 0.6;
@@ -146,7 +146,7 @@
         .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
         .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
 
-        /* PURCHASE MODULE */
+        /* ACQUISITION ANCHOR */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
         .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
@@ -165,14 +165,14 @@
         }
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
-        /* --- MODULE DEEP DIVE --- */
+        /* --- FOCUS RACK DEEP DIVE --- */
         .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 80px; }
         .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
 
-        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        /* --- SIDE-BY-SIDE MATRIX BOUNDARIES --- */
         .module-split-row {
             display: flex;
             gap: 50px;
@@ -226,7 +226,7 @@
             flex: 1;
         }
         .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
-        .text-bay p b { color: var(--structure); font-weight: 700; }
+        .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
         .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
@@ -275,7 +275,7 @@
             color: var(--void);
         }
 
-        /* --- SPECS --- */
+        /* --- SPECS GRID --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
         .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
         
@@ -319,7 +319,7 @@
 
     <div class="header-module-name">
         <h2>BARYON</h2>
-        <p class="plugin-tagline">Subharmonic Generator & Low-Frequency Engine</p>
+        <p class="plugin-tagline">Subharmonic Generator — THETA Audio Research</p>
     </div>
 
     <div class="nav-links">
@@ -332,131 +332,190 @@
     <!-- DYNAMIC WAVE GENERATOR CONTAINER -->
     <div class="image-container">
         <div class="subharmonic-stage-container" id="baryonWaveStage">
-            <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // TRACKING_READY</span>
-            <span class="canvas-interactive-prompt">CLICK_OR_HOVER_TO_PULSE_SUBHARMONICS</span>
+            <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // SPECTRUM_20_250_HZ</span>
+            <span class="canvas-interactive-prompt">CLICK_OR_HOVER_TO_TRACE_SUB_PULSES</span>
             <canvas id="waveCanvas"></canvas>
         </div>
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b>
+        <p class="description-text"><b>Baryons are the particles that give ordinary matter its mass. BARYON does the same for your mix.</b>
 
-        Baryon is a subharmonic generator and dedicated low-frequency processor for producers and engineers who treat the bottom octave as an instrument, not an afterthought. It synthesizes brand-new sub-bass locked to the pitch and rhythm of your source, then runs it through a focused, end-to-end signal chain so you can turn raw weight into tight, deep, translation-proof architecture on any playback platform.</p>
+        BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified rather than merely tuned by ear.</p>
     </div>
 
     <section class="acquisition-anchor">
         <span class="lab-header">DEVELOPMENT_STATUS</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Chassis is undergoing low-frequency calibration. Initial deployment targets mono and stereo mapping structures across VST3, AU, and Standalone frameworks.
+                Chassis is undergoing low-frequency calibration. Operational parameters include zero-dive architecture featuring portable user library files (.baryon).
             </p>
             <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
         </div>
     </section>
 
-    <!-- OVERVIEW -->
+    <!-- CORE INTERFACE LOGIC -->
     <section class="module-deep-dive">
-        <h3>THE_OVERVIEW</h3>
+        <h3>THE_INTERFACE_PROTOCOL</h3>
         <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Named for the heavy particles that make up the mass of ordinary matter, the name is the brief: where a normal EQ can only boost what's already there, Baryon creates what isn't. Feed it a thin kick, a bass that disappears on small speakers, an 808 that won't sit, or a full mix that needs a reinforced foundation — and it builds a controlled, musical sub that breathes with the performance instead of booming over it.</p>
+            <div class="section-header-title">One window. Six instruments. One display that never leaves.</div>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">BARYON's interface is a focus rack: six modules — SUB · LFO · CHARACTER · DYNAMICS · EQ · OUTPUT — live as cards on the right. Click one and it takes the stage; everything else stays one click away. No menu diving, no hidden tabs, and the window never changes size.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Above the stage sits the persistent live display: a real-time spectrum of the 20–250 Hz region that stays with you on every page. Five layers, each on its own clickable chip — SRC (what's coming in), POST (what's leaving, in gold), and B1 / B2 / B3 (each band's own generated sub in its band color). The three band crossover spans ride along the top, so you always see where the generator is listening. Solo a band and its trace isolates. Toggle the plugin and POST collapses onto the source. You never have to imagine what BARYON is doing to your low end — it is drawn, live, at all times.</p>
         </div>
     </section>
 
-    <!-- MODULE SUITE SPECIFICS -->
+    <!-- FOCUS RACK INDEPENDENT CARDS -->
     <section class="module-deep-dive">
-        <h3>THE_SUBHARMONIC_ENGINE</h3>
+        <h3>FOCUS_RACK_MODULES</h3>
         
-        <!-- ENGINE SECTION -->
+        <!-- MODULE 1: SUB -->
         <div class="module-block">
-            <div class="section-header-title">THE THREE-BAND ENGINE</div>
+            <div class="section-header-title">SUB — The Generator</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    ENGINE_BANDS_PENDING
-                    <img src="" class="module-shot" style="display:none;">
+                    SUB_MODULE_ACTIVE
+                    <img src="BARYON_v.5_BANDS.png" class="module-shot" style="display:none;">
                 </div>
                 <div class="text-bay">
-                    <p>At the heart of Baryon is a three-band generator. Each band is independently tunable so you can target the exact region you want to reinforce and leave the rest alone, tracking three core generation philosophies:</p>
+                    <p>The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
                     <ul class="parameter-list">
-                        <li>· <b>DIVIDE</b> — The classic hardware divider approach. The source band is squared and flip-flopped on every zero crossing to yield a waveform exactly one octave down, smoothed into a fat, gritty, rhythmically-locked sub layer.</li>
-                        <li>· <b>SYNTH</b> — Clean waveform modeling. Tracks the dominant pitch in the band and drives a continuous-phase sine oscillator at one octave, a fifth (÷3), or two octaves (÷4) below. Pure and artifact-free.</li>
-                        <li>· <b>HYBRID</b> — Blends the grit and transient attack of the divider seamlessly with the body and weight of the sine oscillator.</li>
+                        <li>· <b>DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing, producing a square wave at exactly half the input frequency. Heavily filtered, it becomes the fat, gritty analog sub of the original hardware.</li>
+                        <li>· <b>SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine at the divided frequency. Pure, deep, and modern.</li>
+                        <li>· <b>HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
+                        <li>· <b>Chassis Architecture</b> — Each of the three bands gets its own color-coded cell: a hero LEVEL knob with a live LED ring, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector — octave down, a third, or a fourth — so one band can hold the octave while another adds a deeper foundation. The generator row above carries the master SUB LEVEL, MODE, GATE (keeps the generator from droning on bleed and noise), WIDTH, BASS MONO (collapses the low end for club-safe mono), and IN TRIM.</li>
+                    </ul>
+                    <p style="margin-top: 15px; border-left: 1px solid var(--charcoal); padding-left: 20px; font-size: 13.5px; color: var(--structure);"><b>The Torture Suite Tracker:</b> An eleven-test torture suite hammers the engine with note changes, pitch bends, kick transients riding the bass, harmonic-heavy sources, dyads, and near-silence. It locks in 13.6 ms from true silence, retunes instantly on note changes, tracks continuous bends at half frequency, and does not flip an octave on harmonic-rich basses. Wrong-octave content measures more than 200 dB below the fundamental.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 2: LFO -->
+        <div class="module-block">
+            <div class="section-header-title">LFO — Motion for the Low End</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    LFO_MODULE_ACTIVE
+                    <img src="BARYON_v.5_LFO.png" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&H (a fresh random level drawn and held each cycle, for rhythmic random chops). Rate runs free (0.02–8 Hz) or SYNC to host tempo with divisions from 1/1 to 1/16.</li>
+                        <li>· <b>Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, so it stays beat-locked through loops, relocates, and punch-ins — every pass of a two-bar loop lands identically. Every waveform passes through a de-click smoother so the modulation never ticks.</li>
+                        <li>· <b>PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO: the sub begins to orbit the stereo field, and at 180° the channels move in perfect anti-phase — a widening motion no static tool can produce.</li>
+                        <li>· <b>Display Mapping</b> — Shows the selected shape at your depth over a full-scale ghost, with a gold cursor riding the curve at the engine's actual published phase and value — including the true random levels of S&H — plus a hollow second cursor marking the right channel when PHASE is engaged, and a readout of the exact Hz your sync setting resolves to.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- CONTROL EXTRACTIONS -->
+        <!-- MODULE 3: CHARACTER -->
         <div class="module-block">
-            <div class="section-header-title">ENVELOPE AND HARMONIC SCULPTING</div>
-            <div class="text-bay">
-                <p>The generated sub tracks the envelope of your source to swell and decay naturally with the performance. A built-in bass gate blocks tracking on low-level rumble or signal bleed. Tone shursh parameters include:</p>
-                <ul class="parameter-list">
-                    <li>· <b>Tight Punch</b> — A resonant high-pass filter that adds focused impact at the very bottom boundary.</li>
-                    <li>· <b>Sub-Tone Control</b> — Dials weight dynamically from round and subby to highly present and aggressive.</li>
-                    <li>· <b>Per-Engine Saturation</b> — Adds dedicated upper-harmonics so your low-end updates stay perfectly legible on smaller headphones and mobile speaker nodes. Features multiple tracking curves paired with an inverse "round" mode.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- STAGE 2: EQUALIZATION -->
-        <div class="module-block">
-            <div class="section-header-title">DUAL DYNAMIC EQ — INPUT AND OUTPUT</div>
+            <div class="section-header-title">CHARACTER — Punch, Edge, and Colour</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    EQ_MATRIX_PENDING
-                    <img src="" class="module-shot" style="display:none;">
+                    CHARACTER_MODULE_ACTIVE
+                    <img src="BARYON_v.5_CHARACTER.png" class="module-shot" style="display:none;">
                 </div>
                 <div class="text-bay">
-                    <p>Baryon gives you two complete EQ stages: one to clean and prep the source before generation, and one to polish the result after. Both feature steep 24 dB/octave high- and low-pass filters for surgical band-limiting, plus a true dynamic bell filter. Each bell carries static gain alongside an independent dynamic range to react like a frequency-conscious compressor.</p>
-                    <p style="margin-top: 15px;"><b>Draggable Curve Modifier Logic:</b></p>
+                    <p>Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
                     <ul class="parameter-list">
-                        <li>· <b>Drag Node</b> — Direct calibration of Frequency and Gain.</li>
-                        <li>· <b>⌘-Drag</b> — Surgical scale adjustments of Bandwidth (Q).</li>
-                        <li>· <b>⌥-Drag</b> — Independent tracking of localized Dynamic Range metrics.</li>
-                        <li>· <b>Shift-Click</b> — Solos and auditions the specific frequency band instantly.</li>
+                        <li>· <b>PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH is a resonant high-pass with FREQ and AMOUNT that carves a tight, kick-friendly knee into the very bottom; TONE rolls the sub's top; DRIVE feeds a six-mode EDGE saturator — TANH, ARCTAN, TUBE, TAPE, DIODE, HARD — with polarity INV for asymmetric bite.</li>
+                        <li>· <b>Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, and the master SATURATION section offers the same six shapes with its own DRIVE, a ROUND control for softening the curve, INV, and switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
+                        <li>· <b>Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain. Asymmetric shapes generate DC offset that silently eats headroom on a sub plugin — BARYON drains it in under a second while leaving 20 Hz programme within 0.095 dB. Measured, not assumed.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- STAGE 3: COLORATION -->
+        <!-- MODULE 4: DYNAMICS -->
         <div class="module-block">
-            <div class="section-header-title">DYNAMICS & HARDWARE CHARACTER</div>
-            <div class="text-bay">
-                <p>Once the subharmonic matrix is compiled and shaped, Baryon targets the final output block with a dedicated processing chain:</p>
-                <ul class="parameter-list">
-                    <li>· <b>RMS Compressor</b> — Smooth, musical tracking in the spirit of the classic dbx 160 compressor. Complete with threshold, soft knee, ratio (up to infinity), attack/release, auto-release, makeup, parallel mix, and an input drive stage for extra grit.</li>
-                    <li>· <b>Harmonic Saturation</b> — Six selectable shaping curves (Tanh, Arctan, Tube, Tape, Diode, and Hard clip) plus an inverse "round" mode for warmth. Linked with adjustable drive, mix, and 2× / 4× oversampling tiers for clean, alias-free harmonics.</li>
-                    <li>· <b>Brickwall Limiter</b> — A transparent look-ahead limiter with adjustable ceiling, release, look-ahead times, and an optional clip stage to clamp down on final output peak transients.</li>
-                </ul>
+            <div class="section-header-title">DYNAMICS — THETA ANANKE COMPRESSION</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    DYNAMICS_MODULE_ACTIVE
+                    <img src="BARYON_v.5_DYNAMICS.png" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Dialogue Suite and configured as a focused, single-purpose processor. Voiced for dialogue yet equally at home tightening drum busses, vocals, or master outputs, it represents the primordial force of necessity and constraint.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>TRANSFER Display</b> — Draws the actual gain law — the same code the audio runs — on a 10 dB grid: threshold marker, the OverEasy soft-knee region as a gold band with the knee arc highlighted, and the ∞:1 hard-limit curve when engaged.</li>
+                        <li>· <b>GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms so the trace reads as a smooth line at any zoom. Drag to zoom the window from 1 to 8 seconds; a large live GR readout counts the decibels.</li>
+                        <li>· <b>Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms, the control that decides whether the compressor grabs transients or levels notes (and the reason deep sustained bass compresses cleanly instead of rippling). AUTO release and an ∞:1 switch complete the set.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 5: EQ -->
+        <div class="module-block">
+            <div class="section-header-title">EQ — The Editing Surface</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    EQ_MODULE_ACTIVE
+                    <img src="BARYON_v.5_EQ.png" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>Focus the EQ and the live display grows into a full editing surface: both EQ curves drawn directly over the spectrum they're shaping.</p>
+                    <p>Two independent processors — <b>EQ IN</b> (before the generator, shaping what BARYON listens to) and <b>EQ OUT</b> (after, shaping what it delivers) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
+                    <ul class="parameter-list" style="margin-top: 15px;">
+                        <li>· <b>Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range, Shift-hold for momentary band solo (release Shift, solo's gone), double-click to reset any filter to neutral. Interaction grammar is printed in the footer.</li>
+                        <li>· <b>Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks the full configured travel and a haloed LIVE line rides the current position, display-smoothed so hits land instantly and ease back musically.</li>
+                        <li>· <b>Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically (a one-sided hit can never tilt your stereo image), while STATIC turns the dynamics off entirely to form a conventional EQ.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 6: OUTPUT -->
+        <div class="module-block">
+            <div class="section-header-title">OUTPUT — Meter, Gate, Ceiling</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    OUTPUT_MODULE_ACTIVE
+                    <img src="BARYON_v.5_OUTPUT.png" class="module-shot" style="display:none;">
+                </div>
+                <div class="text-bay">
+                    <p>The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, a live ceiling marker tied to the CEILING knob, and a peak readout in dB.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL (compressor dry/wet for New-York-style weight), master DRY/WET, and OUT TRIM.</li>
+                        <li>· <b>Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode — with its latency (and the oversampler's) correctly reported to the host, so BARYON never smears against the rest of your session.</li>
+                        <li>· <b>Dual-Gate Post-Dynamics Tightener</b> — Compression and saturation raise tails; the gate sits after both and before the limiter, where "tight" actually happens. A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes — at −80 dB it chops, at −15 dB it just leans on the tails; 3 dB of built-in hysteresis means it never flutters.</li>
+                        <li>· <b>Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, so you park the pointer exactly where the kicks peak and the bleed doesn't — and the gate view beside it scrolls three seconds of history: grey is what came in, gold is what got through, with the threshold line draggable right on the display. The detector runs even while the gate is off, so you can set it visually before you ever engage it.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CORE TECHNICAL SPECS GRID -->
+    <!-- CORE VERIFICATION SUITE -->
     <section class="specs-container">
         <div class="spec-group">
-            <h3>TRANSLATION_INTELLIGENCE</h3>
+            <h3>MEASURED_NOT_MARKETED</h3>
             <ul class="spec-list">
-                <li><b>Spectrum Overlays</b> Live spectrum analyzer displaying the original source, generated output, and each of the three sub bands in distinct translucent colored tracks.</li>
-                <li><b>Chassis Design</b> Dark neumorphic layout featuring bronze-gold metering rails optimized for mapping frequencies below 100 Hz.</li>
-                <li><b>Global Blends</b> Master wet/dry parallel controls paired with input/output trim fields for clean translation matching across cars, clubs, and smaller earbud systems.</li>
+                <li><b>Build Verification Suite</b> 77 assertions run automatically on every single build, including the eleven-test generator torture suite.</li>
+                <li><b>Generator Attack</b> Onset from silence locks in 13.6 ms to half level; silence in results in literal zero output.</li>
+                <li><b>Octave Stability</b> Wrong-octave content on a pure tone measures > 200 dB down; no octave flip on harmonic-rich basses.</li>
+                <li><b>Gate Ballistics</b> Opens in 1.2 ms, RANGE floor accurate to 0.05 dB, absolute zero threshold flutter.</li>
+                <li><b>Modulation Smoothness</b> LFO square chops parameter maps maintain a maximum per-sample gain step of 0.007 — mathematically click-free.</li>
+                <li><b>Anti-Phase Parameter</b> 180° stereo phase calculation features channel gains anti-phase with gL + gR pinned at 1.000.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Subharmonic Scaling</b> Division modes down across ÷2, ÷3, and ÷4 behaviors independently per band.</li>
-                <li><b>Filter Metrics</b> 24 dB/octave attenuation walls on dynamic equalization stages.</li>
-                <li><b>Formats</b> VST3 · Audio Unit (AU) · Standalone [Native Apple Silicon & Intel Mac Binary Core]</li>
-                <li><b>Architecture Engine</b> 64-bit internal precision pathways with optional oversampling filters.</li>
+                <li><b>Type Matrix</b> 3-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate, and look-ahead limiter</li>
+                <li><b>Signal Flow</b> IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
+                <li><b>Latency Engine</b> Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
+                <li><b>Formats</b> VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
+                <li><b>Parameter Interaction</b> Fixed 1116 × 640 footprint; double-click resets knobs, hold Shift for fine adjustment, and trailing value bubbles follow every drag.</li>
             </ul>
         </div>
     </section>
 </main>
 
-<!-- REAL-TIME SUBHARMONIC OSCILLATOR WAVE SCRIPT -->
+<!-- REAL-TIME SUBHARMONIC OSCILLATOR SPECTRUM SCRIPT -->
 <script>
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
@@ -474,25 +533,22 @@
     let pulseProgress = 0;
     let isTriggered = false;
 
-    // Trigger pulse on user interaction points
     function triggerSubPulse() {
         isTriggered = true;
-        pulseProgress = 1.0; // Instantly go hot on attack threshold
+        pulseProgress = 1.0; 
     }
 
     container.addEventListener('click', triggerSubPulse);
     container.addEventListener('mousemove', () => {
-        if(Math.random() < 0.15) triggerSubPulse(); // Stochastically pick up slider tracking motions
+        if(Math.random() < 0.15) triggerSubPulse(); 
     });
 
     function loop() {
         ctx.fillStyle = '#050505';
         ctx.fillRect(0, 0, width, height);
 
-        // Slow operational phase movement speed for low frequencies
         phase += 0.04; 
 
-        // Exponential decay algorithm mimicking natural engine gate tracking
         if (isTriggered) {
             pulseProgress *= 0.96; 
             if (pulseProgress < 0.01) {
@@ -503,23 +559,21 @@
 
         ctx.beginPath();
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = '#DCCDBF'; // Default Accent Tone Line
+        ctx.strokeStyle = '#DCCDBF'; 
 
-        // Core calculation vector pass across local coordinate space
         for (let x = 0; x < width; x++) {
-            // High frequency baseline components
             let baseFrequency = 0.015;
             let baseAmplitude = 25;
             
-            // Subharmonic division parameters (simulating /2 synthesis maps)
+            // Subharmonic synthesis modeling curves
             let subFrequency = 0.004; 
-            let subAmplitude = pulseProgress * 95; // Massive, highly-exaggerated pulse peaks
+            let subAmplitude = pulseProgress * 95; 
 
             let y = (height / 2) + 
                     Math.sin(x * baseFrequency + phase) * baseAmplitude + 
                     Math.sin(x * subFrequency + phase * 0.5) * subAmplitude;
 
-            // Injects micro-variations on tracking hits to simulate divider grit
+            // Injects micro-variations to simulate true divider/synthesis saturation response
             if (isTriggered) {
                 y += (Math.random() - 0.5) * (pulseProgress * 6);
             }
@@ -531,9 +585,8 @@
             }
         }
 
-        // Pulse shading trace layers for deep mass presentation
         if (pulseProgress > 0.05) {
-            ctx.strokeStyle = '#c8a86b'; // Flash gold line during peak synthesis
+            ctx.strokeStyle = '#c8a86b'; 
             ctx.shadowColor = 'rgba(200, 168, 107, 0.15)';
             ctx.shadowBlur = 20;
         } else {
@@ -584,7 +637,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #013 // BARYON_DEVELOPMENT_SPEC</span>
+    <span>LAB NOTE #013 // BARYON_v.5_PRODUCTION_SPEC</span>
 </footer>
 
 </body>
