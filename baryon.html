@@ -147,7 +147,7 @@ HTML
         .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
         .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
 
-        /* ACQUISITION ANCHOR */
+        /* PURCHASE MODULE */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
         .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
         .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
@@ -183,19 +183,11 @@ HTML
         .module-split-row .visual-bay {
             flex: 0 0 250px;
             width: 250px;
-            height: 180px;
             border: 1px solid var(--charcoal); 
             cursor: pointer;
             background: rgba(255, 255, 255, 0.01);
             position: relative;
             transition: border-color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--charcoal);
-            font-size: 9px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
         }
         .module-split-row .visual-bay:hover {
             border-color: var(--accent);
@@ -204,6 +196,7 @@ HTML
             display: block;
             width: 100%; 
             height: auto; 
+            background: #0a0a0a;
         }
 
         .module-split-row .visual-bay::after {
@@ -232,15 +225,15 @@ HTML
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
 
-        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
+        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
         .diagnostic-lightbox-vault {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: 9999;
             display: none;
             overflow: auto; 
-            padding: 60px;
+            padding: 40px;
             box-sizing: border-box;
         }
         .diagnostic-lightbox-vault.active {
@@ -249,17 +242,17 @@ HTML
             justify-content: center;
         }
         .lightbox-canvas-scroller {
-            max-width: none;
-            max-height: none;
-            width: 165%; 
-            height: auto;
+            max-width: 40vw; /* Strict 60% reduction from fullscreen width */
+            max-height: 80vh;
             border: 1px solid var(--charcoal);
             display: block;
             margin: auto;
+            background: #000;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
         .lightbox-close-telemetry {
             position: fixed;
-            top: 24px; right: 60px;
+            top: 24px; right: 40px;
             color: var(--accent);
             font-size: 10px;
             letter-spacing: 4px;
@@ -302,7 +295,7 @@ HTML
             .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { width: 200%; } 
+            .lightbox-canvas-scroller { max-width: 80vw; } 
         }
     </style>
 </head>
@@ -330,7 +323,6 @@ HTML
 </nav>
 
 <main>
-    <!-- DYNAMIC WAVE GENERATOR CONTAINER -->
     <div class="image-container">
         <div class="subharmonic-stage-container" id="baryonWaveStage">
             <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // SPECTRUM_20_250_HZ</span>
@@ -340,7 +332,7 @@ HTML
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>Baryons are the particles that give ordinary matter its mass. BARYON does the same for your mix.</b>
+        <p class="description-text"><b>Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b>
 
         BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified rather than merely tuned by ear.</p>
     </div>
@@ -355,7 +347,6 @@ HTML
         </div>
     </section>
 
-    <!-- CORE INTERFACE LOGIC -->
     <section class="module-deep-dive">
         <h3>THE_INTERFACE_PROTOCOL</h3>
         <div class="module-block">
@@ -365,17 +356,14 @@ HTML
         </div>
     </section>
 
-    <!-- FOCUS RACK INDEPENDENT CARDS -->
     <section class="module-deep-dive">
         <h3>FOCUS_RACK_MODULES</h3>
         
-        <!-- MODULE 1: SUB -->
         <div class="module-block">
             <div class="section-header-title">SUB — The Generator</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    SUB_MODULE_ACTIVE
-                    <img src="BARYON_v.5_BANDS.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_BANDS.png" class="module-shot" alt="BARYON Sub Bands Module">
                 </div>
                 <div class="text-bay">
                     <p>The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
@@ -390,13 +378,11 @@ HTML
             </div>
         </div>
 
-        <!-- MODULE 2: LFO -->
         <div class="module-block">
             <div class="section-header-title">LFO — Motion for the Low End</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    LFO_MODULE_ACTIVE
-                    <img src="BARYON_v.5_LFO.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_LFO.png" class="module-shot" alt="BARYON LFO Module">
                 </div>
                 <div class="text-bay">
                     <p>A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
@@ -410,13 +396,11 @@ HTML
             </div>
         </div>
 
-        <!-- MODULE 3: CHARACTER -->
         <div class="module-block">
             <div class="section-header-title">CHARACTER — Punch, Edge, and Colour</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    CHARACTER_MODULE_ACTIVE
-                    <img src="BARYON_v.5_CHARACTER.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_CHARACTER.png" class="module-shot" alt="BARYON Character Module">
                 </div>
                 <div class="text-bay">
                     <p>Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
@@ -429,13 +413,11 @@ HTML
             </div>
         </div>
 
-        <!-- MODULE 4: DYNAMICS -->
         <div class="module-block">
             <div class="section-header-title">DYNAMICS — THETA ANANKE COMPRESSION</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    DYNAMICS_MODULE_ACTIVE
-                    <img src="BARYON_v.5_DYNAMICS.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_DYNAMICS.png" class="module-shot" alt="BARYON Dynamics Module">
                 </div>
                 <div class="text-bay">
                     <p>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Dialogue Suite and configured as a focused, single-purpose processor. Voiced for dialogue yet equally at home tightening drum busses, vocals, or master outputs, it represents the primordial force of necessity and constraint.</p>
@@ -448,13 +430,11 @@ HTML
             </div>
         </div>
 
-        <!-- MODULE 5: EQ -->
         <div class="module-block">
             <div class="section-header-title">EQ — The Editing Surface</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    EQ_MODULE_ACTIVE
-                    <img src="BARYON_v.5_EQ.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_EQ.png" class="module-shot" alt="BARYON EQ Module">
                 </div>
                 <div class="text-bay">
                     <p>Focus the EQ and the live display grows into a full editing surface: both EQ curves drawn directly over the spectrum they're shaping.</p>
@@ -468,13 +448,11 @@ HTML
             </div>
         </div>
 
-        <!-- MODULE 6: OUTPUT -->
         <div class="module-block">
             <div class="section-header-title">OUTPUT — Meter, Gate, Ceiling</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    OUTPUT_MODULE_ACTIVE
-                    <img src="BARYON_v.5_OUTPUT.png" class="module-shot" style="display:none;">
+                    <img src="BARYON_v.5_OUTPUT.png" class="module-shot" alt="BARYON Output Module">
                 </div>
                 <div class="text-bay">
                     <p>The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, a live ceiling marker tied to the CEILING knob, and a peak readout in dB.</p>
@@ -489,26 +467,21 @@ HTML
         </div>
     </section>
 
-    <!-- CORE VERIFICATION SUITE -->
     <section class="specs-container">
         <div class="spec-group">
-            <h3>MEASURED_NOT_MARKETED</h3>
+            <h3>TRANSLATION_INTELLIGENCE</h3>
             <ul class="spec-list">
-                <li><b>Build Verification Suite</b> 77 assertions run automatically on every single build, including the eleven-test generator torture suite.</li>
-                <li><b>Generator Attack</b> Onset from silence locks in 13.6 ms to half level; silence in results in literal zero output.</li>
-                <li><b>Octave Stability</b> Wrong-octave content on a pure tone measures > 200 dB down; no octave flip on harmonic-rich basses.</li>
-                <li><b>Gate Ballistics</b> Opens in 1.2 ms, RANGE floor accurate to 0.05 dB, absolute zero threshold flutter.</li>
-                <li><b>Modulation Smoothness</b> LFO square chops parameter maps maintain a maximum per-sample gain step of 0.007 — mathematically click-free.</li>
-                <li><b>Anti-Phase Parameter</b> 180° stereo phase calculation features channel gains anti-phase with gL + gR pinned at 1.000.</li>
+                <li><b>Spectrum Overlays</b> Live spectrum analyzer displaying the original source, generated output, and each of the three sub bands in distinct translucent colored tracks.</li>
+                <li><b>Chassis Design</b> Dark neumorphic layout featuring bronze-gold metering rails optimized for mapping frequencies below 100 Hz.</li>
+                <li><b>Global Blends</b> Master wet/dry parallel controls paired with input/output trim fields for clean translation matching across cars, clubs, and smaller earbud systems.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Type Matrix</b> 3-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate, and look-ahead limiter</li>
-                <li><b>Signal Flow</b> IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
-                <li><b>Latency Engine</b> Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
+                <li><b>Subharmonic Scaling</b> Division modes down across ÷2, ÷3, and ÷4 behaviors independently per band.</li>
+                <li><b>Filter Metrics</b> 24 dB/octave attenuation walls on dynamic equalization stages.</li>
                 <li><b>Formats</b> VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
                 <li><b>Parameter Interaction</b> Fixed 1116 × 640 footprint; double-click resets knobs, hold Shift for fine adjustment, and trailing value bubbles follow every drag.</li>
             </ul>
@@ -516,7 +489,6 @@ HTML
     </section>
 </main>
 
-<!-- REAL-TIME SUBHARMONIC OSCILLATOR SPECTRUM SCRIPT -->
 <script>
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
@@ -566,7 +538,6 @@ HTML
             let baseFrequency = 0.015;
             let baseAmplitude = 25;
             
-            // Subharmonic synthesis modeling curves
             let subFrequency = 0.004; 
             let subAmplitude = pulseProgress * 95; 
 
@@ -574,7 +545,6 @@ HTML
                     Math.sin(x * baseFrequency + phase) * baseAmplitude + 
                     Math.sin(x * subFrequency + phase * 0.5) * subAmplitude;
 
-            // Injects micro-variations to simulate true divider/synthesis saturation response
             if (isTriggered) {
                 y += (Math.random() - 0.5) * (pulseProgress * 6);
             }
