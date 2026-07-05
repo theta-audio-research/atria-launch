@@ -212,7 +212,7 @@
             justify-content: center;
         }
         .lightbox-canvas-scroller {
-            max-width: 40vw; /* Bounded precisely at 40% of page scale */
+            max-width: 40vw; 
             max-height: 80vh;
             border: 1px solid var(--charcoal);
             display: block;
@@ -283,7 +283,7 @@
 
     <div class="header-module-name">
         <h2>ROGERIAN</h2>
-        <p class="plugin-tagline">Dialogue channel strip · Coming soon</p>
+        <p class="plugin-tagline">The dialogue channel strip</p>
     </div>
 
     <div class="nav-links">
@@ -294,108 +294,171 @@
 
 <main>
     <div class="image-container">
-        <img src="ROGERIAN_SPEC_MAIN.png" alt="ROGERIAN User Interface Frame" class="plugin-display">
+        <!-- Hero placeholder defaults to resonance until full UI is available -->
+        <img src="ROGER_v0507_WHITE_RES.png" alt="ROGERIAN Resonance Suppressor" class="plugin-display">
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>Noise, resonance, EQ and compression for the spoken voice — in a single, mono-first pass.</b>
+        <p class="description-text"><b>Noise reduction, resonance suppression, equalization, compression and de-click — five stages engineered as one instrument for the spoken voice.</b>
 
-        ROGERIAN finds what's wrong only when it's wrong, and leaves the performance alone. It collapses complex cleanup chains into a transparent signal path that reflects the voice back, cleaner, without imposing an unwanted signature character of its own.</p>
+        ROGERIAN finds what's wrong only when it's wrong, and leaves the performance alone. Mono-first. Fully latency-reported. VST3 · AU · AAX · Standalone for macOS, in a signed and notarized installer.</p>
     </div>
 
     <section class="acquisition-anchor">
-        <span class="lab-header">DEVELOPMENT_STATUS</span>
+        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Chassis currently undergoing system bench testing. Register your identity below to receive prompt transmission alerts when parameters stabilize.
+                The entire dialogue chain. One plugin. Register your identity below for immediate system deployment parameters and trial authorization frameworks.
             </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" class="lemon-squeezy-button authorize-btn">BUY_ROGERIAN</a>
         </div>
     </section>
 
     <section class="module-deep-dive">
         <h3>THE_OVERVIEW</h3>
         <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN is a dialogue-first channel strip — four cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice: Noise reduction → Resonance suppression → EQ → Compression. It replaces the stack of separate plugins editors reach for on every line of dialogue — a denoiser, a dynamic resonance tool, a corrective EQ, a leveler — with one focused instrument.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Named for person-centred (Rogerian) therapy — non-judgmental, reflective, calming — because that's how it treats a signal. It reflects the voice back, cleaner, without imposing a character of its own.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN is a dialogue-first channel strip: five cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice. Noise reduction → Resonance suppression → EQ → Compression, with a dedicated De-Click stage for the mouth itself.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">It replaces the stack of separate plugins an editor reaches for on every line of dialogue — a denoiser, a dynamic resonance tool, a corrective EQ, a leveler, a de-clicker — with one focused signal path. No juggling five windows, five latencies, five vendors, and the interactions between them. One pass, one instrument, designed as a whole.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">The name is the philosophy. Rogerian (person-centred) therapy is non-judgmental and reflective: it listens first, and it never imposes. That is exactly how this processor treats a signal — it reflects the voice back, cleaner, with no character of its own unless you ask for one.</p>
         </div>
     </section>
 
     <section class="module-deep-dive">
         <h3>THE_PROBLEM_IT_SOLVES</h3>
         <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Spoken-word audio rarely has one problem. A single take can carry hiss and room tone, a ringing resonance from a room mode or proximity, a tonal imbalance, and uneven level — all at once. Cleaning it usually means chaining four or five plugins, each with its own window, its own latency, and its own learning curve, then fighting the interactions between them.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN collapses that chain into one signal path designed specifically for voice: mono by default, low-latency by default, and transparent until you ask it to work.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Spoken-word audio rarely has one problem. A single take can carry hiss and room tone, a ringing room mode, mouth clicks, a tonal imbalance, and uneven level — all at once. Cleaning it conventionally means chaining four or five plugins, each with its own window, its own latency, its own CPU bill, and its own idea of what a voice is — then fighting the interactions between them.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN collapses that chain into one signal path designed specifically for voice: mono by default, transparent until you ask it to work, and honest with your DAW about every sample of latency it uses.</p>
         </div>
     </section>
 
     <section class="module-deep-dive">
-        <h3>THE_FOUR_STAGES</h3>
+        <h3>THE_FIVE_STAGES</h3>
         
+        <!-- STAGE 1 -->
         <div class="module-block">
             <div class="section-header-title">1 · Noise Reduction</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGERIAN_SPEC_REFINE_NR.png" alt="Noise Reduction Module Section" class="module-shot">
+                    <img src="ROGER_v0507_WHITE_NR.png" alt="ROGERIAN noise reduction module — continuous noise-floor tracking for dialogue" class="module-shot">
                 </div>
                 <div class="text-bay">
-                    <p>A real spectral denoiser — not a meter. Pulls down hiss, room tone and hum across a multiband floor, with automatic noise profiling and a one-click Suggest to set it for you. Runs zero-latency by default (safe for picture sync and tracking), with a higher-resolution spectral tier for offline detail work. Routable before or after the resonance stage.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="module-block">
-            <div class="section-header-title">2 · Resonance Suppression — the hero</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_SPEC_MAIN.png" alt="Resonance Suppression Core" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>Dynamic, cut-only spectral processing that detects resonant peaks and reduces them only when they're present — the steady ring, the harsh consonant, the boxy room mode — while leaving everything else untouched. You shape where it works with five movable bands (drag to set frequency and amount, adjust width, bypass per band).</p>
+                    <p><b>The floor, lowered — continuously.</b></p>
+                    <p>A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
                     <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Soft / Hard</b> — adaptive tracking, or a fixed threshold for stubborn resonances.</li>
-                        <li>· <b>Focus</b> — persistence targeting: act on the sustained ring, spare the transient word.</li>
-                        <li>· <b>Density</b> — follow a resonance up through its harmonics.</li>
-                        <li>· <b>Detail</b> — how surgical or broad the detection is.</li>
-                        <li>· <b>REFINE</b> — global Bias, Tilt and Max Cut to sculpt the whole reduction map at once.</li>
-                        <li>· <b>Delta</b> — solo exactly what's being removed, so you always hear what you're doing.</li>
+                        <li>· <b>Dual Engines</b> — Zero-latency multiband path for tracking and picture work. High-resolution spectral tier (MMSE-LSA with speech-presence steering) for surgical dialogue restoration without watery artifacts.</li>
+                        <li>· <b>Transparent Routing</b> — The stage is routable in the chain and bit-transparent completely off. Amount and sensitivity controls do exactly what they claim.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- STAGE 2 -->
         <div class="module-block">
-            <div class="section-header-title">3 & 4 · EQ & Compression Modules</div>
+            <div class="section-header-title">2 · Resonance Suppression — the centerpiece</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGERIAN_SPEC_EQ_COMP.png" alt="EQ and Compression Panel Interface" class="module-shot">
+                    <img src="ROGER_v0507_WHITE_RES.png" alt="ROGERIAN resonance suppressor — five-band dynamic resonance control with spectral display" class="module-shot">
                 </div>
                 <div class="text-bay">
-                    <p><b>Corrective Equalization Chain:</b> A 7-band parametric EQ with an interactive curve and live spectrum, per-band dynamic behavior, and selectable phase modes (zero / natural / linear) — corrective when you need precision, musical when you need shape.</p>
-                    <p style="margin-top: 15px;"><b>Dynamics Compression Chain:</b> Voice-first leveling with a soft knee, an animated gain-reduction display, and program-dependent styles (Clean, Vocal, Opto, Bus, Punch) — to even out delivery without pumping or squashing the life out of a performance.</p>
+                    <p><b>Cuts that exist only while the problem does.</b></p>
+                    <p>Every room rings somewhere. Every voice, some days, bites. The resonance stage is a dynamic, cut-only spectral processor that finds narrow resonances — boxiness, harshness, ring, proximity build-up — and attenuates them only while they sound, at the depth they demand, then gets out of the way. Nothing is notched permanently.</p>
+                    <ul class="parameter-list" style="margin-top: 15px;">
+                        <li>· <b>Soft / Hard</b> — Adaptive tracking relative to voice context, or absolute thresholds for surgical work.</li>
+                        <li>· <b>Focus & Detail</b> — Persistence weighting treats sustained rings but spares transient consonants.</li>
+                        <li>· <b>Display Steering</b> — Five draggable bands over a live spectrum. Drag up where rooms ring, pull down with Depth, modify the response via REFINE (scale, shift, tilt).</li>
+                        <li>· <b>Delta Listen</b> — Solo exactly what's being removed. The fastest honesty check in the plugin.</li>
+                        <li>· <b>Reconstruction Paths</b> — Switch click-free between Zero (near-zero latency), Linear (phase-perfect offline pass), and Natural (minimum-phase).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div class="module-block">
+            <div class="section-header-title">3 · EQ</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="ROGER_v0507_WHITE_EQ.png" alt="ROGERIAN seven-band analog-matched EQ with NEUTRAL / COOL / SHARP Character curves" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p><b>Seven bands. Three characters. Zero latency.</b></p>
+                    <p>A seven-band parametric built on analog-matched filters: the bell you see at 12 kHz is the bell you get — magnitude matched to the analog prototype all the way up, with none of the high-frequency cramping of textbook digital EQ. Minimum-phase, zero-latency, and drawn over a real-time pre/post analyzer.</p>
+                    <ul class="parameter-list" style="margin-top: 15px;">
+                        <li>· <b>Full Shape Set</b> — Bells, 12/24/48 dB-per-octave cuts, notches, tilts, band-passes.</li>
+                        <li>· <b>Per-Band Dynamic EQ</b> — Set a dynamic range and the band eases in only when the signal crosses its self-adjusting threshold. A de-esser, a mud ducker, a presence lift — each is one band, one gesture.</li>
+                        <li>· <b>CHARACTER System</b> — <b>NEUTRAL</b> (standard bell), <b>COOL</b> (flat-topped plateau for broad tonal moves without a hot spot), and <b>SHARP</b> (focused tight peak for bite without smear).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 4 -->
+        <div class="module-block">
+            <div class="section-header-title">4 · DYNAMICS</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="ROGER_v0507_WHITE_DYN.png" alt="ROGERIAN dialogue compressor — transfer curve, gain-reduction history, VOICE and CHARACTER sections" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p><b>A voice leveler with its color on a separate knob.</b></p>
+                    <p>Feed-forward and program-dependent, built around a smooth decoupled detector to hold a read at a consistent level without pumping or dulling consonants.</p>
+                    <ul class="parameter-list" style="margin-top: 15px;">
+                        <li>· <b>VOICE</b> — Clean, Warm, or Punch dynamic temperaments.</li>
+                        <li>· <b>CHARACTER</b> — Separate color section. Drive controls Tube, Diode, or Bright saturations independently from gain reduction. Pre/Post routing enabled.</li>
+                        <li>· <b>Continuous Detection</b> — Peak to RMS blending, program-dependent auto-release, sidechain high-pass (20–400 Hz), and a hard RANGE floor. Lookahead runs up to 3.5 ms on a fixed automation-safe budget.</li>
+                        <li>· <b>Metering</b> — Live transfer curve alongside a scrolling GR meter so you see the last several seconds of leveling decisions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 5 -->
+        <div class="module-block">
+            <div class="section-header-title">5 · DE-CLICK</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="ROGER_v0507_WHITE_DC.png" alt="ROGERIAN de-click module — model-based repair of mouth clicks and ticks" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p><b>The mouth, minus the mouth noises.</b></p>
+                    <p>Clicks, ticks, lip smacks — the tiny transients that survive every other stage and cost editors hours of clip-gain surgery. Detection finds the click; repair is model-based: an autoregressive engine learns the voice from the audio around the defect and resynthesizes what should have been there, with a hybrid fallback interpolation that guarantees a clean join. Restoration-suite technique running inside the strip in real time.</p>
+                    <ul class="parameter-list" style="margin-top: 15px;">
+                        <li>· <b>Click Size</b> — Scope the repair from single-sample ticks to fatter mouth events.</li>
+                        <li>· <b>Sample-Accurate Reporting</b> — Latency is reported exactly to the host, even when switching click sizes dynamically.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CORE ARCHITECTURE -->
+    <section class="module-deep-dive">
+        <h3>DESIGNED_AS_ONE_INSTRUMENT</h3>
+        <div class="module-block">
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Five stages are only a strip if they behave as one plugin — so ROGERIAN is engineered suite-first.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>One window, honest depth.</b> The stages live as compact cards with live mini-metering — the EQ card draws its real curve, the compressor card its real gain reduction, the de-click card its catch count. Any card opens into its full panel; the signal path never leaves the window.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Latency, reconciled.</b> Each stage reports exactly what it uses; the suite reconciles the chain and tells the host one true number. The resonance stage's Zero path and the zero-latency EQ keep the default footprint small enough for picture and tracking.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Transparent at rest.</b> Disabled stages are bit-transparent — verified by null test, not by assumption. A fresh instance passes audio untouched until you ask for work. Per-stage bypass and whole-plugin bypass are both crossfaded and clickless.</p>
+        </div>
+    </section>
+
+    <!-- SPECS -->
     <section class="specs-container">
         <div class="spec-group">
-            <h3>DIFFERENTIAL_ANALYSIS</h3>
+            <h3>THE_FINISH</h3>
             <ul class="spec-list">
-                <li><b>Full Voice Pass</b> Complete multi-stage calibration voiced for dialogue rather than generic multi-effect layouts.</li>
-                <li><b>Dual Reconstruction</b> Zero-latency tracking maps perfectly alongside clinical linear-phase offline rendering modes.</li>
-                <li><b>Persistence Weighting</b> Focus targets lock onto sustained resonances while automatically passing transient words.</li>
-                <li><b>Phase-Coherent Denoise</b> Direct baseline reduction layers scrub signals without introducing tracking latency.</li>
+                <li><b>Porcelain Aesthetic</b> Pale stone panels, a masthead cut into the surface like an inscription — engraved, not printed — with gold reserved strictly for the active parameters.</li>
+                <li><b>Pure Typography</b> Montserrat controls naming matrices, while JetBrains Mono ensures precise numerical tracking rendering uniformly across all structural OS displays.</li>
             </ul>
         </div>
 
         <div class="spec-group">
             <h3>TECHNICAL_SPECIFICATIONS</h3>
             <ul class="spec-list">
-                <li><b>Type Matrix</b> Dialogue channel-strip suite (noise · resonance · EQ · compression)</li>
-                <li><b>Channel Configuration</b> Mono (Default chassis orientation) · Stereo · Mid/Side tracking</li>
-                <li><b>Quality Tiers</b> Scalable operational boundaries (Eco · Standard · HQ resolution tiers)</li>
-                <li><b>Formats</b> VST3 · AU · Standalone [Native Apple Silicon & Intel Mac Binary Deployment]</li>
+                <li><b>Stages Matrix</b> Noise Reduction · Resonance Suppression · EQ · Compression · De-Click</li>
+                <li><b>Format Architectures</b> VST3 · AU · AAX · Standalone [macOS Intel & Apple Silicon / Signed and Notarized]</li>
+                <li><b>Latency System</b> Fully reported; near-zero default paths; fixed-budget compressor lookahead (automation-safe).</li>
+                <li><b>Build Version</b> v0.5.08 / DSP v36</li>
             </ul>
         </div>
     </section>
@@ -438,7 +501,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #009 // ROGERIAN_ALPHA_SPEC</span>
+    <span>LAB NOTE #009 // ROGERIAN_v2.0_RELEASE_SPEC</span>
 </footer>
 
 </body>
