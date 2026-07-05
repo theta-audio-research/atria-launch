@@ -89,7 +89,7 @@
         /* --- MASTER DISTRIBUTION MATRIX --- */
         main { 
             flex: 1; 
-            padding: 30px 60px 60px 60px; 
+            padding: 60px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -97,18 +97,73 @@
             background: var(--void);
         }
 
-        .tier-label {
+        /* --- VERTICAL SPINE ARCHITECTURE --- */
+        .family-block {
+            display: flex;
             width: 100%;
-            max-width: 900px;
-            font-size: 9px;
-            letter-spacing: 6px;
-            color: var(--charcoal);
-            text-transform: uppercase;
-            padding: 20px 40px 10px 40px;
-            font-weight: 700;
+            max-width: 1050px;
+            margin-bottom: 80px;
+            position: relative;
         }
-        .tier-label.shipping-label { color: #5B825B; }
-        
+
+        .family-sidebar {
+            flex: 0 0 50px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            border-right: 1px solid var(--charcoal);
+            padding-right: 40px;
+            margin-right: 40px;
+            padding-top: 25px;
+            position: relative;
+        }
+
+        /* Technical Tracking Dot on the vertical rail */
+        .family-sidebar::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -4px; /* Mount perfectly on the 1px right border */
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .family-sidebar-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            white-space: nowrap;
+        }
+
+        .family-title {
+            font-size: 11px;
+            letter-spacing: 8px;
+            color: var(--structure);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .family-subtitle {
+            font-size: 9px;
+            letter-spacing: 4px;
+            color: var(--charcoal);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        /* --- NODE ROWS --- */
+        .family-nodes {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .node-row { 
             display: flex; 
             align-items: center; 
@@ -116,7 +171,7 @@
             color: inherit; 
             padding: 25px 40px; 
             width: 100%;
-            max-width: 900px;
+            box-sizing: border-box;
             border-bottom: 1px solid rgba(84, 87, 92, 0.3); 
             transition: all 0.4s ease;
         }
@@ -176,6 +231,12 @@
             nav.nav-terminal { padding: 10px 20px; flex-direction: column; gap: 20px; }
             header.hero-section { padding: 0 20px 10px 20px; }
             .status-badge { display: none; }
+            
+            /* Responsive flip for mobile displays */
+            .family-block { flex-direction: column; margin-bottom: 40px; }
+            .family-sidebar { flex: none; border-right: none; border-bottom: 1px solid var(--charcoal); margin-right: 0; padding-right: 0; margin-bottom: 10px; padding-bottom: 15px; justify-content: flex-start; }
+            .family-sidebar::before { display: none; } /* Hide tracking dot on horizontal */
+            .family-sidebar-text { writing-mode: horizontal-tb; transform: none; align-items: baseline; }
         }
     </style>
 </head>
@@ -198,128 +259,173 @@
 </header>
 
 <main>
-    <div class="tier-label">ROGERIAN_SUITE // DIALOGUE_&_DYNAMICS</div>
+    <!-- FAMILY I: ROGERIAN SUITE -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title">ROGERIAN_SUITE</span>
+                <span class="family-subtitle">// DIALOGUE_&_DYNAMICS</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="rogerian.html" class="node-row">
+                <span class="node-id">010_STR</span>
+                <span class="node-name">ROGERIAN</span>
+                <span class="node-desc">Dialogue-First Channel Strip Suite</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="ananke.html" class="node-row">
+                <span class="node-id">012_DYN</span>
+                <span class="node-name">ANANKE</span>
+                <span class="node-desc">Decoupled Feed-Forward Compressor</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="pneuma.html" class="node-row">
+                <span class="node-id">011_DEQ</span>
+                <span class="node-name">PNEUMA</span>
+                <span class="node-desc">Dynamic Parametric Equalizer Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="logos.html" class="node-row">
+                <span class="node-id">014_LOG</span>
+                <span class="node-name">LOGOS</span>
+                <span class="node-desc">Dialogue Suite Component</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="eidos.html" class="node-row">
+                <span class="node-id">015_EID</span>
+                <span class="node-name">EIDOS</span>
+                <span class="node-desc">Dialogue Suite Component</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="catharsis.html" class="node-row">
+                <span class="node-id">016_CAT</span>
+                <span class="node-name">CATHARSIS</span>
+                <span class="node-desc">Dialogue Suite Component</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+        </div>
+    </div>
 
-    <a href="rogerian.html" class="node-row">
-        <span class="node-id">010_STR</span>
-        <span class="node-name">ROGERIAN</span>
-        <span class="node-desc">Dialogue-First Channel Strip Suite</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="ananke.html" class="node-row">
-        <span class="node-id">012_DYN</span>
-        <span class="node-name">ANANKE</span>
-        <span class="node-desc">Decoupled Feed-Forward Compressor</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="pneuma.html" class="node-row">
-        <span class="node-id">011_DEQ</span>
-        <span class="node-name">PNEUMA</span>
-        <span class="node-desc">Dynamic Parametric Equalizer Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="logos.html" class="node-row">
-        <span class="node-id">014_LOG</span>
-        <span class="node-name">LOGOS</span>
-        <span class="node-desc">Dialogue Suite Component</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="eidos.html" class="node-row">
-        <span class="node-id">015_EID</span>
-        <span class="node-name">EIDOS</span>
-        <span class="node-desc">Dialogue Suite Component</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="catharsis.html" class="node-row">
-        <span class="node-id">016_CAT</span>
-        <span class="node-name">CATHARSIS</span>
-        <span class="node-desc">Dialogue Suite Component</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
+    <!-- FAMILY II: HARMONIC & DEGRADATION -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title" style="color: #5B825B;">HARMONIC_&_DEGRADATION</span>
+                <span class="family-subtitle">// TONE_SHAPING</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="baryon.html" class="node-row">
+                <span class="node-id">013_LFE</span>
+                <span class="node-name">BARYON</span>
+                <span class="node-desc">Subharmonic Generator & LFE Processor</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="creosote.html" class="node-row shipping-active">
+                <span class="node-id">004_DEG</span>
+                <span class="node-name">CREOSOTE</span>
+                <span class="node-desc">Three-stage analog character processor</span>
+                <span class="status-badge">[AVAILABLE]</span>
+            </a>
+            <a href="cathode.html" class="node-row shipping-active">
+                <span class="node-id">003_VTR</span>
+                <span class="node-name">CATHODE</span>
+                <span class="node-desc">Broadcast Decay & CRT-Burn Engine</span>
+                <span class="status-badge">[AVAILABLE]</span>
+            </a>
+        </div>
+    </div>
 
-    <div class="tier-label" style="margin-top: 40px;">HARMONIC_&_DEGRADATION // TONE_SHAPING</div>
-    
-    <a href="baryon.html" class="node-row">
-        <span class="node-id">013_LFE</span>
-        <span class="node-name">BARYON</span>
-        <span class="node-desc">Subharmonic Generator & LFE Processor</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="creosote.html" class="node-row shipping-active">
-        <span class="node-id">004_DEG</span>
-        <span class="node-name">CREOSOTE</span>
-        <span class="node-desc">Three-stage analog character processor</span>
-        <span class="status-badge">[AVAILABLE]</span>
-    </a>
-    <a href="cathode.html" class="node-row shipping-active">
-        <span class="node-id">003_VTR</span>
-        <span class="node-name">CATHODE</span>
-        <span class="node-desc">Broadcast Decay & CRT-Burn Engine</span>
-        <span class="status-badge">[AVAILABLE]</span>
-    </a>
+    <!-- FAMILY III: SPATIAL & TIME -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title">SPATIAL_&_TIME</span>
+                <span class="family-subtitle">// DIMENSION</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="ariadne.html" class="node-row">
+                <span class="node-id">007_DLY</span>
+                <span class="node-name">ARIADNE</span>
+                <span class="node-desc">Spatial Delay Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="theseus.html" class="node-row">
+                <span class="node-id">008_REV</span>
+                <span class="node-name">THESEUS</span>
+                <span class="node-desc">Spatial Reverb Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+        </div>
+    </div>
 
-    <div class="tier-label" style="margin-top: 40px;">SPATIAL_&_TIME // DIMENSION</div>
+    <!-- FAMILY IV: DESIGN & EXPLORATION -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title">DESIGN_&_EXPLORATION</span>
+                <span class="family-subtitle">// SONIC_ARCHITECTURE</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="atria.html" class="node-row">
+                <span class="node-id">002_ARC</span>
+                <span class="node-name">ATRIA</span>
+                <span class="node-desc">Sonic Exploration Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="twilight.html" class="node-row">
+                <span class="node-id">005_GEN</span>
+                <span class="node-name">TWILIGHT</span>
+                <span class="node-desc">Regenerative Ambience Engine</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="arecibo.html" class="node-row">
+                <span class="node-id">001_ISR</span>
+                <span class="node-name">ARECIBO</span>
+                <span class="node-desc">Interstellar Granular Processor</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="prism_form.html" class="node-row">
+                <span class="node-id">009_SMP</span>
+                <span class="node-name">PRISM FORM</span>
+                <span class="node-desc">Spectral Sound-Shaping Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="contorta.html" class="node-row">
+                <span class="node-id">017_CON</span>
+                <span class="node-name">CONTORTA</span>
+                <span class="node-desc">Sonic Exploration Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+            <a href="olfactory.html" class="node-row">
+                <span class="node-id">018_OLF</span>
+                <span class="node-name">OLFACTORY</span>
+                <span class="node-desc">Sonic Exploration Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+        </div>
+    </div>
 
-    <a href="ariadne.html" class="node-row">
-        <span class="node-id">007_DLY</span>
-        <span class="node-name">ARIADNE</span>
-        <span class="node-desc">Spatial Delay Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="theseus.html" class="node-row">
-        <span class="node-id">008_REV</span>
-        <span class="node-name">THESEUS</span>
-        <span class="node-desc">Spatial Reverb Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-
-    <div class="tier-label" style="margin-top: 40px;">DESIGN_&_EXPLORATION // SONIC_ARCHITECTURE</div>
-
-    <a href="atria.html" class="node-row">
-        <span class="node-id">002_ARC</span>
-        <span class="node-name">ATRIA</span>
-        <span class="node-desc">Sonic Exploration Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="twilight.html" class="node-row">
-        <span class="node-id">005_GEN</span>
-        <span class="node-name">TWILIGHT</span>
-        <span class="node-desc">Regenerative Ambience Engine</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="arecibo.html" class="node-row">
-        <span class="node-id">001_ISR</span>
-        <span class="node-name">ARECIBO</span>
-        <span class="node-desc">Interstellar Granular Processor</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="prism_form.html" class="node-row">
-        <span class="node-id">009_SMP</span>
-        <span class="node-name">PRISM FORM</span>
-        <span class="node-desc">Spectral Sound-Shaping Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="contorta.html" class="node-row">
-        <span class="node-id">017_CON</span>
-        <span class="node-name">CONTORTA</span>
-        <span class="node-desc">Sonic Exploration Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-    <a href="olfactory.html" class="node-row">
-        <span class="node-id">018_OLF</span>
-        <span class="node-name">OLFACTORY</span>
-        <span class="node-desc">Sonic Exploration Instrument</span>
-        <span class="status-badge">[DEVELOPMENT]</span>
-    </a>
-
-    <div class="tier-label" style="margin-top: 40px;">UTILITY_&_QC // MEASUREMENT</div>
-
-    <a href="compliance.html" class="node-row">
-        <span class="node-id">006_QC</span>
-        <span class="node-name">COMPLIANCE</span>
-        <span class="node-desc">True-Peak Limiter // Loudness QC</span>
-        <span class="status-badge">[TESTING]</span>
-    </a>
+    <!-- FAMILY V: UTILITY & QC -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title">UTILITY_&_QC</span>
+                <span class="family-subtitle">// MEASUREMENT</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="compliance.html" class="node-row">
+                <span class="node-id">006_QC</span>
+                <span class="node-name">COMPLIANCE</span>
+                <span class="node-desc">True-Peak Limiter // Loudness QC</span>
+                <span class="status-badge">[TESTING]</span>
+            </a>
+        </div>
+    </div>
 </main>
 
 <footer>
