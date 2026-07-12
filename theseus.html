@@ -192,6 +192,11 @@
 </head>
 <body>
 
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
+
 <nav class="nav-terminal">
     <a href="index.html" class="header-logo-link">
         <img src="theta_logo_square_black.png" alt="THETA Insignia">
@@ -210,7 +215,8 @@
 
 <main>
     <div class="image-container">
-        <img src="THESEUS_v1.0.4_SPATIAL.png" alt="THESEUS Spatial Reverb Core Interface" class="plugin-display">
+        <!-- Target updated to the v0328 MAIN visual payload -->
+        <img src="THESEUS_v0328_MAIN.png" alt="THESEUS Spatial Reverb Core Interface" class="plugin-display">
     </div>
 
     <div class="description-box">
@@ -325,6 +331,41 @@
         </div>
     </section>
 </main>
+
+<script>
+    // --- LIGHTBOX CONTROL SCRIPTS ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        const targetImage = bay.querySelector('.module-shot');
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+
+        bay.addEventListener('click', () => {
+            vaultCanvas.src = targetImage.src;
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; 
+        document.body.style.overflow = ''; 
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
+    });
+</script>
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
