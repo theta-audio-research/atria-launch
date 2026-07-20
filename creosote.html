@@ -98,7 +98,7 @@
         /* --- MAIN CONTENT --- */
         main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
         .plugin-display { 
             display: block; 
             width: 100%; 
@@ -117,16 +117,16 @@
         .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
         .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
 
-        /* PURCHASE MODULE */
+        /* ACQUISITION ANCHOR */
         .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
         .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
+        .purchase-box { background: rgba(22, 38, 22, 0.15); border: 1px solid #486E48; padding: 40px; }
+        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.8; margin-bottom: 30px; text-transform: uppercase; color: #87B387; }
         .authorize-btn { 
             display: block; 
             text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
+            border: 1px solid #6E9B6E; 
+            color: #A6DCA6; 
             padding: 25px; 
             text-decoration: none; 
             font-weight: 700; 
@@ -134,16 +134,120 @@
             letter-spacing: 6px; 
             transition: 0.4s; 
         }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
+        .authorize-btn:hover { background: #486E48; color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 80px auto; }
+        .module-deep-dive { max-width: 950px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; letter-spacing: 0.01em; }
-        .module-block b { color: var(--accent); font-weight: 700; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+
+        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        .module-split-row {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .module-split-row .visual-bay {
+            flex: 0 0 250px;
+            width: 250px;
+            border: 1px solid var(--charcoal); 
+            cursor: pointer;
+            background: var(--void);
+            position: relative;
+            transition: border-color 0.3s;
+        }
+        .module-split-row .visual-bay:hover {
+            border-color: var(--accent);
+        }
+        .module-split-row .visual-bay .module-shot { 
+            display: block;
+            width: 100%; 
+            height: auto; 
+            background: #0a0a0a;
+        }
+
+        .module-split-row .visual-bay::after {
+            content: "CLICK_TO_EXPLORE";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.75);
+            color: var(--accent);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 6px 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module-split-row .visual-bay:hover::after {
+            opacity: 1;
+        }
+
+        .text-bay {
+            flex: 1;
+        }
+        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
+        .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
+        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .text-bay .parameter-list li { margin-bottom: 8px; }
+        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- FEATURE GRID --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .card { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--charcoal); padding: 34px 30px 38px; transition: border-color 0.4s ease, background 0.4s ease; }
+        .card:hover { border-color: var(--accent); background: rgba(220, 205, 191, 0.01); }
+        .card .rule { width: 30px; height: 2px; background: var(--accent); margin-bottom: 22px; transition: width 0.4s ease; }
+        .card:hover .rule { width: 54px; }
+        .card .ck { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); opacity: 0.85; margin-bottom: 12px; font-weight: 700; }
+        .card h3 { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; color: var(--structure); }
+        .card p { font-weight: 300; font-size: 13.5px; color: var(--secondary); line-height: 1.6; margin: 0; }
+
+        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
+        .diagnostic-lightbox-vault {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            display: none;
+            overflow: auto; 
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        .diagnostic-lightbox-vault.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-canvas-scroller {
+            max-width: 40vw; 
+            max-height: 80vh;
+            border: 1px solid var(--charcoal);
+            display: block;
+            margin: auto;
+            background: #000;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        .lightbox-close-telemetry {
+            position: fixed;
+            top: 24px; right: 40px;
+            color: var(--accent);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            background: var(--void);
+            border: 1px solid var(--charcoal);
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.3s;
+        }
+        .lightbox-close-telemetry:hover {
+            background: var(--accent);
+            color: var(--void);
+        }
 
         /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
@@ -170,14 +274,22 @@
             .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { max-width: 80vw; } 
         }
 
         @media (max-width: 900px) {
             .header-module-name { display: none; }
+            .module-split-row { flex-direction: column; gap: 30px; }
+            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
         }
     </style>
 </head>
 <body>
+
+<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
+    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
+    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
+</div>
 
 <nav class="nav-terminal">
     <a href="index.html" class="header-logo-link">
@@ -186,7 +298,7 @@
 
     <div class="header-module-name">
         <h2>CREOSOTE</h2>
-        <p class="plugin-tagline">Three-stage analog character processor</p>
+        <p class="plugin-tagline">The saturation engine.</p>
     </div>
 
     <div class="nav-links">
@@ -196,107 +308,266 @@
 </nav>
 
 <main>
-    <div class="image-container">
-        <img src="CREOSOTE_v18_MAIN.png" alt="CREOSOTE Interface" class="plugin-display">
+    <div class="image-container" id="heroTrigger">
+        <img src="CREOSOTE_v8.1.112_MAIN.png" alt="CREOSOTE Main Interface" class="plugin-display">
     </div>
 
     <div class="description-box">
-        <p class="description-text"><b>CREOSOTE is built around how records actually got their sound.</b> 
+        <p class="description-text"><b>Tape, tubes, iron, and glue — an entire analog record chain in one photographed console. Every knob is calibrated to hardware behavior. Every meter is a real instrument. Every number we claim, we measure.</b> 
 
-        A tape machine, a tube preamp, and a compressor, in that order. Each stage models a specific generation of hardware in detail, and each opens into an expert view when you want to dial in the same combinations the records you like were made with.</p>
+        Most saturation plugins give you a color. CREOSOTE gives you the room: a tape machine with ten formulas on the shelf, a tube stage you can re-valve, eight vintage compressors with their true circuits, a summing amp with real iron on the output — laid out on a control-room console rendered with physically-baked light, down to the bulbs behind the meter glass.</p>
     </div>
 
     <section class="acquisition-anchor">
-        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
+        <span class="lab-header" style="color: #6E9B6E;">SYSTEM_STATUS // ACTIVE</span>
         <div class="purchase-box">
             <p class="purchase-intel">
-                Authorization includes VST3, AU, and AAX formats, macOS Apple Silicon support, 
-                and XML research presets.
+                CREOSOTE is calibrated and available for immediate deployment. Integrate the full analog record chain directly into your laboratory.
             </p>
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/c7884d70-7dd4-4ccd-9bf0-8b90442ec26e" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $129.00</a>
+            <a href="store.html" class="authorize-btn">ACQUIRE_CREOSOTE</a>
         </div>
     </section>
 
     <section class="module-deep-dive">
-        <h3>SYSTEM_ARCHITECTURE</h3>
+        <h3>THE_CHAIN // SIGNAL_PATH</h3>
         
+        <!-- TAPE MODULE -->
         <div class="module-block">
-            <h4>GRIT — TAPE</h4>
-            <p><b>Seven machines + Nine tape formulas.</b> Models tape’s magnetic memory (hysteresis) so transients soften and sustained content blooms slightly behind itself. Transport flutter at three depths (modern direct-drive through worn-capstan vintage). Playback head gap auto-scales with IPS, the way real hardware does.</p>
+            <div class="section-header-title">GRIT — The Tape Machine</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_TAPE.png" alt="CREOSOTE Tape Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Seven transports. Ten reels. Three speeds. One WEAR knob that ages the whole transport at once.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>7 machines</b> — Studer A800, Ampex ATR-102, MCI JH-24, Otari MTR-90, Ampex MM1200, Scully 280, Tascam — each with its own head-bump frequency, asymmetry, and pre-emphasis character.</li>
+                        <li>· <b>10 tape formulas</b> — Ampex 456, 406/407, 499, Quantegy GP9, Scotch 250, Scotch 996, BASF SM468, RTM SM911, SM900, ATR Master — drive headroom, de-emphasis, and hysteresis modeled per formula.</li>
+                        <li>· <b>Calibration</b> — ¼" to 2" 24-track, 7.5/15/30 IPS, +3/+6/+9 cal, over/under bias.</li>
+                        <li>· <b>Calibrated Saturator</b> — 0 VU = −18 dBFS. DRIVE at zero measures 0.39% THD at operating level — the gentle third-harmonic bloom of a well-aligned deck — and drives to honest tape slam at full.</li>
+                        <li>· <b>Program-Dependent Hysteresis</b> — The tape "warms up" under sustained signal and remembers what just passed through it — soft attacks, lingering tails.</li>
+                        <li>· <b>Record-Amp Slew Limiting</b> — The HF transient rounding of a real record amplifier, referenced to operating level, off to thick.</li>
+                        <li>· <b>Comb-free MIX</b> — The dry blend leg runs through a matched oversampling path, so partial mix never phase-combs against the wet signal.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
+        <!-- TUBE MODULE -->
         <div class="module-block">
-            <h4>AMBER — TUBE PREAMP CHAIN</h4>
-            <p><b>Three stages in series (Preamp, Power, Rectifier).</b> Each features period-correct tube types and historical manufacturing eras. Hardware-context macros (REDD-47, V72, Pultec, Tweed) shape the front end of the signal chain.</p>
+            <div class="section-header-title">AMBER — The Tube Stage</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_TUBE.png" alt="CREOSOTE Tube Stage Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>A three-stage valve amplifier you can re-tube, re-bias, and re-era.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Preamp</b> — 12AX7, 12AT7, 12AU7, EF86.</li>
+                        <li>· <b>Power</b> — EL84, EL34, 6L6, 6V6, KT66, KT88.</li>
+                        <li>· <b>Rectifier</b> — 5Y3, GZ34 — with era-true sag.</li>
+                        <li>· <b>Per-Stage ERA Voicings</b> — Tweak per-stage condition (new to worn), bias point (cold/normal/hot), plate voltage, and load.</li>
+                        <li>· <b>Hardware Modes</b> — Direct, transformer-coupled, and Pultec-style passive output paths with analog-matched filter responses.</li>
+                        <li>· <b>Calibrated Drive Law</b> — The whole knob is useful: 0.5% THD at operating level at zero, driven-amp harmonics at full, RMS auto-makeup holding your level steady while the character moves.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
+        <!-- COMPRESSOR MODULE -->
         <div class="module-block">
-            <h4>COMPRESS — TOPOLOGIES</h4>
-            <p><b>Eight distinct compressors.</b> Includes LEVEL CELL (LA-2A optical), BLACK FET (1176), FAIR MU (Fairchild), SSL BUS, NEVE BRIDGE (33609), PYE PWM, and TG ZENER. Each topology carries its own envelope physics, attack/release range, and harmonic character.</p>
+            <div class="section-header-title">COMPRESS — Eight Compressors, True Circuits</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_COMPRESS.png" alt="CREOSOTE Compressor Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Not eight presets of one compressor — eight topologies.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>The Models</b> — LEVEL CELL (opto, T4 three-stage cascade) · BLACK FET (1176) · ALL BUTTONS (1176, all in) · FAIR MU (vari-mu) · SSL BUS (G-series VCA) · NEVE BRIDGE (diode bridge) · PYE PWM · TG ZENER.</li>
+                        <li>· <b>True Topology</b> — Each mode runs its hardware's actual detector circuit. The opto, vari-mu, bridge, and PWM units run <b>feedback</b> — the knee eases in wide, the gain reduction refuses to overcompress, and the release stretches after deep sustained reduction. The FET, VCA, and Zener units run feedforward. Force either topology in TWEAK to A/B a mode against itself.</li>
+                        <li>· <b>Infrastructure</b> — Always-on lookahead with full delay compensation, sidechain filtering, auto-release, and a real edgewise gain-reduction meter with hot bulbs behind the glass.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
+        <!-- MASTER BUS MODULE -->
         <div class="module-block">
-            <h4>ROUTING MODES</h4>
-            <p>• <b>SERIES:</b> Tape → Tubes → Compressor (Classic Path).<br>
-               • <b>A/B:</b> Path A (Tape) vs Path B (Tubes + Comp) with independent level and phase per path.<br>
-               • <b>PARALLEL:</b> All three modules fed from the input; master strip blends them for surgical control.</p>
+            <div class="section-header-title">SUMMING & STAGING — The Console Bus</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_MASTER.png" alt="CREOSOTE Master Summing Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Character saturation, stereo glue, and a ceiling clipper — all anti-derivative anti-aliased (ADAA), all measured.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Summing</b> — PREGAIN, WIDTH (M/S), BALANCE. The last analog bus before the wide world.</li>
+                        <li>· <b>IRON</b> — A modeled output transformer (off / subtle / rich) with three voicings (British console, American punch, broadcast desk) built as a flux integrator with magnetic remanence, not an EQ curve.</li>
+                        <li>· <b>Staging</b> — Honest INPUT/LEVEL staging. Limit lookahead ceiling with its own vertical gain-reduction instrument pouring oil-damped reduction top-down. AUTO LEVEL for one-button unity out.</li>
+                        <li>· <b>TONE</b> — A direction-aware tilt. Darkening reaches into the presence region to *warm* rather than dull. Brightening lifts the air band and tightens lows. Corner frequencies chosen by measurement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- EQ MODULE -->
+        <div class="module-block">
+            <div class="section-header-title">OUTPUT EQ — The Chart Plate</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_OUTPUT_EQ.png" alt="CREOSOTE Output EQ Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>Eight bands of dynamic EQ drawn on a machine-tool chart: cream card, blue graticule, red pen.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Dynamic Architecture</b> — Per-band frequency, gain, Q, plus dynamic gain with attack and release — each band can duck or expand itself against the signal.</li>
+                        <li>· <b>Visual Feedback</b> — Pre and post curves displayed together (the dashed blueprint and the live red line) with the dynamic delta filled between them.</li>
+                        <li>· <b>Decramped, Analog-Matched Filters</b> — Standard digital EQs cramp against Nyquist. CREOSOTE's shelves and bells are matched to their analog prototypes to within 0.16 dB at 20 kHz. The air band behaves like the circuit, not the sample rate.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- LFO MODULE -->
+        <div class="module-block">
+            <div class="section-header-title">TRANSPORT & LFO — Phosphor Logic</div>
+            <div class="module-split-row">
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_AGE_LFO.png" alt="CREOSOTE Phosphor LFO Module" class="module-shot">
+                </div>
+                <div class="text-bay">
+                    <p>A real transport with scrape-band noise, head-gap width, and dropout aging driven by WEAR.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>The Oscilloscope</b> — Wow and flutter with per-channel phase offset is authored on the AGE LFO oscilloscope page.</li>
+                        <li>· <b>Shape Vectors</b> — Five shapes including sample-and-hold, rate, depth, smoothing, and phase.</li>
+                        <li>· <b>Hardware CRT</b> — Drawn live on a green phosphor CRT with an amber etched graticule.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="module-deep-dive" style="border-top: 1px solid var(--charcoal); padding-top: 40px;">
-        <h3>THE_TWEAK_PANEL</h3>
-        <div class="image-container">
-            <img src="CREOSOTE_v18_TWEAK_TUBE.png" alt="CREOSOTE Tweak Panel Overlay" class="plugin-display">
-        </div>
-        <p style="font-size: 14px; color: var(--secondary); margin-bottom: 40px;">Click <b>TWEAK</b> in the top bar to open the expert overlay — five tabs of deep controls that sit underneath the main module controls. The plugin is fully usable without ever opening this panel; everything here is for users who want to shape the response at a finer level than the front-panel knobs allow.</p>
-        
-        <div class="module-block">
-            <h4>TAPE</h4>
-            <p>The physics behind GRIT. <b>HYSTERESIS</b> cycles through the magnetic memory curve; deeper curves smear transients and add "weight" to the low end. <b>FLUTTER</b> mimic's mechanical transport instability via three slow LFOs. <b>HEAD GAP</b> is an IPS-scaled low-pass that simulates frequency roll-off to dial in real-machine response curves.</p>
-        </div>
+    <section class="module-deep-dive">
+        <h3>SIGNATURE_FEATURES // HARDWARE_PARADIGMS</h3>
+        <div class="grid">
+            
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">Unit Variance</div>
+                <h3>No two racks alike</h3>
+                <p>Real hardware never matched. CREOSOTE models that: pick UNIT 1 through 16 and the instance adopts that unit's component tolerances — filter corners drift up to ±5%, drive points shift fractions of a dB, the channels mismatch just slightly. Deterministic, recall-safe, and loudness-matched to ±0.005 dB.</p>
+            </article>
 
-        <div class="module-block">
-            <h4>TUBE</h4>
-            <p>The character behind AMBER. Exposes four sub-parameters independently for the PREAMP, POWER, and RECT stages. <b>CONDITION</b> handles aging and stereo drift. <b>BIAS</b> shifts operating points for even or odd harmonic emphasis. <b>PLATE</b> adjusts supply headroom, while <b>LOAD</b> simulates output stage impedance (Warm/Smooth vs Fast/Bright).</p>
-        </div>
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">Punch Protection</div>
+                <h3>Saturate the sustain</h3>
+                <p>Heavy drive usually costs you your transients. PUNCH detects onsets and momentarily eases the drive into the saturators (level-compensated, wet-path only) so the crack of the stick passes clean while the body stays thick. Measured: attacks pass ~1.4 dB cleaner at FULL.</p>
+            </article>
 
-        <div class="module-block">
-            <h4>COMPRESS</h4>
-            <p>Sidechain and envelope shaping. <b>LOOKAHEAD</b> offers OFF, SHORT (3ms), or LONG (10ms) detection with constant reported latency. <b>AUTO REL</b> overlays a fixed slow-release envelope (~1500ms) for LA-2A-style settling. <b>TOPOLOGY</b> toggles between modern input-driven FORWARD and vintage output-driven FEEDBACK physics.</p>
-        </div>
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">Photographed UI</div>
+                <h3>The Console</h3>
+                <p>Not a picture of a console — it's a console, photographed. Panels, caps, and instruments rendered in Blender Cycles under one locked studio light. Real bulb-backlit VUs, chunky bronze selectors, and light that spills organically across the plate.</p>
+            </article>
 
-        <div class="module-block">
-            <h4>MASTER</h4>
-            <p>Whole-mix global shaping. <b>CHARACTER</b> is an always-on tube saturator (Subtle/Warm/Rich) at the input stage. <b>STEREO GLUE</b> applies mid-channel cross-saturation to tighten imaging cohesion. <b>OUT CLIP</b> acts as a post-limiter soft ceiling with three transparency tiers (-0.3dB to -3.0dB).</p>
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">Session Safety</div>
+                <h3>Versioned DSP</h3>
+                <p>Every audible improvement in CREOSOTE ships behind a DSP version gate. A session saved on any previous version recalls bit-identical while new sessions get the newest behavior. Enforced with an automated 36-pass-bar audio regression suite on every build.</p>
+            </article>
+
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">Transparency</div>
+                <h3>Measured, Not Marketed</h3>
+                <p>Marketing says "warm." We say: 0.39% THD at 0 VU; alias floors driven down 16–35 dB by ADAA; EQ matched to analog prototypes within 0.16 dB at 20 kHz; comb-free wet/dry blending verified by null test.</p>
+            </article>
+
+            <article class="card">
+                <div class="rule"></div>
+                <div class="ck">The Library</div>
+                <h3>Album-Anchored Presets</h3>
+                <p>Starting points voiced from the recording chains of records you know: Thriller, The Dark Side of the Moon, Rumours, Aja, Kind of Blue, Random Access Memories, Pet Sounds — plus the THETA artist set. All loudness-matched to unity.</p>
+            </article>
+
         </div>
     </section>
 
     <section class="specs-container">
         <div class="spec-group">
-            <h3>CORE_LOGIC</h3>
+            <h3>ARCHITECTURE</h3>
             <ul class="spec-list">
-                <li><b>Interface</b> TWEAK overlay for expert-level axis control.</li>
-                <li><b>Saturation</b> Magnetic memory hysteresis and rectifier sag modeling.</li>
-                <li><b>Dynamics</b> Eight topological engines with Feedforward/Feedback toggle.</li>
-                <li><b>Oversampling</b> Toggleable HQ mode for saturation stage precision.</li>
+                <li><b>Sample Rates</b> 44.1–192 kHz; behavior verified by measurement at 48/96 kHz.</li>
+                <li><b>Oversampling</b> 2× / 4× / 8×, clean minimum-phase or vintage character.</li>
+                <li><b>Efficiency</b> ~6.6% of one core, full chain @ 2× / 48 kHz. Bypassed modules near-zero.</li>
+                <li><b>Interface</b> Resizable 50%–200%, crisp at retina resolutions.</li>
             </ul>
         </div>
 
         <div class="spec-group">
-            <h3>TECHNICAL_SPEC</h3>
+            <h3>TECHNICAL_TARGETS</h3>
             <ul class="spec-list">
-                <li><b>Formats</b> VST3, AU, AAX [macOS Apple Silicon + Intel]</li>
-                <li><b>Latency</b> Zero-latency (Lookahead-dependent: 3ms / 10ms).</li>
-                <li><b>Presets</b> 12 research-anchored factory configurations.</li>
-                <li><b>Developer</b> THETA Audio Research // 2026</li>
+                <li><b>Formats</b> AU · VST3 (AAX in preparation).</li>
+                <li><b>Platform</b> macOS (Apple silicon + Intel).</li>
+                <li><b>Latency</b> Fixed, fully host-compensated (lookahead + oversampling).</li>
+                <li><b>Session Safety</b> Versioned DSP — prior sessions recall bit-identical.</li>
             </ul>
         </div>
     </section>
 </main>
 
+<script>
+    // --- LIGHTBOX CONTROL SCRIPTS ---
+    const vaultOverlay = document.getElementById('diagnosticVault');
+    const vaultCanvas = document.getElementById('vaultCanvas');
+    const closeVaultBtn = document.getElementById('closeVaultBtn');
+
+    // Trigger the lightbox from the main hero image container and all visual bays
+    document.getElementById('heroTrigger').addEventListener('click', function() {
+        const targetImage = this.querySelector('.plugin-display');
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+        
+        vaultCanvas.src = targetImage.src;
+        vaultOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+    });
+
+    document.querySelectorAll('.visual-bay').forEach(bay => {
+        const targetImage = bay.querySelector('.module-shot');
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+
+        bay.addEventListener('click', () => {
+            vaultCanvas.src = targetImage.src;
+            vaultOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        });
+    });
+
+    function escapeDiagnosticVault() {
+        vaultOverlay.classList.remove('active');
+        vaultCanvas.src = ''; 
+        document.body.style.overflow = ''; 
+    }
+
+    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
+    vaultOverlay.addEventListener('click', (e) => {
+        if (e.target === vaultOverlay) escapeDiagnosticVault();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
+            escapeDiagnosticVault();
+        }
+    });
+</script>
+
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #004 // CREOSOTE_STABLE</span>
+    <span>LAB NOTE #004 // CREOSOTE_SHIPPING</span>
 </footer>
 
 </body>
