@@ -173,7 +173,7 @@
             margin-top: 0;
         }
 
-        /* --- NODE ROWS --- */
+        /* --- NODE ROWS (GRID ARCHITECTURE) --- */
         .family-nodes {
             flex: 1;
             display: flex;
@@ -181,7 +181,8 @@
         }
 
         .node-row { 
-            display: flex; 
+            display: grid; 
+            grid-template-columns: 80px 480px 1fr 110px; /* Absolute columnar boundaries */
             align-items: center; 
             text-decoration: none; 
             color: inherit; 
@@ -203,6 +204,7 @@
         .node-row.shipping-active {
             background: var(--shipping-tint);
             border-left: 2px solid #486E48;
+            padding-left: 38px; /* Compensates for the new 2px border */
         }
         .node-row.shipping-active:hover {
             background: var(--shipping-hover);
@@ -210,7 +212,13 @@
             transform: translateX(30px);
         }
         
-        .node-id { font-size: 10px; color: var(--accent); width: 100px; font-weight: 700; opacity: 0.6; letter-spacing: 1px; }
+        .node-id { 
+            font-size: 10px; 
+            color: var(--accent); 
+            font-weight: 700; 
+            opacity: 0.6; 
+            letter-spacing: 1px; 
+        }
         .node-row.shipping-active .node-id { color: #87B387; opacity: 0.9; }
 
         .node-name { 
@@ -218,11 +226,25 @@
             letter-spacing: 16px; 
             color: var(--structure); 
             text-transform: uppercase; 
-            flex: 1;
             font-weight: 700;
+            white-space: nowrap; /* Prevents long names from breaking into two lines */
         }
-        .node-desc { font-weight: 300; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.5; text-align: right; }
-        .status-badge { font-weight: 700; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding-left: 20px; color: var(--charcoal); }
+        .node-desc { 
+            font-weight: 300; 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            opacity: 0.5; 
+            text-align: right; 
+        }
+        .status-badge { 
+            font-weight: 700; 
+            font-size: 9px; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            text-align: right;
+            color: var(--charcoal); 
+        }
         .shipping-active .status-badge { color: #6E9B6E; }
         
         .node-row:hover .node-name { color: var(--accent); }
@@ -242,11 +264,19 @@
         }
 
         @media (max-width: 1100px) {
-            .node-name { font-size: 24px; letter-spacing: 8px; }
+            .node-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
+            }
+            .node-row:hover { transform: translateX(10px); }
+            .node-row.shipping-active:hover { transform: translateX(10px); }
+            .node-name { font-size: 24px; letter-spacing: 8px; white-space: normal; }
+            .node-desc { text-align: left; }
+            .status-badge { text-align: left; padding-left: 0; }
             .hero-logo-container { max-width: 90%; }
             nav.nav-terminal { padding: 10px 20px; flex-direction: column; gap: 20px; }
             header.hero-section { padding: 0 20px 10px 20px; }
-            .status-badge { display: none; }
             
             /* Responsive flip for mobile displays */
             .family-block { flex-direction: column; margin-bottom: 40px; }
