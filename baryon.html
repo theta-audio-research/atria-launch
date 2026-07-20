@@ -98,7 +98,7 @@
         /* --- MAIN CONTENT --- */
         main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
         
         /* --- DYNAMIC TRANS-SPECTRUM STAGE --- */
         .subharmonic-stage-container {
@@ -166,22 +166,23 @@
         .authorize-btn:hover { background: var(--accent); color: var(--void); }
 
         /* --- FOCUS RACK DEEP DIVE --- */
-        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
+        .module-deep-dive { max-width: 1100px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
         .module-block { margin-bottom: 80px; }
-        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; text-align: center;}
 
         /* --- SIDE-BY-SIDE MATRIX BOUNDARIES --- */
         .module-split-row {
             display: flex;
-            gap: 50px;
-            align-items: flex-start;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
         }
 
         .module-split-row .visual-bay {
-            flex: 0 0 250px;
-            width: 250px;
+            flex: 0 0 240px;
+            width: 240px;
             border: 1px solid var(--charcoal); 
             cursor: pointer;
             background: rgba(255, 255, 255, 0.01);
@@ -217,12 +218,58 @@
 
         .text-bay {
             flex: 1;
+            max-width: 600px;
         }
+        .text-bay.centered-text p { text-align: center; }
         .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
         .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
         .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
+
+        /* --- THEME HANDOFF FORMATTING --- */
+        .handoff-content { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; }
+        .handoff-content h4 { font-size: 12px; letter-spacing: 4px; color: var(--structure); text-transform: uppercase; margin: 40px 0 15px 0; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px; }
+        .handoff-content ul { padding-left: 20px; margin-bottom: 20px; }
+        .handoff-content li { margin-bottom: 10px; }
+        .handoff-content code { background: #050505; color: #A6DCA6; padding: 2px 6px; border: 1px solid var(--charcoal); font-family: monospace; font-size: 12px; }
+        
+        .code-block {
+            background: #050505;
+            border: 1px solid var(--charcoal);
+            padding: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #A6DCA6;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        .theme-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 12px;
+            color: var(--secondary);
+        }
+        .theme-table th, .theme-table td {
+            border: 1px solid var(--charcoal);
+            padding: 15px;
+            text-align: left;
+        }
+        .theme-table th {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .theme-table td code {
+            color: #A6DCA6;
+            background: #050505;
+            padding: 2px 6px;
+            border: 1px solid var(--charcoal);
+        }
 
         /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
         .diagnostic-lightbox-vault {
@@ -241,7 +288,7 @@
             justify-content: center;
         }
         .lightbox-canvas-scroller {
-            max-width: 40vw; /* Strict 60% reduction from fullscreen width */
+            max-width: 40vw; 
             max-height: 80vh;
             border: 1px solid var(--charcoal);
             display: block;
@@ -295,6 +342,7 @@
             .specs-container { grid-template-columns: 1fr; gap: 40px; }
             nav.nav-terminal { padding: 10px 20px; }
             .lightbox-canvas-scroller { max-width: 80vw; } 
+            .text-bay.centered-text p { text-align: left; }
         }
     </style>
 </head>
@@ -322,6 +370,7 @@
 </nav>
 
 <main>
+    <!-- DYNAMIC WAVE GENERATOR CONTAINER -->
     <div class="image-container">
         <div class="subharmonic-stage-container" id="baryonWaveStage">
             <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // SPECTRUM_20_250_HZ</span>
@@ -333,7 +382,7 @@
     <div class="description-box">
         <p class="description-text"><b>Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b>
 
-        BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified rather than merely tuned by ear.</p>
+        BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -342,130 +391,261 @@
             <p class="purchase-intel">
                 Chassis is undergoing low-frequency calibration. Operational parameters include zero-dive architecture featuring portable user library files (.baryon).
             </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" class="lemon-squeezy-button authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" class="authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
         </div>
     </section>
 
-    <section class="module-deep-dive">
-        <h3>THE_INTERFACE_PROTOCOL</h3>
-        <div class="module-block">
-            <div class="section-header-title">One window. Six instruments. One display that never leaves.</div>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">BARYON's interface is a focus rack: six modules — SUB · LFO · CHARACTER · DYNAMICS · EQ · OUTPUT — live as cards on the right. Click one and it takes the stage; everything else stays one click away. No menu diving, no hidden tabs, and the window never changes size.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Above the stage sits the persistent live display: a real-time spectrum of the 20–250 Hz region that stays with you on every page. Five layers, each on its own clickable chip — SRC (what's coming in), POST (what's leaving, in gold), and B1 / B2 / B3 (each band's own generated sub in its band color). The three band crossover spans ride along the top, so you always see where the generator is listening. Solo a band and its trace isolates. Toggle the plugin and POST collapses onto the source. You never have to imagine what BARYON is doing to your low end — it is drawn, live, at all times.</p>
-        </div>
-    </section>
-
+    <!-- FOCUS RACK INDEPENDENT CARDS -->
     <section class="module-deep-dive">
         <h3>FOCUS_RACK_MODULES</h3>
         
+        <!-- MODULE 1: SUB (3-COLUMN LAYOUT) -->
         <div class="module-block">
             <div class="section-header-title">SUB — The Generator</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="BARYON_v.5_BANDS.png" class="module-shot" alt="BARYON Sub Bands Module">
+                    <img src="BARYON_v0.0.65_SUB_3BAND.png" class="module-shot" alt="BARYON Sub 3-Band Module">
                 </div>
-                <div class="text-bay">
+                <div class="text-bay centered-text">
                     <p>The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing, producing a square wave at exactly half the input frequency. Heavily filtered, it becomes the fat, gritty analog sub of the original hardware.</li>
-                        <li>· <b>SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine at the divided frequency. Pure, deep, and modern.</li>
+                    <ul class="parameter-list" style="text-align: left; margin: 0 auto;">
+                        <li>· <b>DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
+                        <li>· <b>SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
                         <li>· <b>HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
-                        <li>· <b>Chassis Architecture</b> — Each of the three bands gets its own color-coded cell: a hero LEVEL knob with a live LED ring, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector — octave down, a third, or a fourth — so one band can hold the octave while another adds a deeper foundation. The generator row above carries the master SUB LEVEL, MODE, GATE (keeps the generator from droning on bleed and noise), WIDTH, BASS MONO (collapses the low end for club-safe mono), and IN TRIM.</li>
+                        <li>· <b>Chassis Architecture</b> — Each band gets its own color-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
                     </ul>
-                    <p style="margin-top: 15px; border-left: 1px solid var(--charcoal); padding-left: 20px; font-size: 13.5px; color: var(--structure);"><b>The Torture Suite Tracker:</b> An eleven-test torture suite hammers the engine with note changes, pitch bends, kick transients riding the bass, harmonic-heavy sources, dyads, and near-silence. It locks in 13.6 ms from true silence, retunes instantly on note changes, tracks continuous bends at half frequency, and does not flip an octave on harmonic-rich basses. Wrong-octave content measures more than 200 dB below the fundamental.</p>
+                </div>
+                <div class="visual-bay">
+                    <img src="BARYON_v0.0.65_SUB_DFC.png" class="module-shot" alt="BARYON Sub DFC Module">
                 </div>
             </div>
         </div>
 
+        <!-- MODULE 2: LFO (2-COLUMN) -->
         <div class="module-block">
             <div class="section-header-title">LFO — Motion for the Low End</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v.5_LFO.png" class="module-shot" alt="BARYON LFO Module">
-                </div>
                 <div class="text-bay">
                     <p>A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
                     <ul class="parameter-list">
-                        <li>· <b>Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&H (a fresh random level drawn and held each cycle, for rhythmic random chops). Rate runs free (0.02–8 Hz) or SYNC to host tempo with divisions from 1/1 to 1/16.</li>
-                        <li>· <b>Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, so it stays beat-locked through loops, relocates, and punch-ins — every pass of a two-bar loop lands identically. Every waveform passes through a de-click smoother so the modulation never ticks.</li>
-                        <li>· <b>PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO: the sub begins to orbit the stereo field, and at 180° the channels move in perfect anti-phase — a widening motion no static tool can produce.</li>
-                        <li>· <b>Display Mapping</b> — Shows the selected shape at your depth over a full-scale ghost, with a gold cursor riding the curve at the engine's actual published phase and value — including the true random levels of S&H — plus a hollow second cursor marking the right channel when PHASE is engaged, and a readout of the exact Hz your sync setting resolves to.</li>
+                        <li>· <b>Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&H. Rate runs free or SYNC to host tempo.</li>
+                        <li>· <b>Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, staying beat-locked through loops and relocates.</li>
+                        <li>· <b>PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO for widening motion no static tool can produce.</li>
+                        <li>· <b>Display Mapping</b> — Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine's published phase.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="BARYON_v0.0.65_LFO.png" class="module-shot" alt="BARYON LFO Module">
                 </div>
             </div>
         </div>
 
+        <!-- MODULE 3: CHARACTER (2-COLUMN) -->
         <div class="module-block">
             <div class="section-header-title">CHARACTER — Punch, Edge, and Colour</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="BARYON_v.5_CHARACTER.png" class="module-shot" alt="BARYON Character Module">
+                    <img src="BARYON_v0.0.65_CHARCATER.png" class="module-shot" alt="BARYON Character Module">
                 </div>
                 <div class="text-bay">
                     <p>Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
                     <ul class="parameter-list">
-                        <li>· <b>PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH is a resonant high-pass with FREQ and AMOUNT that carves a tight, kick-friendly knee into the very bottom; TONE rolls the sub's top; DRIVE feeds a six-mode EDGE saturator — TANH, ARCTAN, TUBE, TAPE, DIODE, HARD — with polarity INV for asymmetric bite.</li>
-                        <li>· <b>Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, and the master SATURATION section offers the same six shapes with its own DRIVE, a ROUND control for softening the curve, INV, and switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
-                        <li>· <b>Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain. Asymmetric shapes generate DC offset that silently eats headroom on a sub plugin — BARYON drains it in under a second while leaving 20 Hz programme within 0.095 dB. Measured, not assumed.</li>
+                        <li>· <b>PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
+                        <li>· <b>Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, with switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
+                        <li>· <b>Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- MODULE 4: DYNAMICS (2-COLUMN) -->
         <div class="module-block">
             <div class="section-header-title">DYNAMICS — THETA ANANKE COMPRESSION</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v.5_DYNAMICS.png" class="module-shot" alt="BARYON Dynamics Module">
-                </div>
                 <div class="text-bay">
-                    <p>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Dialogue Suite and configured as a focused, single-purpose processor. Voiced for dialogue yet equally at home tightening drum busses, vocals, or master outputs, it represents the primordial force of necessity and constraint.</p>
+                    <p>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Suite and configured as a focused, single-purpose processor.</p>
                     <ul class="parameter-list">
-                        <li>· <b>TRANSFER Display</b> — Draws the actual gain law — the same code the audio runs — on a 10 dB grid: threshold marker, the OverEasy soft-knee region as a gold band with the knee arc highlighted, and the ∞:1 hard-limit curve when engaged.</li>
-                        <li>· <b>GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms so the trace reads as a smooth line at any zoom. Drag to zoom the window from 1 to 8 seconds; a large live GR readout counts the decibels.</li>
-                        <li>· <b>Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms, the control that decides whether the compressor grabs transients or levels notes (and the reason deep sustained bass compresses cleanly instead of rippling). AUTO release and an ∞:1 switch complete the set.</li>
+                        <li>· <b>TRANSFER Display</b> — Draws the actual gain law on a 10 dB grid: threshold marker, the OverEasy soft-knee region, and the ∞:1 hard-limit curve.</li>
+                        <li>· <b>GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
+                        <li>· <b>Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="BARYON_v0.0.65_DYNAMICS.png" class="module-shot" alt="BARYON Dynamics Module">
                 </div>
             </div>
         </div>
 
+        <!-- MODULE 5: EQ (2-COLUMN) -->
         <div class="module-block">
             <div class="section-header-title">EQ — The Editing Surface</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="BARYON_v.5_EQ.png" class="module-shot" alt="BARYON EQ Module">
+                    <img src="BARYON_v0.0.65_EQ.png" class="module-shot" alt="BARYON EQ Module">
                 </div>
                 <div class="text-bay">
-                    <p>Focus the EQ and the live display grows into a full editing surface: both EQ curves drawn directly over the spectrum they're shaping.</p>
-                    <p>Two independent processors — <b>EQ IN</b> (before the generator, shaping what BARYON listens to) and <b>EQ OUT</b> (after, shaping what it delivers) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range, Shift-hold for momentary band solo (release Shift, solo's gone), double-click to reset any filter to neutral. Interaction grammar is printed in the footer.</li>
-                        <li>· <b>Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks the full configured travel and a haloed LIVE line rides the current position, display-smoothed so hits land instantly and ease back musically.</li>
-                        <li>· <b>Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically (a one-sided hit can never tilt your stereo image), while STATIC turns the dynamics off entirely to form a conventional EQ.</li>
+                    <p>Two independent processors — <b>EQ IN</b> (before the generator) and <b>EQ OUT</b> (after) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
+                    <ul class="parameter-list">
+                        <li>· <b>Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
+                        <li>· <b>Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
+                        <li>· <b>Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- MODULE 6: OUTPUT (2-COLUMN) -->
         <div class="module-block">
             <div class="section-header-title">OUTPUT — Meter, Gate, Ceiling</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v.5_OUTPUT.png" class="module-shot" alt="BARYON Output Module">
-                </div>
                 <div class="text-bay">
-                    <p>The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, a live ceiling marker tied to the CEILING knob, and a peak readout in dB.</p>
+                    <p>The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
                     <ul class="parameter-list">
-                        <li>· <b>Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL (compressor dry/wet for New-York-style weight), master DRY/WET, and OUT TRIM.</li>
-                        <li>· <b>Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode — with its latency (and the oversampler's) correctly reported to the host, so BARYON never smears against the rest of your session.</li>
-                        <li>· <b>Dual-Gate Post-Dynamics Tightener</b> — Compression and saturation raise tails; the gate sits after both and before the limiter, where "tight" actually happens. A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes — at −80 dB it chops, at −15 dB it just leans on the tails; 3 dB of built-in hysteresis means it never flutters.</li>
-                        <li>· <b>Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, so you park the pointer exactly where the kicks peak and the bleed doesn't — and the gate view beside it scrolls three seconds of history: grey is what came in, gold is what got through, with the threshold line draggable right on the display. The detector runs even while the gate is off, so you can set it visually before you ever engage it.</li>
+                        <li>· <b>Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL, master DRY/WET, and OUT TRIM.</li>
+                        <li>· <b>Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode.</li>
+                        <li>· <b>Dual-Gate</b> — A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
+                        <li>· <b>Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="BARYON_v0.0.65_OUTPUT_STAGE.png" class="module-shot" alt="BARYON Output Module">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- NEW THEME FRAMEWORK DOCUMENTATION -->
+    <section class="module-deep-dive theme-handoff">
+        <h3>LAB_NOTE // UI_FRAMEWORK</h3>
+        <div class="handoff-content">
+            <p><b>HANDOFF — Port the DARK + NUCLEAR UI themes to a ROGERIAN-family plugin</b></p>
+            <p><b>From:</b> BARYON (where both themes are shipped and approved)<br>
+            <b>To:</b> any THETA plugin on the ROGERIAN visual language (ROGERIAN, ANANKE, PNEUMA, ATRIA, …)<br>
+            <b>Reference implementation:</b> <code>/Users/steveneal/Documents/_PLUGINS/zJUCE_SOURCES/BARYON/baryon_src_v0.0.64/Source/Common/Theme/Theme.h</code> and <code>Source/Plugin/PluginEditor.cpp</code>.<br>
+            <b>Status of the source material:</b> NUCLEAR shipped in BARYON v0.0.63; DARK is the canonical THETA "Void" palette. This document is self-contained — you do not need the BARYON session that produced it.</p>
+
+            <h4>0. Scope rule (read first)</h4>
+            <p>Work <b>only</b> in the target plugin's own source tree, launched from that plugin's own Claude Code home folder. Never edit BARYON or any other sibling from your session. BARYON is the <i>reference</i>, not a dependency — port by copying values and patterns, not files with BARYON-specific content.</p>
+
+            <h4>1. What you are building</h4>
+            <p>Three sanctioned skins on <b>one token set</b>, switched at runtime by a state-named pill in the header, persisted per-user (not per-preset — a theme is a preference, not a sound):</p>
+            <ul>
+                <li><b>LIGHT</b> — the ANANKE/PNEUMA "White & Gold" neumorphic surface (the existing default).</li>
+                <li><b>DARK</b> — the THETA "Void": near-black surfaces, silver text, bronze-lifted gold. Border tokens are <b>not</b> gold.</li>
+                <li><b>NUCLEAR</b> — the Kelvin-era power-station control room: institutional sage-green panels, <b>ivory</b> knob caps/plates that read as instrument dial faces, stencil green-black ink, aged-brass accent, pilot-lamp amber/red. A <b>light-family</b> skin.</li>
+            </ul>
+
+            <h4>2. Architecture (the whole trick)</h4>
+            <p><b>1. Mutable palette tokens.</b> Every colour the plugin paints must route through one namespace of C++17 <code>inline</code> variables (BARYON: <code>sa::col</code>). The declared initializers ARE the light theme, so a build that never calls the theme code is bit-identical to the pre-theming UI.</p>
+            <div class="code-block">namespace sa { namespace col {
+    inline juce::Colour win  { 0xffc6cbd0 };   // etc. — mutable, not constexpr
+}}</div>
+            <p><b>Precondition check:</b> if the target plugin has <i>any</i> hardcoded <code>juce::Colour(0xff…)</code> in paint code, tokenize those first — the theme swap only reaches what routes through tokens.</p>
+
+            <p><b>2. Theme namespace</b> with a <code>Skin</code> enum, one <code>apply&lt;Name&gt;()</code> per skin that re-values every token, an <code>apply(Skin)</code> dispatcher, and file persistence:</p>
+            <div class="code-block">namespace theme {
+    enum class Skin { light, dark, nuclear };
+    inline Skin skin = Skin::light;
+    inline bool dark = false;   // kept: paint sites key dark-only effects off this
+    inline void applyLight()   { /* restore declared defaults verbatim */ }
+    inline void applyDark()    { /* Void palette */ }
+    inline void applyNuclear() { /* Kelvin palette */ }
+    inline void apply (Skin s);
+    // persistence: ~/Library/THETA/&lt;PLUGIN&gt;/ui.settings, line "theme=light|dark|nuclear"
+    inline juce::File settingsFile();   // userApplicationDataDirectory/THETA/&lt;PLUGIN&gt;/ui.settings
+    inline void loadSaved();            // parse "nuclear" BEFORE "dark" (contains() matching)
+    inline void save();
+}</div>
+            <p>Use the <b>target plugin's own name</b> in the settings path. Note the macOS gotcha: JUCE's <code>userApplicationDataDirectory</code> resolves to <code>~/Library/</code>, <i>not</i> <code>~/Library/Application Support/…</code>.</p>
+
+            <p><b>3. Header pill</b>, state-named like a bypass chip, cycling LIGHT → DARK → NUCLEAR → LIGHT on click. "NUCLEAR" (7 chars) fits a 58 px pill in the mono face at 10 px. Draw the current skin's name, not an icon.</p>
+            <p><b>4. The swap itself</b> (BARYON <code>toggleTheme()</code> — copy this shape):</p>
+            <div class="code-block">sa::theme::apply (next skin in the cycle);
+sa::theme::save();
+lnf->refreshTheme();            // re-seed any cached ColourIds in the LookAndFeel
+sendLookAndFeelChange();        // broadcast to the visible hierarchy
+for (auto& m : offstageModules) // anything NOT in the hierarchy right now
+    m->sendLookAndFeelChange(); //  (BARYON: 5 unfocused modules live outside
+repaint();                      //   the viewport) — reach them directly!</div>
+            <p>If the target plugin keeps any components constructed-but-unparented (module stages, cached pages), they will <b>miss</b> the broadcast — walk them explicitly, or they come back stale when re-shown.</p>
+
+            <p><b>5. Load before construct.</b> Call <code>theme::loadSaved()</code> in the editor constructor <b>before</b> creating the LookAndFeel and content — their constructors cache ColourIds from the token values at construction time.</p>
+
+            <h4>3. The palettes (verbatim from BARYON, ARGB hex)</h4>
+            <p>Token semantics use ROGERIAN names; if the target's tokens differ, map by <i>role</i>, not name. Depth law all skins obey: <b>body &lt; card &lt; plate/cap</b> in surface lightness.</p>
+
+            <table class="theme-table">
+                <thead>
+                    <tr>
+                        <th>Token (role)</th>
+                        <th>LIGHT</th>
+                        <th>DARK ("Void")</th>
+                        <th>NUCLEAR (Kelvin)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>win</code> — window/body/field</td><td><code>ffc6cbd0</code></td><td><code>ff06080c</code></td><td><code>ff9aab93</code> sage panel</td></tr>
+                    <tr><td><code>modOn</code> — raised card (lit)</td><td><code>ffd0d5da</code></td><td><code>ff0c0c10</code></td><td><code>ffa7b8a0</code></td></tr>
+                    <tr><td><code>modOff</code> — recessed/off pills</td><td><code>ffbdc2c7</code></td><td><code>ff080808</code></td><td><code>ff8e9f87</code></td></tr>
+                    <tr><td><code>bdrOn</code> / <code>bdr</code> — card/plate border</td><td><code>ffa9afb6</code></td><td><code>ff242230</code> (NOT gold)</td><td><code>ff75866d</code></td></tr>
+                    <tr><td><code>cream</code> — text on lit accent fills</td><td><code>fff3ead6</code></td><td><code>fff3ead6</code></td><td><code>fff3ead6</code></td></tr>
+                    <tr><td><code>sunken</code> — recessed wells</td><td><code>ffc6cbd0</code></td><td><code>ff06080c</code></td><td><code>ff9aab93</code></td></tr>
+                    <tr><td><code>divider</code> — wells/grid/frames</td><td><code>ffaeb4ba</code></td><td><code>ff111420</code></td><td><code>ff81927a</code></td></tr>
+                    <tr><td><code>gold</code> — primary accent</td><td><code>ffa37c2c</code></td><td><code>ffc8a86b</code></td><td><code>ff8f6f26</code> aged brass</td></tr>
+                    <tr><td><code>goldDim</code> — arcs, version string</td><td><code>ffba9a59</code></td><td><code>ff7a6840</code></td><td><code>ffa68b48</code></td></tr>
+                    <tr><td><code>goldMut</code> — readable accent sub-text</td><td><code>ff8c7036</code></td><td><code>ff9e8b65</code></td><td><code>ff6f5c28</code></td></tr>
+                    <tr><td><code>ink</code> — title/brand</td><td><code>ff1a1e24</code></td><td><code>ffffffff</code></td><td><code>ff1c231a</code> stencil</td></tr>
+                    <tr><td><code>label</code> — knob/module names</td><td><code>ff262b31</code></td><td><code>ffb0b0b0</code></td><td><code>ff272f24</code></td></tr>
+                    <tr><td><code>labelDim</code> — secondary text</td><td><code>ff4a4f57</code></td><td><code>ff707070</code></td><td><code>ff444e3e</code></td></tr>
+                    <tr><td><code>arcTrack</code> — empty knob arc</td><td><code>ffafb5bc</code></td><td><code>ff1a1c20</code></td><td><code>ff7f9078</code></td></tr>
+                    <tr><td><code>cap</code> — knob body / raised plate</td><td><code>ffd6dbe0</code></td><td><code>ff0a0c10</code></td><td><code>ffe4dfc8</code> <b>ivory dial</b></td></tr>
+                    <tr><td><code>capHi</code> — dome sheen stop</td><td><code>ffdee3e8</code></td><td><code>ff1a1c20</code></td><td><code>ffeee9d7</code></td></tr>
+                    <tr><td><code>capBdr</code> — cap/plate hairline rim</td><td><code>ffaab1b8</code></td><td><code>ff1e2028</code></td><td><code>ff6f7d65</code> dark bezel</td></tr>
+                    <tr><td><code>amber</code> — GR / dynamic / SOLO</td><td><code>ffdb8f2a</code></td><td><code>ffe09a34</code></td><td><code>ffd18a26</code> pilot lamp</td></tr>
+                    <tr><td><code>band1/2/3</code> — per-band accent trio</td><td><code>ffd85a30</code>/<code>ff1d9e75</code>/<code>ff7f77dd</code></td><td>same as light</td><td><code>ffc9502c</code>/<code>ff0e7d58</code>/<code>ff6a61cc</code></td></tr>
+                    <tr><td><code>shadowD</code> — down-right cast shadow</td><td><code>450d2750</code></td><td><code>99000000</code></td><td><code>451d2a1a</code> green-black</td></tr>
+                    <tr><td><code>shadowL</code> — up-left sheen</td><td><code>8cffffff</code></td><td><code>0affffff</code> whisper</td><td><code>8cffffff</code></td></tr>
+                    <tr><td><code>engraveLit</code> — wordmark lit wall</td><td><code>9effffff</code></td><td><code>17ffffff</code></td><td><code>9effffff</code></td></tr>
+                    <tr><td><code>engraveShad</code> — wordmark shadow wall</td><td><code>5c0d2750</code></td><td><code>99000000</code></td><td><code>5c1d2a1a</code></td></tr>
+                    <tr><td><code>engraveFace</code> — wordmark recessed face</td><td><code>ff868c95</code></td><td><code>ff4b515c</code></td><td><code>ff64735c</code></td></tr>
+                </tbody>
+            </table>
+            
+            <p><b>Plugin-specific axis tokens:</b> BARYON adds <code>sigAdd</code> (the colour of <i>generated</i> signal: gold on LIGHT, red <code>ffe03c46</code> on DARK, pilot-lamp red <code>ffbf3a2c</code> on NUCLEAR — "injected energy reads as heat"). Do <b>not</b> copy <code>sigAdd</code> blindly: identify the target plugin's own semantic axis (e.g. a reverb's wet-energy colour, a compressor's GR colour) and give it the same treatment — brand accent in LIGHT, heat-red in DARK, pilot-lamp red in NUCLEAR — or omit if the plugin has no such axis.</p>
+
+            <h4>4. Gotchas that cost time in BARYON (don't re-earn these)</h4>
+            <ol>
+                <li><b>Engraved wordmark must re-light per theme.</b> An incised masthead drawn with fixed light/shadow walls looks embossed (or vanishes) on dark surfaces — hence the <code>engrave*</code> trio being tokens at all.</li>
+                <li><b>NUCLEAR is a light-family skin: <code>theme::dark</code> stays <code>false</code>.</b> Paint sites use <code>theme::dark</code> for dark-only effects (glow strengths, deeper gradients, heavier shadows). Keeping the bool alongside the enum means every existing <code>dark ?</code> branch does the right thing for NUCLEAR with zero edits. Check the target for such branches before assuming.</li>
+                <li><b>Persistence parse order:</b> check <code>contains("theme=nuclear")</code> <i>before</i> <code>contains("theme=dark")</code> — and old single-word settings files still parse.</li>
+                <li><b>The pill is UI state, not a parameter.</b> Don't put the skin in APVTS; it must not save into presets or session state.</li>
+                <li><b>Ivory caps are the NUCLEAR signature.</b> The palette's lightest tone goes to <code>cap</code>/<code>capHi</code> so plates and knob bodies read as cream instrument dials in black-ish bezels (<code>capBdr</code> dark green-grey) on the sage panel. If you "fix" cap back toward the panel colour, the whole theme collapses into porridge.</li>
+                <li><b>Band/accent trio on green:</b> mid-saturation accents vanish on sage. BARYON deepened all three (values above). If the target has its own categorical accents, deepen them similarly and check against <code>ff9aab93</code>.</li>
+                <li><b>Alpha discipline (house rule):</b> text solid, alpha only for vector art/shadows.</li>
+                <li><b>Verify all three transitions live</b> (L→D, D→N, N→L) — a token missed in one <code>apply*()</code> shows up as a stale colour only on <i>some</i> cycle orders.</li>
+            </ol>
+
+            <h4>5. Implementation checklist</h4>
+            <ul>
+                <li>[ ] Confirm every paint call routes through the token namespace; tokenize stragglers first.</li>
+                <li>[ ] Tokens → <code>inline</code> mutable; declared defaults = current light look (bit-identical when untouched).</li>
+                <li>[ ] Add <code>Skin</code> enum + <code>applyDark()</code> + <code>applyNuclear()</code> (values from §3) + <code>apply(Skin)</code>.</li>
+                <li>[ ] Persistence with the <b>target plugin's</b> <code>THETA/&lt;PLUGIN&gt;/ui.settings</code>; load in editor ctor <b>before</b> LNF/content construction.</li>
+                <li>[ ] Header pill: state-named, cycles three skins, drawn from <code>modOff</code>/<code>bdrOn</code>/<code>labelDim</code> tokens.</li>
+                <li>[ ] <code>toggleTheme()</code>: apply → save → LNF refresh → broadcast → <b>walk off-hierarchy components</b> → repaint.</li>
+                <li>[ ] Re-seed any widget ColourIds set imperatively (combo boxes, buttons) in a <code>lookAndFeelChanged()</code>/<code>applyWidgetTheme()</code> hook.</li>
+                <li>[ ] Map the plugin's semantic axis token (§3 note) for all three skins.</li>
+                <li>[ ] Eyeball every module/view in all three skins; screenshot for the changelog.</li>
+                <li>[ ] Follow the target's own house rules for version bump + changelog (this is a UI-only change).</li>
+                <li>[ ] Honest status in the changelog: colours chosen ≠ colours seen — list what hasn't had human eyes on it.</li>
+            </ul>
+
+            <h4>6. Acceptance</h4>
+            <p>Done when: the pill cycles LIGHT/DARK/NUCLEAR live with no stale widgets (including views not currently on screen), the choice survives editor close/reopen and DAW restart, presets neither store nor disturb it, and a build with the feature merely present (never toggled) renders pixel-identical to the pre-port plugin in LIGHT.</p>
+        </div>
+    </section>
+
+    <!-- CORE VERIFICATION SUITE -->
     <section class="specs-container">
         <div class="spec-group">
             <h3>MEASURED_NOT_MARKETED</h3>
@@ -486,12 +666,13 @@
                 <li><b>Signal Flow</b> IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
                 <li><b>Latency Engine</b> Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
                 <li><b>Formats</b> VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
-                <li><b>Parameter Interaction</b> Fixed 1116 × 640 footprint; double-click resets knobs, hold Shift for fine adjustment, and trailing value bubbles follow every drag.</li>
+                <li><b>Build Version</b> v0.0.65 / THEME_FRAMEWORK_VERIFIED</li>
             </ul>
         </div>
     </section>
 </main>
 
+<!-- REAL-TIME HIGH-DRAMA SUBHARMONIC RED-PEAK OSCILLATOR SCRIPT -->
 <script>
     const canvas = document.getElementById('waveCanvas');
     const ctx = canvas.getContext('2d');
@@ -629,7 +810,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #013 // BARYON_v.5_PRODUCTION_SPEC</span>
+    <span>LAB NOTE #021 // BARYON_v0.0.65_THEME_REFERENCE</span>
 </footer>
 
 </body>
