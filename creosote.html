@@ -137,22 +137,23 @@
         .authorize-btn:hover { background: #486E48; color: var(--void); }
 
         /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 950px; margin: 0 auto 80px auto; }
+        .module-deep-dive { max-width: 1100px; margin: 0 auto 80px auto; }
         .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
         
-        .module-block { margin-bottom: 60px; }
-        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
+        .module-block { margin-bottom: 80px; }
+        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; text-align: center; }
 
-        /* --- SIDE-BY-SIDE GRID SPLIT --- */
+        /* --- GRID SPLIT / MULTI-COLUMN --- */
         .module-split-row {
             display: flex;
-            gap: 50px;
-            align-items: flex-start;
+            gap: 40px;
+            align-items: center; /* Vertically center images with text */
+            justify-content: center;
         }
 
         .module-split-row .visual-bay {
-            flex: 0 0 250px;
-            width: 250px;
+            flex: 0 0 240px;
+            width: 240px;
             border: 1px solid var(--charcoal); 
             cursor: pointer;
             background: var(--void);
@@ -188,22 +189,27 @@
 
         .text-bay {
             flex: 1;
+            max-width: 600px;
         }
+        .text-bay.centered-text p { text-align: center; }
         .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
         .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
+        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0 auto; padding: 0; list-style: none; text-align: left; }
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
 
         /* --- FEATURE GRID --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .card { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--charcoal); padding: 34px 30px 38px; transition: border-color 0.4s ease, background 0.4s ease; }
+        .card { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--charcoal); padding: 34px 30px 38px; transition: border-color 0.4s ease, background 0.4s ease; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); background: rgba(220, 205, 191, 0.01); }
         .card .rule { width: 30px; height: 2px; background: var(--accent); margin-bottom: 22px; transition: width 0.4s ease; }
         .card:hover .rule { width: 54px; }
         .card .ck { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); opacity: 0.85; margin-bottom: 12px; font-weight: 700; }
         .card h3 { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; color: var(--structure); }
-        .card p { font-weight: 300; font-size: 13.5px; color: var(--secondary); line-height: 1.6; margin: 0; }
+        .card p { font-weight: 300; font-size: 13.5px; color: var(--secondary); line-height: 1.6; margin: 0; flex: 1; }
+
+        .inline-card-image { width: 100%; border: 1px solid var(--charcoal); margin-top: 20px; cursor: pointer; transition: 0.3s; }
+        .inline-card-image:hover { border-color: var(--accent); }
 
         /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
         .diagnostic-lightbox-vault {
@@ -281,6 +287,7 @@
             .header-module-name { display: none; }
             .module-split-row { flex-direction: column; gap: 30px; }
             .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
+            .text-bay.centered-text p { text-align: left; }
         }
     </style>
 </head>
@@ -331,93 +338,99 @@
     <section class="module-deep-dive">
         <h3>THE_CHAIN // SIGNAL_PATH</h3>
         
-        <!-- TAPE MODULE -->
+        <!-- TAPE MODULE: 3-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">GRIT — The Tape Machine</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_TWEAK_TAPE.png" alt="CREOSOTE Tape Module" class="module-shot">
+                    <img src="CREOSOTE_v8.1.112_GRIT.png" alt="CREOSOTE GRIT Module" class="module-shot">
                 </div>
-                <div class="text-bay">
+                <div class="text-bay centered-text">
                     <p>Seven transports. Ten reels. Three speeds. One WEAR knob that ages the whole transport at once.</p>
                     <ul class="parameter-list">
-                        <li>· <b>7 machines</b> — Studer A800, Ampex ATR-102, MCI JH-24, Otari MTR-90, Ampex MM1200, Scully 280, Tascam — each with its own head-bump frequency, asymmetry, and pre-emphasis character.</li>
-                        <li>· <b>10 tape formulas</b> — Ampex 456, 406/407, 499, Quantegy GP9, Scotch 250, Scotch 996, BASF SM468, RTM SM911, SM900, ATR Master — drive headroom, de-emphasis, and hysteresis modeled per formula.</li>
+                        <li>· <b>7 machines</b> — Studer A800, Ampex ATR-102, MCI JH-24, Otari MTR-90, Ampex MM1200, Scully 280, Tascam.</li>
+                        <li>· <b>10 tape formulas</b> — Ampex 456/406/499, Quantegy GP9, Scotch 250/996, BASF SM468, RTM SM911/SM900, ATR Master.</li>
                         <li>· <b>Calibration</b> — ¼" to 2" 24-track, 7.5/15/30 IPS, +3/+6/+9 cal, over/under bias.</li>
-                        <li>· <b>Calibrated Saturator</b> — 0 VU = −18 dBFS. DRIVE at zero measures 0.39% THD at operating level — the gentle third-harmonic bloom of a well-aligned deck — and drives to honest tape slam at full.</li>
-                        <li>· <b>Program-Dependent Hysteresis</b> — The tape "warms up" under sustained signal and remembers what just passed through it — soft attacks, lingering tails.</li>
-                        <li>· <b>Record-Amp Slew Limiting</b> — The HF transient rounding of a real record amplifier, referenced to operating level, off to thick.</li>
-                        <li>· <b>Comb-free MIX</b> — The dry blend leg runs through a matched oversampling path, so partial mix never phase-combs against the wet signal.</li>
+                        <li>· <b>Calibrated Saturator</b> — 0 VU = −18 dBFS. 0.39% THD at operating level.</li>
+                        <li>· <b>Program-Dependent Hysteresis</b> — The tape "warms up" and remembers soft attacks and lingering tails.</li>
+                        <li>· <b>Record-Amp Slew Limiting</b> — The HF transient rounding of a real record amplifier.</li>
+                        <li>· <b>Comb-free MIX</b> — The dry blend leg runs through a matched oversampling path.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_TAPE.png" alt="CREOSOTE Tape Tweak Panel" class="module-shot">
                 </div>
             </div>
         </div>
 
-        <!-- TUBE MODULE -->
+        <!-- TUBE MODULE: 3-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">AMBER — The Tube Stage</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_TWEAK_TUBE.png" alt="CREOSOTE Tube Stage Module" class="module-shot">
+                    <img src="CREOSOTE_v8.1.112_AMBER.png" alt="CREOSOTE AMBER Module" class="module-shot">
                 </div>
-                <div class="text-bay">
+                <div class="text-bay centered-text">
                     <p>A three-stage valve amplifier you can re-tube, re-bias, and re-era.</p>
                     <ul class="parameter-list">
                         <li>· <b>Preamp</b> — 12AX7, 12AT7, 12AU7, EF86.</li>
                         <li>· <b>Power</b> — EL84, EL34, 6L6, 6V6, KT66, KT88.</li>
                         <li>· <b>Rectifier</b> — 5Y3, GZ34 — with era-true sag.</li>
-                        <li>· <b>Per-Stage ERA Voicings</b> — Tweak per-stage condition (new to worn), bias point (cold/normal/hot), plate voltage, and load.</li>
-                        <li>· <b>Hardware Modes</b> — Direct, transformer-coupled, and Pultec-style passive output paths with analog-matched filter responses.</li>
-                        <li>· <b>Calibrated Drive Law</b> — The whole knob is useful: 0.5% THD at operating level at zero, driven-amp harmonics at full, RMS auto-makeup holding your level steady while the character moves.</li>
+                        <li>· <b>Per-Stage Voicings</b> — Tweak per-stage condition, bias point (cold/normal/hot), plate voltage, and load.</li>
+                        <li>· <b>Hardware Modes</b> — Direct, transformer-coupled, and Pultec-style passive output paths.</li>
+                        <li>· <b>Calibrated Drive Law</b> — The whole knob is useful with RMS auto-makeup holding your level steady.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_TUBE.png" alt="CREOSOTE Tube Tweak Panel" class="module-shot">
                 </div>
             </div>
         </div>
 
-        <!-- COMPRESSOR MODULE -->
+        <!-- COMPRESSOR MODULE: 3-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">COMPRESS — Eight Compressors, True Circuits</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_TWEAK_COMPRESS.png" alt="CREOSOTE Compressor Module" class="module-shot">
+                    <img src="CREOSOTE_v8.1.112_COMPRESS.png" alt="CREOSOTE Compressor Module" class="module-shot">
                 </div>
-                <div class="text-bay">
-                    <p>Not eight presets of one compressor — eight topologies.</p>
+                <div class="text-bay centered-text">
+                    <p>Not eight presets of one compressor — eight true hardware topologies.</p>
                     <ul class="parameter-list">
-                        <li>· <b>The Models</b> — LEVEL CELL (opto, T4 three-stage cascade) · BLACK FET (1176) · ALL BUTTONS (1176, all in) · FAIR MU (vari-mu) · SSL BUS (G-series VCA) · NEVE BRIDGE (diode bridge) · PYE PWM · TG ZENER.</li>
-                        <li>· <b>True Topology</b> — Each mode runs its hardware's actual detector circuit. The opto, vari-mu, bridge, and PWM units run <b>feedback</b> — the knee eases in wide, the gain reduction refuses to overcompress, and the release stretches after deep sustained reduction. The FET, VCA, and Zener units run feedforward. Force either topology in TWEAK to A/B a mode against itself.</li>
-                        <li>· <b>Infrastructure</b> — Always-on lookahead with full delay compensation, sidechain filtering, auto-release, and a real edgewise gain-reduction meter with hot bulbs behind the glass.</li>
+                        <li>· <b>The Models</b> — LEVEL CELL (opto) · BLACK FET (1176) · ALL BUTTONS · FAIR MU (vari-mu) · SSL BUS · NEVE BRIDGE · PYE PWM · TG ZENER.</li>
+                        <li>· <b>True Topology</b> — Opto, vari-mu, bridge, and PWM units run <b>feedback</b>. FET, VCA, and Zener units run feedforward. Force either topology in TWEAK.</li>
+                        <li>· <b>Infrastructure</b> — Always-on lookahead with full delay compensation, sidechain filtering, and a real edgewise gain-reduction meter.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_COMPRESS.png" alt="CREOSOTE Compressor Tweak Panel" class="module-shot">
                 </div>
             </div>
         </div>
 
-        <!-- MASTER BUS MODULE -->
+        <!-- MASTER BUS MODULE: 2-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">SUMMING & STAGING — The Console Bus</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_TWEAK_MASTER.png" alt="CREOSOTE Master Summing Module" class="module-shot">
-                </div>
                 <div class="text-bay">
                     <p>Character saturation, stereo glue, and a ceiling clipper — all anti-derivative anti-aliased (ADAA), all measured.</p>
                     <ul class="parameter-list">
                         <li>· <b>Summing</b> — PREGAIN, WIDTH (M/S), BALANCE. The last analog bus before the wide world.</li>
                         <li>· <b>IRON</b> — A modeled output transformer (off / subtle / rich) with three voicings (British console, American punch, broadcast desk) built as a flux integrator with magnetic remanence, not an EQ curve.</li>
-                        <li>· <b>Staging</b> — Honest INPUT/LEVEL staging. Limit lookahead ceiling with its own vertical gain-reduction instrument pouring oil-damped reduction top-down. AUTO LEVEL for one-button unity out.</li>
-                        <li>· <b>TONE</b> — A direction-aware tilt. Darkening reaches into the presence region to *warm* rather than dull. Brightening lifts the air band and tightens lows. Corner frequencies chosen by measurement.</li>
+                        <li>· <b>Staging</b> — Honest INPUT/LEVEL staging. Limit lookahead ceiling pouring oil-damped reduction top-down. AUTO LEVEL for one-button unity out.</li>
+                        <li>· <b>TONE</b> — A direction-aware tilt. Darkening reaches into the presence region to *warm* rather than dull. Brightening lifts the air band and tightens lows.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_TWEAK_MASTER.png" alt="CREOSOTE Master Summing Module" class="module-shot">
                 </div>
             </div>
         </div>
 
-        <!-- EQ MODULE -->
+        <!-- EQ MODULE: 2-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">OUTPUT EQ — The Chart Plate</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_OUTPUT_EQ.png" alt="CREOSOTE Output EQ Module" class="module-shot">
-                </div>
                 <div class="text-bay">
                     <p>Eight bands of dynamic EQ drawn on a machine-tool chart: cream card, blue graticule, red pen.</p>
                     <ul class="parameter-list">
@@ -426,16 +439,16 @@
                         <li>· <b>Decramped, Analog-Matched Filters</b> — Standard digital EQs cramp against Nyquist. CREOSOTE's shelves and bells are matched to their analog prototypes to within 0.16 dB at 20 kHz. The air band behaves like the circuit, not the sample rate.</li>
                     </ul>
                 </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_OUTPUT_EQ.png" alt="CREOSOTE Output EQ Module" class="module-shot">
+                </div>
             </div>
         </div>
 
-        <!-- LFO MODULE -->
+        <!-- LFO MODULE: 2-COLUMN -->
         <div class="module-block">
             <div class="section-header-title">TRANSPORT & LFO — Phosphor Logic</div>
             <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CREOSOTE_v8.1.112_AGE_LFO.png" alt="CREOSOTE Phosphor LFO Module" class="module-shot">
-                </div>
                 <div class="text-bay">
                     <p>A real transport with scrape-band noise, head-gap width, and dropout aging driven by WEAR.</p>
                     <ul class="parameter-list">
@@ -443,6 +456,9 @@
                         <li>· <b>Shape Vectors</b> — Five shapes including sample-and-hold, rate, depth, smoothing, and phase.</li>
                         <li>· <b>Hardware CRT</b> — Drawn live on a green phosphor CRT with an amber etched graticule.</li>
                     </ul>
+                </div>
+                <div class="visual-bay">
+                    <img src="CREOSOTE_v8.1.112_AGE_LFO.png" alt="CREOSOTE Phosphor LFO Module" class="module-shot">
                 </div>
             </div>
         </div>
@@ -485,6 +501,8 @@
                 <div class="ck">Transparency</div>
                 <h3>Measured, Not Marketed</h3>
                 <p>Marketing says "warm." We say: 0.39% THD at 0 VU; alias floors driven down 16–35 dB by ADAA; EQ matched to analog prototypes within 0.16 dB at 20 kHz; comb-free wet/dry blending verified by null test.</p>
+                <!-- Embedded ABOUT panel logic -->
+                <img src="CREOSOTE_v8.1.112_TWEAK_ABOUT.png" class="inline-card-image visual-bay module-shot" alt="CREOSOTE Analytics">
             </article>
 
             <article class="card">
@@ -536,8 +554,8 @@
         document.body.style.overflow = 'hidden'; 
     });
 
-    document.querySelectorAll('.visual-bay').forEach(bay => {
-        const targetImage = bay.querySelector('.module-shot');
+    document.querySelectorAll('.visual-bay, .inline-card-image').forEach(bay => {
+        const targetImage = bay.tagName.toLowerCase() === 'img' ? bay : bay.querySelector('.module-shot');
         if(!targetImage || !targetImage.getAttribute('src')) return;
 
         bay.addEventListener('click', () => {
@@ -567,7 +585,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #004 // CREOSOTE_SHIPPING</span>
+    <span>LAB NOTE #004 // CREOSOTE_SHIPPING_v0.4.112</span>
 </footer>
 
 </body>
