@@ -157,6 +157,22 @@
             text-transform: uppercase;
         }
 
+        /* --- SUB-FAMILY LABELS --- */
+        .sub-family-label {
+            font-size: 9px;
+            letter-spacing: 6px;
+            color: var(--accent);
+            text-transform: uppercase;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(84, 87, 92, 0.4);
+            margin: 20px 0 10px 0;
+            opacity: 0.8;
+            font-weight: 700;
+        }
+        .sub-family-label:first-child {
+            margin-top: 0;
+        }
+
         /* --- NODE ROWS --- */
         .family-nodes {
             flex: 1;
@@ -268,6 +284,9 @@
             </div>
         </div>
         <div class="family-nodes">
+            
+            <div class="sub-family-label">CHANNEL_STRIP_BUNDLES // INTEGRATED</div>
+
             <a href="rogerian.html" class="node-row">
                 <span class="node-id">010_STR</span>
                 <span class="node-name">ROGERIAN</span>
@@ -280,6 +299,9 @@
                 <span class="node-desc">Sound Effects Channel Strip Suite</span>
                 <span class="status-badge">[DEVELOPMENT]</span>
             </a>
+
+            <div class="sub-family-label">INDIVIDUAL_MODULES // DECOUPLED</div>
+
             <a href="ananke.html" class="node-row">
                 <span class="node-id">012_DYN</span>
                 <span class="node-name">ANANKE</span>
@@ -310,46 +332,16 @@
                 <span class="node-desc">Noise Reduction Engine</span>
                 <span class="status-badge">[DEVELOPMENT]</span>
             </a>
-            <a href="transient.html" class="node-row">
-                <span class="node-id">020_TRN</span>
-                <span class="node-name">TRANSIENT DESIGNER</span>
-                <span class="node-desc">SFX Suite Component</span>
+            <a href="horme.html" class="node-row">
+                <span class="node-id">020_HRM</span>
+                <span class="node-name">HORME</span>
+                <span class="node-desc">Transient Shaping Engine</span>
                 <span class="status-badge">[DEVELOPMENT]</span>
             </a>
         </div>
     </div>
 
-    <!-- FAMILY II: HARMONIC & DEGRADATION -->
-    <div class="family-block">
-        <div class="family-sidebar">
-            <div class="family-sidebar-text">
-                <span class="family-title" style="color: #5B825B;">HARMONIC_&_DEGRADATION</span>
-                <span class="family-subtitle">// TONE_SHAPING</span>
-            </div>
-        </div>
-        <div class="family-nodes">
-            <a href="baryon.html" class="node-row">
-                <span class="node-id">013_LFE</span>
-                <span class="node-name">BARYON</span>
-                <span class="node-desc">Subharmonic Generator & LFE Processor</span>
-                <span class="status-badge">[DEVELOPMENT]</span>
-            </a>
-            <a href="creosote.html" class="node-row shipping-active">
-                <span class="node-id">004_DEG</span>
-                <span class="node-name">CREOSOTE</span>
-                <span class="node-desc">Three-stage analog character processor</span>
-                <span class="status-badge">[AVAILABLE]</span>
-            </a>
-            <a href="cathode.html" class="node-row shipping-active">
-                <span class="node-id">003_VTR</span>
-                <span class="node-name">CATHODE</span>
-                <span class="node-desc">Broadcast Decay & CRT-Burn Engine</span>
-                <span class="status-badge">[AVAILABLE]</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- FAMILY III: SPATIAL & TIME -->
+    <!-- FAMILY II: SPATIAL & TIME -->
     <div class="family-block">
         <div class="family-sidebar">
             <div class="family-sidebar-text">
@@ -368,6 +360,36 @@
                 <span class="node-id">008_REV</span>
                 <span class="node-name">THESEUS</span>
                 <span class="node-desc">Spatial Reverb Instrument</span>
+                <span class="status-badge">[DEVELOPMENT]</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- FAMILY III: HARMONIC & DEGRADATION -->
+    <div class="family-block">
+        <div class="family-sidebar">
+            <div class="family-sidebar-text">
+                <span class="family-title" style="color: #5B825B;">HARMONIC_&_DEGRADATION</span>
+                <span class="family-subtitle">// TONE_SHAPING</span>
+            </div>
+        </div>
+        <div class="family-nodes">
+            <a href="creosote.html" class="node-row shipping-active">
+                <span class="node-id">004_DEG</span>
+                <span class="node-name">CREOSOTE</span>
+                <span class="node-desc">Three-stage analog character processor</span>
+                <span class="status-badge">[AVAILABLE]</span>
+            </a>
+            <a href="cathode.html" class="node-row shipping-active">
+                <span class="node-id">003_VTR</span>
+                <span class="node-name">CATHODE</span>
+                <span class="node-desc">Broadcast Decay & CRT-Burn Engine</span>
+                <span class="status-badge">[AVAILABLE]</span>
+            </a>
+            <a href="baryon.html" class="node-row">
+                <span class="node-id">013_LFE</span>
+                <span class="node-name">BARYON</span>
+                <span class="node-desc">Subharmonic Generator & LFE Processor</span>
                 <span class="status-badge">[DEVELOPMENT]</span>
             </a>
         </div>
