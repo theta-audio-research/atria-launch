@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROGERIAN | THETA Audio Research</title>
+    <title>ROGERIAN DIA | THETA Audio Research</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -98,7 +98,7 @@
         /* --- MAIN CONTENT --- */
         main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
 
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
         .plugin-display { 
             display: block; 
             width: 100%; 
@@ -195,7 +195,7 @@
         .text-bay .parameter-list li { margin-bottom: 8px; }
         .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
 
-        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
+        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
         .diagnostic-lightbox-vault {
             position: fixed;
             inset: 0;
@@ -239,7 +239,7 @@
             color: var(--void);
         }
 
-        /* --- SPECS SCADDOLD --- */
+        /* --- SPECS --- */
         .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
         .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
         
@@ -259,13 +259,18 @@
             margin-top: 100px; 
         }
 
+        @media (max-width: 1100px) {
+            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
+            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
+            .specs-container { grid-template-columns: 1fr; gap: 40px; }
+            nav.nav-terminal { padding: 10px 20px; }
+            .lightbox-canvas-scroller { max-width: 80vw; } 
+        }
+
         @media (max-width: 900px) {
             .header-module-name { display: none; }
             .module-split-row { flex-direction: column; gap: 30px; }
             .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { max-width: 80vw; } 
         }
     </style>
 </head>
@@ -282,7 +287,7 @@
     </a>
 
     <div class="header-module-name">
-        <h2>ROGERIAN</h2>
+        <h2>ROGERIAN DIA</h2>
         <p class="plugin-tagline">The dialogue channel strip</p>
     </div>
 
@@ -293,15 +298,15 @@
 </nav>
 
 <main>
-    <div class="image-container">
-        <!-- Hero placeholder defaults to resonance until full UI is available -->
-        <img src="ROGER_v0507_WHITE_RES.png" alt="ROGERIAN Resonance Suppressor" class="plugin-display">
+    <div class="image-container" id="heroTrigger">
+        <!-- Hero placeholder updated to the Resonance Suppressor module image -->
+        <img src="ROGERIAN_DIA_v0.05.09_NUC_RES.png" alt="ROGERIAN DIA Resonance Suppressor" class="plugin-display">
     </div>
 
     <div class="description-box">
         <p class="description-text"><b>Noise reduction, resonance suppression, equalization, compression and de-click — five stages engineered as one instrument for the spoken voice.</b>
 
-        ROGERIAN finds what's wrong only when it's wrong, and leaves the performance alone. Mono-first. Fully latency-reported. VST3 · AU · AAX · Standalone for macOS, in a signed and notarized installer.</p>
+        ROGERIAN DIA finds what's wrong only when it's wrong, and leaves the performance alone. Mono-first. Fully latency-reported. VST3 · AU · AAX · Standalone for macOS, in a signed and notarized installer.</p>
     </div>
 
     <section class="acquisition-anchor">
@@ -310,14 +315,14 @@
             <p class="purchase-intel">
                 The entire dialogue chain. One plugin. Register your identity below for immediate system deployment parameters and trial authorization frameworks.
             </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" class="lemon-squeezy-button authorize-btn">BUY_ROGERIAN</a>
+            <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" class="authorize-btn">BUY_ROGERIAN_DIA</a>
         </div>
     </section>
 
     <section class="module-deep-dive">
         <h3>THE_OVERVIEW</h3>
         <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN is a dialogue-first channel strip: five cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice. Noise reduction → Resonance suppression → EQ → Compression, with a dedicated De-Click stage for the mouth itself.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN DIA is a dialogue-first channel strip: five cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice. Noise reduction → Resonance suppression → EQ → Compression, with a dedicated De-Click stage for the mouth itself.</p>
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">It replaces the stack of separate plugins an editor reaches for on every line of dialogue — a denoiser, a dynamic resonance tool, a corrective EQ, a leveler, a de-clicker — with one focused signal path. No juggling five windows, five latencies, five vendors, and the interactions between them. One pass, one instrument, designed as a whole.</p>
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">The name is the philosophy. Rogerian (person-centred) therapy is non-judgmental and reflective: it listens first, and it never imposes. That is exactly how this processor treats a signal — it reflects the voice back, cleaner, with no character of its own unless you ask for one.</p>
         </div>
@@ -327,7 +332,7 @@
         <h3>THE_PROBLEM_IT_SOLVES</h3>
         <div class="module-block">
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Spoken-word audio rarely has one problem. A single take can carry hiss and room tone, a ringing room mode, mouth clicks, a tonal imbalance, and uneven level — all at once. Cleaning it conventionally means chaining four or five plugins, each with its own window, its own latency, its own CPU bill, and its own idea of what a voice is — then fighting the interactions between them.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN collapses that chain into one signal path designed specifically for voice: mono by default, transparent until you ask it to work, and honest with your DAW about every sample of latency it uses.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN DIA collapses that chain into one signal path designed specifically for voice: mono by default, transparent until you ask it to work, and honest with your DAW about every sample of latency it uses.</p>
         </div>
     </section>
 
@@ -339,11 +344,11 @@
             <div class="section-header-title">1 · Noise Reduction</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGER_v0507_WHITE_NR.png" alt="ROGERIAN noise reduction module — continuous noise-floor tracking for dialogue" class="module-shot">
+                    <img src="ROGERIAN_DIA_v0.05.09_NUC_NR.png" alt="ROGERIAN DIA noise reduction module" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>The floor, lowered — continuously.</b></p>
-                    <p>A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
+                    <p>A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN DIA's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
                     <ul class="parameter-list" style="margin-top: 15px;">
                         <li>· <b>Dual Engines</b> — Zero-latency multiband path for tracking and picture work. High-resolution spectral tier (MMSE-LSA with speech-presence steering) for surgical dialogue restoration without watery artifacts.</li>
                         <li>· <b>Transparent Routing</b> — The stage is routable in the chain and bit-transparent completely off. Amount and sensitivity controls do exactly what they claim.</li>
@@ -357,7 +362,7 @@
             <div class="section-header-title">2 · Resonance Suppression — the centerpiece</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGER_v0507_WHITE_RES.png" alt="ROGERIAN resonance suppressor — five-band dynamic resonance control with spectral display" class="module-shot">
+                    <img src="ROGERIAN_DIA_v0.05.09_NUC_RES.png" alt="ROGERIAN DIA resonance suppressor" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>Cuts that exist only while the problem does.</b></p>
@@ -378,7 +383,7 @@
             <div class="section-header-title">3 · EQ</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGER_v0507_WHITE_EQ.png" alt="ROGERIAN seven-band analog-matched EQ with NEUTRAL / COOL / SHARP Character curves" class="module-shot">
+                    <img src="ROGERIAN_DIA_v0.05.09_NUC_EQ.png" alt="ROGERIAN DIA EQ module" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>Seven bands. Three characters. Zero latency.</b></p>
@@ -397,7 +402,7 @@
             <div class="section-header-title">4 · DYNAMICS</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGER_v0507_WHITE_DYN.png" alt="ROGERIAN dialogue compressor — transfer curve, gain-reduction history, VOICE and CHARACTER sections" class="module-shot">
+                    <img src="ROGERIAN_DIA_v0.05.09_NUC_COMP.png" alt="ROGERIAN DIA Compressor Module" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>A voice leveler with its color on a separate knob.</b></p>
@@ -417,7 +422,7 @@
             <div class="section-header-title">5 · DE-CLICK</div>
             <div class="module-split-row">
                 <div class="visual-bay">
-                    <img src="ROGER_v0507_WHITE_DC.png" alt="ROGERIAN de-click module — model-based repair of mouth clicks and ticks" class="module-shot">
+                    <img src="ROGERIAN_DIA_v0.05.09_NUC_DECLICK.png" alt="ROGERIAN DIA De-click Module" class="module-shot">
                 </div>
                 <div class="text-bay">
                     <p><b>The mouth, minus the mouth noises.</b></p>
@@ -435,7 +440,7 @@
     <section class="module-deep-dive">
         <h3>DESIGNED_AS_ONE_INSTRUMENT</h3>
         <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Five stages are only a strip if they behave as one plugin — so ROGERIAN is engineered suite-first.</p>
+            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Five stages are only a strip if they behave as one plugin — so ROGERIAN DIA is engineered suite-first.</p>
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>One window, honest depth.</b> The stages live as compact cards with live mini-metering — the EQ card draws its real curve, the compressor card its real gain reduction, the de-click card its catch count. Any card opens into its full panel; the signal path never leaves the window.</p>
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Latency, reconciled.</b> Each stage reports exactly what it uses; the suite reconciles the chain and tells the host one true number. The resonance stage's Zero path and the zero-latency EQ keep the default footprint small enough for picture and tracking.</p>
             <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Transparent at rest.</b> Disabled stages are bit-transparent — verified by null test, not by assumption. A fresh instance passes audio untouched until you ask for work. Per-stage bypass and whole-plugin bypass are both crossfaded and clickless.</p>
@@ -470,6 +475,15 @@
     const vaultCanvas = document.getElementById('vaultCanvas');
     const closeVaultBtn = document.getElementById('closeVaultBtn');
 
+    document.getElementById('heroTrigger').addEventListener('click', function() {
+        const targetImage = this.querySelector('.plugin-display');
+        if(!targetImage || !targetImage.getAttribute('src')) return;
+        
+        vaultCanvas.src = targetImage.src;
+        vaultOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+    });
+
     document.querySelectorAll('.visual-bay').forEach(bay => {
         const targetImage = bay.querySelector('.module-shot');
         if(!targetImage || !targetImage.getAttribute('src')) return;
@@ -501,7 +515,7 @@
 
 <footer>
     <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #009 // ROGERIAN_v2.0_RELEASE_SPEC</span>
+    <span>LAB NOTE #009 // ROGERIAN_DIA_v2.0_RELEASE_SPEC</span>
 </footer>
 
 </body>
