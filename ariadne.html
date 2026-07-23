@@ -10,6 +10,7 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <script src="./image-slot.js"></script>
+<style>#ariadne-hero::part(frame){background:#000}#ariadne-hero::part(ring){display:none}</style>
 </helmet>
 <div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
@@ -21,9 +22,9 @@
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
   </a>
-  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
-    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">ARIADNE</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Spatial Delay Instrument</p>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">ARIADNE</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Immersive Delay Instrument</p>
   </div>
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
@@ -32,12 +33,13 @@
 </nav>
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
-  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <image-slot id="ariadne-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ARIADNE Spatial Delay Instrument Interface"></image-slot>
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px">
+    <image-slot id="ariadne-hero" src="assets/ariadne/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:901/786;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ARIADNE Spatial Delay Instrument Interface"></image-slot>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">ARIADNE is a delay built like a space, not a knob on an echo.</b><br><br>A stereo delay field with spectral tone-shaping, complex modulation motion, and a destructive character signal generation section. Developed specifically as the structural delay counterpart to our reverb engine, THESEUS, this environment charts reflections into spatial narratives.</p>
+    <p style="font-weight:300;font-size:22px;line-height:1.5;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0;font-style:italic">A thread through the labyrinth.</p>
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">An immersive delay instrument. Up to 9.1.6 — sixteen channels, seven independent delay voices, one thread through the room.</b><br><br>In the myth, Ariadne gave Theseus a thread so he could find his way back out of the labyrinth. That's what a delay is: a line you pay out into the dark, and follow back. ARIADNE pays out sixteen of them — nine speaker zones, each assignable to one of six group voices, every voice a complete delay with its own time, feedback, character and spectral shaping.</p>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
@@ -52,28 +54,28 @@
     <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">SYSTEM_ARCHITECTURE // CURRENT_BUILD</h3>
 
     <div style="margin-bottom:60px">
-      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">STEREO DELAY FIELD</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">Tempo-syncable delay architecture tracking up to multi-second parameters. Feedback pathways are safety-limited deep within the DSP engine, allowing tail regeneration loops to run aggressively hot without forcing signal cascading failures.</p>
+      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">SEVEN VOICES. ONE INSTRUMENT.</h4>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">GLOBAL plus six group layers, each a complete delay engine with its own filters, character stage and modulation. Click a speaker to edit its group; alt-click to move a zone in or out. SPLIT partitions the room in one press — fronts, overheads, sides, rears, LFE — and APPLY ALL collapses it back.</p>
     </div>
     <div style="margin-bottom:60px">
-      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">MOTION ENGINE</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">A multi-target LFO modulation network. Instantly map parameters to delay timings, wet amplitude tiers, structural filtration matrices, or dedicated feedback EQ blocks to shift movement profiles from subtle drift to severe pitch modulation.</p>
+      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">THE DELAY MATRIX</h4>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">Sixteen channel rows against a time grid. Each tile sits at that channel's real echo position, brightening with feedback decay and live level, coloured by its group. A sweep pulse rides every input hit. You can read the whole room's rhythm at a glance — and flip the rocker to FIELD for a close-up of any single voice.</p>
     </div>
     <div style="margin-bottom:60px">
-      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">SPATIAL &amp; WIDTH</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">Dedicated space configurations tracking stereo offset definitions and system crossfeed networks. The channel path orientation is specifically built around a listener-centric topology map for seamless tracking within modern immersive formats.</p>
+      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">CHARACTER, NOT JUST REPEATS</h4>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">COLOR moves the whole tone law from dark to open. DAMAGE drives an asymmetric saturation stage with harmonic grit that gets nastier at the top of the knob. DARKEN pulls high end out of the feedback path so tails lose light with every pass. SPACE spreads and cross-feeds each pair. Tails don't just repeat — they age.</p>
     </div>
     <div style="margin-bottom:60px">
-      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">SPECTRAL TONE-SHAPING</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">Features integrated color tilt, high/low filtering boundaries, and a tunable resonant band nestled directly inside the feedback loop. Repeats actively mutate and evolve over time rather than simply dissipating into conventional degradation arrays.</p>
-    </div>
-    <div style="margin-bottom:60px">
-      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">DARKEN &amp; DAMAGE</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em"><b style="color:#DCCDBF;font-weight:700">Darken</b> continuously draws late-stage reflection tails into dense high-frequency shadows as decay routines execute. Conversely, <b style="color:#DCCDBF;font-weight:700">Damage</b> drives a hard saturation stage that spans cleanly from subtle tube warmth up to destructive clipped formats at extreme parameter thresholds.</p>
+      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">SPECTRAL SECTION</h4>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">Low cut, high cut, resonance, tilt, a sweepable resonant band in the feedback loop, and DARKEN — all per voice. Point MOTION at the filter, the feedback EQ, the delay time, the wet level or the damage, and the movement is audible and visible at once.</p>
     </div>
     <div style="margin-bottom:60px">
       <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">GATE &amp; CHOP</h4>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">A rhythmic gating component driven by discrete MIDI trigger and retrigger modes. Ideal for shaping gated-reverb delay topologies, synchronized chop metrics, and transient stutters locked directly onto specific host session lines.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">MIDI trigger, hold and latch, an audio gate, and a tempo-locked step chop. Play the delay from your keyboard, or let the source open the door.</p>
+    </div>
+    <div style="margin-bottom:60px">
+      <h4 style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">BUILT LIKE A CONTROL ROOM</h4>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;letter-spacing:0.01em">A near-black panel, machined dials with bezel graduations, annunciator tiles, and a mimic strip across the top. The whole UI scales as one piece, aspect-locked. It reads like something with a serial number on the back.</p>
     </div>
   </section>
 
@@ -90,10 +92,13 @@
     <div>
       <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TARGETED_SPECIFICATIONS</h3>
       <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform Matrix</b>Universal macOS [Apple Silicon + Intel Architecture Support]</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Processing Core</b>Real-time data-driven spectral visualization readout layer.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Security Framework</b>Seamless serial-key asset authentication tier. Zero iLok constraints.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Engineering Group</b>THETA Audio Research // Laboratory Target 2026</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · Audio Unit · AAX · Standalone</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS — universal (Apple Silicon + Intel)</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Channels</b>Mono to 9.1.6 (up to 16 channels)</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voices</b>GLOBAL + 6 independent group layers</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Zones</b>Front · Wide · Side · Rear · Top Front · Top Mid · Top Rear · Centre · LFE</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Delay</b>1 ms – 4000 ms, free or host-synced (1/64 – 2/1), tap tempo</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Signing</b>Apple notarized · AAX PACE-signed for Pro Tools</li>
       </ul>
     </div>
   </section>
@@ -104,8 +109,49 @@
   <span>LAB NOTE #007 // ARIADNE_IN_DEVELOPMENT</span>
 </footer>
 
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box;opacity:{{ overlayOpacity }};pointer-events:{{ overlayPointer }};transition:opacity 0.2s ease">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:90vw;max-height:85vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this._esc);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.zoomed !== prevState.zoomed && this._zoomImgEl) {
+      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
+    }
+  }
+
+  _mk(src, w, r) {
+    return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
+  }
+
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      overlayOpacity: z ? 1 : 0,
+      overlayPointer: z ? 'auto' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/ariadne/hero.png', 2000, 901 / 786),
+    };
+  }
+}
+</script>
 </body>
 </html>
