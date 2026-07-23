@@ -1,429 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THESEUS | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-weight: 700;
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-weight: 400;
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700;
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT --- */
-        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
-        }
-        .plugin-display:hover { transform: scale(1.01); }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
-        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-
-        /* ACQUISITION ANCHOR */
-        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
-        .authorize-btn { 
-            display: block; 
-            text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 12px; 
-            letter-spacing: 6px; 
-            transition: 0.4s; 
-        }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
-
-        /* --- FEATURE GRID --- */
-        .module-deep-dive { max-width: 950px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .card { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--charcoal); padding: 34px 30px 38px; transition: border-color 0.4s ease, background 0.4s ease; }
-        .card:hover { border-color: var(--accent); background: rgba(220, 205, 191, 0.01); }
-        .card .rule { width: 30px; height: 2px; background: var(--accent); margin-bottom: 22px; transition: width 0.4s ease; }
-        .card:hover .rule { width: 54px; }
-        .card .ck { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); opacity: 0.85; margin-bottom: 12px; font-weight: 700; }
-        .card h3 { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; color: var(--structure); }
-        .card p { font-weight: 300; font-size: 13.5px; color: var(--secondary); line-height: 1.6; margin: 0; }
-
-        .library-note { font-weight: 300; font-size: 13px; color: var(--charcoal); letter-spacing: 1px; border-left: 1px solid var(--charcoal); padding-left: 20px; font-style: italic; }
-
-        /* --- ROADMAP --- */
-        .road { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .road li { font-weight: 300; font-size: 14px; color: var(--secondary); padding: 20px; border: 1px solid var(--charcoal); display: flex; flex-direction: column; gap: 6px; }
-        .road li b { font-weight: 700; color: var(--structure); letter-spacing: 1px; text-transform: uppercase; font-size: 14px; }
-        .road li p { font-size: 13px; color: var(--secondary); margin: 0; }
-        .road .tag { align-self: flex-start; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); border: 1px solid var(--charcoal); padding: 4px 8px; opacity: 0.8; margin-bottom: 8px; }
-
-        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
-        .diagnostic-lightbox-vault {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            display: none;
-            overflow: auto; 
-            padding: 40px;
-            box-sizing: border-box;
-        }
-        .diagnostic-lightbox-vault.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox-canvas-scroller {
-            max-width: 40vw; 
-            max-height: 80vh;
-            border: 1px solid var(--charcoal);
-            display: block;
-            margin: auto;
-            background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-        .lightbox-close-telemetry {
-            position: fixed;
-            top: 24px; right: 40px;
-            color: var(--accent);
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: 700;
-            background: var(--void);
-            border: 1px solid var(--charcoal);
-            padding: 10px 20px;
-            cursor: pointer;
-            z-index: 10000;
-            transition: 0.3s;
-        }
-        .lightbox-close-telemetry:hover {
-            background: var(--accent);
-            color: var(--void);
-        }
-
-        /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
-        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
-            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            .road { grid-template-columns: 1fr; }
-            nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { max-width: 80vw; } 
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
-    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
-    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
-</div>
-
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>THESEUS</h2>
-        <p class="plugin-tagline">Spatial Reverb Instrument</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">THESEUS</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Spatial Reverb Instrument</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <div class="image-container" id="heroTrigger">
-        <!-- Target updated to the v0328 MAIN visual payload -->
-        <img src="THESEUS_MAIN_260720.png" alt="THESEUS Spatial Reverb Core Interface" class="plugin-display">
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <image-slot id="theseus-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="THESEUS Spatial Reverb Core Interface"></image-slot>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">From a tight room to the void — every speaker its own space.</b><br><br>THESEUS is a spatial reverb instrument built on a research-grade feedback-delay-network engine. Six characters — ROOM, CHAMBER, PLATE, HALL, CATHEDRAL and VOID — each a genuinely different building with its own acoustic fingerprint, not one algorithm wearing six names.<br><br>In immersive layouts — all the way up to 9.1.6 — the field itself becomes the instrument: separate the speakers into up to six groups and give each its own complete reverb, click any speaker on the map to sculpt the room it lives in, or split the whole field into natural zones in one move. Mono and stereo run the same engine.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">We'd rather get the spaces right. THESEUS is in active development with no firm release date yet. Register your identity below for deployment alerts upon release.</p>
+      <a href="mailto:hello@thetaaudioresearch.com?subject=THESEUS%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">NOTIFY_ME_AT_LAUNCH</a>
     </div>
+  </section>
 
-    <div class="description-box">
-        <p class="description-text"><b>From a tight room to the void — every speaker its own space.</b> 
-
-        THESEUS is a spatial reverb instrument built on a research-grade feedback-delay-network engine. Six characters — ROOM, CHAMBER, PLATE, HALL, CATHEDRAL and VOID — each a genuinely different building with its own acoustic fingerprint, not one algorithm wearing six names.
-        
-        In immersive layouts — all the way up to 9.1.6 — the field itself becomes the instrument: separate the speakers into up to six groups and give each its own complete reverb, click any speaker on the map to sculpt the room it lives in, or split the whole field into natural zones in one move. Mono and stereo run the same engine.</p>
+  <section style="max-width:950px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">SYSTEM_ARCHITECTURE // ENGINE_ATTRIBUTES</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px">
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">The Engine</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Six rooms, honestly different</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">Every character carries its own delay fingerprint — an intimate room that answers instantly, a fast dense plate, stone cathedrals, and the VOID: an enormous space whose decay runs far past the dial. Warm, dense and alive, engineered against the metallic ring that haunts digital reverb.</p></div>
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">Independent controls</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Size &amp; Decay, decoupled</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">How big the space feels and how long it rings are separate moves. A tiny room with an endless tail, a vast hall that stops short — the two never interfere, at any setting.</p></div>
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">Spatial by design</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Click a speaker. Sculpt its room.</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">Up to 9.1.6, separable into six groups — fronts, heights, sides, rears, the LFE — each a complete reverb with its own size, decay, character, tone, gate and EQ. Bright, scooped fronts over a dark rear well is a few clicks on the map.</p></div>
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">Motion</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Random motion, the classic way</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">Eight independent random-walk modulators keep the tail alive without pitch wobble — the school of the great studio machines — with depth that scales itself so even minute-long tails never drift into chorus.</p></div>
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">Tone</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Shape the air</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">Frequency-dependent decay — lows stay tight while highs die the way air makes them — plus input shaping and an interactive output EQ you play by dragging the curve itself. All of it per group.</p></div>
+      <div style="background:rgba(255,255,255,0.01);border:1px solid #54575C;padding:34px 30px 38px"><div style="width:30px;height:2px;background:#DCCDBF;margin-bottom:22px"></div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#DCCDBF;opacity:0.85;margin-bottom:12px;font-weight:700">Reveal Gate</div><h3 style="font-size:18px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;font-weight:500;color:#B0B2B7">Gate the tail</h3><p style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.6;margin:0">Threshold, attack, hold and release over the reverb tail, MIDI-retriggerable, with an independent gate lane for every group — tight gated verbs, rhythmic ambience, sculpted silence.</p></div>
     </div>
+    <p style="font-weight:300;font-size:13px;color:#54575C;letter-spacing:1px;border-left:1px solid #54575C;padding-left:20px;font-style:italic">Plus a factory library of signature spaces — BLACK HOLE, MANNA MACHINE, I REMEMBER WHEN and more — and full-state saves of your own: every parameter, every group, exactly as you dialed it.</p>
+  </section>
 
-    <section class="acquisition-anchor">
-        <span class="lab-header">SYSTEM_STATUS</span>
-        <div class="purchase-box">
-            <p class="purchase-intel">
-                We'd rather get the spaces right. THESEUS is in active development with no firm release date yet. Register your identity below for deployment alerts upon release.
-            </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=THESEUS%20updates" class="authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
-        </div>
-    </section>
+  <section style="max-width:950px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">ON_THE_BENCH // DEVELOPMENT_TARGETS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <li style="font-weight:300;font-size:14px;color:#81848A;padding:20px;border:1px solid #54575C;display:flex;flex-direction:column;gap:6px"><span style="align-self:flex-start;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#DCCDBF;border:1px solid #54575C;padding:4px 8px;opacity:0.8;margin-bottom:8px">Range</span><b style="font-weight:700;color:#B0B2B7;letter-spacing:1px;text-transform:uppercase;font-size:14px">FREEZE and beyond</b><p style="font-size:13px;color:#81848A;margin:0">Decay stretched past the dial into infinite sustain, and pre-delay reaching toward half a second — for spaces that stop behaving like rooms at all.</p></li>
+      <li style="font-weight:300;font-size:14px;color:#81848A;padding:20px;border:1px solid #54575C;display:flex;flex-direction:column;gap:6px"><span style="align-self:flex-start;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#DCCDBF;border:1px solid #54575C;padding:4px 8px;opacity:0.8;margin-bottom:8px">Early field</span><b style="font-weight:700;color:#B0B2B7;letter-spacing:1px;text-transform:uppercase;font-size:14px">Early reflections</b><p style="font-size:13px;color:#81848A;margin:0">A dedicated early-field module — slap, walls and true placement — built on the engine's instant-answer foundation.</p></li>
+      <li style="font-weight:300;font-size:14px;color:#81848A;padding:20px;border:1px solid #54575C;display:flex;flex-direction:column;gap:6px"><span style="align-self:flex-start;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#DCCDBF;border:1px solid #54575C;padding:4px 8px;opacity:0.8;margin-bottom:8px">Low end</span><b style="font-weight:700;color:#B0B2B7;letter-spacing:1px;text-transform:uppercase;font-size:14px">Motion for the sub field</b><p style="font-size:13px;color:#81848A;margin:0">A dedicated LFE lane with its own slow movement, so the lowest octave of an immersive mix breathes on its own terms.</p></li>
+      <li style="font-weight:300;font-size:14px;color:#81848A;padding:20px;border:1px solid #54575C;display:flex;flex-direction:column;gap:6px"><span style="align-self:flex-start;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#DCCDBF;border:1px solid #54575C;padding:4px 8px;opacity:0.8;margin-bottom:8px">Library</span><b style="font-weight:700;color:#B0B2B7;letter-spacing:1px;text-transform:uppercase;font-size:14px">A growing preset collection</b><p style="font-size:13px;color:#81848A;margin:0">More signature spaces, built and tuned on the finished engine — rooms, halls, plates, and the unreal.</p></li>
+      <li style="font-weight:300;font-size:14px;color:#81848A;padding:20px;border:1px solid #54575C;display:flex;flex-direction:column;gap:6px"><span style="align-self:flex-start;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#DCCDBF;border:1px solid #54575C;padding:4px 8px;opacity:0.8;margin-bottom:8px">AAX</span><b style="font-weight:700;color:#B0B2B7;letter-spacing:1px;text-transform:uppercase;font-size:14px">Pro Tools</b><p style="font-size:13px;color:#81848A;margin:0">Signed and certified for the post and mix rooms where an immersive reverb belongs. We'll be there soon enough.</p></li>
+    </ul>
+  </section>
 
-    <section class="module-deep-dive">
-        <h3>SYSTEM_ARCHITECTURE // ENGINE_ATTRIBUTES</h3>
-        <div class="grid">
-            
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">The Engine</div>
-                <h3>Six rooms, honestly different</h3>
-                <p>Every character carries its own delay fingerprint — an intimate room that answers instantly, a fast dense plate, stone cathedrals, and the VOID: an enormous space whose decay runs far past the dial. Warm, dense and alive, engineered against the metallic ring that haunts digital reverb.</p>
-            </article>
-
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">Independent controls</div>
-                <h3>Size & Decay, decoupled</h3>
-                <p>How big the space feels and how long it rings are separate moves. A tiny room with an endless tail, a vast hall that stops short — the two never interfere, at any setting.</p>
-            </article>
-
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">Spatial by design</div>
-                <h3>Click a speaker. Sculpt its room.</h3>
-                <p>Up to 9.1.6, separable into six groups — fronts, heights, sides, rears, the LFE — each a complete reverb with its own size, decay, character, tone, gate and EQ. Bright, scooped fronts over a dark rear well is a few clicks on the map.</p>
-            </article>
-
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">Motion</div>
-                <h3>Random motion, the classic way</h3>
-                <p>Eight independent random-walk modulators keep the tail alive without pitch wobble — the school of the great studio machines — with depth that scales itself so even minute-long tails never drift into chorus.</p>
-            </article>
-
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">Tone</div>
-                <h3>Shape the air</h3>
-                <p>Frequency-dependent decay — lows stay tight while highs die the way air makes them — plus input shaping and an interactive output EQ you play by dragging the curve itself. All of it per group.</p>
-            </article>
-
-            <article class="card">
-                <div class="rule"></div>
-                <div class="ck">Reveal Gate</div>
-                <h3>Gate the tail</h3>
-                <p>Threshold, attack, hold and release over the reverb tail, MIDI-retriggerable, with an independent gate lane for every group — tight gated verbs, rhythmic ambience, sculpted silence.</p>
-            </article>
-
-        </div>
-        <p class="library-note">Plus a factory library of signature spaces — BLACK HOLE, MANNA MACHINE, I REMEMBER WHEN and more — and full-state saves of your own: every parameter, every group, exactly as you dialed it.</p>
-    </section>
-
-    <section class="module-deep-dive">
-        <h3>ON_THE_BENCH // DEVELOPMENT_TARGETS</h3>
-        <ul class="road">
-            <li>
-                <span class="tag">Range</span>
-                <b>FREEZE and beyond</b>
-                <p>Decay stretched past the dial into infinite sustain, and pre-delay reaching toward half a second — for spaces that stop behaving like rooms at all.</p>
-            </li>
-            <li>
-                <span class="tag">Early field</span>
-                <b>Early reflections</b>
-                <p>A dedicated early-field module — slap, walls and true placement — built on the engine's instant-answer foundation.</p>
-            </li>
-            <li>
-                <span class="tag">Low end</span>
-                <b>Motion for the sub field</b>
-                <p>A dedicated LFE lane with its own slow movement, so the lowest octave of an immersive mix breathes on its own terms.</p>
-            </li>
-            <li>
-                <span class="tag">Library</span>
-                <b>A growing preset collection</b>
-                <p>More signature spaces, built and tuned on the finished engine — rooms, halls, plates, and the unreal.</p>
-            </li>
-            <li>
-                <span class="tag">AAX</span>
-                <b>Pro Tools</b>
-                <p>Signed and certified for the post and mix rooms where an immersive reverb belongs. We'll be there soon enough.</p>
-            </li>
-        </ul>
-    </section>
-
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>SPATIAL_ARCHITECTURE</h3>
-            <ul class="spec-list">
-                <li><b>Immersive Routing</b> Operates seamlessly from Mono mapping entirely up to 9.1.6 Dolby configurations.</li>
-                <li><b>Discrete Channel Nodes</b> Group speakers independently into Fronts, Heights, Sides, Rears, and LFE nodes.</li>
-                <li><b>Algorithm Engine</b> FDN (Feedback Delay Network) specifically engineered against metallic digital ringing.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TECHNICAL_TARGETS</h3>
-            <ul class="spec-list">
-                <li><b>Formats</b> VST3, AU, AAX, Standalone</li>
-                <li><b>Deployment</b> macOS [Universal Apple Silicon + Intel Architecture]</li>
-                <li><b>Authentication</b> Direct serial-key asset authentication. No local iLok dependencies.</li>
-                <li><b>Developer</b> THETA Audio Research // Laboratory Target 2026</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">SPATIAL_ARCHITECTURE</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Immersive Routing</b>Operates seamlessly from Mono mapping entirely up to 9.1.6 Dolby configurations.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Discrete Channel Nodes</b>Group speakers independently into Fronts, Heights, Sides, Rears, and LFE nodes.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Algorithm Engine</b>FDN (Feedback Delay Network) specifically engineered against metallic digital ringing.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_TARGETS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3, AU, AAX, Standalone</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Deployment</b>macOS [Universal Apple Silicon + Intel Architecture]</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Authentication</b>Direct serial-key asset authentication. No local iLok dependencies.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Developer</b>THETA Audio Research // Laboratory Target 2026</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<script>
-    // --- LIGHTBOX CONTROL SCRIPTS ---
-    const vaultOverlay = document.getElementById('diagnosticVault');
-    const vaultCanvas = document.getElementById('vaultCanvas');
-    const closeVaultBtn = document.getElementById('closeVaultBtn');
-
-    // Trigger the lightbox from the main hero image container
-    document.getElementById('heroTrigger').addEventListener('click', function() {
-        const targetImage = this.querySelector('.plugin-display');
-        if(!targetImage || !targetImage.getAttribute('src')) return;
-        
-        vaultCanvas.src = targetImage.src;
-        vaultOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; 
-    });
-
-    function escapeDiagnosticVault() {
-        vaultOverlay.classList.remove('active');
-        vaultCanvas.src = ''; 
-        document.body.style.overflow = ''; 
-    }
-
-    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
-    vaultOverlay.addEventListener('click', (e) => {
-        if (e.target === vaultOverlay) escapeDiagnosticVault();
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
-            escapeDiagnosticVault();
-        }
-    });
-</script>
-
-<footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #005 // THESEUS_ALPHA_STABLE</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #005 // THESEUS_ALPHA_STABLE</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>

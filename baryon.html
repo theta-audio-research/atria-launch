@@ -1,817 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BARYON | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-weight: 700;
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-weight: 400;
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700;
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT --- */
-        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
-        
-        /* --- DYNAMIC TRANS-SPECTRUM STAGE --- */
-        .subharmonic-stage-container {
-            width: 100%;
-            height: 380px;
-            background: #050505;
-            border: 1px solid var(--charcoal);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .subharmonic-stage-container canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .canvas-telemetry-label {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 9px;
-            letter-spacing: 3px;
-            color: var(--charcoal);
-            text-transform: uppercase;
-            pointer-events: none;
-        }
-        .canvas-interactive-prompt {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 8px;
-            letter-spacing: 2px;
-            color: #c8a86b; 
-            text-transform: uppercase;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
-        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-
-        /* PURCHASE MODULE */
-        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
-        .authorize-btn { 
-            display: block; 
-            text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 12px; 
-            letter-spacing: 6px; 
-            transition: 0.4s; 
-        }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
-
-        /* --- FOCUS RACK DEEP DIVE --- */
-        .module-deep-dive { max-width: 1100px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        
-        .module-block { margin-bottom: 80px; }
-        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; text-align: center;}
-
-        /* --- SIDE-BY-SIDE MATRIX BOUNDARIES --- */
-        .module-split-row {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .module-split-row .visual-bay {
-            flex: 0 0 240px;
-            width: 240px;
-            border: 1px solid var(--charcoal); 
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.01);
-            position: relative;
-            transition: border-color 0.3s;
-        }
-        .module-split-row .visual-bay:hover {
-            border-color: var(--accent);
-        }
-        .module-split-row .visual-bay .module-shot { 
-            display: block;
-            width: 100%; 
-            height: auto; 
-            background: #0a0a0a;
-        }
-
-        .module-split-row .visual-bay::after {
-            content: "CLICK_TO_EXPLORE";
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(0, 0, 0, 0.75);
-            color: var(--accent);
-            font-size: 8px;
-            letter-spacing: 2px;
-            text-align: center;
-            padding: 6px 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .module-split-row .visual-bay:hover::after {
-            opacity: 1;
-        }
-
-        .text-bay {
-            flex: 1;
-            max-width: 600px;
-        }
-        .text-bay.centered-text p { text-align: center; }
-        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
-        .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
-        .text-bay .parameter-list li { margin-bottom: 8px; }
-        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
-
-        /* --- THEME HANDOFF FORMATTING --- */
-        .handoff-content { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; }
-        .handoff-content h4 { font-size: 12px; letter-spacing: 4px; color: var(--structure); text-transform: uppercase; margin: 40px 0 15px 0; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px; }
-        .handoff-content ul { padding-left: 20px; margin-bottom: 20px; }
-        .handoff-content li { margin-bottom: 10px; }
-        .handoff-content code { background: #050505; color: #A6DCA6; padding: 2px 6px; border: 1px solid var(--charcoal); font-family: monospace; font-size: 12px; }
-        
-        .code-block {
-            background: #050505;
-            border: 1px solid var(--charcoal);
-            padding: 20px;
-            font-family: monospace;
-            font-size: 12px;
-            color: #A6DCA6;
-            overflow-x: auto;
-            margin: 20px 0;
-            line-height: 1.6;
-        }
-        
-        .theme-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            font-size: 12px;
-            color: var(--secondary);
-        }
-        .theme-table th, .theme-table td {
-            border: 1px solid var(--charcoal);
-            padding: 15px;
-            text-align: left;
-        }
-        .theme-table th {
-            color: var(--accent);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .theme-table td code {
-            color: #A6DCA6;
-            background: #050505;
-            padding: 2px 6px;
-            border: 1px solid var(--charcoal);
-        }
-
-        /* --- DIAGNOSTIC LIGHTBOX VAULT (60% REDUCTION FRAMEWORK) --- */
-        .diagnostic-lightbox-vault {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            display: none;
-            overflow: auto; 
-            padding: 40px;
-            box-sizing: border-box;
-        }
-        .diagnostic-lightbox-vault.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox-canvas-scroller {
-            max-width: 40vw; 
-            max-height: 80vh;
-            border: 1px solid var(--charcoal);
-            display: block;
-            margin: auto;
-            background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-        .lightbox-close-telemetry {
-            position: fixed;
-            top: 24px; right: 40px;
-            color: var(--accent);
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: 700;
-            background: var(--void);
-            border: 1px solid var(--charcoal);
-            padding: 10px 20px;
-            cursor: pointer;
-            z-index: 10000;
-            transition: 0.3s;
-        }
-        .lightbox-close-telemetry:hover {
-            background: var(--accent);
-            color: var(--void);
-        }
-
-        /* --- SPECS GRID --- */
-        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
-        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-            .module-split-row { flex-direction: column; gap: 30px; }
-            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { max-width: 80vw; } 
-            .text-bay.centered-text p { text-align: left; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
-    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
-    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
-</div>
-
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>BARYON</h2>
-        <p class="plugin-tagline">Subharmonic Generator — THETA Audio Research</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">BARYON</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Subharmonic Generator — THETA Audio Research</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <!-- DYNAMIC WAVE GENERATOR CONTAINER -->
-    <div class="image-container">
-        <div class="subharmonic-stage-container" id="baryonWaveStage">
-            <span class="canvas-telemetry-label">SYSTEM_CORE_OSCILLATOR // SPECTRUM_20_250_HZ</span>
-            <span class="canvas-interactive-prompt">CLICK_OR_HOVER_TO_TRACE_SUB_PULSES</span>
-            <canvas id="waveCanvas"></canvas>
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <div style="width:100%;height:380px;background:#050505;border:1px solid #54575C;position:relative;overflow:hidden">
+      <span style="position:absolute;top:20px;left:20px;font-size:9px;letter-spacing:3px;color:#54575C;text-transform:uppercase">SYSTEM_CORE_OSCILLATOR // SPECTRUM_20_250_HZ</span>
+      <span style="position:absolute;bottom:20px;right:20px;font-size:8px;letter-spacing:2px;color:#c8a86b;text-transform:uppercase;opacity:0.6">CLICK_OR_HOVER_TO_TRACE_SUB_PULSES</span>
+      <canvas ref="{{ canvasRef }}" onClick="{{ triggerPulse }}" onMouseMove="{{ onMove }}" style="display:block;width:100%;height:100%;cursor:pointer"></canvas>
+    </div>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b><br><br>BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis is undergoing low-frequency calibration. Operational parameters include zero-dive architecture featuring portable user library files (.baryon).</p>
+      <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">FOCUS_RACK_MODULES</h3>
+
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">SUB — The Generator</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-sub-3band" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Sub 3-Band Module"></image-slot></div>
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0;text-align:center">The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0 auto;padding:0;list-style:none;text-align:left">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Chassis Architecture</b> — Each band gets its own color-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
+          </ul>
         </div>
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-sub-dfc" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Sub DFC Module"></image-slot></div>
+      </div>
     </div>
 
-    <div class="description-box">
-        <p class="description-text"><b>Add mass. Baryon generates, shapes, and animates the sub-bass your source only hints at.</b>
-
-        BARYON listens to the bass you have and generates the octave you can feel — three independent bands of pitch-tracked subharmonics, shaped by an analog-modeled saturation stage, a dbx-style compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. It is a complete low-end instrument in one window, built on DSP that is measured, unit-tested, and torture-certified.</p>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">LFO — Motion for the Low End</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&amp;H. Rate runs free or SYNC to host tempo.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, staying beat-locked through loops and relocates.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO for widening motion no static tool can produce.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Display Mapping</b> — Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine's published phase.</li>
+          </ul>
+        </div>
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-lfo" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON LFO Module"></image-slot></div>
+      </div>
     </div>
 
-    <section class="acquisition-anchor">
-        <span class="lab-header">DEVELOPMENT_STATUS</span>
-        <div class="purchase-box">
-            <p class="purchase-intel">
-                Chassis is undergoing low-frequency calibration. Operational parameters include zero-dive architecture featuring portable user library files (.baryon).
-            </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=BARYON%20updates" class="authorize-btn">NOTIFY_ME_AT_LAUNCH</a>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">CHARACTER — Punch, Edge, and Colour</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-character" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Character Module"></image-slot></div>
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, with switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- FOCUS RACK INDEPENDENT CARDS -->
-    <section class="module-deep-dive">
-        <h3>FOCUS_RACK_MODULES</h3>
-        
-        <!-- MODULE 1: SUB (3-COLUMN LAYOUT) -->
-        <div class="module-block">
-            <div class="section-header-title">SUB — The Generator</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_SUB_3BAND.png" class="module-shot" alt="BARYON Sub 3-Band Module">
-                </div>
-                <div class="text-bay centered-text">
-                    <p>The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
-                    <ul class="parameter-list" style="text-align: left; margin: 0 auto;">
-                        <li>· <b>DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
-                        <li>· <b>SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
-                        <li>· <b>HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
-                        <li>· <b>Chassis Architecture</b> — Each band gets its own color-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
-                    </ul>
-                </div>
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_SUB_DFC.png" class="module-shot" alt="BARYON Sub DFC Module">
-                </div>
-            </div>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">DYNAMICS — THETA ANANKE COMPRESSION</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">ANANKE is the uncompromised compression engine extracted from the ROGERIAN Suite and configured as a focused, single-purpose processor.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TRANSFER Display</b> — Draws the actual gain law on a 10 dB grid: threshold marker, the OverEasy soft-knee region, and the ∞:1 hard-limit curve.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms.</li>
+          </ul>
         </div>
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-dynamics" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Dynamics Module"></image-slot></div>
+      </div>
+    </div>
 
-        <!-- MODULE 2: LFO (2-COLUMN) -->
-        <div class="module-block">
-            <div class="section-header-title">LFO — Motion for the Low End</div>
-            <div class="module-split-row">
-                <div class="text-bay">
-                    <p>A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&H. Rate runs free or SYNC to host tempo.</li>
-                        <li>· <b>Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, staying beat-locked through loops and relocates.</li>
-                        <li>· <b>PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO for widening motion no static tool can produce.</li>
-                        <li>· <b>Display Mapping</b> — Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine's published phase.</li>
-                    </ul>
-                </div>
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_LFO.png" class="module-shot" alt="BARYON LFO Module">
-                </div>
-            </div>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">EQ — The Editing Surface</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-eq" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON EQ Module"></image-slot></div>
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two independent processors — <b style="color:#DCCDBF;font-weight:700">EQ IN</b> (before the generator) and <b style="color:#DCCDBF;font-weight:700">EQ OUT</b> (after) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically.</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <!-- MODULE 3: CHARACTER (2-COLUMN) -->
-        <div class="module-block">
-            <div class="section-header-title">CHARACTER — Punch, Edge, and Colour</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_CHARCATER.png" class="module-shot" alt="BARYON Character Module">
-                </div>
-                <div class="text-bay">
-                    <p>Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
-                        <li>· <b>Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, with switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
-                        <li>· <b>Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
-                    </ul>
-                </div>
-            </div>
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">OUTPUT — Meter, Gate, Ceiling</div>
+      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
+        <div style="flex:1;max-width:600px">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL, master DRY/WET, and OUT TRIM.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dual-Gate</b> — A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
+          </ul>
         </div>
+        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-output" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Output Module"></image-slot></div>
+      </div>
+    </div>
+  </section>
 
-        <!-- MODULE 4: DYNAMICS (2-COLUMN) -->
-        <div class="module-block">
-            <div class="section-header-title">DYNAMICS — THETA ANANKE COMPRESSION</div>
-            <div class="module-split-row">
-                <div class="text-bay">
-                    <p>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Suite and configured as a focused, single-purpose processor.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>TRANSFER Display</b> — Draws the actual gain law on a 10 dB grid: threshold marker, the OverEasy soft-knee region, and the ∞:1 hard-limit curve.</li>
-                        <li>· <b>GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
-                        <li>· <b>Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms.</li>
-                    </ul>
-                </div>
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_DYNAMICS.png" class="module-shot" alt="BARYON Dynamics Module">
-                </div>
-            </div>
-        </div>
-
-        <!-- MODULE 5: EQ (2-COLUMN) -->
-        <div class="module-block">
-            <div class="section-header-title">EQ — The Editing Surface</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_EQ.png" class="module-shot" alt="BARYON EQ Module">
-                </div>
-                <div class="text-bay">
-                    <p>Two independent processors — <b>EQ IN</b> (before the generator) and <b>EQ OUT</b> (after) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
-                        <li>· <b>Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
-                        <li>· <b>Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- MODULE 6: OUTPUT (2-COLUMN) -->
-        <div class="module-block">
-            <div class="section-header-title">OUTPUT — Meter, Gate, Ceiling</div>
-            <div class="module-split-row">
-                <div class="text-bay">
-                    <p>The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL, master DRY/WET, and OUT TRIM.</li>
-                        <li>· <b>Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode.</li>
-                        <li>· <b>Dual-Gate</b> — A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
-                        <li>· <b>Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
-                    </ul>
-                </div>
-                <div class="visual-bay">
-                    <img src="BARYON_v0.0.65_OUTPUT_STAGE.png" class="module-shot" alt="BARYON Output Module">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW THEME FRAMEWORK DOCUMENTATION -->
-    <section class="module-deep-dive theme-handoff">
-        <h3>LAB_NOTE // UI_FRAMEWORK</h3>
-        <div class="handoff-content">
-            <p><b>HANDOFF — Port the DARK + NUCLEAR UI themes to a ROGERIAN-family plugin</b></p>
-            <p><b>From:</b> BARYON (where both themes are shipped and approved)<br>
-            <b>To:</b> any THETA plugin on the ROGERIAN visual language (ROGERIAN, ANANKE, PNEUMA, ATRIA, …)<br>
-            <b>Reference implementation:</b> <code>/Users/steveneal/Documents/_PLUGINS/zJUCE_SOURCES/BARYON/baryon_src_v0.0.64/Source/Common/Theme/Theme.h</code> and <code>Source/Plugin/PluginEditor.cpp</code>.<br>
-            <b>Status of the source material:</b> NUCLEAR shipped in BARYON v0.0.63; DARK is the canonical THETA "Void" palette. This document is self-contained — you do not need the BARYON session that produced it.</p>
-
-            <h4>0. Scope rule (read first)</h4>
-            <p>Work <b>only</b> in the target plugin's own source tree, launched from that plugin's own Claude Code home folder. Never edit BARYON or any other sibling from your session. BARYON is the <i>reference</i>, not a dependency — port by copying values and patterns, not files with BARYON-specific content.</p>
-
-            <h4>1. What you are building</h4>
-            <p>Three sanctioned skins on <b>one token set</b>, switched at runtime by a state-named pill in the header, persisted per-user (not per-preset — a theme is a preference, not a sound):</p>
-            <ul>
-                <li><b>LIGHT</b> — the ANANKE/PNEUMA "White & Gold" neumorphic surface (the existing default).</li>
-                <li><b>DARK</b> — the THETA "Void": near-black surfaces, silver text, bronze-lifted gold. Border tokens are <b>not</b> gold.</li>
-                <li><b>NUCLEAR</b> — the Kelvin-era power-station control room: institutional sage-green panels, <b>ivory</b> knob caps/plates that read as instrument dial faces, stencil green-black ink, aged-brass accent, pilot-lamp amber/red. A <b>light-family</b> skin.</li>
-            </ul>
-
-            <h4>2. Architecture (the whole trick)</h4>
-            <p><b>1. Mutable palette tokens.</b> Every colour the plugin paints must route through one namespace of C++17 <code>inline</code> variables (BARYON: <code>sa::col</code>). The declared initializers ARE the light theme, so a build that never calls the theme code is bit-identical to the pre-theming UI.</p>
-            <div class="code-block">namespace sa { namespace col {
-    inline juce::Colour win  { 0xffc6cbd0 };   // etc. — mutable, not constexpr
-}}</div>
-            <p><b>Precondition check:</b> if the target plugin has <i>any</i> hardcoded <code>juce::Colour(0xff…)</code> in paint code, tokenize those first — the theme swap only reaches what routes through tokens.</p>
-
-            <p><b>2. Theme namespace</b> with a <code>Skin</code> enum, one <code>apply&lt;Name&gt;()</code> per skin that re-values every token, an <code>apply(Skin)</code> dispatcher, and file persistence:</p>
-            <div class="code-block">namespace theme {
-    enum class Skin { light, dark, nuclear };
-    inline Skin skin = Skin::light;
-    inline bool dark = false;   // kept: paint sites key dark-only effects off this
-    inline void applyLight()   { /* restore declared defaults verbatim */ }
-    inline void applyDark()    { /* Void palette */ }
-    inline void applyNuclear() { /* Kelvin palette */ }
-    inline void apply (Skin s);
-    // persistence: ~/Library/THETA/&lt;PLUGIN&gt;/ui.settings, line "theme=light|dark|nuclear"
-    inline juce::File settingsFile();   // userApplicationDataDirectory/THETA/&lt;PLUGIN&gt;/ui.settings
-    inline void loadSaved();            // parse "nuclear" BEFORE "dark" (contains() matching)
-    inline void save();
-}</div>
-            <p>Use the <b>target plugin's own name</b> in the settings path. Note the macOS gotcha: JUCE's <code>userApplicationDataDirectory</code> resolves to <code>~/Library/</code>, <i>not</i> <code>~/Library/Application Support/…</code>.</p>
-
-            <p><b>3. Header pill</b>, state-named like a bypass chip, cycling LIGHT → DARK → NUCLEAR → LIGHT on click. "NUCLEAR" (7 chars) fits a 58 px pill in the mono face at 10 px. Draw the current skin's name, not an icon.</p>
-            <p><b>4. The swap itself</b> (BARYON <code>toggleTheme()</code> — copy this shape):</p>
-            <div class="code-block">sa::theme::apply (next skin in the cycle);
-sa::theme::save();
-lnf->refreshTheme();            // re-seed any cached ColourIds in the LookAndFeel
-sendLookAndFeelChange();        // broadcast to the visible hierarchy
-for (auto& m : offstageModules) // anything NOT in the hierarchy right now
-    m->sendLookAndFeelChange(); //  (BARYON: 5 unfocused modules live outside
-repaint();                      //   the viewport) — reach them directly!</div>
-            <p>If the target plugin keeps any components constructed-but-unparented (module stages, cached pages), they will <b>miss</b> the broadcast — walk them explicitly, or they come back stale when re-shown.</p>
-
-            <p><b>5. Load before construct.</b> Call <code>theme::loadSaved()</code> in the editor constructor <b>before</b> creating the LookAndFeel and content — their constructors cache ColourIds from the token values at construction time.</p>
-
-            <h4>3. The palettes (verbatim from BARYON, ARGB hex)</h4>
-            <p>Token semantics use ROGERIAN names; if the target's tokens differ, map by <i>role</i>, not name. Depth law all skins obey: <b>body &lt; card &lt; plate/cap</b> in surface lightness.</p>
-
-            <table class="theme-table">
-                <thead>
-                    <tr>
-                        <th>Token (role)</th>
-                        <th>LIGHT</th>
-                        <th>DARK ("Void")</th>
-                        <th>NUCLEAR (Kelvin)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td><code>win</code> — window/body/field</td><td><code>ffc6cbd0</code></td><td><code>ff06080c</code></td><td><code>ff9aab93</code> sage panel</td></tr>
-                    <tr><td><code>modOn</code> — raised card (lit)</td><td><code>ffd0d5da</code></td><td><code>ff0c0c10</code></td><td><code>ffa7b8a0</code></td></tr>
-                    <tr><td><code>modOff</code> — recessed/off pills</td><td><code>ffbdc2c7</code></td><td><code>ff080808</code></td><td><code>ff8e9f87</code></td></tr>
-                    <tr><td><code>bdrOn</code> / <code>bdr</code> — card/plate border</td><td><code>ffa9afb6</code></td><td><code>ff242230</code> (NOT gold)</td><td><code>ff75866d</code></td></tr>
-                    <tr><td><code>cream</code> — text on lit accent fills</td><td><code>fff3ead6</code></td><td><code>fff3ead6</code></td><td><code>fff3ead6</code></td></tr>
-                    <tr><td><code>sunken</code> — recessed wells</td><td><code>ffc6cbd0</code></td><td><code>ff06080c</code></td><td><code>ff9aab93</code></td></tr>
-                    <tr><td><code>divider</code> — wells/grid/frames</td><td><code>ffaeb4ba</code></td><td><code>ff111420</code></td><td><code>ff81927a</code></td></tr>
-                    <tr><td><code>gold</code> — primary accent</td><td><code>ffa37c2c</code></td><td><code>ffc8a86b</code></td><td><code>ff8f6f26</code> aged brass</td></tr>
-                    <tr><td><code>goldDim</code> — arcs, version string</td><td><code>ffba9a59</code></td><td><code>ff7a6840</code></td><td><code>ffa68b48</code></td></tr>
-                    <tr><td><code>goldMut</code> — readable accent sub-text</td><td><code>ff8c7036</code></td><td><code>ff9e8b65</code></td><td><code>ff6f5c28</code></td></tr>
-                    <tr><td><code>ink</code> — title/brand</td><td><code>ff1a1e24</code></td><td><code>ffffffff</code></td><td><code>ff1c231a</code> stencil</td></tr>
-                    <tr><td><code>label</code> — knob/module names</td><td><code>ff262b31</code></td><td><code>ffb0b0b0</code></td><td><code>ff272f24</code></td></tr>
-                    <tr><td><code>labelDim</code> — secondary text</td><td><code>ff4a4f57</code></td><td><code>ff707070</code></td><td><code>ff444e3e</code></td></tr>
-                    <tr><td><code>arcTrack</code> — empty knob arc</td><td><code>ffafb5bc</code></td><td><code>ff1a1c20</code></td><td><code>ff7f9078</code></td></tr>
-                    <tr><td><code>cap</code> — knob body / raised plate</td><td><code>ffd6dbe0</code></td><td><code>ff0a0c10</code></td><td><code>ffe4dfc8</code> <b>ivory dial</b></td></tr>
-                    <tr><td><code>capHi</code> — dome sheen stop</td><td><code>ffdee3e8</code></td><td><code>ff1a1c20</code></td><td><code>ffeee9d7</code></td></tr>
-                    <tr><td><code>capBdr</code> — cap/plate hairline rim</td><td><code>ffaab1b8</code></td><td><code>ff1e2028</code></td><td><code>ff6f7d65</code> dark bezel</td></tr>
-                    <tr><td><code>amber</code> — GR / dynamic / SOLO</td><td><code>ffdb8f2a</code></td><td><code>ffe09a34</code></td><td><code>ffd18a26</code> pilot lamp</td></tr>
-                    <tr><td><code>band1/2/3</code> — per-band accent trio</td><td><code>ffd85a30</code>/<code>ff1d9e75</code>/<code>ff7f77dd</code></td><td>same as light</td><td><code>ffc9502c</code>/<code>ff0e7d58</code>/<code>ff6a61cc</code></td></tr>
-                    <tr><td><code>shadowD</code> — down-right cast shadow</td><td><code>450d2750</code></td><td><code>99000000</code></td><td><code>451d2a1a</code> green-black</td></tr>
-                    <tr><td><code>shadowL</code> — up-left sheen</td><td><code>8cffffff</code></td><td><code>0affffff</code> whisper</td><td><code>8cffffff</code></td></tr>
-                    <tr><td><code>engraveLit</code> — wordmark lit wall</td><td><code>9effffff</code></td><td><code>17ffffff</code></td><td><code>9effffff</code></td></tr>
-                    <tr><td><code>engraveShad</code> — wordmark shadow wall</td><td><code>5c0d2750</code></td><td><code>99000000</code></td><td><code>5c1d2a1a</code></td></tr>
-                    <tr><td><code>engraveFace</code> — wordmark recessed face</td><td><code>ff868c95</code></td><td><code>ff4b515c</code></td><td><code>ff64735c</code></td></tr>
-                </tbody>
-            </table>
-            
-            <p><b>Plugin-specific axis tokens:</b> BARYON adds <code>sigAdd</code> (the colour of <i>generated</i> signal: gold on LIGHT, red <code>ffe03c46</code> on DARK, pilot-lamp red <code>ffbf3a2c</code> on NUCLEAR — "injected energy reads as heat"). Do <b>not</b> copy <code>sigAdd</code> blindly: identify the target plugin's own semantic axis (e.g. a reverb's wet-energy colour, a compressor's GR colour) and give it the same treatment — brand accent in LIGHT, heat-red in DARK, pilot-lamp red in NUCLEAR — or omit if the plugin has no such axis.</p>
-
-            <h4>4. Gotchas that cost time in BARYON (don't re-earn these)</h4>
-            <ol>
-                <li><b>Engraved wordmark must re-light per theme.</b> An incised masthead drawn with fixed light/shadow walls looks embossed (or vanishes) on dark surfaces — hence the <code>engrave*</code> trio being tokens at all.</li>
-                <li><b>NUCLEAR is a light-family skin: <code>theme::dark</code> stays <code>false</code>.</b> Paint sites use <code>theme::dark</code> for dark-only effects (glow strengths, deeper gradients, heavier shadows). Keeping the bool alongside the enum means every existing <code>dark ?</code> branch does the right thing for NUCLEAR with zero edits. Check the target for such branches before assuming.</li>
-                <li><b>Persistence parse order:</b> check <code>contains("theme=nuclear")</code> <i>before</i> <code>contains("theme=dark")</code> — and old single-word settings files still parse.</li>
-                <li><b>The pill is UI state, not a parameter.</b> Don't put the skin in APVTS; it must not save into presets or session state.</li>
-                <li><b>Ivory caps are the NUCLEAR signature.</b> The palette's lightest tone goes to <code>cap</code>/<code>capHi</code> so plates and knob bodies read as cream instrument dials in black-ish bezels (<code>capBdr</code> dark green-grey) on the sage panel. If you "fix" cap back toward the panel colour, the whole theme collapses into porridge.</li>
-                <li><b>Band/accent trio on green:</b> mid-saturation accents vanish on sage. BARYON deepened all three (values above). If the target has its own categorical accents, deepen them similarly and check against <code>ff9aab93</code>.</li>
-                <li><b>Alpha discipline (house rule):</b> text solid, alpha only for vector art/shadows.</li>
-                <li><b>Verify all three transitions live</b> (L→D, D→N, N→L) — a token missed in one <code>apply*()</code> shows up as a stale colour only on <i>some</i> cycle orders.</li>
-            </ol>
-
-            <h4>5. Implementation checklist</h4>
-            <ul>
-                <li>[ ] Confirm every paint call routes through the token namespace; tokenize stragglers first.</li>
-                <li>[ ] Tokens → <code>inline</code> mutable; declared defaults = current light look (bit-identical when untouched).</li>
-                <li>[ ] Add <code>Skin</code> enum + <code>applyDark()</code> + <code>applyNuclear()</code> (values from §3) + <code>apply(Skin)</code>.</li>
-                <li>[ ] Persistence with the <b>target plugin's</b> <code>THETA/&lt;PLUGIN&gt;/ui.settings</code>; load in editor ctor <b>before</b> LNF/content construction.</li>
-                <li>[ ] Header pill: state-named, cycles three skins, drawn from <code>modOff</code>/<code>bdrOn</code>/<code>labelDim</code> tokens.</li>
-                <li>[ ] <code>toggleTheme()</code>: apply → save → LNF refresh → broadcast → <b>walk off-hierarchy components</b> → repaint.</li>
-                <li>[ ] Re-seed any widget ColourIds set imperatively (combo boxes, buttons) in a <code>lookAndFeelChanged()</code>/<code>applyWidgetTheme()</code> hook.</li>
-                <li>[ ] Map the plugin's semantic axis token (§3 note) for all three skins.</li>
-                <li>[ ] Eyeball every module/view in all three skins; screenshot for the changelog.</li>
-                <li>[ ] Follow the target's own house rules for version bump + changelog (this is a UI-only change).</li>
-                <li>[ ] Honest status in the changelog: colours chosen ≠ colours seen — list what hasn't had human eyes on it.</li>
-            </ul>
-
-            <h4>6. Acceptance</h4>
-            <p>Done when: the pill cycles LIGHT/DARK/NUCLEAR live with no stale widgets (including views not currently on screen), the choice survives editor close/reopen and DAW restart, presets neither store nor disturb it, and a build with the feature merely present (never toggled) renders pixel-identical to the pre-port plugin in LIGHT.</p>
-        </div>
-    </section>
-
-    <!-- CORE VERIFICATION SUITE -->
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>MEASURED_NOT_MARKETED</h3>
-            <ul class="spec-list">
-                <li><b>Build Verification Suite</b> 77 assertions run automatically on every single build, including the eleven-test generator torture suite.</li>
-                <li><b>Generator Attack</b> Onset from silence locks in 13.6 ms to half level; silence in results in literal zero output.</li>
-                <li><b>Octave Stability</b> Wrong-octave content on a pure tone measures > 200 dB down; no octave flip on harmonic-rich basses.</li>
-                <li><b>Gate Ballistics</b> Opens in 1.2 ms, RANGE floor accurate to 0.05 dB, absolute zero threshold flutter.</li>
-                <li><b>Modulation Smoothness</b> LFO square chops parameter maps maintain a maximum per-sample gain step of 0.007 — mathematically click-free.</li>
-                <li><b>Anti-Phase Parameter</b> 180° stereo phase calculation features channel gains anti-phase with gL + gR pinned at 1.000.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TECHNICAL_SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Type Matrix</b> 3-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate, and look-ahead limiter</li>
-                <li><b>Signal Flow</b> IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
-                <li><b>Latency Engine</b> Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
-                <li><b>Formats</b> VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
-                <li><b>Build Version</b> v0.0.65 / THEME_FRAMEWORK_VERIFIED</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">MEASURED_NOT_MARKETED</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Verification Suite</b>77 assertions run automatically on every single build, including the eleven-test generator torture suite.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Generator Attack</b>Onset from silence locks in 13.6 ms to half level; silence results in literal zero output.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Octave Stability</b>Wrong-octave content on a pure tone measures &gt; 200 dB down; no octave flip on harmonic-rich basses.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Gate Ballistics</b>Opens in 1.2 ms, RANGE floor accurate to 0.05 dB, absolute zero threshold flutter.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Modulation Smoothness</b>LFO square chops parameter maps maintain a maximum per-sample gain step of 0.007 — mathematically click-free.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Anti-Phase Parameter</b>180° stereo phase calculation features channel gains anti-phase with gL + gR pinned at 1.000.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type Matrix</b>3-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate, and look-ahead limiter</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Signal Flow</b>IN TRIM → Input Dynamic EQ → 3-Band Generator (+LFO) → Mix → Output Dynamic EQ → Compressor → Saturation (up to 4× oversampled) → DC Block → Gate → Look-ahead Limiter → OUT TRIM</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency Engine</b>Fully reported to the host (limiter look-ahead + oversampling), automatically compensated.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · AU · Standalone [macOS Apple Silicon native compilation]</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Version</b>v0.0.65 / THEME_FRAMEWORK_VERIFIED</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<!-- REAL-TIME HIGH-DRAMA SUBHARMONIC RED-PEAK OSCILLATOR SCRIPT -->
-<script>
-    const canvas = document.getElementById('waveCanvas');
-    const ctx = canvas.getContext('2d');
-    const container = document.getElementById('baryonWaveStage');
-
-    let width = canvas.width = container.offsetWidth;
-    let height = canvas.height = container.offsetHeight;
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = container.offsetWidth;
-        height = canvas.height = container.offsetHeight;
-    });
-
-    let phase = 0;
-    let pulseProgress = 0;
-    let isTriggered = false;
-
-    function triggerSubPulse() {
-        isTriggered = true;
-        pulseProgress = 1.0; 
-    }
-
-    container.addEventListener('click', triggerSubPulse);
-    container.addEventListener('mousemove', () => {
-        if(Math.random() < 0.25) triggerSubPulse(); 
-    });
-
-    function loop() {
-        ctx.fillStyle = '#050505';
-        ctx.fillRect(0, 0, width, height);
-
-        phase += 0.08; 
-
-        if (isTriggered) {
-            pulseProgress *= 0.95; 
-            if (pulseProgress < 0.005) {
-                pulseProgress = 0;
-                isTriggered = false;
-            }
-        }
-
-        ctx.beginPath();
-        ctx.lineWidth = 2.0;
-        ctx.strokeStyle = '#B0B2B7'; 
-
-        for (let x = 0; x < width; x++) {
-            let baseFrequency = 0.02;
-            let baseAmplitude = 15;
-            
-            let subFrequency = 0.005; 
-            let subAmplitude = pulseProgress * 140; 
-
-            let y = (height / 2) + 
-                    Math.sin(x * baseFrequency + phase) * baseAmplitude + 
-                    Math.cos(x * subFrequency + phase * 0.4) * subAmplitude;
-
-            if (isTriggered && pulseProgress > 0.3) {
-                y += (Math.random() - 0.5) * (pulseProgress * 15);
-                
-                if (y < 40) y = 40 + Math.sin(x) * 4;
-                if (y > height - 40) y = height - 40 - Math.sin(x) * 4;
-            }
-
-            if (x === 0) {
-                ctx.moveTo(x, y);
-            } else {
-                ctx.lineTo(x, y);
-            }
-
-            let peakThreshold = 65; 
-            if (Math.abs(y - (height / 2)) > peakThreshold && pulseProgress > 0.1) {
-                ctx.save();
-                ctx.beginPath();
-                ctx.arc(x, y, pulseProgress * 4.5, 0, Math.PI * 2);
-                ctx.fillStyle = '#FF2A2A'; 
-                ctx.shadowColor = '#FF0000';
-                ctx.shadowBlur = 15;
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        if (pulseProgress > 0.4) {
-            ctx.strokeStyle = '#FF3333'; 
-            ctx.shadowColor = 'rgba(255, 0, 0, 0.3)';
-            ctx.shadowBlur = 25;
-        } else if (pulseProgress > 0.1) {
-            ctx.strokeStyle = '#DCCDBF'; 
-            ctx.shadowBlur = 5;
-        } else {
-            ctx.shadowBlur = 0;
-        }
-
-        ctx.stroke();
-        requestAnimationFrame(loop);
-    }
-
-    loop();
-</script>
-
-<script>
-    // --- LIGHTBOX CONTROL SCRIPTS ---
-    const vaultOverlay = document.getElementById('diagnosticVault');
-    const vaultCanvas = document.getElementById('vaultCanvas');
-    const closeVaultBtn = document.getElementById('closeVaultBtn');
-
-    document.querySelectorAll('.visual-bay').forEach(bay => {
-        const targetImage = bay.querySelector('.module-shot');
-        if(!targetImage || !targetImage.getAttribute('src')) return;
-
-        bay.addEventListener('click', () => {
-            vaultCanvas.src = targetImage.src;
-            vaultOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        });
-    });
-
-    function escapeDiagnosticVault() {
-        vaultOverlay.classList.remove('active');
-        vaultCanvas.src = ''; 
-        document.body.style.overflow = ''; 
-    }
-
-    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
-    vaultOverlay.addEventListener('click', (e) => {
-        if (e.target === vaultOverlay) escapeDiagnosticVault();
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
-            escapeDiagnosticVault();
-        }
-    });
-</script>
-
-<footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #021 // BARYON_v0.0.65_THEME_REFERENCE</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #021 // BARYON_v0.0.65_THEME_REFERENCE</span>
 </footer>
 
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { pulse: 0, triggered: false };
+  canvasRef = React.createRef();
+
+  componentDidMount() {
+    this.phase = 0;
+    this.pulseProgress = 0;
+    this.triggered = false;
+    const canvas = this.canvasRef.current;
+    const container = canvas.parentElement;
+    const resize = () => { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; };
+    resize();
+    window.addEventListener('resize', resize);
+    this._resize = resize;
+    const ctx = canvas.getContext('2d');
+    const loop = () => {
+      const width = canvas.width, height = canvas.height;
+      ctx.fillStyle = '#050505';
+      ctx.fillRect(0, 0, width, height);
+      this.phase += 0.08;
+      if (this.triggered) {
+        this.pulseProgress *= 0.95;
+        if (this.pulseProgress < 0.005) { this.pulseProgress = 0; this.triggered = false; }
+      }
+      ctx.beginPath();
+      ctx.lineWidth = 2.0;
+      ctx.strokeStyle = '#B0B2B7';
+      for (let x = 0; x < width; x++) {
+        const baseFrequency = 0.02, baseAmplitude = 15;
+        const subFrequency = 0.005, subAmplitude = this.pulseProgress * 140;
+        let y = (height / 2) + Math.sin(x * baseFrequency + this.phase) * baseAmplitude + Math.cos(x * subFrequency + this.phase * 0.4) * subAmplitude;
+        if (this.triggered && this.pulseProgress > 0.3) {
+          y += (Math.random() - 0.5) * (this.pulseProgress * 15);
+          if (y < 40) y = 40 + Math.sin(x) * 4;
+          if (y > height - 40) y = height - 40 - Math.sin(x) * 4;
+        }
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        const peakThreshold = 65;
+        if (Math.abs(y - height / 2) > peakThreshold && this.pulseProgress > 0.1) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(x, y, this.pulseProgress * 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = '#FF2A2A';
+          ctx.shadowColor = '#FF0000';
+          ctx.shadowBlur = 15;
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+      if (this.pulseProgress > 0.4) { ctx.strokeStyle = '#FF3333'; ctx.shadowColor = 'rgba(255,0,0,0.3)'; ctx.shadowBlur = 25; }
+      else if (this.pulseProgress > 0.1) { ctx.strokeStyle = '#DCCDBF'; ctx.shadowBlur = 5; }
+      else { ctx.shadowBlur = 0; }
+      ctx.stroke();
+      this._raf = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._resize) window.removeEventListener('resize', this._resize);
+  }
+
+  trigger() { this.triggered = true; this.pulseProgress = 1.0; }
+
+  renderVals() {
+    return {
+      canvasRef: this.canvasRef,
+      triggerPulse: () => this.trigger(),
+      onMove: () => { if (Math.random() < 0.25) this.trigger(); }
+    };
+  }
+}
+
+</script>
 </body>
 </html>

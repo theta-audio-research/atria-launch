@@ -1,291 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARECIBO | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-family: 'Montserrat';
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700; 
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT (Compressed Spacing) --- */
-        main { 
-            padding: 20px 60px 60px 60px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
-        }
-        .plugin-display:hover { transform: scale(1.01); }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
-        .description-text b { color: var(--structure); font-weight: 700; }
-
-        /* PURCHASE MODULE */
-        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; letter-spacing: 2px; opacity: 0.5; margin-bottom: 30px; text-transform: uppercase; }
-        .authorize-btn { 
-            display: block; 
-            text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 12px; 
-            letter-spacing: 6px; 
-            transition: 0.4s; 
-        }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
-
-        /* --- VISUALS GALLERY --- */
-        .visuals-gallery { margin-bottom: 60px; }
-        .gallery-item { margin-bottom: 40px; border: 1px solid var(--charcoal); background: rgba(220, 205, 191, 0.01); padding: 20px; }
-        .gallery-label { font-size: 10px; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; display: block; opacity: 0.6; }
-        .gallery-img { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
-        .gallery-img:hover { transform: scale(1.02); }
-
-        /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
-        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0; }
-        .module-block b { color: var(--accent); }
-
-        /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
-        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
-            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>ARECIBO</h2>
-        <p class="plugin-tagline">Cinematic Signal-Sculpting Instrument</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">ARECIBO</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Cinematic Signal-Sculpting Instrument</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <div class="image-container">
-        <span class="gallery-label">Primary Chassis // Initial State</span>
-        <img src="arecibo_15.10_main.png" alt="ARECIBO Interface Closed" class="plugin-display">
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Initial State</span>
+    <image-slot id="arecibo-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ARECIBO Interface Closed"></image-slot>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-size:15px;line-height:1.9;color:#81848A"><b style="color:#B0B2B7;font-weight:700">ARECIBO is a cinematic signal-sculpting instrument built around a layered Source Array.</b><br><br>Built around a motion-focused transformation chain, a pre-QUORRA surgical EQ stage, the QUORRA modulation engine, and a final Wall Stage for transient shaping and limiting. Instead of behaving like a generic rack of separate effects, ARECIBO is designed as one continuous transmission system.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_AUTHORIZATION</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;letter-spacing:2px;opacity:0.5;margin-bottom:30px;text-transform:uppercase">Authorization includes VST3/AU formats, macOS compatibility, and XML research presets.</p>
+      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="lemon-squeezy-button" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">INITIALIZE_ACQUISITION // $79.99</a>
     </div>
+  </section>
 
-    <div class="description-box">
-        <p class="description-text"><b>ARECIBO is a cinematic signal-sculpting instrument built around a layered Source Array.</b> 
-
-        Built around a motion-focused transformation chain, a pre-QUORRA surgical EQ stage, the QUORRA modulation engine, and a final Wall Stage for transient shaping and limiting. Instead of behaving like a generic rack of separate effects, ARECIBO is designed as one continuous transmission system.</p>
+  <section style="margin-bottom:60px">
+    <div style="margin-bottom:40px;border:1px solid #54575C;background:rgba(220,205,191,0.01);padding:20px">
+      <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Engine Intel // Source Array Layer</span>
+      <image-slot id="arecibo-source" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ARECIBO Source Array Detail"></image-slot>
     </div>
+  </section>
 
-    <section class="acquisition-anchor">
-        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
-        <div class="purchase-box">
-            <p class="purchase-intel">
-                Authorization includes VST3/AU formats, macOS compatibility, 
-                and XML research presets.
-            </p>
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $79.99</a>
-        </div>
-    </section>
+  <section style="max-width:900px;margin:0 auto 100px auto">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">SYSTEM_ARCHITECTURE</h3>
+    <div style="margin-bottom:60px">
+      <h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">THE SYSTEM</h4>
+      <p style="font-size:14px;color:#81848A;line-height:1.8;margin:0">SOURCE ARRAY is the front end of the instrument — the stage where the source behavior is established. DRIFT introduces temporal instability and motion, while BREATHE and FIELD push the signal toward evolving motion and spatial life.</p>
+    </div>
+    <div style="margin-bottom:60px">
+      <h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">QUORRA</h4>
+      <p style="font-size:14px;color:#81848A;line-height:1.8;margin:0">QUORRA is the defining transformation stage in ARECIBO. It sits after Output Surgery and acts as the last major character engine before limiting. It is developed around strongest shuffle, doppler-like motion, and node-focused resonance behavior.</p>
+    </div>
+    <div style="margin-bottom:60px">
+      <h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">OUTPUT SURGERY</h4>
+      <p style="font-size:14px;color:#81848A;line-height:1.8;margin:0">OUTPUT SURGERY is the pre-QUORRA shaping section. It features a full 8-band EQ, including HP, LS, Bell 1–4, HS, and LP, so the signal can be frequency-shaped before it is pushed into deeper modulation.</p>
+    </div>
+    <div>
+      <h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">WALL STAGE</h4>
+      <p style="font-size:14px;color:#81848A;line-height:1.8;margin:0">WALL STAGE is the final output control system. It combines a small transient design section with final limiter controls: Attack, Sustain, Input, and Ceiling, defining the hard boundary before output.</p>
+    </div>
+  </section>
 
-    <section class="visuals-gallery">
-        <div class="gallery-item">
-            <span class="gallery-label">Engine Intel // Source Array Layer</span>
-            <img src="arecibo_source.png" alt="ARECIBO Source Array Detail" class="gallery-img">
-        </div>
-    </section>
-
-    <section class="module-deep-dive">
-        <h3>SYSTEM_ARCHITECTURE</h3>
-        
-        <div class="module-block">
-            <h4>THE SYSTEM</h4>
-            <p>SOURCE ARRAY is the front end of the instrument — the stage where the source behavior is established. DRIFT introduces temporal instability and motion, while BREATHE and FIELD push the signal toward evolving motion and spatial life.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>QUORRA</h4>
-            <p>QUORRA is the defining transformation stage in ARECIBO. It sits after Output Surgery and acts as the last major character engine before limiting. It is developed around strongest shuffle, doppler-like motion, and node-focused resonance behavior.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>OUTPUT SURGERY</h4>
-            <p>OUTPUT SURGERY is the pre-QUORRA shaping section. It features a full 8-band EQ, including HP, LS, Bell 1–4, HS, and LP, so the signal can be frequency-shaped before it is pushed into deeper modulation.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>WALL STAGE</h4>
-            <p>WALL STAGE is the final output control system. It combines a small transient design section with final limiter controls: Attack, Sustain, Input, and Ceiling, defining the hard boundary before output.</p>
-        </div>
-    </section>
-
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>CORE_SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Signal Flow</b> Source Array → THETA → DRIFT → FIELD → QUORRA → Wall Stage</li>
-                <li><b>Output Surgery</b> 8-band EQ [HP / LS / Bell 1–4 / HS / LP]</li>
-                <li><b>QUORRA Engine</b> Amount, Warp Rate, Warp Depth, Sweep, Node</li>
-                <li><b>Wall Stage</b> Attack, Sustain, Input, Ceiling [Limiter Boundary]</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TELEMETRY</h3>
-            <ul class="spec-list">
-                <li><b>Architecture</b> macOS [AU / VST3] // 64-bit</li>
-                <li><b>UI System</b> THETA Void [Flat Rendering / Vector Styling]</li>
-                <li><b>Data Location</b> XML presets stored in ~/Library/Audio/Presets/THETA/ARECIBO</li>
-                <li><b>Aesthetic</b> Scientific HUD Console // Dark Research Styling</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">CORE_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Signal Flow</b>Source Array → THETA → DRIFT → FIELD → QUORRA → Wall Stage</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Output Surgery</b>8-band EQ [HP / LS / Bell 1–4 / HS / LP]</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">QUORRA Engine</b>Amount, Warp Rate, Warp Depth, Sweep, Node</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Wall Stage</b>Attack, Sustain, Input, Ceiling [Limiter Boundary]</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TELEMETRY</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Architecture</b>macOS [AU / VST3] // 64-bit</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">UI System</b>THETA Void [Flat Rendering / Vector Styling]</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Data Location</b>XML presets stored in ~/Library/Audio/Presets/THETA/ARECIBO</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Aesthetic</b>Scientific HUD Console // Dark Research Styling</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-
-<footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #004 // TERMINAL_VERIFIED</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #004 // TERMINAL_VERIFIED</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>

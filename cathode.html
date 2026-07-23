@@ -1,547 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATHODE | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-weight: 700;
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-weight: 400;
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700;
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT --- */
-        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
-        }
-        .plugin-display:hover { transform: scale(1.01); }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
-        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-
-        /* PURCHASE MODULE */
-        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
-        .authorize-btn { 
-            display: block; 
-            text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 12px; 
-            letter-spacing: 6px; 
-            transition: 0.4s; 
-        }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        
-        .module-block { margin-bottom: 80px; }
-        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
-
-        /* --- SIDE-BY-SIDE GRID SPLIT --- */
-        .module-split-row {
-            display: flex;
-            gap: 50px;
-            align-items: flex-start;
-        }
-
-        .module-split-row .visual-bay {
-            flex: 0 0 250px;
-            width: 250px;
-            border: 1px solid var(--charcoal); 
-            cursor: pointer;
-            background: var(--void);
-            position: relative;
-            transition: border-color 0.3s;
-        }
-        .module-split-row .visual-bay:hover {
-            border-color: var(--accent);
-        }
-        .module-split-row .visual-bay .module-shot { 
-            display: block;
-            width: 100%; 
-            height: auto; 
-        }
-
-        /* --- MICROSCOPIC HARDWARE OVERLAY TELEMETRY INDICATOR --- */
-        .module-split-row .visual-bay::after {
-            content: "CLICK_TO_EXPLORE";
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(0, 0, 0, 0.75);
-            color: var(--accent);
-            font-size: 8px;
-            letter-spacing: 2px;
-            text-align: center;
-            padding: 6px 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .module-split-row .visual-bay:hover::after {
-            opacity: 1;
-        }
-
-        .module-split-row .text-bay {
-            flex: 1;
-        }
-        .module-split-row .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
-        .module-split-row .text-bay p b { color: var(--structure); font-weight: 700; }
-        .module-split-row .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
-        .module-split-row .text-bay .parameter-list li { margin-bottom: 8px; }
-        .module-split-row .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
-
-        /* --- DIAGNOSTIC LIGHTBOX VAULT OVERLAY STYLE --- */
-        .diagnostic-lightbox-vault {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            display: none;
-            overflow: auto; /* Activates natural browser bidirectional scroll pools */
-            padding: 60px;
-            box-sizing: border-box;
-        }
-        .diagnostic-lightbox-vault.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox-canvas-scroller {
-            max-width: none;
-            max-height: none;
-            /* Injects your exact metric: 100% of frame parent + 65% explosion */
-            width: 165%; 
-            height: auto;
-            border: 1px solid var(--charcoal);
-            display: block;
-            margin: auto;
-        }
-        .lightbox-close-telemetry {
-            position: fixed;
-            top: 24px; right: 60px;
-            color: var(--accent);
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: 700;
-            background: var(--void);
-            border: 1px solid var(--charcoal);
-            padding: 10px 20px;
-            cursor: pointer;
-            z-index: 10000;
-            transition: 0.3s;
-        }
-        .lightbox-close-telemetry:hover {
-            background: var(--accent);
-            color: var(--void);
-        }
-
-        /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
-        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-            .module-split-row { flex-direction: column; gap: 30px; }
-            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { width: 200%; } /* Extra scaling allocation on mobile layouts */
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
-    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
-    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
-</div>
-
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>CATHODE</h2>
-        <p class="plugin-tagline">Broadcast decay & CRT-burn character processor</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">CATHODE</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Broadcast decay &amp; CRT-burn character processor</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <div class="image-container">
-        <img src="CATHODE_v16.72_FULL.png" alt="CATHODE User Interface" class="plugin-display">
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <image-slot id="cathode-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="CATHODE User Interface"></image-slot>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">Run anything through a signal chain that's falling apart on purpose.</b><br><br>CATHODE is seven stages of analog-to-digital rot — worn tape, drifting transport, a panicking receiver, RF interference, phosphor burn, converter damage — with a full modulation-and-transient toolkit bolted to the end so you can make the decay move. Subtle enough to age a vocal, violent enough to liquefy a drum loop.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_AUTHORIZATION</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Authorization includes VST3, AU, and AAX formats. Full-plugin configurations plus granular independent stage preset mapping.</p>
+      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">INITIALIZE_ACQUISITION // $129.00</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_IDEA</h3>
+    <div style="margin-bottom:80px">
+      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Most "lo-fi" plugins give you one flavor of broken. CATHODE gives you the whole broadcast path, stage by stage, the way a signal actually degrades on its way from a tape machine to a CRT to a cheap converter. Each module models a different failure, and because they're chained, the damage compounds — dropouts feed into interference, interference feeds into bitcrushing, and the LFO TOOLS section can sweep, wobble, and re-shape whatever comes out.</p>
+      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Every module is true bypass-by-crossfade (the DSP always runs; bypass is a 5 ms wet/dry fade, so toggling never clicks), and every module has its own MIX so you can dial the exact amount of ruin.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;margin-top:25px"><b style="color:#B0B2B7;font-weight:700">Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output. (You can leave any stage off; the order is fixed and modelled to compound naturally.)</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_MODULES</h3>
+
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">LOCK — transport &amp; sync instability</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-lock" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="LOCK Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The tape isn't tracking. LOCK destabilises pitch and timing the way a transport losing servo lock does — slow wow, sudden slips, and a recovery that chases the speed back into place.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">WARP</b> — depth of the pitch/time instability. Low is a gentle drift; high is seasick.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">SLIP</b> — sudden sync slips on top of the warp — the moment the tape lets go.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">RECOVER</b> — how aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="description-box">
-        <p class="description-text"><b>Run anything through a signal chain that's falling apart on purpose.</b>
-
-        CATHODE is seven stages of analog-to-digital rot — worn tape, drifting transport, a panicking receiver, RF interference, phosphor burn, converter damage — with a full modulation-and-transient toolkit bolted to the end so you can make the decay move. Subtle enough to age a vocal, violent enough to liquefy a drum loop.</p>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">HEAD — worn tape head</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-head" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="HEAD Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A playback head that's seen too many passes. HEAD rolls off the top end and lets the level and tone drift the way a dirty, magnetised head does.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">WEAR</b> — head-wear amount: progressive high-frequency dulling and a softer, rounder top.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DRIFT</b> — slow tonal/level drift, like azimuth wandering over a long take.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <section class="acquisition-anchor">
-        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
-        <div class="purchase-box">
-            <p class="purchase-intel">
-                Authorization includes VST3, AU, and AAX formats. Full-plugin configurations plus granular independent stage preset mapping.
-            </p>
-            <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/44d751ed-1b0a-4951-9df4-57307ab6b0b1" class="lemon-squeezy-button authorize-btn">INITIALIZE_ACQUISITION // $129.00</a>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">RECEIVER — reception &amp; dropout</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-receiver" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="RECEIVER Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The broadcast stage. A receiver fighting to hold onto a weak signal: automatic gain control that pumps and breathes, plus intermittent dropouts when the signal cuts out.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">AGC › PUMP</b> — how hard the automatic gain control rides the level — the classic broadcast "breathing."</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">AGC › SPEED</b> — how fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DROP › RATE</b> — how often the signal drops out.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DROP › DEPTH</b> — how far it drops — a dip, or a full momentary cut.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="module-deep-dive">
-        <h3>THE_IDEA</h3>
-        <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Most "lo-fi" plugins give you one flavor of broken. CATHODE gives you the whole broadcast path, stage by stage, the way a signal actually degrades on its way from a tape machine to a CRT to a cheap converter. Each module models a different failure, and because they're chained, the damage compounds — dropouts feed into interference, interference feeds into bitcrushing, and the LFO TOOLS section can sweep, wobble, and re-shape whatever comes out.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Every module is true bypass-by-crossfade (the DSP always runs; bypass is a 5 ms wet/dry fade, so toggling never clicks), and every module has its own MIX so you can dial the exact amount of ruin.</p>
-            <p style="font-weight: 300; font-size: 14px; color: var(--secondary); margin-top: 25px;"><b>Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output. (You can leave any stage off; the order is fixed and modelled to compound naturally.)</p>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">INTERFERENCE — RF noise, static &amp; signal takeover</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-interference" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="INTERFERENCE Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The most aggressive module, and the most fun. Bursts of RF interference, a bed of drifting static, and — the centrepiece — TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">BURST › RATE / LENGTH</b> — frequency and duration of interference bursts.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TAKEOVER › FILE / DEPTH</b> — load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">NOISE › FREQ / STATIC / TUNE</b> — the character, level, and pitch of the noise bed.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">STATIC › DRIFT / SMOOTH</b> — movement and smoothing of the static over time.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">LFO</b> — opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="module-deep-dive">
-        <h3>THE_MODULES</h3>
-        
-        <div class="module-block">
-            <div class="section-header-title">LOCK — transport & sync instability</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_LOCK.png" alt="LOCK Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>The tape isn't tracking. LOCK destabilises pitch and timing the way a transport losing servo lock does — slow wow, sudden slips, and a recovery that chases the speed back into place.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>WARP</b> — depth of the pitch/time instability. Low is a gentle drift; high is seasick.</li>
-                        <li>· <b>SLIP</b> — sudden sync slips on top of the warp — the moment the tape lets go.</li>
-                        <li>· <b>RECOVER</b> — how aggressively it re-locks after a slip. Fast snaps back; slow leaves the pitch sagging.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">PHOSPHOR — CRT burn, cable loss &amp; hum</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-phosphor" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="PHOSPHOR Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The display end of the chain. Phosphor that's been dulled by years of the same image, cable loss bleeding off the highs, and a touch of mains hum sitting under everything.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">AGE › DULL</b> — phosphor dulling: the slow loss of brightness and high-end sparkle.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">AGE › LOSS</b> — cable loss: high-frequency roll-off and softening, as if down a long, cheap run.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">HEAT › WARM</b> — phosphor warmth — a glowing low-mid lift.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">HEAT › BUMP</b> — a low-frequency bump for weight and body.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="module-block">
-            <div class="section-header-title">HEAD — worn tape head</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_HEAD.png" alt="HEAD Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>A playback head that's seen too many passes. HEAD rolls off the top end and lets the level and tone drift the way a dirty, magnetised head does.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>WEAR</b> — head-wear amount: progressive high-frequency dulling and a softer, rounder top.</li>
-                        <li>· <b>DRIFT</b> — slow tonal/level drift, like azimuth wandering over a long take.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">CRUSH — converter damage</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-crush" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="CRUSH Advanced Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Where the analog chain hits a failing digital converter. Bit reduction, sample-rate crushing, aliasing, clock jitter, drive and wavefolding — plus a dedicated filter and an internal modulator. CRUSH has an ADVANCED panel with a live CRUSH SCOPE that draws the damaged waveform as crisp vectors so you can see exactly what the converter is doing to your signal.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">BITS / RATE</b> — bit-depth reduction and sample-rate decimation thresholds.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">ALIAS / JITTER</b> — aliasing signatures combined with raw clock timing instability grit.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DRIVE / FOLD / DITHER</b> — clipping threshold pushes, wavefolding mix balances, and noise metrics.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Filter / Mod Mechanics</b> — variable cutoff parameters routed to assignable modulation curves.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MIX</b> — blend against dry.</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="module-block">
-            <div class="section-header-title">RECEIVER — reception & dropout</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_RECEIVER.png" alt="RECEIVER Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>The broadcast stage. A receiver fighting to hold onto a weak signal: automatic gain control that pumps and breathes, plus intermittent dropouts when the signal cuts out.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>AGC › PUMP</b> — how hard the automatic gain control rides the level — the classic broadcast "breathing."</li>
-                        <li>· <b>AGC › SPEED</b> — how fast the AGC reacts. Slow is a gentle swell; fast is audible pumping.</li>
-                        <li>· <b>DROP › RATE</b> — how often the signal drops out.</li>
-                        <li>· <b>DROP › DEPTH</b> — how far it drops — a dip, or a full momentary cut.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">LFO TOOLS — the modulation &amp; transient toolkit</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-lfo-main" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="LFO TOOLS Hardware Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The final stage, and the deepest. LFO TOOLS is two tools in one: a fully-featured LFO that can modulate five aspects of the output, and a three-band transient designer with live metering. It's where you turn static damage into something that breathes, pulses, and hits.</p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A single LFO with nine shapes — sine, triangle, saw, square, random sample-and-hold, ramp-down, drift, exponential, and stairs — that you can run free or sync to host tempo.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">SHAPE / SYNC / RATE</b> — pick the waveform, free-vs-host timing structures, and divisions.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PHASE / SMOOTH</b> — offset the LFO's start point and smooth its motion from instant to heavily slewed.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Five Destinations</b> — depth is the switch. <b style="color:#DCCDBF;font-weight:700">VOL</b> (tremolo), <b style="color:#DCCDBF;font-weight:700">PAN</b> (auto-pan), <b style="color:#DCCDBF;font-weight:700">WIDTH</b> (field breathing), <b style="color:#DCCDBF;font-weight:700">TONE</b> (swept ±15 dB tilt EQ shelf), and <b style="color:#DCCDBF;font-weight:700">WARBLE</b> (pitch tape wow).</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="module-block">
-            <div class="section-header-title">INTERFERENCE — RF noise, static & signal takeover</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_INTERFERENCE.png" alt="INTERFERENCE Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>The most aggressive module, and the most fun. Bursts of RF interference, a bed of drifting static, and — the centrepiece — TAKEOVER, where a loaded audio file bleeds in and momentarily hijacks the signal, like a second station fighting onto the same frequency. It has its own built-in LFO to modulate the whole thing rhythmically.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>BURST › RATE / LENGTH</b> — frequency and duration of interference bursts.</li>
-                        <li>· <b>TAKEOVER › FILE / DEPTH</b> — load any audio file with LOAD; FILE sets its level, DEPTH sets how hard it overtakes the host signal. (CLEAR removes it.)</li>
-                        <li>· <b>NOISE › FREQ / STATIC / TUNE</b> — the character, level, and pitch of the noise bed.</li>
-                        <li>· <b>STATIC › DRIFT / SMOOTH</b> — movement and smoothing of the static over time.</li>
-                        <li>· <b>LFO</b> — opens INTERFERENCE's own modulator, routable to rate, length, freq, and takeover for evolving, rhythmic interference.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
+    <div>
+      <div style="font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0;font-weight:700">TRANS — the transient designer</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="cathode-trans" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="TRANS Processing Panel"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Hit the TRANS button and LFO TOOLS becomes a three-band transient shaper with a live "gain applied over time" meter across the top — you watch exactly how much the processor is boosting or cutting, moment to moment, scrolling left to right with now at the right edge.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">ATTACK / SUSTAIN / DECAY</b> — bipolar parameters governing transient onset, frame body, and tail tighteners.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Routing toggle</b> — place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output).</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">AUTO LEVEL</b> — a soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot.</li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="module-block">
-            <div class="section-header-title">PHOSPHOR — CRT burn, cable loss & hum</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_PHOSPHOR.png" alt="PHOSPHOR Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>The display end of the chain. Phosphor that's been dulled by years of the same image, cable loss bleeding off the highs, and a touch of mains hum sitting under everything.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>AGE › DULL</b> — phosphor dulling: the slow loss of brightness and high-end sparkle.</li>
-                        <li>· <b>AGE › LOSS</b> — cable loss: high-frequency roll-off and softening, as if down a long, cheap run.</li>
-                        <li>· <b>HEAT › WARM</b> — phosphor warmth — a glowing low-mid lift.</li>
-                        <li>· <b>HEAT › BUMP</b> — a low-frequency bump for weight and body.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="module-block">
-            <div class="section-header-title">CRUSH — converter damage</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_CRUSH_ADV.png" alt="CRUSH Advanced Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>Where the analog chain hits a failing digital converter. Bit reduction, sample-rate crushing, aliasing, clock jitter, drive and wavefolding — plus a dedicated filter and an internal modulator. CRUSH has an ADVANCED panel with a live CRUSH SCOPE that draws the damaged waveform as crisp vectors so you can see exactly what the converter is doing to your signal.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>BITS / RATE</b> — bit-depth reduction and sample-rate decimation thresholds.</li>
-                        <li>· <b>ALIAS / JITTER</b> — aliasing signatures combined with raw clock timing instability grit.</li>
-                        <li>· <b>DRIVE / FOLD / DITHER</b> — clipping threshold pushes, wavefolding mix balances, and noise metrics.</li>
-                        <li>· <b>Filter / Mod Mechanics</b> — variable cutoff parameters routed to assignable modulation curves.</li>
-                        <li>· <b>MIX</b> — blend against dry.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="module-block">
-            <div class="section-header-title">LFO TOOLS — the modulation & transient toolkit</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_LFO_MAIN.png" alt="LFO TOOLS Hardware Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>The final stage, and the deepest. LFO TOOLS is two tools in one: a fully-featured LFO that can modulate five aspects of the output, and a three-band transient designer with live metering. It's where you turn static damage into something that breathes, pulses, and hits.</p>
-                    <p>A single LFO with nine shapes — sine, triangle, saw, square, random sample-and-hold, ramp-down, drift, exponential, and stairs — that you can run free or sync to host tempo.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>SHAPE / SYNC / RATE</b> — pick the waveform, free-vs-host timing structures, and divisions.</li>
-                        <li>· <b>PHASE / SMOOTH</b> — offset the LFO's start point and smooth its motion from instant to heavily slewed.</li>
-                        <li>· <b>Five Destinations</b> — depth is the switch. <b>VOL</b> (tremolo), <b>PAN</b> (auto-pan), <b>WIDTH</b> (field breathing), <b>TONE</b> (swept ±15 dB tilt EQ shelf), and <b>WARBLE</b> (pitch tape wow).</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="module-block">
-            <h4>TRANS — the transient designer</h4>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="CATHODE_v16.72_TRANS_METER.png" alt="TRANS Processing Panel" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p>Hit the TRANS button and LFO TOOLS becomes a three-band transient shaper with a live "gain applied over time" meter across the top — you watch exactly how much the processor is boosting or cutting, moment to moment, scrolling left to right with now at the right edge.</p>
-                    <ul class="parameter-list">
-                        <li>· <b>ATTACK / SUSTAIN / DECAY</b> — bipolar parameters governing transient onset, frame body, and tail tighteners.</li>
-                        <li>· <b>Routing toggle</b> — place the transient shaping either at the LFO INPUT (feeding the modulation) or at the CHAIN END (the very last thing before output).</li>
-                        <li>· <b>AUTO LEVEL</b> — a soft output ceiling that catches the level when heavy modulation or transient boosting pushes things hot.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>WORKFLOW_INTELLIGENCE</h3>
-            <ul class="spec-list">
-                <li><b>Two-Tier Presets</b> Save full system setups or map modular patch properties to individual slots.</li>
-                <li><b>Vector Scopes</b> Real-time high-DPI vector rendering maps parameters flawlessly without blurry upscaling.</li>
-                <li><b>DSP Architecture</b> Compounding signal chains run loops continuously to avoid phase crossfade clicks.</li>
-                <li><b>Oversampling</b> HQ interpolation engine captures absolute digital grit while shielding out harsh aliasing.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TECHNICAL_SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Formats</b> VST3, AU, AAX [Native plug-in frameworks]</li>
-                <li><b>Platform Support</b> macOS [Apple Silicon & Intel Native Core Matrices]</li>
-                <li><b>Interface Properties</b> Fixed 1280 × 640 footprint featuring crisp high-DPI vector paths.</li>
-                <li><b>Engineering Group</b> THETA Audio Research // 2026 Release Framework</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">WORKFLOW_INTELLIGENCE</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Two-Tier Presets</b>Save full system setups or map modular patch properties to individual slots.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Vector Scopes</b>Real-time high-DPI vector rendering maps parameters flawlessly without blurry upscaling.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">DSP Architecture</b>Compounding signal chains run loops continuously to avoid phase crossfade clicks.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Oversampling</b>HQ interpolation engine captures absolute digital grit while shielding out harsh aliasing.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3, AU, AAX [Native plug-in frameworks]</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform Support</b>macOS [Apple Silicon &amp; Intel Native Core Matrices]</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Interface Properties</b>Fixed 1280 × 640 footprint featuring crisp high-DPI vector paths.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Engineering Group</b>THETA Audio Research // 2026 Release Framework</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-
-<script>
-    // --- ASYNCHRONOUS DIAGNOSTIC LIGHTBOX VAULT CONTROLLER ENGINE ---
-    const vaultOverlay = document.getElementById('diagnosticVault');
-    const vaultCanvas = document.getElementById('vaultCanvas');
-    const closeVaultBtn = document.getElementById('closeVaultBtn');
-
-    // Attach click listeners across all hardware grid panel elements
-    document.querySelectorAll('.visual-bay').forEach(bay => {
-        bay.addEventListener('click', () => {
-            const rawAssetSource = bay.querySelector('.module-shot').src;
-            
-            // Prime the full-scale canvas scroller image destination path
-            vaultCanvas.src = rawAssetSource;
-            
-            // Fire the overlay portal
-            vaultOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Freeze index page tracking threads
-        });
-    });
-
-    function escapeDiagnosticVault() {
-        vaultOverlay.classList.remove('active');
-        vaultCanvas.src = ''; // Flush payload to save rendering allocation footprint
-        document.body.style.overflow = ''; // Unfreeze baseline scroll channels
-    }
-
-    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
-    vaultOverlay.addEventListener('click', (e) => {
-        if (e.target === vaultOverlay) escapeDiagnosticVault();
-    });
-
-    // Wire up standard physical hardware escape trigger listener [ESC Key]
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
-            escapeDiagnosticVault();
-        }
-    });
-</script>
-
-<footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #003 // v16.72_RELEASE_PREP</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #003 // v16.72_RELEASE_PREP</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>

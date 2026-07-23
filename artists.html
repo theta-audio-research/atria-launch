@@ -1,283 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARTISTS | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #06080C; 
-            --gold: #C8A86B; 
-            --silver: #B0B0B0; 
-            --border: #1A1B23; 
-            --cyan: #00E5FF;
-        }
-        body { 
-            background-color: var(--void); 
-            color: var(--silver); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            line-height: 1.6; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- PERSISTENT HARDWARE HEADER --- */
-        header { 
-            padding: 40px 60px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: relative; 
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .brand-link { text-decoration: none; color: inherit; }
-        .brand-block { display: flex; align-items: center; gap: 20px; }
-        .brand-text h1 { font-family: 'Montserrat'; font-size: 18px; letter-spacing: 12px; margin: 0; color: #fff; text-transform: uppercase; opacity: 0.8; }
-        .brand-text p { font-size: 8px; letter-spacing: 4px; color: var(--gold); margin: 4px 0 0 0; text-transform: uppercase; opacity: 0.5; }
-
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-        .header-module-name h2 {
-            font-family: 'Montserrat';
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-
-        nav a { color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 4px; font-weight: 700; border: 1px solid var(--border); padding: 12px 24px; transition: 0.3s; }
-        nav a:hover { background: var(--gold); color: var(--void); }
-
-        /* --- ARTIST LISTING (LANDSCAPE) --- */
-        main { 
-            flex: 1;
-            padding: 80px 60px; 
-            max-width: 1600px; 
-            margin: 0 auto; 
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .artist-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Stacks banners vertically */
-            gap: 80px;
-            width: 100%;
-        }
-
-        .personnel-file {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr; /* Image wider than text */
-            gap: 0; /* Flush alignment */
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid var(--border);
-            transition: 0.4s;
-            position: relative;
-            align-items: stretch;
-        }
-
-        .personnel-file:hover {
-            border-color: rgba(0, 229, 255, 0.5);
-            background: rgba(0, 229, 255, 0.02);
-            box-shadow: 0 0 60px rgba(0, 229, 255, 0.05);
-        }
-
-        /* SPECIMEN PHOTO (LANDSCAPE OBSERVATION BAY) */
-        .specimen-photo {
-            width: 100%;
-            background: var(--void);
-            border-right: 1px solid var(--border);
-            overflow: hidden;
-            filter: grayscale(1) contrast(1.2);
-            transition: 0.5s ease-in-out;
-            position: relative;
-        }
-        .personnel-file:hover .specimen-photo {
-            filter: grayscale(0) contrast(1.1);
-            border-color: var(--cyan);
-        }
-        .specimen-photo img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block;
-        }
-        /* Static effect on photo */
-        .specimen-photo::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        /* PERSONNEL DATA (Right side block) */
-        .file-data {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-        }
-        .file-data h3 {
-            font-family: 'Montserrat';
-            font-size: 24px;
-            letter-spacing: 8px;
-            color: #fff;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-        }
-        .file-role {
-            font-size: 10px;
-            color: var(--gold);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            display: block;
-            opacity: 0.8;
-            font-weight: 700;
-        }
-        .file-bio {
-            font-size: 14px;
-            opacity: 0.6;
-            line-height: 1.9;
-            margin-bottom: auto; /* Pushes modules to bottom */
-            padding-bottom: 40px;
-        }
-
-        /* AUTHORIZED MODULES */
-        .authorized-modules {
-            border-top: 1px solid var(--border);
-            padding-top: 30px;
-        }
-        .modules-label {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: var(--cyan);
-            display: block;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .module-tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .module-tag {
-            font-size: 10px;
-            letter-spacing: 1px;
-            border: 1px solid var(--border);
-            padding: 5px 12px;
-            color: var(--silver);
-            text-decoration: none;
-            transition: 0.3s;
-            background: rgba(255, 255, 255, 0.01);
-        }
-        .module-tag:hover {
-            border-color: var(--gold);
-            color: #fff;
-            background: rgba(200, 168, 107, 0.05);
-        }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.3; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--border); 
-            margin-top: 80px;
-        }
-
-        @media (max-width: 1200px) {
-            .file-data { padding: 30px; }
-            .file-data h3 { font-size: 18px; letter-spacing: 6px; }
-        }
-
-        @media (max-width: 1000px) {
-            header { padding: 30px 20px; flex-direction: column; gap: 20px; align-items: center; }
-            .header-module-name { position: relative; left: 0; transform: none; margin: 20px 0; }
-            .header-module-name h2 { font-size: 24px; letter-spacing: 12px; }
-            main { padding: 40px 20px; }
-            .artist-grid { gap: 40px; }
-            .personnel-file { grid-template-columns: 1fr; }
-            .specimen-photo { border-right: none; border-bottom: 1px solid var(--border); aspect-ratio: 16/9; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="background:#06080C;color:#B0B0B0;font-family:'Montserrat',sans-serif;margin:0;line-height:1.6;min-height:100vh;display:flex;flex-direction:column">
 
-<header>
-    <a href="index.html" class="brand-link">
-        <div class="brand-block">
-            <div class="brand-text">
-                <h1>THETA</h1>
-                <p>Audio Research & Development</p>
-            </div>
-        </div>
-    </a>
-
-    <div class="header-module-name">
-        <h2>AFFILIATES</h2>
-    </div>
-
-    <nav><a href="index.html">RETURN_TO_LAB</a></nav>
+<header style="padding:40px 60px;display:flex;justify-content:space-between;align-items:center;position:relative">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);text-align:center">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#fff;text-transform:uppercase;margin:0;padding-left:20px">AFFILIATES</h2>
+  </div>
+  <nav><a href="index.dc.html" style="color:#C8A86B;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #1A1B23;padding:8px 16px;transition:0.3s" style-hover="background:#C8A86B;color:#06080C">RETURN_TO_LAB</a></nav>
 </header>
 
-<main>
-    <div class="artist-grid">
-        
-        <article class="personnel-file">
-            <div class="specimen-photo">
-                </div>
-            <div class="file-data">
-                <span class="file-role">Lead Research Operative // Deployment Specialist</span>
-                <h3>ARTIST_NAME_01</h3>
-                <p class="file-bio">
-                    Technical sound designer and modular synthesist. Their work focuses on granular manipulation and the development of immersive, spatial ambient structures within complex film scores.
-                </p>
-                <div class="authorized-modules">
-                    <span class="modules-label">DEPLOYED_MODULES</span>
-                    <div class="module-tag-list">
-                        <a href="arecibo.html" class="module-tag">001_ISR</a>
-                        <a href="twilight.html" class="module-tag">005_GEN</a>
-                    </div>
-                </div>
-            </div>
-        </article>
+<main style="flex:1;padding:80px 60px;max-width:1600px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="display:grid;grid-template-columns:1fr;gap:80px;width:100%">
 
-        <article class="personnel-file">
-            <div class="specimen-photo">
-                </div>
-            <div class="file-data">
-                <span class="file-role">Signal Degradation Expert // Nonlinear Theory</span>
-                <h3>ARTIST_NAME_02</h3>
-                <p class="file-bio">
-                    Composer and mixing engineer. Utilizing analog circuit models to explore the emotional boundary between sterile digital precision and controlled mechanical failure.
-                </p>
-                <div class="authorized-modules">
-                    <span class="modules-label">DEPLOYED_MODULES</span>
-                    <div class="module-tag-list">
-                        <a href="cathode.html" class="module-tag">003_VTR</a>
-                        <a href="erosion.html" class="module-tag">004_DEG</a>
-                    </div>
-                </div>
-            </div>
-        </article>
+    <article style="display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:rgba(255,255,255,0.01);border:1px solid #1A1B23;transition:0.4s;position:relative;align-items:stretch">
+      <div style="width:100%;background:#06080C;border-right:1px solid #1A1B23;overflow:hidden">
+        <image-slot id="artist-01-photo" style="width:100%;height:100%" shape="rect" placeholder="Lead Research Operative photo"></image-slot>
+      </div>
+      <div style="padding:50px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;display:block;opacity:0.8;font-weight:700">Lead Research Operative // Deployment Specialist</span>
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:24px;letter-spacing:8px;color:#fff;margin:0 0 5px 0;text-transform:uppercase">ARTIST_NAME_01</h3>
+        <p style="font-size:14px;opacity:0.6;line-height:1.9;margin-bottom:auto;padding-bottom:40px">Technical sound designer and modular synthesist. Their work focuses on granular manipulation and the development of immersive, spatial ambient structures within complex film scores.</p>
+        <div style="border-top:1px solid #1A1B23;padding-top:30px">
+          <span style="font-size:9px;letter-spacing:2px;color:#00E5FF;display:block;margin-bottom:15px;font-weight:700">DEPLOYED_MODULES</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="arecibo.dc.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">001_ISR</a>
+            <a href="twilight.dc.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">005_GEN</a>
+          </div>
+        </div>
+      </div>
+    </article>
 
-    </div>
+    <article style="display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:rgba(255,255,255,0.01);border:1px solid #1A1B23;transition:0.4s;position:relative;align-items:stretch">
+      <div style="width:100%;background:#06080C;border-right:1px solid #1A1B23;overflow:hidden">
+        <image-slot id="artist-02-photo" style="width:100%;height:100%" shape="rect" placeholder="Signal Degradation Expert photo"></image-slot>
+      </div>
+      <div style="padding:50px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;display:block;opacity:0.8;font-weight:700">Signal Degradation Expert // Nonlinear Theory</span>
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:24px;letter-spacing:8px;color:#fff;margin:0 0 5px 0;text-transform:uppercase">ARTIST_NAME_02</h3>
+        <p style="font-size:14px;opacity:0.6;line-height:1.9;margin-bottom:auto;padding-bottom:40px">Composer and mixing engineer. Utilizing analog circuit models to explore the emotional boundary between sterile digital precision and controlled mechanical failure.</p>
+        <div style="border-top:1px solid #1A1B23;padding-top:30px">
+          <span style="font-size:9px;letter-spacing:2px;color:#00E5FF;display:block;margin-bottom:15px;font-weight:700">DEPLOYED_MODULES</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="cathode.dc.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">003_VTR</a>
+            <a href="erosion.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">004_DEG</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
 </main>
 
-<footer>
-    <span>RESEARCH_NETWORK_STABLE // 2026</span>
-    <span>AFFILIATE_CLEARANCE_LEVEL_01 // STUDIO_OBSERVATION</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.3;display:flex;justify-content:space-between;border-top:1px solid #1A1B23;margin-top:80px">
+  <span>RESEARCH_NETWORK_STABLE // 2026</span>
+  <span>AFFILIATE_CLEARANCE_LEVEL_01 // STUDIO_OBSERVATION</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>

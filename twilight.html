@@ -1,286 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWILIGHT | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'JetBrains Mono', monospace; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-family: 'Montserrat';
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700; 
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT (Compressed Spacing) --- */
-        main { 
-            padding: 20px 60px 60px 60px; /* Snaps interface to header */
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
-        }
-        .plugin-display:hover { transform: scale(1.01); }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-size: 15px; line-height: 1.9; color: var(--secondary); white-space: pre-line; }
-        .description-text b { color: var(--structure); font-weight: 700; }
-
-        /* --- SYSTEM INTEL --- */
-        .system-intel { 
-            max-width: 900px; 
-            margin: 0 auto 80px auto; 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 40px; 
-            border-top: 1px solid var(--charcoal); 
-            padding-top: 40px; 
-        }
-        .intel-block h3 { font-family: 'Montserrat'; font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
-        .intel-block p { font-size: 13px; color: var(--secondary); opacity: 0.7; line-height: 1.7; margin: 0; }
-
-        /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 900px; margin: 0 auto 100px auto; }
-        .module-deep-dive h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        .module-block { margin-bottom: 60px; }
-        .module-block h4 { font-family: 'Montserrat'; font-size: 14px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 15px 0; }
-        .module-block p { font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 15px 0; }
-        .module-block b { color: var(--accent); }
-
-        /* --- SPECS --- */
-        .specs-container { 
-            display: grid; 
-            grid-template-columns: 1.2fr 1fr; 
-            gap: 80px; 
-            margin-bottom: 100px; 
-            padding-top: 60px; 
-            border-top: 1px solid var(--charcoal); 
-        }
-        .spec-group h3 { font-family: 'Montserrat'; font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); }
-        .spec-list li b { color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
-            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
-            .system-intel { grid-template-columns: 1fr; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>TWILIGHT</h2>
-        <p class="plugin-tagline">Regenerative Ambience Engine</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">TWILIGHT</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Regenerative Ambience Engine</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <div class="image-container">
-        <img src="TWILIGHT_v15.49.png" alt="TWILIGHT Interface" class="plugin-display">
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <image-slot id="twilight-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="TWILIGHT Interface"></image-slot>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-size:15px;line-height:1.9;color:#81848A"><b style="color:#B0B2B7;font-weight:700">TWILIGHT is a regenerative ambience instrument from THETA Audio Research.</b><br><br>Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument.</p>
+  </div>
+
+  <section style="max-width:900px;margin:0 auto 80px auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #54575C;padding-top:40px">
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">RECORDING_AND_CAPTURE</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0">TWILIGHT includes a built-in REC function that can capture the plugin's output directly to a chosen WAV file. This makes it easy to print long drones or processed output without leaving the laboratory workflow.</p>
     </div>
-
-    <div class="description-box">
-        <p class="description-text"><b>TWILIGHT is a regenerative ambience instrument from THETA Audio Research.</b> 
-
-        Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument.</p>
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">INTERFACE_LOGIC</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0">Following the THETA Void language: absolute black, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity.</p>
     </div>
+  </section>
 
-    <section class="system-intel">
-        <div class="intel-block">
-            <h3>RECORDING_AND_CAPTURE</h3>
-            <p>TWILIGHT includes a built-in REC function that can capture the plugin’s output directly to a chosen WAV file. This makes it easy to print long drones or processed output without leaving the laboratory workflow.</p>
-        </div>
-        <div class="intel-block">
-            <h3>INTERFACE_LOGIC</h3>
-            <p>Following the THETA Void language: absolute black, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity.</p>
-        </div>
-    </section>
+  <section style="max-width:900px;margin:0 auto 100px auto">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">ENGINE_ARCHITECTURE</h3>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">T H E T A // THE HEART</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">D R I F T // HARMONY &amp; ENSEMBLE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">F I E L D // SPATIAL BLOOM</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">F A D E // MOTION ENGINE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats using <b style="color:#DCCDBF">SHAPE</b> and <b style="color:#DCCDBF">CHAOS</b> parameters to create breathing envelopes.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">M A S T E R B U S // OUTPUT MATRIX</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Final Modulation Stage.</b> The place where the instrument's signal is performed and dramatized. Features core treatments: <b style="color:#DCCDBF">FLANGE, STUT, XFADE,</b> and <b style="color:#DCCDBF">REVERB</b>.</p></div>
+    <div><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">O U T P U T // FINISHING STAGE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Mastering Wall &amp; Limiter.</b> A true end-of-chain sculpting section including the <b style="color:#DCCDBF">THRU</b> system for external audio processing and the final <b style="color:#DCCDBF">LIMIT</b> boundary.</p></div>
+  </section>
 
-    <section class="module-deep-dive">
-        <h3>ENGINE_ARCHITECTURE</h3>
-        
-        <div class="module-block">
-            <h4>T H E T A // THE HEART</h4>
-            <p><b>Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>D R I F T // HARMONY & ENSEMBLE</h4>
-            <p><b>Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>F I E L D // SPATIAL BLOOM</h4>
-            <p><b>Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>F A D E // MOTION ENGINE</h4>
-            <p><b>Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats using <b>SHAPE</b> and <b>CHAOS</b> parameters to create breathing envelopes.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>M A S T E R B U S // OUTPUT MATRIX</h4>
-            <p><b>Final Modulation Stage.</b> The place where the instrument’s signal is performed and dramatized. Features core treatments: <b>FLANGE, STUT, XFADE,</b> and <b>REVERB</b>.</p>
-        </div>
-
-        <div class="module-block">
-            <h4>O U T P U T // FINISHING STAGE</h4>
-            <p><b>Mastering Wall & Limiter.</b> A true end-of-chain sculpting section including the <b>THRU</b> system for external audio processing and the final <b>LIMIT</b> boundary.</p>
-        </div>
-    </section>
-
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>WHOLE_PLUGIN_SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Core Engine</b> 4-voice THETA binaural drone engine + V5 sample layer</li>
-                <li><b>Sequencer</b> Signal Lattice [Gate / Pitch / Prob / Velocity / Swing]</li>
-                <li><b>Harmony Modes</b> UNI, OCT+/-, 5TH, MAJ, MIN, SUS, CLSTR</li>
-                <li><b>Master Bus</b> Flanger, Stutter, Reverb, Brick-Wall Limiter</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TELEMETRY</h3>
-            <ul class="spec-list">
-                <li><b>Platform</b> macOS [AU / VST3] // 64-bit</li>
-                <li><b>Recording</b> Direct output capture to WAV via REC function</li>
-                <li><b>Aesthetic</b> THETA Void [Brutalist Grayscale / Scientific HUD]</li>
-                <li><b>Manufacturer</b> THETA Audio Research // 2026</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">WHOLE_PLUGIN_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Core Engine</b>4-voice THETA binaural drone engine + V5 sample layer</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Sequencer</b>Signal Lattice [Gate / Pitch / Prob / Velocity / Swing]</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Harmony Modes</b>UNI, OCT+/-, 5TH, MAJ, MIN, SUS, CLSTR</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Master Bus</b>Flanger, Stutter, Reverb, Brick-Wall Limiter</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TELEMETRY</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS [AU / VST3] // 64-bit</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Recording</b>Direct output capture to WAV via REC function</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Aesthetic</b>THETA Void [Brutalist Grayscale / Scientific HUD]</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Manufacturer</b>THETA Audio Research // 2026</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<footer>
-    <span>SYSTEM_STABLE // 2026</span>
-    <span>LAB NOTE #005 // REGENERATION_ACTIVE</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>SYSTEM_STABLE // 2026</span>
+  <span>LAB NOTE #005 // REGENERATION_ACTIVE</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>

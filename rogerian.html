@@ -1,522 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROGERIAN DIA | THETA Audio Research</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --void: #000000; 
-            --structure: #B0B2B7; 
-            --secondary: #81848A; 
-            --charcoal: #54575C;  
-            --accent: #DCCDBF;    
-            --stroke: #CFC5B6;    
-        }
-        
-        body { 
-            background-color: var(--void); 
-            color: var(--secondary); 
-            font-family: 'Montserrat', sans-serif; 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow-x: hidden; 
-            line-height: 1.6;
-        }
-
-        /* --- STICKY HARDWARE HEADER --- */
-        nav.nav-terminal {
-            padding: 10px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--charcoal);
-            background: var(--void);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-logo-link { 
-            height: 50px; 
-            display: flex;
-            align-items: center;
-            transition: transform 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
-            backface-visibility: hidden;
-        }
-        .header-logo-link:hover { transform: scale(1.08); }
-        .header-logo-link img { height: 100%; width: auto; display: block; }
-
-        /* HEADER CENTRIC TITLE */
-        .header-module-name {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            pointer-events: none;
-        }
-        .header-module-name h2 {
-            font-weight: 700;
-            font-size: 32px; 
-            letter-spacing: 24px; 
-            color: var(--structure);
-            text-transform: uppercase;
-            margin: 0;
-            padding-left: 24px;
-        }
-        .header-module-name .plugin-tagline { 
-            font-weight: 400;
-            font-size: 8px; 
-            letter-spacing: 6px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 5px 0 0 0; 
-            opacity: 0.8;
-            padding-left: 6px;
-        }
-
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            font-weight: 700;
-            border: 1px solid var(--charcoal); 
-            padding: 10px 20px; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MAIN CONTENT --- */
-        main { padding: 20px 60px 60px 60px; max-width: 1200px; margin: 0 auto; }
-
-        .image-container { margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto; cursor: pointer; }
-        .plugin-display { 
-            display: block; 
-            width: 100%; 
-            height: auto; 
-            border-bottom: 1px solid var(--charcoal); 
-            transition: transform 0.6s ease;
-        }
-        .plugin-display:hover { transform: scale(1.01); }
-
-        .description-box { 
-            max-width: 850px; 
-            margin: 0 auto 60px auto; 
-            border-left: 1px solid var(--stroke); 
-            padding-left: 40px; 
-        }
-        .description-text { font-weight: 300; font-size: 15px; line-height: 2.0; color: var(--secondary); white-space: pre-line; letter-spacing: 0.02em; }
-        .description-text b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-
-        /* ACQUISITION PORTAL CHASSIS */
-        .acquisition-anchor { margin: 0 auto 100px auto; max-width: 600px; text-align: center; }
-        .lab-header { font-size: 10px; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; display: block; font-weight: 700; }
-        .purchase-box { background: rgba(220, 205, 191, 0.02); border: 1px solid var(--charcoal); padding: 40px; }
-        .purchase-intel { font-size: 11px; font-weight: 400; letter-spacing: 2px; opacity: 0.6; margin-bottom: 30px; text-transform: uppercase; color: var(--secondary); }
-        .authorize-btn { 
-            display: block; 
-            text-align: center; 
-            border: 1px solid var(--accent); 
-            color: var(--accent); 
-            padding: 25px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 12px; 
-            letter-spacing: 6px; 
-            transition: 0.4s; 
-        }
-        .authorize-btn:hover { background: var(--accent); color: var(--void); }
-
-        /* --- MODULE DEEP DIVE --- */
-        .module-deep-dive { max-width: 1000px; margin: 0 auto 80px auto; }
-        .module-deep-dive h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid var(--charcoal); padding-bottom: 10px;}
-        
-        .module-block { margin-bottom: 80px; }
-        .module-block .section-header-title { font-size: 15px; letter-spacing: 6px; color: var(--structure); text-transform: uppercase; margin: 0 0 30px 0; font-weight: 700; }
-
-        /* --- SIDE-BY-SIDE GRID SPLIT --- */
-        .module-split-row {
-            display: flex;
-            gap: 50px;
-            align-items: flex-start;
-        }
-
-        .module-split-row .visual-bay {
-            flex: 0 0 250px;
-            width: 250px;
-            border: 1px solid var(--charcoal); 
-            cursor: pointer;
-            background: var(--void);
-            position: relative;
-            transition: border-color 0.3s;
-        }
-        .module-split-row .visual-bay:hover {
-            border-color: var(--accent);
-        }
-        .module-split-row .visual-bay .module-shot { 
-            display: block;
-            width: 100%; 
-            height: auto; 
-            background: #0a0a0a;
-        }
-
-        .module-split-row .visual-bay::after {
-            content: "CLICK_TO_EXPLORE";
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(0, 0, 0, 0.75);
-            color: var(--accent);
-            font-size: 8px;
-            letter-spacing: 2px;
-            text-align: center;
-            padding: 6px 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .module-split-row .visual-bay:hover::after {
-            opacity: 1;
-        }
-
-        .text-bay {
-            flex: 1;
-        }
-        .text-bay p { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.8; margin: 0 0 20px 0; letter-spacing: 0.01em; }
-        .text-bay p b { color: var(--structure); font-weight: 700; letter-spacing: 0.05em; }
-        .text-bay .parameter-list { font-weight: 300; font-size: 14px; color: var(--secondary); line-height: 1.9; margin: 0; padding: 0; list-style: none; }
-        .text-bay .parameter-list li { margin-bottom: 8px; }
-        .text-bay .parameter-list li b { color: var(--accent); font-weight: 700; }
-
-        /* --- DIAGNOSTIC LIGHTBOX VAULT --- */
-        .diagnostic-lightbox-vault {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            display: none;
-            overflow: auto; 
-            padding: 40px;
-            box-sizing: border-box;
-        }
-        .diagnostic-lightbox-vault.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox-canvas-scroller {
-            max-width: 40vw; 
-            max-height: 80vh;
-            border: 1px solid var(--charcoal);
-            display: block;
-            margin: auto;
-            background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-        .lightbox-close-telemetry {
-            position: fixed;
-            top: 24px; right: 40px;
-            color: var(--accent);
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: 700;
-            background: var(--void);
-            border: 1px solid var(--charcoal);
-            padding: 10px 20px;
-            cursor: pointer;
-            z-index: 10000;
-            transition: 0.3s;
-        }
-        .lightbox-close-telemetry:hover {
-            background: var(--accent);
-            color: var(--void);
-        }
-
-        /* --- SPECS --- */
-        .specs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; padding-top: 60px; border-top: 1px solid var(--charcoal); }
-        .spec-group h3 { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 30px; }
-        
-        .spec-list { list-style: none; padding: 0; margin: 0; }
-        .spec-list li { font-weight: 300; font-size: 13px; margin-bottom: 24px; padding-left: 20px; position: relative; color: var(--secondary); letter-spacing: 0.01em; }
-        .spec-list li b { font-weight: 700; color: var(--structure); display: block; margin-bottom: 4px; letter-spacing: 1px; }
-        .spec-list li::before { content: "//"; position: absolute; left: 0; color: var(--accent); font-weight: 700; opacity: 0.5; }
-
-        footer { 
-            padding: 40px 60px; 
-            font-size: 9px; 
-            letter-spacing: 6px; 
-            opacity: 0.4; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid var(--charcoal); 
-            margin-top: 100px; 
-        }
-
-        @media (max-width: 1100px) {
-            .header-module-name h2 { font-size: 22px; letter-spacing: 12px; }
-            .header-module-name .plugin-tagline { font-size: 6px; letter-spacing: 4px; }
-            .specs-container { grid-template-columns: 1fr; gap: 40px; }
-            nav.nav-terminal { padding: 10px 20px; }
-            .lightbox-canvas-scroller { max-width: 80vw; } 
-        }
-
-        @media (max-width: 900px) {
-            .header-module-name { display: none; }
-            .module-split-row { flex-direction: column; gap: 30px; }
-            .module-split-row .visual-bay { flex: 1; width: 100%; max-width: 320px; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<div id="diagnosticVault" class="diagnostic-lightbox-vault" aria-modal="true" role="dialog">
-    <button id="closeVaultBtn" class="lightbox-close-telemetry">CLOSE_DIAGNOSTIC // ESC</button>
-    <img id="vaultCanvas" src="" alt="Exploded Vector Telemetry View" class="lightbox-canvas-scroller">
-</div>
-
-<nav class="nav-terminal">
-    <a href="index.html" class="header-logo-link">
-        <img src="theta_logo_square_black.png" alt="THETA Insignia">
-    </a>
-
-    <div class="header-module-name">
-        <h2>ROGERIAN DIA</h2>
-        <p class="plugin-tagline">The dialogue channel strip</p>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">RETURN_TO_LAB</a>
-        <a href="store.html">STORE</a>
-    </div>
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.dc.html" style="height:50px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:50px;width:auto;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">ROGERIAN DIA</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">The dialogue channel strip</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.dc.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
 </nav>
 
-<main>
-    <div class="image-container" id="heroTrigger">
-        <!-- Hero placeholder updated to the Resonance Suppressor module image -->
-        <img src="ROGERIAN_DIA_v0.05.09_NUC_RES.png" alt="ROGERIAN DIA Resonance Suppressor" class="plugin-display">
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <image-slot id="rogerian-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ROGERIAN DIA Resonance Suppressor"></image-slot>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">Noise reduction, resonance suppression, equalization, compression and de-click — five stages engineered as one instrument for the spoken voice.</b><br><br>ROGERIAN DIA finds what's wrong only when it's wrong, and leaves the performance alone. Mono-first. Fully latency-reported. VST3 · AU · AAX · Standalone for macOS, in a signed and notarized installer.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_AUTHORIZATION</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">The entire dialogue chain. One plugin. Register your identity below for immediate system deployment parameters and trial authorization frameworks.</p>
+      <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">BUY_ROGERIAN_DIA</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_OVERVIEW</h3>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">ROGERIAN DIA is a dialogue-first channel strip: five cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice. Noise reduction → Resonance suppression → EQ → Compression, with a dedicated De-Click stage for the mouth itself.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">It replaces the stack of separate plugins an editor reaches for on every line of dialogue — a denoiser, a dynamic resonance tool, a corrective EQ, a leveler, a de-clicker — with one focused signal path. No juggling five windows, five latencies, five vendors, and the interactions between them. One pass, one instrument, designed as a whole.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0">The name is the philosophy. Rogerian (person-centred) therapy is non-judgmental and reflective: it listens first, and it never imposes. That is exactly how this processor treats a signal — it reflects the voice back, cleaner, with no character of its own unless you ask for one.</p>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_PROBLEM_IT_SOLVES</h3>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Spoken-word audio rarely has one problem. A single take can carry hiss and room tone, a ringing room mode, mouth clicks, a tonal imbalance, and uneven level — all at once. Cleaning it conventionally means chaining four or five plugins, each with its own window, its own latency, its own CPU bill, and its own idea of what a voice is — then fighting the interactions between them.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0">ROGERIAN DIA collapses that chain into one signal path designed specifically for voice: mono by default, transparent until you ask it to work, and honest with your DAW about every sample of latency it uses.</p>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_FIVE_STAGES</h3>
+
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">1 · Noise Reduction</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="rogerian-nr" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="ROGERIAN DIA noise reduction module"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">The floor, lowered — continuously.</b></p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN DIA's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dual Engines</b> — Zero-latency multiband path for tracking and picture work. High-resolution spectral tier (MMSE-LSA with speech-presence steering) for surgical dialogue restoration without watery artifacts.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Transparent Routing</b> — The stage is routable in the chain and bit-transparent completely off. Amount and sensitivity controls do exactly what they claim.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="description-box">
-        <p class="description-text"><b>Noise reduction, resonance suppression, equalization, compression and de-click — five stages engineered as one instrument for the spoken voice.</b>
-
-        ROGERIAN DIA finds what's wrong only when it's wrong, and leaves the performance alone. Mono-first. Fully latency-reported. VST3 · AU · AAX · Standalone for macOS, in a signed and notarized installer.</p>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">2 · Resonance Suppression — the centerpiece</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="rogerian-res" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="ROGERIAN DIA resonance suppressor"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">Cuts that exist only while the problem does.</b></p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Every room rings somewhere. Every voice, some days, bites. The resonance stage is a dynamic, cut-only spectral processor that finds narrow resonances — boxiness, harshness, ring, proximity build-up — and attenuates them only while they sound, at the depth they demand, then gets out of the way. Nothing is notched permanently.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Soft / Hard</b> — Adaptive tracking relative to voice context, or absolute thresholds for surgical work.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Focus &amp; Detail</b> — Persistence weighting treats sustained rings but spares transient consonants.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Display Steering</b> — Five draggable bands over a live spectrum. Drag up where rooms ring, pull down with Depth, modify the response via REFINE (scale, shift, tilt).</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Delta Listen</b> — Solo exactly what's being removed. The fastest honesty check in the plugin.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Reconstruction Paths</b> — Switch click-free between Zero (near-zero latency), Linear (phase-perfect offline pass), and Natural (minimum-phase).</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <section class="acquisition-anchor">
-        <span class="lab-header">SYSTEM_AUTHORIZATION</span>
-        <div class="purchase-box">
-            <p class="purchase-intel">
-                The entire dialogue chain. One plugin. Register your identity below for immediate system deployment parameters and trial authorization frameworks.
-            </p>
-            <a href="mailto:hello@thetaaudioresearch.com?subject=ROGERIAN%20updates" class="authorize-btn">BUY_ROGERIAN_DIA</a>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">3 · EQ</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="rogerian-eq" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="ROGERIAN DIA EQ module"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">Seven bands. Three characters. Zero latency.</b></p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A seven-band parametric built on analog-matched filters: the bell you see at 12 kHz is the bell you get — magnitude matched to the analog prototype all the way up, with none of the high-frequency cramping of textbook digital EQ. Minimum-phase, zero-latency, and drawn over a real-time pre/post analyzer.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Full Shape Set</b> — Bells, 12/24/48 dB-per-octave cuts, notches, tilts, band-passes.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Per-Band Dynamic EQ</b> — Set a dynamic range and the band eases in only when the signal crosses its self-adjusting threshold. A de-esser, a mud ducker, a presence lift — each is one band, one gesture.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">CHARACTER System</b> — NEUTRAL (standard bell), COOL (flat-topped plateau for broad tonal moves without a hot spot), and SHARP (focused tight peak for bite without smear).</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="module-deep-dive">
-        <h3>THE_OVERVIEW</h3>
-        <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN DIA is a dialogue-first channel strip: five cleanup and shaping stages in one mono-centric processor, tuned end to end for the human voice. Noise reduction → Resonance suppression → EQ → Compression, with a dedicated De-Click stage for the mouth itself.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">It replaces the stack of separate plugins an editor reaches for on every line of dialogue — a denoiser, a dynamic resonance tool, a corrective EQ, a leveler, a de-clicker — with one focused signal path. No juggling five windows, five latencies, five vendors, and the interactions between them. One pass, one instrument, designed as a whole.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">The name is the philosophy. Rogerian (person-centred) therapy is non-judgmental and reflective: it listens first, and it never imposes. That is exactly how this processor treats a signal — it reflects the voice back, cleaner, with no character of its own unless you ask for one.</p>
+    <div style="margin-bottom:80px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">4 · DYNAMICS</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="rogerian-comp" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="ROGERIAN DIA Compressor Module"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">A voice leveler with its color on a separate knob.</b></p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Feed-forward and program-dependent, built around a smooth decoupled detector to hold a read at a consistent level without pumping or dulling consonants.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">VOICE</b> — Clean, Warm, or Punch dynamic temperaments.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">CHARACTER</b> — Separate color section. Drive controls Tube, Diode, or Bright saturations independently from gain reduction. Pre/Post routing enabled.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Continuous Detection</b> — Peak to RMS blending, program-dependent auto-release, sidechain high-pass (20–400 Hz), and a hard RANGE floor. Lookahead runs up to 3.5 ms on a fixed automation-safe budget.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Metering</b> — Live transfer curve alongside a scrolling GR meter so you see the last several seconds of leveling decisions.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="module-deep-dive">
-        <h3>THE_PROBLEM_IT_SOLVES</h3>
-        <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Spoken-word audio rarely has one problem. A single take can carry hiss and room tone, a ringing room mode, mouth clicks, a tonal imbalance, and uneven level — all at once. Cleaning it conventionally means chaining four or five plugins, each with its own window, its own latency, its own CPU bill, and its own idea of what a voice is — then fighting the interactions between them.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">ROGERIAN DIA collapses that chain into one signal path designed specifically for voice: mono by default, transparent until you ask it to work, and honest with your DAW about every sample of latency it uses.</p>
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">5 · DE-CLICK</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 250px;width:250px;border:1px solid #54575C"><image-slot id="rogerian-declick" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="ROGERIAN DIA De-click Module"></image-slot></div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">The mouth, minus the mouth noises.</b></p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Clicks, ticks, lip smacks — the tiny transients that survive every other stage and cost editors hours of clip-gain surgery. Detection finds the click; repair is model-based: an autoregressive engine learns the voice from the audio around the defect and resynthesizes what should have been there, with a hybrid fallback interpolation that guarantees a clean join. Restoration-suite technique running inside the strip in real time.</p>
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Click Size</b> — Scope the repair from single-sample ticks to fatter mouth events.</li>
+            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Sample-Accurate Reporting</b> — Latency is reported exactly to the host, even when switching click sizes dynamically.</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="module-deep-dive">
-        <h3>THE_FIVE_STAGES</h3>
-        
-        <!-- STAGE 1 -->
-        <div class="module-block">
-            <div class="section-header-title">1 · Noise Reduction</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_DIA_v0.05.09_NUC_NR.png" alt="ROGERIAN DIA noise reduction module" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p><b>The floor, lowered — continuously.</b></p>
-                    <p>A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN DIA's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Dual Engines</b> — Zero-latency multiband path for tracking and picture work. High-resolution spectral tier (MMSE-LSA with speech-presence steering) for surgical dialogue restoration without watery artifacts.</li>
-                        <li>· <b>Transparent Routing</b> — The stage is routable in the chain and bit-transparent completely off. Amount and sensitivity controls do exactly what they claim.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">DESIGNED_AS_ONE_INSTRUMENT</h3>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Five stages are only a strip if they behave as one plugin — so ROGERIAN DIA is engineered suite-first.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">One window, honest depth.</b> The stages live as compact cards with live mini-metering — the EQ card draws its real curve, the compressor card its real gain reduction, the de-click card its catch count. Any card opens into its full panel; the signal path never leaves the window.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">Latency, reconciled.</b> Each stage reports exactly what it uses; the suite reconciles the chain and tells the host one true number. The resonance stage's Zero path and the zero-latency EQ keep the default footprint small enough for picture and tracking.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0"><b style="color:#B0B2B7;font-weight:700">Transparent at rest.</b> Disabled stages are bit-transparent — verified by null test, not by assumption. A fresh instance passes audio untouched until you ask for work. Per-stage bypass and whole-plugin bypass are both crossfaded and clickless.</p>
+  </section>
 
-        <!-- STAGE 2 -->
-        <div class="module-block">
-            <div class="section-header-title">2 · Resonance Suppression — the centerpiece</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_DIA_v0.05.09_NUC_RES.png" alt="ROGERIAN DIA resonance suppressor" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p><b>Cuts that exist only while the problem does.</b></p>
-                    <p>Every room rings somewhere. Every voice, some days, bites. The resonance stage is a dynamic, cut-only spectral processor that finds narrow resonances — boxiness, harshness, ring, proximity build-up — and attenuates them only while they sound, at the depth they demand, then gets out of the way. Nothing is notched permanently.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Soft / Hard</b> — Adaptive tracking relative to voice context, or absolute thresholds for surgical work.</li>
-                        <li>· <b>Focus & Detail</b> — Persistence weighting treats sustained rings but spares transient consonants.</li>
-                        <li>· <b>Display Steering</b> — Five draggable bands over a live spectrum. Drag up where rooms ring, pull down with Depth, modify the response via REFINE (scale, shift, tilt).</li>
-                        <li>· <b>Delta Listen</b> — Solo exactly what's being removed. The fastest honesty check in the plugin.</li>
-                        <li>· <b>Reconstruction Paths</b> — Switch click-free between Zero (near-zero latency), Linear (phase-perfect offline pass), and Natural (minimum-phase).</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- STAGE 3 -->
-        <div class="module-block">
-            <div class="section-header-title">3 · EQ</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_DIA_v0.05.09_NUC_EQ.png" alt="ROGERIAN DIA EQ module" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p><b>Seven bands. Three characters. Zero latency.</b></p>
-                    <p>A seven-band parametric built on analog-matched filters: the bell you see at 12 kHz is the bell you get — magnitude matched to the analog prototype all the way up, with none of the high-frequency cramping of textbook digital EQ. Minimum-phase, zero-latency, and drawn over a real-time pre/post analyzer.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Full Shape Set</b> — Bells, 12/24/48 dB-per-octave cuts, notches, tilts, band-passes.</li>
-                        <li>· <b>Per-Band Dynamic EQ</b> — Set a dynamic range and the band eases in only when the signal crosses its self-adjusting threshold. A de-esser, a mud ducker, a presence lift — each is one band, one gesture.</li>
-                        <li>· <b>CHARACTER System</b> — <b>NEUTRAL</b> (standard bell), <b>COOL</b> (flat-topped plateau for broad tonal moves without a hot spot), and <b>SHARP</b> (focused tight peak for bite without smear).</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- STAGE 4 -->
-        <div class="module-block">
-            <div class="section-header-title">4 · DYNAMICS</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_DIA_v0.05.09_NUC_COMP.png" alt="ROGERIAN DIA Compressor Module" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p><b>A voice leveler with its color on a separate knob.</b></p>
-                    <p>Feed-forward and program-dependent, built around a smooth decoupled detector to hold a read at a consistent level without pumping or dulling consonants.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>VOICE</b> — Clean, Warm, or Punch dynamic temperaments.</li>
-                        <li>· <b>CHARACTER</b> — Separate color section. Drive controls Tube, Diode, or Bright saturations independently from gain reduction. Pre/Post routing enabled.</li>
-                        <li>· <b>Continuous Detection</b> — Peak to RMS blending, program-dependent auto-release, sidechain high-pass (20–400 Hz), and a hard RANGE floor. Lookahead runs up to 3.5 ms on a fixed automation-safe budget.</li>
-                        <li>· <b>Metering</b> — Live transfer curve alongside a scrolling GR meter so you see the last several seconds of leveling decisions.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- STAGE 5 -->
-        <div class="module-block">
-            <div class="section-header-title">5 · DE-CLICK</div>
-            <div class="module-split-row">
-                <div class="visual-bay">
-                    <img src="ROGERIAN_DIA_v0.05.09_NUC_DECLICK.png" alt="ROGERIAN DIA De-click Module" class="module-shot">
-                </div>
-                <div class="text-bay">
-                    <p><b>The mouth, minus the mouth noises.</b></p>
-                    <p>Clicks, ticks, lip smacks — the tiny transients that survive every other stage and cost editors hours of clip-gain surgery. Detection finds the click; repair is model-based: an autoregressive engine learns the voice from the audio around the defect and resynthesizes what should have been there, with a hybrid fallback interpolation that guarantees a clean join. Restoration-suite technique running inside the strip in real time.</p>
-                    <ul class="parameter-list" style="margin-top: 15px;">
-                        <li>· <b>Click Size</b> — Scope the repair from single-sample ticks to fatter mouth events.</li>
-                        <li>· <b>Sample-Accurate Reporting</b> — Latency is reported exactly to the host, even when switching click sizes dynamically.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CORE ARCHITECTURE -->
-    <section class="module-deep-dive">
-        <h3>DESIGNED_AS_ONE_INSTRUMENT</h3>
-        <div class="module-block">
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);">Five stages are only a strip if they behave as one plugin — so ROGERIAN DIA is engineered suite-first.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>One window, honest depth.</b> The stages live as compact cards with live mini-metering — the EQ card draws its real curve, the compressor card its real gain reduction, the de-click card its catch count. Any card opens into its full panel; the signal path never leaves the window.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Latency, reconciled.</b> Each stage reports exactly what it uses; the suite reconciles the chain and tells the host one true number. The resonance stage's Zero path and the zero-latency EQ keep the default footprint small enough for picture and tracking.</p>
-            <p style="font-weight: 300; font-size: 15px; line-height: 1.9; color: var(--secondary);"><b>Transparent at rest.</b> Disabled stages are bit-transparent — verified by null test, not by assumption. A fresh instance passes audio untouched until you ask for work. Per-stage bypass and whole-plugin bypass are both crossfaded and clickless.</p>
-        </div>
-    </section>
-
-    <!-- SPECS -->
-    <section class="specs-container">
-        <div class="spec-group">
-            <h3>THE_FINISH</h3>
-            <ul class="spec-list">
-                <li><b>Porcelain Aesthetic</b> Pale stone panels, a masthead cut into the surface like an inscription — engraved, not printed — with gold reserved strictly for the active parameters.</li>
-                <li><b>Pure Typography</b> Montserrat controls naming matrices, while JetBrains Mono ensures precise numerical tracking rendering uniformly across all structural OS displays.</li>
-            </ul>
-        </div>
-
-        <div class="spec-group">
-            <h3>TECHNICAL_SPECIFICATIONS</h3>
-            <ul class="spec-list">
-                <li><b>Stages Matrix</b> Noise Reduction · Resonance Suppression · EQ · Compression · De-Click</li>
-                <li><b>Format Architectures</b> VST3 · AU · AAX · Standalone [macOS Intel & Apple Silicon / Signed and Notarized]</li>
-                <li><b>Latency System</b> Fully reported; near-zero default paths; fixed-budget compressor lookahead (automation-safe).</li>
-                <li><b>Build Version</b> v0.5.08 / DSP v36</li>
-            </ul>
-        </div>
-    </section>
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">THE_FINISH</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Porcelain Aesthetic</b>Pale stone panels, a masthead cut into the surface like an inscription — engraved, not printed — with gold reserved strictly for the active parameters.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Pure Typography</b>Montserrat controls naming matrices, while JetBrains Mono ensures precise numerical tracking rendering uniformly across all structural OS displays.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Stages Matrix</b>Noise Reduction · Resonance Suppression · EQ · Compression · De-Click</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Format Architectures</b>VST3 · AU · AAX · Standalone [macOS Intel &amp; Apple Silicon / Signed and Notarized]</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency System</b>Fully reported; near-zero default paths; fixed-budget compressor lookahead (automation-safe).</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Version</b>v0.5.08 / DSP v36</li>
+      </ul>
+    </div>
+  </section>
 </main>
 
-<script>
-    // --- DIAGNOSTIC LIGHTBOX CONTROLLER ENGINE ---
-    const vaultOverlay = document.getElementById('diagnosticVault');
-    const vaultCanvas = document.getElementById('vaultCanvas');
-    const closeVaultBtn = document.getElementById('closeVaultBtn');
-
-    document.getElementById('heroTrigger').addEventListener('click', function() {
-        const targetImage = this.querySelector('.plugin-display');
-        if(!targetImage || !targetImage.getAttribute('src')) return;
-        
-        vaultCanvas.src = targetImage.src;
-        vaultOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; 
-    });
-
-    document.querySelectorAll('.visual-bay').forEach(bay => {
-        const targetImage = bay.querySelector('.module-shot');
-        if(!targetImage || !targetImage.getAttribute('src')) return;
-
-        bay.addEventListener('click', () => {
-            vaultCanvas.src = targetImage.src;
-            vaultOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        });
-    });
-
-    function escapeDiagnosticVault() {
-        vaultOverlay.classList.remove('active');
-        vaultCanvas.src = ''; 
-        document.body.style.overflow = ''; 
-    }
-
-    closeVaultBtn.addEventListener('click', escapeDiagnosticVault);
-    vaultOverlay.addEventListener('click', (e) => {
-        if (e.target === vaultOverlay) escapeDiagnosticVault();
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && vaultOverlay.classList.contains('active')) {
-            escapeDiagnosticVault();
-        }
-    });
-</script>
-
-<footer>
-    <span>THETA AUDIO RESEARCH // 2026</span>
-    <span>LAB NOTE #009 // ROGERIAN_DIA_v2.0_RELEASE_SPEC</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #009 // ROGERIAN_DIA_v2.0_RELEASE_SPEC</span>
 </footer>
 
+</div>
+
+</x-dc>
 </body>
 </html>
