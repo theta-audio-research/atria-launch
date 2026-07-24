@@ -34,7 +34,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px">
-    <image-slot id="theseus-hero" src="assets/theseus/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:901/770;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="THESEUS Spatial Reverb Core Interface"></image-slot>
+    <image-slot id="theseus-hero" src="assets/theseus/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1802/1708;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="THESEUS Spatial Reverb Core Interface"></image-slot>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -138,7 +138,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/theseus/hero.png', 2000, 901 / 770),
+      openHero: this._mk('assets/theseus/hero.png', 2000, 1802 / 1708),
     };
   }
 }
