@@ -10,6 +10,7 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <script src="./image-slot.js"></script>
+<style>#baryon-sub-3band::part(frame),#baryon-sub-dfc::part(frame),#baryon-lfo::part(frame),#baryon-character::part(frame),#baryon-dynamics::part(frame),#baryon-eq::part(frame),#baryon-output::part(frame){background:#000}</style>
 </helmet>
 <div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
@@ -52,100 +53,90 @@
     </div>
   </section>
 
-  <section style="max-width:1100px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">FOCUS_RACK_MODULES</h3>
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:50px;border-bottom:1px solid #54575C;padding-bottom:10px">FOCUS_RACK_MODULES</h3>
 
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">SUB — The Generator</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-sub-3band" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Sub 3-Band Module"></image-slot></div>
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0;text-align:center">The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0 auto;padding:0;list-style:none;text-align:left">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Chassis Architecture</b> — Each band gets its own color-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
-          </ul>
-        </div>
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-sub-dfc" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Sub DFC Module"></image-slot></div>
+    <div style="margin-bottom:90px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">SUB — The Generator</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:0 auto 32px auto">
+        <div style="overflow:hidden"><image-slot id="baryon-sub-3band" src="assets/baryon/sub_3band.png" onClick="{{ openSub3band }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="BARYON Sub 3-Band Module"></image-slot></div>
+        <div style="overflow:hidden"><image-slot id="baryon-sub-dfc" src="assets/baryon/sub_dfc.png" onClick="{{ openSubDfc }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="BARYON Sub DFC Module"></image-slot></div>
+      </div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0;text-align:center">The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0 auto;padding:0;list-style:none;text-align:left">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DIVIDE</b> — The classic dbx approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">SYNTH</b> — Waveform modeling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">HYBRID</b> — The grit of the divider blended with the body of the sine.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Chassis Architecture</b> — Each band gets its own color-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
+        </ul>
       </div>
     </div>
 
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">LFO — Motion for the Low End</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&amp;H. Rate runs free or SYNC to host tempo.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, staying beat-locked through loops and relocates.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO for widening motion no static tool can produce.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Display Mapping</b> — Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine's published phase.</li>
-          </ul>
-        </div>
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-lfo" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON LFO Module"></image-slot></div>
+    <div style="margin-bottom:90px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">LFO — Motion for the Low End</div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-lfo" src="assets/baryon/lfo.png" onClick="{{ openLfo }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON LFO Module"></image-slot></div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A dedicated modulator that breathes life into the generated sub — tremolo applied to the sub only, never your dry signal.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Waveform Array</b> — Five waveforms: SINE, TRI, SAW, SQUARE, and S&amp;H. Rate runs free or SYNC to host tempo.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Position RETRIG</b> — In sync mode the LFO's phase is derived from the host's song position every block, staying beat-locked through loops and relocates.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PHASE Orbit (0–180°)</b> — Offsets the right channel's LFO for widening motion no static tool can produce.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Display Mapping</b> — Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine's published phase.</li>
+        </ul>
       </div>
     </div>
 
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">CHARACTER — Punch, Edge, and Colour</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-character" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Character Module"></image-slot></div>
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, with switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
-          </ul>
-        </div>
+    <div style="margin-bottom:90px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">CHARACTER — Punch, Edge, and Colour</div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-character" src="assets/baryon/character.png" onClick="{{ openCharacter }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON Character Module"></image-slot></div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PUNCH / EDGE Engine</b> — Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Color Stage</b> — A hero DRIVE pushes the compressor's colour stage, with switchable oversampling (OFF / 2X / 4X) to keep aggressive settings alias-free.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Headroom Preservation</b> — Dedicated DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
+        </ul>
       </div>
     </div>
 
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">DYNAMICS — THETA ANANKE COMPRESSION</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">ANANKE is the uncompromised compression engine extracted from the ROGERIAN Suite and configured as a focused, single-purpose processor.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TRANSFER Display</b> — Draws the actual gain law on a 10 dB grid: threshold marker, the OverEasy soft-knee region, and the ∞:1 hard-limit curve.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms.</li>
-          </ul>
-        </div>
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-dynamics" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Dynamics Module"></image-slot></div>
+    <div style="margin-bottom:90px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">DYNAMICS — THETA ANANKE COMPRESSION</div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-dynamics" src="assets/baryon/dynamics.png" onClick="{{ openDynamics }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON Dynamics Module"></image-slot></div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">ANANKE is the uncompromised compression engine extracted from the ROGERIAN Suite and configured as a focused, single-purpose processor.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TRANSFER Display</b> — Draws the actual gain law on a 10 dB grid: threshold marker, the OverEasy soft-knee region, and the ∞:1 hard-limit curve.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">GAIN REDUCTION History</b> — Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Parameter Suite</b> — THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS — the detector's averaging window from 1 to 50 ms.</li>
+        </ul>
       </div>
     </div>
 
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">EQ — The Editing Surface</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-eq" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON EQ Module"></image-slot></div>
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two independent processors — <b style="color:#DCCDBF;font-weight:700">EQ IN</b> (before the generator) and <b style="color:#DCCDBF;font-weight:700">EQ OUT</b> (after) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically.</li>
-          </ul>
-        </div>
+    <div style="margin-bottom:90px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">EQ — The Editing Surface</div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-eq" src="assets/baryon/eq.png" onClick="{{ openEq }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON EQ Module"></image-slot></div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two independent processors — <b style="color:#DCCDBF;font-weight:700">EQ IN</b> (before the generator) and <b style="color:#DCCDBF;font-weight:700">EQ OUT</b> (after) — each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH, and DYN range.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Direct Manipulation Node Grammar</b> — Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dynamic Animation</b> — The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Global Architecture</b> — LINK mode runs one detection path on the mono sum so both channels' bells always move identically.</li>
+        </ul>
       </div>
     </div>
 
     <div>
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700;text-align:center">OUTPUT — Meter, Gate, Ceiling</div>
-      <div style="display:flex;gap:40px;align-items:center;justify-content:center">
-        <div style="flex:1;max-width:600px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL, master DRY/WET, and OUT TRIM.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dual-Gate</b> — A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
-          </ul>
-        </div>
-        <div style="flex:0 0 240px;width:240px;border:1px solid #54575C;background:rgba(255,255,255,0.01)"><image-slot id="baryon-output" style="width:100%;aspect-ratio:4/3" shape="rect" placeholder="BARYON Output Module"></image-slot></div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">OUTPUT — Meter, Gate, Ceiling</div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-output" src="assets/baryon/output.png" onClick="{{ openOutput }}" style="width:100%;aspect-ratio:1126/670;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON Output Module"></image-slot></div>
+      <div style="max-width:840px;margin:0 auto">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The final say. A post-limiter L/R output meter spans the top — gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Gain Staging Zone</b> — Handles compressor MAKEUP, PARALLEL, master DRY/WET, and OUT TRIM.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Limiter Rail</b> — A stereo-linked, look-ahead brickwall — CEILING, LOOKAHEAD, RELEASE, and a CLIP mode.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dual-Gate</b> — A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Draggable Gate Display</b> — The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -180,12 +171,15 @@
   <span>LAB NOTE #021 // BARYON_v0.0.65_THEME_REFERENCE</span>
 </footer>
 
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6)">
 </div>
 
+</div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { pulse: 0, triggered: false };
+  state = { triggered: false, zoomed: null };
   canvasRef = React.createRef();
 
   componentDidMount() {
@@ -198,6 +192,8 @@ class Component extends DCLogic {
     resize();
     window.addEventListener('resize', resize);
     this._resize = resize;
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
     const ctx = canvas.getContext('2d');
     const loop = () => {
       const width = canvas.width, height = canvas.height;
@@ -245,19 +241,44 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._raf) cancelAnimationFrame(this._raf);
     if (this._resize) window.removeEventListener('resize', this._resize);
+    if (this._esc) document.removeEventListener('keydown', this._esc);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.zoomed !== prevState.zoomed && this._zoomImgEl) {
+      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
+    }
   }
 
   trigger() { this.triggered = true; this.pulseProgress = 1.0; }
 
+  _mk(src, w, r) {
+    return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
+  }
+
   renderVals() {
+    const z = this.state.zoomed;
+    const R = 1126 / 670;
     return {
       canvasRef: this.canvasRef,
       triggerPulse: () => this.trigger(),
-      onMove: () => { if (Math.random() < 0.25) this.trigger(); }
+      onMove: () => { if (Math.random() < 0.25) this.trigger(); },
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openSub3band: this._mk('assets/baryon/sub_3band.png', 2000, R),
+      openSubDfc: this._mk('assets/baryon/sub_dfc.png', 2000, R),
+      openLfo: this._mk('assets/baryon/lfo.png', 2000, R),
+      openCharacter: this._mk('assets/baryon/character.png', 2000, R),
+      openDynamics: this._mk('assets/baryon/dynamics.png', 2000, R),
+      openEq: this._mk('assets/baryon/eq.png', 2000, R),
+      openOutput: this._mk('assets/baryon/output.png', 2000, R),
     };
   }
 }
-
 </script>
 </body>
 </html>
