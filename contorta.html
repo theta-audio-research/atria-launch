@@ -9,21 +9,148 @@
 <x-dc>
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+<style>#contorta-hero::part(frame){background:#000}</style>
 </helmet>
-<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="text-align:center;border:1px solid #54575C;padding:60px;background:rgba(255,255,255,0.01);max-width:520px">
-    <svg viewBox="0 0 100 100" style="height:70px;width:auto;display:block;margin:0 auto 30px auto" aria-label="THETA">
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
       <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
-    <h1 style="font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">CONTORTA</h1>
-    <p style="font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:10px 0 40px 0;opacity:0.8">Sonic Exploration Instrument</p>
-    <div style="font-size:11px;letter-spacing:4px;color:#54575C;text-transform:uppercase;font-weight:700;margin-bottom:40px">// COMING_SOON</div>
-    <a href="index.html" style="display:inline-block;color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:12px 24px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">CONTORTA</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Modulation &amp; Randomization Plugin Host — THETA Audio Research</p>
   </div>
-</div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
+</nav>
 
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Host Shell</span>
+    <div style="border:1px solid #54575C;overflow:hidden;border-radius:2px"><image-slot id="contorta-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="CONTORTA Interface"></image-slot></div>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">Your plugins. Contorted.</b><br><br>CONTORTA wraps around any VST3 or AU and gives it everything your DAW never could — granular randomization, living drift, and modulation that reaches every parameter. While your automation lanes keep working.</p>
+  </div>
+
+  <section style="max-width:850px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #54575C;padding-bottom:10px">THE_PROBLEM</h3>
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em;margin:0">Most plugins don't have a randomize button. The ones that do give you a grenade: one click, every knob, no survivors. And unless you're willing to switch DAWs, nothing on earth lets you modulate <i>any</i> parameter of <i>any</i> plugin.<br><br><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">CONTORTA fixes all three. It's not an effect. It's a host with bad intentions.</b></p>
+  </section>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Host shell, 64 proxy lanes, two-way sync, gesture relay and the automatable trigger are running. The modulation rack and drift engine are in build — see the roadmap below.</p>
+      <a href="mailto:hello@thetaaudioresearch.com?subject=CONTORTA%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:50px;border-bottom:1px solid #54575C;padding-bottom:10px">RUNNING_NOW</h3>
+
+    <div style="margin-bottom:60px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">HOST ANYTHING</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;max-width:840px">Drop any VST3 or AU inside CONTORTA — synth, compressor, that weird freeware flanger from 2009. Its parameters become CONTORTA's parameters. All of them, up for grabs. Audio and MIDI pass straight through the hosted plugin, its latency is forwarded to the DAW, and CONTORTA adds nothing of its own.</p>
+    </div>
+
+    <div style="margin-bottom:60px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">RANDOMIZE LIKE YOU MEAN IT</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0;max-width:840px">This is not a randomize button. It's a randomize system. Lock what's sacred, dial in probability and amount, and roll the dice on exactly the chaos you ordered — and nothing you didn't.</p>
+      <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none;max-width:840px">
+        <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Per-parameter locks</b> — hold the knobs that matter exactly where you put them.</li>
+        <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Probability and amount</b> — from a subtle re-seasoning to a full teardown.</li>
+        <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Per-knob ranges</b> — let the filter roam, keep the output gain on a leash. Engine-side today; the range editor lands with the UI pass.</li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:60px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">A DICE ROLL YOU CAN SEQUENCE</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;max-width:840px">CONTORTA's randomize trigger is itself an automatable parameter. Draw it into your arrangement. Fire it every bar, every drop, every time the vocal stops. Your patch becomes a living thing that re-invents itself on the grid.</p>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">AUTOMATION THAT SURVIVES</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;max-width:840px">The dirty secret of every plugin host: once your plugin lives inside it, your DAW's automation goes blind. CONTORTA's proxy lanes stay fully automatable and recordable — and when you grab a knob on the hosted plugin's own UI, CONTORTA relays the touch so your DAW writes the automation. The lanes are stable and permanent: swap the hosted plugin and your lanes stay put. Nothing about your workflow breaks. It just bends.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:50px;border-bottom:1px solid #54575C;padding-bottom:10px">ROADMAP // IN_BUILD</h3>
+
+    <div style="margin-bottom:60px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">DRIFT<span style="font-size:9px;letter-spacing:3px;color:#54575C;margin-left:16px;font-weight:700">[IN_BUILD]</span></div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;max-width:840px">Perfect is dead. Give any plugin the slow wander of hot circuitry: WALK, LORENZ and WOBBLE modes will nudge your unlocked parameters in small, musical steps — mutation instead of demolition. Your static presets start breathing.</p>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 20px 0;font-weight:700">THE MOD RACK<span style="font-size:9px;letter-spacing:3px;color:#54575C;margin-left:16px;font-weight:700">[IN_BUILD]</span></div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;max-width:840px">LFO. CHAOS. FOLLOW. STEPS. Stack any source on any parameter of whatever you've loaded, fan one LFO across a dozen destinations, and give a fifteen-year-old plugin a modulation system it never dreamed of.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">HOW_IT_WORKS</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px">
+      <div style="border:1px solid #54575C;padding:30px;background:rgba(220,205,191,0.01)">
+        <div style="font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">01</div>
+        <div style="font-size:13px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;font-weight:700;margin-bottom:14px">LOAD</div>
+        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Open CONTORTA on a track, load any plugin inside it.</p>
+      </div>
+      <div style="border:1px solid #54575C;padding:30px;background:rgba(220,205,191,0.01)">
+        <div style="font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">02</div>
+        <div style="font-size:13px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;font-weight:700;margin-bottom:14px">SHAPE</div>
+        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Set ranges, lock the sacred knobs, pick your chaos.</p>
+      </div>
+      <div style="border:1px solid #54575C;padding:30px;background:rgba(220,205,191,0.01)">
+        <div style="font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">03</div>
+        <div style="font-size:13px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;font-weight:700;margin-bottom:14px">ROLL</div>
+        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Hit RANDOMIZE. Or automate it and let the song do it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">FREQUENTLY_ASKED</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Does it work with any plugin?</b>Anything VST3 or AU that exposes automatable parameters — which is nearly everything.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Will my DAW still see my automation?</b>Yes. That's the whole point. CONTORTA's parameter lanes are stable and permanent; swap the hosted plugin and your lanes stay put.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Is randomize just chaos?</b>Only if you ask for it. Ranges, locks, probability and amount mean "randomize" can be anything from a subtle re-seasoning to a full teardown.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Does it change my audio path?</b>CONTORTA passes audio and MIDI straight through the hosted plugin, forwards its latency to the DAW, and adds nothing of its own.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Modulation and randomization host wrapper</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Proxy Lanes</b>64 automatable proxy lanes, stable across plugin swaps</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Hosts</b>VST3 &amp; AU plugins, audio and MIDI passed through</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Sync</b>Two-way parameter sync with gesture relay, so host-UI moves are written by the DAW</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency</b>Hosted plugin's latency forwarded to the DAW; CONTORTA adds none</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Session Recall</b>Full recall including the hosted plugin's own state</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · AU, macOS Apple Silicon native [Windows to follow]</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #017 // CONTORTA_v0.1 — WRAP_IT_TWIST_IT_ROLL_IT</span>
+</footer>
+
+</div>
 </x-dc>
 </body>
 </html>

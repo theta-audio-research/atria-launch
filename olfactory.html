@@ -9,21 +9,185 @@
 <x-dc>
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<script src="./image-slot.js"></script>
+<style>#olfactory-hero::part(frame){background:#000}</style>
 </helmet>
-<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="text-align:center;border:1px solid #54575C;padding:60px;background:rgba(255,255,255,0.01);max-width:520px">
-    <svg viewBox="0 0 100 100" style="height:70px;width:auto;display:block;margin:0 auto 30px auto" aria-label="THETA">
+<div style="background:#000;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#000;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
       <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
-    <h1 style="font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">OLFACTORY</h1>
-    <p style="font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:10px 0 40px 0;opacity:0.8">Sonic Exploration Instrument</p>
-    <div style="font-size:11px;letter-spacing:4px;color:#54575C;text-transform:uppercase;font-weight:700;margin-bottom:40px">// COMING_SOON</div>
-    <a href="index.html" style="display:inline-block;color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:12px 24px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">OLFACTORY</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Mono-Safe Lush Chorus — THETA Audio Research</p>
   </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #54575C;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#000000">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // TRI Voicing, Three Voices</span>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:970/522;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">Smell is the sense wired straight to memory. Chorus is the most nostalgic effect in music.</b><br><br>Nobody shopping for a chorus wants "a chorus." They want a sound they remember: a polysynth on a record they wore out, a pedal into two amps, a rack unit in a studio that no longer exists. For a decade the forums have said the same thing — no software chorus makes the sound in my head. OLFACTORY was built to be that sound. And then to do the one thing the originals never could: prove the width survives mono.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS // FREE_RELEASE</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis is in voicing calibration across both engines. OLFACTORY will ship completely free — no account, no unlock, no upsell. Nine voicings, five modelled circuits, and a correlation governor that proves the width folds down intact.</p>
+      <a href="mailto:hello@thetaaudioresearch.com?subject=OLFACTORY%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:50px;border-bottom:1px solid #54575C;padding-bottom:10px">FOCUS_RACK_MODULES</h3>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">WHY SOFTWARE CHORUS SOUNDS FLAT</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Most digital chorus is a delay line and a sine wave, and that is exactly what it sounds like. The hardware everyone remembers was a signal path with opinions. OLFACTORY models the whole path, not the delay line.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">A true 2:1 compander</b> wrapped around every bucket line, with the expander tracking the delayed signal — so the noise floor breathes with your playing, exactly like the original chips.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Band-limited wet voices</b> — pre-emphasis in, mirrored de-emphasis out, and a reconstruction ceiling that darkens as you push CHARACTER. The lushness sits behind the dry signal, where it belongs.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Imperfect LFOs</b> — triangle cores smoothed by the same RC constant as the classic pedal circuit, trapezoids for the dimension-style voicings, a pure sinusoid for the ADM engine.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Voice asymmetry and drift</b> — every voice carries its own delay offset, its own slightly detuned filters, and a share of one slow correlated random walk: the "alive" quality of aged hardware warming up.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">VOICING — Nine Voicings, Five Circuits, Zero Guesswork</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The classics were not knob machines — they were voicings. OLFACTORY ships as a nine-cell grid, each cell a hardware-derived geometry: voice count, delay times, LFO shape and stereo behaviour taken from the real circuits.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">JUNO I / JUNO II</b> — the polysynth ensemble: short bucket lines, slow rounded triangles, instant string-machine bloom.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">CE</b> — the pedal that defined chorus for guitar: one voice, a wide 5–25 ms sweep, warm mids, gentle top. Push MIX to 100% and it becomes true vibrato, just like holding the pedal's switch.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DIM 1–4</b> — the studio dimension trick: two voices modulated in exact opposition so the average delay never moves. Depth without wobble; the effect you feel more than hear.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TRI</b> — the triple-chorus rack behind two decades of session guitar: three voices, three LFOs spaced 120° apart, spread left-centre-right.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">RATE and DEPTH are trims</b>, not global controls pretending every circuit is the same. DEPTH at 50% is the hardware value. Tempo-sync is everywhere, with dotted and triplet divisions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">ADM — A Different Machine, Same Knobs</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">One early-80s rack delay keeps showing up in "best modulation ever" threads, and it never sounded like anything else because it never worked like anything else: instead of PCM, it encoded audio as a one-bit adaptive delta-modulation stream.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Slope-overload rounding</b> — transients arrive rounded because fast edges outrun the adapting step size, with the codec's syllabic 60 ms decay.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Breathing grain</b> — a fine grain underneath, correlated with your playing.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Shared-clock sweep</b> — modulation rides the same continuous clock as the delay itself, so the sweep is pure liquid: no stepping, just glide.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">It is not a filter pretending to be old.</b> It is the mechanism.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">SILLAGE — Width That Survives the Club</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Here is the category's dirty secret: many "stereo" choruses get their width from phase-inverted copies. Sum them to mono and the width does not shrink — it vanishes. No plugin has ever offered a safeguard. OLFACTORY ships one.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Width is built from voice placement, never polarity</b> — constant-power panning and delay decorrelation, the same mechanism that made the triple-chorus rack mono-safe by construction in 1987.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">A correlation governor</b> — with MONO SAFE engaged, OLFACTORY continuously measures the correlation of its actual output. Below the safety floor the governor smoothly reins the width in (attack in milliseconds, release in half a second) and a GOVERNOR lamp lights while it works. A limiter, acting on decorrelation instead of level.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Live proof</b> — a correlation meter with the floor marked on it, and a mono-sum meter showing in dB exactly what a mono fold-down costs you. Measured from the output, not modelled.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Widen until the lamp flickers.</b> That is the edge: maximum width that provably survives the sum.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">CHARACTER, DRIFT &amp; THE SCOPE</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two knobs carry the aging, and the scope proves it. Both at zero is still a vintage-voiced instrument; both up is a machine with a history.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">CHARACTER</b> — how much of the medium you get: clock noise rising out of the floor, the wet path darkening toward its vintage ceiling, the input stage thickening. On the ADM engine, the codec rounds harder and the grain breathes louder.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DRIFT</b> — the slow, correlated wander of voices that have been powered on all afternoon.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">See what you hear</b> — the scope draws the actual per-voice delay motion the engine is running, not an animation. Watch the dimension voicings mirror each other in perfect opposition, the triple-chorus voices chase each other 120° apart, and DRIFT roughen the lines in real time.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Three rooms, one instrument</b> — LIGHT, the white-and-gold console; VOID, near-black with bronze; and NUCLEAR, the sage-green control room with ivory dial faces. Your choice is remembered per-machine, because a theme is a preference, not a sound.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #54575C">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">MEASURED_NOT_MARKETED</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Mono-Safe By Construction</b>No phase-inverted width anywhere in the signal path — constant-power panning and delay decorrelation only.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Governor Ballistics</b>Attack in milliseconds, release in half a second, acting on measured output correlation rather than level.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Hardware-Anchored Values</b>DEPTH at 50% is the hardware value for the selected voicing — trims inside an authentic range, not arbitrary sliders.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Honest Metering</b>Correlation and mono-sum loss are measured from the output you are hearing, with the safety floor drawn on the scale.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Live Scope</b>Per-voice delay traces are the engine's real modulation, colour-matched across the interface.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <ul style="list-style:none;padding:0;margin:0">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Mono-safe lush chorus with correlation governor</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Engines</b>BBD (compander-wrapped bucket-line model) and ADM (adaptive delta-modulation codec model)</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voicings</b>JUNO I, JUNO II, CE, DIM 1–4, TRI, ADM</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Controls</b>VOICING · RATE · SYNC · DIVISION · DEPTH · CHARACTER · DRIFT · WIDTH · MONO SAFE · MIX · OUTPUT</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Metering</b>Live output correlation with safety floor, mono-sum loss in dB, governor activity</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Channels</b>Mono and stereo</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Interface</b>Three skins: LIGHT / VOID / NUCLEAR, persistent per machine</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>AU · VST3, macOS</li>
+      </ul>
+    </div>
+  </section>
+
+  <p style="max-width:1000px;margin:0 auto;font-weight:300;font-size:10px;line-height:1.9;color:#54575C;letter-spacing:0.04em;text-align:center">OLFACTORY's voicings are original models inspired by classic hardware circuits. All product names referenced in discussion of that hardware are trademarks of their respective owners, and no affiliation or endorsement is implied.</p>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #54575C;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #024 // OLFACTORY_v0.3.0 — WIDTH_THAT_SURVIVES</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
 </div>
 
+</div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate(pp, ps) {
+    if (this.state.zoomed !== ps.zoomed && this._zoomImgEl) {
+      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
+    }
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/olfactory/hero.png', 2200, 970 / 522),
+    };
+  }
+}
+</script>
 </body>
 </html>
