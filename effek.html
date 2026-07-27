@@ -36,7 +36,7 @@
 
   <div style="margin-bottom:40px;max-width:1100px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // ADM 1024 Rack</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="effek-hero" src="assets/effek/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1290/430;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="EFFEK Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="effek-hero" src="assets/effek/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1290/258;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="EFFEK Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -171,7 +171,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/effek/hero.png', 2600, 1290 / 430),
+      openHero: this._mk('assets/effek/hero.png', 2600, 1290 / 258),
     };
   }
 }
