@@ -56,6 +56,12 @@
     <div style="overflow:hidden;border-radius:2px"><image-slot id="arecibo-source" src="assets/arecibo/source.png" onClick="{{ openSource }}" style="width:100%;aspect-ratio:2294/1758;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ARECIBO Source Array Detail"></image-slot></div>
   </section>
 
+  <section style="margin:0 auto 70px auto;max-width:1000px">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Engine Intel // Output Surgery Stage</span>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="arecibo-sight" src="assets/arecibo/sight.png?v=260729" onClick="{{ openSight }}" style="width:100%;aspect-ratio:1922/1944;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ARECIBO Output Surgery Detail"></image-slot></div>
+    <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:22px auto 0 auto;max-width:840px">The eight-band pre-QUORRA surgery stage with the full chain exposed: per-band FREQ, GAIN, Q, DYN, ATTACK and RELEASE beneath the curve, the QUORRA modulation engine to the right, and the Wall Stage taking the final transient and ceiling decisions.</p>
+  </section>
+
   <section style="max-width:900px;margin:0 auto 100px auto">
     <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #54575C;padding-bottom:10px">SYSTEM_ARCHITECTURE</h3>
     <div style="margin-bottom:60px">
@@ -135,6 +141,7 @@ class Component extends DCLogic {
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/arecibo/hero.png', 2200, 2294 / 1386),
       openSource: this._mk('assets/arecibo/source.png', 2200, 2294 / 1758),
+      openSight: this._mk('assets/arecibo/sight.png?v=260729', 1700, 1922 / 1944),
     };
   }
 }

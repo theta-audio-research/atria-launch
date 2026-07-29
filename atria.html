@@ -34,7 +34,7 @@
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Initial State</span>
-    <image-slot id="atria-hero" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ATRIA Interface"></image-slot>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="atria-hero" src="assets/atria/hero.png?v=260729" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2562/1016;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ATRIA Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -52,7 +52,7 @@
   <section style="margin-bottom:60px">
     <div style="margin-bottom:40px;border:1px solid #54575C;background:rgba(220,205,191,0.01);padding:20px">
       <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Engine Intel // Internal Modules</span>
-      <image-slot id="atria-modules" style="width:100%;aspect-ratio:1.85/1" shape="rect" placeholder="ATRIA Module Architecture"></image-slot>
+      <div style="overflow:hidden;border-radius:2px"><image-slot id="atria-modules" src="assets/atria/modules.png?v=260729" onClick="{{ openModules }}" style="width:100%;aspect-ratio:2278/1044;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ATRIA Module Architecture"></image-slot></div>
     </div>
   </section>
 
@@ -100,8 +100,41 @@
   <span>LAB NOTE #002 // TERMINAL_VERIFIED</span>
 </footer>
 
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate(pp, ps) {
+    if (this.state.zoomed !== ps.zoomed && this._zoomImgEl) {
+      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
+    }
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/atria/hero.png?v=260729', 2200, 2562 / 1016),
+      openModules: this._mk('assets/atria/modules.png?v=260729', 2200, 2278 / 1044),
+    };
+  }
+}
+</script>
 </body>
 </html>
