@@ -7,7 +7,7 @@ exact filenames the pages link to, and re-zip.
 
 | File | Linked from | Status |
 |---|---|---|
-| `ENTROPY-v0.1.1-macOS.pkg` | entropy.html (DOWNLOAD_FREE // MACOS) | awaiting installer |
+| `ENTROPY-v0.1.6-macOS.pkg` | entropy.html (DOWNLOAD_FREE // MACOS) | awaiting installer |
 
 ## Rules
 
