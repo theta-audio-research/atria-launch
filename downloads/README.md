@@ -7,7 +7,8 @@ exact filenames the pages link to, and re-zip.
 
 | File | Linked from | Status |
 |---|---|---|
-| `ENTROPY-v0.1.6-macOS.pkg` | entropy.html (DOWNLOAD_FREE // MACOS) | awaiting installer |
+| `ENTROPY_v0.1.6.dmg` | entropy.html (DOWNLOAD_FREE // MACOS) | live |
+| `OLFACTORY_v0.5.0.dmg` | olfactory.html (DOWNLOAD_FREE // MACOS) | live |
 
 ## Rules
 
@@ -24,7 +25,7 @@ exact filenames the pages link to, and re-zip.
 ## Adding a new free plugin installer
 
 1. Drop the installer here using the same naming pattern:
-   `NAME-vX.Y.Z-macOS.pkg`
+   `NAME_vX.Y.Z.dmg` (or `.pkg`) — match the filename in the page link exactly
 2. Point that product page's CTA at it (`href="downloads/..." download`).
 3. Flip the product's status from `[DEVELOPMENT]`/`NOTIFY_ME` to
    `[AVAILABLE]`/`DOWNLOAD // MAC` on `index.html`, `store.html` and `free.html`.

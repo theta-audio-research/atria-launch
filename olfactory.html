@@ -36,7 +36,7 @@
 
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // TRI Voicing, Three Voices</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260727b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:970/632;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260729f" onClick="{{ openHero }}" style="width:100%;aspect-ratio:970/632;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -44,10 +44,11 @@
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
-    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS // FREE_RELEASE</span>
-    <div style="background:rgba(220,205,191,0.02);border:1px solid #54575C;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis is in voicing calibration across both engines. OLFACTORY will ship completely free — no account, no unlock, no upsell. Nine voicings, five modelled circuits, and a correlation governor that proves the width folds down intact.</p>
-      <a href="mailto:hello@thetaaudioresearch.com?subject=OLFACTORY%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#000000">NOTIFY_ME_AT_LAUNCH</a>
+    <span style="font-size:10px;letter-spacing:4px;color:#A6DCA6;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
+    <div style="background:rgba(22,38,22,0.15);border:1px solid #486E48;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free — no account, no unlock, no upsell. Nine voicings, five modelled circuits, and a correlation governor that proves the width folds down intact. VST3 and Audio Unit, macOS Apple Silicon and Intel.</p>
+      <a href="downloads/OLFACTORY_v0.5.0.dmg" download style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#000000">DOWNLOAD_FREE // MACOS</a>
+      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#54575C;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon &amp; Intel · VST3 / AU · Windows build in progress</p>
     </div>
   </section>
 
@@ -184,7 +185,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/olfactory/hero.png?v=260727b', 2200, 970 / 632),
+      openHero: this._mk('assets/olfactory/hero.png?v=260729f', 2200, 970 / 632),
     };
   }
 }
