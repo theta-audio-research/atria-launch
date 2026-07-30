@@ -36,7 +36,7 @@
 
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // TRI Voicing, Three Voices</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260729f" onClick="{{ openHero }}" style="width:100%;aspect-ratio:970/632;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260729g" onClick="{{ openHero }}" style="width:100%;aspect-ratio:962/605;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -185,7 +185,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/olfactory/hero.png?v=260729f', 2200, 970 / 632),
+      openHero: this._mk('assets/olfactory/hero.png?v=260729g', 962, 962 / 605),
     };
   }
 }
