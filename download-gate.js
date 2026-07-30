@@ -16,7 +16,7 @@
    --------------------------------------------------------------- */
 (function () {
   var CONFIG = {
-    ENDPOINT: '',          // paste your form endpoint here
+    ENDPOINT: 'https://app.kit.com/forms/9746211/subscriptions',
     PROVIDER: 'kit',       // 'kit' | 'buttondown' | 'formspree'
     STORAGE: 'theta_lead'
   };
@@ -102,18 +102,23 @@
   // ---- submit --------------------------------------------------
   function send(rec) {
     if (!CONFIG.ENDPOINT) return Promise.resolve();
-    var body, headers = {};
+    var body;
     if (CONFIG.PROVIDER === 'buttondown') {
       body = new URLSearchParams({ email: rec.email });
-    } else {
-      headers['Content-Type'] = 'application/json';
-      body = JSON.stringify({
-        email_address: rec.email, email: rec.email,
-        first_name: rec.first_name, fields: { role: rec.role, source: rec.source, plugin: rec.plugin },
+    } else if (CONFIG.PROVIDER === 'formspree') {
+      body = new URLSearchParams({
+        email: rec.email, first_name: rec.first_name,
         role: rec.role, source: rec.source, plugin: rec.plugin
       });
+    } else {
+      body = new URLSearchParams();
+      body.append('email_address', rec.email);
+      body.append('fields[first_name]', rec.first_name);
+      if (rec.role) body.append('fields[role]', rec.role);
+      if (rec.source) body.append('fields[source]', rec.source);
+      body.append('fields[plugin]', rec.plugin);
     }
-    return fetch(CONFIG.ENDPOINT, { method: 'POST', headers: headers, body: body, mode: 'cors' })
+    return fetch(CONFIG.ENDPOINT, { method: 'POST', body: body, mode: 'cors' })
       .catch(function (e) { console.warn('[theta] list submit failed, lead kept locally', e); });
   }
 
@@ -201,7 +206,7 @@
         panel.appendChild(close);
         panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + C.greenDim + ';margin-bottom:14px', 'Downloading'));
         panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + C.greenLt + ';margin:0 0 14px 0', plugin));
-        panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 26px 0', 'Your download has started. Drag the plug-in to your components folder and you\u2019re running.'));
+        panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 26px 0', 'Your download has started. Check your inbox and confirm your email so we can send you release notes \u2014 the plug-in is yours either way.'));
         var again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Download didn\u2019t start? Click here');
         again.href = href; again.setAttribute('download', '');
         panel.appendChild(again);
