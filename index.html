@@ -20,9 +20,10 @@
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/styles.css">
 <script src="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/_ds_bundle.js"></script>
 <style>
-@keyframes neonPulse{0%,100%{box-shadow:0 0 10px rgba(127,119,221,0.55),0 0 28px rgba(127,119,221,0.25),inset 0 0 12px rgba(127,119,221,0.18)}50%{box-shadow:0 0 18px rgba(127,119,221,0.95),0 0 54px rgba(127,119,221,0.5),inset 0 0 20px rgba(127,119,221,0.32)}}
+@keyframes neonPulse{0%,100%{box-shadow:0 0 10px rgba(255,177,98,0.55),0 0 28px rgba(255,177,98,0.25),inset 0 0 12px rgba(255,177,98,0.18)}50%{box-shadow:0 0 18px rgba(255,177,98,0.95),0 0 54px rgba(255,177,98,0.5),inset 0 0 20px rgba(255,177,98,0.32)}}
 @keyframes neonFlicker{0%,6.9%{opacity:1}7%{opacity:0.35}7.6%{opacity:1}8.2%{opacity:0.45}8.7%{opacity:1}41%{opacity:1}41.4%{opacity:0.3}41.9%{opacity:1}42.4%{opacity:0.6}42.9%,100%{opacity:1}}
-@media (prefers-reduced-motion:reduce){a[aria-label="Free plugins"]{animation:none !important;box-shadow:0 0 14px rgba(127,119,221,0.7),0 0 40px rgba(127,119,221,0.35) !important}}
+@keyframes neonBuzz{0%,22%{opacity:1}22.4%{opacity:0.25}22.9%{opacity:1}23.3%{opacity:0.5}23.8%{opacity:1}67%{opacity:1}67.3%{opacity:0.3}67.7%{opacity:1}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){a[aria-label="Free plugins"] span{animation:none !important}a[aria-label="Free plugins"]{animation:none !important;box-shadow:0 0 14px rgba(255,177,98,0.7),0 0 40px rgba(255,177,98,0.35) !important}}
 </style>
 </helmet>
 <div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden">
@@ -44,10 +45,13 @@
 
 
 <header style="padding:56px 60px 48px 60px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;column-gap:40px;text-align:center;background:#0C1519">
-  <a href="free.html" aria-label="Free plugins" style="justify-self:start;text-decoration:none;display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:21px 27px;border:2px solid #7f77dd;border-radius:8px;background:rgba(127,119,221,0.05);animation:neonPulse 3.6s ease-in-out infinite,neonFlicker 7s steps(1,end) infinite;transition:transform 0.35s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.06);animation:none;box-shadow:0 0 18px rgba(127,119,221,0.9),0 0 52px rgba(127,119,221,0.5),inset 0 0 20px rgba(127,119,221,0.35);background:rgba(127,119,221,0.12)">
-    <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:27px;letter-spacing:8px;color:#F4F2FF;text-transform:uppercase;padding-left:8px;line-height:1;text-shadow:0 0 6px #E6E2FF,0 0 18px #7f77dd,0 0 38px #7f77dd">FREE</span>
-    <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:6px;color:#CFC9FF;text-transform:uppercase;padding-left:7px;text-shadow:0 0 10px #7f77dd,0 0 24px rgba(127,119,221,0.7)">PLUGINS</span>
-  </a>
+  <a href="free.html" aria-label="Free plugins" style="justify-self:start;position:relative;text-decoration:none;display:inline-flex;flex-direction:column;align-items:center;gap:4px;padding:18px 26px;border:2px solid #FFB162;border-radius:8px;background:radial-gradient(120% 140% at 50% 0%,rgba(255,177,98,0.16) 0%,rgba(255,177,98,0.04) 55%,rgba(12,21,25,0) 100%),#0E141C;animation:neonPulse 3.6s ease-in-out infinite,neonFlicker 7s steps(1,end) infinite;transition:transform 0.35s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.06) rotate(-0.6deg);animation:none;box-shadow:0 0 20px rgba(255,177,98,0.95),0 0 60px rgba(255,177,98,0.55),inset 0 0 22px rgba(255,177,98,0.38);background:radial-gradient(120% 140% at 50% 0%,rgba(255,177,98,0.28) 0%,rgba(255,177,98,0.08) 55%,rgba(12,21,25,0) 100%),#0E141C">
+    <span aria-hidden="true" style="position:absolute;inset:5px;border:1px solid rgba(163,81,57,0.8);border-radius:4px;box-shadow:0 0 7px rgba(163,81,57,0.55),inset 0 0 9px rgba(163,81,57,0.28);pointer-events:none"></span>
+    <span aria-hidden="true" style="position:absolute;top:-8px;left:22px;width:9px;height:8px;background:#3A3534;border-radius:2px 2px 0 0"></span>
+    <span aria-hidden="true" style="position:absolute;top:-8px;right:22px;width:9px;height:8px;background:#3A3534;border-radius:2px 2px 0 0"></span>
+    <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:7px;color:#FBFAFF;text-transform:uppercase;padding-left:7px;line-height:1;text-shadow:0 0 5px #FFFFFF,0 0 12px #FFE2C2,0 0 26px #FFB162,0 0 46px #FFB162">FREE</span>
+    <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:7.5px;letter-spacing:5.5px;color:#FFD9B8;text-transform:uppercase;padding-left:6px;animation:neonBuzz 5.3s steps(1,end) infinite;text-shadow:0 0 6px #A35139,0 0 16px rgba(163,81,57,0.85),0 0 30px rgba(163,81,57,0.45)">PLUGINS</span>
+      </a>
 
   <div style="display:flex;flex-direction:{{ heroDirection }};align-items:center;justify-content:center;gap:{{ heroGap }}px;transition:transform 0.8s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.03)">
     <svg width="{{ heroMarkSizePx }}" height="{{ heroMarkSizePx }}" viewBox="0 0 100 100" aria-label="THETA Audio Research — Echo Delta" style="flex-shrink:0">
