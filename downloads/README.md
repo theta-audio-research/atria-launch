@@ -7,9 +7,9 @@ exact filenames the pages link to, and re-zip.
 
 | File | Linked from | Status |
 |---|---|---|
-| `ENTROPY_v0.1.6.dmg` | entropy.html (DOWNLOAD_FREE // MACOS) | live |
-| `OLFACTORY_v0.5.2.dmg` | olfactory.html (DOWNLOAD_FREE // MACOS) | live |
-| `EFFEK_v0.1.13_Installer.dmg` | effek.html (DOWNLOAD_FREE // MACOS) | live |
+| `ENTROPY_v0.1.8.dmg` | entropy.html (DOWNLOAD_FREE // MACOS) | live |
+| `OLFACTORY_v0.5.3.dmg` | olfactory.html (DOWNLOAD_FREE // MACOS) | live |
+| `EFFEK_v0.1.14_Installer.dmg` | effek.html (DOWNLOAD_FREE // MACOS) | live |
 
 ## Rules
 
