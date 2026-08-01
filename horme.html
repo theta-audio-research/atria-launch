@@ -10,21 +10,166 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
 </helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="text-align:center;border:1px solid #3A3534;padding:60px;background:rgba(255,255,255,0.01);max-width:520px">
-    <svg viewBox="0 0 100 100" style="height:70px;width:auto;display:block;margin:0 auto 30px auto" aria-label="THETA">
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
       <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
-    <h1 style="font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">HORME</h1>
-    <p style="font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:10px 0 40px 0;opacity:0.8">Transient Shaping Engine</p>
-    <div style="font-size:11px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:40px">// COMING_SOON</div>
-    <a href="index.html" style="display:inline-block;color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:12px 24px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">HORME</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Six-band transient designer</p>
   </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="horme-hero" src="assets/horme/hero.png?v=260801k" onClick="{{ openHero }}" style="width:100%;aspect-ratio:882/573;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="HORME Simple View"></image-slot></div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto 56px auto">
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:36px;line-height:1.35;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 24px 0;text-wrap:pretty">Aim the detector.<br>Leave the audio alone.</h1>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:760px;text-wrap:pretty">HORME is a six-band transient designer for macOS. You set the frequency range its onset detector listens to &mdash; independently of the signal it shapes &mdash; so you decide what counts as a hit without filtering what anyone hears. Zero latency, at every setting.</p>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em">A single-purpose multiband transient designer, built as its own plug-in alongside <a href="pneuma.html" style="color:#DCCDBF;text-decoration:none;border-bottom:1px solid #3A3534">PNEUMA</a> and <a href="ananke.html" style="color:#DCCDBF;text-decoration:none;border-bottom:1px solid #3A3534">ANANKE</a>. The DSP is written framework-free and compiles standalone, so the test harness exercises the exact code that ships.<br><br>There is no oversampling. Parameter moves are smoothed, band solos crossfade, and the detector's phase gates ride continuous envelope differences rather than switching. For drum and percussion work, sound design, SFX editing, game audio, post, and foley.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Twenty of twenty harness checks pass against the shipping DSP. HORME is not yet released &mdash; sign up and we will notify you the moment it does.</p>
+      <a href="mailto:info@theta.audio?subject=HORME%20updates" data-notify="HORME" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">HOW_IT_WORKS</h3>
+
+    <div style="margin-bottom:70px">
+      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 26px 0">Six Linkwitz-Riley 4th-order bands split at 120&nbsp;Hz, 400&nbsp;Hz, 1&nbsp;kHz, 3&nbsp;kHz and 8&nbsp;kHz. The split is telescoping &mdash; built as a difference of low-passes &mdash; so the six bands sum back to the input exactly, at no latency cost.</p>
+      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 26px 0">Inside each band, three detectors run in the dB domain behind a period-scaled power smoother, which is what stops sustained tonal content from reading as one permanent onset:</p>
+      <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0 0 24px 0;padding:0;list-style:none">
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">ATTACK</b> reads the gap between a fast and a mid envelope &mdash; the onset itself.</li>
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">SUSTAIN</b> reads how far the signal has fallen below its own recent peak. Both of its envelopes attack identically, so it is blind to the onset by construction and cannot fight ATTACK for the same moment.</li>
+        <li>· <b style="color:#DCCDBF;font-weight:700">DECAY</b> reads the late tail, gated past-peak and muted while the onset detector is still reading.</li>
+      </ul>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">Positive is more of that region, negative is less. Every gate between the three is a continuous weight rather than a switch, so the gain law has no steps in it anywhere.</p>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">WHAT YOU SEE</div>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 380px;width:380px;border:1px solid #3A3534;overflow:hidden;border-radius:2px">
+          <image-slot id="horme-multiband" src="assets/horme/multiband.png?v=260801k" onClick="{{ openMultiband }}" style="width:100%;aspect-ratio:882/573;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="HORME Multiband View"></image-slot>
+        </div>
+        <div style="flex:1">
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#DCCDBF;font-weight:700">SIMPLE</b> is one large live envelope window: the input envelope, the shaped trace over it, and a peak readout. Four draggable nodes sit on a log-frequency overlay &mdash; two set the high-pass and low-pass corners the onset detector listens to, two are the transient-keyed bells. Drag for frequency, vertical for bell depth, command-drag for Q. The bell nodes pulse with the live onset key, so you can see the detector firing.</p>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF;font-weight:700">MULTIBAND</b> is six per-band envelope panes with crossover labels, per-band ATTACK and SUSTAIN offsets summed onto the masters, band on/off, and LISTEN to solo one band's shaped slice. The SHAPE row &mdash; ATTACK, SUSTAIN, DECAY, MIX, OUTPUT &mdash; is shared by both pages.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">DETECTION FOCUS</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Two nodes set a high-pass and a low-pass on the <b style="color:#DCCDBF;font-weight:700">detector</b>, not the audio. Aim them at the stick and the shell stays out of the decision; aim them low and cymbal wash stops triggering the shaping. The signal itself passes unfiltered either way.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">At its default corners the path is not merely inaudible &mdash; it is bypassed outright, and the per-band weights are exact multiplicative identity.</p>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">TRANSIENT-KEYED BELLS</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">Two peaking EQ bands whose gain is driven by the live onset key from the focused detector. They open on the hit and sit flat between hits, so nothing static rests on the signal. At depth 0 the section is skipped entirely rather than run at unity &mdash; the honest way to be bit-identical when unused.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">PROOF_POINTS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Zero latency at every setting</b>Nothing in the plug-in reports or introduces delay, in any configuration.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Transparent at defaults, measured</b>Engaged, with every control at its opening value, the output tracks the input to within &minus;140&nbsp;dBFS-relative &mdash; the float noise floor.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Perfect reconstruction</b>All six bands sum back to the input exactly, at no latency cost.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">MIX at 0 is bit-identical</b>Returns the dry signal bit for bit. OUTPUT trims the wet path only.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">No oversampling anywhere</b>Master bypass is a click-free crossfade with the chain left running underneath.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">20 of 20 harness checks pass</b>Against the exact DSP code that ships, not a stand-in build.</li>
+    </ul>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform &amp; formats</b>macOS &middot; VST3, Audio Unit, AAX, Standalone.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency</b>Zero, in every configuration and at every setting.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Channels</b>Mono or stereo (input must match output). Stereo runs two independent detectors.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Band split</b>6-band Linkwitz-Riley 4th-order, telescoping, crossovers fixed at 120&nbsp;Hz / 400&nbsp;Hz / 1&nbsp;kHz / 3&nbsp;kHz / 8&nbsp;kHz.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Shaping range</b>&plusmn;12&nbsp;dB per band, silence-gated below &minus;55&nbsp;dB.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Masters</b>ATTACK, SUSTAIN, DECAY at &plusmn;100% &middot; MIX 0&ndash;100% &middot; OUTPUT &plusmn;12&nbsp;dB, wet-only.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Per band</b>ATTACK and SUSTAIN offsets at &plusmn;100%, summed onto the masters &middot; on/off &middot; LISTEN.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Detection focus</b>High-pass 20&nbsp;Hz&ndash;2&nbsp;kHz, low-pass 200&nbsp;Hz&ndash;20&nbsp;kHz; bypassed at the default corners.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Transient-keyed bells</b>2 &times; peaking, 40&nbsp;Hz&ndash;18&nbsp;kHz, &plusmn;18&nbsp;dB, Q 0.3&ndash;8; skipped at depth 0.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Enable / bypass</b>~20&nbsp;ms module crossfade, ~12&nbsp;ms master bypass crossfade; DSP state is never reset on toggle.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Presets &amp; window</b>User presets, saved to <span style="font-family:'JetBrains Mono',monospace;font-size:11px">~/Library/THETA/HORME/presets</span> &middot; fixed 880 &times; 552 window.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Themes</b>LIGHT, DARK (Void), NUCLEAR; stored per user, never in presets.</li>
+    </ul>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #020 // HORME_AIM_THE_DETECTOR</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/horme/hero.png?v=260801k', 882, 882 / 573),
+      openMultiband: this._mk('assets/horme/multiband.png?v=260801k', 882, 882 / 573),
+    };
+  }
+}
+
+</script>
 </body>
 </html>

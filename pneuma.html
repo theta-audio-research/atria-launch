@@ -46,7 +46,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Component extracted from the Rogerian core lineage. Runs completely independent of a parent shell layer. Authorization tracks universal macOS VST3 and AU formats.</p>
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Component extracted from the Rogerian core lineage. Runs completely independent of a parent shell layer. Authorization tracks universal macOS VST3, AU and AAX formats.</p>
       <a href="mailto:info@theta.audio?subject=PNEUMA%20updates" data-notify="PNEUMA" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
     </div>
   </section>
@@ -113,7 +113,7 @@
       <ul style="list-style:none;padding:0;margin:0">
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Parametric dynamic equalizer with integrated parallel harmonic color blocks.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Engine</b>Matched-Z analog curve translation matrix · minimum-phase · zero delay baseline.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · Audio Unit (AU) [Slated for core Mac system architecture layers].</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · Audio Unit (AU) · AAX · Standalone.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Development</b>THETA Audio Research // Part of the Rogerian lineage.</li>
       </ul>
     </div>
@@ -144,9 +144,12 @@ class Component extends DCLogic {
     document.removeEventListener('keydown', this._esc);
   }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
 
   _mk(src, w, r) {
@@ -161,7 +164,7 @@ class Component extends DCLogic {
       overlayPointer: z ? 'auto' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/pneuma/hero.png', 2000, 926 / 809),

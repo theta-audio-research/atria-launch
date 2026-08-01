@@ -46,7 +46,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS // DEVELOPMENT</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Module framework is undergoing active optimization passes. Register your identity below for deployment telemetry upon final VST3 and AU stabilization.</p>
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Module framework is undergoing active optimization passes. Register your identity below for deployment telemetry upon final VST3, AU and AAX stabilization.</p>
       <a href="mailto:info@theta.audio?subject=ROGERIAN%20SFX%20updates" data-notify="ROGERIAN SFX" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">GET_ROGERIAN_SFX</a>
     </div>
   </section>
@@ -155,7 +155,7 @@
     <div>
       <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_TARGETS</h3>
       <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · AU · Standalone</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 · AU · AAX · Standalone</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS [Native Apple Silicon &amp; Intel Architectures]</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Presets</b>10 Factory Profiles (PUNCH UP, TIGHT LOWS, HELICOPTER, etc.) alongside user-save states.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Version</b>v0.7.2</li>
@@ -187,9 +187,12 @@ class Component extends DCLogic {
     document.removeEventListener('keydown', this._esc);
   }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
 
   _mk(src, w, r) {
@@ -204,7 +207,7 @@ class Component extends DCLogic {
       overlayPointer: z ? 'auto' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/rogerian_sfx/comp.png?v=260801c', 2232, 1116 / 662),

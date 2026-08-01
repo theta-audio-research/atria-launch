@@ -51,7 +51,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis currently undergoing bench testing. Initial builds are calibrated to universal macOS configurations (Apple Silicon &amp; Intel) supporting VST3, Audio Unit, and Standalone layers.</p>
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis currently undergoing bench testing. Initial builds are calibrated to universal macOS configurations (Apple Silicon &amp; Intel) supporting VST3, Audio Unit, AAX, and Standalone layers.</p>
       <a href="#notification-portal" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_UPON_RELEASE // DEVELOPMENT_ACTIVE</a>
     </div>
   </section>
@@ -72,7 +72,7 @@
   <section style="max-width:900px;margin:0 auto 20px auto;padding-top:60px;border-top:1px solid #3A3534">
     <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">SPECIFICATIONS</h3>
     <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS 11+ (Apple Silicon and Intel) &mdash; VST3, Audio Unit and Standalone.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS 11+ (Apple Silicon and Intel) &mdash; VST3, Audio Unit, AAX and Standalone.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Import Formats</b>WAV, AIFF, FLAC, MP3, M4A, OGG.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voice Core</b>16-voice polyphony with per-session state recall, selections included.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Display</b>GPU-accelerated spectral view with automatic CPU fallback.</li>
@@ -101,9 +101,12 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
   _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
   renderVals() {
@@ -112,7 +115,7 @@ class Component extends DCLogic {
       overlayDisplay: z ? 'flex' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/prism/hero.png?v=260729c', 1022, 1022 / 697),

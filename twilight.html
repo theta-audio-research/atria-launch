@@ -92,7 +92,7 @@
   <section style="max-width:900px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
     <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">AT_A_GLANCE</h3>
     <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
-      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS &mdash; VST3, Audio Unit, Standalone</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS &mdash; VST3, Audio Unit, AAX, Standalone</li>
       <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Instrument (VST3 Instrument / AU music device)</li>
       <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voices</b>Five &mdash; four oscillators plus one sample layer</li>
       <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Polyphony</b>16 voices, per-voice ADSR</li>
@@ -127,9 +127,12 @@ class Component extends DCLogic {
     document.removeEventListener('keydown', this._esc);
   }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
 
   _mk(src, w, r) {
@@ -144,7 +147,7 @@ class Component extends DCLogic {
       overlayPointer: z ? 'auto' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       isEmber: this.state.skin === 'ember',

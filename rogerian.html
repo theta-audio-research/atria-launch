@@ -205,9 +205,12 @@ class Component extends DCLogic {
   }
 
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
 
   renderVals() {
@@ -219,7 +222,7 @@ class Component extends DCLogic {
       overlayPointer: z ? 'auto' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/rogerian/hero.png?v=260801c', 2232, 1116 / 662),
