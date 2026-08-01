@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="stylesheet" href="mobile.css">
 <script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
 <style>@keyframes zoomFade{from{opacity:0}to{opacity:1}}#rogerian-hero::part(frame),#rogerian-nr::part(frame),#rogerian-res::part(frame),#rogerian-eq::part(frame),#rogerian-comp::part(frame),#rogerian-declick::part(frame){background:transparent}#rogerian-hero::part(ring),#rogerian-nr::part(ring),#rogerian-res::part(ring),#rogerian-eq::part(ring),#rogerian-comp::part(ring),#rogerian-declick::part(ring){display:none}</style>
 </helmet>
 <div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
@@ -46,7 +47,7 @@
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_AUTHORIZATION</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
       <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">The entire dialogue chain. One plugin. Register your identity below for immediate system deployment parameters and trial authorization frameworks.</p>
-      <a href="mailto:info@theta.audio?subject=ROGERIAN%20updates" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">BUY_ROGERIAN_DIA</a>
+      <a href="mailto:info@theta.audio?subject=ROGERIAN%20updates" data-notify="ROGERIAN" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">BUY_ROGERIAN_DIA</a>
     </div>
   </section>
 
@@ -203,10 +204,10 @@ class Component extends DCLogic {
     return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.zoomed !== prevState.zoomed && this._zoomImgEl) {
-      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
-    }
+  componentDidUpdate() {
+    if (!this._zoomImgEl) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : '';
+    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
   }
 
   renderVals() {
