@@ -35,7 +35,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px">
-    <image-slot id="rogerian-hero" src="assets/rogerian/ROGERIAN_DIA_v0.05.10_DARK_COMP.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1162/705;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA Resonance Suppressor"></image-slot>
+    <image-slot id="rogerian-hero" src="assets/rogerian/hero.png?v=260801c" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1116/662;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA Resonance Suppressor"></image-slot>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -69,7 +69,7 @@
     <div style="margin-bottom:80px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">1 · Noise Reduction</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="rogerian-nr" src="assets/rogerian/nr.png" onClick="{{ openNr }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA noise reduction module"></image-slot></div>
+        <div style="flex:0 0 460px;width:460px;border:1px solid #3A3534;overflow:hidden;border-radius:2px"><image-slot id="rogerian-nr" src="assets/rogerian/nr.png?v=260801c" onClick="{{ openNr }}" style="width:100%;aspect-ratio:1116/659;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA noise reduction module"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">The floor, lowered — continuously.</b></p>
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A real broadband denoiser for hiss, room tone and hum — not a gate, not an expander with a marketing name. ROGERIAN DIA's noise reduction tracks the noise floor continuously using minimum-statistics estimation: it watches roughly a second of spectral history and follows the floor as it drifts — air-conditioning that cycles, room tone that changes across a scene — with no noise print and no learn step required. Set the amount, set the sensitivity, and it simply keeps up.</p>
@@ -84,7 +84,7 @@
     <div style="margin-bottom:80px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">2 · Resonance Suppression — the centerpiece</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="rogerian-res" src="assets/rogerian/res.png" onClick="{{ openRes }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA resonance suppressor"></image-slot></div>
+        <div style="flex:0 0 460px;width:460px;border:1px solid #3A3534;overflow:hidden;border-radius:2px"><image-slot id="rogerian-res" src="assets/rogerian/res.png?v=260801c" onClick="{{ openRes }}" style="width:100%;aspect-ratio:1116/659;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA resonance suppressor"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">Cuts that exist only while the problem does.</b></p>
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Every room rings somewhere. Every voice, some days, bites. The resonance stage is a dynamic, cut-only spectral processor that finds narrow resonances — boxiness, harshness, ring, proximity build-up — and attenuates them only while they sound, at the depth they demand, then gets out of the way. Nothing is notched permanently.</p>
@@ -102,7 +102,7 @@
     <div style="margin-bottom:80px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">3 · EQ</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="rogerian-eq" src="assets/rogerian/eq.png" onClick="{{ openEq }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA EQ module"></image-slot></div>
+        <div style="flex:0 0 460px;width:460px;border:1px solid #3A3534;overflow:hidden;border-radius:2px"><image-slot id="rogerian-eq" src="assets/rogerian/eq.png?v=260801c" onClick="{{ openEq }}" style="width:100%;aspect-ratio:1116/659;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA EQ module"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">Seven bands. Three characters. Zero latency.</b></p>
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A seven-band parametric built on analog-matched filters: the bell you see at 12 kHz is the bell you get — magnitude matched to the analog prototype all the way up, with none of the high-frequency cramping of textbook digital EQ. Minimum-phase, zero-latency, and drawn over a real-time pre/post analyzer.</p>
@@ -118,7 +118,7 @@
     <div style="margin-bottom:80px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">4 · DYNAMICS</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="rogerian-comp" src="assets/rogerian/comp.png" onClick="{{ openComp }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA Compressor Module"></image-slot></div>
+        <div style="flex:0 0 460px;width:460px;border:1px solid #3A3534;overflow:hidden;border-radius:2px"><image-slot id="rogerian-comp" src="assets/rogerian/comp.png?v=260801c" onClick="{{ openComp }}" style="width:100%;aspect-ratio:1116/659;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA Compressor Module"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">A voice leveler with its color on a separate knob.</b></p>
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Feed-forward and program-dependent, built around a smooth decoupled detector to hold a read at a consistent level without pumping or dulling consonants.</p>
@@ -135,7 +135,7 @@
     <div>
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">5 · DE-CLICK</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="rogerian-declick" src="assets/rogerian/declick.png" onClick="{{ openDeclick }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA De-click Module"></image-slot></div>
+        <div style="flex:0 0 460px;width:460px;border:1px solid #3A3534;overflow:hidden;border-radius:2px"><image-slot id="rogerian-declick" src="assets/rogerian/declick.png?v=260801c" onClick="{{ openDeclick }}" style="width:100%;aspect-ratio:1116/659;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ROGERIAN DIA De-click Module"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#B0B2B7;font-weight:700">The mouth, minus the mouth noises.</b></p>
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Clicks, ticks, lip smacks — the tiny transients that survive every other stage and cost editors hours of clip-gain surgery. Detection finds the click; repair is model-based: an autoregressive engine learns the voice from the audio around the defect and resynthesizes what should have been there, with a hybrid fallback interpolation that guarantees a clean join. Restoration-suite technique running inside the strip in real time.</p>
@@ -221,12 +221,12 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/rogerian/ROGERIAN_DIA_v0.05.10_DARK_COMP.png', 2500, 1162 / 705),
-      openNr: this._mk('assets/rogerian/nr.png', 625, 4 / 3),
-      openRes: this._mk('assets/rogerian/res.png', 625, 4 / 3),
-      openEq: this._mk('assets/rogerian/eq.png', 625, 4 / 3),
-      openComp: this._mk('assets/rogerian/comp.png', 625, 4 / 3),
-      openDeclick: this._mk('assets/rogerian/declick.png', 625, 4 / 3),
+      openHero: this._mk('assets/rogerian/hero.png?v=260801c', 2232, 1116 / 662),
+      openNr: this._mk('assets/rogerian/nr.png?v=260801c', 2232, 1116 / 659),
+      openRes: this._mk('assets/rogerian/res.png?v=260801c', 2232, 1116 / 659),
+      openEq: this._mk('assets/rogerian/eq.png?v=260801c', 2232, 1116 / 659),
+      openComp: this._mk('assets/rogerian/comp.png?v=260801c', 2232, 1116 / 659),
+      openDeclick: this._mk('assets/rogerian/declick.png?v=260801c', 2232, 1116 / 659),
     };
   }
 }
