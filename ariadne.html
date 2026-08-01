@@ -47,7 +47,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis is undergoing laboratory configuration tracking. Formats targeted include universal macOS VST3, AU, and Standalone layers, with native Pro Tools optimization slated for core milestones.</p>
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis is undergoing laboratory configuration tracking. Formats targeted include universal macOS VST3, AU, AAX and Standalone layers.</p>
       <a href="mailto:info@theta.audio?subject=ARIADNE%20updates" data-notify="ARIADNE" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_UPON_RELEASE // DEVELOPMENT_ACTIVE</a>
     </div>
   </section>
@@ -130,9 +130,12 @@ class Component extends DCLogic {
     document.removeEventListener('keydown', this._esc);
   }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
 
   _mk(src, w, r) {
@@ -147,7 +150,7 @@ class Component extends DCLogic {
       overlayPointer: z ? 'auto' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/ariadne/hero.png', 2000, 1802 / 1740),

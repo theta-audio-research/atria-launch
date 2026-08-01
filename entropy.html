@@ -48,7 +48,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#A6DCA6;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
     <div style="background:rgba(22,38,22,0.15);border:1px solid #283B28;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free — no account, no unlock, no upsell. VST3, Audio Unit and Standalone, macOS Apple Silicon and Intel. Constant 30 ms latency, reported once — bypass is latency-preserved. User presets carry the sound, never the aging state.</p>
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free — no account, no unlock, no upsell. VST3, Audio Unit, AAX and Standalone, macOS Apple Silicon and Intel. Constant 30 ms latency, reported once — bypass is latency-preserved. User presets carry the sound, never the aging state.</p>
       <a href="downloads/ENTROPY_v0.1.8.dmg" data-gate="ENTROPY" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
       <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon &amp; Intel · VST3 / AU / AAX / Standalone · Windows build in progress</p>
     </div>
@@ -152,9 +152,12 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
   _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
   renderVals() {
@@ -163,7 +166,7 @@ class Component extends DCLogic {
       overlayDisplay: z ? 'flex' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/entropy/hero.png?v=260729e', 1102, 1102 / 671),

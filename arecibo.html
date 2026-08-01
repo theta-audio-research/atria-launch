@@ -47,7 +47,7 @@
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
     <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_AUTHORIZATION</span>
     <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;letter-spacing:2px;opacity:0.5;margin-bottom:30px;text-transform:uppercase">Authorization includes VST3/AU formats, macOS compatibility, and XML research presets.</p>
+      <p style="font-size:11px;letter-spacing:2px;opacity:0.5;margin-bottom:30px;text-transform:uppercase">Authorization includes VST3/AU/AAX formats, macOS compatibility, and XML research presets.</p>
       <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d181f52e-1565-479a-bb9a-1f45d771b26d" class="lemon-squeezy-button" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">INITIALIZE_ACQUISITION // $79.99</a>
     </div>
   </section>
@@ -96,7 +96,7 @@
     <div>
       <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TELEMETRY</h3>
       <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Architecture</b>macOS [AU / VST3] // 64-bit</li>
+        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Architecture</b>macOS [AU / VST3 / AAX] // 64-bit</li>
         <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">UI System</b>THETA Void [Flat Rendering / Vector Styling]</li>
         <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Data Location</b>XML presets stored in ~/Library/Audio/Presets/THETA/ARECIBO</li>
         <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Aesthetic</b>Scientific HUD Console // Dark Research Styling</li>
@@ -126,9 +126,12 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
   componentDidUpdate() {
-    if (!this._zoomImgEl) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : '';
-    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
   }
   _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
   renderVals() {
@@ -137,7 +140,7 @@ class Component extends DCLogic {
       overlayDisplay: z ? 'flex' : 'none',
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/arecibo/hero.png', 2200, 2294 / 1386),

@@ -10,21 +10,178 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
 </helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="text-align:center;border:1px solid #3A3534;padding:60px;background:rgba(255,255,255,0.01);max-width:520px">
-    <svg viewBox="0 0 100 100" style="height:70px;width:auto;display:block;margin:0 auto 30px auto" aria-label="THETA">
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
       <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
-    <h1 style="font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">CATHARSIS</h1>
-    <p style="font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:10px 0 40px 0;opacity:0.8">Noise Reduction Engine</p>
-    <div style="font-size:11px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:40px">// COMING_SOON</div>
-    <a href="index.html" style="display:inline-block;color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:12px 24px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">CATHARSIS</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Dual-engine noise reduction</p>
   </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="catharsis-hero" src="assets/catharsis/hero.png?v=260801k" onClick="{{ openHero }}" style="width:100%;aspect-ratio:916/587;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHARSIS Spectral Engine"></image-slot></div>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><i>Katharsis</i> &mdash; the Greek word for cleansing. Aristotle used it for what tragedy does to an audience: the purging that leaves only what matters. <b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">It is the right name for a tool whose whole job is to take away</b> &mdash; the air conditioning, the room hum, the camera whine, the hiss under a lavalier &mdash; and leave the performance standing clean.<br><br>CATHARSIS is the noise-reduction engine lifted out of <b style="color:#DCCDBF;font-weight:700">ROGERIAN</b>, THETA's dialogue-processing suite, and offered as a focused, single-purpose plug-in. The same denoiser that clears a location recording inside ROGERIAN's full chain now installs on its own. It was voiced for dialogue, but it works on anything with a noise floor: a hissy guitar amp, a noisy synth, an archive transfer, a podcast recorded in a spare room.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Both engines are in voicing calibration. CATHARSIS is not yet released &mdash; sign up and we will notify you the moment it ships.</p>
+      <a href="mailto:info@theta.audio?subject=CATHARSIS%20updates" data-notify="CATHARSIS" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">TWO_ENGINES // ONE_SET_OF_CONTROLS</h3>
+
+    <div style="margin-bottom:70px">
+      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 40px 0">Most denoisers make you live with their single compromise. CATHARSIS gives you both sides of it and lets you switch with one click.</p>
+      <div style="display:flex;gap:50px;align-items:flex-start">
+        <div style="flex:0 0 380px;width:380px;border:1px solid #3A3534;overflow:hidden;border-radius:2px">
+          <image-slot id="catharsis-multiband" src="assets/catharsis/multiband.png?v=260801k" onClick="{{ openMultiband }}" style="width:100%;aspect-ratio:916/587;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="CATHARSIS Multiband Engine"></image-slot>
+        </div>
+        <div style="flex:1">
+          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+            <li style="margin-bottom:22px">· <b style="color:#DCCDBF;font-weight:700">MULTIBAND &mdash; genuinely zero latency.</b> Six fixed bands, each running a cut-only downward expander against a continuously measured noise floor. The band split is built from cascaded Linkwitz-Riley crossovers arranged so the six bands sum back to <i>exactly</i> the input &mdash; perfect reconstruction, no phase smear, and not one sample of delay. Safe to track through, safe to monitor through, and safe against picture.</li>
+            <li>· <b style="color:#DCCDBF;font-weight:700">SPECTRAL &mdash; the deep clean.</b> An MMSE log-spectral-amplitude estimator with decision-directed SNR: the classical approach specifically designed to avoid the warbling, sparkling &ldquo;musical noise&rdquo; that cheap spectral subtraction leaves behind. It reads the recording as a moving picture of frequency against time and lifts the noise out from underneath the voice. Roughly 11&nbsp;ms of latency, fully reported to your host.</li>
+          </ul>
+          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:22px 0 0 0">Switching engines is handled cleanly &mdash; a short fade covers the changeover so the latency change can never click, and the host is re-notified so plug-in delay compensation stays correct. The footer always shows which engine is running and exactly what it costs you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">IT FINDS THE NOISE FOR YOU</div>
+      <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">AUTO</b> tracks the noise floor continuously, following it as the room changes across a take. Nothing to set up &mdash; drop it on and it adapts.</li>
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">LEARN</b> captures a profile from a passage of noise-only audio and freezes it. Find the room tone between lines, hit LEARN NOISE, and the expander works against that fingerprint instead of a live estimate &mdash; the right choice when the noise is consistent and you want the cleaning to be too.</li>
+        <li>· <b style="color:#DCCDBF;font-weight:700">SUGGEST</b> reads what it has measured and sets a sensible starting point for you, biasing the bands that are actually noisy a little harder than the ones that aren't.</li>
+      </ul>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">SHAPE IT BY HAND</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">In MULTIBAND, six numbered handles sit across the frequency display:</p>
+      <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0 0 22px 0;padding:0;list-style:none">
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">Drag a handle up</b> for more reduction in that band &mdash; pull hiss out of the top without touching the chest of a voice, or clear a rumble without thinning the whole recording.</li>
+        <li style="margin-bottom:14px">· <b style="color:#DCCDBF;font-weight:700">Double-click</b> to bypass a band entirely.</li>
+        <li>· <b style="color:#DCCDBF;font-weight:700">Shift-click to LISTEN</b> &mdash; audition only what that band is removing. This is the honest way to set a denoiser: if you can hear voice in the removal, you have gone too far, and you will know immediately instead of three hours later.</li>
+      </ul>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">Alongside them: <b style="color:#DCCDBF;font-weight:700">AMOUNT</b> for how much comes out, <b style="color:#DCCDBF;font-weight:700">SENS</b> for how far above the floor the expander starts working, <b style="color:#DCCDBF;font-weight:700">ATTACK</b> and <b style="color:#DCCDBF;font-weight:700">RELEASE</b> for how quickly it moves, and <b style="color:#DCCDBF;font-weight:700">MIX</b> to blend the cleaned signal back against the original when total removal sounds less natural than partial removal.</p>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">SEE EXACTLY WHAT YOU'RE TAKING AWAY</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The display puts zero on the centre line and splits the job in two. Above it, the live input spectrum &mdash; and, in SPECTRAL, the noise floor the engine has learned, drawn as its own line so you can see what it believes is noise. Below it, in a deep violet heat that brightens as it deepens, exactly what is being removed, right now, across the whole spectrum.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0;border-left:1px solid #3A3534;padding-left:20px;font-style:italic">Most denoisers show you a spectrum and leave you guessing. This one shows you the subtraction.</p>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">TRANSPARENT UNTIL YOU ASK</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">CATHARSIS opens with <b style="color:#DCCDBF;font-weight:700">AMOUNT</b> at zero, and at zero it is mathematically transparent &mdash; the multiband engine's output is bit-identical to its input, sample for sample. There is no separate on switch to forget about and no &ldquo;off&rdquo; that still colours the signal. Turn AMOUNT up and the plug-in starts working; leave it down and it is not there. <b style="color:#DCCDBF;font-weight:700">BYPASS</b> is a click-free crossfade against a properly delay-aligned dry signal, so A/B comparisons are honest in both engines.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #3A3534;padding-top:40px">
+    <div>
+      <h3 style="font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">THREE_SKINS</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0;text-wrap:pretty">LIGHT (white and gold), DARK (the THETA &ldquo;Void&rdquo;), and NUCLEAR (a Kelvin-era control room in sage and ivory with aged brass). Cycle them from the header; the choice is remembered per user and never stored in a session or a preset, so it follows you rather than your projects.</p>
+    </div>
+    <div>
+      <h3 style="font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">PART_OF_THE_SUITE</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0;text-wrap:pretty">CATHARSIS is part of the <a href="rogerian.html" style="color:#DCCDBF;text-decoration:none;border-bottom:1px solid #3A3534">ROGERIAN</a> Dialog Suite. ROGERIAN combines noise reduction, resonance control, EQ, compression, and de-clicking in a single dialogue-processing chain; CATHARSIS makes its noise reduction available on its own.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">WHO_IT'S_FOR</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Dialogue editors and post</b>Suite-grade noise reduction on its own, with a truly zero-latency mode that keeps picture sync exact.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Location and documentary</b>LEARN a room tone once and apply it across a whole scene.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Podcast and voice-over</b>Clear a spare-room noise floor without the underwater artefacts that give cheap denoising away.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Restoration and archive</b>The spectral engine on transfers, tape hiss, and old broadcast material.</li>
+    </ul>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Dual-engine broadband noise reduction.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Multiband engine</b>6-band cut-only downward expander &middot; Linkwitz-Riley LR4 crossovers &middot; perfect-reconstruction band split &middot; zero latency.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Spectral engine</b>STFT MMSE log-spectral-amplitude estimator with decision-directed SNR &middot; speech-presence-probability noise tracking &middot; sqrt-Hann WOLA, 50% overlap &middot; double-precision estimation.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Noise profile</b>AUTO (continuous floor tracking) or LEARN (captured, frozen profile) &middot; SUGGEST auto-setup.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Per-band control</b>Six draggable band handles &middot; per-band bypass &middot; per-band LISTEN.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Metering</b>Live input spectrum &middot; learned noise floor &middot; real-time reduction display across frequency.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency</b>0 samples (Multiband) &middot; 512 samples, &asymp;10.7&nbsp;ms @ 48&nbsp;kHz (Spectral) &mdash; reported to the host; engine changes are faded and re-reported.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Channels &amp; formats</b>Mono and stereo &middot; VST3 &middot; Audio Unit (AU) &middot; AAX &middot; Standalone &middot; macOS.</li>
+    </ul>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #016 // CATHARSIS_TWO_ENGINES</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/catharsis/hero.png?v=260801k', 916, 916 / 587),
+      openMultiband: this._mk('assets/catharsis/multiband.png?v=260801k', 916, 916 / 587),
+    };
+  }
+}
+
+</script>
 </body>
 </html>
