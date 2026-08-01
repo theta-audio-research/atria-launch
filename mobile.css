@@ -264,19 +264,53 @@
 
 @media (max-width: 760px) {
 
-  /* ---- Fixed-width sidebars (module shots, spec panels) go full width ---- */
-  div[style*="flex: 0 0 250px"],
-  div[style*="flex:0 0 250px"],
-  div[style*="flex: 0 0 240px"],
-  div[style*="flex:0 0 240px"] {
+  /* ---- Module-shot / spec columns: stack above their copy ----
+     These are `flex:0 0 <N>px` sidebars beside a `flex:1` text column. At
+     phone width the fixed basis wins and the text is crushed to one word
+     per line, so the whole row becomes a column and both go full width.
+     (50px is the catalogue rail label — handled separately, left alone.) */
+  div[style*="flex: 0 0 200px"], div[style*="flex:0 0 200px"],
+  div[style*="flex: 0 0 240px"], div[style*="flex:0 0 240px"],
+  div[style*="flex: 0 0 250px"], div[style*="flex:0 0 250px"],
+  div[style*="flex: 0 0 260px"], div[style*="flex:0 0 260px"],
+  div[style*="flex: 0 0 360px"], div[style*="flex:0 0 360px"],
+  div[style*="flex: 0 0 380px"], div[style*="flex:0 0 380px"],
+  div[style*="flex: 0 0 440px"], div[style*="flex:0 0 440px"],
+  div[style*="flex: 0 0 460px"], div[style*="flex:0 0 460px"] {
     flex: 0 0 auto !important;
     width: 100% !important;
     max-width: 100% !important;
   }
+  div:has(> div[style*="flex: 0 0 200px"]),
+  div:has(> div[style*="flex:0 0 200px"]),
+  div:has(> div[style*="flex: 0 0 380px"]),
+  div:has(> div[style*="flex:0 0 380px"]),
+  div:has(> div[style*="flex: 0 0 240px"]),
+  div:has(> div[style*="flex:0 0 240px"]),
   div:has(> div[style*="flex: 0 0 250px"]),
-  div:has(> div[style*="flex: 0 0 240px"]) {
-    flex-wrap: wrap !important;
+  div:has(> div[style*="flex:0 0 250px"]),
+  div:has(> div[style*="flex: 0 0 260px"]),
+  div:has(> div[style*="flex:0 0 260px"]),
+  div:has(> div[style*="flex: 0 0 360px"]),
+  div:has(> div[style*="flex:0 0 360px"]),
+  div:has(> div[style*="flex: 0 0 440px"]),
+  div:has(> div[style*="flex:0 0 440px"]),
+  div:has(> div[style*="flex: 0 0 460px"]),
+  div:has(> div[style*="flex:0 0 460px"]) {
+    flex-direction: column !important;
     gap: 24px !important;
+  }
+  /* the copy column alongside them must be allowed to shrink */
+  div:has(> div[style*="flex:0 0 200px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 380px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 240px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 250px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 260px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 360px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 440px"]) > div[style*="flex:1"],
+  div:has(> div[style*="flex:0 0 460px"]) > div[style*="flex:1"] {
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   /* ---- Decorative offset frames sit outside the viewport ---- */
