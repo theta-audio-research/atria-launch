@@ -10,18 +10,56 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="stylesheet" href="mobile.css">
-<style>@keyframes fillBar{0%{width:0}100%{width:100%}}</style>
+<style>
+a{color:#DCCDBF}
+a:hover{color:#FFB162}
+@keyframes fillBar{0%{width:0}100%{width:100%}}
+</style>
 </helmet>
-<div style="background:#040406;color:#E0E0E0;font-family:'JetBrains Mono',monospace;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;overflow:hidden">
-  <div style="text-align:center;border:1px solid #1A1B23;padding:60px;background:rgba(255,255,255,0.02);max-width:600px;position:relative">
-    <div style="position:absolute;top:-20px;right:-20px;border:2px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.1);padding:10px;font-family:'Montserrat',sans-serif;transform:rotate(15deg);font-size:10px;letter-spacing:2px">PACKET_099_RCVD</div>
-    <div style="font-family:'Montserrat',sans-serif;color:#C8A86B;font-size:10px;letter-spacing:5px;text-transform:uppercase;margin-bottom:30px">Transmission Complete</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-size:32px;letter-spacing:12px;font-weight:700;text-transform:uppercase;margin:0 0 20px 0;color:#fff">DECODED</h1>
-    <div style="width:100%;height:2px;background:#1A1B23;margin-bottom:40px;position:relative">
-      <div style="height:100%;background:#C8A86B;width:0;animation:fillBar 3s forwards ease-in-out"></div>
+
+<div style="background:#0C1519;color:#B0B2B7;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 20px;box-sizing:border-box">
+  <div style="width:100%;max-width:620px;border:1px solid #3A3534;background:#0C1519">
+
+    <div style="background:#162127;padding:34px 30px 26px 30px;border-bottom:1px solid #3A3534;text-align:center">
+      <img src="assets/email/theta-mark.png" width="54" height="54" alt="" style="display:block;width:54px;height:54px;margin:0 auto 16px auto">
+      <div style="font-size:11px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">THETA</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#81848A;text-transform:uppercase;padding-top:8px">Audio&nbsp;Research</div>
     </div>
-    <p style="opacity:0.5;font-size:13px;line-height:1.8;margin-bottom:40px">Your distress signal has been successfully routed to the THETA Technical Recovery Division. A researcher will review your signal drift and respond within 24–48 hours. Maintain current breath cycles.</p>
-    <a href="index.html" style="color:#C8A86B;text-decoration:none;font-size:10px;letter-spacing:3px;font-family:'Montserrat',sans-serif;text-transform:uppercase;border-bottom:1px solid transparent;transition:0.3s" style-hover="border-bottom:1px solid #C8A86B">Return to Institutional Home</a>
+    <div style="height:2px;background:#FFB162"></div>
+
+    <div style="padding:44px 40px 40px 40px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#FFB162;text-transform:uppercase;font-weight:700">Subscription&nbsp;Confirmed</div>
+      <h1 style="font-size:32px;letter-spacing:10px;font-weight:400;text-transform:uppercase;margin:16px 0 24px 0;color:#DCCDBF">You're in</h1>
+      <div style="width:100%;height:2px;background:#162127;margin-bottom:32px">
+        <div style="height:100%;background:#283B28;width:0;animation:fillBar 1.6s forwards ease-in-out"></div>
+      </div>
+      <p style="font-weight:300;font-size:15px;line-height:1.85;margin:0 0 18px 0;text-wrap:pretty">Your address is verified. From here you'll get release notes when new instruments ship, and the occasional lab note about how something was built. Nothing else.</p>
+      <p style="font-weight:300;font-size:15px;line-height:1.85;margin:0 0 36px 0;text-wrap:pretty">Your plug-in is yours to keep &mdash; no account, no unlock, no expiry.</p>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#81848A;text-transform:uppercase;font-weight:700;margin-bottom:18px">All three are free</div>
+      <div style="display:grid;gap:10px;margin-bottom:36px">
+        <a href="entropy.html" style="display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:18px;align-items:baseline;text-decoration:none;border:1px solid #283B28;background:rgba(22,38,22,0.15);padding:16px 18px;transition:0.3s" style-hover="background:rgba(33,59,33,0.3);border-color:#6E9B6E">
+          <span style="font-size:15px;letter-spacing:5px;color:#A6DCA6;text-transform:uppercase;font-weight:700">Entropy</span>
+          <span style="font-weight:300;font-size:12.5px;color:#87B387;line-height:1.6">Analog drift &amp; imperfection</span>
+        </a>
+        <a href="effek.html" style="display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:18px;align-items:baseline;text-decoration:none;border:1px solid #283B28;background:rgba(22,38,22,0.15);padding:16px 18px;transition:0.3s" style-hover="background:rgba(33,59,33,0.3);border-color:#6E9B6E">
+          <span style="font-size:15px;letter-spacing:5px;color:#A6DCA6;text-transform:uppercase;font-weight:700">Effek</span>
+          <span style="font-weight:300;font-size:12.5px;color:#87B387;line-height:1.6">1-bit delta modulation delay</span>
+        </a>
+        <a href="olfactory.html" style="display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:18px;align-items:baseline;text-decoration:none;border:1px solid #283B28;background:rgba(22,38,22,0.15);padding:16px 18px;transition:0.3s" style-hover="background:rgba(33,59,33,0.3);border-color:#6E9B6E">
+          <span style="font-size:15px;letter-spacing:5px;color:#A6DCA6;text-transform:uppercase;font-weight:700">Olfactory</span>
+          <span style="font-weight:300;font-size:12.5px;color:#87B387;line-height:1.6">Mono-safe lush chorus</span>
+        </a>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href="index.html" style="display:inline-block;background:#DCCDBF;color:#0C1519;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:700;text-decoration:none;padding:17px 30px;transition:0.3s" style-hover="background:#EDE2D4;color:#0C1519">The&nbsp;Catalogue</a>
+        <a href="store.html" style="display:inline-block;border:1px solid #6E6764;color:#B0B2B7;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:700;text-decoration:none;padding:16px 30px;transition:0.3s" style-hover="border-color:#DCCDBF;color:#DCCDBF">Store</a>
+      </div>
+    </div>
+
+    <div style="background:#162127;padding:22px 40px;border-top:1px solid #3A3534;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#4A5055;text-transform:uppercase">System_Stable&nbsp;//&nbsp;2026</div>
+
   </div>
 </div>
 
