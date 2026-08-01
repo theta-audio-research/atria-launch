@@ -25,7 +25,7 @@
   </a>
   <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
     <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">TWILIGHT</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Regenerative Ambience Engine</p>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Relational Modulation Instrument</p>
   </div>
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
@@ -34,60 +34,79 @@
 </nav>
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
-  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px">
-    <image-slot id="twilight-hero" src="assets/twilight/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="TWILIGHT Interface"></image-slot>
+  <div style="margin-bottom:22px;max-width:1000px;margin-left:auto;margin-right:auto;position:relative;aspect-ratio:2562/1360;overflow:hidden;border-radius:2px;background:#0C1519">
+    <sc-if value="{{ isEmber }}" hint-placeholder-val="{{ true }}"><image-slot id="twilight-hero" src="assets/twilight/hero_ember.png?v=260801h" onClick="{{ openHero }}" style="position:absolute;inset:0;width:100%;height:100%;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="TWILIGHT — EMBER skin"></image-slot></sc-if>
+    <sc-if value="{{ isGrove }}" hint-placeholder-val="{{ false }}"><image-slot id="twilight-hero-grove" src="assets/twilight/hero_grove.png?v=260801h" onClick="{{ openHero }}" style="position:absolute;inset:0;width:100%;height:100%;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="TWILIGHT — GROVE skin"></image-slot></sc-if>
+    <sc-if value="{{ isTerra }}" hint-placeholder-val="{{ false }}"><image-slot id="twilight-hero-terra" src="assets/twilight/hero_terra.png?v=260801h" onClick="{{ openHero }}" style="position:absolute;inset:0;width:100%;height:100%;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="TWILIGHT — TERRA skin"></image-slot></sc-if>
   </div>
 
-  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-size:15px;line-height:1.9;color:#81848A"><b style="color:#B0B2B7;font-weight:700">TWILIGHT is a regenerative ambience instrument from THETA Audio Research.</b><br><br>Built around a four-voice binaural drone engine, a sample layer, harmony doubling, pattern sequencing, and a dedicated master output stage. It is designed to create immersive drones, evolving harmonic fields, sequenced motion, and finished atmospheric output inside a single instrument.</p>
+  <div style="max-width:1000px;margin:0 auto 46px auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-right:6px">Skin</span>
+      <button onClick="{{ pickEmber }}" style="position:relative;display:flex;align-items:center;gap:9px;background:#0C1519;border:1px solid #3A3534;padding:11px 18px 12px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:#81848A;cursor:pointer;transition:0.3s" style-hover="border-color:#CF9D7B;color:#DCCDBF">
+        <span style="width:9px;height:9px;border-radius:50%;background:#CF9D7B;flex-shrink:0"></span>
+        <span>Ember</span>
+        <sc-if value="{{ isEmber }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#CF9D7B"></span></sc-if>
+      </button>
+      <button onClick="{{ pickGrove }}" style="position:relative;display:flex;align-items:center;gap:9px;background:#0C1519;border:1px solid #3A3534;padding:11px 18px 12px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:#81848A;cursor:pointer;transition:0.3s" style-hover="border-color:#C7C98D;color:#DCCDBF">
+        <span style="width:9px;height:9px;border-radius:50%;background:#C7C98D;flex-shrink:0"></span>
+        <span>Grove</span>
+        <sc-if value="{{ isGrove }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#C7C98D"></span></sc-if>
+      </button>
+      <button onClick="{{ pickTerra }}" style="position:relative;display:flex;align-items:center;gap:9px;background:#0C1519;border:1px solid #3A3534;padding:11px 18px 12px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:#81848A;cursor:pointer;transition:0.3s" style-hover="border-color:#F8E794;color:#DCCDBF">
+        <span style="width:9px;height:9px;border-radius:50%;background:#F8E794;flex-shrink:0"></span>
+        <span>Terra</span>
+        <sc-if value="{{ isTerra }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:0;height:2px;background:#F8E794"></span></sc-if>
+      </button>
+    <span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:12px;color:#6E6764;letter-spacing:0.02em;margin-left:auto">{{ skinNote }}</span>
   </div>
 
-  <section style="max-width:900px;margin:0 auto 80px auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #3A3534;padding-top:40px">
-    <div>
-      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">RECORDING_AND_CAPTURE</h3>
-      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0">TWILIGHT includes a built-in REC function that can capture the plugin's output directly to a chosen WAV file. This makes it easy to print long drones or processed output without leaving the laboratory workflow.</p>
-    </div>
-    <div>
-      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">INTERFACE_LOGIC</h3>
-      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0">Following the THETA Void language: absolute black, stone/charcoal telemetry, and scientific HUD influences. The interface is exploratory and atmospheric, using a focused grayscale identity.</p>
-    </div>
-  </section>
+  <div style="max-width:900px;margin:0 auto 56px auto">
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:38px;line-height:1.3;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 22px 0">Voices in orbit.</h1>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:720px;text-wrap:pretty">Five voices. Place them in a field, link them, set them moving &mdash; and their motion becomes the modulation that drives everything else.</p>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 90px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-size:15px;line-height:1.9;color:#81848A;margin:0;text-wrap:pretty">Most synthesizers modulate with lanes &mdash; an LFO here, an envelope there, a matrix to wire them together. <b style="color:#B0B2B7;font-weight:700">TWILIGHT modulates with physics and relationships.</b><br><br>Its five voices live in a field. You place each one: left to right is stereo position, near to far is presence. Link them and they swing together as one rigid constellation, orbiting under a gravity you control. That motion isn't decoration &mdash; any voice's position can be tethered to any parameter in the instrument, so the same gesture that carries a voice across the room also stirs a grain cloud, opens a reverb, or bends another voice's pitch.<br><br>The voices are relational too. One can follow another at an interval, and inverting that harmony gives you its octave complement rather than a sign flip. Patterns work the same way: a voice can borrow another's groove while keeping its own pitch, then run it backwards, or mirrored.<br><br><b style="color:#B0B2B7;font-weight:700">Play it and it's an instrument. Leave it and it generates.</b></p>
+  </div>
 
   <section style="max-width:900px;margin:0 auto 100px auto">
-    <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">ENGINE_ARCHITECTURE</h3>
-    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">T H E T A // THE HEART</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Four-Voice Binaural Engine.</b> THETA is the core signal organism. Designed for sustained tone and psychoacoustic motion, each voice carries pitch and beat-rate interaction.</p></div>
-    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">D R I F T // HARMONY &amp; ENSEMBLE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Harmony Doubler / Ensemble Widener.</b> DRIFT turns a stable source into a layered harmonic bloom. Built on a "body and halo" architecture, it can reinforce a source with stable doubles.</p></div>
-    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">F I E L D // SPATIAL BLOOM</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Spatial Expansion / Shimmer Engine.</b> Built around comb and allpass diffusion networks. FIELD allows audio to move away from the speakers to become a surrounding environment.</p></div>
-    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">F A D E // MOTION ENGINE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Gate / Stutter / Sidechain hybrid.</b> Reshapes the way a signal arrives and retreats using <b style="color:#DCCDBF">SHAPE</b> and <b style="color:#DCCDBF">CHAOS</b> parameters to create breathing envelopes.</p></div>
-    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">M A S T E R B U S // OUTPUT MATRIX</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Final Modulation Stage.</b> The place where the instrument's signal is performed and dramatized. Features core treatments: <b style="color:#DCCDBF">FLANGE, STUT, XFADE,</b> and <b style="color:#DCCDBF">REVERB</b>.</p></div>
-    <div><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">O U T P U T // FINISHING STAGE</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0"><b style="color:#DCCDBF">Mastering Wall &amp; Limiter.</b> A true end-of-chain sculpting section including the <b style="color:#DCCDBF">THRU</b> system for external audio processing and the final <b style="color:#DCCDBF">LIMIT</b> boundary.</p></div>
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">HOW_IT_WORKS</h3>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">C O N S T E L L A T I O N // VOICES AS BODIES</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0;text-wrap:pretty">Five voices in a pan-and-depth field. Far voices sit back, quieter and darker; near ones are present and bright. <b style="color:#DCCDBF;font-weight:700">ORBIT</b> swings the linked ones as a single rigid shape. <b style="color:#DCCDBF;font-weight:700">GRAVITY</b> draws the constellation inward or flings it wide. <b style="color:#DCCDBF;font-weight:700">HEAT</b> drives voices harder as they crowd the centre. And <b style="color:#DCCDBF;font-weight:700">GRAVITY PULSE</b> locks the whole field to your host tempo &mdash; 1/1 down to 1/16 &mdash; so the image collapses and blooms on the beat.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">T E T H E R S // MOTION AS MODULATION</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0;text-wrap:pretty">Right-click any knob to tether it: to a voice's position, to gravity itself, or to the note you just played &mdash; pitch, velocity, a fresh random per keystroke. Eight routes, any eligible parameter, bipolar depth you can drag straight from the knob's ring. Because the sources are physical, a modulation shape is something you place and watch, not a curve you draw.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">R E L A T I O N A L  V O I C E S</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0;text-wrap:pretty">Voices harmonize against each other rather than in isolation, and it holds in both drone and keyboard modes &mdash; change the root and the whole structure follows. Chord presets set the relationships in one move.</p></div>
+    <div style="margin-bottom:60px"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">T H E  E N G I N E S</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0;text-wrap:pretty"><b style="color:#DCCDBF;font-weight:700">DRIFT</b> doubles and detunes into a slowly shifting harmonic field. <b style="color:#DCCDBF;font-weight:700">FIELD</b> is a reverb with a grain engine &mdash; smear the tail into a cloud, or stutter it into rhythm. <b style="color:#DCCDBF;font-weight:700">FADE</b> breathes. The <b style="color:#DCCDBF;font-weight:700">OUTPUT MATRIX</b> finishes: ring modulation with selectable oversampling, flanging, stutter, and a lookahead limiter.</p></div>
+    <div style="margin-bottom:0"><h4 style="font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 15px 0">P L A Y  I T</h4><p style="font-size:14px;color:#81848A;line-height:1.8;margin:0;text-wrap:pretty">Sixteen-voice polyphony, per-voice envelopes, velocity, your keyboard. Or leave it in drone mode and let it run &mdash; the ambience it was born doing is a preset away.</p></div>
   </section>
 
-  <section style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #3A3534">
+  <section style="max-width:900px;margin:0 auto 100px auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #3A3534;padding-top:40px">
     <div>
-      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">WHOLE_PLUGIN_SPECIFICATIONS</h3>
-      <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Core Engine</b>4-voice THETA binaural drone engine + V5 sample layer</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Sequencer</b>Signal Lattice [Gate / Pitch / Prob / Velocity / Swing]</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Harmony Modes</b>UNI, OCT+/-, 5TH, MAJ, MIN, SUS, CLSTR</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Master Bus</b>Flanger, Stutter, Reverb, Brick-Wall Limiter</li>
-      </ul>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">RECORDING_AND_CAPTURE</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0;text-wrap:pretty">A built-in REC function captures the instrument's output straight to a WAV file, so a long drone can be printed without leaving the plug-in.</p>
     </div>
     <div>
-      <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TELEMETRY</h3>
-      <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS [AU / VST3] // 64-bit</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Recording</b>Direct output capture to WAV via REC function</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Aesthetic</b>THETA Void [Brutalist Grayscale / Scientific HUD]</li>
-        <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Manufacturer</b>THETA Audio Research // 2026</li>
-      </ul>
+      <h3 style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:15px">FOUR_PALETTES</h3>
+      <p style="font-size:13px;color:#81848A;opacity:0.7;line-height:1.7;margin:0;text-wrap:pretty">DUSK, EMBER, GROVE and TERRA. Pick one from the header; it follows you across sessions.</p>
     </div>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">AT_A_GLANCE</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS &mdash; VST3, Audio Unit, Standalone</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Instrument (VST3 Instrument / AU music device)</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voices</b>Five &mdash; four oscillators plus one sample layer</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Polyphony</b>16 voices, per-voice ADSR</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Modulation</b>8 tethers, 8 parameter links</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Gravity Pulse</b>Host-synced, 1/1 &ndash; 1/16</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Audio</b>Bandlimited oscillators; oversampled ring modulation</li>
+      <li style="font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Load</b>Roughly 12% of one core with everything running</li>
+    </ul>
   </section>
 </main>
 
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
   <span>SYSTEM_STABLE // 2026</span>
-  <span>LAB NOTE #005 // REGENERATION_ACTIVE</span>
+  <span>LAB NOTE #005 // CONSTELLATION_LINKED</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box;opacity:{{ overlayOpacity }};pointer-events:{{ overlayPointer }};transition:opacity 0.2s ease">
@@ -98,7 +117,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { zoomed: null };
+  state = { zoomed: null, skin: 'ember' };
 
   componentDidMount() {
     this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
@@ -128,7 +147,14 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z) el.src = z.src; },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/twilight/hero.png', 2500, 2652 / 1450),
+      isEmber: this.state.skin === 'ember',
+      isGrove: this.state.skin === 'grove',
+      isTerra: this.state.skin === 'terra',
+      pickEmber: () => this.setState({ skin: 'ember' }),
+      pickGrove: () => this.setState({ skin: 'grove' }),
+      pickTerra: () => this.setState({ skin: 'terra' }),
+      skinNote: {"ember":"copper on near-black","grove":"plum and chartreuse","terra":"sage and gold"}[this.state.skin],
+      openHero: this._mk('assets/twilight/hero_' + this.state.skin + '.png?v=260801h', 2562, 2562 / 1360),
     };
   }
 }
