@@ -243,10 +243,10 @@ class Component extends DCLogic {
   componentWillUnmount() {
     document.removeEventListener('keydown', this._esc);
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.zoomed !== prevState.zoomed && this._zoomImgEl) {
-      this._zoomImgEl.src = this.state.zoomed ? this.state.zoomed.src : '';
-    }
+  componentDidUpdate() {
+    if (!this._zoomImgEl) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : '';
+    if (this._lastZoomSrc !== want) { this._zoomImgEl.src = want; this._lastZoomSrc = want; }
   }
 
   _mk(src, w, r) {

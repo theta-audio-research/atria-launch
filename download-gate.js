@@ -1,8 +1,11 @@
-/* THETA AUDIO RESEARCH — free-download email gate
+/* THETA AUDIO RESEARCH — email gate (downloads + launch waitlist)
    ---------------------------------------------------------------
-   Intercepts clicks on any <a data-gate="PLUGIN NAME" href="...dmg">
-   and presents a modal that collects the visitor before releasing
-   the file.
+   Two modes, one modal:
+     <a data-gate="PLUGIN" href="...dmg">    free download — collects, then releases the file
+     <a data-notify="PLUGIN" href="mailto:"> launch waitlist — collects, no file
+
+   Waitlist signups land in Kit with fields[plugin] = "PLUGIN (waitlist)",
+   so they can be segmented and mailed when that instrument ships.
 
    >>> CONNECT YOUR LIST HERE <<<
    Until ENDPOINT is set, submissions are stored in the browser only
@@ -22,9 +25,16 @@
   };
 
   var C = {
-    bg: '#000', panel: '#080A08', line: '#486E48', lineDim: '#54575C',
+    bg: '#0C1519', panel: '#080F12', line: '#283B28', lineDim: '#3A3534',
     cream: '#DCCDBF', silver: '#B0B2B7', dim: '#81848A',
     green: '#6E9B6E', greenLt: '#A6DCA6', greenDim: '#87B387'
+  };
+
+  var CREAM = {
+    accent: C.cream, accentLt: C.cream, accentDim: C.cream, line: C.lineDim
+  };
+  var GREEN = {
+    accent: C.green, accentLt: C.greenLt, accentDim: C.greenDim, line: C.line
   };
 
   var ROLES = ['Composer', 'Mixer / re-recording', 'Sound designer / editor', 'Producer / artist', 'Post supervisor', 'Hobbyist', 'Other'];
@@ -38,7 +48,7 @@
   }
 
   var LABEL = 'display:block;font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:' + C.cream + ';opacity:0.75;margin:0 0 8px 0';
-  var FIELD = 'width:100%;box-sizing:border-box;background:rgba(255,255,255,0.02);border:1px solid ' + C.lineDim + ';color:' + C.silver + ';font-family:Montserrat,sans-serif;font-size:13px;font-weight:300;letter-spacing:1px;padding:13px 14px;outline:none;border-radius:0;appearance:none';
+  var FIELD = 'width:100%;box-sizing:border-box;background:rgba(255,255,255,0.03);border:1px solid ' + C.lineDim + ';color:' + C.silver + ';font-family:Montserrat,sans-serif;font-size:13px;font-weight:300;letter-spacing:1px;padding:13px 14px;outline:none;border-radius:0;appearance:none';
 
   function field(labelText, node) {
     var w = el('div', 'margin-bottom:18px;text-align:left');
@@ -54,7 +64,7 @@
     var o0 = el('option', null, placeholder); o0.value = '';
     s.appendChild(o0);
     options.forEach(function (t) { var o = el('option', null, t); o.value = t; s.appendChild(o); });
-    s.addEventListener('focus', function () { s.style.borderColor = C.green; });
+    s.addEventListener('focus', function () { s.style.borderColor = window.__thAccent || C.green; });
     s.addEventListener('blur', function () { s.style.borderColor = C.lineDim; });
     return s;
   }
@@ -64,7 +74,7 @@
     i.id = id; i.type = type; i.placeholder = placeholder;
     if (type === 'email') { i.autocomplete = 'email'; i.name = 'email'; }
     if (id === 'th-name') { i.autocomplete = 'given-name'; i.name = 'first_name'; }
-    i.addEventListener('focus', function () { i.style.borderColor = C.green; });
+    i.addEventListener('focus', function () { i.style.borderColor = window.__thAccent || C.green; });
     i.addEventListener('blur', function () { i.style.borderColor = C.lineDim; });
     return i;
   }
@@ -78,6 +88,16 @@
       var all = leads(); all.push(rec);
       localStorage.setItem('theta_leads', JSON.stringify(all));
       localStorage.setItem(CONFIG.STORAGE, JSON.stringify({ email: rec.email, first_name: rec.first_name, role: rec.role, source: rec.source }));
+    } catch (e) {}
+  }
+  function waitlisted(plugin) {
+    try { return (JSON.parse(localStorage.getItem('theta_waitlist') || '[]')).indexOf(plugin) > -1; } catch (e) { return false; }
+  }
+  function addWaitlist(plugin) {
+    try {
+      var all = JSON.parse(localStorage.getItem('theta_waitlist') || '[]');
+      if (all.indexOf(plugin) < 0) all.push(plugin);
+      localStorage.setItem('theta_waitlist', JSON.stringify(all));
     } catch (e) {}
   }
   function known() {
@@ -130,21 +150,25 @@
   }
 
   // ---- modal ---------------------------------------------------
-  function openGate(plugin, href) {
+  function openGate(plugin, href, notify) {
     if (document.querySelector('[data-th-gate-overlay]')) return;
     var prior = known();
+    var T = notify ? CREAM : GREEN;
+    window.__thAccent = T.accent;
 
     var overlay = el('div', 'position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;overflow-y:auto;animation:thGateIn 0.25s ease');
     overlay.setAttribute('data-th-gate-overlay', '');
-    var panel = el('div', 'background:' + C.panel + ';border:1px solid ' + C.line + ';max-width:460px;width:100%;padding:38px 36px;box-sizing:border-box;text-align:center;position:relative;margin:auto');
+    var panel = el('div', 'background:' + C.panel + ';border:1px solid ' + T.line + ';max-width:460px;width:100%;padding:38px 36px;box-sizing:border-box;text-align:center;position:relative;margin:auto');
 
     var close = el('button', 'position:absolute;top:12px;right:14px;background:none;border:none;color:' + C.dim + ';font-size:20px;line-height:1;cursor:pointer;padding:6px;font-family:Montserrat,sans-serif', '\u00d7');
     close.setAttribute('aria-label', 'Close');
     panel.appendChild(close);
 
-    panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + C.greenDim + ';margin-bottom:12px', 'Free Download'));
-    panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + C.greenLt + ';margin:0 0 10px 0', plugin));
-    panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 28px 0', 'Tell us where to send it. No account, no unlock \u2014 the download starts immediately.'));
+    panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';opacity:' + (notify ? '0.7' : '1') + ';margin-bottom:12px', notify ? 'Launch Notice' : 'Free Download'));
+    panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 10px 0', plugin));
+    panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 28px 0',
+      notify ? 'We\u2019ll email you the moment it ships \u2014 and your welcome note carries the three THETA instruments that are already free.'
+             : 'Tell us where to send it. No account, no unlock \u2014 the download starts immediately.'));
 
     var form = el('form', 'display:block');
     var name = input('th-name', 'text', 'Jordan');
@@ -162,13 +186,14 @@
     var err = el('p', 'font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:2px;color:#C98A7A;margin:0 0 14px 0;display:none;text-transform:uppercase;font-weight:700');
     form.appendChild(err);
 
-    var submit = el('button', 'width:100%;background:none;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:5px;text-transform:uppercase;padding:19px;cursor:pointer;transition:0.3s', 'Get the download');
+    var submit = el('button', 'width:100%;background:none;border:1px solid ' + T.accent + ';color:' + T.accentLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:5px;text-transform:uppercase;padding:19px;cursor:pointer;transition:0.3s', notify ? 'Notify me at launch' : 'Get the download');
     submit.type = 'submit';
-    submit.addEventListener('mouseenter', function () { submit.style.background = C.green; submit.style.color = '#000'; });
-    submit.addEventListener('mouseleave', function () { submit.style.background = 'none'; submit.style.color = C.greenLt; });
+    submit.addEventListener('mouseenter', function () { submit.style.background = T.accent; submit.style.color = '#000'; });
+    submit.addEventListener('mouseleave', function () { submit.style.background = 'none'; submit.style.color = T.accentLt; });
     form.appendChild(submit);
 
-    form.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:400;font-size:10px;line-height:1.75;letter-spacing:1px;color:' + C.dim + ';margin:18px 0 0 0', 'By downloading you\u2019ll join the THETA mailing list for release notes and new instruments. One-click unsubscribe in every email; we never share your address.'));
+    form.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:400;font-size:10px;line-height:1.75;letter-spacing:1px;color:' + C.dim + ';margin:18px 0 0 0', notify ? 'You\u2019ll join the THETA mailing list for release notes and new instruments. One-click unsubscribe in every email; we never share your address.'
+             : 'By downloading you\u2019ll join the THETA mailing list for release notes and new instruments. One-click unsubscribe in every email; we never share your address.'));
 
     panel.appendChild(form);
     overlay.appendChild(panel);
@@ -196,19 +221,29 @@
 
       var rec = {
         date: new Date().toISOString(), email: v, first_name: name.value.trim(),
-        role: role.value, source: src.value, plugin: plugin
+        role: role.value, source: src.value,
+        plugin: notify ? plugin + ' (waitlist)' : plugin
       };
       saveLead(rec);
+      if (notify) addWaitlist(plugin);
 
       send(rec).then(function () {
-        deliver(href);
+        if (!notify) deliver(href);
         panel.innerHTML = '';
         panel.appendChild(close);
-        panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + C.greenDim + ';margin-bottom:14px', 'Downloading'));
-        panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + C.greenLt + ';margin:0 0 14px 0', plugin));
-        panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 26px 0', 'Your download has started. Check your inbox and confirm your email so we can send you release notes \u2014 the plug-in is yours either way.'));
-        var again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Download didn\u2019t start? Click here');
-        again.href = href; again.setAttribute('download', '');
+        panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';opacity:' + (notify ? '0.7' : '1') + ';margin-bottom:14px', notify ? 'On the list' : 'Downloading'));
+        panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 14px 0', plugin));
+        panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 26px 0',
+          notify ? 'You\u2019ll hear from us the moment it ships. Check your inbox and confirm your email so the notice can reach you.'
+                 : 'Your download has started. Check your inbox and confirm your email so we can send you release notes \u2014 the plug-in is yours either way.'));
+        var again;
+        if (notify) {
+          again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Three instruments are free today');
+          again.href = 'free.html';
+        } else {
+          again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Download didn\u2019t start? Click here');
+          again.href = href; again.setAttribute('download', '');
+        }
         panel.appendChild(again);
       });
     });
@@ -224,11 +259,24 @@
       document.head.appendChild(st);
     }
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[data-gate]');
+      var a = e.target.closest && e.target.closest('a[data-gate],a[data-notify]');
       if (!a) return;
       e.preventDefault();
-      openGate(a.getAttribute('data-gate'), a.getAttribute('href'));
+      var n = a.hasAttribute('data-notify');
+      openGate(a.getAttribute(n ? 'data-notify' : 'data-gate'), a.getAttribute('href'), n);
     }, true);
+
+    // a visitor who already signed up sees that reflected on the button
+    function markWaitlisted() {
+      var list = document.querySelectorAll('a[data-notify]');
+      for (var i = 0; i < list.length; i++) {
+        if (waitlisted(list[i].getAttribute('data-notify'))) {
+          list[i].textContent = 'YOU\u2019RE ON THE LIST';
+          list[i].style.opacity = '0.55';
+        }
+      }
+    }
+    markWaitlisted();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
