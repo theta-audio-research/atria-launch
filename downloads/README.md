@@ -11,6 +11,12 @@ exact filenames the pages link to, and re-zip.
 | `OLFACTORY_v0.5.3.dmg` | olfactory.html (DOWNLOAD_FREE // MACOS) | live |
 | `EFFEK_v0.1.16_Installer.dmg` | effek.html (DOWNLOAD_FREE // MACOS) | live |
 
+CATHODE is **not** in this folder — it is a GitHub Release asset
+(`releases/download/cathode-v17.0/CATHODE_VST-AU-AAX-Standalone_v17.0.dmg`, 43.8 MB),
+linked absolutely from `cathode.html`. Files over 25 MB cannot use the web uploader,
+and Releases keep binaries out of both repo size and Pages bandwidth. Prefer this
+route for future installers.
+
 ## Rules
 
 - **Filename is the contract.** The pages link to the exact name above. If the

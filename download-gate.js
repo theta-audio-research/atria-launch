@@ -167,7 +167,7 @@
     panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';opacity:' + (notify ? '0.7' : '1') + ';margin-bottom:12px', notify ? 'Launch Notice' : 'Free Download'));
     panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 10px 0', plugin));
     panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 28px 0',
-      notify ? 'We\u2019ll email you the moment it ships \u2014 and your welcome note carries the three THETA instruments that are already free.'
+      notify ? 'We\u2019ll email you the moment it ships \u2014 and your welcome note carries the THETA instruments that are already free.'
              : 'Tell us where to send it. No account, no unlock \u2014 the download starts immediately.'));
 
     var form = el('form', 'display:block');
@@ -238,7 +238,7 @@
                  : 'Your download has started. Check your inbox and confirm your email so we can send you release notes \u2014 the plug-in is yours either way.'));
         var again;
         if (notify) {
-          again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Three instruments are free today');
+          again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Some of the lab is free today');
           again.href = 'free.html';
         } else {
           again = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Download didn\u2019t start? Click here');
