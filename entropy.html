@@ -38,7 +38,7 @@
 
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Drift Engine Online</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-hero" src="assets/entropy/hero.png?v=260729e" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1102/671;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ENTROPY Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-hero" src="assets/entropy/hero.png?v=260803b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2202/1340;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ENTROPY Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -72,7 +72,7 @@
 
     <div style="margin-bottom:70px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">ENGINE — One Knob Decides How Much They Conspire</div>
-      <div style="max-width:980px;margin:0 auto 32px auto"><div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-drift" src="assets/entropy/drift.png?v=260729f" onClick="{{ openDrift }}" style="width:100%;aspect-ratio:1102/671;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ENTROPY Engine at Full Drift"></image-slot></div></div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-drift" src="assets/entropy/drift.png?v=260803b" onClick="{{ openDrift }}" style="width:100%;aspect-ratio:2202/1340;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ENTROPY Engine at Full Drift"></image-slot></div></div>
       <div style="max-width:840px">
         <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The four targets tap different state variables of one attractor run — so pitch, filter, gain and image move like four stages fed from the same failing power rail: distinct, but unmistakably related.</p>
         <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
@@ -98,10 +98,13 @@
     </div>
 
     <div style="margin-top:70px;padding-top:60px;border-top:1px solid #3A3534">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">THE INTERFACE — Three Rooms, One Instrument</div>
-      <div style="max-width:980px;margin:0 auto 32px auto"><div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-dark" src="assets/entropy/hero_dark.png?v=260729e" onClick="{{ openDark }}" style="width:100%;aspect-ratio:1102/671;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ENTROPY Dark Skin"></image-slot></div></div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">THE INTERFACE — Three Themes, One Instrument</div>
+      <div style="max-width:980px;margin:0 auto 32px auto">
+        <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 10px 0;display:block">NUCLEAR</span>
+        <div style="overflow:hidden;border-radius:2px"><image-slot id="entropy-nuclear" src="assets/entropy/nuclear.png?v=260803b" onClick="{{ openNuclear }}" style="width:100%;aspect-ratio:1100/650;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ENTROPY Nuclear Skin"></image-slot></div>
+      </div>
       <div style="max-width:840px">
-        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">The same machined control surface in three full skins — <b style="color:#DCCDBF;font-weight:700">LIGHT</b>, the white-and-gold studio face; <b style="color:#DCCDBF;font-weight:700">DARK</b>, the near-black Void shown here; and <b style="color:#DCCDBF;font-weight:700">NUCLEAR</b>, a Kelvin-era power-station control room with ivory dial faces on institutional sage. One click on the header pill cycles them, and your choice follows you across every instance — because a theme is a preference, not a sound.</p>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">All three themes, same machined control surface: the two shots above this section are LIGHT and DARK, and NUCLEAR is shown here. Three full themes — <b style="color:#DCCDBF;font-weight:700">LIGHT</b>, the white-and-gold studio face; <b style="color:#DCCDBF;font-weight:700">DARK</b>, the near-black Void; and <b style="color:#DCCDBF;font-weight:700">NUCLEAR</b>, a Kelvin-era power-station control room with ivory dial faces on institutional sage. One click on the header pill cycles them, and your choice follows you across every instance — because a theme is a preference, not a sound.</p>
       </div>
     </div>
   </section>
@@ -169,9 +172,9 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/entropy/hero.png?v=260729e', 1102, 1102 / 671),
-      openDrift: this._mk('assets/entropy/drift.png?v=260729f', 1102, 1102 / 671),
-      openDark: this._mk('assets/entropy/hero_dark.png?v=260729e', 1102, 1102 / 671),
+      openHero: this._mk('assets/entropy/hero.png?v=260803b', 2202, 2202 / 1340),
+      openNuclear: this._mk('assets/entropy/nuclear.png?v=260803b', 1100, 1100 / 650),
+      openDrift: this._mk('assets/entropy/drift.png?v=260803b', 2202, 2202 / 1340),
     };
   }
 }
