@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="mobile.css">
 <script src="./image-slot.js"></script>
 <style>
-#free-entropy::part(frame),#free-effek::part(frame),#free-olfactory::part(frame){background:transparent}image-slot::part(ring){display:none}
+#free-entropy::part(frame),#free-effek::part(frame),#free-olfactory::part(frame),#free-cathode::part(frame){background:transparent}image-slot::part(ring){display:none}
 a{color:#DCCDBF}a:hover{color:#F0EDE6}
 </style>
 </helmet>
@@ -27,8 +27,8 @@ a{color:#DCCDBF}a:hover{color:#F0EDE6}
     </svg>
   </a>
   <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
-    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">FREE PLUGINS</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">No Account · No Unlock · No Upsell — THETA Audio Research</p>
+    
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px"><br></p><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">FREE PLUGINS</h2>
   </div>
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
@@ -39,17 +39,30 @@ a{color:#DCCDBF}a:hover{color:#F0EDE6}
 <main style="flex:1;padding:40px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center">
 
   <section style="max-width:850px;margin:0 auto 70px auto;text-align:center">
-    <div style="font-size:11px;letter-spacing:8px;color:#6E9B6E;text-transform:uppercase;font-weight:700;margin-bottom:26px">AUTHORIZED_GIVEAWAY // NO_STRINGS</div>
-    <h1 style="font-weight:300;font-size:44px;letter-spacing:14px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;padding-left:14px;text-wrap:pretty">TAKE THREE<br>ON THE HOUSE</h1>
-    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em;margin:0">Three instruments from the THETA catalogue ship completely free — no account, no unlock, no upsell. They are not demos, not lite editions, and not time-bombed. They are the same engines, measured and torture-tested like everything else we build. Take them, keep them, and if they earn their place in your rack, <a href="store.html" style="text-decoration:none;border-bottom:1px solid rgba(220,205,191,0.4)">the rest of the lab is next door</a>.</p>
+    <h1 style="font-weight:300;font-size:44px;letter-spacing:14px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;padding-left:14px;text-wrap:pretty">TAKE SOME<br>ON THE HOUSE</h1><p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em;margin:0">Every instrument below ships completely free, no account, no unlock, no upsell. They are not demos, not lite editions, and not time-bombed. They are the same engines, measured and torture-tested like everything else we build. Take them, keep them, and if they earn their place in your rack, <a href="store.html" style="text-decoration: none; border-bottom: 1px solid rgba(220, 205, 191, 0.4);">the rest of the lab is next door</a>.</p>
   </section>
 
   <div style="width:100%;max-width:1050px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline;font-size:9px;letter-spacing:6px;text-transform:uppercase;padding:20px 0;font-weight:700;border-top:1px solid rgba(110,155,110,0.3)">
-    <span style="color:#6E9B6E">FREE_MODULES // ALL_THREE</span>
+    <span style="color:#6E9B6E">FREE_MODULES // NO_STRINGS</span>
     <span style="color:#6E6764;letter-spacing:4px">MACOS_ONLY_AT_LAUNCH // WINDOWS_SOON_FOR_ALL_PLUGINS</span>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;width:100%;max-width:1050px;margin-bottom:90px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;width:100%;max-width:1050px;margin-bottom:90px">
+
+    <a href="cathode.html" style="border:1px solid #283B28;background:rgba(22,38,22,0.15);display:flex;flex-direction:column;transition:0.4s;text-decoration:none" style-hover="border-color:#6E9B6E;background:rgba(33,59,33,0.25);transform:translateY(-5px)">
+      <div style="width:100%;border-bottom:1px solid #283B28;background:#0C1519;padding:24px;box-sizing:border-box">
+        <image-slot id="free-cathode" src="assets/cathode/hero.png?v=260801j" fit="contain" style="width:100%;height:auto;aspect-ratio:970/522" shape="rect" placeholder="CATHODE Interface"></image-slot>
+      </div>
+      <div style="padding:24px;display:flex;flex-direction:column;flex:1">
+        <span style="font-size:10px;color:#87B387;font-weight:700;opacity:0.9;letter-spacing:1px;margin-bottom:8px">003_VTR</span>
+        <h3 style="font-size:22px;letter-spacing:8px;color:#A6DCA6;margin:0 0 10px 0;text-transform:uppercase">CATHODE</h3>
+        <p style="font-weight:300;font-size:13px;color:#87B387;margin:0 0 26px 0;line-height:1.7;flex:1">Broadcast Decay &amp; CRT-Burn Engine. Seven stages of transmission damage — lock, head, receiver, interference, phosphor, crush and transient design.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top:1px solid #283B28;padding-top:20px">
+          <span style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;min-width:0"><span style="font-size:12px;font-weight:700;color:#87B387;letter-spacing:1px;text-decoration:line-through;opacity:0.7">$99</span><span style="font-size:14px;font-weight:700;color:#A6DCA6;letter-spacing:2px">FREE</span><span style="font-size:8px;font-weight:700;letter-spacing:2px;color:#0C1519;background:#DCCDBF;padding:3px 6px;text-transform:uppercase;white-space:nowrap">For&nbsp;now</span></span>
+          <span style="border:1px solid #6E9B6E;color:#A6DCA6;padding:12px 22px;text-transform:uppercase;font-weight:700;font-size:10px;letter-spacing:4px">DOWNLOAD // MAC</span>
+        </div>
+      </div>
+    </a>
 
     <a href="entropy.html" style="border:1px solid #283B28;background:rgba(22,38,22,0.15);display:flex;flex-direction:column;transition:0.4s;text-decoration:none" style-hover="border-color:#6E9B6E;background:rgba(33,59,33,0.25);transform:translateY(-5px)">
       <div style="width:100%;border-bottom:1px solid #283B28;background:#0C1519;padding:24px;box-sizing:border-box">
@@ -96,12 +109,13 @@ a{color:#DCCDBF}a:hover{color:#F0EDE6}
       </div>
     </a>
 
+
   </div>
 
   <section style="width:100%;max-width:850px;text-align:center;border-top:1px solid #3A3534;padding-top:60px">
-    <div style="font-size:10px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;font-weight:700;margin-bottom:20px;opacity:0.7">WHY_GIVE_THEM_AWAY</div>
-    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;letter-spacing:0.02em;margin:0 0 40px 0">Because the fastest way to explain what we build is to let you run it. Every free module is held to the same standard as the paid catalogue: real mechanisms modelled from the record, measurements published on the product page, and no feature held back to sell you an upgrade.</p>
-    <a href="store.html" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 50px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">EXPLORE_THE_FULL_CATALOGUE</a>
+    <div style="font-size:10px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;font-weight:700;margin-bottom:20px;opacity:0.7"><br></div>
+    <a href="store.html" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 50px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">EXPLORE_THE_FULL_CATALOGUE</a><p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;letter-spacing:0.02em;margin:0 0 40px 0"><br></p>
+    
   </section>
 </main>
 
