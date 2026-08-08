@@ -36,7 +36,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="horme-hero" src="assets/horme/hero.png?v=260801k" onClick="{{ openHero }}" style="width:100%;aspect-ratio:882/573;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="HORME Simple View"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="horme-hero" src="assets/horme/hero.png?v=260808" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1762/1144;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="HORME Simple View"></image-slot></div>
   </div>
 
   <div style="max-width:900px;margin:0 auto 56px auto">
@@ -74,7 +74,7 @@
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">WHAT YOU SEE</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
         <div style="flex:0 0 380px;width:380px;border:1px solid #3A3534;overflow:hidden;border-radius:2px">
-          <image-slot id="horme-multiband" src="assets/horme/multiband.png?v=260801k" onClick="{{ openMultiband }}" style="width:100%;aspect-ratio:882/573;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="HORME Multiband View"></image-slot>
+          <image-slot id="horme-multiband" src="assets/horme/multiband.png?v=260808" onClick="{{ openMultiband }}" style="width:100%;aspect-ratio:1762/1144;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="HORME Multiband View"></image-slot>
         </div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0"><b style="color:#DCCDBF;font-weight:700">SIMPLE</b> is one large live envelope window: the input envelope, the shaped trace over it, and a peak readout. Four draggable nodes sit on a log-frequency overlay &mdash; two set the high-pass and low-pass corners the onset detector listens to, two are the transient-keyed bells. Drag for frequency, vertical for bell depth, command-drag for Q. The bell nodes pulse with the live onset key, so you can see the detector firing.</p>
@@ -164,8 +164,8 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/horme/hero.png?v=260801k', 882, 882 / 573),
-      openMultiband: this._mk('assets/horme/multiband.png?v=260801k', 882, 882 / 573),
+      openHero: this._mk('assets/horme/hero.png?v=260808', 1762, 1762 / 1144),
+      openMultiband: this._mk('assets/horme/multiband.png?v=260808', 1762, 1762 / 1144),
     };
   }
 }

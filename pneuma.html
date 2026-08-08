@@ -36,7 +36,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto;overflow:hidden;border-radius:2px">
-    <image-slot id="pneuma-hero" src="assets/pneuma/hero.png" onClick="{{ openHero }}" style="width:100%;aspect-ratio:926/809;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PNEUMA Interface Frame"></image-slot>
+    <image-slot id="pneuma-hero" src="assets/pneuma/hero.png?v=260808" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1762/1528;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PNEUMA Interface Frame"></image-slot>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -62,7 +62,7 @@
     <div style="margin-bottom:80px">
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">ANALOG-MATCHED EQUALIZATION</div>
       <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 250px;width:250px;border:1px solid #3A3534;overflow:hidden"><image-slot id="pneuma-graph" src="assets/pneuma/graph.png" onClick="{{ openGraph }}" style="width:100%;aspect-ratio:4/3;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PNEUMA Graph Curve Node Layout"></image-slot></div>
+        <div style="flex:0 0 440px;width:440px;border:1px solid #3A3534;overflow:hidden"><image-slot id="pneuma-graph" src="assets/pneuma/graph.png?v=260808" onClick="{{ openGraph }}" style="width:100%;aspect-ratio:1742/668;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PNEUMA Graph Curve Node Layout"></image-slot></div>
         <div style="flex:1">
           <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Seven fully parametric bands handling bells, high/low shelves, and filtration boundaries. Digital response tracks structural analog prototypes directly up to Nyquist limits via <b style="color:#DCCDBF;font-weight:700">Matched-Z curve design</b>, ensuring high-frequency adjustments preserve absolute clarity without naive smearing.</p>
           <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
@@ -167,8 +167,8 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/pneuma/hero.png', 2000, 926 / 809),
-      openGraph: this._mk('assets/pneuma/graph.png', 625, 4 / 3),
+      openHero: this._mk('assets/pneuma/hero.png?v=260808', 1762, 1762 / 1528),
+      openGraph: this._mk('assets/pneuma/graph.png?v=260808', 1742, 1742 / 668),
     };
   }
 }
