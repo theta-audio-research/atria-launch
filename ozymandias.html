@@ -76,8 +76,8 @@
       </div>
       <div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">04</div>
-        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Set the ceiling with HORIZON, if you want loud</div>
-        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">Unity sits at 85% of its travel. Right of that you drive into the limiter; left you back away from it. Loudness is a decision, never a side effect of the other two knobs.</p>
+        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Set the threshold with HORIZON, if you want loud</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">It starts at 0&nbsp;dB, fully open, catching only what would clip. Turn it down and the limiter works harder while the level holds, so the record gets denser rather than quieter. Loudness is a decision, never a side effect of the other two knobs.</p>
       </div>
     </div>
 
@@ -257,12 +257,12 @@
     <div style="border-left:2px solid #7A5A2E;padding-left:28px;margin-bottom:44px">
       <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
         <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">HORIZON</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">The limiter, and how hard you drive it &middot; in dB &middot; always armed</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">The limiter's threshold, below a fixed ceiling &middot; in dB &middot; always armed</span>
       </div>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 16px 0;max-width:780px;text-wrap:pretty">A brickwall limiter with a fixed &minus;1&nbsp;dBFS ceiling, always in circuit. The knob isn't the ceiling, it's the drive, and it sits like a console fader: 0&nbsp;dB at 85% of the travel, headroom right, attenuation left. At 0&nbsp;dB it simply catches peaks that would cross the ceiling. Right of that you push into it for density. Left, you walk the level down until it has nothing to do.</p>
-      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 18px 0;max-width:780px;text-wrap:pretty"><b style="color:#DCCDBF;font-weight:700">Why it's on the bus and not the macro:</b> loudness should be a decision, not a side effect. A ring reads the drive at a glance, cool below zero, hot above it, with a detent marking unity.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 16px 0;max-width:780px;text-wrap:pretty">A brickwall limiter with a fixed &minus;1&nbsp;dBFS ceiling, always in circuit. The knob is the threshold, measured down from that ceiling, and it starts at 0&nbsp;dB at the top of the travel, fully open, catching only peaks that would cross. Turn it down and the threshold falls while the makeup rises with it, so peaks stay pinned to the ceiling and the programme gets denser instead of quieter. Gain reduction grows as the knob falls, the way a threshold reads on any limiter you have used.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 18px 0;max-width:780px;text-wrap:pretty"><b style="color:#DCCDBF;font-weight:700">Why it's on the bus and not the macro:</b> loudness should be a decision, not a side effect. A ring reads the depth at a glance, cool as it leaves the detent at 0&nbsp;dB, hot when you are leaning on it.</p>
       <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
-        <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">&minus;17 to +3 dB, 0 dB at exactly 85% of travel &middot; zero lookahead, therefore zero reported latency &middot; fixed &minus;1 dBFS ceiling held to 0.01 dB &middot; 0.15 ms attack &middot; release adapts to gain-reduction history &middot; multiplies with OUTPUT, so the two compose</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">&minus;20 to 0 dB below the ceiling &middot; zero lookahead, therefore zero reported latency &middot; fixed &minus;1 dBFS ceiling held to 0.01 dB &middot; 0.15 ms attack &middot; release adapts to gain-reduction history &middot; composes with OUTPUT, which stays the level trim</p>
       </div>
     </div>
 
@@ -331,9 +331,9 @@
         </tr>
         <tr>
           <td style="font-size:11px;letter-spacing:2px;color:#B0B2B7;font-weight:700;padding:14px 16px 14px 0">HORIZON</td>
-          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0">limiter drive, on the bus</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0">limiter threshold, on the bus</td>
           <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0">always armed</td>
-          <td style="font-size:11px;color:#81848A;padding:14px 0">&minus;17 to +3 dB, unity at 85%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0">&minus;20 to 0 dB below the ceiling</td>
         </tr>
       </tbody>
     </table>
@@ -347,7 +347,7 @@
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voicings</b>HOUSE, HIP-HOP, ROCK, METAL, POP, JAZZ, ACOUSTIC, CINEMATIC. Each sets the proportions rather than a fixed sound.</li>
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Resonance suppression</b>12 half-octave dynamic bands, 180 Hz to 8.1 kHz, up to 8 dB per band.</li>
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Saturation</b>2&times; oversampled, anti-derivative anti-aliased, with level-dependent bias sag.</li>
-      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Bus</b>HORIZON limiter drive, &minus;17 to +3 dB with unity at 85% of travel, into a fixed &minus;1 dBFS ceiling. Phase-aligned MIX and OUTPUT.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Bus</b>HORIZON limiter threshold, &minus;20 to 0 dB below a fixed &minus;1 dBFS ceiling, with makeup rising as the threshold falls. Phase-aligned MIX and OUTPUT.</li>
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Manual access</b>Ten controls in the advanced panel, each a proportion the macros multiply into, automatable independently.</li>
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Gain staging</b>Measured makeup only, never auto-gain that flatters the wet path. A measured null at zero.</li>
       <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Rendering</b>Zero reported latency in every format. Zero randomness, so the same input and settings always produce the identical file.</li>

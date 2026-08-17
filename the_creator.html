@@ -37,7 +37,7 @@
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Spectral Matrix Workspace</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-hero" src="assets/creator/hero.png?v=260811c" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1122/821;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR Spectral Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-hero" src="assets/creator/hero.png?v=260817" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2248/1660;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR Spectral Interface"></image-slot></div>
   </div>
 
   <div style="max-width:900px;margin:0 auto 56px auto">
@@ -121,7 +121,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/creator/hero.png?v=260811c', 1122, 1122 / 821),
+      openHero: this._mk('assets/creator/hero.png?v=260817', 2248, 2248 / 1660),
     };
   }
 }
