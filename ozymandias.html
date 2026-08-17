@@ -10,23 +10,396 @@
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
 <script src="./download-gate.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
 </helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="text-align:center;border:1px solid #3A3534;padding:60px;background:rgba(255,255,255,0.01);max-width:520px">
-    <svg viewBox="0 0 100 100" style="height:70px;width:auto;display:block;margin:0 auto 30px auto" aria-label="THETA">
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
       <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
-    <h1 style="font-weight:300;font-size:32px;letter-spacing:20px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:20px">OZYMANDIAS</h1>
-    <p style="font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:10px 0 40px 0;opacity:0.8">Transform sound from monument to ruin.</p>
-    <div style="font-size:11px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:34px">// COMING_SOON</div>
-    <a href="mailto:info@theta.audio?subject=OZYMANDIAS%20updates" data-notify="OZYMANDIAS" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:20px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:5px;transition:0.4s;margin-bottom:26px" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-    <a href="index.html" style="display:inline-block;color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:12px 24px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">OZYMANDIAS</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Singularity processor</p>
   </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="ozymandias-hero" src="assets/ozymandias/hero.png?v=260816b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2002/1280;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="OZYMANDIAS main surface, RUIN and REMNANT"></image-slot></div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto 56px auto">
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:780px;text-wrap:pretty"><b style="color:#B0B2B7;font-weight:700">A mastering chain with only two surface knobs.</b> RUIN cleans and warms: dynamic resonance suppression, de-harshing, low-mid tightening, and warm saturation that tames transients instead of spiking them. REMNANT weighs, opens and glues.</p>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em">Most mixes don't need more processing. They need the right processing, in the right order, at the right depth, the part that takes fifteen years to learn and eight plug-ins to execute.<br><br><b style="color:#B0B2B7;font-weight:700">One knob removes what's wrong. One knob adds what's missing.</b> That's the surface. Underneath sit eight studio-grade processors, and a voicing decides how they're proportioned for the record you're making, so the part you actually touch stays two knobs, all the way to the master.<br><br>What makes two knobs enough is the preset system. A voicing, HOUSE or ROCK or JAZZ or METAL, doesn't lock in a sound; it sets how much of each processor the macros will call on for that kind of material. Load the one that fits your record, then work entirely from the two dials. Every stage stays available if you want to build a voicing of your own, and every one of them is dynamic: they work flawed material and leave good material alone.</p>
+  </div>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Both macros are built and the voicing set is in calibration. OZYMANDIAS is not yet released. Sign up and we will notify you the moment it ships.</p>
+      <a href="mailto:info@theta.audio?subject=OZYMANDIAS%20updates" data-notify="OZYMANDIAS" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:44px;border-bottom:1px solid #3A3534;padding-bottom:10px">HOW_YOU_USE_IT</h3>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px 50px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">01</div>
+        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Load a voicing</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">Named after the music you're making: HOUSE, JAZZ, METAL. The preset doesn't set a sound. It sets the proportions, how much of each processor the two knobs will call on for that kind of material.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">02</div>
+        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Turn RUIN until the mix stops fighting you</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">Resonance, harshness and low-mid mud leave in a considered order, and warmth arrives last. Most records land somewhere between 40% and 70%.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">03</div>
+        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Turn REMNANT until it sounds finished</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">Weight, then air, then glue. This is the knob that turns a mix into a record.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;font-weight:700;opacity:0.6;margin-bottom:12px">04</div>
+        <div style="font-size:14px;letter-spacing:5px;color:#B0B2B7;text-transform:uppercase;margin:0 0 16px 0;font-weight:700">Set the ceiling with HORIZON, if you want loud</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;text-wrap:pretty">Unity sits at 85% of its travel. Right of that you drive into the limiter; left you back away from it. Loudness is a decision, never a side effect of the other two knobs.</p>
+      </div>
+    </div>
+
+    <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:44px 0 0 0;max-width:820px;border-left:1px solid #3A3534;padding-left:24px;text-wrap:pretty">The advanced panel is there when you want it, not because you need it. Ten controls drop down from the top, each one a proportion the macros multiply into. Open it to build your own voicing, or never open it at all and ride the two knobs. <b style="color:#DCCDBF;font-weight:700">Both are the intended way to use this plug-in.</b></p>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">VOICINGS</h3>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 40px 0;max-width:820px;text-wrap:pretty">Presets are named after the music, not the engineering. Each one sets the proportions, how much of each processor the two knobs will call on for that kind of record. Load the one that fits, then work entirely from RUIN and REMNANT.</p>
+    <table style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 30px 12px 0;border-bottom:1px solid #3A3534;width:150px">Voicing</th>
+          <th style="text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 0 12px 0;border-bottom:1px solid #3A3534">What it leans on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">HOUSE</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">Tight low-mids under a big low end, firm glue, drive available. Built to survive a club system.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">HIP-HOP</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">Weight with disciplined low-mids and warm saturation; kick and 808 transients stay intact.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">ROCK</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">De-harshing forward, midrange resonance control, cohesion chosen over loudness.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">METAL</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">Hard resonance and harshness control for dense guitars, tight lows, glue that holds a wall together.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">POP</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">Sibilance control, air, and gentle glue that never squashes the lead vocal.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">JAZZ</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">Nearly transparent: resonance control only, saturation light, dynamics left alone.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;border-bottom:1px solid rgba(58,53,52,0.6);vertical-align:top">ACOUSTIC</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6);text-wrap:pretty">The lightest touch in the set: room resonances tamed, everything else untouched.</td>
+        </tr>
+        <tr>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:16px 30px 16px 0;vertical-align:top">CINEMATIC</td>
+          <td style="font-weight:300;font-size:13.5px;color:#81848A;line-height:1.75;padding:16px 0;text-wrap:pretty">Maximum weight and air with wide dynamics kept and the limiter idle.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:44px;border-bottom:1px solid #3A3534;padding-bottom:10px">WHY_TWO_KNOBS_IS_ENOUGH</h3>
+
+    <div style="margin-bottom:46px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 18px 0;font-weight:700">The macro is intensity. The preset is proportion.</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;max-width:820px;text-wrap:pretty">Every advanced control is a weight, not a value: what you hear is the trim multiplied by how far the macro has travelled. That one idea is what makes a preset meaningful. Loading METAL doesn't stamp a sound onto your track, it tells RUIN to lean hard on resonance and harshness control, and then gets out of the way. Turn the knob to 40% and you get 40% of that idea. Nothing about the recipe changes as you move.</p>
+    </div>
+
+    <div style="margin-bottom:46px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 18px 0;font-weight:700">Staggered arrival, not lockstep</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;max-width:820px;text-wrap:pretty">Each stage enters the sweep at its own point, ordered by how audible the move is. RUIN opens with resonance suppression, the most invisible thing you can do to a mix, and only starts adding saturation past 30%. REMNANT starts with weight, adds air, then glue. Turn either knob slowly and you hear a considered sequence of decisions, because that's exactly what it is.</p>
+    </div>
+
+    <div style="margin-bottom:46px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 18px 0;font-weight:700">Dynamic, not static</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;max-width:820px;text-wrap:pretty">Almost nothing here is a fixed EQ curve. The suppressor engages only where a band genuinely stands out; the de-harsher works only when the presence region is actually hot; the low-mid bells pull sustained boom while letting kick transients through untouched. A well-made mix at 100% measures nearly flat in the midrange, because there was nothing to correct. A flawed one gets worked. That's why one voicing survives a whole album.</p>
+    </div>
+
+    <div style="margin-bottom:46px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 18px 0;font-weight:700">An order of operations you can't stack yourself</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;max-width:820px;text-wrap:pretty">Everything subtractive runs before everything additive; everything additive runs before the dynamics. Cleaning before saturating means harmonics grow from a balanced spectrum instead of from mud. Shelving before compressing means the compressor glues the bass you added rather than fighting it. Getting this order wrong is the most common reason a DIY chain sounds worse than its parts.</p>
+    </div>
+
+    <div>
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 18px 0;font-weight:700">It tells you the truth</div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0;max-width:820px;text-wrap:pretty">At zero, both macros are a measured null, not &ldquo;almost&rdquo;. The makeup gain compensates only the level a stage deterministically removes; level taken off genuinely flawed material stays off, because that reduction is the point. Nothing here quietly turns you up to make the A/B flatter you.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:26px;border-bottom:1px solid #3A3534;padding-bottom:10px">UNDER_THE_HOOD</h3>
+    <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 50px 0;max-width:820px;opacity:0.8;font-style:italic;text-wrap:pretty">You don't need this section to use the plug-in. It's here because the people who want it really want it.</p>
+
+    <div style="font-size:13px;letter-spacing:5px;color:#DCCDBF;text-transform:uppercase;font-weight:700;margin:0 0 34px 0">RUIN // WHAT_LEAVES</div>
+    <div style="display:flex;flex-direction:column;gap:40px;margin-bottom:70px">
+      <div style="border-left:2px solid #7A5A2E;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">EROSION</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Dynamic resonance suppression &middot; enters at 0%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">Twelve half-octave bands from 180&nbsp;Hz to 8.1&nbsp;kHz watch for a band standing proud of its neighbours, a boxy room mode, a honky guitar note, a ringing snare shell, and pull that band alone, in proportion to how far it stands out, releasing the moment it stops offending. You hear nothing, ideally: bypass sounds cluttered, engaged sounds like the mix got out of its own way.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">12 bands &middot; Q 2.5 &middot; engages 2 dB above local spectral contrast &middot; 2 dB of cut per dB of excess &middot; up to 8 dB per band, 4 dB in the lowest three &middot; guarded so a dominant band and its skirts are recognised as the music and left alone</p>
+        </div>
+      </div>
+
+      <div style="border-left:2px solid #7A5A2E;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">FRACTURE</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">De-harshing &middot; enters at 8%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">A dynamic bell at 3.3&nbsp;kHz for presence-range hardness and a shelf above 6&nbsp;kHz for splash and digital edge, both engaging on level with a small permanent floor. You hear: the mix stops fatiguing you at volume, with sibilance tamed rather than lisped away.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Presence bell 3.3 kHz Q 1.2 to &minus;6 dB &middot; splash shelf above 6 kHz to &minus;4 dB &middot; driven by band-versus-full-band level &middot; sibilance retention verified at 55% or better</p>
+        </div>
+      </div>
+
+      <div style="border-left:2px solid #7A5A2E;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">BURIAL</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Low-mid tightening and rumble &middot; enters at 15%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">Dynamic bells at 230&nbsp;Hz and 130&nbsp;Hz pull sustained low-mid weight with a deliberately slow 20&nbsp;ms attack, so the first instants of a kick pass at full size while only the sustain behind them is reined in. A sliding highpass removes subsonic rumble that eats headroom without ever being heard. You hear: low end that tightens without thinning.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Dynamic bells 230 Hz to &minus;6 dB and 130 Hz to &minus;4 dB &middot; 20 ms attack / 200 ms release &middot; rumble highpass sliding 16 &rarr; 28 Hz with depth</p>
+        </div>
+      </div>
+
+      <div style="border-left:2px solid #7A5A2E;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">HEAT</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Warm saturation &middot; enters at 30%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">An asymmetric valve-style curve fed a low-frequency-weighted signal, so harmonics grow out of the body of the music rather than its top end. The curve is compressive, so peaks standing above the programme are shaved rather than accentuated, and the bias point breathes with level the way a real gain stage does. You hear: weight and glue without brightness.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Asymmetric tanh with even-harmonic bias &middot; 2&times; oversampled with anti-derivative anti-aliasing, alias residue below &minus;60 dB &middot; level-dependent bias sag &middot; calibrated so 0 VU sits in the gentle part of the knee &middot; approximately 1% THD at nominal, 1&ndash;3 dB of drum-crest reduction</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;letter-spacing:5px;color:#9FC4DA;text-transform:uppercase;font-weight:700;margin:0 0 34px 0">REMNANT // WHAT_ARRIVES</div>
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <div style="border-left:2px solid #2F5B75;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#9FC4DA;text-transform:uppercase;font-weight:700">CORE</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Low-end weight, with restraint &middot; enters at 0%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">A weight shelf centred around 90&nbsp;Hz adding up to 6&nbsp;dB, but it watches your source first, winding the boost back by up to half when the track is already heavy down there. You get the same impression of weight on a thin mix and a fat one, without turning the fat one into wool.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Second-order shelf, minimum phase so kicks don't pre-ring &middot; to +6 dB &middot; input-keyed adaptive wind-back to 50% as the low band approaches reference level</p>
+        </div>
+      </div>
+
+      <div style="border-left:2px solid #2F5B75;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#9FC4DA;text-transform:uppercase;font-weight:700">HALO</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Air &middot; enters at 10%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">A high shelf around 11.5&nbsp;kHz adding up to 5&nbsp;dB of open top. Deliberately static and deliberately clean, with no exciter and no generated harmonics. Harshness is FRACTURE's job upstream and level is GRAVITY's downstream; an air band that tried to manage those would fight both. You hear: distance and sheen, with nothing hissing.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Second-order air shelf &middot; to +5 dB &middot; static, harmonics-free &middot; corner placed clear of the de-harsher's working range</p>
+        </div>
+      </div>
+
+      <div style="border-left:2px solid #2F5B75;padding-left:28px">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+          <span style="font-size:19px;letter-spacing:7px;color:#9FC4DA;text-transform:uppercase;font-weight:700">GRAVITY</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Glue compression &middot; enters at 20%</span>
+        </div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 18px 0;max-width:780px;text-wrap:pretty">A bus compressor in the classic sense: gentle ratio, soft knee, slow attack so transients survive, and a release that reads the programme, recovering quickly after a brief peak and holding a long tail under sustained pressure. Its detector ignores deep bass, so the low end CORE just added can't pump the mix. You hear: stems starting to sound like one record.</p>
+        <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">Feed-forward, log-domain, 6 dB soft knee &middot; linked RMS detection with a 90 Hz sidechain highpass &middot; threshold &minus;10 to &minus;18 dBFS, ratio to approximately 2.2:1 &middot; 25 ms attack &middot; program-dependent dual release &middot; gain reduction capped at 8 dB</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:34px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_BUS</h3>
+    <div style="margin-bottom:40px;overflow:hidden;border-radius:2px;border:1px solid #3A3534">
+      <image-slot id="ozymandias-advanced" src="assets/ozymandias/advanced.png?v=260816b" onClick="{{ openAdvanced }}" style="width:100%;aspect-ratio:2002/1280;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="OZYMANDIAS Advanced panel, gravitational model"></image-slot>
+    </div>
+
+    <div style="border-left:2px solid #7A5A2E;padding-left:28px;margin-bottom:44px">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+        <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">HORIZON</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">The limiter, and how hard you drive it &middot; in dB &middot; always armed</span>
+      </div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 16px 0;max-width:780px;text-wrap:pretty">A brickwall limiter with a fixed &minus;1&nbsp;dBFS ceiling, always in circuit. The knob isn't the ceiling, it's the drive, and it sits like a console fader: 0&nbsp;dB at 85% of the travel, headroom right, attenuation left. At 0&nbsp;dB it simply catches peaks that would cross the ceiling. Right of that you push into it for density. Left, you walk the level down until it has nothing to do.</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 18px 0;max-width:780px;text-wrap:pretty"><b style="color:#DCCDBF;font-weight:700">Why it's on the bus and not the macro:</b> loudness should be a decision, not a side effect. A ring reads the drive at a glance, cool below zero, hot above it, with a detent marking unity.</p>
+      <div style="background:#162127;border:1px solid #3A3534;padding:16px 20px">
+        <p style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:11px;color:#81848A;line-height:1.9;margin:0">&minus;17 to +3 dB, 0 dB at exactly 85% of travel &middot; zero lookahead, therefore zero reported latency &middot; fixed &minus;1 dBFS ceiling held to 0.01 dB &middot; 0.15 ms attack &middot; release adapts to gain-reduction history &middot; multiplies with OUTPUT, so the two compose</p>
+      </div>
+    </div>
+
+    <div style="border-left:2px solid #7A5A2E;padding-left:28px">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:6px">
+        <span style="font-size:19px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:700">MIX &amp; OUTPUT</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">Parallel blend and final level</span>
+      </div>
+      <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:14px 0 0 0;max-width:780px;text-wrap:pretty">MIX blends the processed signal against the untouched original, phase-aligned so partial settings never comb: true parallel compression, since the compressor sits before the blend and the limiter after it. OUTPUT sets the final level and doubles as the drive into HORIZON.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">AT_A_GLANCE</h3>
+    <table style="width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace">
+      <thead>
+        <tr>
+          <th style="text-align:left;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 16px 12px 0;border-bottom:1px solid #3A3534">Control</th>
+          <th style="text-align:left;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 16px 12px 0;border-bottom:1px solid #3A3534">Job</th>
+          <th style="text-align:left;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 16px 12px 0;border-bottom:1px solid #3A3534">Enters at</th>
+          <th style="text-align:left;font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;padding:0 0 12px 0;border-bottom:1px solid #3A3534">Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">EROSION</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">dynamic resonance suppression</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">0%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to &minus;8 dB per band</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">FRACTURE</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">de-harshing</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">8%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to &minus;6 dB presence, &minus;4 dB splash</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">BURIAL</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">low-mid tightening, rumble</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">15%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to &minus;6 dB, HPF 16&rarr;28 Hz</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#DCCDBF;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">HEAT</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">warm saturation</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">30%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to approximately 1% THD nominal</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#9FC4DA;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">CORE</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">low-end weight</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">0%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to +6 dB, adaptive</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#9FC4DA;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">HALO</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">air</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">10%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to +5 dB</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#9FC4DA;font-weight:700;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">GRAVITY</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">glue compression</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">20%</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0;border-bottom:1px solid rgba(58,53,52,0.6)">to approximately 2.2:1, 8 dB max GR</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;letter-spacing:2px;color:#B0B2B7;font-weight:700;padding:14px 16px 14px 0">HORIZON</td>
+          <td style="font-weight:300;font-size:11px;color:#81848A;padding:14px 16px 14px 0">limiter drive, on the bus</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 16px 14px 0">always armed</td>
+          <td style="font-size:11px;color:#81848A;padding:14px 0">&minus;17 to +3 dB, unity at 85%</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Two-macro mastering processor. Seven processors under the macros, plus the bus.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Macros</b>RUIN: EROSION, FRACTURE, BURIAL, HEAT. REMNANT: CORE, HALO, GRAVITY. Each stage enters the sweep at its own point.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voicings</b>HOUSE, HIP-HOP, ROCK, METAL, POP, JAZZ, ACOUSTIC, CINEMATIC. Each sets the proportions rather than a fixed sound.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Resonance suppression</b>12 half-octave dynamic bands, 180 Hz to 8.1 kHz, up to 8 dB per band.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Saturation</b>2&times; oversampled, anti-derivative anti-aliased, with level-dependent bias sag.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Bus</b>HORIZON limiter drive, &minus;17 to +3 dB with unity at 85% of travel, into a fixed &minus;1 dBFS ceiling. Phase-aligned MIX and OUTPUT.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Manual access</b>Ten controls in the advanced panel, each a proportion the macros multiply into, automatable independently.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Gain staging</b>Measured makeup only, never auto-gain that flatters the wet path. A measured null at zero.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Rendering</b>Zero reported latency in every format. Zero randomness, so the same input and settings always produce the identical file.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats &amp; platform</b>VST3 &middot; AU &middot; AAX &middot; macOS, Apple Silicon &middot; 44.1 to 192 kHz.</li>
+    </ul>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #026 // MATTER_IN_MEMORY_OUT</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/ozymandias/hero.png?v=260816b', 2002, 2002 / 1280),
+      openAdvanced: this._mk('assets/ozymandias/advanced.png?v=260816b', 2002, 2002 / 1280),
+    };
+  }
+}
+
+</script>
 </body>
 </html>
