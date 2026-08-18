@@ -9,11 +9,17 @@
 <x-dc>
 <helmet>
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<link rel="stylesheet" href="mobile.css">
 <script src="./image-slot.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
+<style>
+a{color:#DCCDBF}a:hover{color:#F0EDE6}
+image-slot::part(frame){background:#080F12}
+</style>
 </helmet>
-<div style="background:#06080C;color:#B0B0B0;font-family:'Montserrat',sans-serif;margin:0;line-height:1.6;min-height:100vh;display:flex;flex-direction:column">
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<header style="padding:40px 60px;display:flex;justify-content:space-between;align-items:center;position:relative">
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
   <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
     <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
       <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
@@ -21,61 +27,331 @@
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
   </a>
-  <div style="position:absolute;left:50%;transform:translateX(-50%);text-align:center">
-    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:32px;letter-spacing:20px;color:#fff;text-transform:uppercase;margin:0;padding-left:20px">AFFILIATES</h2>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">ARTISTS</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Field Operators &amp; Preset Authors, THETA Audio Research</p>
   </div>
-  <nav><a href="index.html" style="color:#C8A86B;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #1A1B23;padding:8px 16px;transition:0.3s" style-hover="background:#C8A86B;color:#06080C">RETURN_TO_LAB</a></nav>
-</header>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
 
-<main style="flex:1;padding:80px 60px;max-width:1600px;margin:0 auto;width:100%;box-sizing:border-box">
-  <div style="display:grid;grid-template-columns:1fr;gap:80px;width:100%">
+<main style="flex:1;padding:40px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
 
-    <article style="display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:rgba(255,255,255,0.01);border:1px solid #1A1B23;transition:0.4s;position:relative;align-items:stretch">
-      <div style="width:100%;background:#06080C;border-right:1px solid #1A1B23;overflow:hidden">
-        <image-slot id="artist-01-photo" style="width:100%;height:100%" shape="rect" placeholder="Lead Research Operative photo"></image-slot>
-      </div>
-      <div style="padding:50px;display:flex;flex-direction:column">
-        <span style="font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;display:block;opacity:0.8;font-weight:700">Lead Research Operative // Deployment Specialist</span>
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:24px;letter-spacing:8px;color:#fff;margin:0 0 5px 0;text-transform:uppercase">ARTIST_NAME_01</h3>
-        <p style="font-size:14px;opacity:0.6;line-height:1.9;margin-bottom:auto;padding-bottom:40px">Technical sound designer and modular synthesist. Their work focuses on granular manipulation and the development of immersive, spatial ambient structures within complex film scores.</p>
-        <div style="border-top:1px solid #1A1B23;padding-top:30px">
-          <span style="font-size:9px;letter-spacing:2px;color:#00E5FF;display:block;margin-bottom:15px;font-weight:700">DEPLOYED_MODULES</span>
-          <div style="display:flex;flex-wrap:wrap;gap:10px">
-            <a href="arecibo.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">001_ISR</a>
-            <a href="twilight.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">005_GEN</a>
+  <section style="max-width:850px;margin:0 auto 80px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">The people who actually use this stuff, on the films you have already seen.</b><br><br>THETA instruments are built on a dub stage, not in a vacuum. The engineers below work at the top of feature and episodic post, and several of them ship preset banks inside our plugins, built from the settings they reach for on real shows. Where an artist has authored presets, the modules are listed on their card.</p>
+  </section>
+
+  <div style="display:flex;flex-direction:column;gap:60px;max-width:1050px;margin:0 auto">
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-steve-neal" style="width:100%;height:100%" shape="rect" placeholder="Steve Neal, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">STEVE NEAL</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Over three hundred credits across feature and episodic post, with three award nominations. Currently supervising and mixing <i>Charmers</i>.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Romulus <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Borderlands <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Prey <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Stranger Things <span style="opacity:0.5">2019&ndash;25</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Infinite <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The SpongeBob Movie: Search for SquarePants <span style="opacity:0.5">2025</span></span>
           </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm2560766/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
         </div>
       </div>
     </article>
 
-    <article style="display:grid;grid-template-columns:1.5fr 1fr;gap:0;background:rgba(255,255,255,0.01);border:1px solid #1A1B23;transition:0.4s;position:relative;align-items:stretch">
-      <div style="width:100%;background:#06080C;border-right:1px solid #1A1B23;overflow:hidden">
-        <image-slot id="artist-02-photo" style="width:100%;height:100%" shape="rect" placeholder="Signal Degradation Expert photo"></image-slot>
-      </div>
-      <div style="padding:50px;display:flex;flex-direction:column">
-        <span style="font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase;margin-bottom:30px;display:block;opacity:0.8;font-weight:700">Signal Degradation Expert // Nonlinear Theory</span>
-        <h3 style="font-family:'Montserrat',sans-serif;font-size:24px;letter-spacing:8px;color:#fff;margin:0 0 5px 0;text-transform:uppercase">ARTIST_NAME_02</h3>
-        <p style="font-size:14px;opacity:0.6;line-height:1.9;margin-bottom:auto;padding-bottom:40px">Composer and mixing engineer. Utilizing analog circuit models to explore the emotional boundary between sterile digital precision and controlled mechanical failure.</p>
-        <div style="border-top:1px solid #1A1B23;padding-top:30px">
-          <span style="font-size:9px;letter-spacing:2px;color:#00E5FF;display:block;margin-bottom:15px;font-weight:700">DEPLOYED_MODULES</span>
-          <div style="display:flex;flex-wrap:wrap;gap:10px">
-            <a href="cathode.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">003_VTR</a>
-            <a href="erosion.html" style="font-size:10px;letter-spacing:1px;border:1px solid #1A1B23;padding:5px 12px;color:#B0B0B0;text-decoration:none;transition:0.3s;background:rgba(255,255,255,0.01)" style-hover="border-color:#C8A86B;color:#fff">004_DEG</a>
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-chris" style="width:100%;height:100%" shape="rect" placeholder="Chris Terhune, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">CHRIS TERHUNE</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Three Primetime Emmys and eleven further nominations across more than a hundred and thirty sound department credits. Recent work runs from <i>The Batman</i> to <i>The Last of Us</i> and <i>Predator: Badlands</i>; currently supervising and mixing <i>Whalefall</i>.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Batman <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Last of Us <span style="opacity:0.5">2023&ndash;25</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Predator: Badlands <span style="opacity:0.5">2025</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Romulus <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">No One Will Save You <span style="opacity:0.5">2023</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Next Goal Wins <span style="opacity:0.5">2023</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Whalefall <span style="opacity:0.5">2026</span></span>
           </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm3715832/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-lee-gilmore" style="width:100%;height:100%" shape="rect" placeholder="Lee Gilmore, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Sound Designer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">LEE GILMORE</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Jackson, Mississippi native who moved to Los Angeles after school and has worked steadily in sound effects editorial ever since, Sony, NBC Universal, Warner Bros. Supervised and designed <i>Alien: Romulus</i>, researching period gear to build new sounds that sat convincingly against the 1979 original.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Romulus <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Batman <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Dune: Part One <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Dune: Part Two <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Blade Runner 2049 <span style="opacity:0.5">2017</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Prey <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Terminator: Dark Fate <span style="opacity:0.5">2019</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Zero Dark Thirty <span style="opacity:0.5">2012</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Stranger Things S4 <span style="opacity:0.5">2022</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm1061529/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-justin-davey" style="width:100%;height:100%" shape="rect" placeholder="Justin M. Davey, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">JUSTIN M. DAVEY</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A">Born in Alexandria, Virginia; graduate of the North Carolina School of the Arts School of Filmmaking. Works across live action and animation, supervising sound editor and designer on <i>My Father's Dragon</i>, where the brief was that nothing could feel digital or processed.</p>
+        <div style="margin:30px 0 28px 0">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">A Quiet Place <span style="opacity:0.5">2018</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Spider-Man: No Way Home <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Earth <span style="opacity:0.5">2025</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">My Father's Dragon <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Better Man <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Jojo Rabbit <span style="opacity:0.5">2019</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Venom: Let There Be Carnage <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Passengers <span style="opacity:0.5">2016</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm2501846/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-james-miller" style="width:100%;height:100%" shape="rect" placeholder="James Miller, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Sound Effects Editor</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">JAMES MILLER</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Sound effects editorial on feature work, including the <i>Alien: Romulus</i> effects crew.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Romulus <span style="opacity:0.5">2024</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm5492093/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-nolan" style="width:100%;height:100%" shape="rect" placeholder="Nolan McNaughton, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Sound Designer // Sound Effects Editor</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">NOLAN McNAUGHTON</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Emmy Award-winning sound designer and effects editor based in Los Angeles. Started freelancing in Vancouver's film industry in 2010 and has since covered features, episodic, documentary, games and commercials, with effects editing and design as the strongest creative outlet. A committed field recordist: the recorder travels with him.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SCOPE_OF_WORK</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">45+ Features</span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">260+ TV Episodes &amp; Specials</span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">100+ Shorts &amp; Webisodes</span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">6 Video Games</span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm4182355/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-brandon-proctor" style="width:100%;height:100%" shape="rect" placeholder="Brandon Proctor, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">BRANDON PROCTOR</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Sound designer and re-recording mixer who joined Skywalker Sound in 1997, and a multi-instrumentalist who has toured across America and Europe. Oscar-nominated for Best Sound Mixing on <i>Black Panther</i> and BAFTA-nominated for <i>All Is Lost</i>, eight wins and forty-one nominations in total.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Black Panther <span style="opacity:0.5">2018</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">A Quiet Place <span style="opacity:0.5">2018</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Sinners <span style="opacity:0.5">2025</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Predator: Badlands <span style="opacity:0.5">2025</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">All Is Lost <span style="opacity:0.5">2013</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Creed <span style="opacity:0.5">2015</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Mud <span style="opacity:0.5">2012</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Take Shelter <span style="opacity:0.5">2011</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Finding Neverland <span style="opacity:0.5">2004</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Despicable Me 3 <span style="opacity:0.5">2017</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm0698367/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-max" style="width:100%;height:100%" shape="rect" placeholder="Max Serwitz, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Sound Editor // Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">MAX SERWITZ</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Sound editorial across genre and horror features, <i>Alien: Romulus</i>, <i>Five Nights at Freddy's</i>, <i>Night Swim</i>. Steps up to supervising sound editor and re-recording mixer on <i>Lies Without a Face</i>.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Alien: Romulus <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Five Nights at Freddy's <span style="opacity:0.5">2023</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Night Swim <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Good Grief <span style="opacity:0.5">2023</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Lies Without a Face <span style="opacity:0.5">2026</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm11670582/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-ryan" style="width:100%;height:100%" shape="rect" placeholder="Ryan Cole, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Supervising Sound Editor // Dialogue Supervisor</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">RYAN COLE</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Two Primetime Emmys and five wins in total. Dialogue supervisor across seventeen episodes of <i>Stranger Things</i>, and supervising sound editor on <i>Borderlands</i> and <i>All the Light We Cannot See</i>. Also writes and directs.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Stranger Things <span style="opacity:0.5">2019&ndash;22</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Borderlands <span style="opacity:0.5">2024</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Free Guy <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Invisible Man <span style="opacity:0.5">2020</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">All the Light We Cannot See <span style="opacity:0.5">2023</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Rings of Power <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">The Adam Project <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Halloween <span style="opacity:0.5">2018</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm2719881/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-jeremy-davis" style="width:100%;height:100%" shape="rect" placeholder="Jeremy B. Davis, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">JEREMY B. DAVIS</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Works across dub stages at major post facilities, specialising in Pro&nbsp;Tools workflow against Euphonix System&nbsp;5, Harrison MPC and Avid S6 consoles, and in the immersive formats, Dolby Atmos and Auro&nbsp;3D. Mixed <i>Red Notice</i> alongside Kevin O'Connell and Tony Lamberti.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Red Notice <span style="opacity:0.5">2021</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Halloween <span style="opacity:0.5">2018</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Do Revenge <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Resident Evil <span style="opacity:0.5">2022</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm3691156/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
+        </div>
+      </div>
+    </article>
+
+    <article style="display:grid;grid-template-columns:360px 1fr;gap:0;background:rgba(220,205,191,0.01);border:1px solid #3A3534;align-items:stretch">
+      <div style="background:#080F12;border-right:1px solid #3A3534;overflow:hidden;min-height:340px"><image-slot id="artist-andrew-rice" style="width:100%;height:100%" shape="rect" placeholder="Andrew Rice, portrait"></image-slot></div>
+      <div style="padding:44px;display:flex;flex-direction:column">
+        <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;display:block;opacity:0.8;font-weight:700">Re-Recording Mixer</span>
+        <h3 style="font-size:26px;letter-spacing:8px;color:#B0B2B7;margin:0 0 20px 0;text-transform:uppercase;font-weight:700">ANDREW RICE</h3>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 30px 0">Re-recording mixer in feature post. Mixed Andrew Niccol's <i>Anon</i>, Adrian Lyne's <i>Deep Water</i>, and <i>47 Meters Down</i>.</p>
+        <div style="margin-bottom:28px">
+          <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:14px;font-weight:700;opacity:0.7">SELECTED_CREDITS</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Anon <span style="opacity:0.5">2018</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">Deep Water <span style="opacity:0.5">2022</span></span>
+            <span style="font-size:10px;letter-spacing:1px;border:1px solid #3A3534;padding:6px 12px;color:#81848A">47 Meters Down <span style="opacity:0.5">2017</span></span>
+          </div>
+        </div>
+        <div style="margin-top:auto;border-top:1px solid #3A3534;padding-top:26px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
+          <div>
+            <span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:12px;font-weight:700;opacity:0.7">PRESET_BANKS</span>
+            <span style="font-size:10px;letter-spacing:3px;color:#81848A;font-weight:700;text-transform:uppercase">// IN_PRODUCTION</span>
+          </div>
+          <a href="https://www.imdb.com/name/nm7334282/" target="_blank" rel="noopener" style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-decoration:none;border:1px solid #3A3534;padding:9px 16px;font-weight:700;text-transform:uppercase;transition:0.3s;white-space:nowrap" style-hover="background:#DCCDBF;color:#0C1519">FULL_CREDITS // IMDB</a>
         </div>
       </div>
     </article>
 
   </div>
+
+  <p style="max-width:1050px;margin:70px auto 0 auto;font-weight:300;font-size:10px;line-height:1.9;color:#81848A;letter-spacing:0.04em;text-align:center">Credits are listed for identification of the engineers' professional work. All film and series titles are trademarks of their respective rights holders; no affiliation with or endorsement by those productions or studios is implied.</p>
 </main>
 
-<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.3;display:flex;justify-content:space-between;border-top:1px solid #1A1B23;margin-top:80px">
-  <span>RESEARCH_NETWORK_STABLE // 2026</span>
-  <span>AFFILIATE_CLEARANCE_LEVEL_01 // STUDIO_OBSERVATION</span>
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>ARTIST_ROSTER // PRESET_AUTHORS</span>
 </footer>
 
 </div>
-
 </x-dc>
 </body>
 </html>

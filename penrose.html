@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
+<style>
+image-slot::part(frame){background:transparent}
+image-slot::part(ring){display:none}
+input.pen-range{-webkit-appearance:none;appearance:none;width:100%;height:20px;background:transparent;margin:0;cursor:ew-resize}
+input.pen-range::-webkit-slider-runnable-track{height:1px;background:#3A3534}
+input.pen-range::-moz-range-track{height:1px;background:#3A3534}
+input.pen-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:10px;height:10px;margin-top:-4.5px;background:#DCCDBF;transform:rotate(45deg);border:0;border-radius:1px}
+input.pen-range::-moz-range-thumb{width:10px;height:10px;background:#DCCDBF;border:0;border-radius:1px;transform:rotate(45deg)}
+input.pen-range:focus-visible{outline:1px solid #DCCDBF;outline-offset:6px}
+</style>
+</helmet>
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">PENROSE</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Einstein-Rosen processor</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="penrose-hero" src="assets/penrose/PENROSE_v0.2.0_MAIN.png?v=260817" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2092/1370;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="PENROSE main surface, INFALL and EMERGENCE"></image-slot></div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto 56px auto">
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:780px;text-wrap:pretty"><b style="color:#B0B2B7;font-weight:700">A two-knob mastering processor.</b> Signal falls into the black hole on the left, is stripped to what survives the throat, and emerges from the white hole on the right. The picture is not a skin over a mastering chain. It is a drawing of one.</p>
+  </div>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_BRIDGE</h3>
+    <div style="border:1px solid #3A3534;background:linear-gradient(180deg,#0E171C,#0C1519)">
+      <canvas ref="{{ setCanvas }}" style="display:block;width:100%;height:340px" aria-label="Interactive diagram of the PENROSE signal path: two fronts of light travel from each mouth of a wormhole toward the throat in the middle"></canvas>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:0 40px 30px 40px">
+        <div>
+          <label for="pen-infall" style="display:flex;justify-content:space-between;align-items:baseline;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#9FC4DA;font-weight:700;margin-bottom:12px">
+            <span>Infall</span>
+            <span ref="{{ setInfallOut }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px">0</span>
+          </label>
+          <input class="pen-range" ref="{{ setInfall }}" id="pen-infall" type="range" min="0" max="100" value="0">
+        </div>
+        <div>
+          <label for="pen-emergence" style="display:flex;justify-content:space-between;align-items:baseline;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#B0B2B7;font-weight:700;margin-bottom:12px">
+            <span>Emergence</span>
+            <span ref="{{ setEmergeOut }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px">0</span>
+          </label>
+          <input class="pen-range" ref="{{ setEmerge }}" id="pen-emergence" type="range" min="0" max="100" value="0">
+        </div>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6E6764;line-height:1.9;margin:0;padding:0 40px 26px 40px">Drag either control. Each knob is a position along the tube, not a brightness. The throat burns harder the closer the two fronts get to it.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_TWO_CONTROLS</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px">
+      <div style="border-top:1px solid #2F5B75;padding-top:18px">
+        <div style="font-size:13px;letter-spacing:6px;color:#9FC4DA;text-transform:uppercase;font-weight:700;margin-bottom:16px">Infall</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 16px 0;text-wrap:pretty">Everything left of the throat. Turn it up and more is taken: resonant peaks flattened, harshness pulled back, low mud cleared, and what remains warmed as it passes through.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase;margin:0">No setting of Infall adds anything.</p>
+      </div>
+      <div style="border-top:1px solid #7A5A2E;padding-top:18px">
+        <div style="font-size:13px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;font-weight:700;margin-bottom:16px">Emergence</div>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.85;margin:0 0 16px 0;text-wrap:pretty">Everything right of the throat. Weight underneath, air above, glue across the middle, and a ceiling that stays where you put it.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase;margin:0">No setting of Emergence removes anything.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">PENROSE is at 0.2.0 and in calibration. It is not yet released. Sign up and we will notify you the moment it ships.</p>
+      <a href="mailto:info@theta.audio?subject=PENROSE%20updates" data-notify="PENROSE" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:34px;border-bottom:1px solid #3A3534;padding-bottom:10px">UNDERNEATH</h3>
+    <div style="margin-bottom:44px;overflow:hidden;border-radius:2px;border:1px solid #3A3534">
+      <image-slot id="penrose-advanced" src="assets/penrose/PENROSE_v0.2.0_ADVANCED.png?v=260817" onClick="{{ openAdvanced }}" style="width:100%;aspect-ratio:2092/1370;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="PENROSE transit parameters drawer, ten trims"></image-slot>
+    </div>
+
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 40px 0;max-width:820px;text-wrap:pretty">A trim on its own does nothing while its macro sits at zero, so the two knobs stay the whole operation.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#3A3534;border:1px solid #3A3534;margin-bottom:30px">
+      <div style="background:#0C1519;padding:24px 26px">
+        <div style="font-size:10px;letter-spacing:4px;color:#9FC4DA;text-transform:uppercase;font-weight:700;margin-bottom:18px">Infall</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Temper</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Edge</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Ballast</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Heat</span>
+        </div>
+      </div>
+      <div style="background:#0C1519;padding:24px 26px">
+        <div style="font-size:10px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;font-weight:700;margin-bottom:18px">Emergence</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Core</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Halo</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Gravity</span>
+        </div>
+      </div>
+      <div style="background:#0C1519;padding:24px 26px">
+        <div style="font-size:10px;letter-spacing:4px;color:#81848A;text-transform:uppercase;font-weight:700;margin-bottom:18px">Bus</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Horizon</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Mix</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #3A3534;padding:6px 12px;color:#B0B2B7">Output</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Ceiling</b>Armed at all times at &minus;1.0 dBFS. Horizon is the threshold, measured down from it.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Installation</b>One signed installer package. Each format is placed where its host expects it.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats &amp; platform</b>VST3 &middot; AU &middot; AAX &middot; macOS 11.0 Big Sur or later &middot; Apple Silicon.</li>
+      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Version</b>0.2.0, in calibration.</li>
+    </ul>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #027 // IN_ONE_SIDE_OUT_THE_OTHER</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+    this._startBridge();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this._esc);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+  }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (el) {
+      const want = this.state.zoomed ? this.state.zoomed.src : null;
+      if (this._lastZoomSrc !== want) {
+        this._lastZoomSrc = want;
+        if (want) el.src = want; else el.removeAttribute('src');
+      }
+    }
+    this._startBridge();
+  }
+
+  // The plug-in's own constants, so the drawing agrees with the instrument.
+  _startBridge() {
+    const canvas = this._canvas;
+    if (!canvas || this._raf || !this._infall || !this._emerge) return;
+
+    const ctx = canvas.getContext('2d');
+    const FLARE = 1.55, SQUASH = 0.26, RINGS = 30, MERIDIANS = 24, FRONT = 0.085;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const INFALL_RGB = [95, 168, 216], EMERGE_RGB = [223, 230, 238], GOLD_RGB = [255, 200, 103];
+
+    const motes = [];
+    for (let i = 0; i < 60; i++) {
+      motes.push({ u: Math.random() * 2 - 1, theta: Math.random() * Math.PI * 2,
+                   w: 0.4 + Math.random() * 1.1, speed: 0.0016 + Math.random() * 0.0032 });
+    }
+
+    let w = 0, h = 0;
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const radiusAt = (u, throat) => throat * Math.cosh(u * FLARE);
+    const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    const tone = (u, gold) => mix(mix(INFALL_RGB, EMERGE_RGB, Math.min(1, Math.max(0, (u + 1) * 0.5))), GOLD_RGB, gold * 0.85);
+    const rgba = (c, a) => 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' + a + ')';
+    const ellipse = (cx, cy, rx, ry) => {
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, Math.max(rx, 0.4), Math.max(ry, 0.4), 0, 0, Math.PI * 2);
+    };
+
+    // Light is emitted by stacking wider, fainter strokes of the same ring, so it
+    // dies within a few pixels of the wire: the filament, not a floodlight.
+    const filament = (cx, cy, rx, ry, colour, coreW, heat) => {
+      if (heat > 0.004) {
+        for (let layer = 6; layer >= 1; layer--) {
+          const t = layer / 6;
+          const fall = (1 - 0.88 * t) * (1 - 0.88 * t);
+          ctx.strokeStyle = rgba(colour, 0.5 * heat * fall);
+          ctx.lineWidth = coreW * (1 + 9 * t * t);
+          ellipse(cx, cy, rx, ry); ctx.stroke();
+        }
+      }
+      ctx.strokeStyle = rgba(mix(colour, [255, 255, 255], 0.45 + 0.4 * heat), 0.55 + 0.45 * heat);
+      ctx.lineWidth = coreW;
+      ellipse(cx, cy, rx, ry); ctx.stroke();
+    };
+
+    let phase = 0;
+    const draw = () => {
+      if (!this._canvas || !this._infall) { this._raf = null; return; }
+      const a = this._infall.value / 100, b = this._emerge.value / 100;
+      const cx = w / 2, cy = h / 2;
+      const throat = h / 5.6;
+      const span = w * 0.40;
+      const convergence = (a + b) * 0.5;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Meridians first; the rings carry the eye along the axis and sit on top.
+      for (let m = 0; m < MERIDIANS; m++) {
+        const th = (Math.PI * 2 * m) / MERIDIANS;
+        ctx.beginPath();
+        for (let s = 0; s <= 48; s++) {
+          const u = -1 + (2 * s) / 48;
+          const r = radiusAt(u, throat);
+          const x = cx + u * span + r * SQUASH * Math.cos(th);
+          const y = cy + r * Math.sin(th);
+          if (s === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = rgba(tone(0, 0), Math.sin(th) > 0 ? 0.16 : 0.07);
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+
+      const frontL = -1 + a, frontR = 1 - b;
+
+      for (let i = 0; i <= RINGS; i++) {
+        const ru = -1 + (2 * i) / RINGS;
+        const rr = radiusAt(ru, throat);
+        const near = 1 - Math.abs(ru);
+        const rx = rr * SQUASH;
+
+        ctx.strokeStyle = rgba(tone(ru, 0), 0.05 + near * 0.12);
+        ctx.lineWidth = 0.55 + near * 0.7;
+        ellipse(cx + ru * span, cy, rx, rr); ctx.stroke();
+
+        const own = ru <= 0 ? frontL : frontR;
+        const passed = ru <= 0 ? ru < own : ru > own;
+        const off = (ru - own) / FRONT;
+        const lit = Math.min(1, Math.exp(-off * off) + (passed ? 0.16 : 0));
+        if (lit > 0.012) {
+          filament(cx + ru * span, cy, rx, rr, tone(ru, 0), 0.9 + 0.5 * near, lit * 0.7);
+        }
+      }
+
+      for (let k = 0; k < motes.length; k++) {
+        const mo = motes[k];
+        const mr = radiusAt(mo.u, throat);
+        const mx = cx + mo.u * span + mr * SQUASH * Math.cos(mo.theta + phase * 0.0016);
+        const my = cy + mr * Math.sin(mo.theta + phase * 0.0016);
+        const facing = Math.sin(mo.theta) > 0 ? 0.75 : 0.3;
+        ctx.fillStyle = rgba(tone(mo.u, convergence * 0.6), facing * (0.25 + 0.5 * (1 - Math.abs(mo.u))));
+        ctx.beginPath();
+        ctx.arc(mx, my, mo.w * 0.8, 0, Math.PI * 2);
+        ctx.fill();
+        if (!reduced) {
+          mo.u += mo.speed * (1 + 2.4 * (1 - Math.abs(mo.u)));
+          if (mo.u > 1) mo.u = -1;
+        }
+      }
+
+      // The throat answers how close the two fronts have come to it.
+      const heat = Math.min(1, 0.82 * convergence);
+      const goldAmt = Math.min(1, 0.8 * convergence);
+      filament(cx, cy, throat * SQUASH, throat, tone(0, goldAmt), 1.7 + 1.4 * heat, heat);
+
+      if (this._infallOut) this._infallOut.textContent = this._infall.value;
+      if (this._emergeOut) this._emergeOut.textContent = this._emerge.value;
+      phase += 1;
+      this._raf = requestAnimationFrame(draw);
+    };
+
+    this._onResize = resize;
+    window.addEventListener('resize', resize);
+    resize();
+    this._raf = requestAnimationFrame(draw);
+  }
+
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      setCanvas: (el) => { this._canvas = el; },
+      setInfall: (el) => { this._infall = el; },
+      setEmerge: (el) => { this._emerge = el; },
+      setInfallOut: (el) => { this._infallOut = el; },
+      setEmergeOut: (el) => { this._emergeOut = el; },
+      openHero: this._mk('assets/penrose/PENROSE_v0.2.0_MAIN.png?v=260817', 2092, 2092 / 1370),
+      openAdvanced: this._mk('assets/penrose/PENROSE_v0.2.0_ADVANCED.png?v=260817', 2092, 2092 / 1370),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
