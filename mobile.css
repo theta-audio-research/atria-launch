@@ -10,9 +10,11 @@
    therefore listed in BOTH spellings.
    ------------------------------------------------------------------ */
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
 
-  /* ---- NAV: drop the centred product title onto its own row ---- */
+  /* ---- NAV: drop the centred product title onto its own row ----
+         1040px, not 900: the absolutely-centred title is nowrap, so its
+         clamp cannot shrink it and it reaches the button group first. ---- */
   nav {
     padding: 12px 20px !important;
     flex-wrap: wrap !important;

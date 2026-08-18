@@ -62,14 +62,14 @@ input.pen-range:focus-visible{outline:1px solid #DCCDBF;outline-offset:6px}
             <span>Infall</span>
             <span ref="{{ setInfallOut }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px">0</span>
           </label>
-          <input class="pen-range" ref="{{ setInfall }}" id="pen-infall" type="range" min="0" max="100" value="0">
+          <input class="pen-range" ref="{{ setInfall }}" id="pen-infall" type="range" min="0" max="100" defaultValue="0">
         </div>
         <div>
           <label for="pen-emergence" style="display:flex;justify-content:space-between;align-items:baseline;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#B0B2B7;font-weight:700;margin-bottom:12px">
             <span>Emergence</span>
             <span ref="{{ setEmergeOut }}" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px">0</span>
           </label>
-          <input class="pen-range" ref="{{ setEmerge }}" id="pen-emergence" type="range" min="0" max="100" value="0">
+          <input class="pen-range" ref="{{ setEmerge }}" id="pen-emergence" type="range" min="0" max="100" defaultValue="0">
         </div>
       </div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6E6764;line-height:1.9;margin:0;padding:0 40px 26px 40px">Drag either control. Each knob is a position along the tube, not a brightness. The throat burns harder the closer the two fronts get to it.</p>
