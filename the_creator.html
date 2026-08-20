@@ -37,7 +37,10 @@
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Spectral Matrix Workspace</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-hero" src="assets/creator/hero.png?v=260819b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2332/1730;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR Spectral Interface"></image-slot></div>
+    <div style="position:relative;width:100%;aspect-ratio:2332/1730;overflow:hidden;border-radius:2px;cursor:zoom-in;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" onClick="{{ openHero }}">
+      <img src="assets/creator/hero.png?v=260819c" alt="THE CREATOR, NIGHT theme" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <img src="assets/creator/hero_night2.png?v=260819c" alt="THE CREATOR, NIGHT theme, alternate" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 2.4s ease;opacity:{{ heroTopOpacity }}">
+    </div>
   </div>
 
   <div style="max-width:900px;margin:0 auto 56px auto">
@@ -52,7 +55,10 @@
 
   <div style="margin-bottom:56px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Secondary Chassis // ACID Theme, BNCE Playback</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-secondary" src="assets/creator/secondary.png?v=260819" onClick="{{ openSecondary }}" style="width:100%;aspect-ratio:2332/1730;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR ACID theme, bounce playback"></image-slot></div>
+    <div style="position:relative;width:100%;aspect-ratio:2332/1730;overflow:hidden;border-radius:2px;cursor:zoom-in;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" onClick="{{ openSecondary }}">
+      <img src="assets/creator/secondary.png?v=260819" alt="THE CREATOR, ACID theme" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <img src="assets/creator/hero_acid.png?v=260819" alt="THE CREATOR, ACID theme, alternate" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 2.4s ease;opacity:{{ secTopOpacity }}">
+    </div>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
@@ -102,12 +108,21 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { zoomed: null };
+  state = { zoomed: null, heroOn: false, secOn: false };
   componentDidMount() {
     this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
     document.addEventListener('keydown', this._esc);
+    // the base image sits fixed at opacity 1 (no hole, no transition, never touched); the
+    // overlay image toggles opacity 0<->1 with a CSS transition, so it fades straight into
+    // and back out of the base with no third state and no brightness dip.
+    this._heroCycle = setInterval(() => this.setState(s => ({ heroOn: !s.heroOn })), 5000);
+    this._secCycle = setInterval(() => this.setState(s => ({ secOn: !s.secOn })), 5600);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this._esc);
+    clearInterval(this._heroCycle);
+    clearInterval(this._secCycle);
+  }
   componentDidUpdate() {
     const el = this._zoomImgEl;
     if (!el) return;
@@ -126,8 +141,10 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/creator/hero.png?v=260819b', 2332, 2332 / 1730),
-      openSecondary: this._mk('assets/creator/secondary.png?v=260819', 2332, 2332 / 1730),
+      heroTopOpacity: this.state.heroOn ? 1 : 0,
+      openHero: this._mk(this.state.heroOn ? 'assets/creator/hero_night2.png?v=260819c' : 'assets/creator/hero.png?v=260819c', 2332, 2332 / 1730),
+      secTopOpacity: this.state.secOn ? 1 : 0,
+      openSecondary: this._mk(this.state.secOn ? 'assets/creator/hero_acid.png?v=260819' : 'assets/creator/secondary.png?v=260819', 2332, 2332 / 1730),
     };
   }
 }
