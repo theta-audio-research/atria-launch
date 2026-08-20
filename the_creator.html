@@ -37,7 +37,7 @@
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // Spectral Matrix Workspace</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-hero" src="assets/creator/hero.png?v=260819" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2332/1730;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR Spectral Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-hero" src="assets/creator/hero.png?v=260819b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2332/1730;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR Spectral Interface"></image-slot></div>
   </div>
 
   <div style="max-width:900px;margin:0 auto 56px auto">
@@ -48,6 +48,11 @@
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
     <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em">Every recording is a stack of layers: a fundamental here, a shimmer of harmonics there, a breath of noise across the top. <b style="font-weight:700;color:#B0B2B7;letter-spacing:0.05em">THE CREATOR shows you all of it as a living spectral display, then hands you a wand.</b><br><br>Click a harmonic and it finds the whole partial. Drag across a texture and it gathers the energy under your stroke. Whatever you select becomes the instrument: full fidelity, key-tracked, polyphonic, immediately playable.<br><br>No layers to configure. No science-project workflow. One canvas, one wand, and your ears.</p>
+  </div>
+
+  <div style="margin-bottom:56px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Secondary Chassis // ACID Theme, BNCE Playback</span>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="creator-secondary" src="assets/creator/secondary.png?v=260819" onClick="{{ openSecondary }}" style="width:100%;aspect-ratio:2332/1730;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="THE CREATOR ACID theme, bounce playback"></image-slot></div>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
@@ -121,7 +126,8 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/creator/hero.png?v=260819', 2332, 2332 / 1730),
+      openHero: this._mk('assets/creator/hero.png?v=260819b', 2332, 2332 / 1730),
+      openSecondary: this._mk('assets/creator/secondary.png?v=260819', 2332, 2332 / 1730),
     };
   }
 }
