@@ -134,7 +134,7 @@
 
     <div>
       <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700;text-align:center">OUTPUT: Meter, Gate, Ceiling</div>
-      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-output" src="assets/baryon/output.png?v=260808" onClick="{{ openOutput }}" style="width:100%;aspect-ratio:2234/1320;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON Output Module"></image-slot></div>
+      <div style="max-width:980px;margin:0 auto 32px auto"><image-slot id="baryon-output" src="assets/baryon/output.png?v=260819" onClick="{{ openOutput }}" style="width:100%;aspect-ratio:2324/1410;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" shape="rect" placeholder="BARYON Output Module"></image-slot></div>
       <div style="max-width:840px;margin:0 auto">
         <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The final say. A post-limiter L/R output meter spans the top, gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
         <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
@@ -284,7 +284,7 @@ class Component extends DCLogic {
       openCharacter: this._mk('assets/baryon/character.png?v=260808', 2234, R),
       openDynamics: this._mk('assets/baryon/dynamics.png?v=260808', 2234, R),
       openEq: this._mk('assets/baryon/eq.png?v=260808', 2234, R),
-      openOutput: this._mk('assets/baryon/output.png?v=260808', 2234, R),
+      openOutput: this._mk('assets/baryon/output.png?v=260819', 2324, 2324 / 1410),
     };
   }
 }
