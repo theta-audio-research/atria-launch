@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
+</helmet>
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">HACHIKŌ</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Devotional Pad Synthesizer</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+
+  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
+    <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // HK-01</span>
+    <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openHero }}"><image-slot id="hachiko-hero" src="assets/hachiko/hero.png?v=260823" style="width:100%;aspect-ratio:2240/1606;display:block" shape="rect" placeholder="HACHIKŌ HK-01 capture"></image-slot></div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto 56px auto">
+    <div style="font-size:11px;letter-spacing:8px;color:#C89296;text-transform:uppercase;font-weight:700;margin:0 0 22px 0;opacity:0.9">STAY WITH ME.</div>
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;line-height:1.35;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 26px 0;text-wrap:pretty">A devotional pad synthesizer for chords that linger.</h1>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:720px;text-wrap:pretty">HACHIKŌ is a deeply expressive software instrument built for warmth, memory and emotional harmony. Play a single note, hold a chord or use the Harmony Chord Board to create slowly evolving soundscapes that feel alive beneath your hands.</p>
+  </div>
+
+  <div style="max-width:850px;margin:0 auto 90px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em;margin:0">No endless menus. No complicated modulation maze.<br><br><b style="font-weight:700;color:#B0B2B7;letter-spacing:0.05em">Just an instrument that waits, remembers and stays.</b></p>
+  </div>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">MEET_THE_HEART</h3>
+    <h4 style="font-weight:300;font-size:22px;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0">Beautiful before the effects.</h4>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 24px 0;max-width:720px;text-wrap:pretty">At the centre of HACHIKŌ is a carefully tuned 16-voice synthesizer designed to sound rich and complete on its own. Its sound begins with a warm analog and harmonic source, then grows through subtle variations in pitch, timbre, movement and stereo placement.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#B0B2B7;margin:0">Every voice is slightly different.<br>Every chord breathes.</p>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:36px;border-bottom:1px solid #3A3534;padding-bottom:10px">SHAPE_THE_FEELING</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 30px">
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">SOURCE</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Move from pure fundamentals to a richer harmonic dream.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">BLOOM</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Control how gradually each sound opens.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">MEMORY</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Decide how deeply the instrument remembers what you played.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#C89296;font-weight:700;margin-bottom:8px">DEVOTION</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Let notes go, or ask them to remain.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">WARMTH</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Soften the edges and bring the sound closer.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">DRIFT</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Introduce gentle, organic instability.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">BREATH</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Add slow movement and life.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">GLOW</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Reveal the upper harmonics and surrounding light.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">SPACE</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Travel from an intimate room to an expansive Garden.</div></div>
+    </div>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_HARMONY_CHORD_BOARD</h3>
+    <h4 style="font-weight:300;font-size:22px;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0">Press a chord. Let it bloom.</h4>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 24px 0;max-width:720px;text-wrap:pretty">HACHIKŌ's two-row chord board turns rich harmony into a direct, tactile performance. The upper row offers a complete diatonic palette. The lower row contains open, emotionally voiced chords inspired by a treasured piano arrangement. Choose your key. Select a voicing colour. Move between harmonies with smooth, common-tone voice leading.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#B0B2B7;margin:0">You don't need to know the theory.<br>You only need to listen.</p>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">STAY</h3>
+    <h4 style="font-weight:300;font-size:22px;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0">Some sounds should not disappear.</h4>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 24px 0;max-width:720px;text-wrap:pretty">Activate STAY and HACHIKŌ will hold the current harmony while you shape the instrument around it. Add another chord, change the atmosphere or simply let the sound remain.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#B0B2B7;margin:0">Release STAY when you are ready.<br>HACHIKŌ will wait.</p>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_MEMORY_GARDEN</h3>
+    <h4 style="font-weight:300;font-size:22px;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0">See what the instrument remembers.</h4>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:720px;text-wrap:pretty">Every harmony leaves a luminous trace inside the Memory Garden. Notes rise as delicate stems of light, surrounded by ripples, particles and slowly fading colour. Playing, remembered and latched chords each have their own visual life.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 24px 0;max-width:720px;text-wrap:pretty">MEMORY controls how long the Garden remembers. DEVOTION shapes its intensity. BREATH, GLOW, SPACE, FADE and velocity transform its movement, depth and light.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#B0B2B7;margin:0">The display is not a decorative visualizer.<br>It is the emotional history of your performance.</p>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:36px;border-bottom:1px solid #3A3534;padding-bottom:10px">FIVE_WAYS_TO_DISAPPEAR</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px 30px">
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">NATURAL</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">A graceful release shaped by the sound itself.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">TAPE</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">A slower, darker unwinding.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">MEMORY</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">A long harmonic trace that refuses to leave completely.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">CLOUD</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">A wide, suspended disappearance.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">VANISH</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Soft, immediate and final.</div></div>
+    </div>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:20px;border-bottom:1px solid #3A3534;padding-bottom:10px">EIGHT_MEMORIES</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 36px 0;max-width:720px;text-wrap:pretty">Eight hand-tuned starting points. Eight places from which to begin.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px 30px;margin-bottom:30px">
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#C89296;font-weight:700;margin-bottom:8px">STAY WITH ME</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">The original HACHIKŌ sound: balanced, warm and devoted.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">FIRST SNOW</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Soft edges, open air and quiet movement.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">RED COLLAR</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Warm, intimate and gently weathered.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">LANTERN GARDEN</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Luminous harmonics suspended in a wide night sky.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">LONG WALK</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Slow-opening chords with a deep remembered tail.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">EMPTY STATION</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Distant, spacious and beautifully alone.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">HOME AGAIN</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Full, familiar and reassuring.</div></div>
+      <div style="border-top:1px solid #3A3534;padding-top:14px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:#DCCDBF;font-weight:700;margin-bottom:8px">MORNING TRAIN</div><div style="font-weight:300;font-size:12.5px;line-height:1.65;color:#81848A">Clear, restrained and quietly in motion.</div></div>
+    </div>
+    <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#6E6764;margin:0">Click the Memory Garden to choose a memory, or select one directly from your host.</p>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid #3A3534;padding-bottom:10px">MADE_FOR</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Ambient composition</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Cinematic scoring</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Emotional songwriting</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Dream pop and shoegaze</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Modern worship</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Meditation and sound healing</span>
+      <span style="border:1px solid #3A3534;color:#81848A;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Slow electronic music</span>
+      <span style="border:1px solid #C89296;color:#C89296;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase">Anyone who believes one beautiful chord can be enough</span>
+    </div>
+  </section>
+
+  <section style="max-width:850px;margin:0 auto 90px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <h4 style="font-weight:300;font-size:22px;color:#B0B2B7;letter-spacing:0.02em;margin:0 0 20px 0">A small instrument with a long memory.</h4>
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em;margin:0">HACHIKŌ was designed as an instrument to form a relationship with, not another synthesizer to endlessly configure. Its controls are few, but each one reaches deeply into the sound. Its chord board encourages performance rather than programming. Its Memory Garden transforms every session into something visible and temporary.<br><br><b style="font-weight:700;color:#B0B2B7;letter-spacing:0.05em">Warm. Faithful. Patient. Always waiting for you to return.</b></p>
+  </section>
+
+  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Chassis currently undergoing bench testing. Initial builds are calibrated to universal macOS configurations (Apple Silicon and Intel) supporting AU, VST3 and Standalone layers.</p>
+      <a href="mailto:info@theta.audio?subject=HACHIKO%20updates" data-notify="HACHIKO" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto 20px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">SPECIFICATIONS</h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Voice Core</b>16-voice polyphonic instrument with complete session recall.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Performance</b>MIDI input with dedicated chord-pad mapping and the fourteen-button Harmony Chord Board.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Memories</b>Eight hand-tuned Memories, selectable from the Memory Garden or your host.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>Universal Apple Silicon and Intel. AU, VST3 and Standalone for macOS.</li>
+    </ul>
+  </section>
+
+  <div style="text-align:center;margin:60px 0 20px 0">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:8px;color:#C89296;text-transform:uppercase">STAY WITH ME.</span>
+  </div>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #010 // HACHIKO_HK-01</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openHero: this._mk('assets/hachiko/hero.png?v=260823', 2240, 2240 / 1606),
+    };
+  }
+}
+</script>
+</body>
+</html>
