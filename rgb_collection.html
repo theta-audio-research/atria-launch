@@ -95,7 +95,7 @@
         <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#7A7D82">040_GRY &middot; v0.0.1</span>
       </div>
       <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(120,124,130,0.10),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGrey }}"><image-slot id="rgb-grey" src="assets/rgb/grey.png?v=260824b" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREY capture"></image-slot></div>
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGrey }}"><image-slot id="rgb-grey" src="assets/rgb/grey.png?v=260824d" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREY capture"></image-slot></div>
       </div>
       <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Compressor.</p>
     </div>
@@ -105,7 +105,7 @@
         <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">041_BLK &middot; v0.0.1</span>
       </div>
       <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(20,26,30,0.6),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlack }}"><image-slot id="rgb-black" src="assets/rgb/black.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLACK capture"></image-slot></div>
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlack }}"><image-slot id="rgb-black" src="assets/rgb/black.png?v=260824d" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLACK capture"></image-slot></div>
       </div>
       <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Limiter and clipper.</p>
     </div>
@@ -162,8 +162,8 @@ class Component extends DCLogic {
       openGreen: this._mk('assets/rgb/green.png?v=260824', 1332, 1332 / 1370),
       openBlue: this._mk('assets/rgb/blue.png?v=260824', 1332, 1332 / 1370),
       openBrown: this._mk('assets/rgb/brown.png?v=260824', 1332, 1332 / 1370),
-      openGrey: this._mk('assets/rgb/grey.png?v=260824b', 1332, 1332 / 1370),
-      openBlack: this._mk('assets/rgb/black.png?v=260824', 1332, 1332 / 1370),
+      openGrey: this._mk('assets/rgb/grey.png?v=260824d', 1332, 1332 / 1370),
+      openBlack: this._mk('assets/rgb/black.png?v=260824d', 1332, 1332 / 1370),
     };
   }
 }
