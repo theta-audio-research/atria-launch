@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="./image-slot.js"></script>
+<script src="./download-gate.js"></script>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
+</helmet>
+<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="height:70px;display:flex;align-items:center;transition:transform 0.4s cubic-bezier(0.2,0.6,0.2,1);backface-visibility:hidden" style-hover="transform:scale(1.08)">
+    <svg viewBox="0 0 100 100" style="height:53px;width:44px;display:block" aria-label="THETA">
+      <defs><mask id="navCuts"><rect width="100" height="100" fill="white"></rect><path d="M0 40 L58 40 L55.3 45.5 L0 45.5 Z" fill="black"></path><path d="M0 55 L50.7 55 L48 60.5 L0 60.5 Z" fill="black"></path><path d="M0 70 L43.4 70 L40.7 75.5 L0 75.5 Z" fill="black"></path></mask></defs>
+      <path d="M50 8 L10 90 L90 90 Z" fill="#C8A86B" mask="url(#navCuts)"></path>
+      <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
+    </svg>
+  </a>
+  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
+    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">THE RGB COLLECTION</h2>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Six Instruments // One Knob</p>
+  </div>
+  <div style="display:flex;gap:20px">
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
+    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+  </div>
+</nav>
+
+<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+
+  <header style="text-align:center;padding:34px 0 78px 0">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase;display:block;margin-bottom:22px">// NEW_SERIES // SIX_CIRCUITS</span>
+    <h1 style="font-weight:300;font-size:38px;letter-spacing:16px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:16px">THE RGB COLLECTION</h1>
+    <div style="display:flex;width:372px;height:4px;margin:30px auto 26px auto">
+      <span style="flex:1;background:#990000"></span><span style="flex:1;background:#009900"></span><span style="flex:1;background:#000099"></span><span style="flex:1;background:#4A2A18"></span><span style="flex:1;background:#3A3A3A"></span><span style="flex:1;background:#000000;border:1px solid #1E2A30;box-sizing:border-box"></span>
+    </div>
+    <p style="font-weight:300;font-size:14px;letter-spacing:0.04em;color:#81848A;margin:0">Six circuits. Six colors. One knob at the center of each.</p>
+  </header>
+
+  <section data-screen-label="RGB row" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 30px;margin:0 auto 40px auto;max-width:1050px">
+    <div id="rgb-red-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#990000;box-shadow:0 0 12px rgba(153,0,0,0.6);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">RED</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#B04040">036_RED &middot; v0.0.1</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(153,0,0,0.14),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openRed }}"><image-slot id="rgb-red" src="assets/rgb/red.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="RED capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Saturation and distortion, warm to hot.</p>
+    </div>
+    <div id="rgb-green-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#009900;box-shadow:0 0 12px rgba(0,153,0,0.55);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">GREEN</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#3E8E3E">037_GRN &middot; v0.0.1</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(0,153,0,0.12),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGreen }}"><image-slot id="rgb-green" src="assets/rgb/green.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREEN capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Delay with detuned tails.</p>
+    </div>
+    <div id="rgb-blue-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#000099;box-shadow:0 0 12px rgba(0,0,153,0.65);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">BLUE</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#5A5AC0">038_BLU &middot; v0.0.1</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(0,0,153,0.16),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlue }}"><image-slot id="rgb-blue" src="assets/rgb/blue.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLUE capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Watery modulation.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Neutral row" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 30px;margin:0 auto 90px auto;max-width:1050px">
+    <div id="rgb-brown-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#4A2A18;box-shadow:0 0 12px rgba(74,42,24,0.7);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">BROWN</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8A6A50">039_BRN &middot; v0.1.29</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(74,42,24,0.35),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBrown }}"><image-slot id="rgb-brown" src="assets/rgb/brown.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BROWN capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Bilateral transient. Zero at center: reduce one way, raise the other.</p>
+    </div>
+    <div id="rgb-grey-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#3A3A3A;box-shadow:0 0 12px rgba(58,58,58,0.8);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">GREY</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#7A7D82">040_GRY &middot; v0.0.1</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(120,124,130,0.10),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGrey }}"><image-slot id="rgb-grey" src="assets/rgb/grey.png?v=260824b" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREY capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Compressor.</p>
+    </div>
+    <div id="rgb-black-card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#000000;border:1px solid #3A3534;box-sizing:border-box;flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#B0B2B7;font-weight:700">BLACK</span></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">041_BLK &middot; v0.0.1</span>
+      </div>
+      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(20,26,30,0.6),transparent 72%)">
+        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlack }}"><image-slot id="rgb-black" src="assets/rgb/black.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLACK capture"></image-slot></div>
+      </div>
+      <p style="font-weight:300;font-size:12.5px;line-height:1.8;color:#81848A;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Limiter and clipper.</p>
+    </div>
+  </section>
+
+  <section style="margin:20px auto 40px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS</span>
+    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Six chassis on the bench. Initial builds are calibrated to macOS (Apple Silicon), VST3 and Audio Unit layers.</p>
+      <a href="mailto:info@theta.audio?subject=RGB%20COLLECTION%20updates" data-notify="RGB COLLECTION" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
+  <span>THETA AUDIO RESEARCH // 2026</span>
+  <span>LAB NOTE #011 // RGB_COLLECTION</span>
+</footer>
+
+<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
+  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { zoomed: null };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
+    document.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentDidUpdate() {
+    const el = this._zoomImgEl;
+    if (!el) return;
+    const want = this.state.zoomed ? this.state.zoomed.src : null;
+    if (this._lastZoomSrc === want) return;
+    this._lastZoomSrc = want;
+    if (want) el.src = want; else el.removeAttribute('src');
+  }
+  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
+  renderVals() {
+    const z = this.state.zoomed;
+    return {
+      overlayDisplay: z ? 'flex' : 'none',
+      zoomedWidth: z ? z.w : 0,
+      zoomedRatio: z ? z.r : 1,
+      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      closeZoom: () => this.setState({ zoomed: null }),
+      stopClick: (e) => e.stopPropagation(),
+      openRed: this._mk('assets/rgb/red.png?v=260824', 1332, 1332 / 1370),
+      openGreen: this._mk('assets/rgb/green.png?v=260824', 1332, 1332 / 1370),
+      openBlue: this._mk('assets/rgb/blue.png?v=260824', 1332, 1332 / 1370),
+      openBrown: this._mk('assets/rgb/brown.png?v=260824', 1332, 1332 / 1370),
+      openGrey: this._mk('assets/rgb/grey.png?v=260824b', 1332, 1332 / 1370),
+      openBlack: this._mk('assets/rgb/black.png?v=260824', 1332, 1332 / 1370),
+    };
+  }
+}
+</script>
+</body>
+</html>
