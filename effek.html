@@ -38,7 +38,7 @@
 
   <div style="margin-bottom:40px;max-width:1100px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // ADM 1024 Rack</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="effek-hero" src="assets/effek/hero.png?v=260729f" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1290/258;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="EFFEK Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="effek-hero" src="assets/effek/hero.png?v=260825" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/586;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="EFFEK Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -49,7 +49,7 @@
     <span style="font-size:10px;letter-spacing:4px;color:#A6DCA6;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
     <div style="background:rgba(22,38,22,0.15);border:1px solid #283B28;padding:40px">
       <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free, no account, no unlock, no upsell. The actual one-bit codec at the actual clock, broken modes included. A classic this good deserves to be back in everyone's rack.</p>
-      <a href="downloads/EFFEK_v0.1.16_Installer.dmg" data-gate="EFFEK" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
+      <a href="downloads/EFFEK_v0.1.19_Installer.dmg" data-gate="EFFEK" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
       <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · VST3 / AU / AAX</p>
     </div>
   </section>
@@ -142,6 +142,7 @@
 
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
   <span>THETA AUDIO RESEARCH // 2026</span>
+  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
   <span>LAB NOTE #023 // EFFEK_v0.1.1, ONE_BIT_AT_A_TIME</span>
 </footer>
 
@@ -177,7 +178,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/effek/hero.png?v=260729f', 2600, 1290 / 258),
+      openHero: this._mk('assets/effek/hero.png?v=260825', 2652, 2652 / 586),
     };
   }
 }
