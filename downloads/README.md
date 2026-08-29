@@ -9,7 +9,7 @@ exact filenames the pages link to, and re-zip.
 |---|---|---|
 | `ENTROPY_v0.2.3.dmg` | entropy.html (DOWNLOAD_FREE // MACOS) | live |
 | `OLFACTORY_v0.5.3.dmg` | olfactory.html (DOWNLOAD_FREE // MACOS) | live |
-| `EFFEK_v0.1.16_Installer.dmg` | effek.html (DOWNLOAD_FREE // MACOS) | live |
+| `EFFEK_v0.1.19_Installer.dmg` | effek.html (DOWNLOAD_FREE // MACOS) | live |
 
 CATHODE is **not** in this folder — it is a GitHub Release asset
 (`releases/download/cathode-v17.0/CATHODE_VST-AU-AAX_v17.0.dmg`, 38.5 MB),
