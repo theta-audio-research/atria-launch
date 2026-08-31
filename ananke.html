@@ -35,114 +35,12 @@
 </nav>
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
-  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="ananke-hero" src="assets/ananke/hero.png?v=260808" onClick="{{ openHero }}" style="width:100%;aspect-ratio:1762/1144;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="ANANKE Compressor Master Surface"></image-slot></div>
-  </div>
-
-  <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">The quiet discipline that keeps a performance under absolute control.</b><br><br>ANANKE is the uncompromised compression engine extracted from the ROGERIAN Dialogue Suite and configured as a focused, single-purpose processor. Voiced for dialogue yet equally at home tightening drum busses, vocals, or master outputs, it represents the primordial force of necessity and constraint.</p>
-  </div>
-
-  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
-    <span style="font-size:10px;letter-spacing:4px;color:#DCCDBF;margin-bottom:15px;display:block;font-weight:700">DEVELOPMENT_STATUS</span>
-    <div style="background:#162127;border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.6;margin-bottom:30px;text-transform:uppercase;color:#81848A">Component extracted from the Rogerian core lineage. Runs completely independent of a parent shell layer. Authorization tracks universal macOS VST3, AU and AAX formats.</p>
-      <a href="mailto:info@theta.audio?subject=ANANKE%20updates" data-notify="ANANKE" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-    </div>
-  </section>
-
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">DESIGN_PHILOSOPHY</h3>
-    <div style="margin-bottom:80px">
-      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Under the hood is a modern feed-forward compressor with a smooth, program-dependent decoupled peak detector and a soft-knee gain computer. Detection is stereo-linked, one gain reduction value is applied across both channels, so ANANKE clamps down hard without ever shifting or smearing the stereo image. It runs in mono or stereo, and the engine is mono-first by design: predictable, surgical, and transparent when you want it to be.</p>
-      <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0">At its default settings, with drive at zero, ANANKE is bit-transparent, a clean, uncoloured compressor. Everything beyond that is a deliberate choice you reach for.</p>
-    </div>
-  </section>
-
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">CHASSIS_CONTROLS</h3>
-
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">VOICE: Three Dynamics Characters</div>
-      <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 440px;width:440px;border:1px solid #3A3534;background:#0C1519;overflow:hidden;border-radius:2px">
-          <image-slot id="ananke-voice-shot" src="assets/ananke/dynamics.png?v=260808" onClick="{{ openDynamics }}" style="width:100%;aspect-ratio:1153/435;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ANANKE Dynamics Panel"></image-slot>
-        </div>
-        <div style="flex:1">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0;letter-spacing:0.01em;border-left:1px solid #3A3534;padding-left:20px;font-style:italic">In Greek myth, Ananke is the primordial force of necessity and constraint, the inevitability that holds everything else in its place. It's a fitting name for a compressor: the quiet discipline that keeps a performance under control.</p>
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A single control maps the ballistics behavior of the compressor, decoupled completely from any harmonic coloration curves:</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">CLEAN</b>: Faithful, transparent gain reduction. The compressor, out of the way.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">WARM</b>: Rounder, more forgiving dynamics that ease onto the signal timeline gracefully.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PUNCH</b>: Faster, transient-forward tracking behavior that prioritizes snap and energy up front.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">CHARACTER: Saturation without clipping</div>
-      <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:0 0 230px;width:230px;border:1px solid #3A3534;background:#0C1519;overflow:hidden;border-radius:2px">
-          <image-slot id="ananke-character-shot" src="assets/ananke/character.png?v=260808" onClick="{{ openCharacter }}" style="width:100%;aspect-ratio:346/435;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="ANANKE Character Panel"></image-slot>
-        </div>
-        <div style="flex:1">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The coloration network is entirely decoupled from the dynamics engine, allowing you to dial in tone and harmonics completely independent of attenuation depth. Includes three analogue-modeled voicings:</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TUBE</b>: Even-harmonic warmth, weight, and a soft, rounded top.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">DIODE</b>: A grittier blend of even and odd harmonics with a controlled high end response.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">BRIGHT</b>: A lean, odd-harmonic edge that keeps air and high-frequency bite intact.</li>
-          </ul>
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:20px 0 0 0">The <b style="color:#DCCDBF;font-weight:700">DRIVE</b> control adds harmonic weight without digital harshness: post-saturation softening tracks the drive and clips out brittle, fizzy upper overtones before they reach the output. Coloration routing toggles pre or post compression.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">DETECTION AND PARALLEL BLENDING</div>
-      <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:1">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Surgically fit the compression envelope to any dialogue or mix material with deep circuit controls:</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Detector Blend</b>: Sweep continuously from lightning-fast peak-accurate detection to smooth RMS tracking.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Auto-Release</b>: An optical, program-dependent release that breathes organically with source performance.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Sidechain High-Pass</b>: Prevents low-frequency anchors from triggering threshold attenuation, eliminating low-end pumping.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Range Floor</b>: Sets a hard ceiling on total gain reduction to prevent over-compression.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Fixed-Budget Lookahead</b>: Offers up to 3.5 ms of lookahead to catch fast transients. Budgeted latency remains fixed, avoiding plug-in delay re-sync artifacts during automation.</li>
-            <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Parallel Wet/Dry Mix</b>: Full internal blending for instant New York-style parallel compression.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">LOUDNESS METERING &amp; ANALYSIS</div>
-      <div style="display:flex;gap:50px;align-items:flex-start">
-        <div style="flex:1">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">Features an integrated <b style="color:#DCCDBF;font-weight:700">ITU-R BS.1770-4 loudness meter</b> directly on the output path. Level stems, full dialogue passes, or instrument mixes straight to EBU R128, streaming, or broadcast delivery specifications in real time without external analyzers.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #3A3534">
-    <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">VISUALIZATION_FEEDBACK</h3>
-      <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Live Transfer Curve</b>Draws real-time input-to-output mapping as you shape threshold, ratio, and knee parameters.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">History Scrolling</b>Real-time rolling strip showing gain-reduction and input levels plotted over time.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Architecture Matrix</b>Signature graphite neumorphic surface layout divided cleanly into Dynamics, Character, and Output zones.</li>
-      </ul>
-    </div>
-    <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
-      <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Type</b>Feed-forward compressor with decoupled peak/RMS detection, saturation, and parallel mix grids.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Loudness Specification</b>ITU-R BS.1770-4 integrated measurement system (LUFS) with tracking panel reset.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency Engine</b>Fixed ~3.5 ms lookahead budget, constant, glitch-free automation parameters.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats Matrix</b>VST3 · Audio Unit (AU) · AAX · Standalone.</li>
-      </ul>
-    </div>
+  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#6E6764;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#B0B2B7;text-transform:uppercase;margin:0 0 24px 0">ANANKE</h1>
+    <p style="font-weight:300;font-size:13.5px;line-height:1.9;color:#81848A;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships &mdash; nothing else.</p>
+    <a href="mailto:info@theta.audio?subject=ANANKE%20updates" data-notify="ANANKE" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;margin:26px 0 0 0;text-transform:uppercase">One notice per release. No list rental.</p>
   </section>
 </main>
 
