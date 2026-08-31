@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="utf-8"&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@page {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>size: A4;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 15mm 15mm;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #161513;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #dcd7c9;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #161513;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { box-sizing: border-box; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* C64 / Retro Stripes */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stripes {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(to right, #0055ff 20%, #009900 20% 40%, #ffcc00 40% 60%, #ff6600 60% 80%, #cc0000 80%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #161513;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.stripes-thin {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(to right, #0055ff 20%, #009900 20% 40%, #ffcc00 40% 60%, #ff6600 60% 80%, #cc0000 80%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>page-break-after: always;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover .theta-logo {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 24pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 3px solid #dcd7c9;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 5px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 65pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 0.9;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -2px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #f0ece1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 20pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #a39d8e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: normal;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover p.jp-text {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #009900;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 1px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.cover .bottom-meta {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 150px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Courier New', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 12pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #888;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid #333;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>h1.module-title {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 42pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 5px solid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>page-break-before: always;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>page-break-after: avoid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 1px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>h2.subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 16pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #a39d8e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>page-break-after: avoid;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>h3 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-left: 4px solid #a39d8e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-left: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>page-break-after: avoid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>p, ul {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11pt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #c4bfb1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>li { margin-bottom: 5px; }</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>blockquote {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-left: 2px dashed #666;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-left: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #a39d8e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-style: italic;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Module Specific Colors */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-red { color: #990000; border-color: #990000; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-green { color: #009900; border-color: #009900; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-blue { color: #000099; border-color: #000099; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-brown { color: #4A2A18; border-color: #4A2A18; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-grey { color: #3A3A3A; border-color: #3A3A3A; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.color-black { color: #ffffff; border-color: #ffffff; } /* Kept white for visibility on dark bg */</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.index {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Courier New', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 11pt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.index th, table.index td {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #333;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.index th {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #222;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #e0dcd3;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table.index td { color: #a39d8e; }</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.img-placeholder {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 250px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px dashed #444;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #1a1917;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 110px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #555;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Courier New', monospace;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.two-img {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: table;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.two-img-col {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: table-cell;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 48%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.two-img-spacer {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: table-cell;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 4%;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="theta-logo"&gt;THETA&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;THE RGB&lt;br&gt;COLLECTION&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="stripes"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;CATALOG FOR DATA PROCESSING 2026&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="jp-text"&gt;シータ・オーディオ 2026&lt;br&gt;すべてのクリエイターに、パーソナルプロセッシングを。&lt;br&gt;新しい時代が、ここから始まる。&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bottom-meta"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>DOCUMENTATION TAR-188X / REV B&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>YEAR: 2026&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>SYSTEM: macOS [AU / VST3]&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>© 2026 THETA AUDIO RESEARCH INC.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div style="page-break-before: always;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1 style="font-size: 24pt; border-bottom: 2px solid #555; padding-bottom: 10px;"&gt;SYSTEM REFERENCE INDEX&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;table class="index"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;th&gt;Module&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;th&gt;Chroma Code&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;th&gt;Function Type&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;th&gt;Status&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#ff4d4d;"&gt;RED&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#990000&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Saturation / Distortion&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#4dff4d;"&gt;GREEN&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#009900&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Detuned Delay&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#6666ff;"&gt;BLUE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#000099&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Watery Modulation&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#d99a6c;"&gt;BROWN&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#4A2A18&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Transient Shaping&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#cccccc;"&gt;GREY&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#3A3A3A&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Compression&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td style="color:#ffffff;"&gt;BLACK&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;#000000&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;Limiter / Clipper&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;td&gt;ACTIVE&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/table&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- RED --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-red"&gt;MODULE 01 : RED&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Distortion with weight.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="img-placeholder" style="border-color:#ff4d4d; color:#ff4d4d;"&gt;[ INSERT RED PLUGIN INTERFACE HERE ]&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;RED is a one-knob distortion designed to make sounds feel bigger, warmer and more alive.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;Turn the central control to add harmonic richness, low-mid body and controlled intensity. At subtle settings, RED brings depth and cohesion. Push it further for thick saturation, rounded peaks and unmistakable color.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;More body. More energy. No level surprises.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;RED automatically balances its output as the distortion increases, helping you make honest decisions without being distracted by volume changes. A smooth peak compressor maintains punch, while the final clean clipper catches excess transients without flattening the sound.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;One knob when you want it. Deeper control when you need it.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;The main interface keeps RED fast and instinctive. Open the Advanced panel to shape the finer details:&lt;/p&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Drive&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Body&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Bite&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Shape&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Dynamics&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Mix&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Output&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Linked or dual stereo processing&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p1">&lt;p&gt;Automatic leveling, 4× oversampling and clean output protection remain active behind the scenes.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Built for anything that needs weight.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Use RED to add substance to drums, reinforce bass, warm synths, energize guitars, thicken vocals or give an entire mix more density. From barely-there enhancement to heavy velvet saturation, RED stays musical throughout its range.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;See the sound come alive.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;RED’s connective visual field responds to the incoming audio—contracting into a quiet membrane at rest and expanding into an energetic web as the sound intensifies.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Factory sounds included.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Explore a curated collection of starting points:&lt;br&gt;</p>
+<p class="p1">&lt;em&gt;Surface Tension · Warm Glue · Deep Pocket · Peak Tamer · Red Drums · Heavy Velvet · Edge Control · Parallel Heat&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;Make it heavier. Add RED to your signal.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- GREEN --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-green"&gt;MODULE 02 : GREEN&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Delay, pulled out of shape.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="img-placeholder" style="border-color:#4dff4d; color:#4dff4d;"&gt;[ INSERT GREEN PLUGIN INTERFACE HERE ]&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;GREEN is a one-knob delay and echo built around detuned, drifting tails. Set the tempo by tapping the main control, then turn it to move from a restrained echo to a wide, diffused field of shifting repeats.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;&lt;strong&gt;Your delay time stays locked. The knob controls the character and intensity around it.&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;One knob. A whole ecosystem of echoes.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Turn GREEN to increase the wet level, feedback, detune, drift, diffusion, width, and tonal depth together. Every part of the sound evolves along one carefully tuned musical curve.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;At lower settings, repeats remain clean and controlled. Push further and they spread, darken, soften, and move increasingly out of tune.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Tap. Turn. Let it grow.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Tap the main knob to set the tempo. GREEN detects and averages your rhythm, then locks the delay to a quarter-note pulse. Changing the knob afterward won’t disturb the timing.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Detuned tails&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Every pass through the feedback path accumulates subtle opposing pitch movement. The center stays grounded while the tail becomes wider, less stable, and more alive.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Stereo Pong&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Activate Stereo Pong to send the repeats alternating across the stereo field. Each bounce continues through GREEN’s detuning, diffusion, tone, and drift architecture.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Go deeper when you want to&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Open the Advanced panel for direct access to:&lt;/p&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Time&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Feedback&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Detune&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Drift&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Diffusion&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Tone&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Width&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Mix&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Stereo Pong&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p1">&lt;p&gt;Use GREEN as a focused one-knob effect or shape every part of its delay architecture.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Audio-reactive interface&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;GREEN’s trench-tunnel field moves with the sound. It accelerates with incoming audio and audible repeats, then rapidly falls back to a slow crawl as the signal disappears. The interface doesn’t simply decorate the effect—it reflects its energy.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Factory sounds&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Start with clean spaces, dark dub echoes, moving stereo delays, diffused ambient tails, and dedicated ping-pong designs. Factory presets include:&lt;br&gt;</p>
+<p class="p1">&lt;em&gt;SURFACE TENSION · GREEN ROOM · CANOPY · VIRIDIAN · NIGHT GROWTH · GLASSHOUSE · BOUNCING MOSS · NEON PONG · DUB VINE&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;Echoes don’t have to repeat themselves. Tap the tempo. Turn the knob. Let the tail drift somewhere else.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- BLUE --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-blue"&gt;MODULE 03 : BLUE&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Liquid Core. Turn sound into motion.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="img-placeholder" style="border-color:#6666ff; color:#6666ff;"&gt;[ INSERT BLUE PLUGIN INTERFACE HERE ]&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;BLUE is a fluid modulation effect that moves between subtle stereo shimmer and deep, turbulent transformation. Its single macro control coordinates width, phase, delay, feedback, and evolving irregularity—creating movement that feels alive rather than looped.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;One control. An entire body of water.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;At low settings, BLUE adds gentle depth and spatial motion. Turn it further and the sound begins to bend, ripple, and spread. At its highest settings, BLUE becomes wide, aggressive, and beautifully unstable—while remaining musical and controlled.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Three water modes&lt;/h3&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;CLEAR:&lt;/strong&gt; Bright, focused movement with crisp phase detail.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;DEEP:&lt;/strong&gt; Wide, fluid modulation with a balanced liquid character.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;ABYSS:&lt;/strong&gt; Dark, slow, immersive motion with powerful delay-driven depth.&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;A living interface&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;BLUE’s vortex responds directly to the incoming audio. At silence, it becomes still. As the signal grows, the field expands outward from the central control—turning the interface into a visible reflection of the sound.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Beneath the surface&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Open the Advanced panel to shape:&lt;/p&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Rate&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Depth&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Mix&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Tone&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Feedback&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Drift&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Entropy&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Slow Tide&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Feedback polarity&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p1">&lt;p&gt;Or stay on the surface and let the BLUE macro conduct the entire effect.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;From shimmer to undertow.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Subtle enough for vocals and keys. Wide enough for synths and guitars. Aggressive enough to pull drums, loops, and textures into entirely new shapes.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;BLUE v0.0.1 — ENTER THE WATER.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- BROWN --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-brown"&gt;MODULE 04 : BROWN&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Shape the hit. Hold the weight.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="two-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="img-placeholder" style="border-color:#d99a6c; color:#d99a6c; height: 180px; padding-top:80px; font-size:10pt;"&gt;[ INSERT MAIN INTERFACE ]&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-spacer"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="img-placeholder" style="border-color:#d99a6c; color:#d99a6c; height: 180px; padding-top:80px; font-size:10pt;"&gt;[ INSERT ADVANCED INTERFACE ]&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;BROWN is a one-knob transient shaper built for fast, musical control.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;Turn left to soften attacks and reduce sustain. Turn right to sharpen transients and bring the body forward. Return to the centre for zero processing. No hunting through parameters. No interruption to the session. Just immediate control over how a sound strikes, breathes and sits in the mix.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;One knob. Two directions.&lt;/h3&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;REDUCE (Left):&lt;/strong&gt; Tame hard attacks, shorten sustain and push sounds deeper into the mix.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;RAISE (Right):&lt;/strong&gt; Add definition, increase sustain and give drums, bass, percussion and recorded material more presence.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;strong&gt;CENTRE (0):&lt;/strong&gt; Transparent neutral position with no transient shaping.&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Simple on the surface. Serious underneath.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Behind BROWN’s single performance control is the transient engine from HORME, combining attack and sustain shaping into one carefully balanced movement. For detailed work, open the Advanced panel to access the complete multiband transient system.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;Built to move&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;BROWN’s rectilinear data weave responds to the incoming audio. Lines extend, structures flicker and windows open as the signal drives the plug-in—then settle into a quiet, static texture at silence. The display follows the sound, not the clock.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;System Features:&lt;/h3&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Bilateral one-knob transient shaping&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Simultaneous attack and sustain control&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Transparent centre position&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Six-band Advanced transient controls&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Audio-reactive data-weave visualization&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Zero-latency processing&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Preset saving and management&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;Give every sound the right shape. BROWN — Transient control without the detour.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- GREY --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-grey"&gt;MODULE 05 : GREY&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Compression, without the complication.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;div class="img-placeholder" style="border-color:#cccccc; color:#cccccc;"&gt;[ INSERT GREY PLUGIN INTERFACE ]&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;GREY is a one-knob compressor designed to control peaks, strengthen dynamics and keep your output level consistent—without interrupting your creative flow.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;Turn the central control to move from gentle levelling to firm, confident compression. Behind the simplicity, GREY carefully coordinates threshold, ratio, knee, attack, hold and release. Its always-on automatic makeup gain restores the body of the signal while preserving the reduced peaks.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;The animated pin matrix responds directly to the music: quiet signals form a subtle suspended skyline, while stronger compression fills the surface with movement and amber gain-reduction flashes.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;One knob. Complete dynamics control.&lt;/h3&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Intelligent multi-parameter compression&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Automatic output-level matching&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Smooth peak reduction&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Program-responsive visual feedback&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;GREY gives you the control of a full compressor with the immediacy of a single decision. Turn it up. Bring the peaks down.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- BLACK --&gt;</p>
+<p class="p1">&lt;h1 class="module-title color-black"&gt;MODULE 06 : BLACK&lt;/h1&gt;</p>
+<p class="p1">&lt;h2 class="subtitle"&gt;Limit. Clip. Control.&lt;/h2&gt;</p>
+<p class="p1">&lt;div class="stripes-thin"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="two-img"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="img-placeholder" style="border-color:#ffffff; color:#ffffff; height: 180px; padding-top:80px; font-size:10pt;"&gt;[ INSERT MAIN INTERFACE ]&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-spacer"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="two-img-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="img-placeholder" style="border-color:#ffffff; color:#ffffff; height: 180px; padding-top:80px; font-size:10pt;"&gt;[ INSERT ADVANCED INTERFACE ]&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;p&gt;BLACK is a one-knob limiter and clipper built to make loudness feel immediate.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;Turn the central control to move seamlessly from controlled peak limiting into assertive clipping. Low settings tighten and contain. Push further for density, impact and unmistakable edge.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;The circular labyrinth responds to the processing itself—expanding as BLACK works, thickening under pressure and flashing coral when peaks are caught.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;ONE KNOB. A COMPLETE DYNAMICS PATH.&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;The main control coordinates drive, limiting and clipping as one continuous gesture. It gives you a wide usable range without forcing you to manage a wall of parameters. Fast to set. Easy to trust. Capable of serious weight.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;SHAPE THE IMPACT&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Open the Advanced panel when you need precise control:&lt;/p&gt;</p>
+<p class="p1">&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Limit-to-Clip balance&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Output ceiling&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Lookahead&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Release&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Auto Release&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Stereo Link&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;li&gt;Up to 8× oversampling&lt;/li&gt;</p>
+<p class="p1">&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;BUILT FOR THE FINAL PUSH&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;Use BLACK to control unpredictable peaks, add density to drums, push a mix forward or drive sounds into hard-edged clipping. At subtle settings, it stays composed. At maximum pressure, it does not pretend to be polite.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;RESPONSIVE BY DESIGN&lt;/h3&gt;</p>
+<p class="p1">&lt;p&gt;BLACK’s interface is connected directly to its processing. The labyrinth remains close to rest when little is being asked of the plug-in. As limiting increases, the field expands and its lines become heavier. Coral highlights appear only when BLACK is actively reducing or clipping peaks. You see the pressure as clearly as you hear it.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;blockquote&gt;BLACK&lt;br&gt;One knob between control and destruction.&lt;/blockquote&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
