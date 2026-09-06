@@ -24,10 +24,6 @@
       <g fill="#B0B0B0" fill-opacity="0.62"><path d="M40.4 40 L64 40 L61.3 45.5 L37.7 45.5 Z"></path><path d="M33.1 55 L56.7 55 L54 60.5 L30.4 60.5 Z"></path><path d="M25.8 70 L49.4 70 L46.7 75.5 L23.1 75.5 Z"></path></g>
     </svg>
   </a>
-  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
-    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">THE COLOR COLLECTION</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Six Instruments // One Spectrum</p>
-  </div>
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
     <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
@@ -41,6 +37,117 @@
     <p style="font-weight:300;font-size:13.5px;line-height:1.9;color:#81848A;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships &mdash; nothing else.</p>
     <a href="mailto:info@theta.audio?subject=THE%20COLOR%20COLLECTION%20updates" data-notify="THE COLOR COLLECTION" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
     <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;margin:26px 0 0 0;text-transform:uppercase">One notice per release. No list rental.</p>
+  </section>
+
+  <section data-screen-label="Collection gallery" style="max-width:1050px;margin:0 auto 40px auto">
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">MOIR&Eacute;</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">THRU-ZERO FLANGER // v0.1.8</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">A thru-zero flanger with its own comb surface drawn in real time. Sine, triangle or random LFO shapes drive the sweep; the display switches between the isometric comb surface and the flat interference field so you can see the notches move.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openMoire }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-moire" src="assets/moire/hero.png?v=260905" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="COMB SURFACE"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">COMB SURFACE</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div onClick="{{ openMoireField }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-moire-field" src="assets/moire/hero_field.png?v=260905" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="MOIR&Eacute; FIELD"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">MOIR&Eacute; FIELD</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <div onClick="{{ openMoireRand }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-moire-rand" src="assets/moire/hero_rand.png?v=260905" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="RAND // +76% FEEDBACK"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">RAND // +76% FEEDBACK</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">CONCORD</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">VOICE-BRAID CHORUS</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">Braided voices around a shared centre &mdash; wide without smearing the source.</p>
+      <div style="display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openConcord }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-concord" src="assets/concord/hero.png?v=260823b" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="HARMONIC VORTEX"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">HARMONIC VORTEX</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">CINDER</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">DISTORTION &amp; SATURATION</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">Warm through hot in one continuous move, with the heat shown as it accumulates.</p>
+      <div style="display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openCinder }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-cinder" src="assets/cinder/hero.png?v=260823" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="MAIN VIEW"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">MAIN VIEW</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">GIRE</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">ALLPASS-SURFACE PHASER</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">A phaser built on an allpass surface &mdash; continuous rotation rather than stepped stages.</p>
+      <div style="display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openGire }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-gire" src="assets/gire/hero.png?v=260823" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="MAIN VIEW"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">MAIN VIEW</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">VESTIGE</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">THREE-ENGINE REVERB</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">Three reverb engines under one set of controls, from close chamber to long resonant tail.</p>
+      <div style="display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openVestige }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-vestige" src="assets/vestige/hero.png?v=260823" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1550;display:block;pointer-events:none" shape="rect" placeholder="MAIN VIEW"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">MAIN VIEW</figcaption>
+      </figure>
+      </div>
+    </article>
+
+    <article style="border-top:1px solid #3A3534;padding:46px 0 10px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:24px;letter-spacing:10px;color:#B0B2B7;text-transform:uppercase;font-weight:700">EUCLID</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">SHIFTED FIELD DELAY</span>
+      </div>
+      <p style="font-weight:300;font-size:13px;line-height:1.85;color:#81848A;margin:0 0 26px 0;max-width:760px;text-wrap:pretty">Delay with a shifted field &mdash; repeats that move off-grid as they decay.</p>
+      <div style="display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:18px">
+      <figure style="margin:0">
+        <div onClick="{{ openEuclid }}" style="border:1px solid #3A3534;background:#0C1519;cursor:zoom-in;transition:border-color 0.4s" style-hover="border-color:#CFC5B6">
+          <image-slot id="cc-euclid" src="assets/euclid/hero.png?v=260823b" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1730;display:block;pointer-events:none" shape="rect" placeholder="MAIN VIEW"></image-slot>
+        </div>
+        <figcaption style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;margin-top:10px">MAIN VIEW</figcaption>
+      </figure>
+      </div>
+    </article>
+
   </section>
 </main>
 
@@ -83,7 +190,9 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openMoire: this._mk('assets/moire/hero.png?v=260823b', 2140, 2140 / 1410),
+      openMoire: this._mk('assets/moire/hero.png?v=260905', 2140, 2140 / 1410),
+      openMoireField: this._mk('assets/moire/hero_field.png?v=260905', 2140, 2140 / 1410),
+      openMoireRand: this._mk('assets/moire/hero_rand.png?v=260905', 2140, 2140 / 1410),
       openConcord: this._mk('assets/concord/hero.png?v=260823b', 2140, 2140 / 1378),
       openGire: this._mk('assets/gire/hero.png?v=260823', 2140, 2140 / 1410),
       openCinder: this._mk('assets/cinder/hero.png?v=260823', 2140, 2140 / 1410),
