@@ -330,3 +330,12 @@
   a[style-hover*="translateY(-5px)"]:hover { transform: none !important; }
   a[style-hover*="padding-left:20px"]:hover { padding-left: 0 !important; }
 }
+
+/* Color Collection title: single line on desktop, allowed to wrap on phones */
+@media (max-width: 700px) {
+  h1[data-title-oneline] {
+    white-space: normal !important;
+    letter-spacing: 0.14em !important;
+    overflow-wrap: anywhere !important;
+  }
+}
