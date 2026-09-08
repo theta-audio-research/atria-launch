@@ -20,8 +20,14 @@
     flex-wrap: wrap !important;
     row-gap: 6px !important;
   }
-  nav > a:first-child { height: 50px !important; order: 1 !important; }
+  nav > a:first-child { height: auto !important; order: 1 !important; gap: 14px !important; }
   nav > a:first-child svg { height: 38px !important; width: 32px !important; }
+  /* THETA PULSE lockup: step the mark and wordmark down with the nav */
+  nav > a:first-child img[src*="pulse"] { width: 100px !important; height: 56px !important; }
+  nav > a:first-child > span:first-of-type { height: 30px !important; }
+  nav > a:first-child span { white-space: nowrap !important; }
+  nav > a:first-child span > span:first-child { font-size: 15px !important; letter-spacing: 6px !important; }
+  nav > a:first-child span > span:last-child { font-size: 7px !important; letter-spacing: 3px !important; }
 
   nav > div:last-child {
     order: 2 !important;
@@ -338,4 +344,10 @@
     letter-spacing: 0.14em !important;
     overflow-wrap: anywhere !important;
   }
+}
+
+@media (max-width: 560px) {
+  nav > a:first-child img[src*="pulse"] { content: url("assets/logo/pulse-mono-small.svg") !important; width: 38px !important; height: 38px !important; }
+  nav > a:first-child > span:first-of-type { display: none !important; }
+  nav > a:first-child span > span:last-child { display: none !important; }
 }
