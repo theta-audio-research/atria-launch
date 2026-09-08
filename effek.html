@@ -51,7 +51,7 @@
     <div style="background:rgba(22,38,22,0.15);border:1px solid #283B28;padding:40px">
       <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free, no account, no unlock, no upsell. The actual one-bit codec at the actual clock, broken modes included. A classic this good deserves to be back in everyone's rack.</p>
       <a href="downloads/EFFEK_v0.1.21_Installer.dmg" data-gate="EFFEK" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
-      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · VST3 / AU / AAX</p>
+      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS 11 or later · Universal, Apple Silicon and Intel · VST3 / AU / AAX</p>
     </div>
   </section>
 
@@ -68,7 +68,22 @@
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The warmth is slope overload</b>, fast transients momentarily outrun the codec's adaptive step size, so edges arrive rounded. The famous softness, happening bit by bit.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The grain breathes</b>, quiet passages ride a fine, signal-correlated granular noise swelling and decaying on the codec's 60 ms syllabic time constant. Not hiss, not dither: the sound of a one-bit machine thinking.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Repeats age like tape generations</b>, feedback is re-encoded through the codec on every pass, behind the hardware's 12 kHz loop filter, at sub-unity gain.</li>
-          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Pseudo-stereo out</b>, the hardware's phase-shift output stage: bass anchored in the middle while mids and highs spread. Simulated stereo, 1983-style.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">IN TIME, WITHOUT LEAVING 1983</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The ADM 1024 never had a sync input. EFFEK has one, and it is the only thing on the panel the hardware could not do, so we built it the one way that doesn't break the machine: <b style="color:#DCCDBF;font-weight:700">HOST SYNC adds no second clock.</b></p>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The six memory banks tile a continuous span from 0.25 ms to 1024 ms, which means any musical division inside that range has exactly one solution on the real hardware: one bank, one DELAY FACTOR setting. Sync just solves that backwards and sets them. The engine never learns a DAW exists.</p>
+        <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">One button, no new clutter.</b> SYNC sits above DELAY FACTOR and lights amber from behind. While it is lit, DELAY FACTOR stops being continuous and steps through musical divisions instead, and the range buttons switch themselves to whichever bank that division needs. The knob that always meant "time" still means time.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Straight, dotted and triplet</b>, 1/32 through 1/1.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">It will not lie to you.</b> 1024 ms is a hard ceiling, because that is LONG ECHO at full DELAY FACTOR. Divisions the machine physically cannot reach are not offered at all, so the list changes with tempo: at 120 BPM everything up to 1/2 is there; a whole note at that tempo is 2 seconds, and the machine simply doesn't go there.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The lamp shows the truth.</b> The button reads SYNC when idle, warms when armed but the host isn't giving a tempo, and lights with the live division when it's actually locked. The millisecond scale keeps showing the engine's real delay.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Modulation still bends it, on purpose.</b> WIDTH sweeps the same VCO the delay rides, so any modulation detunes the synced time, exactly as it would on the hardware. Perfect grid lives at WIDTH 0; everything above that is you choosing drift. We did not decouple them, because that one shared clock is the whole instrument.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Ride the tempo.</b> Change tempo while it plays and the repeats glide in pitch rather than clicking, because the delay is genuinely varispeed.</li>
         </ul>
       </div>
     </div>
@@ -83,6 +98,7 @@
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Bipolar DELAY MIX</b>: SOURCE at noon, normal wet clockwise, phase-inverted wet counter-clockwise. The inverted side is half the classic flange recipes.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">MODULATOR</b>: WIDTH and SPEED driving the shared VCO. From subtle chorus shimmer to a full pitch-bending, gargling rollercoaster.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Honest lamps</b>: LIMIT is wired to the actual encoder slope-overload detector and input clip. ACTIVE reads the real post-pot level. The marker on the millisecond scale is the engine's actual delay, live, LFO wobble and all.</li>
+          <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">OUTPUT: SIM / MONO</b>. The ADM 1024 carried two outputs on its back panel, a normal one and a simulated-stereo one, so EFFEK gives you the switch rather than picking for you. Pushed in lights SIM: the patented phase-shift stage, bass anchored in the middle while mids and highs spread. Out lights MONO: the plain jack, the same decoded signal on both sides. Both legends are backlit, and the switch crossfades, so you can flip it while it plays.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">INFINITE REPEAT</b>: freezes the bit RAM, non-deteriorating, while the modulator keeps bending the frozen loop. Sound-on-sound, exactly as the panel promised.</li>
         </ul>
       </div>
@@ -96,6 +112,14 @@
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">ALL BUTTONS IN</b>: jam several range buttons down at once and every selected DRAM bank fights for the same read line. Modifier-click to latch them together and the banks genuinely contend for the bus: the delay you dialed in dominates while fragments of the others punch through as ghost grains and granular stutter. With all six latched, DELAY FACTOR becomes a master time control sweeping the entire 0.25 ms – 1024 ms span on one knob, audibly changing gears at every boundary.</li>
           <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">NO BUTTONS</b>: the most elusive easter egg, beloved of the deep-cut crowd. Defeat the interlock so no bank is selected and the codec feeds itself with zero delay, leaving only its adaptive slew behaviour: a genuinely lovely, faintly grainy studio limiter hiding inside a delay pedal. Ships as the factory preset NO BUTTONS LIMITER.</li>
         </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:70px">
+      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;font-weight:700">EIGHTEEN WAYS IN</div>
+      <div style="max-width:840px">
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Eighteen factory presets, two or three per memory bank, so every part of the machine has a door. FLANGE JET and FLANGE THROUGH ZERO down in the sub-millisecond comb. FLANGE CHORUS and FLANGE VIBRATO. DOUBLER TIGHT and JAM FLANGE BANKS. SLAPBACK 50S, COMB RESONATOR and DOPPLER SWEEP. TAPE SLAP, GRANULAR ECHO and DUB SIREN. ECHO LONG 1024, ECHO DEGRADED and ECHO WASH out at the top of the range. Plus the three originals, including both broken modes.</p>
+        <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0">Every delay time in them is derived from the machine's own law rather than dialed by ear, so DOPPLER SWEEP really is sitting at 38.4 ms and ECHO LONG 1024 really is at the machine's ceiling.</p>
       </div>
     </div>
 
@@ -121,6 +145,7 @@
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Idle Noise Floor</b>Measured at approximately −92 dBFS with the codec running.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Glitch-Free By Construction</b>Modulation rides the same continuous clock as the delay, so there are no interpolated taps to zipper or step.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Bandwidth Independent of Time</b>Audio bandwidth follows the oversampling ratio, not the delay length, the original's famous spec, falling straight out of the architecture.</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Sync That Solves, Not Approximates</b>Host sync sets the real bank and the real DELAY FACTOR instead of running a second clock, and refuses any division the 1024 ms hardware ceiling cannot actually reach.</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Price</b>Free. No account, no unlock, no upsell.</li>
       </ul>
     </div>
@@ -131,9 +156,11 @@
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Codec</b>1-bit adaptive delta modulation, 250 kHz – 1 MHz shared VCO clock, 100:1 adaptive slew</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Modulator</b>Sine LFO, 0.1 – 10 Hz, up to 5:1 sweep</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Feedback</b>Bipolar, sub-unity, 12 kHz loop filter, re-quantised every pass</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Outputs</b>Simulated-stereo outputs; infinite repeat; two defeat-the-interlock jam modes</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 / AU / AAX, macOS (Apple Silicon)</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Version</b>v0.1.1 / THEME_FRAMEWORK_VERIFIED</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Host sync</b>Straight, dotted and triplet divisions 1/32 to 1/1; solves to a real bank plus DELAY FACTOR; unreachable divisions withheld above the 1024 ms ceiling</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Outputs</b>Switchable simulated-stereo / mono output stage; infinite repeat; two defeat-the-interlock jam modes</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Presets</b>18 factory presets</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3 / AU / AAX, macOS 11 or later, Universal (Apple Silicon and Intel)</li>
+        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Build Version</b>v0.1.21 / THEME_FRAMEWORK_VERIFIED</li>
       </ul>
     </div>
   </section>
@@ -144,7 +171,7 @@
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE #023 // EFFEK_v0.1.1, ONE_BIT_AT_A_TIME</span>
+  <span>LAB NOTE #023 // EFFEK_v0.1.21, ONE_BIT_AT_A_TIME</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
