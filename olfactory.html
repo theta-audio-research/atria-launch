@@ -25,9 +25,8 @@
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#6E6764;text-transform:uppercase;white-space:nowrap">AUDIO RESEARCH</span>
     </span>
   </a>
-  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;max-width:calc(100% - 640px)">
-    <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;padding-left:8px;white-space:nowrap">OLFACTORY</h2>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:8px;letter-spacing:6px;color:#DCCDBF;text-transform:uppercase;margin:5px 0 0 0;opacity:0.8;padding-left:6px">Mono-Safe Lush Chorus, THETA Audio Research</p>
+  <div data-nav-title style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;max-width:calc(100% - 900px)">
+    <h2 style="font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">OLFACTORY</h2>
   </div>
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
@@ -39,7 +38,7 @@
 
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <span style="font-size:10px;color:#DCCDBF;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px;display:block;opacity:0.6">Primary Chassis // TRI Voicing, Three Voices</span>
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260729g" onClick="{{ openHero }}" style="width:100%;aspect-ratio:962/605;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="olfactory-hero" src="assets/olfactory/hero.png?v=260908" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2012/1418;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OLFACTORY Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -50,7 +49,7 @@
     <span style="font-size:10px;letter-spacing:4px;color:#A6DCA6;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
     <div style="background:rgba(22,38,22,0.15);border:1px solid #283B28;padding:40px">
       <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">Shipping now, completely free, no account, no unlock, no upsell. Nine voicings, five modelled circuits, and a correlation governor that proves the width folds down intact. VST3, Audio Unit and AAX, macOS Apple Silicon.</p>
-      <a href="downloads/OLFACTORY_v0.5.4.dmg" data-gate="OLFACTORY" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
+      <a href="downloads/OLFACTORY_v0.6.1.dmg" data-gate="OLFACTORY" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">DOWNLOAD_FREE // MACOS</a>
       <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · VST3 / AU / AAX</p>
     </div>
   </section>
@@ -157,7 +156,7 @@
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE #024 // OLFACTORY_v0.3.0, WIDTH_THAT_SURVIVES</span>
+  <span>LAB NOTE #024 // OLFACTORY_v0.6.1, WIDTH_THAT_SURVIVES</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
@@ -192,7 +191,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/olfactory/hero.png?v=260729g', 962, 962 / 605),
+      openHero: this._mk('assets/olfactory/hero.png?v=260908', 2012, 2012 / 1418),
     };
   }
 }

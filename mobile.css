@@ -351,3 +351,10 @@
   nav > a:first-child > span:first-of-type { display: none !important; }
   nav > a:first-child span > span:last-child { display: none !important; }
 }
+
+/* Plugin nav title: hidden once the nav runs out of room; the page's own
+   header carries the product name, so nothing is lost. Uses a stable
+   data hook rather than an inline-style attribute match. */
+@media (max-width: 1180px) {
+  nav [data-nav-title] { display: none !important; }
+}
