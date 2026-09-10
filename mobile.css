@@ -23,7 +23,7 @@
   nav > a:first-child { height: auto !important; order: 1 !important; gap: 14px !important; }
   nav > a:first-child svg { height: 38px !important; width: 32px !important; }
   /* THETA PULSE lockup: step the mark and wordmark down with the nav */
-  nav > a:first-child img[src*="pulse"] { width: 100px !important; height: 56px !important; }
+  nav > a:first-child img[src*="theta-xor"] { width: 84px !important; height: auto !important; }
   nav > a:first-child > span:first-of-type { height: 30px !important; }
   nav > a:first-child span { white-space: nowrap !important; }
   nav > a:first-child span > span:first-child { font-size: 15px !important; letter-spacing: 6px !important; }
@@ -347,7 +347,7 @@
 }
 
 @media (max-width: 560px) {
-  nav > a:first-child img[src*="pulse"] { content: url("assets/logo/pulse-mono-small.svg") !important; width: 38px !important; height: 38px !important; }
+  nav > a:first-child img[src*="theta-xor"] { content: url("assets/logo/theta-xor-small-gold.svg") !important; width: 54px !important; height: auto !important; }
   nav > a:first-child > span:first-of-type { display: none !important; }
   nav > a:first-child span > span:last-child { display: none !important; }
 }
