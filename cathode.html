@@ -38,7 +38,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="cathode-hero" src="assets/cathode/hero.png?v=260908" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1818;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHODE User Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="cathode-hero" src="assets/cathode/hero.png?v=260910" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1650;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHODE User Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -228,8 +228,6 @@
       <ul style="list-style:none;padding:0;margin:0">
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>VST3, AU, AAX [Native plug-in frameworks]</li>
         <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform Support</b>macOS [Apple Silicon Native Core Matrices]</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Interface Properties</b>Fixed 1280 × 640 footprint featuring crisp high-DPI vector paths.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Engineering Group</b>THETA Audio Research // 2026 Release Framework</li>
       </ul>
     </div>
   </section>
@@ -274,22 +272,23 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/cathode/hero.png?v=260908', 2652, 2652 / 1818),
-      openLock: this._mk('assets/cathode/lock.png?v=260801i', 257, 257 / 346),
-      openHead: this._mk('assets/cathode/head.png?v=260801i', 257, 257 / 344),
-      openReceiver: this._mk('assets/cathode/receiver.png?v=260801i', 254, 254 / 345),
-      openInterference: this._mk('assets/cathode/interference.png?v=260801i', 512, 512 / 344),
-      openPhosphor: this._mk('assets/cathode/phosphor.png?v=260801i', 259, 259 / 345),
-      openCrush: this._mk('assets/cathode/crush.png?v=260801i', 511, 511 / 345),
-      openLfo: this._mk('assets/cathode/lfo.png?v=260801i', 513, 513 / 344),
-      openTrans: this._mk('assets/cathode/trans.png?v=260801i', 512, 512 / 343),
-      openCrushAdv: this._mk('assets/cathode/crush_adv.png?v=260801i', 512, 512 / 346),
-      openCrushScope: this._mk('assets/cathode/crush_scope.png?v=260801g', 1003, 1003 / 629),
-      openMotion: this._mk('assets/cathode/motion.png?v=260801g', 1019, 1019 / 662),
-      openMotionEdit: this._mk('assets/cathode/motion_edit.png?v=260801i', 513, 513 / 346),
+      openHero: this._mk('assets/cathode/hero.png?v=260910', 2652, 2652 / 1650),
+      openLock: this._mk('assets/cathode/lock.png?v=260801i', 1028, 1028 / 1384),
+      openHead: this._mk('assets/cathode/head.png?v=260801i', 1028, 1028 / 1376),
+      openReceiver: this._mk('assets/cathode/receiver.png?v=260801i', 1016, 1016 / 1380),
+      openInterference: this._mk('assets/cathode/interference.png?v=260801i', 2048, 2048 / 1376),
+      openMotion: this._mk('assets/cathode/motion.png?v=260801g', 2038, 2038 / 1324),
+      openMotionEdit: this._mk('assets/cathode/motion_edit.png?v=260801i', 2052, 2052 / 1384),
+      openPhosphor: this._mk('assets/cathode/phosphor.png?v=260801i', 1036, 1036 / 1380),
+      openCrush: this._mk('assets/cathode/crush.png?v=260801i', 2044, 2044 / 1380),
+      openCrushAdv: this._mk('assets/cathode/crush_adv.png?v=260801i', 2048, 2048 / 1384),
+      openCrushScope: this._mk('assets/cathode/crush_scope.png?v=260801g', 2006, 2006 / 1258),
+      openLfo: this._mk('assets/cathode/lfo.png?v=260801i', 2052, 2052 / 1376),
+      openTrans: this._mk('assets/cathode/trans.png?v=260801i', 2048, 2048 / 1372),
     };
   }
 }
+
 </script>
 </body>
 </html>
