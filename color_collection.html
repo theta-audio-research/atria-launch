@@ -35,7 +35,7 @@
 <main style="padding:20px 60px 60px 60px;max-width:1140px;margin:0 auto;width:100%;box-sizing:border-box">
 
   <section data-screen-label="Collection header" style="max-width:1040px;margin:50px auto 90px auto;text-align:center">
-    <h1 style="font-weight: 600; font-size: clamp(22px,3.9vw,46px); letter-spacing: 0.32em; color: #B0B2B7; text-transform: none; margin: 0 0 30px 0; white-space: nowrap; overflow-wrap: normal; font-style: normal; text-decoration-line: none" data-title-oneline="1">the COLOR collection</h1>
+    <h1 style="font-weight: 600; font-size: clamp(22px,3.9vw,46px); letter-spacing: 0.32em; color: #B0B2B7; text-transform: none; margin: 0 0 30px 0; white-space: nowrap; overflow-wrap: normal; font-style: normal; text-decoration-line: none" data-title-oneline="1">the ALCHEMY index</h1>
     
     <div style="display:flex;gap:70px;justify-content:center;align-items:center;flex-wrap:wrap;border-top:1px solid #3A3534;border-bottom:1px solid #3A3534;padding:30px 0;margin-bottom:44px">
       <span style="display:flex;flex-direction:column;align-items:center;gap:12px">
@@ -164,8 +164,23 @@
         </div>
       </div>
     </div>
-    <div onClick="{{ openConcord }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85">
-      <image-slot id="cc-concord" src="assets/concord/hero_v2.png?v=260907" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="CONCORD panel"></image-slot>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div onClick="{{ openConcord2 }}" style="cursor:zoom-in;transition:opacity 0.4s;display:flex;flex-direction:column;gap:9px" style-hover="opacity:0.85">
+        <image-slot id="cc-concord-2v" src="assets/concord/hero_2v.png?v=260912" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="CONCORD 2 VOICES"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">2 VOICES</span>
+      </div>
+      <div onClick="{{ openConcord4 }}" style="cursor:zoom-in;transition:opacity 0.4s;display:flex;flex-direction:column;gap:9px" style-hover="opacity:0.85">
+        <image-slot id="cc-concord-4v" src="assets/concord/hero_4v.png?v=260912" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="CONCORD 4 VOICES"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">4 VOICES</span>
+      </div>
+      <div onClick="{{ openConcord6 }}" style="cursor:zoom-in;transition:opacity 0.4s;display:flex;flex-direction:column;gap:9px" style-hover="opacity:0.85">
+        <image-slot id="cc-concord-6v" src="assets/concord/hero_6v.png?v=260912" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="CONCORD 6 VOICES"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">6 VOICES</span>
+      </div>
+      <div onClick="{{ openConcord8 }}" style="cursor:zoom-in;transition:opacity 0.4s;display:flex;flex-direction:column;gap:9px" style-hover="opacity:0.85">
+        <image-slot id="cc-concord-8v" src="assets/concord/hero_8v.png?v=260912" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1378;display:block;pointer-events:none" shape="rect" placeholder="CONCORD 8 VOICES"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">8 VOICES</span>
+      </div>
     </div>
   </section>
 
@@ -208,14 +223,14 @@
 
   <section style="text-align:center;max-width:560px;margin:0 auto 40px auto">
     <p style="font-weight:300;font-size:13.5px;line-height:1.9;margin:0 0 30px 0;text-wrap:pretty">Five modules, $50 each, or the whole collection for $150.</p>
-    <a href="mailto:info@theta.audio?subject=THE%20COLOR%20COLLECTION%20updates" data-notify="THE COLOR COLLECTION" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:20px 42px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+    <a href="mailto:info@theta.audio?subject=THE%20ALCHEMY%20INDEX%20updates" data-notify="THE ALCHEMY INDEX" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:20px 42px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
   </section>
 </main>
 
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE #009 // COLOR_COLLECTION</span>
+  <span>LAB NOTE #009 // ALCHEMY_INDEX</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
@@ -258,7 +273,10 @@ class Component extends DCLogic {
       openMoireField: this._mk('assets/moire/hero_field.png?v=260905', 2140, 2140 / 1410),
       openMoireRand: this._mk('assets/moire/hero_rand.png?v=260905', 2140, 2140 / 1410),
       openVestige: this._mk('assets/vestige/hero_v2.png?v=260907', 2140, 2140 / 1550),
-      openConcord: this._mk('assets/concord/hero_v2.png?v=260907', 2140, 2140 / 1378),
+      openConcord2: this._mk('assets/concord/hero_2v.png?v=260912', 2140, 2140 / 1378),
+      openConcord4: this._mk('assets/concord/hero_4v.png?v=260912', 2140, 2140 / 1378),
+      openConcord6: this._mk('assets/concord/hero_6v.png?v=260912', 2140, 2140 / 1378),
+      openConcord8: this._mk('assets/concord/hero_8v.png?v=260912', 2140, 2140 / 1378),
       openGire: this._mk('assets/gire/hero_v2.png?v=260907', 2140, 2140 / 1410),
     };
   }
