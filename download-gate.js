@@ -158,10 +158,22 @@
     document.body.appendChild(a); a.click(); a.remove();
   }
 
+  // ---- store handoff -------------------------------------------
+  // A data-gate whose href is a Lemon Squeezy checkout collects the address
+  // for Kit first, then hands the visitor to checkout with it pre-filled.
+  function isStore(h) { return /lemonsqueezy\.com\/checkout/i.test(h || ''); }
+
+  function withCustomer(h, email, first) {
+    var q = 'checkout%5Bemail%5D=' + encodeURIComponent(email);
+    if (first) q += '&checkout%5Bname%5D=' + encodeURIComponent(first);
+    return h + (h.indexOf('?') > -1 ? '&' : '?') + q;
+  }
+
   // ---- modal ---------------------------------------------------
   function openGate(plugin, href, notify, trial, pending) {
     if (document.querySelector('[data-th-gate-overlay]')) return;
     var prior = known();
+    var store = isStore(href);
     var T = notify ? CREAM : trial ? GOLD : GREEN;
     window.__thAccent = T.accent;
 
@@ -173,12 +185,13 @@
     close.setAttribute('aria-label', 'Close');
     panel.appendChild(close);
 
-    panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';opacity:' + (notify ? '0.7' : '1') + ';margin-bottom:12px', notify ? 'Launch Notice' : pending ? 'Trial Access' : trial ? 'Trial Download' : 'Free Download'));
+    panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';opacity:' + (notify ? '0.7' : '1') + ';margin-bottom:12px', notify ? 'Launch Notice' : pending ? 'Trial Access' : trial ? 'Trial Download' : store ? 'Free Instrument' : 'Free Download'));
     panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 10px 0', plugin));
     panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 28px 0',
       notify ? 'We\u2019ll email you the moment it ships, and your welcome note carries the THETA instruments that are already free.'
              : pending ? 'The same installer everyone buys, running unlicensed for fourteen days. Answer all four and the link comes to you.'
              : trial ? 'The same installer everyone buys. It runs unlicensed for fourteen days, every module, no quality reduction, and a licence turns it permanent in place.'
+             : store ? 'Leave your address and we hand you straight to the secure checkout with it filled in. The installer arrives by email, no account, no unlock.'
              : 'Tell us where to send it. No account, no unlock, the download starts immediately.'));
 
     var form = el('form', 'display:block');
@@ -197,7 +210,7 @@
     var err = el('p', 'font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:2px;color:#C98A7A;margin:0 0 14px 0;display:none;text-transform:uppercase;font-weight:700');
     form.appendChild(err);
 
-    var submit = el('button', 'width:100%;background:none;border:1px solid ' + T.accent + ';color:' + T.accentLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:5px;text-transform:uppercase;padding:19px;cursor:pointer;transition:0.3s', notify ? 'Notify me at launch' : pending ? 'Request the trial' : trial ? 'Start the trial' : 'Get the download');
+    var submit = el('button', 'width:100%;background:none;border:1px solid ' + T.accent + ';color:' + T.accentLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:5px;text-transform:uppercase;padding:19px;cursor:pointer;transition:0.3s', notify ? 'Notify me at launch' : pending ? 'Request the trial' : trial ? 'Start the trial' : store ? 'Continue to checkout' : 'Get the download');
     submit.type = 'submit';
     submit.addEventListener('mouseenter', function () { submit.style.background = T.accent; submit.style.color = '#000'; });
     submit.addEventListener('mouseleave', function () { submit.style.background = 'none'; submit.style.color = T.accentLt; });
@@ -243,6 +256,19 @@
       if (notify || pending) addWaitlist(plugin);
 
       send(rec).then(function () {
+        if (store) {
+          var target = withCustomer(href, v, name.value.trim());
+          panel.innerHTML = '';
+          panel.appendChild(close);
+          panel.appendChild(el('div', 'font-family:Montserrat,sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:' + T.accentDim + ';margin-bottom:14px', 'One moment'));
+          panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 14px 0', plugin));
+          panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 26px 0', 'Taking you to the secure checkout, with your details already filled in. The installer arrives by email the moment it completes.'));
+          var go = el('a', 'display:block;border:1px solid ' + C.green + ';color:' + C.greenLt + ';font-family:Montserrat,sans-serif;font-weight:700;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:16px;text-decoration:none', 'Continue to checkout');
+          go.href = target; go.rel = 'noopener';
+          panel.appendChild(go);
+          setTimeout(function () { window.location.href = target; }, 900);
+          return;
+        }
         if (!notify && !pending) deliver(href);
         panel.innerHTML = '';
         panel.appendChild(close);
