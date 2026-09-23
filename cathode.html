@@ -33,6 +33,7 @@
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
     <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
   </div>
 </nav>
 
@@ -66,8 +67,25 @@
     <div style="margin-bottom:80px">
       <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Most "lo-fi" plugins give you one flavor of broken. CATHODE gives you the whole broadcast path, stage by stage, the way a signal actually degrades on its way from a tape machine to a CRT to a cheap converter. Each module models a different failure, and because they're chained, the damage compounds, dropouts feed into interference, interference feeds into bitcrushing, and the LFO TOOLS section can sweep, wobble, and re-shape whatever comes out.</p>
       <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Every module is true bypass-by-crossfade (the DSP always runs; bypass is a 5 ms wet/dry fade, so toggling never clicks), and every module has its own MIX so you can dial the exact amount of ruin.</p>
-      <p style="font-weight:300;font-size:14px;color:#81848A;margin-top:25px"><b style="color:#B0B2B7;font-weight:700">Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output. (You can leave any stage off; the order is fixed and modelled to compound naturally.)</p>
+      <p style="font-weight:300;font-size:14px;color:#81848A;margin-top:25px"><b style="color:#B0B2B7;font-weight:700">Signal path:</b> HEAD → LOCK → RECEIVER → PHOSPHOR → INTERFERENCE → CRUSH → LFO TOOLS → output by default. Leave any stage off, or drag the modules into a new order.</p>
     </div>
+  </section>
+
+  <section data-screen-label="Rearrange the rack" style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">REARRANGE_THE_RACK</h3>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Grab a module by its title strip and drop it somewhere else. The rack re-flows around it, and where a card sits is exactly where it lands in the signal path: left to right along the top row, then along the bottom.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">That matters more than it sounds. Running HEAD&rsquo;s tape wear before INTERFERENCE&rsquo;s broadcast bursts smears the noise into the programme; running it after leaves the bursts sharp and ugly on top. CRUSH before PHOSPHOR grinds, CRUSH after it glows. There are over 3,400 arrangements of the seven modules, and none of them need a menu.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Rearranging is silent. The chain mutes for a fraction of a second while it re-routes, so you can move a module with audio running and never hear a click. The order is saved with your presets and with your session, so a chain you like is a chain you keep.</p>
+    <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:30px 0 0 0;padding:0;list-style:none">
+      <li style="margin-bottom:8px">· Drag any module by its title strip; where it sits is where it runs</li>
+      <li style="margin-bottom:8px">· Over 3,400 chain arrangements, no menus, no routing page</li>
+      <li style="margin-bottom:8px">· Silent rearranging, no clicks, even with audio playing</li>
+      <li style="margin-bottom:8px">· Chain order saves with every preset and session</li>
+      <li style="margin-bottom:8px">· Advanced panels follow their module wherever it goes</li>
+      <li style="margin-bottom:8px">· Existing projects open sounding the way you left them</li>
+    </ul>
+
+
   </section>
 
   <section style="max-width:1000px;margin:0 auto 80px auto">
@@ -231,12 +249,30 @@
       </ul>
     </div>
   </section>
+
+  <section data-screen-label="Chain order questions" style="max-width:1000px;margin:0 auto 60px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <div>
+      <span style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;display:block;margin:0 0 6px 0">CHAIN_ORDER // QUESTIONS</span>
+      <div style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.6fr);gap:40px;padding:24px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Will my existing projects still sound the same?</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Yes. A session or preset saved before 17.1 opens in the chain order that keeps it sounding as it did. The one exception is a project with all seven modules switched on at once: PHOSPHOR and INTERFERENCE change places, because the original order is the one arrangement the rack cannot lay out.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.6fr);gap:40px;padding:24px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Can I put the modules in any order at all?</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Any order the rack can display, more than 3,400 of them. The panels come in two widths, so a few arrangements don&rsquo;t fit the two-row grid; CATHODE only offers you the ones that do, so there is no such thing as an invalid drop.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.6fr);gap:40px;padding:24px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Does the chain order save with my presets?</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Yes, with user presets and with the DAW session. Factory presets carry their own intended order too.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE #003 // v17.0_RELEASE_PREP</span>
+  <span>LAB NOTE #003 // v17.1_REARRANGE_THE_RACK</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
