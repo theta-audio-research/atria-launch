@@ -33,6 +33,7 @@
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
     <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
+    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
   </div>
 </nav>
 
@@ -42,7 +43,7 @@
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">The saturation engine.</b><br><br>Tape, tubes, iron and glue, an entire analog record chain in one photographed console. Every knob is calibrated to hardware behaviour. Every meter is a real instrument. Every number we claim, we measure.<br><br>Most saturation plugins give you a color. CREOSOTE gives you the room: a tape machine with ten formulas on the shelf, a tube stage you can re-valve, eight vintage compressors with their true circuits, a summing amp with real iron on the output. And you choose the order they run in.</p>
+    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">The saturation engine.</b><br><br>Tape, tubes, iron and glue, an entire analog record chain in one photographed console. Every knob is calibrated to hardware behaviour. Every meter is a real instrument.<br><br>Most saturation plugins give you a color. CREOSOTE gives you a tape machine with ten formulas on the shelf, a tube stage you can re-valve, eight vintage compressors with their true circuits, a summing amp with real iron on the output. And you choose the order they run in.</p>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
@@ -69,7 +70,7 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px;margin-top:34px">
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Six orders, six different records</b>
+        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Reorder the modules</b>
         <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">The default runs AMBER into COMPRESS into GRIT: the valves and the compressor printed to tape last, the way a real record chain runs. Put GRIT first and the valves and the compressor react to the tape. Put COMPRESS first and the colour stages work on a steadier signal.</p>
       </div>
       <div>
@@ -110,7 +111,7 @@
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 200px;width:200px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-compress" src="assets/creosote/compress.png?v=260921" onClick="{{ openCompress }}" style="width:100%;aspect-ratio:345/363;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="COMPRESS"></image-slot></div>
         <div style="flex:1;min-width:280px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Not eight presets of one compressor. Eight topologies.</p>
+          
           <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The models</b>&nbsp;LEVEL CELL (opto, T4 three-stage cascade), BLACK FET (1176), ALL BUTTONS (1176, all in), TUBE MU (vari-mu), VCA BUS (console-bus VCA), DIODE BRIDGE, PWM, ZENER.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">True topology, automatically</b>&nbsp;each mode runs its hardware&rsquo;s actual detector circuit. The opto, vari-mu, bridge and PWM units run feedback, with the full loop behaviour: the knee eases in wide, the gain reduction refuses to overcompress (it blooms instead of clamping), and the release stretches after deep sustained reduction. The FET, VCA and Zener units run feedforward. Force either topology in TWEAK to A/B a mode against itself.</li>
@@ -125,7 +126,7 @@
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 200px;width:200px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-grit" src="assets/creosote/grit.png?v=260921" onClick="{{ openGrit }}" style="width:100%;aspect-ratio:343/362;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="GRIT"></image-slot></div>
         <div style="flex:1;min-width:280px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Seven transports. Ten reels. Three speeds. One WEAR knob that ages the whole transport at once.</p>
+          
           <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">7 machines</b>&nbsp;A800, ATR-102, JH-24, MTR-90, MM1200, 280 and a prosumer reel, each with its own head-bump frequency, asymmetry and pre-emphasis character.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">10 tape formulas</b>&nbsp;456, 406/407, 499, GP9, 250, 996, SM468, SM911, SM900 and a master-grade reel, with drive headroom, de-emphasis and hysteresis modeled per formula.</li>
@@ -146,7 +147,7 @@
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 380px;width:380px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-master" src="assets/creosote/tweak_master.png?v=260921" onClick="{{ openMaster }}" style="width:100%;aspect-ratio:1072/765;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="SUMMING"></image-slot></div>
         <div style="flex:1;min-width:280px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">The last analog bus before the wide world.</p>
+          
           <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PREGAIN, WIDTH (M/S), BALANCE</b>&nbsp;with twin backlit VU meters on the deck: real needle ballistics, real bulbs.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">IRON</b>&nbsp;a modeled output transformer (off / subtle / rich) with three voicings, the round British console, the punchy American, the broadcast desk, built as a flux integrator with magnetic remanence and leakage-resonance air rather than an EQ curve.</li>
@@ -198,7 +199,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px">
       <div>
         <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">No two racks alike &mdash; UNIT variance</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Real hardware never matched. Two LA-2As off the same line compressed differently; two channels of one console rolled off at different corners. Pick UNIT 1 through 16 and the instance adopts that unit&rsquo;s component tolerances: filter corners drift up to &plusmn;5%, drive points shift fractions of a dB, the channels mismatch just slightly. Deterministic, recall-safe, and loudness-matched to &plusmn;0.005 dB. Set VARIANCE from off to vintage, and tell your collaborator to use unit 7.</p>
+        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Two LA-2As off the same line compressed differently; two channels of one console rolled off at different corners. Pick UNIT 1 through 16 and the instance adopts that unit&rsquo;s component tolerances: filter corners drift up to &plusmn;5%, drive points shift fractions of a dB, the channels mismatch just slightly. Deterministic, recall-safe, and loudness-matched to &plusmn;0.005 dB. Set VARIANCE from off to vintage, and tell your collaborator to use unit 7.</p>
       </div>
       <div>
         <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Saturate the sustain, spare the attack &mdash; PUNCH</b>
