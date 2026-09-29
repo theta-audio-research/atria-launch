@@ -39,7 +39,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="cathode-hero" src="assets/cathode/hero.png?v=260910" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1650;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHODE User Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="cathode-hero" src="assets/cathode/hero.png?v=260929t" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1650;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHODE User Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -308,7 +308,7 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/cathode/hero.png?v=260910', 2652, 2652 / 1650),
+      openHero: this._mk('assets/cathode/hero.png?v=260929t', 2652, 2652 / 1650),
       openLock: this._mk('assets/cathode/lock.png?v=260801i', 1028, 1028 / 1384),
       openHead: this._mk('assets/cathode/head.png?v=260801i', 1028, 1028 / 1376),
       openReceiver: this._mk('assets/cathode/receiver.png?v=260801i', 1016, 1016 / 1380),

@@ -39,7 +39,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-hero-2026" src="assets/creosote/hero_v131.png?v=260921b" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CREOSOTE User Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-hero-2026" src="assets/creosote/hero_v131.png?v=260929t" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CREOSOTE User Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -244,9 +244,9 @@
     <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px">Two new light skins, PAPER and PRESS, join HYBRID and GREEN. Pick one in TWEAK &gt; MASTER &gt; CHASSIS.</p>
     <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 34px 0;max-width:820px">Your skin is saved for you, not in your sessions: every CREOSOTE window follows it, and loading a preset never changes it.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
-      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">GREEN</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-classic" src="assets/creosote/skin_classic.png?v=260929" onClick="{{ openSkinClassic }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="GREEN skin"></image-slot></div></div>
-      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">PAPER</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-cream" src="assets/creosote/skin_cream.png?v=260929" onClick="{{ openSkinCream }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PAPER skin"></image-slot></div></div>
-      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">PRESS</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-blue" src="assets/creosote/skin_blue.png?v=260929" onClick="{{ openSkinBlue }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PRESS skin"></image-slot></div></div>
+      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">GREEN</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-classic" src="assets/creosote/skin_classic.png?v=260929t" onClick="{{ openSkinClassic }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="GREEN skin"></image-slot></div></div>
+      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">PAPER</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-cream" src="assets/creosote/skin_cream.png?v=260929t" onClick="{{ openSkinCream }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PAPER skin"></image-slot></div></div>
+      <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">PRESS</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-blue" src="assets/creosote/skin_blue.png?v=260929t" onClick="{{ openSkinBlue }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PRESS skin"></image-slot></div></div>
     </div>
   </section>
 
@@ -331,7 +331,7 @@ class Component extends DCLogic {
       },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/creosote/hero_v131.png?v=260921b', 2028, 2028 / 1450),
+      openHero: this._mk('assets/creosote/hero_v131.png?v=260929t', 2028, 2028 / 1450),
       openGrit: this._mk('assets/creosote/grit.png' + V, 686, 343 / 362),
       openAmber: this._mk('assets/creosote/amber.png' + V, 686, 343 / 361),
       openCompress: this._mk('assets/creosote/compress.png' + V, 690, 345 / 363),
@@ -341,9 +341,9 @@ class Component extends DCLogic {
       openTweakTape: this._mk('assets/creosote/tweak_tape.png' + V, 1072, 1072 / 765),
       openTweakTube: this._mk('assets/creosote/tweak_tube.png' + V, 1072, 1072 / 765),
       openTweakCompress: this._mk('assets/creosote/tweak_compress.png' + V, 1072, 1072 / 765),
-      openSkinClassic: this._mk('assets/creosote/skin_classic.png?v=260929', 2028, 2028 / 1450),
-      openSkinCream: this._mk('assets/creosote/skin_cream.png?v=260929', 2028, 2028 / 1450),
-      openSkinBlue: this._mk('assets/creosote/skin_blue.png?v=260929', 2028, 2028 / 1450),
+      openSkinClassic: this._mk('assets/creosote/skin_classic.png?v=260929t', 2028, 2028 / 1450),
+      openSkinCream: this._mk('assets/creosote/skin_cream.png?v=260929t', 2028, 2028 / 1450),
+      openSkinBlue: this._mk('assets/creosote/skin_blue.png?v=260929t', 2028, 2028 / 1450),
       openTweakAbout: this._mk('assets/creosote/tweak_about.png' + V, 1072, 1072 / 765),
     };
   }
