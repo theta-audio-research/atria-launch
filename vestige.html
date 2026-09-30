@@ -84,6 +84,56 @@
     </div>
   </section>
 
+  <section data-screen-label="Reading the display" style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0">READING_THE_DISPLAY</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 16px 0;max-width:820px">The field in the middle of the panel is the room, drawn. Time runs away from you to the right, frequency band runs across to the left, and energy stands up out of the plane. The source strike hangs above the field as a single gold hub, and every line that falls from it is part of what VESTIGE is doing to your signal right now.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;max-width:820px">Each element answers to specific controls, so turning a knob moves the part of the picture it belongs to and nothing else.</p>
+    <div data-om-raster ref="{{ setDiagram }}" role="img" aria-label="Animated map of how the VESTIGE display responds to PRE-DELAY, DECAY, SIZE, DIFFUSION and the live wet level" style="max-width:760px;margin:0 auto 44px auto;aspect-ratio:680/400"></div>
+    <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:0 0 12px 0;border-bottom:1px solid #3A3534">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">ELEMENT</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">DRIVEN BY</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">AS THE CONTROL GOES UP</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Source hub and pre-delay run</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">PRE-DELAY</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">The hub walks up and left, out of the box, and the dashed run from the strike into the room grows longer.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Envelope ridge and filament heights</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DECAY</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">Energy stands up further down and to the right, reaching out to the far edge of the field. At 0.4 s it drops away almost at once; at 20 s it holds all the way across.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Early taps</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">SIZE</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">The reflections slide down and to the right, arriving later, and dim as they go.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Early taps</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DIFFUSION</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">Six hard, widely spaced dots become twenty-eight fine ones across the same window.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Echo picket</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">REPEAT / REGEN</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">The spacing between lines widens with REPEAT, and more lines survive as REGEN rises. It is measured from the room&rsquo;s own edge, so DECAY never moves it.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Filaments, by band</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DAMPING / BASS / ENGINE</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">DAMPING shortens the high-band side, BASS lengthens the low-band side, and ENGINE scales the height of the whole field.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0">
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase;line-height:1.6">Everything</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">Live wet level</span>
+        <span style="font-weight:300;font-size:13px;line-height:1.8">The field lifts and drops together with the signal. Silence collapses it onto the plane.</span>
+      </div>
+    </div>
+    <p style="font-weight:300;font-size:13px;line-height:1.8;color:#6E6764;margin:30px 0 0 0;max-width:820px">WANDER, SPIN, XOVER, TONE, MIX and HOLD are not drawn. A held tank still shows a decaying field; the picture describes the room, not the freeze.</p>
+  </section>
+
   <section style="max-width:1000px;margin:0 auto 60px auto;padding-top:60px;border-top:1px solid #3A3534">
     <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0">TECHNICAL_SPECIFICATIONS</h3>
     <div style="display:flex;flex-direction:column">
@@ -113,11 +163,78 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { zoomed: null };
+  _vsmBuild(t) {
+    const E = x => x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x + 2, 2) / 2;
+    const PH = [['PRE-DELAY','pd'],['DECAY','decay'],['SIZE','size'],['DIFFUSION','diff'],['WET LEVEL','wet']];
+    const D = 4.2, cyc = t % (D * PH.length), pi = Math.floor(cyc / D), u = (cyc - pi * D) / D;
+    const env = u < 0.36 ? E(u / 0.36) : u < 0.64 ? 1 : E(1 - (u - 0.64) / 0.36);
+    const v = { pd: 0.25, decay: 0.45, size: 0.25, diff: 0, wet: 1 };
+    const key = PH[pi][1];
+    if (key === 'wet') v.wet = 1 - env; else v[key] = v[key] + (1 - v[key]) * env;
+    const f = n => n.toFixed(1);
+    const G = '#81848A', GOLD = '#C8A86B', DIM = '#6E6764', CREAM = '#DCCDBF';
+    const H = [193 - 46 * v.pd, 43 - 20 * v.pd], F = [193 - 46 * v.pd, 203 - 20 * v.pd];
+    let o = '<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">';
+    o += '<path d="M 327 192 L 500 251 L 327 310 L 155 251 Z" fill="#DCCDBF" fill-opacity="0.035" stroke="'+DIM+'" stroke-width="1"/>';
+    o += '<path d="M 292 204 L 465 263 M 258 216 L 431 275 M 223 228 L 396 287 M 189 239 L 362 298 M 362 204 L 189 263 M 396 216 L 223 275 M 431 228 L 258 287 M 465 239 L 292 298" stroke="'+DIM+'" stroke-width="0.6" stroke-opacity="0.65" fill="none"/>';
+    o += '<path d="M 289 231 L 397 268 M 353 254 L 461 291" stroke="'+GOLD+'" stroke-width="1.1" stroke-dasharray="4 4" stroke-opacity="'+f(0.42*v.wet+0.1)+'" fill="none"/>';
+    o += '<path d="M '+f(H[0])+' '+f(H[1])+' L '+f(F[0])+' '+f(F[1])+'" stroke="'+G+'" stroke-width="0.8" stroke-opacity="0.35"/>';
+    o += '<path d="M '+f(F[0])+' '+f(F[1])+' L 245 220" stroke="'+GOLD+'" stroke-width="2" stroke-dasharray="5 4" fill="none"/>';
+    o += '<path d="M '+f(F[0])+' '+f(F[1]-5)+' L '+f(F[0])+' '+f(F[1]+5)+' M 245 215 L 245 225" stroke="'+GOLD+'" stroke-width="1.4"/>';
+    const B = [[300,266,22],[342,262,30],[262,277,15],[390,275,25],[330,292,12],[434,265,21],[226,266,13],[372,285,14],[466,271,13],[292,299,8]];
+    let ln = '', fl = '';
+    for (const [x,y,h] of B) {
+      const rel = (x - 226) / 240;
+      const sc = Math.max(0.02, v.wet * (0.55 + v.decay * (0.25 + 2.1 * rel) - 0.35 * rel));
+      const ty = y - h * sc;
+      ln += 'M '+f(H[0])+' '+f(H[1])+' L '+x+' '+f(ty)+' ';
+      fl += 'M '+x+' '+y+' L '+x+' '+f(ty)+' ';
+    }
+    o += '<path d="'+ln+'" stroke="'+G+'" stroke-width="0.7" stroke-opacity="'+f(0.12+0.3*v.wet)+'" fill="none"/>';
+    o += '<path d="'+fl+'" stroke="'+CREAM+'" stroke-width="1" stroke-opacity="0.6" fill="none"/>';
+    const n = Math.round(6 + 22 * v.diff), s0 = [288 + 44 * v.size, 137 + 46 * v.size], span = [56, 58];
+    const r = 2.8 - 1.5 * v.diff, op = 1 - 0.6 * v.size;
+    let tl = '', dots = '';
+    for (let k = 0; k < n; k++) {
+      const q = n === 1 ? 0 : k / (n - 1), x = s0[0] + span[0] * q, y = s0[1] + span[1] * q;
+      tl += 'M '+f(H[0])+' '+f(H[1])+' L '+f(x)+' '+f(y)+' ';
+      dots += '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(r)+'" fill="'+GOLD+'" fill-opacity="'+f(op * (0.3 + 0.7 * v.wet))+'"/>';
+    }
+    o += '<path d="'+tl+'" stroke="'+GOLD+'" stroke-width="'+f(1.1 - 0.6 * v.diff)+'" stroke-opacity="'+f(op * 0.8 * (0.3 + 0.7 * v.wet))+'" fill="none"/>' + dots;
+    const L = (a, b2, k) => a + (b2 - a) * k, dk = v.decay;
+    const lo = [340,130,353,172,420,215,500,247], hi = [372,78,414,117,458,150,500,180];
+    const p = lo.map((x, i) => L(x, hi[i], dk));
+    const wy = y => f(L(250, y, v.wet));
+    o += '<path d="M 327 '+wy(50)+' Q '+f(p[0])+' '+wy(p[1])+' '+f(p[2])+' '+wy(p[3])+' Q '+f(p[4])+' '+wy(p[5])+' '+f(p[6])+' '+wy(p[7])+'" stroke="#B0B2B7" stroke-width="2" fill="none"/>';
+    o += '<text x="510" y="178" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.5" fill="'+(dk > 0.7 ? CREAM : DIM)+'">20 S TAIL</text>';
+    o += '<text x="510" y="250" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.5" fill="'+(dk < 0.3 ? CREAM : DIM)+'">0.4 S TAIL</text>';
+    o += '<circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="12" fill="'+GOLD+'" fill-opacity="0.14"/><circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="4.6" fill="'+GOLD+'"/>';
+    const T = (x, y, txt, anchor, col) => '<text x="'+x+'" y="'+y+'"'+(anchor ? ' text-anchor="'+anchor+'"' : '')+' font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.5" fill="'+(col || G)+'">'+txt+'</text>';
+    o += T(f(H[0]), f(H[1] - 19), 'SOURCE HUB', 'middle');
+    o += T(f(F[0] - 8), f(F[1] + 25), 'PRE-DELAY RUN', 'end');
+    o += T(f(s0[0] + 70), f(s0[1] + 12), 'EARLY TAPS');
+    o += T(404, 300, 'ECHO PICKET') + T(243, 330, 'SCATTER FILAMENTS', 'middle');
+    o += '<path d="M 95 340 L 152 360 M 95 340 L 38 360 M 95 340 L 95 306" stroke="'+G+'" stroke-width="1.3" fill="none"/>';
+    o += T(162, 365, 'TIME') + T(32, 365, 'BAND', 'end') + T(95, 298, 'ENERGY', 'middle');
+    const label = PH[pi][0] + (key === 'wet' ? ' FALLS' : ' UP');
+    o += '<text x="660" y="30" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="3" fill="'+CREAM+'">'+label+'</text>';
+    o += '<rect x="560" y="40" width="100" height="1" fill="'+DIM+'"/><rect x="560" y="40" width="'+f(100 * env)+'" height="1" fill="'+GOLD+'"/>';
+    PH.forEach((ph, i) => { o += '<rect x="'+(560 + i * 21)+'" y="48" width="16" height="2" fill="'+(i === pi ? GOLD : DIM)+'" fill-opacity="'+(i === pi ? 1 : 0.5)+'"/>'; });
+    return o + '</svg>';
+  }
+  _vsmStart() {
+    if (this._vsmRaf || !this._vsmEl) return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this._vsmEl.innerHTML = this._vsmBuild(0.6); return; }
+    const t0 = performance.now();
+    const tick = (now) => { if (!this._vsmEl) { this._vsmRaf = null; return; } this._vsmEl.innerHTML = this._vsmBuild((now - t0) / 1000); this._vsmRaf = requestAnimationFrame(tick); };
+    this._vsmRaf = requestAnimationFrame(tick);
+  }
   componentDidMount() {
     this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
     document.addEventListener('keydown', this._esc);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
+  componentWillUnmount() { document.removeEventListener('keydown', this._esc); if (this._vsmRaf) cancelAnimationFrame(this._vsmRaf); this._vsmRaf = null; }
   componentDidUpdate() {
     const el = this._zoomImgEl;
     if (!el) return;
@@ -128,6 +245,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     return {
+      setDiagram: (el) => { if (el === this._vsmEl) return; this._vsmEl = el; if (el) this._vsmStart(); },
       overlayDisplay: this.state.zoomed ? 'flex' : 'none',
       setZoomImg: (el) => { this._zoomImgEl = el; },
       closeZoom: () => this.setState({ zoomed: null }),
