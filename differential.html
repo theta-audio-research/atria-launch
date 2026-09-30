@@ -231,10 +231,8 @@ class Component extends DCLogic {
     }
 
     const draw = this._frame(R, CREAM, PAL, PATTERN);
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (this._raf) cancelAnimationFrame(this._raf);
     this._raf = null;
-    if (reduce) { draw(8.0); return; }
     const t0 = performance.now();
     const tick = (now) => {
       if (!this._el || !this._el.isConnected) { this._raf = null; return; }
