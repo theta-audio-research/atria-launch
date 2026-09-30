@@ -74,6 +74,9 @@
   <section data-screen-label="Rearrange the rack" style="max-width:1000px;margin:0 auto 80px auto">
     <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">REARRANGE_THE_RACK</h3>
     <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Grab a module by its title strip and drop it somewhere else. The rack re-flows around it, and where a card sits is exactly where it lands in the signal path: left to right along the top row, then along the bottom.</p>
+    <div style="margin:10px 0 34px 0;overflow:hidden;border-radius:7px;max-width:900px">
+      <video ref="{{ setLoopVideo }}" src="assets/cathode/cathode_reorder_loop.mp4?v=260930" style="width:100%;height:auto;display:block"></video>
+    </div>
     <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">That matters more than it sounds. Running HEAD&rsquo;s tape wear before INTERFERENCE&rsquo;s broadcast bursts smears the noise into the programme; running it after leaves the bursts sharp and ugly on top. CRUSH before PHOSPHOR grinds, CRUSH after it glows. There are over 3,400 arrangements of the seven modules, and none of them need a menu.</p>
     <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Rearranging is silent. The chain mutes for a fraction of a second while it re-routes, so you can move a module with audio running and never hear a click. The order is saved with your presets and with your session, so a chain you like is a chain you keep.</p>
     <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:30px 0 0 0;padding:0;list-style:none">
@@ -306,6 +309,13 @@ class Component extends DCLogic {
       zoomedWidth: z ? z.w : 0,
       zoomedRatio: z ? z.r : 1,
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
+      setLoopVideo: (el) => {
+        if (!el || this._loopEl === el) return;
+        this._loopEl = el;
+        el.loop = true; el.muted = true; el.defaultMuted = true; el.playsInline = true; el.autoplay = true;
+        const go = () => { const p = el.play(); if (p && p.catch) p.catch(() => {}); };
+        go(); el.addEventListener('loadeddata', go, { once: true });
+      },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
       openHero: this._mk('assets/cathode/hero.png?v=260929t', 2652, 2652 / 1650),
