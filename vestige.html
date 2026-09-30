@@ -224,8 +224,6 @@ class Component extends DCLogic {
   }
   _vsmStart() {
     if (this._vsmRaf || !this._vsmEl) return;
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { this._vsmEl.innerHTML = this._vsmBuild(0.6); return; }
     const t0 = performance.now();
     const tick = (now) => { if (!this._vsmEl) { this._vsmRaf = null; return; } this._vsmEl.innerHTML = this._vsmBuild((now - t0) / 1000); this._vsmRaf = requestAnimationFrame(tick); };
     this._vsmRaf = requestAnimationFrame(tick);
