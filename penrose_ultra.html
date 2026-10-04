@@ -14,12 +14,7 @@
 <link rel="stylesheet" href="mobile.css">
 <script src="./image-slot.js"></script>
 <script src="./download-gate.js"></script>
-<style>
-image-slot::part(frame){background:transparent}
-image-slot::part(ring){display:none}
-a{color:#DCCDBF}
-a:hover{color:#F0E6D2}
-</style>
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
 </helmet>
 <div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
@@ -42,77 +37,214 @@ a:hover{color:#F0E6D2}
 </nav>
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
-  <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="penrose-ultra-hero" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2092/1370;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="PENROSE ULTRA main surface"></image-slot></div>
-  </div>
 
-  <div style="max-width:900px;margin:0 auto 100px auto">
-    <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;border-bottom:1px solid #3A3534;padding-bottom:16px;margin-bottom:26px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">028_PNU</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">SISTER BUILD TO <a href="penrose.html" style="text-decoration:none">PENROSE</a></span>
-    </div>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#6E6764;margin:0;max-width:780px;text-wrap:pretty">Copy pending. Send the ULTRA web copy and the panel captures and this frame fills in.</p>
-  </div>
-
-  <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
-    <span style="font-size:10px;letter-spacing:4px;color:#6E6764;margin-bottom:15px;display:block;font-weight:700">SYSTEM_STATUS // IN_DEVELOPMENT</span>
-    <div style="background:rgba(220,205,191,0.01);border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.8;margin-bottom:30px;text-transform:uppercase;color:#81848A">PENROSE ULTRA is in calibration. Leave an address and the release notice comes to you first.</p>
-      <a href="mailto:info@theta.audio?subject=PENROSE%20ULTRA%20updates" data-notify="PENROSE ULTRA" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
+  <section data-screen-label="Hero" style="max-width:1000px;margin:20px auto 50px auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center">
+    <image-slot id="pu-core" src="assets/penrose_ultra/core-spectrum.webp?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1/1;display:block;border-radius:50%;overflow:hidden" shape="circle" placeholder="PENROSE ULTRA spectrum core"></image-slot>
+    <div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#C8A86B;display:block;margin:0 0 22px 0;text-transform:uppercase">Mix-bus mastering · Dialogue enhancement · Beta soon</span>
+      <h1 style="font-weight:300;font-size:clamp(26px,3vw,38px);letter-spacing:0.12em;line-height:1.35;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;text-wrap:balance">Finish the mix. Bring the voice forward.</h1>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 26px 0;text-wrap:pretty">PENROSE ULTRA is a three-knob mastering processor for people who publish. INFALL clears out what is in the way. EMERGENCE adds weight, air and glue. DIALOG lifts speech in a finished stereo mix, so your host, your guest or your voiceover sits on top of the music without anyone reaching for a stem.</p>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">IN ONE SIDE / OUT THE OTHER</span>
     </div>
   </section>
 
-  <section style="max-width:1000px;margin:0 auto 100px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
-    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 60px">
-      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats &amp; platform</b>VST3 &middot; AU &middot; AAX &middot; macOS 11.0 Big Sur or later &middot; Apple Silicon.</li>
-      <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Installation</b>One signed installer package. Each format is placed where its host expects it.</li>
-    </ul>
+  <section data-screen-label="Notify" style="margin:0 auto 100px auto;max-width:600px;text-align:center">
+    <span style="font-size:10px;letter-spacing:4px;color:#C8A86B;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
+    <div style="background:rgba(220,205,191,0.02);border:1px solid #3A3534;padding:40px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.8;margin:0 0 30px 0;text-transform:uppercase;color:#B0B2B7;line-height:1.9">The beta opens soon. Leave your email and we will send the installer when it is ready, along with the release notes.</p>
+      <a href="mailto:info@theta.audio?subject=PENROSE%20ULTRA%20beta" data-notify="PENROSE ULTRA" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">JOIN_THE_BETA</a>
+      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · AU / VST3 / AAX</p>
+    </div>
+  </section>
+
+  <section data-screen-label="The idea" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">IN ONE SIDE. OUT THE OTHER.</h3>
+    <div style="max-width:820px">
+      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">The PENROSE ULTRA interface is drawn as a bridge through spacetime. Your signal falls in on the left, is stripped down to what holds up, and comes out on the right.</p>
+      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">The picture is the signal path. The left half only ever takes away: resonance, harshness, mud. The right half only ever gives back: weight, air, glue. You always know which side of the plug-in is doing what, and why.</p>
+      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0;text-wrap:pretty">That makes it fast. Most of the time you will set two or three knobs, listen, and move on to the next episode.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Three knobs" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 40px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THREE KNOBS</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:17px;letter-spacing:7px;color:#7FA8D6;text-transform:uppercase;font-weight:300">INFALL</span>
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Take out what is in the way</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Removes resonance, harshness and mud, then warms what is left. Ring-y rooms, spitty esses and boomy low mids come down without the mix losing its body.</p>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">TEMPER · EDGE · BALLAST · HEAT</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:17px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:300">EMERGENCE</span>
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Give back what makes it finished</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Adds weight and air, then glues the mix together and holds the ceiling. The step that turns a good rough into something you can publish.</p>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">CORE · HALO · GRAVITY</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:17px;letter-spacing:7px;color:#E8B04B;text-transform:uppercase;font-weight:300">DIALOG</span>
+        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Bring the voice to the front</span>
+        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Lifts the range where speech is understood and eases the music bed back underneath it. Works on the finished stereo mix, so it works on the file you already have.</p>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">BALANCE · TONE · SENSE</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Dialog" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE VOICE, FORWARD. THE MUSIC, STILL THERE.</h3>
+    <div style="max-width:820px">
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">You have the final mix. The music bed is a touch hot, the host is a touch buried, and the stems are long gone. DIALOG works on the stereo file you already have.</p>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Turn it up and four bands where speech carries its meaning come forward: body at 500 Hz, clarity at 1 and 2 kHz, presence at 4 kHz. Their depths follow the band-importance weights of the speech intelligibility standard (ANSI S3.5), so the help goes where listeners actually catch words. At the same time two bands where a music bed keeps its energy, 90 Hz and 250 Hz, ease back, clearing the low end that buries a voice two octaves above it.</p>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">It follows the talking. When someone speaks, DIALOG leans in. When they stop, it lets the music be music.</p>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;text-wrap:pretty">It changes balance, not loudness. DIALOG measures exactly what it added and takes that much back, so turning the knob moves the voice forward without a level jump fooling your ears. You judge it by what you hear, and it does not drive the limiter any harder.</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">BALANCE</span><span style="font-weight:300;font-size:13px;line-height:1.8">Which way the knob works. Toward 0 it only eases the music back. Toward 100 it only brings the voice forward. In the middle it does both.</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">TONE</span><span style="font-weight:300;font-size:13px;line-height:1.8">Which part of the voice gets the help. Lean toward weight and body for thin voices, or toward edge and presence for muffled ones.</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">SENSE</span><span style="font-weight:300;font-size:13px;line-height:1.8">How readily DIALOG decides someone is talking. Raise it for a quiet guest in a busy bed. Lower it when the music itself keeps waking it up.</span></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Delta" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 40px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">HEAR EXACTLY WHAT DIALOG IS DOING</h3>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center">
+      <div>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Press DELTA and PENROSE ULTRA plays only the difference DIALOG makes. The bands it is working on light up red on the SPECTRUM view, so you see and hear the change before you commit to it.</p>
+        <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 30px 0;text-wrap:pretty">If DELTA sounds like voice, you are in the right place. If it starts to sound like the drums or the pads, back DIALOG off or lower SENSE. It is the fastest way to set the knob by ear and the easiest way to trust what it did.</p>
+        <button onClick="{{ toggleDelta }}" style="font-family:'Montserrat',sans-serif;cursor:pointer;background:{{ deltaBg }};color:{{ deltaFg }};border:1px solid #E8604A;padding:14px 30px;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;transition:0.3s">{{ deltaLabel }}</button>
+      </div>
+      <div style="position:relative;width:100%;aspect-ratio:920/1080">
+        <image-slot id="pu-delta-off" src="assets/penrose_ultra/delta-off.png?v=261004" fit="contain" style="position:absolute;inset:0;width:100%;height:100%;transition:opacity 0.5s" shape="rect" placeholder="DELTA off"></image-slot>
+        <image-slot id="pu-delta-on" src="assets/penrose_ultra/delta-on.png?v=261004" fit="contain" style="position:absolute;inset:0;width:100%;height:100%;transition:opacity 0.5s;opacity:{{ deltaOn }}" shape="rect" placeholder="DELTA on"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="The gold" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">FOUR LIGHTS. ONE REWARD.</h3>
+    <div style="max-width:820px">
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">When your programme comes out the other side intact, the whole bridge blooms gold. It is the only reward the interface gives, and it is earned.</p>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Every light is measured on the audio, never read from where the knobs sit. A light that read the knobs would only be a picture of the knobs, and you would stop trusting every other meter on the screen.</p>
+      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;text-wrap:pretty">Four lights rather than a score, because a score invites chasing a number. Four lights tell you which one is dark and which control fixes it. The verdict reads EXITED INTACT, PASSING THROUGH or OVERDRIVEN.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px">
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Found something</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">INFALL is actually removing something from this material.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Not scoured</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">And it is taking the faults, not the record.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Glued, not squashed</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The glue sits inside its musical window.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Ceiling holding</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The limiter catches peaks instead of doing the mastering.</p></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Three views" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">SEE WHAT HAPPENED, THREE WAYS</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;max-width:820px;text-wrap:pretty">One click switches the plate between three views of the same measurements. Every cell on screen is drawn from the audio, so the views never disagree.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">SPECTRUM</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Input on the left, output on the right, frequency running round the ring from 20 Hz at the bottom to 20 kHz at the top. What INFALL removed and what EMERGENCE and DIALOG added, band by band.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">HISTORY</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Loudness over the timeline. It follows your host&rsquo;s playhead, holds still when you stop, and clears only when you press RESET.</p></div>
+      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">FLOW</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The signal in motion. Input streams into the core on the left and is emitted on the right. What INFALL cut rides in as white specks, limiting piles up against the ring, and DIALOG&rsquo;s lift leaves in gold.</p></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Meters" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">LOUDNESS YOU CAN DELIVER TO</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0;max-width:820px;text-wrap:pretty">Input and output loudness for the last 3 seconds and for the whole pass, loudness range, true peak, how much INFALL removed, how hard HORIZON is limiting, and how much of the time someone is talking. Integrated loudness follows your host&rsquo;s timeline: it keeps measuring while you play, holds its reading when you stop, and starts again only when you ask it to.</p>
+  </section>
+
+  <section data-screen-label="Skins" style="max-width:1000px;margin:0 auto 90px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">FOUR LOOKS. ONE PLATE.</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 40px 0;max-width:820px;text-wrap:pretty">Switch the whole interface to suit your room and your eyes. Each skin is designed from its own ground up: light emits on the dark ones and ink is laid down on the light ones.</p>
+    <div data-skin-grid style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <image-slot id="pu-skin-void" src="assets/penrose_ultra/skin-void.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="VOID skin"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">VOID</span>
+        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">The original. A black field that throws light, gold at the throat.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <image-slot id="pu-skin-paper" src="assets/penrose_ultra/skin-paper.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="PAPER skin"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">PAPER</span>
+        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">A plotted graph. Warm stock, royal-blue rules, vermilion ink.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <image-slot id="pu-skin-press" src="assets/penrose_ultra/skin-press.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="PRESS skin"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">PRESS</span>
+        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">A printed plate. White line art on blue, a hot red at the throat.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <image-slot id="pu-skin-heat" src="assets/penrose_ultra/skin-heat.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="HEAT skin"></image-slot>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">HEAT</span>
+        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">Cold steel and a dull red element that glows as the programme heats up.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Start fast" style="max-width:1000px;margin:0 auto 90px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">START FROM A VOICING</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0 0 20px 0">Eight starting points for different kinds of record, each checked against real material. Each one sets the proportions behind the knobs for a kind of record, then hands you the knobs. DEFAULT starts with nothing engaged, so a fresh insert never changes your sound on its own.</p>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;line-height:2.1;color:#6E6764">DEFAULT · HOUSE · HIP-HOP · ROCK · METAL · POP · JAZZ · ACOUSTIC · CINEMATIC</span>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">OPEN THE DRAWER</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0 0 20px 0">ADVANCED reveals ten trims in three groups for when a light is dark and you want to fix it precisely.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;color:#6E6764">
+        <span><span style="color:#7FA8D6;display:inline-block;width:100px">INFALL</span>TEMPER · EDGE · BALLAST · HEAT</span>
+        <span><span style="color:#DCCDBF;display:inline-block;width:100px">EMERGENCE</span>CORE · HALO · GRAVITY</span>
+        <span><span style="color:#C8A86B;display:inline-block;width:100px">BUS</span>HORIZON · MIX · OUTPUT</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Coming soon" style="max-width:1000px;margin:0 auto 90px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 26px 0">COMING SOON // VOCAL MODE</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0;max-width:820px;text-wrap:pretty">DIALOG is tuned for the spoken word. On a song it will lift the lead singer too, which is exactly what some mixes need and exactly wrong for others. A dedicated Vocal mode is on the way, with DIALOG retuned for sung voices. You choose the mode yourself, so it never changes behind your back.</p>
+  </section>
+
+  <section data-screen-label="Specifications" style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0">TECHNICAL_SPECIFICATIONS</h3>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">FORMATS</span><span style="font-weight:300;font-size:13px;line-height:1.8">AU · VST3 · AAX</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">SYSTEM</span><span style="font-weight:300;font-size:13px;line-height:1.8">macOS 11 or later, Apple Silicon</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">CONTROLS</span><span style="font-weight:300;font-size:13px;line-height:1.8">INFALL · EMERGENCE · DIALOG, plus BALANCE, TONE, SENSE and ten advanced trims</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">CEILING</span><span style="font-weight:300;font-size:13px;line-height:1.8">Always-armed &minus;1.0 dBFS output ceiling</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">METERING</span><span style="font-weight:300;font-size:13px;line-height:1.8">Short-term and integrated LUFS, loudness range, true peak, voice activity</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">VIEWS</span><span style="font-weight:300;font-size:13px;line-height:1.8">SPECTRUM · HISTORY · FLOW</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">SKINS</span><span style="font-weight:300;font-size:13px;line-height:1.8">VOID · PAPER · PRESS · HEAT, two interface sizes</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">LATENCY</span><span style="font-weight:300;font-size:13px;line-height:1.8">Reported to the host for automatic compensation</span></div>
+      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">INSTALLS</span><span style="font-weight:300;font-size:13px;line-height:1.8">Alongside PENROSE. Your PENROSE sessions stay exactly as they are.</span></div>
+    </div>
+  </section>
+
+  <section data-screen-label="From the makers" style="max-width:820px;margin:0 auto 40px auto;text-align:center">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 22px 0">FROM THE MAKERS OF <a href="penrose.html" style="color:#DCCDBF">PENROSE</a></h3>
+    <p style="font-weight:300;font-size:13px;line-height:1.9;margin:0 0 14px 0;text-wrap:pretty">PENROSE ULTRA grows out of PENROSE, THETA&rsquo;s free two-knob mastering processor. It keeps the bridge, the knobs and the honesty rules, and adds DIALOG, DELTA, three views, timeline metering and four skins.</p>
+    <p style="font-weight:300;font-size:13px;line-height:1.9;margin:0;text-wrap:pretty">It is a separate product with its own identity, so the two install side by side and never touch each other&rsquo;s sessions.</p>
   </section>
 </main>
 
-<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE #028 // PENROSE_ULTRA</span>
+  <span>LAB NOTE // PENROSE_ULTRA_BETA</span>
 </footer>
-
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" style="max-width:94vw;max-height:90vh;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6)">
-</div>
 
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { zoom: null };
+  state = { delta: false };
   componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoom: null }); };
-    document.addEventListener('keydown', this._esc);
+    this._t = setInterval(() => { if (!this._manual) this.setState(s => ({ delta: !s.delta })); }, 3200);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._img;
-    if (!el) return;
-    const want = this.state.zoom;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
+  componentWillUnmount() { clearInterval(this._t); }
   renderVals() {
-    const z = this.state.zoom;
-    // the hero is an unfilled slot until the capture lands; read whatever the
-    // user drops in so zoom keeps working without a hardcoded path
-    const heroSrc = () => {
-      const s = document.getElementById('penrose-ultra-hero');
-      return (s && (s.getAttribute('src') || s.currentSrc)) || null;
-    };
+    const on = this.state.delta;
     return {
-      overlayDisplay: z ? 'flex' : 'none',
-      setZoomImg: (el) => { this._img = el; if (el && z) { el.src = z; this._last = z; } },
-      closeZoom: () => this.setState({ zoom: null }),
-      openHero: () => { const s = heroSrc(); if (s) this.setState({ zoom: s }); },
+      deltaOn: on ? 1 : 0,
+      deltaBg: on ? '#E8604A' : 'transparent',
+      deltaFg: on ? '#0C1519' : '#E8604A',
+      deltaLabel: on ? 'DELTA ON' : 'DELTA OFF',
+      toggleDelta: () => { this._manual = true; this.setState(s => ({ delta: !s.delta })); },
     };
   }
 }
