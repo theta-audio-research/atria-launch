@@ -39,7 +39,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="gire-hero-v040" src="assets/gire/hero_v040.png?v=260929t" onClick="{{ openHero }}" fit="contain" style="width:100%;aspect-ratio:2140/1410;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="GIRE User Interface"></image-slot></div>
+    <div style="overflow:hidden;border-radius:2px"><image-slot id="gire-hero-v100" src="assets/gire/hero_v100.png?v=261003t" onClick="{{ openHero }}" fit="contain" style="width:100%;aspect-ratio:2140/1410;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="GIRE User Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -224,7 +224,7 @@ class Component extends DCLogic {
       openTerrainFlat: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_flat.png?v=260929' }); },
       openTerrainTilt: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_tilt.png?v=260929' }); },
       openTerrainUpright: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_upright.png?v=260929' }); },
-      openHero: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/hero_v040.png?v=260929t' }); },
+      openHero: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/hero_v100.png?v=261003t' }); },
     };
   }
 }

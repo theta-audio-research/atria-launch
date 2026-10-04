@@ -38,7 +38,7 @@
 
 <main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div onClick="{{ open0 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-0" src="assets/cinder/hero_ember.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="CINDER, EMBER"></image-slot></div>
+    <div onClick="{{ open0 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-0-v009" src="assets/cinder/hero_ember_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="CINDER, EMBER"></image-slot></div>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
@@ -59,43 +59,110 @@
     </div>
   </section>
 
+  <div style="max-width:850px;margin:0 auto 70px auto;border-left:1px solid #CFC5B6;padding-left:40px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#C8A86B;display:block;margin:0 0 18px 0">THREE-CIRCUIT DISTORTION</span>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Most distortion plugins show you a curve. Very few show you <i>their</i> curve. The picture is usually drawn by separate code from a simplified model, so it tracks the sound loosely and diverges exactly where you care most: at the extremes, and once the second stage is involved.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">CINDER shares one waveshaper between the audio path, the display and the test harness, so the curve bends because the shaper bent. The THD readout goes a step further: it is not predicted from the curve at all. It is measured from the audio leaving the plugin, on the fundamental it finds in your signal. The build refuses to ship if that readout disagrees with an independent analysis of the same audio by more than half a decibel.</p>
+    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume. Twelve samples of latency, at every sample rate.</p>
+  </div>
+
   <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="max-width:820px;margin-bottom:44px">
-      <div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#C8A86B;text-transform:uppercase;display:block;margin-bottom:16px">THREE-CIRCUIT DISTORTION</span>
-        <h2 style="font-weight:700;font-size:30px;letter-spacing:11px;color:#B0B2B7;text-transform:uppercase;margin:0 0 22px 0">CINDER</h2>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <div style="margin-bottom:8px">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;display:block;margin-bottom:16px">ENGINES</span>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:22px">
-            <span style="border-left:2px solid #3A3534;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">EMBER</span><span style="font-weight:300;font-size:12.5px;line-height:1.75">A symmetric soft clipper that thickens without changing the character of the source.</span></span>
-            <span style="border-left:2px solid #3A3534;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">CHAR</span><span style="font-weight:300;font-size:12.5px;line-height:1.75">Clips harder on one half of the wave, the way a triode stage does, and puts real second harmonic into the signal.</span></span>
-            <span style="border-left:2px solid #3A3534;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">ASH</span><span style="font-weight:300;font-size:12.5px;line-height:1.75">A wavefolder. Past the first fold it stops sounding like clipping and starts sounding like a new instrument.</span></span>
-            </div>
-          </div>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid rgba(58,53,52,0.6);padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;flex:0 0 106px">TUBE</span><span style="font-weight:300;font-size:12.5px;line-height:1.75;flex:1">Models a triode’s bias shift and generates the even harmonics. Body and warmth, on their own control.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid rgba(58,53,52,0.6);padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;flex:0 0 106px">IRON</span><span style="font-weight:300;font-size:12.5px;line-height:1.75;flex:1">Models transformer flux and generates the odd series. Edge and aggression, separate from the body.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid rgba(58,53,52,0.6);padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;flex:0 0 106px">BIAS</span><span style="font-weight:300;font-size:12.5px;line-height:1.75;flex:1">Pushes the signal off-centre before the shaper, so even a symmetric circuit clips asymmetrically. The fastest route from clean to vocal.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid rgba(58,53,52,0.6);padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;flex:0 0 106px">SAG</span><span style="font-weight:300;font-size:12.5px;line-height:1.75;flex:1">Droops the drive behind a slow rectified envelope, the way a supply rail sags under load. On drums it opens the tail out behind the hit.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;flex:0 0 106px">VAR</span><span style="font-weight:300;font-size:12.5px;line-height:1.75;flex:1">Component mismatch between the two channels, on purpose. At zero they are identical; the imperfection is something you ask for.</span></span>
-        </div>
-      </div>
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THREE_CIRCUITS</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">EMBER</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">A symmetric soft clipper: hyperbolic tangent, no even-order content to speak of (H2 sits at &minus;126 dB). It compresses peaks and thickens without changing the character of the source.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">CHAR</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Clips harder on one half of the waveform than the other, the way a triode stage does. H2 measures &minus;26 dB against EMBER&rsquo;s &minus;126 dB at the same drive: a hundred decibels of difference from one button.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">ASH</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">A wavefolder. Past the first fold it stops sounding like clipping and starts sounding like a new instrument. It is the setting that will not behave, and it is on the panel for that reason.</p></div>
     </div>
   </section>
-
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_SATURATION_STAGE</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Two knobs, two harmonic families, deliberately separated.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty"><b style="color:#B0B2B7;font-weight:700">TUBE</b> models a triode&rsquo;s bias shift and generates even harmonics: H2 climbs from &minus;126 dB to &minus;25 dB between 0 and 60. <b style="color:#B0B2B7;font-weight:700">IRON</b> models transformer flux and generates the odd series: at IRON 60, H3 lands at &minus;19.02 dB and H5 at &minus;40.28 dB, both matching the reference formula to two decimal places.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">Even harmonics read as warmth and thickness; odd read as edge and aggression. Having them on separate controls means you can add body without adding bite, or the reverse.</p>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">VAR // THE_TOLERANCE_KNOB</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">Real stereo hardware has two channels built from components that do not match. VAR introduces that mismatch on purpose: the right channel recomputes with slightly more drive, slightly more bias and slightly hotter saturation stages.</p>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">At VAR 0 the two channels are identical to &minus;345 dB. The imperfection is something you ask for, never something you have to work around.</p>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">BIAS_AND_SAG</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0 0 16px 0;max-width:820px;text-wrap:pretty"><b style="color:#B0B2B7;font-weight:700">BIAS</b> pushes the signal off-centre before the shaper, so the circuit clips asymmetrically even when the circuit itself is symmetric. At BIAS 0.4, EMBER&rsquo;s second harmonic rises from &minus;126 dB to &minus;20.92 dB. The fastest route from clean to vocal.</p>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty"><b style="color:#B0B2B7;font-weight:700">SAG</b> droops the effective drive behind a slow rectified envelope, the way a supply rail sags under load. At SAG 100 the third harmonic falls from &minus;11.73 dB to &minus;17.90 dB. On drums it opens the tail out behind the hit.</p>
+    </div>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_DISPLAY</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">A 440 &times; 400 instrument in the centre of the panel, redrawn on every parameter change and never animated for its own sake.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">The bright curve is the active transfer function. Two ghost curves behind it show the same circuit at half your drive and at roughly half again above it, so you can see which way the character is heading before you turn anything.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Fifty-six input filaments rise from the axis to meet the curve, and their output heights are echoed as ticks on the left edge. Where the curve flattens, the ticks crowd together: the compression, drawn. An ember marker sits where a peak input of 0.72 meets the curve.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">In the corner, one measured line: <span style="font-family:'JetBrains Mono',monospace;color:#C8A86B">THD 23.0 % @ 1.00 kHz</span>. CINDER finds the fundamental in your input, reads every harmonic of it the output can contain, and names that fundamental. Feed it a chord or noise and it reads <span style="font-family:'JetBrains Mono',monospace;color:#C8A86B">THD --</span> rather than print a number that means nothing.</p>
+  </section>
   <section style="max-width:1000px;margin:0 auto 80px auto">
     <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_PANEL</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
-      <div onClick="{{ open1 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-1" src="assets/cinder/hero_char.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, CHAR"></image-slot></div>
-      <div onClick="{{ open2 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-2" src="assets/cinder/hero_ash.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, ASH"></image-slot></div>
+      <div onClick="{{ open1 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-1-v009" src="assets/cinder/hero_char_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, CHAR"></image-slot></div>
+      <div onClick="{{ open2 }}" style="overflow:hidden;border-radius:2px;cursor:zoom-in"><image-slot id="cinder-img-2-v009" src="assets/cinder/hero_ash_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, ASH"></image-slot></div>
     </div>
   </section>
-
-  <section style="max-width:1000px;margin:0 auto 60px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0">TECHNICAL_SPECIFICATIONS</h3>
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">TONE_MIX_OUTPUT</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">A &plusmn;12 dB tilt EQ after the distortion: at TONE +12 it measures &minus;6.00 dB at 100 Hz and +6.00 dB at 8 kHz, a clean 12 dB tilt around the pivot. A parallel MIX with a verified linear law, so 50% is exactly halfway between the two extremes. An OUTPUT trim from &minus;18 to +12 dB, calibrated to within 1% of its marking.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">MIX at 0 is transparent to &minus;288 dB against the latency-delayed input. Nothing from a hot drive setting leaks into the dry leg.</p>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">AUTO_LEVEL</h3>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Turn up a distortion and it gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling one in is rigged. You end up choosing the setting that was loudest rather than the one that was right.</p>
+    <p style="font-weight:300;font-size:14px;line-height:1.9;color:#81848A;margin:0 0 34px 0;max-width:820px;text-wrap:pretty">AUTO LEVEL takes that away. It holds the output where your input was, so moving DRIVE changes the tone and leaves the volume alone. Then it stops anything leaving above &minus;0.3 dBFS. One switch, four positions, no knobs to set.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px">
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">TRANSPARENT</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks the gain deliberately misses. No lookahead, so no latency.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">GLUE</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Adds a 2.5:1 soft-knee compressor with its own makeup, the way a bus compressor sits on a mix.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">CLIP</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Drives 9 dB into that clipper on purpose: loud and aggressive, without the fizz a plain clipper folds back down the spectrum.</p></div>
+    </div>
+    <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:34px 0 0 0;max-width:820px;text-wrap:pretty">Measured: twelve decibels of DRIVE move the output by <b style="color:#B0B2B7;font-weight:700">0.08 dB</b> with AUTO LEVEL working, where the same move is <b style="color:#B0B2B7;font-weight:700">9.56 dB</b> with it off. TRANSPARENT and GLUE land within 0.1 dB of each other, so switching between them is a character decision and not a volume control. OUTPUT still moves the output by exactly what it says.</p>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">TWELVE_SAMPLES</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">4&times; oversampling with antiderivative anti-aliasing around the nonlinearity, and twelve samples of reported latency: the same twelve at 44.1, 48 and 96 kHz, and in every AUTO LEVEL mode.</p>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">The kernels are deliberately asymmetric: 63 taps on the upsampler and 35 on the downsampler. Same total taps, same multiply count, identical latency, and 14 dB more in-band alias rejection than the obvious even split.</p>
+    </div>
+    <div>
+      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_SAME_RENDER_EVERY_TIME</h3>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">CINDER produces an identical result at any buffer size: 256 against 333 samples differ by &minus;346 dB, which is the float noise floor. That holds with SAG running, where the envelope state has to survive block boundaries.</p>
+      <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0;max-width:820px;text-wrap:pretty">Your offline bounce is the mix you approved.</p>
+    </div>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">PROOF_POINTS</h3>
+    <p style="font-weight:300;font-size:13px;line-height:1.9;color:#81848A;margin:0 0 26px 0;max-width:820px;text-wrap:pretty">Measured by the evaluation harness against the exact DSP that ships. 41 of 41 gates pass, and a failing gate stops the release.</p>
+    <ul style="list-style:none;padding:0;margin:0;font-weight:300;font-size:13px;line-height:1.8;color:#81848A;max-width:820px">
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Twelve samples of latency, identical at 44.1, 48 and 96 kHz, and the same in every AUTO LEVEL mode.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">MIX 0 is transparent to &minus;288 dB against the delayed input.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Bypass is latency-aligned, nulling at &minus;144 dB.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The MIX law is linear to &minus;142 dB of superposition error.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The THD readout is measured, not predicted, and agrees with an independent analysis of a real render to within 0.5 dB.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Circuit signatures are distinct and verified: EMBER H2 at &minus;126 dB, CHAR H2 at &minus;26 dB.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Block-size invariant to &minus;346 dB, including with the SAG envelope running.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">No DC offset under BIAS: mean output below &minus;60 dBFS on both channels.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The top octave stays flat: &minus;0.53 dB at 15 kHz, and within 0.03 dB of 1 kHz through every AUTO LEVEL mode.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Every AUTO LEVEL mode holds &minus;0.3 dBFS.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Aliasing: worst in-band product &minus;50.1 dB for inputs up to 14 kHz; &minus;32.4 dB worst case, from a 20.5 kHz input.</li>
+      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">NaN and infinity in, finite audio out. Stable with every control pinned.</li>
+    </ul>
+  </section>
+  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
+    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">TECHNICAL_SPECIFICATIONS</h3>
     <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">FORMATS</span><span style="font-weight:300;font-size:13px;line-height:1.8">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">SYSTEM</span><span style="font-weight:300;font-size:13px;line-height:1.8">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">System</span><span style="font-weight:300;font-size:13px;line-height:1.8">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Formats</span><span style="font-weight:300;font-size:13px;line-height:1.8">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Channels</span><span style="font-weight:300;font-size:13px;line-height:1.8">Stereo, mono, and mono-to-stereo</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Parameters</span><span style="font-weight:300;font-size:13px;line-height:1.8">Twelve, all automatable and host-visible</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Presets</span><span style="font-weight:300;font-size:13px;line-height:1.8">INIT, RUST BUS, EMBER LEAD, ASH FOLD, exposed to the host&rsquo;s preset menu; user presets save locally</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Processing</span><span style="font-weight:300;font-size:13px;line-height:1.8">4&times; oversampling with ADAA · 63-tap interpolation kernel · 12 samples of latency</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Auto Level</span><span style="font-weight:300;font-size:13px;line-height:1.8">OFF / TRANSPARENT / GLUE / CLIP, ceiling &minus;0.3 dBFS</span></div>
+      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764;text-transform:uppercase">Licence</span><span style="font-weight:300;font-size:13px;line-height:1.8">14-day full trial, then activation with your key</span></div>
     </div>
   </section>
 
@@ -104,10 +171,10 @@
   </section>
 </main>
 
-<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
+<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
   <span>THETA AUDIO RESEARCH // 2026</span>
   <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE // CINDER_IN_CALIBRATION</span>
+  <span>LAB NOTE // CINDER</span>
 </footer>
 
 <div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
@@ -141,9 +208,9 @@ class Component extends DCLogic {
       stopClick: (e) => e.stopPropagation(),
       openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
       openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ember.png?v=260929t' }); },
-      open1: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_char.png?v=260929t' }); },
-      open2: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ash.png?v=260929t' }); },
+      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ember_v009.png?v=261003' }); },
+      open1: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_char_v009.png?v=261003' }); },
+      open2: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ash_v009.png?v=261003' }); },
     };
   }
 }

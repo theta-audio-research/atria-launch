@@ -78,9 +78,9 @@
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
-      <div onClick="{{ openCinder }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder" src="assets/cinder/hero_ember.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, EMBER"></image-slot></div>
-      <div onClick="{{ openCinder2 }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder-2" src="assets/cinder/hero_char.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, CHAR"></image-slot></div>
-      <div onClick="{{ openCinder3 }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder-3" src="assets/cinder/hero_ash.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, ASH"></image-slot></div>
+      <div onClick="{{ openCinder }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder-v009" src="assets/cinder/hero_ember_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, EMBER"></image-slot></div>
+      <div onClick="{{ openCinder2 }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder-2-v009" src="assets/cinder/hero_char_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, CHAR"></image-slot></div>
+      <div onClick="{{ openCinder3 }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.85"><image-slot id="cc-cinder-3-v009" src="assets/cinder/hero_ash_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="CINDER, ASH"></image-slot></div>
     </div>
   </section>
 
@@ -280,9 +280,9 @@ class Component extends DCLogic {
       setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openCinder: this._mk('assets/cinder/hero_ember.png?v=260929t', 2140, 2140 / 1410),
-      openCinder2: this._mk('assets/cinder/hero_char.png?v=260929t', 2140, 2140 / 1410),
-      openCinder3: this._mk('assets/cinder/hero_ash.png?v=260929t', 2140, 2140 / 1410),
+      openCinder: this._mk('assets/cinder/hero_ember_v009.png?v=261003', 2140, 2140 / 1410),
+      openCinder2: this._mk('assets/cinder/hero_char_v009.png?v=261003', 2140, 2140 / 1410),
+      openCinder3: this._mk('assets/cinder/hero_ash_v009.png?v=261003', 2140, 2140 / 1410),
       openMoire: this._mk('assets/moire/hero.png?v=260929t', 2140, 2140 / 1410),
       openMoireField: this._mk('assets/moire/hero_field.png?v=260929t', 2140, 2140 / 1410),
       openMoireRand: this._mk('assets/moire/hero_rand.png?v=260929t', 2140, 2140 / 1410),
