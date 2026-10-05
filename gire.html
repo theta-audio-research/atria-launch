@@ -1,155 +1,998 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GIRE Product Page</title>
+<meta name="description" content="GIRE is a three-engine analog-modelled phaser: JFET, OPTICAL and DUAL. VST3, AU and AAX for macOS, with Windows coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching penrose_ultra.html. Single dark look by choice: THETA marketing pages live on the void theme.
+   GIRE's own colour enters only where the plug-in draws it: the terrain ramp (cyan, paper, amber, rose)
+   and its pink plate. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cut:#2ee6c8; --paper:#f6efe4; --amber:#ffb340; --rose:#ff4d8d;
+  --plum:#c6537c; --plate:#1d0f17; --teal:#6ec0b6;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(44px,7vw,84px);letter-spacing:.42em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the terrain well: GIRE's own plate colour */
+.well{border:1px solid #3a2230;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#2a1622,#140a10 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#1d0f17;stroke:#6b3550;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.loop{stroke:var(--rose);animation-duration:2.2s}
+.path .flow.low{stroke:var(--teal)}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--plum)}
+.ctrl.on label{color:var(--gold-hot)}
+.ctrl.on input[type=range]{accent-color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:var(--teal);color:#06110f;border-color:var(--teal)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* voices */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.voice canvas{display:block;width:100%;height:auto;background:var(--plate)}
+.voice .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.voice .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.voice .vn b{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.28em;color:var(--gold-hot)}
+.voice .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.voice p{color:var(--text-2);font-size:15.5px}
+
+/* knob cards */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:112px;height:112px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a1c20;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--plum);stroke-width:5;stroke-linecap:round}
+.knob-face{fill:#2a1622;stroke:#5a2f45;stroke-width:1.5}
+.knob-ptr{stroke:var(--paper);stroke-width:2.5;stroke-linecap:round}
+.knob-num{font-family:var(--f-mono);font-size:13px;fill:var(--text-2);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+.show{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);background:transparent;border:1px solid var(--gold-dim);border-radius:4px;padding:6px 10px;cursor:pointer;min-height:32px}
+.show:hover{background:rgba(200,168,107,.1)}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* stereo + auto level + IR panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(198,83,124,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices,.knobs{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
-
-<nav style="gap:24px;flex-wrap:wrap;padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
-  </a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#06080c">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#06080c">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#06080c">ACCOUNT</a>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-family:'Rubik',sans-serif;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
+<div class="wrap">
 
-  <section data-screen-label="Hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:48px 0 24px 0">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">Three-engine analog phaser · Alchemy Index</div>
-      <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 24px 0;color:#f0ede6">GIRE</h1>
-      <h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;color:#f0ede6;margin:0 0 16px 0;text-wrap:balance">A rotation slow enough <span style="color:#c8a86b">you never see it close.</span></h2>
-      <p style="margin:0;color:#b9b6ae;max-width:58ch;text-wrap:pretty">Three engines, JFET, OPTICAL and DUAL. Think of them as three networks: you choose how many allpass stages, how they are tuned against each other, how the control signal reaches them, and how the components disagree. The stage count lives in the DSP where it belongs, shown in the panel, never sold as a knob. At the bottom of the rate range GIRE takes thirty-three minutes to come back round.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/3a9535e6-384d-4805-a717-6de3af283e56?embed=1" class="lemonsqueezy-button" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Buy · $25</a><a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4c2f255c-b7fb-4e48-b471-1cf9d50e7d51?embed=1" class="lemonsqueezy-button" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:transparent;color:#c8a86b" style-hover="background:rgba(200,168,107,.1);color:#c8a86b">Try 14 days free</a></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AU</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">VST3</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AAX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">macOS · Apple Silicon and Intel</span></div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Analog-modelled phaser · Version 1.1.1</div>
+    <h1 class="wordmark">GIRE</h1>
+    <h2>Three engines. <em>One slow rotation.</em></h2>
+    <div class="lede">
+      <p>GIRE is a 3 Engine Analog Modelled Phaser. The Three Engines: JFET, OPTICAL and DUAL. Think of them as three networks and you get to choose how many allpass stages, how they are tuned against each other, how the control signal reaches them, and how the components disagree.</p>
+      <p>A gyre is a rotation slow enough that you never see it close. At the bottom of the rate range GIRE takes thirty-three minutes to come back round.</p>
     </div>
-    <figure style="margin:0;display:grid;gap:8px"><div onClick="{{ openHero }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.88"><image-slot id="gire-hero-v110" src="assets/gire/hero_v110.png?v=261004t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="GIRE interface"></image-slot></div></figure>
-  </section>
+    <div class="ctas">
+      <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/3a9535e6-384d-4805-a717-6de3af283e56?embed=1">Buy · $25</a>
+      <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4c2f255c-b7fb-4e48-b471-1cf9d50e7d51?embed=1">Try 14 days free</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>PHASE TERRAIN · <span id="h-voice">JFET</span></span>
+        <span class="seg" role="group" aria-label="Voice for the terrain">
+          <button type="button" data-hv="0" aria-pressed="true">JFET</button><button type="button" data-hv="1" aria-pressed="false">OPTICAL</button><button type="button" data-hv="2" aria-pressed="false">DUAL</button>
+        </span>
+      </div>
+      <canvas id="terrain" width="1200" height="820" aria-label="Animated phase terrain computed from GIRE's network: 32 tone bursts from 60 Hz at the front to 8 kHz at the back, bent by the phaser as it sweeps. Drag up or down to tilt."></canvas>
+      <div class="well-foot"><span>NOTCH <b id="h-notch">-</b></span><span>CYCLE <b id="h-cycle">-</b></span><span>STAGES <b id="h-stages">4</b></span></div>
+    </div>
+    <div class="tagline">DRAG THE TERRAIN TO TILT IT</div>
+  </div>
+</section>
 
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Three engines<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;gap:24px">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">Choose the circuit, <span style="color:#c8a86b">not the stage count.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Switching engine takes effect on the next block, and the display redraws to match. OPTICAL&rsquo;s four stage marks fan out up the frequency axis where JFET&rsquo;s sit together. DUAL gains a second machine sheet and carries up to six notch rows where the others carry two.</p></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px"><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#5fa8d8">JFET</div><h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.3;color:#f0ede6;margin:0;text-wrap:balance">The one your ear supplies.</h3><p style="margin:0;color:#b9b6ae;font-size:15.5px">Four matched first-order allpass stages and a smooth sine sweep. With WARMTH up, the stage coefficient is mildly signal-dependent, so hard playing pulls the sweep slightly lower and wider instead of holding one fixed width. The circuit inside the small orange box that was most people&rsquo;s first phaser.</p></div><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#ffc867">OPTICAL</div><h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.3;color:#f0ede6;margin:0;text-wrap:balance">Never the same way twice.</h3><p style="margin:0;color:#b9b6ae;font-size:15.5px">Four stagger-tuned stages driven through a lamp and a photocell rather than a clean LFO. The lamp warms with a 45 ms time constant and cools with a 120 ms one; each stage&rsquo;s cell lags slightly differently, and WARMTH widens how differently. The sweep rises a little faster than it falls, which a sine cannot manage.</p></div><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#dfe6ee">DUAL</div><h3 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:20px;line-height:1.3;color:#f0ede6;margin:0;text-wrap:balance">Twelve poles, deliberately.</h3><p style="margin:0;color:#b9b6ae;font-size:15.5px">Two six-stage machines in series per channel, their LFOs a fixed 12 degrees apart, each with its own feedback loop, limiter and damping. Parked at CENTER 640, its six notches spread from 84 Hz to 4.7 kHz, where JFET&rsquo;s two sit at 265 Hz and 1.5 kHz.</p></div></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>The controls<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;gap:24px">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">Slow is <span style="color:#c8a86b">the signature.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">MIX, REGEN, WARMTH and BODY glide over 20 ms, so every control automates without steps. Double-click a knob to return it to its default, or double-click its value to type a number.</p></div>
-    <table style="width:100%;border-collapse:collapse;font-size:15.5px"><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">RATE</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">0.01 to 10 Hz, weighted so most of the throw lives in the slow half. This is the hero control because slow is the signature.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">ULTRA SLOW</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Divides the rate by twenty. At the bottom of the range that is one sweep every 33 minutes: movement you feel across an arrangement rather than hear as an effect. The readout always shows the effective rate.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">DEPTH · CENTER</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">DEPTH sweeps up to 2.4 octaves; CENTER runs 100 Hz to 8 kHz. At DEPTH zero the sweep parks, leaving a fixed set of notches you place by ear with CENTER: two on JFET and OPTICAL, six on DUAL.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">REGEN</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">0 to 95% resonance, soft-limited inside the feedback loop, with high-frequency damping that tightens from 6 kHz to 2.5 kHz as WARMTH rises. It gets sharp and vocal; it never turns into the thin digital scream.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">WARMTH</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Turns the component model up. It is not an EQ. It widens the mismatch between stages, deepens the JFET nonlinearity, drives the feedback loop harder and tightens its damping, then adds a gentle second-harmonic tilt to the wet signal. A &minus;6 dBFS, 1 kHz tone at full WARMTH measures 0.35% THD.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">BODY</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">A phase-coherent split at 150 Hz. Turn it down and less of the low end goes through, so a low fundamental barely moves while everything above it keeps swirling. On TWELVE POLE, a 62 Hz fundamental moves more than 20 dB across the sweep at BODY 100, about 5 dB at BODY 55. 2.2 kHz keeps moving about 12 dB throughout. The riff keeps its punch.</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">MIX · INVERT</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">A linear crossfade, where 50% is the classic full-phase sound. INVERT flips the wet polarity, so peaks become notches.</td></tr></table>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Auto level<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">Judge the phasing, <span style="color:#c8a86b">not the volume.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">A phaser gets louder as REGEN climbs and loses level in its notches as MIX rises, so an A/B made while you dial it in is rigged toward the louder setting. AUTO LEVEL matches the output back to the level coming in and holds a &minus;0.3 dBFS ceiling.</p><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Take REGEN from 0 to 90 and the output moves 3 dB with AUTO LEVEL off, and about a tenth of a dB with it on. Changing mode fades over 10 ms, and nothing reads ahead, so GIRE stays at zero latency. OFF is the default, so sessions saved before 1.1.0 sound exactly as they did.</p></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px"><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#f0ede6">TRANSPARENT</div><p style="margin:0;color:#b9b6ae;font-size:15.5px">Rides the gain slowly and leaves the sound alone until the ceiling.</p></div><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#f0ede6">GLUE</div><p style="margin:0;color:#b9b6ae;font-size:15.5px">Adds a gentle 2.5:1 compressor, the way a bus compressor sits on a mix.</p></div><div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:24px;display:grid;gap:12px;align-content:start"><div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.24em;color:#f0ede6">CLIP</div><p style="margin:0;color:#b9b6ae;font-size:15.5px">Drives 9 dB into the ceiling. Loud on purpose.</p></div></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Two channels<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">No spread knob. <span style="color:#c8a86b">Each engine sets its own.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">The right channel runs the same sweep a fixed distance ahead of the left: 10 degrees on JFET, 12 on OPTICAL, 15 on DUAL. It sweeps around a centre 1.5% higher, with its own component calibration and, in OPTICAL, its own lamp and cell.</p></div>
-    <div style="display:grid;gap:16px;max-width:62ch"><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Neither channel is ever inverted against the other, so at ordinary settings a fold to mono costs you the image, not the signal. At default JFET settings a mono fold keeps 99.6% of a channel&rsquo;s level. Pushed hard it costs more: DUAL at full depth and 90% regen keeps about three quarters on average.</p><p style="margin:0;color:#b9b6ae;text-wrap:pretty"><span style="color:#f0ede6;font-weight:400">Mono in, stereo out</span> opens a single guitar into a phased image, with the left and right sweeps running a few degrees apart around slightly different centres.</p></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>The phase terrain<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;gap:24px">
-    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">The picture <span style="color:#c8a86b">is not an animation.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Each of its 32 rows is one tone burst at one frequency, on a log scale from 60 Hz at the front to 8 kHz at the back. The circuit you are running bends each burst: the crests shift by the phase lag at that frequency, and the envelope slides by the group delay. A notch shows as a flattened cyan row, a resonance as an amber ridge that turns rose as it builds.</p></div>
-    <div style="display:grid;gap:16px;max-width:62ch"><p style="margin:0;color:#b9b6ae;text-wrap:pretty">MIX pulls the stack apart: DRY at the back, the network&rsquo;s first pass in front of it, OUT at the front with the right channel printed over it at half density. The stage frequencies and loop gain come from what the engine ran in the last block, not from where the knobs point.</p><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Drag the picture down to flatten the rows toward edge-on, up or double-click to stand it back up. A test in our evaluation harness holds the display against the plug-in&rsquo;s measured impulse response at 60 parked settings; the worst case today is 3.87%.</p></div>
-  </section>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px"><figure style="margin:0;display:grid;gap:8px"><div onClick="{{ openTerrainFlat }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.88"><image-slot id="gire-terrain-flat" src="assets/gire/terrain_flat.png?v=260929" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="EDGE-ON"></image-slot></div><figcaption style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">EDGE-ON</figcaption></figure><figure style="margin:0;display:grid;gap:8px"><div onClick="{{ openTerrainTilt }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.88"><image-slot id="gire-terrain-tilt" src="assets/gire/terrain_tilt.png?v=260929" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="TILTED"></image-slot></div><figcaption style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">TILTED</figcaption></figure><figure style="margin:0;display:grid;gap:8px"><div onClick="{{ openTerrainUpright }}" style="cursor:zoom-in;transition:opacity 0.4s" style-hover="opacity:0.88"><image-slot id="gire-terrain-upright" src="assets/gire/terrain_upright.png?v=260929" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none" shape="rect" placeholder="UPRIGHT"></image-slot></div><figcaption style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">UPRIGHT</figcaption></figure></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Export IR<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">Print the network <span style="color:#c8a86b">as it sits.</span></h2></div>
-    <div style="display:grid;gap:16px;max-width:62ch"><p style="margin:0;color:#b9b6ae;text-wrap:pretty">The button under the picture prints the network as it sits right now into an impulse response: a 32-bit float WAV at the host&rsquo;s sample rate, mono or stereo to match the track, ready for any convolver. It offers a name built from the preset, the engine and the rate, and never writes over another file. Exporting never changes a sample of the audio that is playing.</p></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>The licence<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
-    <div style="display:grid;gap:16px;max-width:62ch"><h2 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:0.01em;color:#f0ede6;margin:0 0 8px 0;text-wrap:balance">Fourteen days, <span style="color:#c8a86b">the whole plug-in.</span></h2><p style="margin:0;color:#b9b6ae;text-wrap:pretty">The trial is everything, and the header counts down the days left. After that, a computer that has not been activated goes silent until a licence is activated. In GarageBand and other sandboxed hosts it keeps playing.</p></div>
-    <div style="display:grid;gap:16px;max-width:62ch"><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Activation needs an internet connection once. After that GIRE runs offline, and the licence does not expire. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move without writing to us.</p><p style="margin:0;color:#b9b6ae;text-wrap:pretty">Once activated, GIRE is never silenced by a licence check. After a hardware change it keeps playing, and the header reads REACTIVATE until you enter your key again.</p></div>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Who it is for<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <ol data-who-grid style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px"><li style="border-top:1px solid rgba(200,168,107,.45);padding-top:16px;display:grid;gap:8px;align-content:start"><b style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#f0ede6">GUITARISTS</b><p style="margin:0;color:#b9b6ae;font-size:16px">The mid-seventies four-stage sound is a preset, and BODY means a phaser on a down-tuned riff without losing the low end.</p></li><li style="border-top:1px solid rgba(200,168,107,.45);padding-top:16px;display:grid;gap:8px;align-content:start"><b style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#f0ede6">PRODUCERS</b><p style="margin:0;color:#b9b6ae;font-size:16px">DUAL at ultra-slow rates is a movement layer whose cycle outlasts most sections. Park it and print the notches with EXPORT IR.</p></li><li style="border-top:1px solid rgba(200,168,107,.45);padding-top:16px;display:grid;gap:8px;align-content:start"><b style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#f0ede6">MIX ENGINEERS</b><p style="margin:0;color:#b9b6ae;font-size:16px">Stereo that survives a mono fold, resonance that stays musical at 95%, and AUTO LEVEL so REGEN never wins on volume.</p></li><li style="border-top:1px solid rgba(200,168,107,.45);padding-top:16px;display:grid;gap:8px;align-content:start"><b style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.22em;color:#f0ede6">SCORE · AMBIENT</b><p style="margin:0;color:#b9b6ae;font-size:16px">A 33-minute sweep is a structural device, not an effect. Let a cue breathe across its whole length.</p></li></ol>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Specifications<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="display:grid;gap:24px">
-    <table style="width:100%;border-collapse:collapse;font-size:15.5px"><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">TYPE</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Three-engine analog-modelled phaser (insert)</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">ENGINES</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">JFET (4 matched stages) · OPTICAL (4 stagger-tuned stages, lamp and photocell) · DUAL (2 × 6 stages in series, machines 12° apart)</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">STEREO</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Right channel offset 10 to 15° by engine, never inverted. Mono, mono to stereo, stereo</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">OUTPUT</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, &minus;0.3 dBFS ceiling</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">EXPORT</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Impulse response as a 32-bit float WAV at the host&rsquo;s rate</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">LATENCY</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">Zero</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">PRESETS</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">INIT · SMALL ORBIT · SLOW BLOOM · GLASS SWIRL · TWELVE POLE · VAPOR TRAIL, plus user presets</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">LICENCE</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">14-day full trial · three computers · runs offline · perpetual</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">FORMATS</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">VST3 · AU · AAX</td></tr><tr><th style="text-align:left;padding:12px 16px 12px 0;border-bottom:1px solid #161a26;vertical-align:top;font-family:'Montserrat',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:0.2em;color:#8d8779;width:30%">SYSTEM</th><td style="text-align:left;padding:12px 0;border-bottom:1px solid #161a26;vertical-align:top;color:#b9b6ae">macOS 11 or later · Apple Silicon and Intel · Windows build in testing</td></tr></table>
-    <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779;max-width:80ch">GIRE&rsquo;s engines are original models inspired by classic hardware circuits. Product names referenced are trademarks of their respective owners; no affiliation or endorsement is implied.</p>
-  </section>
-  <div style="display:flex;align-items:center;gap:16px;margin:72px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Availability<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-  <section style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:32px;text-align:center;display:grid;gap:14px;justify-items:center">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">GIRE · Launch sale</div>
-    <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:22px;letter-spacing:0.08em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:44px;letter-spacing:0.08em;color:#f0ede6">$25</span></div>
-    <p style="margin:0;color:#b9b6ae;max-width:52ch">Use code <span style="font-family:'JetBrains Mono',monospace;color:#ffc867;letter-spacing:0.12em">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:6px"><a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/3a9535e6-384d-4805-a717-6de3af283e56?embed=1" class="lemonsqueezy-button" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Buy · $25</a><a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4c2f255c-b7fb-4e48-b471-1cf9d50e7d51?embed=1" class="lemonsqueezy-button" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:transparent;color:#c8a86b" style-hover="background:rgba(200,168,107,.1);color:#c8a86b">Try 14 days free</a></div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">AU / VST3 / AAX INCLUDED · <a href="color_collection.html" style="color:#8d8779">PART OF THE ALCHEMY INDEX</a></div>
-  </section>
-</main>
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <h2 class="h2">Delay the phase. <em>Mix it back.</em></h2>
+      <p>A phaser passes your signal through a chain of allpass stages. An allpass stage leaves every frequency at the same level and changes only its timing: each one lags the signal by a quarter turn at its own break frequency, and less above and below. Chain four and the lag reaches half a turn at two frequencies.</p>
+      <p><strong>Mix that back with the dry signal and those two frequencies cancel.</strong> That is a notch. Sweep the stages up and down and the notches travel through the spectrum, which is the sound everyone recognises as phasing.</p>
+    </div>
+    <div class="prose">
+      <p>Everything else in GIRE decides what those notches do. <strong>VOICE</strong> chooses the network. <strong>RATE</strong>, <strong>DEPTH</strong> and <strong>CENTER</strong> move it. <strong>REGEN</strong> feeds the network's output back to its input so the peaks between the notches ring. <strong>WARMTH</strong> makes the components disagree. <strong>BODY</strong> keeps the lows out of it, <strong>MIX</strong> sets how deep the notches cut, and <strong>AUTO LEVEL</strong> takes the level out of the comparison.</p>
+      <p>Every picture on this page is computed from that network, so what you see move is what the plug-in does.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1040 230" role="img" aria-label="GIRE's signal path: input, BODY split at 150 Hz, the allpass stages with the REGEN loop, MIX against the dry signal, AUTO LEVEL and the true-peak ceiling, output">
+      <text x="14" y="122">IN</text>
+      <path class="wire" d="M40 118 H120"/><path class="flow" d="M40 118 H120"/>
+      <rect class="box" x="120" y="92" width="96" height="52" rx="4"/><text class="lbl" x="168" y="114" text-anchor="middle">BODY</text><text x="168" y="132" text-anchor="middle">150 Hz</text>
+      <path class="wire" d="M216 118 H262"/><path class="flow" d="M216 118 H262"/>
+      <g id="pathStages"></g>
+      <path class="wire" d="M598 118 H660"/><path class="flow" d="M598 118 H660"/>
+      <path class="wire" d="M598 118 V186 H262 V128"/><path class="flow loop" d="M598 186 H262"/>
+      <text x="430" y="206" text-anchor="middle" style="fill:var(--rose)">REGEN · SOFT-LIMITED · DAMPED 6 → 2.5 kHz</text>
+      <path class="wire" d="M168 92 V40 H690 V100"/><path class="flow" d="M168 40 H690"/>
+      <text x="430" y="30" text-anchor="middle">DRY</text>
+      <path class="wire" d="M150 144 V170 H230"/><path class="flow low" d="M150 144 V170 H230"/>
+      <text x="160" y="190" style="fill:var(--teal)">LOWS</text>
+      <circle class="box" cx="690" cy="118" r="20"/><text class="lbl" x="690" y="122" text-anchor="middle">MIX</text>
+      <path class="wire" d="M710 118 H754"/><path class="flow" d="M710 118 H754"/>
+      <rect class="box" x="754" y="92" width="110" height="52" rx="4"/><text class="lbl" x="809" y="114" text-anchor="middle">AUTO LEVEL</text><text x="809" y="132" text-anchor="middle">4 MODES</text>
+      <path class="wire" d="M864 118 H890"/><path class="flow" d="M864 118 H890"/>
+      <rect class="box" x="890" y="92" width="96" height="52" rx="4"/><text class="lbl" x="938" y="114" text-anchor="middle">CEILING</text><text x="938" y="132" text-anchor="middle">0 dBTP</text>
+      <path class="wire" d="M986 118 H1010"/><path class="flow" d="M986 118 H1010"/>
+      <text x="1012" y="122">OUT</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>SPLIT</b><p>BODY decides how much of the band below 150 Hz goes into the network. At 100% all of it does.</p></li>
+    <li><span class="num">2</span><b>SHIFT</b><p>Four allpass stages on JFET and OPTICAL, twelve on DUAL, each one lagging the phase around its own frequency.</p></li>
+    <li><span class="num">3</span><b>RING</b><p>REGEN feeds the stages' output back to their input, through a soft limiter and a damper.</p></li>
+    <li><span class="num">4</span><b>CANCEL</b><p>MIX blends the shifted signal against the dry one. Where they are half a turn apart, they cancel.</p></li>
+    <li><span class="num">5</span><b>LEVEL</b><p>AUTO LEVEL matches the output to the input, and a true-peak ceiling keeps it under 0 dBTP.</p></li>
+  </ol>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE // GIRE LAUNCH</span>
-</footer>
+<!-- LAB -->
+<div class="sh" id="lab">The notch lab</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Move a knob. <em>Watch the notches.</em></h2><p>This is GIRE's network running in your browser, drawn as the response a steady tone would meet at every frequency. The bright line is the left channel and the faint one is the right. The ticks along the top are the stage frequencies, and the colour follows the plug-in's own terrain scale: cyan where it cuts, paper where it leaves the sound alone, amber and rose where it rings.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Voice">
+        <button type="button" data-lv="0" aria-pressed="true">JFET</button><button type="button" data-lv="1" aria-pressed="false">OPTICAL</button><button type="button" data-lv="2" aria-pressed="false">DUAL</button>
+      </span>
+      <span class="toggles">
+        <button type="button" class="tog" id="t-ultra" aria-pressed="false">ULTRA SLOW ÷20</button>
+        <button type="button" class="tog" id="t-invert" aria-pressed="false">INVERT</button>
+        <button type="button" class="tog" id="t-reset">DEFAULTS</button>
+      </span>
+    </div>
+    <canvas id="labplot" width="1600" height="640" aria-label="Frequency response of GIRE's network from 20 Hz to 20 kHz, animated with the sweep"></canvas>
+    <div class="readouts"><span>NOTCH<b id="r-notch">-</b></span><span>CYCLE<b id="r-cycle">-</b></span><span>STAGES<b id="r-stages">4</b></span><span>DEEPEST CUT<b id="r-cut">-</b></span><span>HIGHEST PEAK<b id="r-peak">-</b></span></div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--paper)"></i>LEFT</span><span><i style="background:rgba(246,239,228,.35)"></i>RIGHT</span><span><i style="background:var(--gold-dim)"></i>DRY · 0 dB</span><span>MODEL OF THE ENGINE AT 48 kHz · SMALL-SIGNAL</span></div>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-out">
+<!-- VOICES -->
+<div class="sh" id="voices">The three voices</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Three networks, <em>three ways to move.</em></h2><p>Each picture traces where a voice's stages sit over the last few seconds, low frequencies at the bottom, running at 0.8 Hz so the shape of the sweep shows. Switching voice takes effect on the next block, and the display redraws to match.</p></div>
+  <div class="voices">
+    <article class="voice">
+      <canvas id="v0" width="720" height="400" aria-label="JFET's four stages sweeping together on a sine"></canvas>
+      <div class="body"><div class="vn"><b>JFET</b><span>4 MATCHED STAGES</span></div>
+      <p>Four matched first-order allpass stages and a smooth sine sweep. With WARMTH up, the stage coefficient is mildly signal-dependent, so hard playing pulls the sweep slightly lower and wider instead of holding one fixed width. This is the sound your ear supplies when someone says "phaser": the circuit inside the small orange box that was most people's first one.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="v1" width="720" height="400" aria-label="OPTICAL's four stagger-tuned stages, driven through a lamp, rising faster than they fall"></canvas>
+      <div class="body"><div class="vn"><b>OPTICAL</b><span>4 STAGGER-TUNED · LAMP AND CELL</span></div>
+      <p>Four stagger-tuned stages at fixed multiples of the swept centre, driven through a lamp and a photocell rather than a clean LFO. The lamp warms with a 45 ms time constant and cools with a 120 ms one. The cell responds on a curve, not a line, and each stage's cell lags slightly differently; WARMTH widens how differently. The sweep rises a little faster than it falls, so the way up and the way down are not mirror images, which a sine cannot manage. At default settings the two passes differ by about a tenth of an octave, up to a fifth at full depth. At the slowest rates the lamp keeps up and the difference all but disappears.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="v2" width="720" height="400" aria-label="DUAL's two six-stage machines, their sweeps 12 degrees apart"></canvas>
+      <div class="body"><div class="vn"><b>DUAL</b><span>2 × 6 STAGES · 12° APART</span></div>
+      <p>Two six-stage machines in series per channel, twelve poles, their LFOs a fixed 12 degrees apart. Each machine has its own feedback loop, limiter and damping. It is wide: parked at CENTER 640, its six notches spread from 84 Hz to 4.7 kHz, where JFET's two sit at 265 Hz and 1.5 kHz. It is the deliberate choice, not the default: on a dense mix four stages is usually all the network a track will take.</p></div>
+    </article>
+  </div>
+  <p class="small">The stage count lives in the DSP where it belongs, shown in the panel, never sold as a knob.</p>
+</section>
+
+<!-- CONTROLS -->
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Every knob, <em>and what it moves.</em></h2><p>Press <span class="k">SHOW IN THE LAB</span> on any card and the notch lab above sweeps that control through its range, so you can watch what it does to the network. MIX, REGEN, WARMTH and BODY glide over 20 ms too, so every control automates without steps. Double-click a knob to return it to its default, or double-click its value to type a number.</p></div>
+  <div class="knobs" id="knobs">
+    <article class="knob-card" data-knob="rate">
+      <div class="knob-name">RATE · ULTRA SLOW</div>
+      <h3>Slow is the signature.</h3>
+      <p>0.01 to 10 Hz, weighted so most of the throw lives in the slow half. This is the hero control because slow is the signature. ULTRA SLOW divides the rate by twenty. At the bottom of the range that is one sweep every 33 minutes: movement you feel across an arrangement rather than hear as an effect. The readout always shows the effective rate.</p>
+      <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="depth">
+      <div class="knob-name">DEPTH · CENTER</div>
+      <h3>How far, and around where.</h3>
+      <p>DEPTH sweeps up to 2.4 octaves; CENTER runs 100 Hz to 8 kHz. At DEPTH zero the sweep parks, leaving a fixed set of notches you place by ear with CENTER: two on JFET and OPTICAL, six on DUAL. Both are smoothed inside the engine, so automating either never zippers.</p>
+      <button type="button" class="show" data-show="center">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="regen">
+      <div class="knob-name">REGEN</div>
+      <h3>Sharp and vocal, never a scream.</h3>
+      <p>0 to 95% resonance, soft-limited inside the feedback loop, with high-frequency damping that tightens from 6 kHz to 2.5 kHz as WARMTH rises. It gets sharp and vocal; it never turns into the thin digital scream.</p>
+      <button type="button" class="show" data-show="regen">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="warmth">
+      <div class="knob-name">WARMTH</div>
+      <h3>Turns the component model up.</h3>
+      <p>It is not an EQ. Inside the network it widens the mismatch between stages, deepens the JFET nonlinearity, drives the feedback loop harder and tightens its damping as it goes. After the stages it adds a gentle second-harmonic tilt to the wet signal. A −6 dBFS, 1 kHz tone through JFET's wet path at full WARMTH measures 0.35% THD.</p>
+      <button type="button" class="show" data-show="warmth">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="body">
+      <div class="knob-name">BODY</div>
+      <h3>The riff keeps its punch.</h3>
+      <p>A phase-coherent split at 150 Hz. At 100%, the default, the whole band goes through the network. Turn it down and less of the low end goes through, so a low fundamental barely moves while everything above it keeps swirling. On TWELVE POLE, a 62 Hz fundamental moves more than 20 dB across the sweep at BODY 100. At BODY 55 it moves about 5 dB, and at BODY 0 about 3 dB. Through all three settings, 2.2 kHz keeps moving about 12 dB.</p>
+      <button type="button" class="show" data-show="body">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="mix">
+      <div class="knob-name">MIX · INVERT</div>
+      <h3>How deep the notches cut.</h3>
+      <p>A linear crossfade, where 50% is the classic full-phase sound. INVERT flips the wet polarity, so peaks become notches.</p>
+      <button type="button" class="show" data-show="mix">SHOW IN THE LAB</button>
+    </article>
+  </div>
+</section>
+
+<!-- STEREO -->
+<div class="sh" id="stereo">The two channels</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">The right channel <em>runs a little ahead.</em></h2>
+    <p>There is no spread knob; each voice sets its own. The right channel runs the same sweep a fixed distance ahead of the left: 10 degrees on JFET, 12 on OPTICAL, 15 on DUAL. It sweeps around a centre 1.5% higher, with its own component calibration and, in OPTICAL, its own lamp and cell.</p>
+    <p><strong>Neither channel is ever inverted against the other</strong>, so at ordinary settings a fold to mono costs you the image, not the signal. At default JFET settings a mono fold keeps 99.6% of a channel's level. Pushed hard it costs more: DUAL at full depth and 90% regen keeps about three quarters on average, dipping to about a third at the deepest points of the sweep.</p>
+    <p>Mono in, stereo out opens a single guitar into a phased image, with the left and right sweeps running a few degrees apart around slightly different centres.</p>
+  </div>
+  <div class="stack">
+    <div class="panel">
+      <canvas id="stereoplot" width="600" height="640" aria-label="The left and right sweeps as two points on a circle, the right one a fixed angle ahead, and where each channel's first notch sits"></canvas>
+      <div class="panel-foot">
+        <span class="seg" role="group" aria-label="Voice for the stereo picture"><button type="button" data-sv="0" aria-pressed="true">JFET 10°</button><button type="button" data-sv="1" aria-pressed="false">OPTICAL 12°</button><button type="button" data-sv="2" aria-pressed="false">DUAL 15°</button></span>
+        <span>R CENTRE <b>× 1.015</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERRAIN -->
+<div class="sh" id="terrain-sec">The phase terrain</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <h2 class="h2">The picture is <em>the circuit.</em></h2>
+      <p>The picture in the middle of the panel is not an animation. Each of its 32 rows is one tone burst at one frequency, on a log scale from 60 Hz at the front to 8 kHz at the back. The circuit you are running bends each burst: the crests shift by the phase lag at that frequency, and the envelope slides by the group delay. On the front sheet, height is the output level. A notch shows as a flattened cyan row, and a resonance as an amber ridge that turns rose as it builds.</p>
+      <p>MIX pulls the stack apart. DRY sits at the back. In front of it is the network's first pass, one sheet per machine on DUAL, with the feedback loop's recirculations drawn as fainter traces behind it, one per pass. OUT is at the front, with the right channel printed over it at half density; where the two channels notch differently, the notch rows double. At MIX 0 there is one intact image.</p>
+    </div>
+    <div class="prose">
+      <p>The stage frequencies and loop gain come from what the engine ran in the last block, not from where the knobs point. At fast rates the picture trails the LFO by the circuit's own smoothing, and further on OPTICAL, whose lamp is slow. With REGEN up, drive the plug-in hard and the ridges drop as the loop's limiter takes hold. It follows VOICE, CENTER, DEPTH, RATE, ULTRA SLOW, REGEN, WARMTH, BODY, MIX and INVERT, and each row's brightness follows the audio you feed it at that frequency.</p>
+      <p>Drag the picture down to flatten the rows toward edge-on, where the stack reads as bare layers. Drag up, or double-click, to stand it back up. The angle stays where you left it when you close the window, and loading a preset leaves it alone.</p>
+      <p>A frequency scale at the left edge carries two pips that show where each channel's sweep sits right now. Under the picture, NOTCH names the first notch being cut at this point in the sweep, CYCLE gives the length of one sweep, and STAGES gives the voice's layout. A test in our evaluation harness holds the display's response model against the plug-in's measured impulse response at 60 parked settings. The first notch must agree within 4%; the worst case today is 3.87%, and the NOTCH readout lands within 1% of the notch the picture draws.</p>
+    </div>
+  </div>
+  <figure class="faceshot">
+    <img src="assets/gire/hero_v110.png?v=261004t" alt="The GIRE panel on DUAL: RATE, DEPTH and MIX on the left, the phase terrain in the middle with NOTCH 70 HZ, CYCLE 2.0 S and STAGES 2×6 under it, CENTER, REGEN, WARMTH and BODY on the right, and AUTO LEVEL set to CLIP">
+    <figcaption class="cap">THE WHOLE FACE · VERSION 1.1.0 · DUAL</figcaption>
+  </figure>
+  
+</section>
+
+<!-- AUTO LEVEL -->
+<div class="sh" id="autolevel">Auto level</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Judge the phasing, <em>not the volume.</em></h2>
+    <p>Four buttons at the bottom right of the panel: OFF, TRANSPARENT, GLUE and CLIP. A phaser gets louder as REGEN climbs and loses level in its notches as MIX rises, so an A/B made while you dial it in is rigged toward the louder setting. <strong>AUTO LEVEL matches the output back to the level coming in</strong>, so your ear judges the phasing, not the volume, and holds a −0.3 dBFS ceiling.</p>
+    <p>TRANSPARENT rides the gain slowly and leaves the sound alone until the ceiling. GLUE adds a gentle 2.5:1 compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into the ceiling, loud on purpose. Take REGEN from 0 to 90 and the output moves 3 dB with AUTO LEVEL off, and about a tenth of a dB with it on. Changing mode fades over 10 ms, so it never clicks.</p>
+    <p>After it, a true-peak limiter keeps the reconstructed waveform under 0 dBTP, not just the samples under the ceiling, so a converter or a streaming encoder never sees an overshoot. It looks 36 samples ahead, 0.75 ms at 48 kHz, and GIRE reports that latency in every mode, OFF included, so your host lines it up for you. OFF never limits. OFF is the default: sessions and presets saved before 1.1.0 open with it off and sound exactly as they did. It is the same output stage across the Alchemy Index.</p>
+  </div>
+  <div class="stack">
+    <div class="panel">
+      <canvas id="level" width="600" height="440" aria-label="Illustration: REGEN climbs from 0 to 90 and back; with AUTO LEVEL off the output level rises 3 dB, with it on the level stays put"></canvas>
+      <div class="panel-foot">
+        <span class="seg gold" role="group" aria-label="AUTO LEVEL mode"><button type="button" data-al="0" aria-pressed="false">OFF</button><button type="button" data-al="1" aria-pressed="true">TRANSPARENT</button><button type="button" data-al="2" aria-pressed="false">GLUE</button><button type="button" data-al="3" aria-pressed="false">CLIP</button></span>
+        <span>LEVEL MOVES <b id="al-move">0.1 dB</b></span>
+      </div>
+    </div>
+    <div class="cap">ILLUSTRATION · THE 3 dB AND 0.1 dB FIGURES ARE MEASURED IN THE RELEASE HARNESS</div>
+  </div>
+</section>
+
+<!-- EXPORT IR -->
+<div class="sh" id="ir">Export IR</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Print the network <em>as it sits.</em></h2>
+    <p>The button under the picture prints the network as it sits right now into an impulse response: a 32-bit float WAV at the host's sample rate, mono or stereo to match the track, ready for any convolver. It asks where to save, offers a name built from the preset, the voice and the rate, and never writes over another file.</p>
+    <p>AUTO LEVEL is left out, since a level that follows the programme has no impulse response, and exporting never changes a sample of the audio that is playing.</p>
+    <p class="small">The trace on the right is the first 20 ms of the impulse response of the notch lab's network at the moment you press the button, computed sample by sample.</p>
+  </div>
+  <div class="panel">
+    <canvas id="irplot" width="600" height="320" aria-label="The impulse response of the notch lab's current settings"></canvas>
+    <div class="panel-foot"><button type="button" class="show" id="ir-print">EXPORT IR</button><span id="ir-name">GIRE IR · JFET · 0.42 HZ</span></div>
+  </div>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Fourteen days, <em>the whole plug-in.</em></h2>
+    <p>The trial is the whole plug-in for fourteen days, and the header counts down the days left. After that, a computer that has not been activated goes silent, and the LICENCE card stays over the panel until a licence is activated. In GarageBand and other sandboxed hosts it keeps playing.</p>
+    <p>The same installer everyone buys, running unlicensed for fourteen days. A licence unlocks it in place, no reinstall.</p>
+  </div>
+  <div class="prose">
+    <p>Activation needs an internet connection once. After that GIRE runs offline, and the licence does not expire. One licence covers three computers. The LICENCE card shows who the copy is licensed to, and DEACTIVATE THIS COMPUTER frees its seat, so you can move GIRE to a new machine without writing to us.</p>
+    <p><strong>Once activated, GIRE is never silenced by a licence check.</strong> After a hardware change or a system reinstall it keeps playing, and the header reads REACTIVATE until you enter your key again.</p>
+  </div>
+</section>
+
+<!-- BENCH -->
+<div class="sh" id="bench">On the bench</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Measured, <em>every release.</em></h2></div>
+  <ul class="rows">
+    <li><b>ONE FIXED LATENCY</b><span>The phaser itself reads nothing ahead. AUTO LEVEL's true-peak limiter looks 36 samples ahead, 0.75 ms at 48 kHz, and GIRE reports those same 36 samples in every mode, OFF included, so the figure never moves when you change mode and the host's delay compensation lines the track up exactly. The footer says so: 36 SMP LATENCY.</span></li>
+    <li><b>REPRODUCIBLE</b><span>Component scatter comes from a fixed seed, so every instance is the same calibrated unit. The sweep starts from the same point whenever the host starts the plug-in, so the same passage bounced from the same start renders the same samples, today or next year. The sweep runs free rather than following the timeline.</span></li>
+    <li><b>BUFFER INDEPENDENT</b><span>The control path runs on a fixed 32-sample grid, so the host's buffer size never changes the sound. Renders at 256- and 333-sample blocks match to below −300 dB, with AUTO LEVEL on or off.</span></li>
+    <li><b>RATE INDEPENDENT</b><span>Release gates check 44.1, 48 and 96 kHz, and OPTICAL's stage scatter measures the same at every rate from 22.05 to 192 kHz.</span></li>
+    <li><b>CLICK-FREE BYPASS</b><span>BYPASS is a 10 ms crossfade inside the engine, with the dry leg delayed by the same 36 samples, so it nulls against the input once the host has compensated. The host's own bypass button drives the same switch, so toggling it mid-take does not click.</span></li>
+    <li><b>LIGHT TO RUN</b><span>In the release test, the heaviest voice, DUAL, uses under three and a half percent of one core at 48 kHz, AUTO LEVEL and its limiter included.</span></li>
+    <li><b>SIXTY-SIX GATES</b><span>Sixty-six evaluation gates, a 121-check licence suite and a VST3 state test run on every release build, and the build is rejected if any one of them fails.</span></li>
+  </ul>
+  
+</section>
+
+<!-- WHO -->
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>GUITARISTS</b><p>The mid-seventies four-stage sound is a preset, and BODY means you can put a phaser on a down-tuned riff without losing the low end. SLOW BLOOM is voiced for low-tuned parts from the start.</p></article>
+  <article><b>PRODUCERS &amp; SOUND DESIGNERS</b><p>DUAL at ultra-slow rates is a movement layer whose cycle outlasts most sections. Set DEPTH to zero and the sweep parks into a fixed set of notches you tune by hand with CENTER, then print them with EXPORT IR.</p></article>
+  <article><b>MIX ENGINEERS</b><p>Stereo movement that survives a mono fold, a resonance control that stays musical at 95%, and AUTO LEVEL so pushing REGEN never wins an A/B on volume alone.</p></article>
+  <article><b>SCORE &amp; AMBIENT</b><p>A 33-minute sweep is a structural device, not an effect. Set it and let a cue breathe across its whole length.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Three-voice analog-modelled phaser (insert)</td></tr>
+    <tr><th>VOICES</th><td>JFET (4 matched stages) · OPTICAL (4 stagger-tuned stages, lamp and photocell) · DUAL (2 × 6 stages in series, machines 12° apart)</td></tr>
+    <tr><th>STEREO</th><td>Right channel offset 10–15° by voice, never inverted left against right. Mono to mono, mono to stereo, stereo to stereo</td></tr>
+    <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBFS ceiling, held under 0 dBTP</td></tr>
+    <tr><th>EXPORT</th><td>Impulse response as a 32-bit float WAV at the host's rate</td></tr>
+    <tr><th>LATENCY</th><td>36 samples in every mode (0.75 ms at 48 kHz), reported to the host</td></tr>
+    <tr><th>PRESETS</th><td>Six factory sounds (INIT, SMALL ORBIT, SLOW BLOOM, GLASS SWIRL, TWELVE POLE, VAPOR TRAIL); user presets with save and save as, shared across your Mac hosts</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline · perpetual</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)<br>Windows (VST3): coming soon</td></tr>
+  </table>
+  <div class="prose">
+    <h2 class="h2">Part of <em>the Alchemy Index.</em></h2>
+    <p>GIRE shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
+    <p class="small">GIRE's voices are original models inspired by classic hardware circuits. All product names referenced are trademarks of their respective owners, and no affiliation or endorsement is implied.</p>
+    
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">GIRE</div>
+  <p>GIRE is calibrated and available for immediate deployment. All three voices, the full panel, nothing withheld.</p>
+  <div class="amt"><s>$50</s><strong>$25</strong></div>
+  <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/3a9535e6-384d-4805-a717-6de3af283e56?embed=1">Acquire GIRE · $25</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4c2f255c-b7fb-4e48-b471-1cf9d50e7d51?embed=1">Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED · WINDOWS COMING SOON</div>
+  
+</section>
+
+<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(function(){
+'use strict';
+const reduce = false;
+const TAU = Math.PI*2, FS = 48000;
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+/* notes toggle */
+
+
+/* ================= GIRE's network, after Source/VoiceEngine.h ================= */
+const OPT_STAGGER=[0.62,0.94,1.40,2.10];
+const LEAD_DEG=[10,12,15];
+const MACHINE_LEAD=12/360;
+const KNEE=[0.50,0.50,0.293];
+// fixed-seed calibration draws, as the plug-in's fixed seed (values are this page's own)
+function lcg(seed){let s=seed>>>0;return()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296*2-1;};}
+const rnd=lcg(20261005);
+const CAL=[[],[]],SCAT=[[],[]],BIAS=[rnd(),rnd()];
+for(let c=0;c<2;c++)for(let s=0;s<12;s++){CAL[c][s]=rnd();SCAT[c][s]=rnd();}
+const DEFAULTS={voice:0,rate:0.42,depth:55,center:640,regen:25,warmth:35,body:100,mix:50,invert:false,ultra:false};
+function nStages(v){return v===2?12:4;}
+function unipolarSine(p){return (1-Math.cos(TAU*p))*0.5;}
+function k1(dt,tau){return 1-Math.exp(-dt/tau);}
+
+class Engine{
+  constructor(p){this.p=Object.assign({},DEFAULTS,p||{});this.phase=0;this.primed=false;
+    this.lamp=[0,0];this.scat=[new Array(12).fill(0),new Array(12).fill(0)];this.fc=[new Array(12).fill(640),new Array(12).fill(640)];}
+  effRate(){return this.p.rate/(this.p.ultra?20:1);}
+  step(dt){
+    const p=this.p, w=p.warmth/100, depth=p.depth/100;
+    // integrate in sub-steps no longer than 8 ms so the lamp and smoothing behave
+    let left=Math.min(dt,0.25);
+    while(left>1e-6){const h=Math.min(left,0.008);left-=h;
+      this.phase=(this.phase+this.effRate()*h)%1;
+      for(let c=0;c<2;c++){
+        const cp=this.phase+(c===1?LEAD_DEG[p.voice]/360:0);
+        const mc=[unipolarSine(cp%1),unipolarSine((cp+MACHINE_LEAD)%1)];
+        const target=mc[0];
+        if(!this.primed)this.lamp[c]=target;
+        this.lamp[c]+=(target>this.lamp[c]?k1(h,0.045):k1(h,0.120))*(target-this.lamp[c]);
+        const light=Math.pow(Math.min(1,Math.max(0,this.lamp[c])),1.35);
+        const centerScale=c===1?1.015:1;
+        const sweep=2.4*(1+BIAS[c]*0.02*w);
+        for(let s=0;s<12;s++){
+          const machine=(p.voice===2&&s>=6)?1:0;
+          const sk=k1(h,0.030*(1+SCAT[c][s]*(0.04+0.16*w)));
+          if(!this.primed)this.scat[c][s]=light;
+          this.scat[c][s]+=sk*(light-this.scat[c][s]);
+          const control=p.voice===1?this.scat[c][s]:mc[machine];
+          const stagger=p.voice===1?OPT_STAGGER[s&3]:1;
+          const cal=1+CAL[c][s]*0.03*w;
+          const t=p.center*centerScale*Math.pow(2,sweep*depth*(control-0.5))*stagger*cal;
+          if(!this.primed)this.fc[c][s]=t;
+          this.fc[c][s]+=k1(h,0.015)*(t-this.fc[c][s]);
+        }
+      }
+      this.primed=true;
+    }
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
+  coeffs(c){const n=nStages(this.p.voice),a=[];for(let s=0;s<n;s++){const f=Math.min(Math.max(this.fc[c][s],2),FS*0.47);const t=Math.tan(Math.PI*f/FS);a.push((t-1)/(t+1));}return a;}
+  loopConsts(c){
+    const p=this.p,w=p.warmth/100,g=p.regen/100,a=this.coeffs(c);
+    const dampK=1-Math.exp(-TAU*(6000-3500*w)/FS);
+    const machines=p.voice===2?[a.slice(0,6),a.slice(6)]:[a];
+    const out=machines.map(ms=>{
+      let delay=0;for(const x of ms)delay+=(1-x)/(1+x);
+      const knee=KNEE[p.voice];const gg=g>knee?Math.min(g,0.999):knee;
+      const loopDelay=delay+1+(1-dampK)/Math.max(1e-6,dampK);
+      const poleStep=Math.expm1(-Math.log(gg)/loopDelay);
+      const amount=g>knee?(gg-knee)/(gg*(1-knee)):0;
+      const tk=poleStep/(1+poleStep-amount*gg);
+      return {a:ms,amount,tk};
+    });
+    return {g,dampK,machines:out,lowK:1-Math.exp(-TAU*150/FS),body:p.body/100,mix:p.mix/100,sign:p.invert?-1:1};
   }
-  renderVals() {
-    return {
-      overlayDisplay: this.state.zoomed ? 'flex' : 'none',
-      setZoomImg: (el) => { this._zoomImgEl = el; },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
-      openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      openTerrainFlat: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_flat.png?v=260929' }); },
-      openTerrainTilt: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_tilt.png?v=260929' }); },
-      openTerrainUpright: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/terrain_upright.png?v=260929' }); },
-      openHero: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/hero_v110.png?v=261004t' }); },
-    };
+}
+// complex helpers
+function cmul(a,b){return [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];}
+function cdiv(a,b){const d=b[0]*b[0]+b[1]*b[1];return [(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];}
+function onePole(k,z1){return cdiv([k,0],[1-(1-k)*z1[0],-(1-k)*z1[1]]);}
+// small-signal response of the whole insert at frequency f: returns {out, net}
+function response(L,f){
+  const w=TAU*f/FS, z1=[Math.cos(w),-Math.sin(w)];
+  let net=[1,0];
+  const D=onePole(L.dampK,z1);
+  for(const m of L.machines){
+    let A=[1,0];
+    for(const a of m.a){A=cmul(A,cdiv([a+z1[0],z1[1]],[1+a*z1[0],a*z1[1]]));}
+    const loop=cmul(cmul(A,D),z1);
+    let W=cdiv(A,[1-L.g*loop[0],-L.g*loop[1]]);
+    if(m.amount>0){const T=onePole(m.tk,z1);const tr=cmul(T,[m.amount*L.g,0]);W=cmul(W,[1-tr[0],-tr[1]]);}
+    net=cmul(net,W);
+  }
+  const low=onePole(L.lowK,z1);
+  const wetIn=[1-(1-L.body)*low[0],-(1-L.body)*low[1]];
+  const wetNet=cmul(net,wetIn);
+  const wet=[L.sign*wetNet[0]+(1-L.body)*low[0],L.sign*wetNet[1]+(1-L.body)*low[1]];
+  const out=[1+L.mix*(wet[0]-1),L.mix*wet[1]];
+  return {out,net:wetNet};
+}
+function db(c){return 20*Math.log10(Math.max(1e-6,Math.hypot(c[0],c[1])));}
+// GIRE's terrain colour ramp (AllpassSurface::responseColour, ±11 dB)
+const RAMP=[[0x2e,0xe6,0xc8],[0xf6,0xef,0xe4],[0xff,0xb3,0x40],[0xff,0x4d,0x8d]];
+function rampRGB(dB){const t=Math.min(1,Math.max(0,0.5+0.5*dB/11));let a,b,u;
+  if(t<0.33){a=RAMP[0];b=RAMP[1];u=t/0.33;}else if(t<0.66){a=RAMP[1];b=RAMP[2];u=(t-0.33)/0.33;}else{a=RAMP[2];b=RAMP[3];u=(t-0.66)/0.34;}
+  return [a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u,a[2]+(b[2]-a[2])*u];}
+function rgba(c,al){return `rgba(${c[0]|0},${c[1]|0},${c[2]|0},${al})`;}
+function firstNotch(L){ // first local minimum below -6 dB, scanning up from 20 Hz
+  let prev=null,prevDb=1e9,best=null;
+  for(let i=0;i<=600;i++){const f=20*Math.pow(1000,i/600);const d=db(response(L,f).out);
+    if(prev!==null&&d>prevDb&&prevDb<-6){best=prev;break;}prev=f;prevDb=d;}
+  return best;}
+function fmtHz(f){return f==null?'-':f>=1000?(f/1000).toFixed(f>=10000?0:1)+' kHz':Math.round(f)+' Hz';}
+function fmtCycle(r){const T=1/r;if(T<60)return T.toFixed(T<10?1:0)+' s';const m=T/60;return m.toFixed(m<10?1:0)+' min';}
+function fit(cv){return cv.getContext('2d');}
+
+/* ================= HERO: phase terrain ================= */
+const hero=new Engine({});
+const tc=document.getElementById('terrain'),tx=fit(tc);
+let tilt=0.62; // 0 edge-on .. 1 upright
+(function(){let y0=null,t0=0;
+  tc.addEventListener('pointerdown',e=>{y0=e.clientY;t0=tilt;tc.setPointerCapture(e.pointerId);});
+  tc.addEventListener('pointermove',e=>{if(y0==null)return;tilt=Math.min(1,Math.max(0.05,t0-(e.clientY-y0)/260));});
+  tc.addEventListener('pointerup',()=>{y0=null;});
+  tc.addEventListener('dblclick',()=>{tilt=0.62;});
+})();
+document.querySelectorAll('[data-hv]').forEach(b=>b.addEventListener('click',()=>{
+  hero.p.voice=+b.dataset.hv;hero.primed=false;
+  document.querySelectorAll('[data-hv]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  document.getElementById('h-voice').textContent=['JFET','OPTICAL','DUAL'][hero.p.voice];
+  document.getElementById('h-stages').textContent=['4','4','2×6'][hero.p.voice];
+}));
+const ROWS=32;
+const ROWF=[];for(let r=0;r<ROWS;r++)ROWF.push(60*Math.pow(8000/60,r/(ROWS-1)));
+function drawTerrain(time){
+  const W=tc.width,H=tc.height;tx.clearRect(0,0,W,H);
+  const L=hero.loopConsts(0),LR=hero.loopConsts(1);
+  const left=130,right=W-150,front=H-60;
+  const depthPx=440*(0.3+0.7*tilt), skew=120, rowH=74*tilt+6;
+  const mix=hero.p.mix/100, sheetGap=(0.25+0.75*tilt)*270*mix;
+  const sheets=[{name:'DRY',k:2,al:0.22},{name:'NET',k:1,al:0.35},{name:'OUT',k:0,al:1}];
+  for(const sh of sheets){
+    const lift=sh.k*sheetGap;
+    // sheet plate
+    const p0=[left,front-lift],p1=[right,front-lift],p2=[right+skew,front-lift-depthPx],p3=[left+skew,front-lift-depthPx];
+    tx.fillStyle=sh.k===0?'rgba(29,15,23,.92)':'rgba(29,15,23,.75)';tx.strokeStyle='rgba(242,233,220,'+(sh.k===0?0.16:0.09)+')';
+    tx.beginPath();tx.moveTo(...p0);tx.lineTo(...p1);tx.lineTo(...p2);tx.lineTo(...p3);tx.closePath();tx.fill();tx.stroke();
+    tx.fillStyle='rgba(242,233,220,.35)';tx.font='500 18px "JetBrains Mono",monospace';tx.fillText(sh.name,p2[0]-50,p2[1]-8);
+    for(let r=ROWS-1;r>=0;r--){
+      const d=r/(ROWS-1), f=ROWF[r];
+      let resp,respR,amp,ph,gd,col;
+      if(sh.k===2){amp=1;ph=0;gd=0;col=[0xf6,0xef,0xe4];}
+      else{
+        const R0=response(L,f), R1=response(L,f*1.004);
+        const c0=sh.k===0?R0.out:R0.net, c1=sh.k===0?R1.out:R1.net;
+        amp=Math.hypot(c0[0],c0[1]);ph=Math.atan2(c0[1],c0[0]);
+        let dph=Math.atan2(c1[1],c1[0])-ph;while(dph>Math.PI)dph-=TAU;while(dph<-Math.PI)dph+=TAU;
+        gd=-dph/(TAU*f*0.004/FS); // samples
+        col=sh.k===0?rampRGB(db(c0)):[0xc6,0x53,0x7c];
+      }
+      const x0=left+d*skew, x1=right+d*skew, y=front-lift-d*depthPx;
+      const span=x1-x0, cycles=7+d*5;
+      const envC=0.5+Math.max(-0.3,Math.min(0.3,gd/(FS*0.004)));
+      tx.strokeStyle=rgba(col,sh.al*(0.55+0.45*(1-d*0.5)));tx.lineWidth=sh.k===0?1.6:1.1;
+      tx.beginPath();
+      const N=140;
+      for(let i=0;i<=N;i++){const u=i/N;const env=Math.exp(-Math.pow((u-envC)/0.2,2));
+        const v=Math.sin(TAU*cycles*u-ph-time*0.0)*env*Math.min(amp,3.2);
+        const px=x0+u*span, py=y-v*rowH*0.5;
+        i?tx.lineTo(px,py):tx.moveTo(px,py);}
+      tx.stroke();
+      if(sh.k===0&&r%2===0){ // right channel at half density
+        const cR=response(LR,f).out;const aR=Math.hypot(cR[0],cR[1]),pR=Math.atan2(cR[1],cR[0]);
+        tx.strokeStyle=rgba(rampRGB(db(cR)),0.28);tx.lineWidth=1;tx.beginPath();
+        for(let i=0;i<=N;i+=2){const u=i/N;const env=Math.exp(-Math.pow((u-envC)/0.2,2));const v=Math.sin(TAU*cycles*u-pR)*env*Math.min(aR,3.2);
+          const px=x0+u*span,py=y-v*rowH*0.5;i?tx.lineTo(px,py):tx.moveTo(px,py);}
+        tx.stroke();
+      }
+    }
+  }
+  // frequency scale with channel pips (left edge of the front sheet)
+  tx.font='16px "JetBrains Mono",monospace';
+  const lab=[[100,'100'],[300,'300'],[1000,'1k'],[3000,'3k'],[8000,'8k']];
+  for(const [f,t] of lab){const d=Math.log(f/60)/Math.log(8000/60);const y=front-d*depthPx,x=left+d*skew-24;
+    tx.fillStyle='rgba(242,233,220,.4)';tx.fillText(t,x-40,y+5);tx.fillRect(x-4,y,10,1.5);}
+  for(let c=0;c<2;c++){const f=hero.fc[c][0];const d=Math.min(1,Math.max(0,Math.log(f/60)/Math.log(8000/60)));
+    const y=front-d*depthPx,x=left+d*skew-24+(c?14:0);
+    tx.fillStyle=c?'rgba(246,239,228,.5)':'#f6efe4';tx.beginPath();tx.arc(x+18,y,5,0,TAU);tx.fill();}
+}
+
+/* ================= LAB ================= */
+const lab=new Engine({});
+const lp=document.getElementById('labplot'),lx=fit(lp);
+const CTRL=[
+  {id:'rate',label:'RATE',min:0.01,max:10,step:0.001,skew:0.3,fmt:v=>(v<1?v.toFixed(2):v.toFixed(1))+' Hz'},
+  {id:'depth',label:'DEPTH',min:0,max:100,step:0.1,fmt:v=>Math.round(v)+' %'},
+  {id:'center',label:'CENTER',min:100,max:8000,step:1,skew:0.35,fmt:v=>fmtHz(v)},
+  {id:'regen',label:'REGEN',min:0,max:95,step:0.1,fmt:v=>Math.round(v)+' %'},
+  {id:'warmth',label:'WARMTH',min:0,max:100,step:0.1,fmt:v=>Math.round(v)+' %'},
+  {id:'body',label:'BODY',min:0,max:100,step:0.1,fmt:v=>Math.round(v)+' %'},
+  {id:'mix',label:'MIX',min:0,max:100,step:0.1,fmt:v=>Math.round(v)+' %'},
+];
+// JUCE NormalisableRange skew: value = min + (max-min) * pos^(1/skew)
+function toVal(c,pos){return c.skew?c.min+(c.max-c.min)*Math.pow(pos,1/c.skew):c.min+(c.max-c.min)*pos;}
+function toPos(c,v){const n=(v-c.min)/(c.max-c.min);return c.skew?Math.pow(n,c.skew):n;}
+const ctrlBox=document.getElementById('ctrls');const sliders={};
+for(const c of CTRL){
+  const d=document.createElement('div');d.className='ctrl';d.innerHTML=`<label for="c-${c.id}">${c.label}<output id="o-${c.id}"></output></label><input id="c-${c.id}" type="range" min="0" max="1000" step="1">`;
+  ctrlBox.appendChild(d);const inp=d.querySelector('input'),out=d.querySelector('output');
+  sliders[c.id]={c,inp,out,wrap:d,set(v){lab.p[c.id]=v;inp.value=Math.round(toPos(c,v)*1000);out.textContent=c.fmt(v);}};
+  inp.addEventListener('input',()=>{stopDemo();const v=toVal(c,inp.value/1000);lab.p[c.id]=v;out.textContent=c.fmt(v);});
+  sliders[c.id].set(DEFAULTS[c.id]);
+}
+// AUTO LEVEL is its own section; the notch lab shows the network before it.
+function setLabVoice(v){lab.p.voice=v;lab.primed=false;document.querySelectorAll('[data-lv]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.lv===v?'true':'false'));document.getElementById('r-stages').textContent=['4','4','2×6'][v];}
+document.querySelectorAll('[data-lv]').forEach(b=>b.addEventListener('click',()=>{stopDemo();setLabVoice(+b.dataset.lv);}));
+const tU=document.getElementById('t-ultra'),tI=document.getElementById('t-invert');
+tU.addEventListener('click',()=>{lab.p.ultra=!lab.p.ultra;tU.setAttribute('aria-pressed',lab.p.ultra);});
+tI.addEventListener('click',()=>{lab.p.invert=!lab.p.invert;tI.setAttribute('aria-pressed',lab.p.invert);});
+function resetLab(){stopDemo();for(const k in sliders)sliders[k].set(DEFAULTS[k]);lab.p.ultra=false;lab.p.invert=false;tU.setAttribute('aria-pressed','false');tI.setAttribute('aria-pressed','false');setLabVoice(0);}
+document.getElementById('t-reset').addEventListener('click',resetLab);
+
+// "SHOW IN THE LAB": sweep one control through its range and back to where it was
+let demo=null;
+const DEMOS={
+  rate:{ids:['rate'],path:t=>({rate:0.05*Math.pow(160,Math.sin(Math.PI*t))})},
+  center:{ids:['depth','center'],path:t=>({depth:t<0.15?55*(1-t/0.15):0,center:t<0.15?640:180*Math.pow(30,0.5-0.5*Math.cos(TAU*(t-0.15)/0.85))})},
+  regen:{ids:['regen'],path:t=>({regen:95*Math.sin(Math.PI*t)})},
+  warmth:{ids:['warmth','regen'],path:t=>({warmth:100*Math.sin(Math.PI*t),regen:70})},
+  body:{ids:['body'],path:t=>({body:100*(0.5+0.5*Math.cos(TAU*t))})},
+  mix:{ids:['mix'],path:t=>({mix:t<0.8?100*Math.sin(Math.PI*t/0.8)*0.999:0})},
+};
+function stopDemo(){if(!demo)return;for(const id of demo.ids){sliders[id].wrap.classList.remove('on');sliders[id].set(demo.saved[id]);}demo=null;}
+function startDemo(key){stopDemo();const d=DEMOS[key];const saved={};for(const id of d.ids){saved[id]=lab.p[id];sliders[id].wrap.classList.add('on');}
+  demo={key,ids:d.ids,saved,t0:performance.now(),dur:key==='mix'?7000:6000,path:d.path};
+  if(key==='mix'){demo.extra=true;}
+  document.getElementById('lab').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});}
+document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>startDemo(b.dataset.show)));
+function runDemo(now){if(!demo)return;const t=(now-demo.t0)/demo.dur;
+  if(t>=1){stopDemo();return;}
+  const v=demo.path(t);for(const k in v)sliders[k].set(v[k]);
+  if(demo.key==='mix'){const inv=t>0.4&&t<0.8;if(lab.p.invert!==inv){lab.p.invert=inv;tI.setAttribute('aria-pressed',inv);}if(t>0.79&&lab.p.invert){lab.p.invert=false;tI.setAttribute('aria-pressed','false');}}
+}
+
+const FX0=20,FX1=20000,DBT=18,DBB=-36;
+function drawLab(){
+  const W=lp.width,H=lp.height,ml=78,mr=24,mt=56,mb=48;const pw=W-ml-mr,ph=H-mt-mb;
+  const xf=f=>ml+pw*Math.log(f/FX0)/Math.log(FX1/FX0), yd=d=>mt+ph*(DBT-Math.max(DBB,Math.min(DBT,d)))/(DBT-DBB);
+  lx.clearRect(0,0,W,H);
+  lx.font='18px "JetBrains Mono",monospace';
+  // grid
+  for(const f of [50,100,200,500,1000,2000,5000,10000]){const x=xf(f);lx.fillStyle='rgba(141,135,121,.14)';lx.fillRect(x,mt,1,ph);lx.fillStyle='#8d8779';lx.textAlign='center';lx.fillText(fmtHz(f).replace(' ',''),x,H-16);}
+  lx.textAlign='right';
+  for(let d=-30;d<=12;d+=6){const y=yd(d);lx.fillStyle=d===0?'rgba(122,104,64,.8)':'rgba(141,135,121,.12)';lx.fillRect(ml,y,pw,d===0?1.5:1);lx.fillStyle='#8d8779';lx.fillText((d>0?'+':'')+d,ml-12,y+6);}
+  lx.textAlign='left';lx.fillStyle='#8d8779';lx.fillText('dB',ml-60,mt-14);
+  // stage ticks
+  for(let c=1;c>=0;c--){const n=nStages(lab.p.voice);for(let s=0;s<n;s++){const f=lab.fc[c][s];if(f<FX0||f>FX1)continue;const x=xf(f);
+    lx.fillStyle=c?'rgba(246,239,228,.35)':((lab.p.voice===2&&s>=6)?'#c6537c':'#ffc867');lx.fillRect(x-1,mt-(c?20:36),2.5,c?12:16);}}
+  // curves
+  let deep=0,peak=-99;
+  for(let c=1;c>=0;c--){const L=lab.loopConsts(c);let px=null,py=null;
+    for(let i=0;i<=420;i++){const f=FX0*Math.pow(FX1/FX0,i/420);const d=db(response(L,f).out);
+      if(c===0){deep=Math.min(deep,d);peak=Math.max(peak,d);}
+      const x=xf(f),y=yd(d);
+      if(px!==null){lx.strokeStyle=c?'rgba(246,239,228,.28)':rgba(rampRGB(d),1);lx.lineWidth=c?2:3.2;lx.beginPath();lx.moveTo(px,py);lx.lineTo(x,y);lx.stroke();}
+      px=x;py=y;}
+  }
+  const L0=lab.loopConsts(0);
+  document.getElementById('r-notch').textContent=fmtHz(firstNotch(L0));
+  document.getElementById('r-cycle').textContent=fmtCycle(lab.effRate());
+  document.getElementById('r-cut').textContent=deep<-0.05?deep.toFixed(1)+' dB':'-';
+  document.getElementById('r-peak').textContent=(peak>=0?'+':'')+peak.toFixed(1)+' dB';
+}
+
+/* ================= VOICES: stage traces ================= */
+const vEng=[0,1,2].map(v=>new Engine({voice:v,rate:0.8,depth:70}));
+const vHist=[[],[],[]];const VW=720,VH=400,HIST=3.0;
+function drawVoices(now){
+  for(let v=0;v<3;v++){const cv=document.getElementById('v'+v),cx=cv.getContext('2d');const e=vEng[v];
+    vHist[v].push({t:now/1000,fc:e.fc[0].slice(0,nStages(v))});while(vHist[v].length&&now/1000-vHist[v][0].t>HIST)vHist[v].shift();
+    cx.clearRect(0,0,VW,VH);
+    const yf=f=>VH-24-(VH-70)*Math.log(f/40)/Math.log(16000/40);
+    cx.font='22px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.32)';
+    for(const [f,t] of [[100,'100'],[1000,'1k'],[10000,'10k']]){const y=yf(f);cx.fillRect(60,y,VW-76,1);cx.fillText(t,6,y+7);}
+    const n=nStages(v);
+    for(let s=0;s<n;s++){
+      const col=v===2?(s<6?'255,200,103':'198,83,124'):v===1?['46,230,200','246,239,228','255,179,64','255,77,141'][s]:'255,200,103';
+      cx.strokeStyle=`rgba(${col},${v===0?0.55:0.85})`;cx.lineWidth=v===0?2.4:1.8;cx.beginPath();
+      vHist[v].forEach((h,i)=>{const x=60+(VW-80)*(1-(now/1000-h.t)/HIST);const y=yf(h.fc[s]);i?cx.lineTo(x,y):cx.moveTo(x,y);});
+      cx.stroke();
+      const last=vHist[v][vHist[v].length-1];if(last){cx.fillStyle=`rgb(${col})`;cx.beginPath();cx.arc(VW-16,yf(last.fc[s]),4.5,0,TAU);cx.fill();}
+    }
+    cx.fillStyle='rgba(242,233,220,.45)';cx.fillText(['ONE SINE · 4 STAGES TOGETHER','LAMP UP 45 ms · DOWN 120 ms','MACHINE B 12° AHEAD'][v],66,32);
   }
 }
 
+/* ================= STEREO ================= */
+const st=new Engine({voice:0,rate:0.25,depth:70});
+const sc=document.getElementById('stereoplot'),sx=sc.getContext('2d');
+document.querySelectorAll('[data-sv]').forEach(b=>b.addEventListener('click',()=>{st.p.voice=+b.dataset.sv;st.primed=false;
+  document.querySelectorAll('[data-sv]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+function drawStereo(){
+  const W=sc.width,H=sc.height;sx.clearRect(0,0,W,H);
+  const cx=W/2,cy=190,R=140;
+  sx.strokeStyle='rgba(141,135,121,.3)';sx.lineWidth=1.5;sx.beginPath();sx.arc(cx,cy,R,0,TAU);sx.stroke();
+  const lead=LEAD_DEG[st.p.voice]/360;
+  const angL=-Math.PI/2+TAU*st.phase, angR=angL+TAU*lead;
+  // lead wedge
+  sx.fillStyle='rgba(198,83,124,.25)';sx.beginPath();sx.moveTo(cx,cy);sx.arc(cx,cy,R,angL,angR);sx.closePath();sx.fill();
+  for(const [a,lbl,col] of [[angL,'L','#f6efe4'],[angR,'R','#c6537c']]){const x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
+    sx.fillStyle=col;sx.beginPath();sx.arc(x,y,10,0,TAU);sx.fill();sx.font='600 22px Montserrat,sans-serif';sx.fillText(lbl,x+(Math.cos(a)>0?18:-36),y+8);}
+  sx.font='20px "JetBrains Mono",monospace';sx.fillStyle='#8d8779';sx.textAlign='center';
+  sx.fillText('LFO PHASE',cx,cy-6);sx.fillStyle='#ffc867';sx.fillText('R LEADS '+LEAD_DEG[st.p.voice]+'°',cx,cy+24);sx.textAlign='left';
+  // right: where each channel's first stage sits on a log scale
+  const x0=40,x1=W-40,yA=450,yB=560;
+  const xf=f=>x0+(x1-x0)*Math.log(f/100)/Math.log(8000/100);
+  sx.fillStyle='rgba(141,135,121,.4)';
+  for(const [f,t] of [[100,'100'],[300,'300'],[1000,'1k'],[3000,'3k'],[8000,'8k']]){const x=xf(f);sx.fillRect(x,yA-12,1,yB-yA+24);sx.textAlign='center';sx.fillText(t,x,yB+50);sx.textAlign='left';}
+  const LL=st.loopConsts(0),LR=st.loopConsts(1);
+  const nL=firstNotch(LL),nR=firstNotch(LR);
+  for(const [y,c,nf,lbl] of [[yA,0,nL,'LEFT'],[yB,1,nR,'RIGHT']]){
+    sx.fillStyle='#b9b6ae';sx.fillText(lbl+' · FIRST NOTCH '+fmtHz(nf),x0,y-24);
+    sx.strokeStyle='rgba(141,135,121,.35)';sx.beginPath();sx.moveTo(x0,y);sx.lineTo(x1,y);sx.stroke();
+    if(nf){const x=xf(Math.min(8000,Math.max(100,nf)));sx.fillStyle=c?'#c6537c':'#2ee6c8';sx.beginPath();sx.arc(x,y,10,0,TAU);sx.fill();}
+  }
+}
+
+/* ================= AUTO LEVEL (illustration) ================= */
+const lc=document.getElementById('level'),lv=lc.getContext('2d');
+let alMode=1;const alHist=[];
+document.querySelectorAll('[data-al]').forEach(b=>b.addEventListener('click',()=>{alMode=+b.dataset.al;
+  document.querySelectorAll('[data-al]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  document.getElementById('al-move').textContent=alMode===0?'3.0 dB':'0.1 dB';}));
+function drawLevel(now){
+  const W=lc.width,H=lc.height;lv.clearRect(0,0,W,H);
+  const t=now/1000, cyc=(t%10)/10, regen=90*(cyc<0.5?cyc*2:2-cyc*2);
+  // programme: -12 dBFS level, peaks 6 dB over; OFF rises 3 dB at REGEN 90 (harness figure)
+  const off=-12+3*regen/90;
+  const outLvl=[off,-12+0.1*regen/90,-12+0.1*regen/90,-8][alMode];
+  alHist.push({t,regen,lvl:outLvl,off});while(alHist.length&&t-alHist[0].t>8)alHist.shift();
+  const ml=56,mr=20,top=78,bot=H-64;const yd=d=>top+(bot-top)*(0-d)/(0-(-24));
+  lv.font='17px "JetBrains Mono",monospace';lv.textAlign='right';
+  for(const d of [0,-6,-12,-18,-24]){lv.fillStyle='rgba(141,135,121,.15)';lv.fillRect(ml,yd(d),W-ml-mr,1);lv.fillStyle='#8d8779';lv.fillText(d,ml-10,yd(d)+5);}
+  lv.textAlign='left';
+  lv.fillStyle='rgba(255,77,141,.8)';lv.fillRect(ml,yd(-0.3),W-ml-mr,2);lv.fillText('CEILING −0.3 dBFS',ml+8,yd(-0.3)-8);
+  const xt=h=>ml+(W-ml-mr)*(1-(t-h.t)/8);
+  // waveform envelope (peaks) for selected mode
+  lv.beginPath();
+  for(let i=0;i<alHist.length;i++){const h=alHist[i];const x=xt(h);
+    let pk=h.lvl+6+2.5*Math.sin(h.t*9)*Math.sin(h.t*2.3);
+    if(alMode===2)pk=h.lvl+6+(pk-h.lvl-6)/2.5;
+    if(alMode===3)pk=Math.min(-0.3,pk+1);
+    i?lv.lineTo(x,yd(pk)):lv.moveTo(x,yd(pk));}
+  for(let i=alHist.length-1;i>=0;i--){const h=alHist[i];lv.lineTo(xt(h),yd(h.lvl-8));}
+  lv.closePath();lv.fillStyle=alMode===3?'rgba(255,179,64,.18)':'rgba(110,192,182,.16)';lv.fill();
+  // OFF reference line and chosen level
+  const line=(key,col,w)=>{lv.strokeStyle=col;lv.lineWidth=w;lv.beginPath();alHist.forEach((h,i)=>{const x=xt(h),y=yd(h[key]);i?lv.lineTo(x,y):lv.moveTo(x,y);});lv.stroke();};
+  if(alMode!==0)line('off','rgba(141,135,121,.6)',2);
+  line('lvl',alMode===0?'#f6efe4':'#ffc867',3.5);
+  lv.fillStyle='#ffc867';lv.fillText(['OFF','TRANSPARENT','GLUE','CLIP'][alMode]+' · OUTPUT LEVEL',ml,26);
+  if(alMode!==0){lv.fillStyle='#8d8779';lv.fillText('OFF',W-mr-40,yd(alHist[alHist.length-1].off)-12);}
+  // REGEN strip
+  lv.fillStyle='#8d8779';lv.fillText('REGEN '+Math.round(regen)+' %',ml,H-20);
+  lv.fillStyle='rgba(198,83,124,.6)';lv.fillRect(ml+150,H-31,(W-ml-mr-150)*regen/95,10);
+}
+
+/* ================= EXPORT IR ================= */
+const ic=document.getElementById('irplot'),ix=ic.getContext('2d');
+let irData=null;
+function printIR(){
+  const L=lab.loopConsts(0);const N=Math.round(FS*0.02);const out=new Float32Array(N);
+  const ms=L.machines.map(m=>({a:m.a,x1:new Array(m.a.length).fill(0),y1:new Array(m.a.length).fill(0),fb:0,damp:0,trim:0,amount:m.amount,tk:m.tk}));
+  let low=0;
+  for(let n=0;n<N;n++){const x=n===0?1:0;low+=L.lowK*(x-low);
+    let s=x-(1-L.body)*low;
+    for(const m of ms){s+=L.g*m.fb;for(let i=0;i<m.a.length;i++){const a=m.a[i];const y=a*s+m.x1[i]-a*m.y1[i];m.x1[i]=s;m.y1[i]=y;s=y;}
+      m.damp+=L.dampK*(s-m.damp);m.fb=m.damp;
+      if(m.amount>0){m.trim+=m.tk*(m.amount*L.g*s-m.trim);s-=m.trim;}}
+    const wet=L.sign*s+(1-L.body)*low;out[n]=x+L.mix*(wet-x);}
+  irData=out;
+  document.getElementById('ir-name').textContent='GIRE IR · '+['JFET','OPTICAL','DUAL'][lab.p.voice]+' · '+(lab.effRate()<1?lab.effRate().toFixed(3):lab.effRate().toFixed(2))+' HZ';
+  drawIR();
+}
+function drawIR(){const W=ic.width,H=ic.height;ix.clearRect(0,0,W,H);if(!irData)return;
+  const ml=30,mr=30,mid=H*0.42,amp=H*0.32;
+  ix.fillStyle='rgba(141,135,121,.3)';ix.fillRect(ml,mid,W-ml-mr,1);
+  let mx=0;for(let i=1;i<irData.length;i++)mx=Math.max(mx,Math.abs(irData[i]));const sc=mx>0?Math.min(1/mx,40):1;
+  ix.strokeStyle='#ffc867';ix.lineWidth=2;ix.beginPath();
+  for(let i=0;i<irData.length;i++){const x=ml+(W-ml-mr)*i/irData.length;const v=i===0?Math.min(1,irData[0]):irData[i]*sc*0.9;const y=mid-v*amp;i?ix.lineTo(x,y):ix.moveTo(x,y);}ix.stroke();
+  ix.font='17px "JetBrains Mono",monospace';ix.fillStyle='#8d8779';ix.textAlign='center';
+  for(const ms of [0,5,10,15,20]){const x=ml+(W-ml-mr)*ms/20;ix.fillRect(x,H-58,1,8);ix.fillText(ms+' ms',Math.min(W-34,Math.max(34,x)),H-26);}
+  ix.textAlign='right';ix.fillText('TAIL × '+sc.toFixed(1),W-mr,30);ix.textAlign='left';
+}
+document.getElementById('ir-print').addEventListener('click',printIR);
+
+/* ================= knob glyphs on the control cards ================= */
+const KNOBDEF={rate:[0.42,0.01,10,0.3],depth:[55,0,100],regen:[25,0,95],warmth:[35,0,100],body:[100,0,100],mix:[50,0,100]};
+document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dataset.knob];if(!k)return;
+  let n=(k[0]-k[1])/(k[2]-k[1]);if(k[3])n=Math.pow(n,k[3]);
+  const a0=-135,a1=135,a=a0+(a1-a0)*n;const P=(deg,r)=>{const t=(deg-90)*Math.PI/180;return [r*Math.cos(t),r*Math.sin(t)];};
+  const arc=(from,to,r)=>{const p=P(from,r),q=P(to,r);return `M${p[0].toFixed(1)} ${p[1].toFixed(1)} A${r} ${r} 0 ${to-from>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;};
+  let ticks='';for(let i=0;i<=10;i++){const d=a0+27*i;const p=P(d,52),q=P(d,57);ticks+=`<line class="tick" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;}
+  const ptr=P(a,30);
+  const lbl={rate:'0.42 Hz',depth:'55 %',regen:'25 %',warmth:'35 %',body:'100 %',mix:'50 %'}[card.dataset.knob];
+  card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,46)}"/><path class="arc-val" d="${arc(a0,Math.max(a0+0.5,a),46)}"/><circle class="knob-face" r="36"/><line class="knob-ptr" x1="0" y1="0" x2="${ptr[0]}" y2="${ptr[1]}"/><text class="knob-num" y="72">${lbl}</text></svg>`);
+});
+
+/* ================= signal path stage boxes ================= */
+(function(){const g=document.getElementById('pathStages');let h='';for(let i=0;i<4;i++){const x=270+i*82;h+=`<rect class="stage" x="${x}" y="96" width="66" height="44" rx="4"/><text x="${x+33}" y="123" text-anchor="middle" style="fill:#f2e9dc">AP${i+1}</text>`;if(i<3)h+=`<path class="wire" d="M${x+66} 118 H${x+82}"/>`;}
+  h+=`<text x="430" y="84" text-anchor="middle" class="lbl">ALLPASS STAGES · 4 OR 2 × 6</text>`;g.innerHTML=h;})();
+
+/* ================= main loop ================= */
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(0.1,(now-last)/1000);last=now;
+  runDemo(now);
+  hero.step(dt);lab.step(dt);st.step(dt);vEng.forEach(e=>e.step(dt));
+  drawTerrain(now);drawLab();drawVoices(now);drawStereo();drawLevel(now);
+  document.getElementById('h-notch').textContent=fmtHz(firstNotch(hero.loopConsts(0)));
+  document.getElementById('h-cycle').textContent=fmtCycle(hero.effRate());
+  if(!reduce||demo)requestAnimationFrame(frame);else looping=false;
+}
+let looping=true;
+function kick(){if(reduce&&!looping){looping=true;last=performance.now();requestAnimationFrame(frame);}}
+document.addEventListener('input',kick);document.addEventListener('click',kick);document.addEventListener('pointermove',e=>{if(e.buttons)kick();});
+// prime everything to a mid-sweep frame so the still page reads complete
+[hero,lab,st,...vEng].forEach(e=>{e.phase=0.3;e.step(0);});
+for(let i=0;i<120;i++){const fake=performance.now()-(120-i)*25;vEng.forEach(e=>e.step(0.025));drawVoices(fake);}
+{const n0=performance.now();for(let i=0;i<160;i++)drawLevel(n0-(160-i)*50);}
+printIR();
+requestAnimationFrame(frame);
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
