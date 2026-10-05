@@ -269,7 +269,6 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <h2 class="h2">Delay the phase. <em>Mix it back.</em></h2>
       <p>A phaser passes your signal through a chain of allpass stages. An allpass stage leaves every frequency at the same level and changes only its timing: each one lags the signal by a quarter turn at its own break frequency, and less above and below. Chain four and the lag reaches half a turn at two frequencies.</p>
       <p><strong>Mix that back with the dry signal and those two frequencies cancel.</strong> That is a notch. Sweep the stages up and down and the notches travel through the spectrum, which is the sound everyone recognises as phasing.</p>
     </div>
@@ -313,7 +312,7 @@ footer a:hover{color:var(--gold)}
 <!-- LAB -->
 <div class="sh" id="lab">The notch lab</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Move a knob. <em>Watch the notches.</em></h2><p>This is GIRE's network running in your browser, drawn as the response a steady tone would meet at every frequency. The bright line is the left channel and the faint one is the right. The ticks along the top are the stage frequencies, and the colour follows the plug-in's own terrain scale: cyan where it cuts, paper where it leaves the sound alone, amber and rose where it rings.</p></div>
+  <div class="prose"><p>This is GIRE's network running in your browser, drawn as the response a steady tone would meet at every frequency. The bright line is the left channel and the faint one is the right. The ticks along the top are the stage frequencies, and the colour follows the plug-in's own terrain scale: cyan where it cuts, paper where it leaves the sound alone, amber and rose where it rings.</p></div>
   <div class="lab">
     <div class="lab-top">
       <span class="seg" role="group" aria-label="Voice">
@@ -335,7 +334,7 @@ footer a:hover{color:var(--gold)}
 <!-- VOICES -->
 <div class="sh" id="voices">The three voices</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Three networks, <em>three ways to move.</em></h2><p>Each picture traces where a voice's stages sit over the last few seconds, low frequencies at the bottom, running at 0.8 Hz so the shape of the sweep shows. Switching voice takes effect on the next block, and the display redraws to match.</p></div>
+  <div class="prose"><p>Each picture traces where a voice's stages sit over the last few seconds, low frequencies at the bottom, running at 0.8 Hz so the shape of the sweep shows. Switching voice takes effect on the next block, and the display redraws to match.</p></div>
   <div class="voices">
     <article class="voice">
       <canvas id="v0" width="720" height="400" aria-label="JFET's four stages sweeping together on a sine"></canvas>
@@ -359,41 +358,35 @@ footer a:hover{color:var(--gold)}
 <!-- CONTROLS -->
 <div class="sh" id="controls">The controls</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Every knob, <em>and what it moves.</em></h2><p>Press <span class="k">SHOW IN THE LAB</span> on any card and the notch lab above sweeps that control through its range, so you can watch what it does to the network. MIX, REGEN, WARMTH and BODY glide over 20 ms too, so every control automates without steps. Double-click a knob to return it to its default, or double-click its value to type a number.</p></div>
+  <div class="prose"><p>Press <span class="k">SHOW IN THE LAB</span> on any card and the notch lab above sweeps that control through its range, so you can watch what it does to the network. MIX, REGEN, WARMTH and BODY glide over 20 ms too, so every control automates without steps. Double-click a knob to return it to its default, or double-click its value to type a number.</p></div>
   <div class="knobs" id="knobs">
     <article class="knob-card" data-knob="rate">
       <div class="knob-name">RATE · ULTRA SLOW</div>
-      <h3>Slow is the signature.</h3>
       <p>0.01 to 10 Hz, weighted so most of the throw lives in the slow half. This is the hero control because slow is the signature. ULTRA SLOW divides the rate by twenty. At the bottom of the range that is one sweep every 33 minutes: movement you feel across an arrangement rather than hear as an effect. The readout always shows the effective rate.</p>
       <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="depth">
       <div class="knob-name">DEPTH · CENTER</div>
-      <h3>How far, and around where.</h3>
       <p>DEPTH sweeps up to 2.4 octaves; CENTER runs 100 Hz to 8 kHz. At DEPTH zero the sweep parks, leaving a fixed set of notches you place by ear with CENTER: two on JFET and OPTICAL, six on DUAL. Both are smoothed inside the engine, so automating either never zippers.</p>
       <button type="button" class="show" data-show="center">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="regen">
       <div class="knob-name">REGEN</div>
-      <h3>Sharp and vocal, never a scream.</h3>
       <p>0 to 95% resonance, soft-limited inside the feedback loop, with high-frequency damping that tightens from 6 kHz to 2.5 kHz as WARMTH rises. It gets sharp and vocal; it never turns into the thin digital scream.</p>
       <button type="button" class="show" data-show="regen">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="warmth">
       <div class="knob-name">WARMTH</div>
-      <h3>Turns the component model up.</h3>
       <p>It is not an EQ. Inside the network it widens the mismatch between stages, deepens the JFET nonlinearity, drives the feedback loop harder and tightens its damping as it goes. After the stages it adds a gentle second-harmonic tilt to the wet signal. A −6 dBFS, 1 kHz tone through JFET's wet path at full WARMTH measures 0.35% THD.</p>
       <button type="button" class="show" data-show="warmth">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="body">
       <div class="knob-name">BODY</div>
-      <h3>The riff keeps its punch.</h3>
       <p>A phase-coherent split at 150 Hz. At 100%, the default, the whole band goes through the network. Turn it down and less of the low end goes through, so a low fundamental barely moves while everything above it keeps swirling. On TWELVE POLE, a 62 Hz fundamental moves more than 20 dB across the sweep at BODY 100. At BODY 55 it moves about 5 dB, and at BODY 0 about 3 dB. Through all three settings, 2.2 kHz keeps moving about 12 dB.</p>
       <button type="button" class="show" data-show="body">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="mix">
       <div class="knob-name">MIX · INVERT</div>
-      <h3>How deep the notches cut.</h3>
       <p>A linear crossfade, where 50% is the classic full-phase sound. INVERT flips the wet polarity, so peaks become notches.</p>
       <button type="button" class="show" data-show="mix">SHOW IN THE LAB</button>
     </article>
@@ -404,7 +397,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="stereo">The two channels</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">The right channel <em>runs a little ahead.</em></h2>
     <p>There is no spread knob; each voice sets its own. The right channel runs the same sweep a fixed distance ahead of the left: 10 degrees on JFET, 12 on OPTICAL, 15 on DUAL. It sweeps around a centre 1.5% higher, with its own component calibration and, in OPTICAL, its own lamp and cell.</p>
     <p><strong>Neither channel is ever inverted against the other</strong>, so at ordinary settings a fold to mono costs you the image, not the signal. At default JFET settings a mono fold keeps 99.6% of a channel's level. Pushed hard it costs more: DUAL at full depth and 90% regen keeps about three quarters on average, dipping to about a third at the deepest points of the sweep.</p>
     <p>Mono in, stereo out opens a single guitar into a phased image, with the left and right sweeps running a few degrees apart around slightly different centres.</p>
@@ -425,7 +417,6 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <h2 class="h2">The picture is <em>the circuit.</em></h2>
       <p>The picture in the middle of the panel is not an animation. Each of its 32 rows is one tone burst at one frequency, on a log scale from 60 Hz at the front to 8 kHz at the back. The circuit you are running bends each burst: the crests shift by the phase lag at that frequency, and the envelope slides by the group delay. On the front sheet, height is the output level. A notch shows as a flattened cyan row, and a resonance as an amber ridge that turns rose as it builds.</p>
       <p>MIX pulls the stack apart. DRY sits at the back. In front of it is the network's first pass, one sheet per machine on DUAL, with the feedback loop's recirculations drawn as fainter traces behind it, one per pass. OUT is at the front, with the right channel printed over it at half density; where the two channels notch differently, the notch rows double. At MIX 0 there is one intact image.</p>
     </div>
@@ -446,7 +437,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="autolevel">Auto level</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">Judge the phasing, <em>not the volume.</em></h2>
     <p>Four buttons at the bottom right of the panel: OFF, TRANSPARENT, GLUE and CLIP. A phaser gets louder as REGEN climbs and loses level in its notches as MIX rises, so an A/B made while you dial it in is rigged toward the louder setting. <strong>AUTO LEVEL matches the output back to the level coming in</strong>, so your ear judges the phasing, not the volume, and holds a −0.3 dBFS ceiling.</p>
     <p>TRANSPARENT rides the gain slowly and leaves the sound alone until the ceiling. GLUE adds a gentle 2.5:1 compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into the ceiling, loud on purpose. Take REGEN from 0 to 90 and the output moves 3 dB with AUTO LEVEL off, and about a tenth of a dB with it on. Changing mode fades over 10 ms, so it never clicks.</p>
     <p>After it, a true-peak limiter keeps the reconstructed waveform under 0 dBTP, not just the samples under the ceiling, so a converter or a streaming encoder never sees an overshoot. It looks 36 samples ahead, 0.75 ms at 48 kHz, and GIRE reports that latency in every mode, OFF included, so your host lines it up for you. OFF never limits. OFF is the default: sessions and presets saved before 1.1.0 open with it off and sound exactly as they did. It is the same output stage across the Alchemy Index.</p>
@@ -467,7 +457,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="ir">Export IR</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">Print the network <em>as it sits.</em></h2>
     <p>The button under the picture prints the network as it sits right now into an impulse response: a 32-bit float WAV at the host's sample rate, mono or stereo to match the track, ready for any convolver. It asks where to save, offers a name built from the preset, the voice and the rate, and never writes over another file.</p>
     <p>AUTO LEVEL is left out, since a level that follows the programme has no impulse response, and exporting never changes a sample of the audio that is playing.</p>
     <p class="small">The trace on the right is the first 20 ms of the impulse response of the notch lab's network at the moment you press the button, computed sample by sample.</p>
@@ -482,7 +471,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="licence">The licence</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">Fourteen days, <em>the whole plug-in.</em></h2>
     <p>The trial is the whole plug-in for fourteen days, and the header counts down the days left. After that, a computer that has not been activated goes silent, and the LICENCE card stays over the panel until a licence is activated. In GarageBand and other sandboxed hosts it keeps playing.</p>
     <p>The same installer everyone buys, running unlicensed for fourteen days. A licence unlocks it in place, no reinstall.</p>
   </div>
@@ -492,23 +480,6 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- BENCH -->
-<div class="sh" id="bench">On the bench</div>
-<section class="stack">
-  <div class="prose"><h2 class="h2">Measured, <em>every release.</em></h2></div>
-  <ul class="rows">
-    <li><b>ONE FIXED LATENCY</b><span>The phaser itself reads nothing ahead. AUTO LEVEL's true-peak limiter looks 36 samples ahead, 0.75 ms at 48 kHz, and GIRE reports those same 36 samples in every mode, OFF included, so the figure never moves when you change mode and the host's delay compensation lines the track up exactly. The footer says so: 36 SMP LATENCY.</span></li>
-    <li><b>REPRODUCIBLE</b><span>Component scatter comes from a fixed seed, so every instance is the same calibrated unit. The sweep starts from the same point whenever the host starts the plug-in, so the same passage bounced from the same start renders the same samples, today or next year. The sweep runs free rather than following the timeline.</span></li>
-    <li><b>BUFFER INDEPENDENT</b><span>The control path runs on a fixed 32-sample grid, so the host's buffer size never changes the sound. Renders at 256- and 333-sample blocks match to below −300 dB, with AUTO LEVEL on or off.</span></li>
-    <li><b>RATE INDEPENDENT</b><span>Release gates check 44.1, 48 and 96 kHz, and OPTICAL's stage scatter measures the same at every rate from 22.05 to 192 kHz.</span></li>
-    <li><b>CLICK-FREE BYPASS</b><span>BYPASS is a 10 ms crossfade inside the engine, with the dry leg delayed by the same 36 samples, so it nulls against the input once the host has compensated. The host's own bypass button drives the same switch, so toggling it mid-take does not click.</span></li>
-    <li><b>LIGHT TO RUN</b><span>In the release test, the heaviest voice, DUAL, uses under three and a half percent of one core at 48 kHz, AUTO LEVEL and its limiter included.</span></li>
-    <li><b>SIXTY-SIX GATES</b><span>Sixty-six evaluation gates, a 121-check licence suite and a VST3 state test run on every release build, and the build is rejected if any one of them fails.</span></li>
-  </ul>
-  
-</section>
-
-<!-- WHO -->
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
   <article><b>GUITARISTS</b><p>The mid-seventies four-stage sound is a preset, and BODY means you can put a phaser on a down-tuned riff without losing the low end. SLOW BLOOM is voiced for low-tuned parts from the start.</p></article>
@@ -533,7 +504,6 @@ footer a:hover{color:var(--gold)}
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)<br>Windows (VST3): coming soon</td></tr>
   </table>
   <div class="prose">
-    <h2 class="h2">Part of <em>the Alchemy Index.</em></h2>
     <p>GIRE shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
     <p class="small">GIRE's voices are original models inspired by classic hardware circuits. All product names referenced are trademarks of their respective owners, and no affiliation or endorsement is implied.</p>
     

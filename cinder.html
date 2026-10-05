@@ -244,7 +244,6 @@ footer a:hover{color:var(--gold)}
   <div>
     <div class="eyebrow">Three-circuit distortion · Version 1.0</div>
     <h1 class="wordmark">CINDER</h1>
-    <h2>Distortion <em>with the lid off.</em></h2>
     <div class="lede">
       <p>Three waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe, and a transfer curve drawn by the same code that processes your audio.</p>
       <p>AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume, and nothing leaves above −0.3 dB true peak. 44 samples of latency, at every sample rate.</p>
@@ -274,7 +273,6 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <h2 class="h2">Bend the curve. <em>Count what it makes.</em></h2>
       <p>A distortion is a curve. The input level goes in along the bottom, the output comes out up the side, and as long as the curve is a straight diagonal nothing happens. Bend it and every waveform passing through is bent with it: the peaks round off, the two halves stop matching, and new frequencies appear at whole multiples of the note you played. Those are the harmonics, and they are the sound of distortion.</p>
       <p><strong>Even harmonics read as thickness. Odd harmonics read as edge.</strong> A curve that treats the top and bottom halves the same makes odd ones. A curve that treats them differently adds the even ones.</p>
     </div>
@@ -325,7 +323,7 @@ footer a:hover{color:var(--gold)}
 <!-- LAB -->
 <div class="sh" id="lab">The curve lab</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Move a knob. <em>Watch the harmonics.</em></h2><p>This is CINDER's shaper running in your browser. On the left is the transfer display as the plug-in draws it. On the right a 0.72 sine, the level the ember dot marks, goes through that curve: the faint trace is what went in, the cream one is what came out, and the bars underneath are the harmonics it gained, the second up to the seventh, in decibels below the fundamental.</p></div>
+  <div class="prose"><p>This is CINDER's shaper running in your browser. On the left is the transfer display as the plug-in draws it. On the right a 0.72 sine, the level the ember dot marks, goes through that curve: the faint trace is what went in, the cream one is what came out, and the bars underneath are the harmonics it gained, the second up to the seventh, in decibels below the fundamental.</p></div>
   <div class="lab">
     <div class="lab-top">
       <span class="seg" role="group" aria-label="Circuit">
@@ -346,7 +344,7 @@ footer a:hover{color:var(--gold)}
 <!-- CIRCUITS -->
 <div class="sh" id="circuits">The three circuits</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Three curves, <em>three kinds of dirt.</em></h2><p>Each picture is a sine going through one circuit while its DRIVE climbs from 3 to 21 dB and back. The faint line is what goes in, the bright one what comes out. Every circuit normalises its own output, so more drive brings more harmonics and more compression, not just more level.</p></div>
+  <div class="prose"><p>Each picture is a sine going through one circuit while its DRIVE climbs from 3 to 21 dB and back. The faint line is what goes in, the bright one what comes out. Every circuit normalises its own output, so more drive brings more harmonics and more compression, not just more level.</p></div>
   <div class="voices">
     <article class="voice">
       <canvas id="c0" width="720" height="400" aria-label="A sine through EMBER: both halves round off the same way"></canvas>
@@ -369,40 +367,34 @@ footer a:hover{color:var(--gold)}
 <!-- CONTROLS -->
 <div class="sh" id="controls">The controls</div>
 <section class="stack">
-  <div class="prose"><h2 class="h2">Every knob, <em>and what it moves.</em></h2><p>Press <span class="k">SHOW IN THE LAB</span> on a card and the curve lab above sweeps that control through its range. Every control automates. Drag a knob up and down or side to side, hold Shift for fine moves, double-click it to return it to its default, or double-click its number to type a value.</p></div>
+  <div class="prose"><p>Press <span class="k">SHOW IN THE LAB</span> on a card and the curve lab above sweeps that control through its range. Every control automates. Drag a knob up and down or side to side, hold Shift for fine moves, double-click it to return it to its default, or double-click its number to type a value.</p></div>
   <div class="knobs" id="knobs">
     <article class="knob-card" data-knob="drive">
       <div class="knob-name">DRIVE</div>
-      <h3>Into the bend.</h3>
       <p>0 to 36 dB, default 12. How hard the signal is pushed into the circuit. Low values sit in the straight part of the curve, high values push into the bend. Because the circuits normalise their own output, turning DRIVE up adds harmonics and compression rather than simply getting louder.</p>
       <button type="button" class="show" data-show="drive">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="bias">
       <div class="knob-name">BIAS</div>
-      <h3>The fastest route to vocal.</h3>
       <p>−1.00 to +1.00. Slides the signal off centre before it reaches the curve, so even a symmetric circuit clips asymmetrically. At BIAS 0.4, EMBER's second harmonic rises from −126 dB to −20.9 dB. Positive and negative lean opposite ways, and the DC it creates is removed afterwards, so your meters stay on zero.</p>
       <button type="button" class="show" data-show="bias">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="tube">
       <div class="knob-name">TUBE · IRON</div>
-      <h3>Warmth and bite, apart.</h3>
       <p>The SATURATION row. TUBE adds a squared term over the circuit's curve, and squaring makes even harmonics: H2 climbs from −126 dB to −25 dB between 0 and 60. IRON adds a cubed term, the odd series. At high DRIVE its third harmonic partly opposes the circuit's own, so it rebalances the series rather than piling on. At some settings IRON sounds cleaner. That is the design.</p>
       <button type="button" class="show" data-show="tube">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="var">
       <div class="knob-name">VAR</div>
-      <h3>Two channels that disagree.</h3>
       <p>0 to 10. Real hardware never has two identical channels. VAR mismatches the right one on purpose: at the top it runs 2.5 dB more drive, a slightly different bias and a little more TUBE and IRON, and the display draws it as a second, ember curve. At VAR 0 the channels match to −345 dB. On a mono track it has nothing to act on.</p>
       <button type="button" class="show" data-show="var">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="sag">
       <div class="knob-name">SAG</div>
-      <h3>A supply that can't keep up.</h3>
       <p>0 to 100. A level follower pulls the drive down as the signal gets loud, up to 9 dB at 100, reacting in about 20 ms and recovering over about 250 ms. It ducks on the transient and breathes back in behind it: sustained material distorts less than the hit that started it. At SAG 100 the third harmonic falls from −11.7 dB to −17.9 dB.</p>
     </article>
     <article class="knob-card" data-knob="tone">
       <div class="knob-name">TONE · MIX · OUTPUT</div>
-      <h3>After the curve.</h3>
       <p>TONE is a ±12 dB tilt around 800 Hz: at +12 it measures −6.00 dB at 100 Hz and +6.00 dB at 8 kHz. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
     </article>
   </div>
@@ -413,7 +405,6 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <h2 class="h2">Let the drive <em>breathe on its own.</em></h2>
       <p>The LFO knob sits beside BIAS, and it is the depth. At 100 it swings DRIVE 12 dB either side of wherever DRIVE is set, or BIAS a full 1.00 either side, and the swing never takes either past its own range. At 0 it is off, and CINDER sounds exactly as it did before the LFO existed: sessions and presets from earlier versions open there.</p>
       <p><strong>Right-click the knob, or click the word LFO under it,</strong> and its options open over the panel. RATE runs 0.05 to 20 Hz. SYNC locks the sweep to your host's tempo and, while the transport runs, to the bar line, with DIVISION from 4 bars down to 1/32, triplets included. SHAPE is SINE, TRI, SQR or S&amp;H, and TARGET is DRIVE or BIAS.</p>
     </div>
@@ -443,7 +434,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="display">The display</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">The picture is <em>the shaper.</em></h2>
     <p>Most distortion plug-ins show you a curve. Very few show you their curve: the picture is usually drawn by separate code from a simplified model, so it drifts exactly where you care most, at the extremes and once a second stage is involved. CINDER's display evaluates the same header as the audio, so the curve bends because the shaper bent.</p>
     <p>The THD line in the corner goes a step further. It is not predicted from the curve at all. CINDER finds the fundamental in your input and reads every harmonic of it in the audio leaving the plug-in, after TONE, MIX, OUTPUT and AUTO LEVEL: <span class="k">THD 23.0 %  @ 1.00 kHz</span>. Feed it a chord or noise and it reads <span class="k">THD --</span> rather than print a number that means nothing. <strong>The build refuses to ship if that reading disagrees with an independent analysis of the same audio by more than half a decibel.</strong></p>
   </div>
@@ -463,7 +453,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="autolevel">Auto level</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">The tone changes. <em>The volume doesn't.</em></h2>
     <p>Turn up a distortion and it gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling one in is rigged. <strong>AUTO LEVEL holds the output where your input was</strong>, so moving DRIVE changes the tone and leaves the volume alone. Twelve decibels of DRIVE move the output by 0.08 dB with it working, where the same move is 9.56 dB with it off.</p>
     <p>One switch, four positions, no knobs to set. TRANSPARENT rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into that clipper on purpose: loud, without the fizz a plain clipper folds back down the spectrum. TRANSPARENT and GLUE land within 0.1 dB of each other, so switching between them is a character decision.</p>
     <p>A short true-peak limiter sits behind every working mode, so the ceiling holds between the samples too, where a converter or an encoder will find it: driven sines up to 15 kHz and hard transients, measured 16× oversampled, never reach 0 dBTP. OFF never limits, and it is the default. Mode changes fade over 10 ms, and BYPASS takes AUTO LEVEL out with everything else.</p>
@@ -484,7 +473,6 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="licence">The licence</div>
 <section class="two">
   <div class="prose">
-    <h2 class="h2">Fourteen days, <em>the whole plug-in.</em></h2>
     <p>CINDER runs as a fully working trial for fourteen days from the first time it loads, and the line at the bottom of the window counts down the days left. When the trial ends without activation, CINDER goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
     <p class="small">Sandboxed hosts such as GarageBand keep their own copy of your Library, so activate CINDER in Logic Pro, Live, Pro Tools or another standard host.</p>
   </div>
@@ -494,23 +482,6 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- BENCH -->
-<div class="sh" id="bench">On the bench</div>
-<section class="stack">
-  <div class="prose"><h2 class="h2">Measured, <em>every release.</em></h2></div>
-  <ul class="rows">
-    <li><b>44 SAMPLES</b><span>Twelve for the oversampler and 32 for the true-peak limiter's lookahead, under a millisecond at 48 kHz. The same 44 at 44.1, 48 and 96 kHz and in every AUTO LEVEL mode, OFF included, reported to the host so it lines the track up for you. The footer prints it: 44 SMP LATENCY.</span></li>
-    <li><b>ASYMMETRIC KERNELS</b><span>63 taps on the upsampler and 35 on the downsampler rather than the obvious even split. An image the interpolator lets through goes into the nonlinearity and comes back down into the audible band; decimator leakage only folds into the top octave, where the programme masks it. Same multiply count, same latency, 14 dB more in-band alias rejection.</span></li>
-    <li><b>ALIASING, STATED</b><span>The worst product in the musical band is −50.1 dB for inputs up to 14 kHz. The worst case anywhere is −32.4 dB, from a 20.5 kHz input, in the last half-octave before Nyquist.</span></li>
-    <li><b>THE SAME RENDER</b><span>256- and 333-sample blocks differ by −346 dB, the float noise floor, and the same holds with SAG's envelope running across block edges. Your offline bounce is the mix you approved.</span></li>
-    <li><b>CLEAN EXITS</b><span>MIX at 0 is transparent to −288 dB against the delayed input. BYPASS is a short crossfade against the latency-aligned dry signal and nulls at −144 dB. No DC under BIAS: the mean output stays below −60 dBFS at BIAS 0.5 and DRIVE 18.</span></li>
-    <li><b>FLAT TOP OCTAVE</b><span>−0.53 dB at 15 kHz against the small-signal slope, and within 0.03 dB of 1 kHz through every AUTO LEVEL mode.</span></li>
-    <li><b>FIFTY-THREE GATES</b><span>Fifty-three evaluation gates run against the exact DSP that ships on every release build, and the build is rejected if any one of them fails.</span></li>
-  </ul>
-  
-</section>
-
-<!-- WHO -->
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
   <article><b>MIX ENGINEERS</b><p>RUST BUS is parallel warmth for a whole mix or a drum bus. AUTO LEVEL means pushing DRIVE never wins an A/B on volume alone, and TRANSPARENT holds the ceiling without being heard.</p></article>
@@ -537,7 +508,6 @@ footer a:hover{color:var(--gold)}
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
   </table>
   <div class="prose">
-    <h2 class="h2">Part of <em>the Alchemy Index.</em></h2>
     <p>CINDER shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
     <p>No amp sim, no cabinet, no convolution. A single-purpose distortion and the small set of utility controls that make one usable on a bus.</p>
     
