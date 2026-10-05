@@ -1,254 +1,946 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>PENROSE ULTRA · Auto mixing for creators · THETA AUDIO RESEARCH</title>
+<meta name="description" content="An auto mixer for YouTubers, podcasters and streamers. Pick a preset, play your edit once and press AUTO: a cleaner, fuller mix on target for loudness, with the voice lifted above the music. AU, VST3, AAX for macOS.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
-</helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<style>.site-nav > a:first-child{flex-shrink:0} .site-nav > div{flex-wrap:wrap} .site-nav > div a:hover{background:#DCCDBF !important;color:#0C1519 !important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+body{margin:0}
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels.
+   Single dark look by choice: THETA marketing pages live on the void theme. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --infall:#5fa8d8; --emerge:#dfe6ee; --delta:#e8452a;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding-block:var(--s5);border-bottom:1px solid rgba(200,168,107,.18);flex-wrap:wrap}
+.lockup{display:flex;align-items:center;gap:var(--s3)}
+.lockup img{height:22px;width:auto}
+.lockup span{font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.32em;color:var(--text-2);line-height:1.25}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--text-2);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:16px;height:16px}
+
+/* production notes */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:.28em;line-height:1.1;margin-block:var(--s4) var(--s5);color:var(--text)}
+.wordmark em{font-style:normal;color:var(--gold)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;color:var(--text);margin-bottom:var(--s4)}
+.lede{color:var(--text-2);max-width:58ch}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s}
+.btn.primary{background:var(--gold);color:#06080c;font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+.disc-wrap{position:relative;aspect-ratio:1;max-width:100%;width:100%}
+.disc-wrap canvas{width:100%;height:100%;display:block}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.h2 em{font-style:normal;color:var(--gold)}
+.stack{display:grid;gap:var(--s5)}
+
+/* bridge */
+.bridge{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.bridge canvas{display:block;width:100%;height:auto;aspect-ratio:16/7}
+.bridge-legend{display:flex;justify-content:space-between;gap:var(--s4);padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;flex-wrap:wrap}
+.bridge-legend .l{color:var(--infall)} .bridge-legend .mid{color:var(--gold-hot)} .bridge-legend .r{color:var(--emerge)}
+
+/* knobs */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.knob-card svg{width:132px;height:132px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacing:.24em;text-align:center}
+.knob-card h3{font-weight:300;font-size:20px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.trims{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.k-infall{--k:var(--infall)} .k-emerge{--k:var(--emerge)} .k-dialog{--k:var(--gold-hot)}
+.knob-name{color:var(--k)}
+.arc-track{fill:none;stroke:#1a1c20;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--k);stroke-width:5;stroke-linecap:round}
+.knob-face{fill:#08090c;stroke:#2a2c34;stroke-width:1.5}
+.knob-num{font-family:'Times New Roman',Georgia,serif;font-size:30px;fill:var(--text);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+
+/* dialog lab */
+.lab{border:1px solid var(--border);border-radius:8px;background:var(--well);padding:var(--s5);display:grid;gap:var(--s4)}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.talk{display:flex;align-items:center;gap:var(--s2)}
+.talk i{width:10px;height:10px;border-radius:50%;background:var(--gold-hot);box-shadow:0 0 10px var(--gold-hot);opacity:.15;transition:opacity .08s}
+.lab svg{width:100%;height:auto;display:block}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.ctrl{display:grid;gap:4px}
+.ctrl label{display:flex;flex-wrap:wrap;gap:2px 8px;justify-content:space-between;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input{width:100%;accent-color:var(--gold-hot)}
+.ctrl small{font-size:13px;color:var(--text-3);line-height:1.4}
+.level{font-family:var(--f-mono);font-size:12px;color:var(--text-2);letter-spacing:.08em}
+.level b{color:var(--gold-hot);font-weight:500}
+
+/* trims list */
+.trimlist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.trim{border-top:1px solid rgba(200,168,107,.3);padding-top:var(--s3)}
+.trim b{display:block;font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);margin-bottom:4px}
+.trim span{font-size:15px;color:var(--text-2)}
+
+/* delta compare */
+.compare{display:grid;gap:var(--s3)}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;justify-self:start}
+.seg button{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;padding:8px 14px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--text);color:#06080c}
+.seg button.red[aria-pressed="true"]{background:var(--delta);color:#fff}
+.shot{position:relative;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#000;aspect-ratio:920/1080;max-width:520px;width:100%}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+
+/* exit lights */
+.exit{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden;position:relative}
+.exit svg{display:block;width:100%;height:auto}
+.verdict{position:absolute;top:var(--s4);right:var(--s4);font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;color:var(--text-2)}
+.lights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}
+.light{display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:start}
+.light i{width:12px;height:12px;border-radius:50%;margin-top:7px;background:var(--gold);box-shadow:0 0 12px rgba(255,200,103,.6)}
+.light b{display:block;font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--text)}
+.light span{font-size:15px;color:var(--text-2)}
+
+/* views */
+.views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.view{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.view .pic{aspect-ratio:1;background:#000;position:relative;overflow:hidden}
+.view .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.view .pic canvas{width:100%;height:100%;display:block}
+.view .body{padding:var(--s4);display:grid;gap:var(--s2);align-content:start}
+.view b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.24em;color:var(--gold)}
+.view p{font-size:15px;color:var(--text-2)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 240s linear infinite}
+
+/* meters */
+.meters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--divider);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.m{background:var(--panel);padding:var(--s4);display:grid;gap:2px}
+.m small{font-family:var(--f-display);font-weight:500;font-size:10.5px;letter-spacing:.2em;color:var(--text-3)}
+.m strong{font-family:'Times New Roman',Georgia,serif;font-weight:400;font-size:30px;color:var(--text);font-variant-numeric:tabular-nums;line-height:1.2}
+.m strong u{text-decoration:none;font-family:var(--f-mono);font-size:11px;color:var(--text-3);margin-left:6px}
+.m.blue strong{color:var(--infall)}
+
+/* skins */
+.skins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.skin{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.skin .sw{aspect-ratio:4/3;position:relative;display:grid;place-items:center}
+.skin .sw svg{width:72%;height:auto}
+.skin .lbl{background:var(--panel);padding:var(--s3) var(--s4);display:grid;gap:2px}
+.skin .lbl b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em}
+.skin .lbl span{font-size:14px;color:var(--text-2);line-height:1.45}
+
+/* voicings */
+.voicings{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.voicings span{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;padding:8px 14px;border:1px solid var(--border);border-radius:4px;color:var(--text-2);transition:border-color .3s,color .3s}
+.voicings span.on{border-color:var(--gold);color:var(--gold-hot)}
+
+/* soon */
+.soon{border:1px solid rgba(200,168,107,.35);border-radius:8px;padding:var(--s6);background:radial-gradient(120% 140% at 100% 0%,rgba(200,168,107,.10),transparent 60%),var(--panel);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s6);align-items:center}
+.switch{display:inline-flex;border:1px solid var(--border);border-radius:4px;padding:3px;background:var(--well);font-family:var(--f-mono);font-size:12px;letter-spacing:.16em}
+.switch span{padding:10px 16px;border-radius:3px;color:var(--text-3)}
+.switch span.on{background:var(--gold);color:#06080c}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold-hot);border:1px solid var(--gold-dim);border-radius:4px;padding:3px 8px;margin-bottom:var(--s3)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:34%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+.ph{font-family:var(--f-mono);color:var(--gold-hot);background:rgba(255,200,103,.08);border:1px dashed var(--gold-dim);border-radius:3px;padding:0 6px;font-size:.92em}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s6);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{font-family:var(--f-display);font-weight:200;font-size:44px;letter-spacing:.08em}
+.price p{color:var(--text-2);max-width:52ch}
+
+/* copy deck */
+.deck{border:1px solid var(--border);border-radius:8px;background:var(--well)}
+.deck-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);flex-wrap:wrap}
+.deck-head span{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.deck pre{margin:0;padding:var(--s5);white-space:pre-wrap;word-wrap:break-word;font-family:var(--f-mono);font-size:13px;line-height:1.7;color:var(--text-2);max-height:560px;overflow:auto}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.soon{grid-template-columns:minmax(0,1fr)}
+  .knobs,.views,.trimlist{grid-template-columns:minmax(0,1fr)}
+  .skins,.meters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero .disc-wrap{max-width:460px;justify-self:center}
+}
+@media (max-width:520px){
+  .lights,.ctrls{grid-template-columns:minmax(0,1fr)}
+  .specs th{width:42%}
+}
+
+.knobs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.k-loud{--k:var(--text)}
+.knob-name .s{font-style:normal;font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:0;border:1px solid #3a6ea5;color:var(--text-2);border-radius:2px;padding:1px 5px;margin-left:6px;vertical-align:2px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5);counter-reset:none}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s4);display:grid;gap:var(--s2);align-content:start}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:44px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em}
+.steps p{color:var(--text-2);font-size:16px}
+.autoshot{position:relative;width:260px;max-width:100%;aspect-ratio:180/324;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#000}
+.autoshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+.faceshot img.tall{max-width:560px;justify-self:center}
+.faceshot:has(img.tall){justify-items:center}
+.sound{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.sound li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.sound b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.sound span{color:var(--text-2);font-size:16px}
+.presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.presets article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start}
+.presets b{font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacing:.24em;color:var(--gold-hot)}
+.presets .tgt{font-family:var(--f-mono);font-size:12.5px;color:var(--text-3);letter-spacing:.08em}
+.presets p{font-size:15.5px;color:var(--text-2)}
+.more{color:var(--text-2);max-width:72ch}
+#voicings span{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;color:var(--text-3);transition:color .3s}
+#voicings span.on{color:var(--gold-hot)}
+.ride{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.ride svg{display:block;width:100%;height:auto}
+.ride-legend{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em}
+.ride-legend .before{color:var(--infall)} .ride-legend .after{color:var(--gold-hot)}
+.seg.mini button{padding:6px 10px;font-size:11px;min-height:30px}
+.ph.solid{border-style:solid}
+.shot.sq{aspect-ratio:640/630;border-radius:50%;border:0}
+@media (max-width:900px){ .knobs,.presets{grid-template-columns:repeat(2,minmax(0,1fr))} .steps{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:520px){ .knobs,.presets{grid-template-columns:minmax(0,1fr)} .sound li{grid-template-columns:minmax(0,1fr);gap:4px} }
+@media (prefers-reduced-motion:reduce){ .spin{animation:none} }
+</style>
+
+<style>.ctrls{align-items:start} .ctrl{grid-template-rows:3.2em auto auto} .ctrl label{align-items:flex-start;align-content:flex-start} .ctrl label output[hidden]{display:none}</style>
+</head>
+<body class="hide-notes" style="margin:0;background:#06080c">
+<nav class="site-nav" style="font-family:'Montserrat',sans-serif;line-height:1.6;padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
+  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s">
     <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
     <span style="display:flex;flex-direction:column;gap:4px">
       <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
       <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
     </span>
   </a>
-  <div data-nav-title style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;max-width:calc(100% - 900px)">
-    <h2 style="font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">PENROSE ULTRA</h2>
-  </div>
   <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase">RETURN_TO_LAB</a>
+    <a href="free.html" style="color:#A6DCA6;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #6E9B6E;padding:8px 16px;transition:0.3s;text-transform:uppercase">FREE</a>
+    <a href="support.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase">SUPPORT</a>
+    <a href="faq.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase">FAQ</a>
+    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+<div class="wrap">
 
-  <section data-screen-label="Hero" style="max-width:1000px;margin:20px auto 50px auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center">
-    <image-slot id="pu-core" src="assets/penrose_ultra/core-spectrum.webp?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1/1;display:block;border-radius:50%;overflow:hidden" shape="circle" placeholder="PENROSE ULTRA spectrum core"></image-slot>
-    <div>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#C8A86B;display:block;margin:0 0 22px 0;text-transform:uppercase">Mix-bus mastering · Dialogue enhancement · Beta soon</span>
-      <h1 style="font-weight:300;font-size:clamp(26px,3vw,38px);letter-spacing:0.12em;line-height:1.35;color:#B0B2B7;text-transform:uppercase;margin:0 0 26px 0;text-wrap:balance">Finish the mix. Bring the voice forward.</h1>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 26px 0;text-wrap:pretty">PENROSE ULTRA is a three-knob mastering processor for people who publish. INFALL clears out what is in the way. EMERGENCE adds weight, air and glue. DIALOG lifts speech in a finished stereo mix, so your host, your guest or your voiceover sits on top of the music without anyone reaching for a stem.</p>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase">IN ONE SIDE / OUT THE OTHER</span>
+<input type="checkbox" id="notes" hidden>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Auto mixing for creators · Beta soon</div>
+    <h1 class="wordmark">PENROSE <em>ULTRA</em></h1>
+    <h2>Your mix, finished.</h2>
+    <p class="lede">PENROSE ULTRA is an auto mixer for creators with no time to mix, or no wish to learn. Put it on your master, pick YOUTUBE, PODCAST, SHORTS or STREAM, play your edit through once and press AUTO. Your mix comes out cleaner, fuller and on target for loudness, with the voice lifted above the music when you want it.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Join the beta</a>
+      <a class="btn ghost" href="#how">See how it works</a>
     </div>
-  </section>
+    <div class="chips"><span class="chip">AU</span><span class="chip">VST3</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon</span></div>
+  </div>
+  <div>
+    <div class="disc-wrap"><canvas id="disc" width="1100" height="1100" aria-label="Animated PENROSE ULTRA spectrum disc: the input falls in on the left, the processed output glows gold on the right"></canvas></div>
+    <div class="tagline">IN ONE SIDE &nbsp;/&nbsp; OUT THE OTHER</div>
+  </div>
+</section>
 
-  <section data-screen-label="Notify" style="margin:0 auto 100px auto;max-width:600px;text-align:center">
-    <span style="font-size:10px;letter-spacing:4px;color:#C8A86B;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
-    <div style="background:rgba(220,205,191,0.02);border:1px solid #3A3534;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.8;margin:0 0 30px 0;text-transform:uppercase;color:#B0B2B7;line-height:1.9">The beta opens soon. Leave your email and we will send the installer when it is ready, along with the release notes.</p>
-      <a href="mailto:info@theta.audio?subject=PENROSE%20ULTRA%20beta" data-notify="PENROSE ULTRA" style="display:block;text-align:center;border:1px solid #DCCDBF;color:#DCCDBF;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#DCCDBF;color:#0C1519">JOIN_THE_BETA</a>
-      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · AU / VST3 / AAX</p>
-    </div>
-  </section>
-
-  <section data-screen-label="The idea" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">IN ONE SIDE. OUT THE OTHER.</h3>
-    <div style="max-width:820px">
-      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">The PENROSE ULTRA interface is drawn as a bridge through spacetime. Your signal falls in on the left, is stripped down to what holds up, and comes out on the right.</p>
-      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">The picture is the signal path. The left half only ever takes away: resonance, harshness, mud. The right half only ever gives back: weight, air, glue. You always know which side of the plug-in is doing what, and why.</p>
-      <p style="font-weight:300;font-size:15px;line-height:1.9;margin:0;text-wrap:pretty">That makes it fast. Most of the time you will set two or three knobs, listen, and move on to the next episode.</p>
-    </div>
-  </section>
-
-  <section data-screen-label="Three knobs" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 40px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THREE KNOBS</h3>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font-size:17px;letter-spacing:7px;color:#7FA8D6;text-transform:uppercase;font-weight:300">INFALL</span>
-        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Take out what is in the way</span>
-        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Removes resonance, harshness and mud, then warms what is left. Ring-y rooms, spitty esses and boomy low mids come down without the mix losing its body.</p>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">TEMPER · EDGE · BALLAST · HEAT</span>
+<!-- HOW -->
+<div class="sh" id="how">Three steps</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Pick. Play. <em>Press AUTO.</em></h2><p>No mixing knowledge needed. Every step below is one click, and every result is measured on your audio.</p></div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>PICK A PRESET</b><p>YOUTUBE, PODCAST, SHORTS or STREAM. Each one sets how much the voice is lifted, how it sits against the music, and the loudness target for that platform.</p></li>
+    <li><span class="num">2</span><b>PLAY IT THROUGH</b><p>Play your timeline or bounce it once. PENROSE ULTRA measures the loudness of the whole piece and learns where it gets quiet and where it gets loud.</p></li>
+    <li><span class="num">3</span><b>PRESS AUTO</b><p>LOUDNESS turns to land your mix on the target, and LEVELLING, set by your preset, evens out the quiet and loud sections. Play it again to check. Done.</p></li>
+  </ol>
+  <div class="two">
+    <div class="compare">
+      <div class="seg" role="group" aria-label="AUTO before and after">
+        <button id="a-off" aria-pressed="true" type="button">BEFORE AUTO</button>
+        <button id="a-on" aria-pressed="false" type="button">AFTER AUTO</button>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font-size:17px;letter-spacing:7px;color:#DCCDBF;text-transform:uppercase;font-weight:300">EMERGENCE</span>
-        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Give back what makes it finished</span>
-        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Adds weight and air, then glues the mix together and holds the ceiling. The step that turns a good rough into something you can publish.</p>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">CORE · HALO · GRAVITY</span>
+      <div class="autoshot">
+        <img id="auto-before" src="assets/penrose_ultra/auto-before.webp" alt="Before AUTO: output integrated loudness reads −20.9 LUFS, 6.9 LU under the −14 target">
+        <img id="auto-after" src="assets/penrose_ultra/auto-after.webp" alt="After AUTO: output integrated loudness reads −14.0 LUFS and the button says ON TARGET" style="opacity:0">
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font-size:17px;letter-spacing:7px;color:#E8B04B;text-transform:uppercase;font-weight:300">DIALOG</span>
-        <span style="font-weight:300;font-size:13px;letter-spacing:2px;color:#B0B2B7;text-transform:uppercase">Bring the voice to the front</span>
-        <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Lifts the range where speech is understood and eases the music bed back underneath it. Works on the finished stereo mix, so it works on the file you already have.</p>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#6E6764">BALANCE · TONE · SENSE</span>
+      <div class="cap">REAL READINGS FROM THE PLUG-IN · YOUTUBE PRESET · TARGET −14 LUFS</div>
+    </div>
+    <div class="prose">
+      <p><strong>Every platform has a loudness it expects.</strong> Upload too quiet and you sound weak next to the video before yours. Upload too loud and the platform turns you down and squashes what is left. Set TARGET anywhere from −24 to −9 LUFS (−14 is the default) and AUTO gets you there.</p>
+      <p>The true peak never passes −1 dBTP, however far AUTO has to go.</p>
+          </div>
+  </div>
+</section>
+
+<!-- KNOBS -->
+<div class="sh">The controls</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Four knobs, <em>named for what they do.</em></h2><p>When you want to go further than AUTO, the knobs say exactly what they change. Each sound knob has an S button that plays only what that knob is doing, so you can hear the change on its own.</p></div>
+  <div class="knobs">
+    <article class="knob-card k-infall">
+      <svg viewBox="-70 -70 140 140" aria-hidden="true"><g class="ticks"></g><path class="arc-track"/><path class="arc-val"/><circle class="knob-face" r="40"/><text class="knob-num" y="10">46</text></svg>
+      <div class="knob-name">CLEAN <i class="s">S</i></div>
+      <h3>Take out what gets in the way.</h3>
+      <p>Removes mud, harshness and ringing, then warms what is left. Boomy rooms, spitty esses and muddy low mids come down without the mix losing its body.</p>
+      <div class="trims">IN THE DRAWER · RESONANCE · HARSHNESS · MUD · WARMTH</div>
+    </article>
+    <article class="knob-card k-emerge">
+      <svg viewBox="-70 -70 140 140" aria-hidden="true"><g class="ticks"></g><path class="arc-track"/><path class="arc-val"/><circle class="knob-face" r="40"/><text class="knob-num" y="10">42</text></svg>
+      <div class="knob-name">ENHANCE <i class="s">S</i></div>
+      <h3>Give back what makes it finished.</h3>
+      <p>Adds weight, air and presence, then glues the mix together. The step that turns a rough edit into something that sounds produced.</p>
+      <div class="trims">IN THE DRAWER · WEIGHT · AIR · GLUE</div>
+    </article>
+    <article class="knob-card k-dialog">
+      <svg viewBox="-70 -70 140 140" aria-hidden="true"><g class="ticks"></g><path class="arc-track"/><path class="arc-val"/><circle class="knob-face" r="40"/><text class="knob-num" y="10">50</text></svg>
+      <div class="knob-name">VOICE <i class="s">S</i></div>
+      <h3>Bring the voice to the front.</h3>
+      <p>Lifts the range where speech is understood and eases the music back underneath it, on the finished stereo mix you already have.</p>
+      <div class="trims">FINE CONTROLS · MUSIC ↔ VOICE · BODY ↔ CLARITY · SENSITIVITY</div>
+    </article>
+    <article class="knob-card k-loud">
+      <svg viewBox="-70 -70 140 140" aria-hidden="true"><g class="ticks"></g><path class="arc-track"/><path class="arc-val"/><circle class="knob-face" r="40"/><text class="knob-num" y="10">−1.0</text></svg>
+      <div class="knob-name">LOUDNESS</div>
+      <h3>Set the level you deliver at.</h3>
+      <p>Raises the mix and holds the ceiling so peaks never clip. AUTO turns this one for you to land on your target.</p>
+      <div class="trims">WITH · TARGET · AUTO · LEVELLING</div>
+    </article>
+  </div>
+  <figure class="faceshot">
+    <img src="assets/penrose_ultra/controls-0125.webp" alt="The PENROSE ULTRA controls: CLEAN, LOUDNESS and ENHANCE on the top row, MUSIC ↔ VOICE, VOICE, BODY ↔ CLARITY and SENSITIVITY below, with S buttons beside CLEAN, ENHANCE and VOICE">
+    <figcaption class="cap">THE REAL CONTROLS · BETA BUILD v0.1.25</figcaption>
+  </figure>
+  </section>
+
+<!-- SOUND -->
+<div class="sh">The sound</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Better before you <em>touch a thing.</em></h2>
+    <p>PENROSE ULTRA's sound was rebuilt from the ground up for this release. It works the way a good mix engineer listens: it treats quiet moments and loud moments differently, instead of putting one fixed EQ over everything.</p>
+    <p><strong>Turn CLEAN and ENHANCE up and you get all of it at once.</strong> No extra controls to learn.</p>
+  </div>
+  <ul class="sound">
+    <li><b>TIGHT BASS</b><span>Held bass notes stay firm and controlled, and the attack still comes through.</span></li>
+    <li><b>CLEAR LOW MIDS</b><span>The muddy range just above the bass is pulled out of the way, so the low end sounds clean, not thick.</span></li>
+    <li><b>AIR ON THE DETAIL</b><span>The top end opens up on quiet detail: breaths, room, the tail of a word.</span></li>
+    <li><b>PRESENCE</b><span>A presence lift around 4.5 kHz puts voices and lead instruments forward on small speakers.</span></li>
+    <li><b>SMOOTH LOUD PARTS</b><span>When things get loud, they stay smooth instead of turning harsh.</span></li>
+  </ul>
+</section>
+
+<!-- VOICE -->
+<div class="sh">VOICE</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">You control the voice <em>to music ratio.</em></h2>
+    <p>You have the final mix. The music bed is a touch hot, the host is a touch buried, and the separate tracks are long gone. <strong>VOICE works on the stereo file you already have.</strong></p>
+    <p>Turn it up and four bands where speech carries its meaning come forward: body at 500 Hz, clarity at 1 and 2 kHz, presence at 4 kHz. Their depths follow the band-importance weights of the speech intelligibility standard (ANSI S3.5), so the help goes where listeners actually catch words. At the same time two bands where music keeps its energy, 90 Hz and 250 Hz, ease back, clearing the low end that buries a voice.</p>
+    <p><strong>It follows the talking.</strong> When someone speaks, VOICE leans in. When they stop, it lets the music be music.</p>
+    <p><strong>It changes balance, not loudness.</strong> VOICE measures exactly what it added and takes that much back, so turning it moves the voice forward without a jump in level fooling your ears.</p>
+  </div>
+  <div class="stack">
+    <div class="lab" aria-label="Interactive VOICE illustration">
+      <div class="lab-top"><span>VOICE · ILLUSTRATION</span><span style="display:flex;align-items:center;gap:14px"><svg id="senseMeter" width="120" height="10" viewBox="0 0 120 10" aria-label="Voice detector level and SENSITIVITY threshold"><rect x="0" y="3" width="120" height="4" rx="2" fill="#1a1c20"></rect><rect id="smLevel" x="0" y="3" width="0" height="4" rx="2" fill="#7a6840"></rect><rect id="smThr" x="58" y="0" width="2" height="10" fill="#ffc867"></rect></svg><span class="talk"><i id="talkdot"></i><span id="talktxt">LISTENING</span></span></span></div>
+      <svg id="eq" viewBox="0 0 640 260" role="img" aria-label="Curve of the bands VOICE lifts and eases"></svg>
+      <div class="ctrls">
+        <div class="ctrl"><label for="c-dialog">VOICE <output id="o-dialog" hidden>50</output></label><input id="c-dialog" type="range" min="0" max="100" value="50"><small>How much help</small></div>
+        <div class="ctrl"><label for="c-bal">MUSIC ↔ VOICE <output id="o-bal" hidden>65</output></label><input id="c-bal" type="range" min="0" max="100" value="65"><small>Ease the music, or lift the voice</small></div>
+        <div class="ctrl"><label for="c-tone">BODY ↔ CLARITY <output id="o-tone" hidden>10</output></label><input id="c-tone" type="range" min="-100" max="100" value="10"><small>Which part of the voice</small></div>
+        <div class="ctrl"><label for="c-sense">SENSITIVITY <output id="o-sense" hidden>50</output></label><input id="c-sense" type="range" min="0" max="100" value="50"><small>How readily it hears talking</small></div>
       </div>
+      <div class="level">OUTPUT LEVEL CHANGE <b>0.0 dB</b> · balance moves, loudness stays</div>
     </div>
-  </section>
-
-  <section data-screen-label="Dialog" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">THE VOICE, FORWARD. THE MUSIC, STILL THERE.</h3>
-    <div style="max-width:820px">
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">You have the final mix. The music bed is a touch hot, the host is a touch buried, and the stems are long gone. DIALOG works on the stereo file you already have.</p>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Turn it up and four bands where speech carries its meaning come forward: body at 500 Hz, clarity at 1 and 2 kHz, presence at 4 kHz. Their depths follow the band-importance weights of the speech intelligibility standard (ANSI S3.5), so the help goes where listeners actually catch words. At the same time two bands where a music bed keeps its energy, 90 Hz and 250 Hz, ease back, clearing the low end that buries a voice two octaves above it.</p>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">It follows the talking. When someone speaks, DIALOG leans in. When they stop, it lets the music be music.</p>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;text-wrap:pretty">It changes balance, not loudness. DIALOG measures exactly what it added and takes that much back, so turning the knob moves the voice forward without a level jump fooling your ears. You judge it by what you hear, and it does not drive the limiter any harder.</p>
-    </div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">BALANCE</span><span style="font-weight:300;font-size:13px;line-height:1.8">Which way the knob works. Toward 0 it only eases the music back. Toward 100 it only brings the voice forward. In the middle it does both.</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">TONE</span><span style="font-weight:300;font-size:13px;line-height:1.8">Which part of the voice gets the help. Lean toward weight and body for thin voices, or toward edge and presence for muffled ones.</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:18px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#E8B04B">SENSE</span><span style="font-weight:300;font-size:13px;line-height:1.8">How readily DIALOG decides someone is talking. Raise it for a quiet guest in a busy bed. Lower it when the music itself keeps waking it up.</span></div>
-    </div>
-  </section>
-
-  <section data-screen-label="Delta" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 40px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">HEAR EXACTLY WHAT DIALOG IS DOING</h3>
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center">
-      <div>
-        <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Press DELTA and PENROSE ULTRA plays only the difference DIALOG makes. The bands it is working on light up red on the SPECTRUM view, so you see and hear the change before you commit to it.</p>
-        <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 30px 0;text-wrap:pretty">If DELTA sounds like voice, you are in the right place. If it starts to sound like the drums or the pads, back DIALOG off or lower SENSE. It is the fastest way to set the knob by ear and the easiest way to trust what it did.</p>
-        <button onClick="{{ toggleDelta }}" style="font-family:'Montserrat',sans-serif;cursor:pointer;background:{{ deltaBg }};color:{{ deltaFg }};border:1px solid #E8604A;padding:14px 30px;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;transition:0.3s">{{ deltaLabel }}</button>
       </div>
-      <div style="position:relative;width:100%;aspect-ratio:920/1080">
-        <image-slot id="pu-delta-off" src="assets/penrose_ultra/delta-off.png?v=261004" fit="contain" style="position:absolute;inset:0;width:100%;height:100%;transition:opacity 0.5s" shape="rect" placeholder="DELTA off"></image-slot>
-        <image-slot id="pu-delta-on" src="assets/penrose_ultra/delta-on.png?v=261004" fit="contain" style="position:absolute;inset:0;width:100%;height:100%;transition:opacity 0.5s;opacity:{{ deltaOn }}" shape="rect" placeholder="DELTA on"></image-slot>
+</section>
+<section style="margin-top:var(--s6)">
+  <div class="trimlist">
+    <div class="trim"><b>MUSIC ↔ VOICE</b><span>Which way VOICE works. Toward MUSIC it only eases the music back. Toward VOICE it only brings the voice forward. In the middle it does both.</span></div>
+    <div class="trim"><b>BODY ↔ CLARITY</b><span>Which part of the voice gets the help. Lean toward body for thin voices, or toward clarity for muffled ones.</span></div>
+    <div class="trim"><b>SENSITIVITY</b><span>How readily VOICE decides someone is talking. Raise it for a quiet guest over busy music. Lower it when the music itself keeps waking it up.</span></div>
+  </div>
+</section>
+
+<!-- SOLO -->
+<div class="sh" id="solo">S for solo</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Hear exactly what <em>each knob</em> is doing.</h2>
+    <p>Press <strong>S</strong> next to any of the three sound knobs and PENROSE ULTRA plays only what that knob changes.</p>
+    <p><strong>S on CLEAN</strong> plays what CLEAN is changing, which is mostly what it takes out. If you hear mud and hiss, good. If you hear the voice itself, back CLEAN off.</p>
+    <p><strong>S on ENHANCE</strong> plays the weight, air and presence being added, on their own.</p>
+    <p><strong>S on VOICE</strong> plays the difference VOICE makes, and the bands it is working on light up red on the SPECTRUM view. If it sounds like speech, you are in the right place. If it starts to sound like the drums, ease VOICE or SENSITIVITY down.</p>
+    <p>Only one S lights at a time, and they never save with your session, so you can never bounce a solo by mistake.</p>
+  </div>
+  <div class="compare">
+    <div class="seg" role="group" aria-label="S on VOICE preview">
+      <button id="d-off" aria-pressed="true" type="button">FULL MIX</button>
+      <button id="d-on" class="red" aria-pressed="false" type="button">S ON VOICE</button>
+    </div>
+    <div class="shot sq">
+      <img id="shot-off" src="assets/penrose_ultra/disc-0125.webp" alt="The SPECTRUM view on the full mix: input on the left, output on the right">
+      <img id="shot-on" src="assets/penrose_ultra/solo-red-disc.webp" alt="The SPECTRUM view with S on VOICE: only the bands VOICE changes, drawn in red around the core" style="opacity:0">
+    </div>
+    <div class="cap">BETA BUILD · VOID SKIN · INTERFACE MAY CHANGE BEFORE RELEASE</div>
       </div>
-    </div>
-  </section>
+</section>
 
-  <section data-screen-label="The gold" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">FOUR LIGHTS. ONE REWARD.</h3>
-    <div style="max-width:820px">
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">When your programme comes out the other side intact, the whole bridge blooms gold. It is the only reward the interface gives, and it is earned.</p>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 18px 0;text-wrap:pretty">Every light is measured on the audio, never read from where the knobs sit. A light that read the knobs would only be a picture of the knobs, and you would stop trusting every other meter on the screen.</p>
-      <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;text-wrap:pretty">Four lights rather than a score, because a score invites chasing a number. Four lights tell you which one is dark and which control fixes it. The verdict reads EXITED INTACT, PASSING THROUGH or OVERDRIVEN.</p>
+<!-- LEVELLING -->
+<div class="sh">Levelling</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Quiet bits up. <em>Loud bits down.</em></h2>
+    <p>Real recordings wander. A guest leans back from the mic, the intro music comes in hot, someone laughs. <strong>LEVELLING learns your timeline as you play it</strong> and evens out the quiet and loud sections, the way an engineer would ride the fader.</p>
+    <p>Choose GENTLE, MEDIUM or FIRM, or switch it OFF. It moves between sections, not between words, so speech keeps its natural shape. Silence stays silent. The plan is saved with your session and gets better each time you play, and ANALYZE starts a fresh one whenever your edit changes.</p>
+  </div>
+  <div class="stack">
+    <div class="ride"><svg id="ride" viewBox="0 0 560 220" role="img" aria-label="Animated illustration: an uneven loudness line is evened out by LEVELLING"></svg>
+      <div class="ride-legend"><span class="before">BEFORE</span><span class="after">AFTER LEVELLING</span><span class="seg mini" role="group" aria-label="Levelling amount"><button type="button" data-ride="0" aria-pressed="false">OFF</button><button type="button" data-ride="0.35" aria-pressed="false">GENTLE</button><button type="button" data-ride="0.6" aria-pressed="true">MEDIUM</button><button type="button" data-ride="0.85" aria-pressed="false">FIRM</button></span></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px">
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Found something</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">INFALL is actually removing something from this material.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Not scoured</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">And it is taking the faults, not the record.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Glued, not squashed</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The glue sits inside its musical window.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="width:9px;height:9px;border-radius:50%;background:#E8B04B;box-shadow:0 0 10px #E8B04B"></span><span style="font-weight:300;font-size:13px;letter-spacing:3px;color:#B0B2B7;text-transform:uppercase">Ceiling holding</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The limiter catches peaks instead of doing the mastering.</p></div>
-    </div>
-  </section>
-
-  <section data-screen-label="Three views" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 34px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">SEE WHAT HAPPENED, THREE WAYS</h3>
-    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 34px 0;max-width:820px;text-wrap:pretty">One click switches the plate between three views of the same measurements. Every cell on screen is drawn from the audio, so the views never disagree.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px">
-      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">SPECTRUM</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Input on the left, output on the right, frequency running round the ring from 20 Hz at the bottom to 20 kHz at the top. What INFALL removed and what EMERGENCE and DIALOG added, band by band.</p></div>
-      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">HISTORY</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">Loudness over the timeline. It follows your host&rsquo;s playhead, holds still when you stop, and clears only when you press RESET.</p></div>
-      <div style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;font-weight:300">FLOW</span><p style="font-weight:300;font-size:13px;line-height:1.8;margin:0">The signal in motion. Input streams into the core on the left and is emitted on the right. What INFALL cut rides in as white specks, limiting piles up against the ring, and DIALOG&rsquo;s lift leaves in gold.</p></div>
-    </div>
-  </section>
-
-  <section data-screen-label="Meters" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">LOUDNESS YOU CAN DELIVER TO</h3>
-    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0;max-width:820px;text-wrap:pretty">Input and output loudness for the last 3 seconds and for the whole pass, loudness range, true peak, how much INFALL removed, how hard HORIZON is limiting, and how much of the time someone is talking. Integrated loudness follows your host&rsquo;s timeline: it keeps measuring while you play, holds its reading when you stop, and starts again only when you ask it to.</p>
-  </section>
-
-  <section data-screen-label="Skins" style="max-width:1000px;margin:0 auto 90px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">FOUR LOOKS. ONE PLATE.</h3>
-    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0 0 40px 0;max-width:820px;text-wrap:pretty">Switch the whole interface to suit your room and your eyes. Each skin is designed from its own ground up: light emits on the dark ones and ink is laid down on the light ones.</p>
-    <div data-skin-grid style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <image-slot id="pu-skin-void" src="assets/penrose_ultra/skin-void.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="VOID skin"></image-slot>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">VOID</span>
-        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">The original. A black field that throws light, gold at the throat.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <image-slot id="pu-skin-paper" src="assets/penrose_ultra/skin-paper.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="PAPER skin"></image-slot>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">PAPER</span>
-        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">A plotted graph. Warm stock, royal-blue rules, vermilion ink.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <image-slot id="pu-skin-press" src="assets/penrose_ultra/skin-press.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="PRESS skin"></image-slot>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">PRESS</span>
-        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">A printed plate. White line art on blue, a hot red at the throat.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <image-slot id="pu-skin-heat" src="assets/penrose_ultra/skin-heat.jpg?v=261004" fit="contain" style="width:100%;height:auto;aspect-ratio:1932/2290;display:block" shape="rect" placeholder="HEAT skin"></image-slot>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF">HEAT</span>
-        <p style="font-weight:300;font-size:12.5px;line-height:1.7;margin:0">Cold steel and a dull red element that glows as the programme heats up.</p>
-      </div>
+</section>
+
+<!-- PRESETS -->
+<div class="sh">Presets</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Start where <em>you publish.</em></h2><p>Four creator presets set VOICE and its fine controls, LEVELLING and the right loudness target in one click. Pick one, play, press AUTO.</p></div>
+  <div class="presets">
+    <article><b>YOUTUBE</b><span class="tgt">−14 LUFS</span><p>A presenter over music, recorded in an ordinary room.</p></article>
+    <article><b>PODCAST</b><span class="tgt">−16 LUFS</span><p>Speech on its own, or over very little.</p></article>
+    <article><b>SHORTS</b><span class="tgt">−14 LUFS</span><p>Vertical video heard on a phone speaker. Extra clarity so words cut through.</p></article>
+    <article><b>STREAM</b><span class="tgt">−14 LUFS</span><p>A live voice over game audio or music.</p></article>
+  </div>
+  <p class="more">Making music too? Nine more starting points cover <span id="voicings"><span>DEFAULT</span> · <span>HOUSE</span> · <span>HIP-HOP</span> · <span>ROCK</span> · <span>METAL</span> · <span>POP</span> · <span>JAZZ</span> · <span>ACOUSTIC</span> · <span>CINEMATIC</span></span>. DEFAULT starts with nothing engaged, so a fresh insert never changes your sound on its own.</p>
+  </section>
+
+<!-- BRIDGE -->
+<div class="sh">The idea</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">In one side. <em>Out the other.</em></h2>
+    <p>The PENROSE ULTRA interface is drawn as a bridge through spacetime. Your signal falls in on the left, is stripped down to what holds up, and comes out on the right.</p>
+    <p><strong>The picture is the signal path.</strong> The left half is CLEAN: it only ever takes away. The right half is ENHANCE: it only ever gives back. You always know which side is doing what.</p>
+  </div>
+  <div class="stack">
+    <div class="bridge">
+      <canvas id="bridge" width="1120" height="490" aria-label="Animated diagram: particles fall into a funnel on the left, pass through a narrow throat, and emerge glowing on the right"></canvas>
+      <div class="bridge-legend"><span class="l">CLEAN · TAKES AWAY</span><span class="mid">THE THROAT</span><span class="r">ENHANCE · GIVES BACK</span></div>
     </div>
-  </section>
-
-  <section data-screen-label="Start fast" style="max-width:1000px;margin:0 auto 90px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
-    <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">START FROM A VOICING</h3>
-      <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0 0 20px 0">Eight starting points for different kinds of record, each checked against real material. Each one sets the proportions behind the knobs for a kind of record, then hands you the knobs. DEFAULT starts with nothing engaged, so a fresh insert never changes your sound on its own.</p>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;line-height:2.1;color:#6E6764">DEFAULT · HOUSE · HIP-HOP · ROCK · METAL · POP · JAZZ · ACOUSTIC · CINEMATIC</span>
-    </div>
-    <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0;border-bottom:1px solid #3A3534;padding-bottom:10px">OPEN THE DRAWER</h3>
-      <p style="font-weight:300;font-size:13px;line-height:1.8;margin:0 0 20px 0">ADVANCED reveals ten trims in three groups for when a light is dark and you want to fix it precisely.</p>
-      <div style="display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;color:#6E6764">
-        <span><span style="color:#7FA8D6;display:inline-block;width:100px">INFALL</span>TEMPER · EDGE · BALLAST · HEAT</span>
-        <span><span style="color:#DCCDBF;display:inline-block;width:100px">EMERGENCE</span>CORE · HALO · GRAVITY</span>
-        <span><span style="color:#C8A86B;display:inline-block;width:100px">BUS</span>HORIZON · MIX · OUTPUT</span>
       </div>
+</section>
+
+<!-- GOLD -->
+<div class="sh">The gold</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Four lights. <em>One reward.</em></h2>
+    <p>When your mix comes out the other side intact, the whole bridge blooms gold. It is the only reward the interface gives, and it is earned.</p>
+    <p><strong>Every light is measured on the audio, never read from where the knobs sit.</strong> Four lights rather than a score: they tell you which one is dark and which control fixes it. The verdict reads <span class="ph solid">EXITED INTACT</span>, <span class="ph solid">PASSING THROUGH</span> or <span class="ph solid">OVERDRIVEN</span>.</p>
+  </div>
+  <div class="stack">
+    <div class="exit"><svg id="exit" viewBox="0 0 560 240" role="img" aria-label="Four exit lights switching on one by one, then a gold bloom across the bridge"></svg><div class="verdict" id="verdict">PASSING THROUGH</div></div>
+    <div class="lights">
+      <div class="light"><i></i><div><b>FOUND SOMETHING</b><span>CLEAN is actually removing something from this mix.</span></div></div>
+      <div class="light"><i></i><div><b>NOT SCOURED</b><span>And it is taking the faults, not the mix.</span></div></div>
+      <div class="light"><i></i><div><b>GLUED, NOT SQUASHED</b><span>GLUE sits inside its musical window.</span></div></div>
+      <div class="light"><i></i><div><b>CEILING HOLDING</b><span>LOUDNESS catches peaks instead of crushing the mix.</span></div></div>
     </div>
+      </div>
+</section>
+
+<!-- VIEWS -->
+<div class="sh">Three views</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">See what happened, <em>three ways.</em></h2><p>One click switches the plate between three views of the same measurements. Every cell on screen is drawn from the audio, so the views never disagree.</p></div>
+  <div class="views">
+    <article class="view">
+      <div class="pic"><img class="spin" src="assets/penrose_ultra/core-spectrum.webp" alt="The SPECTRUM view rendered on the HEAT skin: a black core ringed with gold tiles, input on the left, output on the right"></div>
+      <div class="body"><b>SPECTRUM</b><p>Input on the left, output on the right, frequency running round the ring from 20 Hz at the bottom to 20 kHz at the top. What CLEAN removed and what ENHANCE and VOICE added, band by band.</p></div>
+    </article>
+    <article class="view">
+      <div class="pic"><canvas id="hist" width="600" height="600" aria-label="Concept animation of the HISTORY view"></canvas></div>
+      <div class="body"><b>HISTORY</b><p>Loudness over the timeline. It follows your host's playhead, holds still when you stop, and clears only when you press RESET.</p></div>
+    </article>
+    <article class="view">
+      <div class="pic"><canvas id="flow" width="600" height="600" aria-label="Concept animation of the FLOW view"></canvas></div>
+      <div class="body"><b>FLOW</b><p>The signal in motion. Input streams into the core on the left and is emitted on the right. What CLEAN cut rides in as white specks, limiting piles up against the ring, and VOICE's lift leaves in gold.</p></div>
+    </article>
+  </div>
   </section>
 
-  <section data-screen-label="Coming soon" style="max-width:1000px;margin:0 auto 90px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 26px 0">COMING SOON // VOCAL MODE</h3>
-    <p style="font-weight:300;font-size:14px;line-height:1.9;margin:0;max-width:820px;text-wrap:pretty">DIALOG is tuned for the spoken word. On a song it will lift the lead singer too, which is exactly what some mixes need and exactly wrong for others. A dedicated Vocal mode is on the way, with DIALOG retuned for sung voices. You choose the mode yourself, so it never changes behind your back.</p>
-  </section>
+<!-- METERS -->
+<div class="sh">Meters</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Loudness you can <em>deliver to.</em></h2><p>Input and output loudness for the last 3 seconds and for the whole piece, loudness range, true peak, how much CLEAN removed, how hard LOUDNESS is limiting, and how much of the time someone is talking. Integrated loudness follows your host's timeline: it keeps measuring while you play, holds its reading when you stop, and starts again only when you ask it to.</p></div>
+  <div class="meters" aria-label="Example meter readings from the beta build">
+    <div class="m"><small>OUTPUT · LAST 3 s</small><strong id="m3s">−21.1<u>LUFS</u></strong></div>
+    <div class="m"><small>INTEGRATED</small><strong>−20.9<u>LUFS</u></strong></div>
+    <div class="m"><small>TRUE PEAK</small><strong id="mtp">−6.2<u>dBTP</u></strong></div>
+    <div class="m blue"><small>CLEAN REMOVED</small><strong>1.0<u>dB</u></strong></div>
+    <div class="m"><small>VOICE</small><strong id="mvoice">1<u>%</u></strong></div>
+    <div class="m"><small>TALKING</small><strong>19<u>% OF THE TIME</u></strong></div>
+    <div class="m"><small>RANGE</small><strong>0.5<u>LU</u></strong></div>
+    <div class="m"><small>LIMITING</small><strong>0.0<u>dB</u></strong></div>
+  </div>
+  <figure class="faceshot">
+    <img src="assets/penrose_ultra/face-0125.webp" alt="The full PENROSE ULTRA interface, version 0.1.25: SPECTRUM view, loudness readouts, TARGET, AUTO, LEVELLING and ANALYZE in the right margin, and the controls below" class="tall">
+    <figcaption class="cap">THE WHOLE FACE · BETA BUILD v0.1.25 · VOID SKIN</figcaption>
+  </figure>
+</section>
 
-  <section data-screen-label="Specifications" style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 30px 0">TECHNICAL_SPECIFICATIONS</h3>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">FORMATS</span><span style="font-weight:300;font-size:13px;line-height:1.8">AU · VST3 · AAX</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">SYSTEM</span><span style="font-weight:300;font-size:13px;line-height:1.8">macOS 11 or later, Apple Silicon</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">CONTROLS</span><span style="font-weight:300;font-size:13px;line-height:1.8">INFALL · EMERGENCE · DIALOG, plus BALANCE, TONE, SENSE and ten advanced trims</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">CEILING</span><span style="font-weight:300;font-size:13px;line-height:1.8">Always-armed &minus;1.0 dBFS output ceiling</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">METERING</span><span style="font-weight:300;font-size:13px;line-height:1.8">Short-term and integrated LUFS, loudness range, true peak, voice activity</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">VIEWS</span><span style="font-weight:300;font-size:13px;line-height:1.8">SPECTRUM · HISTORY · FLOW</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">SKINS</span><span style="font-weight:300;font-size:13px;line-height:1.8">VOID · PAPER · PRESS · HEAT, two interface sizes</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">LATENCY</span><span style="font-weight:300;font-size:13px;line-height:1.8">Reported to the host for automatic compensation</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#6E6764">INSTALLS</span><span style="font-weight:300;font-size:13px;line-height:1.8">Alongside PENROSE. Your PENROSE sessions stay exactly as they are.</span></div>
+<!-- SKINS + DRAWER -->
+<div class="sh">Skins and the drawer</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Four looks. <em>One plate.</em></h2><p>Switch the whole interface between VOID, PAPER, PRESS and HEAT to suit your room and your eyes. Light emits on the dark skins, and ink is laid down on the light ones.</p></div>
+  <figure class="faceshot"><img src="assets/penrose_ultra/skins-strip.webp" alt="The same corner of the interface on the four skins: VOID, PAPER, PRESS and HEAT"><figcaption class="cap">VOID · PAPER · PRESS · HEAT</figcaption></figure>
+  <div class="two" style="margin-top:var(--s5)">
+    <div class="prose">
+      <h2 class="h2">Open the drawer.</h2>
+      <p>ADVANCED reveals the controls behind CLEAN and ENHANCE, for when you want to fix one thing precisely.</p>
+      <table class="specs">
+        <tr><th>CLEAN</th><td>RESONANCE · HARSHNESS · MUD · WARMTH</td></tr>
+        <tr><th>ENHANCE</th><td>WEIGHT · AIR · GLUE</td></tr>
+        <tr><th>BUS</th><td>MIX · OUTPUT</td></tr>
+      </table>
     </div>
-  </section>
+    <figure class="faceshot"><img src="assets/penrose_ultra/drawer-0124.webp" alt="The ADVANCED drawer: RESONANCE, HARSHNESS, MUD, WARMTH under CLEAN, WEIGHT, AIR, GLUE under ENHANCE, MIX and OUTPUT under BUS"><figcaption class="cap">THE ADVANCED DRAWER · BETA BUILD</figcaption></figure>
+  </div>
+</section>
 
-  <section data-screen-label="From the makers" style="max-width:820px;margin:0 auto 40px auto;text-align:center">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin:0 0 22px 0">FROM THE MAKERS OF <a href="penrose.html" style="color:#DCCDBF">PENROSE</a></h3>
-    <p style="font-weight:300;font-size:13px;line-height:1.9;margin:0 0 14px 0;text-wrap:pretty">PENROSE ULTRA grows out of PENROSE, THETA&rsquo;s free two-knob mastering processor. It keeps the bridge, the knobs and the honesty rules, and adds DIALOG, DELTA, three views, timeline metering and four skins.</p>
-    <p style="font-weight:300;font-size:13px;line-height:1.9;margin:0;text-wrap:pretty">It is a separate product with its own identity, so the two install side by side and never touch each other&rsquo;s sessions.</p>
-  </section>
-</main>
+<!-- VOCAL MODE -->
+<div class="sh">Coming soon</div>
+<section class="soon">
+  <div class="prose">
+    <span class="badge">IN DEVELOPMENT</span>
+    <h2 class="h2">Vocal mode, <em>for singers.</em></h2>
+    <p>VOICE is tuned for the spoken word. On a song it will lift the lead singer too, which is exactly what some mixes need and exactly wrong for others. A dedicated Vocal mode is on the way, retuned for sung voices. You choose the mode yourself, so it never changes behind your back.</p>
+  </div>
+  <div class="switch" aria-label="Mode switch preview"><span class="on" id="sw-d">SPEECH</span><span id="sw-v">VOCAL</span></div>
+</section>
 
-<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:60px">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
-  <span>LAB NOTE // PENROSE_ULTRA_BETA</span>
-</footer>
+<!-- SPECS -->
+<div class="sh">Specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>FORMATS</th><td>AU · VST3 · AAX</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later, Apple Silicon</td></tr>
+    <tr><th>CONTROLS</th><td>CLEAN · ENHANCE · VOICE · LOUDNESS, with MUSIC ↔ VOICE, BODY ↔ CLARITY, SENSITIVITY, three S buttons and nine advanced controls</td></tr>
+    <tr><th>AUTO MIX</th><td>TARGET (−24 to −9 LUFS), AUTO, LEVELLING (OFF, GENTLE, MEDIUM, FIRM), ANALYZE</td></tr>
+    <tr><th>PRESETS</th><td>YOUTUBE · PODCAST · SHORTS · STREAM, plus nine music voicings</td></tr>
+    <tr><th>CEILING</th><td>True peak held at −1 dBTP</td></tr>
+    <tr><th>METERING</th><td>Short-term and integrated LUFS, loudness range, true peak, voice activity</td></tr>
+    <tr><th>VIEWS</th><td>SPECTRUM · HISTORY · FLOW</td></tr>
+    <tr><th>SKINS</th><td>VOID · PAPER · PRESS · HEAT, two interface sizes</td></tr>
+  </table>
+  <div class="prose">
+    <h2 class="h2">Built by <em>THETA.</em></h2>
+    <p>PENROSE ULTRA shares a name and a bridge with PENROSE, THETA's free two-knob mastering processor, but it is its own plug-in with its own sound, rebuilt for creators.</p>
+    <p>The two install side by side and never touch each other's sessions.</p>
+  </div>
+</section>
 
+<!-- PRICE -->
+<div class="sh" id="price">Availability</div>
+<section class="price">
+  <div class="eyebrow">PENROSE ULTRA</div>
+    <p>The beta opens soon. Leave your email and we will send the installer when it is ready, along with the release notes.</p>
+  <a class="btn primary" href="mailto:info@theta.audio?subject=PENROSE%20ULTRA%20beta" data-notify="PENROSE ULTRA">Join the beta</a>
+  <div class="cap">AU / VST3 / AAX INCLUDED</div>
+</section>
+
+<!-- COPY DECK -->
+
+
+<footer><span>THETA AUDIO RESEARCH · PENROSE ULTRA</span><a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">YOUTUBE</a></footer>
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { delta: false };
-  componentDidMount() {
-    this._t = setInterval(() => { if (!this._manual) this.setState(s => ({ delta: !s.delta })); }, 3200);
+
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TAU = Math.PI*2;
+
+/* notes toggle */
+const nt = document.getElementById('notes');
+try{ if(localStorage.getItem('pu-notes')==='0'){ nt.checked=false; document.body.classList.add('hide-notes'); } }catch(e){}
+nt.addEventListener('change',()=>{ document.body.classList.toggle('hide-notes',!nt.checked); try{localStorage.setItem('pu-notes',nt.checked?'1':'0')}catch(e){} });
+
+/* shared simulated programme: a music bed plus a voice that talks in phrases */
+function voiceEnv(t){ // 0..1, phrase-like
+  const phrase = (Math.sin(t*0.55)+Math.sin(t*0.23+1.3)*0.7) > -0.2 ? 1 : 0;
+  const syll = 0.55+0.45*Math.abs(Math.sin(t*7.3)*Math.sin(t*3.1+0.4));
+  const guest = Math.sin(t*0.17+0.6) < 0 ? 0.48 : 1;
+  return phrase*syll*guest;
+}
+function freqAngle(f){ return Math.PI*Math.log(f/20)/Math.log(1000); } // 0 at 20 Hz (bottom), PI at 20 kHz (top)
+
+/* ---------- HERO DISC ---------- */
+const disc = document.getElementById('disc'), dx = disc.getContext('2d');
+const W = disc.width, C = W/2, R = W*0.47;
+const BINS = 46, rings = 13;
+let presence = 0;
+function tile(ctx, cx, cy, r, a, w, h, col){
+  ctx.save(); ctx.translate(cx + r*Math.sin(a), cy + r*Math.cos(a)); ctx.rotate(-a);
+  ctx.fillStyle = col; ctx.fillRect(-w/2,-h/2,w,h); ctx.restore();
+}
+function drawDisc(t){
+  dx.clearRect(0,0,W,W);
+  // plate
+  const g = dx.createRadialGradient(C,C,R*0.2,C,C,R);
+  g.addColorStop(0,'#2a110b'); g.addColorStop(1,'#1a0b08');
+  dx.fillStyle = g; dx.beginPath(); dx.arc(C,C,R,0,TAU); dx.fill();
+  dx.strokeStyle='rgba(200,168,107,.35)'; dx.lineWidth=2; dx.stroke();
+  // spine
+  dx.strokeStyle='rgba(200,168,107,.4)'; dx.lineWidth=1.5; dx.beginPath(); dx.moveTo(C,C-R); dx.lineTo(C,C+R); dx.stroke();
+  // freq labels
+  dx.fillStyle='rgba(222,200,160,.65)'; dx.font='500 22px JetBrains Mono, monospace'; dx.textAlign='center'; dx.textBaseline='middle';
+  [[60,'60'],[250,'250'],[1000,'1k'],[4000,'4k'],[16000,'16k']].forEach(([f,l])=>{
+    const a=freqAngle(f); [1,-1].forEach(s=>dx.fillText(l, C+s*(R*0.9)*Math.sin(a), C+(R*0.9)*Math.cos(a)));
+  });
+  const v = voiceEnv(t); presence += (v-presence)*0.08;
+  const r0 = R*0.2, r1 = R*0.36, rOut = R*0.8;
+  // core ring
+  for(let ring=0; ring<4; ring++){
+    const rr = r0 + 8 + ring*(r1-r0-8)/4, n = 64;
+    for(let i=0;i<n;i++){
+      const a = i/n*TAU, k = 0.5+0.5*Math.sin(i*1.7+ring*2.1+t*0.6)*Math.sin(i*0.37-t*0.4+ring);
+      const l = 25+ring*12+k*40;
+      tile(dx,C,C,rr,a,(TAU*rr/n)*0.82,(r1-r0)/4*0.72,`hsl(${38+ring*2} ${35+k*30}% ${l}%)`);
+    }
   }
-  componentWillUnmount() { clearInterval(this._t); }
-  renderVals() {
-    const on = this.state.delta;
-    return {
-      deltaOn: on ? 1 : 0,
-      deltaBg: on ? '#E8604A' : 'transparent',
-      deltaFg: on ? '#0C1519' : '#E8604A',
-      deltaLabel: on ? 'DELTA ON' : 'DELTA OFF',
-      toggleDelta: () => { this._manual = true; this.setState(s => ({ delta: !s.delta })); },
-    };
+  // spectrum halves
+  for(let b=0;b<BINS;b++){
+    const a = 0.12 + (Math.PI-0.24)*b/(BINS-1);
+    const f = 20*Math.pow(1000,a/Math.PI);
+    const tilt = 1 - Math.abs(Math.log2(f/400))/7;
+    const music = Math.max(0, tilt*0.75 + 0.25*Math.sin(t*2.2+b*0.7)*Math.sin(t*0.9+b*0.21));
+    const inSpeech = f>350 && f<5500 ? Math.exp(-Math.pow(Math.log2(f/1800)/1.3,2)) : 0;
+    const inLev = Math.min(1, music + 0.35*v*inSpeech);
+    const outLev = Math.min(1, music*0.92 + 0.55*presence*inSpeech*(0.8+0.2*Math.sin(t*9+b)));
+    const tw = (Math.PI*(r1+40)/BINS)*0.7;
+    // left: input, cold
+    const nIn = Math.round(inLev*rings*0.75);
+    for(let k=0;k<nIn;k++){
+      const rr = r1+24+k*((rOut-r1)/rings);
+      if(Math.random()<0.25) continue;
+      const alpha = 0.25+0.5*(1-k/rings);
+      tile(dx,C,C,rr,-a,tw*(rr/r1)*0.6,9,`rgba(140,170,200,${alpha*0.55})`);
+    }
+    // right: output, emitting
+    const nOut = Math.round(outLev*rings);
+    for(let k=0;k<nOut;k++){
+      const rr = r1+24+k*((rOut-r1)/rings);
+      const hot = inSpeech*presence;
+      const lum = 70+20*(1-k/rings);
+      const col = hot>0.25 ? `hsl(${40+8*(1-hot)} ${55+40*hot}% ${lum}%)` : `hsl(35 30% ${lum+6}%)`;
+      tile(dx,C,C,rr,a,tw*(rr/r1)*0.62,10,col);
+    }
   }
+  // horizon arc (dashed)
+  dx.setLineDash([14,10]); dx.strokeStyle='#ffc867'; dx.lineWidth=3;
+  dx.beginPath(); dx.arc(C,C,rOut+18,-Math.PI/2+0.25,Math.PI/2-0.25); dx.stroke(); dx.setLineDash([]);
+  // black core
+  dx.fillStyle='#000'; dx.beginPath(); dx.arc(C,C,r0,0,TAU); dx.fill();
 }
 
+/* ---------- BRIDGE ---------- */
+const br = document.getElementById('bridge'), bx = br.getContext('2d');
+const BW = br.width, BH = br.height, BC = BH/2;
+const prof = x => { const u=(x-BW/2)/(BW*0.16); return 26*Math.cosh(u); }; // half-height of funnel
+const maxH = BH*0.46;
+function hOf(x){ return Math.min(maxH, prof(x)); }
+const parts = Array.from({length:150},()=>newP(true));
+function newP(scatter){ return {x: scatter? Math.random()*BW : -10, v: 0.6+Math.random()*0.8, y: Math.random()*2-1, rough: 0.6+Math.random()*0.8, phase: Math.random()*TAU, shed: Math.random()<0.18, fall:0}; }
+function lerp(a,b,t){return a+(b-a)*t}
+function drawBridge(t){
+  bx.clearRect(0,0,BW,BH);
+  const bg = bx.createLinearGradient(0,0,BW,0);
+  bg.addColorStop(0,'#09141a'); bg.addColorStop(0.5,'#030506'); bg.addColorStop(1,'#35120c');
+  bx.globalAlpha=0.55; bx.fillStyle=bg; bx.fillRect(0,0,BW,BH); bx.globalAlpha=1;
+  // mesh rings
+  for(let i=0;i<=28;i++){
+    const x = i/28*BW, h = hOf(x), left = x<BW/2;
+    bx.strokeStyle = left? 'rgba(95,168,216,.28)':'rgba(223,230,238,.22)'; bx.lineWidth=1.2;
+    bx.beginPath(); bx.ellipse(x,BC,Math.max(2,h*0.12),h,0,0,TAU); bx.stroke();
+  }
+  // mesh rails
+  [-1,-0.5,0,0.5,1].forEach(s=>{
+    bx.beginPath();
+    for(let x=0;x<=BW;x+=6){ const y=BC+s*hOf(x); x?bx.lineTo(x,y):bx.moveTo(x,y); }
+    bx.strokeStyle = 'rgba(200,168,107,.18)'; bx.stroke();
+  });
+  // throat glow
+  const tg = bx.createRadialGradient(BW/2,BC,0,BW/2,BC,90);
+  tg.addColorStop(0,'rgba(255,200,103,.55)'); tg.addColorStop(1,'rgba(255,200,103,0)');
+  bx.fillStyle=tg; bx.fillRect(BW/2-90,BC-90,180,180);
+  // particles
+  parts.forEach(p=>{
+    const h = hOf(p.x), u = p.x/BW;
+    const speed = p.v*(1.2+ (1-Math.min(1,h/maxH))*3.2);
+    p.x += speed;
+    let y = BC + p.y*h*0.9;
+    if(u<0.5){
+      y += Math.sin(t*14+p.phase)*p.rough*6*(1-u*2); // rough edges before the throat
+      if(p.shed && u>0.28){ p.fall=(p.fall||0)+0.5; y+=p.fall*p.fall*0.4; }
+    }
+    if(p.x>BW+10 || y>BH+20){ Object.assign(p,newP(false)); return; }
+    const c = u<0.5 ? [lerp(95,255,u*2),lerp(168,242,u*2),lerp(216,208,u*2)] : [255,lerp(242,200,(u-0.5)*2),lerp(208,103,(u-0.5)*2)];
+    const a = p.shed && u<0.5 && p.fall ? Math.max(0,0.9-p.fall*0.03) : 0.9;
+    const s = u<0.5 ? 2.6 : 2.6+ (u-0.5)*4;
+    if(u>0.5){ bx.fillStyle=`rgba(255,200,103,.12)`; bx.beginPath(); bx.arc(p.x,y,s*2.6,0,TAU); bx.fill(); }
+    bx.fillStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${a})`;
+    bx.beginPath(); bx.arc(p.x,y,s,0,TAU); bx.fill();
+  });
+}
+
+/* ---------- KNOBS ---------- */
+const A0 = -135, A1 = 135, KR = 54;
+function arcPath(a0,a1,r){ const p=a=>{const rad=(a-90)*Math.PI/180;return [r*Math.cos(rad),r*Math.sin(rad)]}; const [x0,y0]=p(a0),[x1,y1]=p(a1); return `M${x0.toFixed(2)} ${y0.toFixed(2)} A${r} ${r} 0 ${a1-a0>180?1:0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`; }
+const knobs = [...document.querySelectorAll('.knob-card')].map((card,i)=>{
+  const svg = card.querySelector('svg'); const ticks = svg.querySelector('.ticks');
+  let s=''; for(let k=0;k<=24;k++){ const a=(A0+k*(A1-A0)/24-90)*Math.PI/180; s+=`<line class="tick" x1="${(62*Math.cos(a)).toFixed(1)}" y1="${(62*Math.sin(a)).toFixed(1)}" x2="${(67*Math.cos(a)).toFixed(1)}" y2="${(67*Math.sin(a)).toFixed(1)}"/>`; }
+  ticks.innerHTML = s;
+  svg.querySelector('.arc-track').setAttribute('d',arcPath(A0,A1,KR));
+  const base = [0.46,0.42,0.50,0.30][i], span=[0.16,0.14,0.14,0.12][i];
+  return {val:svg.querySelector('.arc-val'), num:svg.querySelector('.knob-num'), base, span, ph:i*2.1, loud:i===3};
+});
+function drawKnobs(t){
+  knobs.forEach(k=>{
+    const v = Math.max(0.02,Math.min(1,k.base + k.span*Math.sin(t*0.45+k.ph)));
+    k.val.setAttribute('d',arcPath(A0,A0+(A1-A0)*v,KR));
+    k.num.textContent = k.loud ? '−'+(12*(1-v)).toFixed(1) : Math.round(v*100);
+  });
+}
+
+/* ---------- DIALOG LAB ---------- */
+const eq = document.getElementById('eq');
+const EW=640, EH=260, PADL=36, PADR=14, MID=118;
+const fx = f => PADL + (EW-PADL-PADR)*Math.log(f/40)/Math.log(12000/40);
+const lifts=[[500,0.644],[1000,0.911],[2000,1],[4000,0.859]], ducks=[[90,1],[250,0.5]];
+let gridS=`<rect x="0" y="0" width="${EW}" height="${EH}" fill="none"/>`;
+[50,100,200,500,1000,2000,5000,10000].forEach(f=>{const x=fx(f); gridS+=`<line x1="${x}" y1="18" x2="${x}" y2="${EH-30}" stroke="#161a26" stroke-width="1"/><text x="${x}" y="${EH-12}" fill="#8d8779" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">${f>=1000?f/1000+'k':f}</text>`});
+gridS+=`<line x1="${PADL}" y1="${MID}" x2="${EW-PADR}" y2="${MID}" stroke="#3a3c44" stroke-dasharray="3 4"/>`;
+gridS+=`<text x="${PADL-6}" y="${MID-70}" fill="#c8a86b" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" letter-spacing="2" text-anchor="end" transform="rotate(-90 ${PADL-14} ${MID-60})">LIFT</text>`;
+gridS+=`<text x="${PADL-6}" y="${MID+70}" fill="#5fa8d8" font-family="Montserrat, sans-serif" font-size="10" font-weight="600" letter-spacing="2" text-anchor="end" transform="rotate(-90 ${PADL-14} ${MID+60})">EASE</text>`;
+gridS+=`<rect x="${fx(300)}" y="18" width="${fx(5500)-fx(300)}" height="${EH-48}" fill="rgba(255,200,103,.04)"/><text x="${fx(1300)}" y="32" fill="#8d8779" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" text-anchor="middle">WHERE SPEECH IS UNDERSTOOD</text>`;
+eq.innerHTML = gridS + `<path id="eqfill" fill="rgba(255,200,103,.12)"/><path id="eqline" fill="none" stroke="#ffc867" stroke-width="2.5"/><g id="eqmarks"></g>`;
+const eqLine=eq.querySelector('#eqline'), eqFill=eq.querySelector('#eqfill'), eqMarks=eq.querySelector('#eqmarks');
+const ctl = id=>document.getElementById(id);
+const C_=['dialog','bal','tone','sense'].reduce((o,k)=>(o[k]=ctl('c-'+k),o),{});
+['dialog','bal','tone','sense'].forEach(k=>C_[k].addEventListener('input',()=>{ctl('o-'+k).textContent=C_[k].value; if(reduce) drawEq(lastT);}));
+const bell=(f,fc,bw)=>1/(1+Math.pow(Math.log2(f/fc)/bw,2));
+let pres=0, lastEnv=0, lastThr=0.49;
+const talkdot=ctl('talkdot'), talktxt=ctl('talktxt');
+function drawEq(t){
+  const amt=C_.dialog.value/100, b=C_.bal.value/100, tone=C_.tone.value/100, sense=C_.sense.value/100;
+  if(reduce) pres=1;
+  const env=voiceEnv(t*1.1);
+  const thr = 0.82-sense*0.66; lastEnv=env; lastThr=thr;
+  const target = env>thr ? Math.min(1,(env-thr)/0.25+0.4) : 0;
+  pres += (target-pres)*(target>pres?0.12:0.04);
+  talkdot.style.opacity = (0.15+0.85*pres).toFixed(2);
+  talktxt.textContent = pres>0.3 ? 'TALKING' : 'LISTENING';
+  const smL=document.getElementById('smLevel'), smT=document.getElementById('smThr');
+  if(smL){ smL.setAttribute('width',(env*120).toFixed(1)); smL.setAttribute('fill', env>thr ? '#ffc867' : '#7a6840'); }
+  if(smT) smT.setAttribute('x',(Math.min(118,thr*120)).toFixed(1));
+  const liftS=Math.min(1,2*b), duckS=Math.min(1,2*(1-b));
+  const tilt=[-0.75,-0.25,0.25,0.75];
+  const g=f=>{ let s=0;
+    lifts.forEach(([fc,w],i)=>{ s+= w*Math.max(0,1+tone*tilt[i]*0.9)*bell(f,fc,0.75)*liftS; });
+    ducks.forEach(([fc,w])=>{ s-= w*0.9*bell(f,fc,0.6)*duckS; });
+    return s*amt*pres; };
+  let d='', pts=[];
+  for(let i=0;i<=160;i++){ const f=40*Math.pow(12000/40,i/160); const x=fx(f), y=MID-g(f)*62; pts.push([x,y]); }
+  d = pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join('');
+  eqLine.setAttribute('d',d);
+  eqFill.setAttribute('d',d+`L${EW-PADR} ${MID}L${PADL} ${MID}Z`);
+  let m='';
+  lifts.forEach(([fc,w],i)=>{const x=fx(fc), y=MID-g(fc)*62; m+=`<circle cx="${x}" cy="${y}" r="5" fill="#ffc867"/>`;});
+  ducks.forEach(([fc])=>{const x=fx(fc), y=MID-g(fc)*62; m+=`<circle cx="${x}" cy="${y}" r="5" fill="#5fa8d8"/>`;});
+  eqMarks.innerHTML=m;
+}
+
+/* ---------- DELTA TOGGLE ---------- */
+const dOff=ctl('d-off'), dOn=ctl('d-on'), sOff=ctl('shot-off'), sOn=ctl('shot-on');
+function setDelta(on){ dOn.setAttribute('aria-pressed',on); dOff.setAttribute('aria-pressed',!on); sOn.style.opacity=on?1:0; sOff.style.opacity=on?0:1; }
+dOff.addEventListener('click',()=>setDelta(false)); dOn.addEventListener('click',()=>setDelta(true));
+
+/* ---------- EXIT LIGHTS ---------- */
+const ex=ctl('exit'), verdict=ctl('verdict');
+const lampX=[110,226,342,458];
+ex.innerHTML = `<defs><radialGradient id="bloom" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#ffc867" stop-opacity=".55"/><stop offset="1" stop-color="#ffc867" stop-opacity="0"/></radialGradient></defs>
+<rect id="bl" x="0" y="0" width="560" height="240" fill="url(#bloom)" opacity="0"/>
+<path d="M30 120 C 180 120, 220 92, 280 92 C 340 92, 380 120, 530 120" fill="none" stroke="#5fa8d8" stroke-opacity=".35" stroke-width="1.5"/>
+<path d="M30 120 C 180 120, 220 148, 280 148 C 340 148, 380 120, 530 120" fill="none" stroke="#dfe6ee" stroke-opacity=".3" stroke-width="1.5"/>
+<path id="goldline" d="M30 120 C 180 120, 220 92, 280 92 C 340 92, 380 120, 530 120" fill="none" stroke="#ffc867" stroke-width="3" stroke-dasharray="560" stroke-dashoffset="560"/>
+${lampX.map((x,i)=>`<g><circle id="lh${i}" cx="${x}" cy="196" r="16" fill="#ffc867" opacity="0"/><circle id="l${i}" cx="${x}" cy="196" r="7" fill="#2a2c34" stroke="#3a3c44"/></g>`).join('')}`;
+const names=['FOUND','NOT SCOURED','GLUED','CEILING'];
+lampX.forEach((x,i)=>{ const tx=document.createElementNS('http://www.w3.org/2000/svg','text'); tx.setAttribute('x',x); tx.setAttribute('y',228); tx.setAttribute('text-anchor','middle'); tx.setAttribute('fill','#8d8779'); tx.setAttribute('font-family','JetBrains Mono, monospace'); tx.setAttribute('font-size','10.5'); tx.setAttribute('letter-spacing','1.5'); tx.textContent=names[i]; ex.appendChild(tx); });
+const goldline=ex.querySelector('#goldline'), bl=ex.querySelector('#bl');
+function setExit(state, bloom){
+  state.forEach((on,i)=>{ ex.querySelector('#l'+i).setAttribute('fill',on?'#ffc867':'#2a2c34'); ex.querySelector('#lh'+i).setAttribute('opacity',on?0.25:0); });
+  goldline.setAttribute('stroke-dashoffset',(560*(1-bloom)).toFixed(1));
+  bl.setAttribute('opacity',bloom.toFixed(2));
+  const all = state.every(Boolean);
+  verdict.textContent = all ? 'EXITED INTACT' : (!state[1]||!state[3]) ? 'OVERDRIVEN' : 'PASSING THROUGH';
+  verdict.style.color = all ? '#ffc867' : (!state[1]||!state[3]) ? '#e8452a' : '';
+}
+function drawExit(t){
+  const c = t % 12; // 12 s cycle
+  const st=[c>1,c>2,c>3,c>4];
+  let bloom=0;
+  if(c>4.2 && c<9) bloom=Math.min(1,(c-4.2)/1.2);
+  if(c>=9){ st[3]=false; bloom=Math.max(0,1-(c-9)/1.2); }
+  setExit(st,bloom);
+}
+
+/* ---------- HISTORY / FLOW sketches ---------- */
+const hc=ctl('hist'), hx=hc.getContext('2d'), fc=ctl('flow'), fxx=fc.getContext('2d');
+const HS=600, HC=300;
+function plate(ctx){ ctx.fillStyle='#000'; ctx.fillRect(0,0,HS,HS); const g=ctx.createRadialGradient(HC,HC,40,HC,HC,280); g.addColorStop(0,'#14100e'); g.addColorStop(1,'#0b1218'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(HC,HC,280,0,TAU); ctx.fill(); ctx.strokeStyle='rgba(154,166,180,.35)'; ctx.lineWidth=1.5; ctx.stroke(); }
+function drawHist(t){
+  plate(hx);
+  const N=220, head=(t*0.35)%TAU;
+  for(let i=0;i<N;i++){
+    const a=head - i/N*TAU*0.92; const age=i/N;
+    const tt=t*0.35 - i/N*TAU*0.92/0.35*0.35;
+    const lev=0.55+0.25*Math.sin(tt*3.1)*Math.sin(tt*1.3+1)+0.1*Math.sin(tt*11);
+    const r0=86, r=r0+lev*170;
+    hx.strokeStyle=`rgba(255,200,103,${(1-age)*0.85})`; hx.lineWidth=3;
+    hx.beginPath(); hx.moveTo(HC+r0*Math.sin(a),HC-r0*Math.cos(a)); hx.lineTo(HC+r*Math.sin(a),HC-r*Math.cos(a)); hx.stroke();
+  }
+  hx.setLineDash([8,7]); hx.strokeStyle='rgba(223,230,238,.5)'; hx.lineWidth=2; hx.beginPath(); hx.arc(HC,HC,86+0.62*170,0,TAU); hx.stroke(); hx.setLineDash([]);
+  hx.fillStyle='#000'; hx.beginPath(); hx.arc(HC,HC,78,0,TAU); hx.fill();
+  hx.fillStyle='rgba(216,204,196,.8)'; hx.font='500 20px JetBrains Mono, monospace'; hx.textAlign='center'; hx.fillText('−16.0 LUFS',HC,HC+8);
+}
+const fl=Array.from({length:260},()=>({a:Math.random()*Math.PI, d:Math.random(), side:Math.random()<0.5?-1:1, sp:0.003+Math.random()*0.006, gold:Math.random()<0.3}));
+function drawFlow(t){
+  plate(fxx);
+  fl.forEach(p=>{
+    p.d += p.side<0 ? -p.sp : p.sp;
+    if(p.d<0){p.d=1; p.a=Math.random()*Math.PI} if(p.d>1){p.d=0; p.a=Math.random()*Math.PI; p.gold=Math.random()<0.3}
+    const r=80+p.d*190, a=p.a*p.side;
+    const x=HC+r*Math.sin(a), y=HC+r*Math.cos(a);
+    if(p.side<0){ fxx.fillStyle=`rgba(${p.gold?'255,255,255':'82,90,96'},${p.gold?0.8:0.9})`; fxx.fillRect(x-2,y-2,p.gold?3:5,p.gold?3:5); }
+    else { const hot=p.gold && p.a>0.9 && p.a<2.4; fxx.fillStyle= hot?`rgba(255,200,103,${1-p.d*0.6})`:`rgba(216,221,227,${0.8-p.d*0.5})`; fxx.fillRect(x-3,y-3,6,6); }
+  });
+  fxx.fillStyle='#000'; fxx.beginPath(); fxx.arc(HC,HC,72,0,TAU); fxx.fill();
+}
+
+/* ---------- VOICINGS + MODE ---------- */
+const vs=[...document.querySelectorAll('#voicings span')];
+const swd=ctl('sw-d'), swv=ctl('sw-v');
+let lastStep=-1;
+function stepTicks(t){
+  const step=Math.floor(t/1.6);
+  if(step===lastStep) return; lastStep=step;
+  vs.forEach((s,i)=>s.classList.toggle('on',i===step%vs.length));
+  const v=(Math.floor(t/3.2)%2)===1; swd.classList.toggle('on',!v); swv.classList.toggle('on',v);
+}
+
+
+/* ---------- METERS flicker ---------- */
+const m3=ctl('m3s'), mtp=ctl('mtp'), mv=ctl('mvoice');
+let lastM=0;
+function meters(t){
+  if(t-lastM<0.4) return; lastM=t;
+  m3.firstChild.nodeValue = '−'+(21.1+Math.sin(t*1.7)*0.6).toFixed(1);
+  mtp.firstChild.nodeValue = '−'+(6.2+Math.sin(t*2.3)*0.5).toFixed(1);
+  mv.firstChild.nodeValue = String(Math.round(Math.max(0,voiceEnv(t))*60));
+}
+
+
+/* ---------- AUTO TOGGLE ---------- */
+const aOff=ctl('a-off'), aOn=ctl('a-on'), ab=ctl('auto-before'), aa=ctl('auto-after');
+function setAuto(on){ aOn.setAttribute('aria-pressed',on); aOff.setAttribute('aria-pressed',!on); aa.style.opacity=on?1:0; ab.style.opacity=on?0:1; }
+aOff.addEventListener('click',()=>setAuto(false)); aOn.addEventListener('click',()=>setAuto(true));
+
+/* ---------- LEVELLING ---------- */
+const rs=ctl('ride'), RW=560, RH=220, RM=110;
+let rideAmt=0.6, rideShow=0.6;
+document.querySelectorAll('[data-ride]').forEach(b=>b.addEventListener('click',()=>{ rideAmt=+b.dataset.ride; document.querySelectorAll('[data-ride]').forEach(x=>x.setAttribute('aria-pressed',x===b)); if(reduce){ rideShow=rideAmt; drawRide(lastT); } }));
+rs.innerHTML=`<line x1="20" y1="${RM}" x2="${RW-20}" y2="${RM}" stroke="#3a3c44" stroke-dasharray="3 4"/><text x="20" y="22" fill="#8d8779" font-family="JetBrains Mono, monospace" font-size="10.5">LOUDNESS BY SECTION · DASHED LINE = TARGET</text><path id="rb" fill="none" stroke="#5fa8d8" stroke-width="2" stroke-opacity=".75"/><path id="ra" fill="none" stroke="#ffc867" stroke-width="2.5"/><text x="20" y="${RH-12}" fill="#8d8779" font-family="JetBrains Mono, monospace" font-size="10.5">TIMELINE →</text>`;
+const rb=rs.querySelector('#rb'), ra=rs.querySelector('#ra');
+function wander(x){ // section-level loudness, with quiet passages and a hot intro
+  const sec = Math.sin(x*0.009)*38 + Math.sin(x*0.021+1.4)*24;
+  const word = Math.sin(x*0.5)*2.5 + Math.sin(x*1.37)*1.5;
+  return {sec, word};
+}
+function drawRide(t){
+  rideShow += (rideAmt-rideShow)*0.08;
+  const off=(t*30)%400; let db='', da='';
+  for(let x=20;x<=RW-20;x+=3){
+    const w=wander(x+off), yb=RM-(w.sec+w.word), ya=RM-(w.sec*(1-rideShow)+w.word);
+    db+=(x===20?'M':'L')+x+' '+yb.toFixed(1); da+=(x===20?'M':'L')+x+' '+ya.toFixed(1);
+  }
+  rb.setAttribute('d',db); ra.setAttribute('d',da);
+}
+
+/* ---------- loop ---------- */
+let lastT=0;
+function frame(ms){
+  const t=ms/1000; lastT=t;
+  drawDisc(t); drawBridge(t); drawKnobs(t); drawEq(t); drawExit(t); drawHist(t); drawFlow(t); stepTicks(t); drawRide(t); meters(t);
+  if(!reduce) requestAnimationFrame(frame);
+}
+if(reduce){ presence=1; pres=1; frame(6800); setExit([true,true,true,true],1); }
+else requestAnimationFrame(frame);
+})();
 </script>
+
+<script src="./download-gate.js"></script>
 </body>
 </html>

@@ -11,15 +11,16 @@
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="mobile.css">
 <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 <script src="./image-slot.js"></script>
 <script src="./download-gate.js"></script>
 <style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
 </helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
   <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
     <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
     <span style="display:flex;flex-direction:column;gap:4px">
@@ -27,9 +28,7 @@
       <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
     </span>
   </a>
-  <div data-nav-title style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;max-width:calc(100% - 900px)">
-    <h2 style="font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CREOSOTE</h2>
-  </div>
+  
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
     <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
@@ -37,64 +36,69 @@
   </div>
 </nav>
 
-<main style="padding:20px 60px 60px 60px;max-width:1200px;margin:0 auto;width:100%;box-sizing:border-box">
+<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
+  <header data-screen-label="Title" style="padding:48px 0 32px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">CREOSOTE</h1>
+  </header>
+
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
     <div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-hero-2026" src="assets/creosote/hero_v131.png?v=260929t" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CREOSOTE User Interface"></image-slot></div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-weight:300;font-size:15px;line-height:2.0;color:#81848A;letter-spacing:0.02em"><b style="color:#B0B2B7;font-weight:700;letter-spacing:0.05em">The saturation engine.</b><br><br>Tape, tubes, iron and glue, an entire analog record chain in one photographed console. Every knob is calibrated to hardware behaviour. Every meter is a real instrument.<br><br>Most saturation plugins give you a color. CREOSOTE gives you a tape machine with ten formulas on the shelf, a tube stage you can re-valve, eight vintage compressors with their true circuits, a summing amp with real iron on the output. And you choose the order they run in.</p>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;letter-spacing:0.02em"><b style="color:#f0ede6;font-weight:700;letter-spacing:0.05em">The saturation engine.</b><br><br>Tape, tubes, iron and glue, an entire analog record chain in one photographed console. Every knob is calibrated to hardware behaviour. Every meter is a real instrument.<br><br>Most saturation plugins give you a color. CREOSOTE gives you a tape machine with ten formulas on the shelf, a tube stage you can re-valve, eight vintage compressors with their true circuits, a summing amp with real iron on the output. And you choose the order they run in.</p>
   </div>
 
   <section style="margin:0 auto 100px auto;max-width:600px;text-align:center">
-    <span style="font-size:10px;letter-spacing:4px;color:#A6DCA6;margin-bottom:15px;display:block;font-weight:700">DEPLOYMENT_STATUS</span>
-    <div style="background:rgba(22,38,22,0.15);border:1px solid #283B28;padding:40px">
-      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#87B387">CREOSOTE is calibrated and available for immediate deployment. The full record chain, every machine and every formula, nothing withheld.</p>
-      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/50741756-9b7c-482d-91e9-076f6b127db9?embed=1" class="lemonsqueezy-button" style="display:block;text-align:center;border:1px solid #6E9B6E;color:#A6DCA6;padding:25px;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:6px;transition:0.4s" style-hover="background:#6E9B6E;color:#0C1519">ACQUIRE_CREOSOTE // $50 <span style="text-decoration:line-through;opacity:0.55;font-size:10px;letter-spacing:3px">$99</span></a>
+    <span style="font-size:10px;letter-spacing:4px;color:#f0ede6;margin-bottom:15px;display:block;font-weight:700">AVAILABILITY</span>
+    <div style="background:#0c0c10;border:1px solid #242230;border-radius:8px;padding:32px">
+      <p style="font-size:11px;font-weight:400;letter-spacing:2px;opacity:0.75;margin-bottom:30px;text-transform:uppercase;color:#b9b6ae">CREOSOTE is calibrated and available for immediate deployment. The full record chain, every machine and every formula, nothing withheld.</p>
+      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/50741756-9b7c-482d-91e9-076f6b127db9?embed=1" class="lemonsqueezy-button" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid #c8a86b;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">ACQUIRE CREOSOTE · $50 <span style="text-decoration:line-through;opacity:0.55;font-size:10px;letter-spacing:3px">$99</span></a>
       <div style="display:flex;align-items:center;gap:16px;margin:26px 0 24px 0">
-        <span style="flex:1;height:1px;background:#3A3534"></span>
-        <span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#6E6764;font-weight:700">or hear it first</span>
-        <span style="flex:1;height:1px;background:#3A3534"></span>
+        <span style="flex:1;height:1px;background:#242230"></span>
+        <span style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#8d8779;font-weight:700">or hear it first</span>
+        <span style="flex:1;height:1px;background:#242230"></span>
       </div>
-      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d1737c8a-8a3b-4a5f-b4cf-2b5fc33091aa?embed=1" class="lemonsqueezy-button" style="display:block;text-align:center;border:1px solid #C8A86B;color:#DCCDBF;padding:22px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:5px;transition:0.4s" style-hover="background:#C8A86B;color:#0C1519">TRY_CREOSOTE // 14 DAYS FREE</a>
-      <p style="font-size:9px;letter-spacing:2px;line-height:1.9;text-transform:uppercase;color:#6E6764;margin:16px 0 0 0;font-weight:700">The same installer everyone buys, running unlicensed for fourteen days. A licence unlocks it in place, no reinstall.</p>
-      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · AU / VST3 / AAX</p>
+      <a href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/d1737c8a-8a3b-4a5f-b4cf-2b5fc33091aa?embed=1" class="lemonsqueezy-button" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid #c8a86b;transition:background 0.2s,color 0.2s;background:transparent;color:#c8a86b" style-hover="background:rgba(200,168,107,.1);color:#c8a86b">TRY CREOSOTE · 14 DAYS FREE</a>
+      <p style="font-size:9px;letter-spacing:2px;line-height:1.9;text-transform:uppercase;color:#8d8779;margin:16px 0 0 0;font-weight:700">The same installer everyone buys, running unlicensed for fourteen days. A licence unlocks it in place, no reinstall.</p>
+      <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#8d8779;margin:18px 0 0 0;font-weight:700">macOS Apple Silicon · AU / VST3 / AAX</p>
     </div>
   </section>
 
   <section style="max-width:1000px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">YOU_PICK_THE_ORDER</h3>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0">Grab AMBER, COMPRESS or GRIT by its title strip and drag it to a new place on the console. The other modules slide aside, and the sound changes the moment you let go, crossfaded, click-free, with the same latency in every order.</p>
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>YOU PICK THE ORDER<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 20px 0">Grab AMBER, COMPRESS or GRIT by its title strip and drag it to a new place on the console. The other modules slide aside, and the sound changes the moment you let go, crossfaded, click-free, with the same latency in every order.</p>
     <div style="margin:34px 0 0 0;overflow:hidden;border-radius:2px;max-width:900px">
       <video ref="{{ setLoopVideo }}" src="assets/creosote/creosote_reorder_loop.mp4" style="width:100%;height:auto;display:block;aspect-ratio:720/491"></video>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px;margin-top:34px">
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Reorder the modules</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">The default runs AMBER into COMPRESS into GRIT: the valves and the compressor printed to tape last, the way a real record chain runs. Put GRIT first and the valves and the compressor react to the tape. Put COMPRESS first and the colour stages work on a steadier signal.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Reorder the modules</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">The default runs AMBER into COMPRESS into GRIT: the valves and the compressor printed to tape last, the way a real record chain runs. Put GRIT first and the valves and the compressor react to the tape. Put COMPRESS first and the colour stages work on a steadier signal.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Presets and sessions remember</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Save a preset in your order and it comes back that way; the factory presets load in the order they were voiced in. Summing, the output EQ and staging always follow, in that order.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Presets and sessions remember</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Save a preset in your order and it comes back that way; the factory presets load in the order they were voiced in. Summing, the output EQ and staging always follow, in that order.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">It moves like hardware</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Lift a module and it casts a shadow; slide it across and it takes on the light of the bay it is heading into. Every module was rendered in every bay, so the light is baked, not faked.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">It moves like hardware</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Lift a module and it casts a shadow; slide it across and it takes on the light of the bay it is heading into. Every module was rendered in every bay, so the light is baked, not faked.</p>
       </div>
     </div>
   </section>
 
   <section style="max-width:1000px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:16px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_CHAIN</h3>
-    <p style="font-weight:300;font-size:13px;color:#6E6764;line-height:1.8;margin:0 0 46px 0;max-width:820px">One section per module, in the default order. AMBER, COMPRESS and GRIT can be dragged into any order; SUMMING, the OUTPUT EQ and STAGING always follow them.</p>
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE CHAIN<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:16px;color:#8d8779;line-height:1.8;margin:0 0 46px 0;max-width:820px">One section per module, in the default order. AMBER, COMPRESS and GRIT can be dragged into any order; SUMMING, the OUTPUT EQ and STAGING always follow them.</p>
 
     <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">AMBER: the tube stage</div>
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">AMBER: the tube stage</div>
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 200px;width:200px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-amber" src="assets/creosote/amber.png?v=260921" onClick="{{ openAmber }}" style="width:100%;aspect-ratio:343/361;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="AMBER"></image-slot></div>
         <div style="flex:1;min-width:280px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">A three-stage valve amplifier you can re-tube, re-bias and re-era.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 20px 0">A three-stage valve amplifier you can re-tube, re-bias and re-era.</p>
+          <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Preamp</b>&nbsp;12AX7, 12AT7, 12AU7, EF86.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Power</b>&nbsp;EL84, EL34, 6L6, 6V6, KT66, KT88.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Rectifier</b>&nbsp;5Y3, GZ34, with era-true sag.</li>
@@ -107,12 +111,12 @@
     </div>
 
     <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">COMPRESS: eight compressors, true circuits</div>
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">COMPRESS: eight compressors, true circuits</div>
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 200px;width:200px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-compress" src="assets/creosote/compress.png?v=260921" onClick="{{ openCompress }}" style="width:100%;aspect-ratio:345/363;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="COMPRESS"></image-slot></div>
         <div style="flex:1;min-width:280px">
           
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The models</b>&nbsp;LEVEL CELL (opto, T4 three-stage cascade), BLACK FET (1176), ALL BUTTONS (1176, all in), TUBE MU (vari-mu), VCA BUS (console-bus VCA), DIODE BRIDGE, PWM, ZENER.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">True topology, automatically</b>&nbsp;each mode runs its hardware&rsquo;s actual detector circuit. The opto, vari-mu, bridge and PWM units run feedback, with the full loop behaviour: the knee eases in wide, the gain reduction refuses to overcompress (it blooms instead of clamping), and the release stretches after deep sustained reduction. The FET, VCA and Zener units run feedforward. Force either topology in TWEAK to A/B a mode against itself.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Always-on lookahead</b>&nbsp;with full delay compensation, sidechain filtering, auto-release, and a real edgewise gain-reduction meter: one needle, accurate ballistics, hot bulbs behind the glass.</li>
@@ -122,12 +126,12 @@
     </div>
 
     <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">GRIT: the tape machine</div>
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">GRIT: the tape machine</div>
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 200px;width:200px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-grit" src="assets/creosote/grit.png?v=260921" onClick="{{ openGrit }}" style="width:100%;aspect-ratio:343/362;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="GRIT"></image-slot></div>
         <div style="flex:1;min-width:280px">
           
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">7 machines</b>&nbsp;A800, ATR-102, JH-24, MTR-90, MM1200, 280 and a prosumer reel, each with its own head-bump frequency, asymmetry and pre-emphasis character.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">10 tape formulas</b>&nbsp;456, 406/407, 499, GP9, 250, 996, SM468, SM911, SM900 and a master-grade reel, with drive headroom, de-emphasis and hysteresis modeled per formula.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Width, speed and calibration</b>&nbsp;&frac14;" to 2" 24-track, 7.5/15/30 IPS, +3/+6/+9 cal, over and under bias.</li>
@@ -143,12 +147,12 @@
     </div>
 
     <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">SUMMING: the console bus</div>
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">SUMMING: the console bus</div>
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 380px;width:380px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-master" src="assets/creosote/tweak_master.png?v=260921" onClick="{{ openMaster }}" style="width:100%;aspect-ratio:1072/765;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="SUMMING"></image-slot></div>
         <div style="flex:1;min-width:280px">
           
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">PREGAIN, WIDTH (M/S), BALANCE</b>&nbsp;with twin backlit VU meters on the deck: real needle ballistics, real bulbs.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">IRON</b>&nbsp;a modeled output transformer (off / subtle / rich) with three voicings, the round British console, the punchy American, the broadcast desk, built as a flux integrator with magnetic remanence and leakage-resonance air rather than an EQ curve.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">The master bus</b>&nbsp;character saturation, stereo glue and a ceiling clipper, all anti-derivative anti-aliased, all measured. Oversampling from 2&times; to 8&times;, clean minimum-phase or vintage character, with the HQ button right on the header.</li>
@@ -158,12 +162,12 @@
     </div>
 
     <div style="margin-bottom:80px">
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">OUTPUT EQ: the chart plate</div>
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">OUTPUT EQ: the chart plate</div>
       <div style="display:flex;gap:50px;align-items:flex-start;flex-wrap:wrap">
         <div style="flex:0 0 380px;width:380px;min-width:200px;overflow:hidden;border-radius:2px"><image-slot id="creosote-eq" src="assets/creosote/output_eq.png?v=260921" onClick="{{ openEq }}" style="width:100%;aspect-ratio:1072/765;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="OUTPUT EQ"></image-slot></div>
         <div style="flex:1;min-width:280px">
-          <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 20px 0">Eight bands of dynamic EQ drawn on a machine-tool chart: cream card, blue graticule, red pen.</p>
-          <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none">
+          <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 20px 0">Eight bands of dynamic EQ drawn on a machine-tool chart: cream card, blue graticule, red pen.</p>
+          <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Dynamic architecture</b>&nbsp;per-band frequency, gain and Q, plus dynamic gain with attack and release. Each band can duck or expand itself against the signal.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Drag-anywhere nodes</b>&nbsp;including high-pass and low-pass bands.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">Visual feedback</b>&nbsp;pre and post curves displayed together, the dashed blueprint and the live red line, with the dynamic delta filled between them.</li>
@@ -173,8 +177,8 @@
       </div>
     </div>
     <div>
-      <div style="font-size:15px;letter-spacing:6px;color:#B0B2B7;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">STAGING: gain, tone, ceiling</div>
-      <ul style="font-weight:300;font-size:14px;color:#81848A;line-height:1.9;margin:0;padding:0;list-style:none;max-width:820px">
+      <div style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;margin:0 0 30px 0;font-weight:700">STAGING: gain, tone, ceiling</div>
+      <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">INPUT / LEVEL</b>&nbsp;honest gain staging in and out.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">TONE</b>&nbsp;a direction-aware tilt. Darkening reaches into the presence region, it warms rather than dulling the top octave. Brightening lifts the air band above the harshness zone and gently tightens the lows. Different corner frequencies per direction, chosen by measurement.</li>
             <li style="margin-bottom:8px">· <b style="color:#DCCDBF;font-weight:700">LIMIT</b>&nbsp;a lookahead ceiling with its own vertical gain-reduction instrument: reduction pours top-down, oil-damped.</li>
@@ -184,8 +188,8 @@
   </section>
 
   <section style="max-width:1000px;margin:0 auto 80px auto">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px;border-bottom:1px solid #3A3534;padding-bottom:10px">THE_TWEAK_PAGES</h3>
-    <p style="font-weight:300;font-size:14px;color:#81848A;line-height:1.8;margin:0 0 34px 0;max-width:820px">Every module opens onto its own TWEAK page, where the calibration lives: bias and formula behind the tape, valve condition and plate voltage behind the tubes, detector topology behind the compressors.</p>
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE TWEAK PAGES<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 34px 0;max-width:820px">Every module opens onto its own TWEAK page, where the calibration lives: bias and formula behind the tape, valve condition and plate voltage behind the tubes, detector topology behind the compressors.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
       <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">Tape</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-tweak-tape" src="assets/creosote/tweak_tape.png?v=260921" onClick="{{ openTweakTape }}" style="width:100%;aspect-ratio:1072/765;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="Tape TWEAK page"></image-slot></div></div>
       <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">Tube</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-tweak-tube" src="assets/creosote/tweak_tube.png?v=260921" onClick="{{ openTweakTube }}" style="width:100%;aspect-ratio:1072/765;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="Tube TWEAK page"></image-slot></div></div>
@@ -194,55 +198,55 @@
     </div>
   </section>
 
-  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:40px">SIGNATURE_FEATURES</h3>
+  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>SIGNATURE FEATURES<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px">
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">No two racks alike &mdash; UNIT variance</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Two LA-2As off the same line compressed differently; two channels of one console rolled off at different corners. Pick UNIT 1 through 16 and the instance adopts that unit&rsquo;s component tolerances: filter corners drift up to &plusmn;5%, drive points shift fractions of a dB, the channels mismatch just slightly. Deterministic, recall-safe, and loudness-matched to &plusmn;0.005 dB. Set VARIANCE from off to vintage, and tell your collaborator to use unit 7.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">No two racks alike &mdash; UNIT variance</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Two LA-2As off the same line compressed differently; two channels of one console rolled off at different corners. Pick UNIT 1 through 16 and the instance adopts that unit&rsquo;s component tolerances: filter corners drift up to &plusmn;5%, drive points shift fractions of a dB, the channels mismatch just slightly. Deterministic, recall-safe, and loudness-matched to &plusmn;0.005 dB. Set VARIANCE from off to vintage, and tell your collaborator to use unit 7.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Saturate the sustain, spare the attack &mdash; PUNCH</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Heavy drive usually costs you your transients. PUNCH detects onsets and momentarily eases the drive into the saturators, level-compensated and wet-path only, so the crack of the stick passes clean while the body stays thick. Measured: attacks pass around 1.4 dB cleaner at FULL with sustain character unchanged.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Saturate the sustain, spare the attack &mdash; PUNCH</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Heavy drive usually costs you your transients. PUNCH detects onsets and momentarily eases the drive into the saturators, level-compensated and wet-path only, so the crack of the stick passes clean while the body stays thick. Measured: attacks pass around 1.4 dB cleaner at FULL with sustain character unchanged.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Your sessions recall exactly &mdash; versioned DSP</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Every audible improvement ships behind a DSP version gate. A session recalls bit-identical, not close, identical, module order included, while new sessions get the newest behaviour. One deliberate exception: sessions saved before module ordering existed open in the new tape-last order. Enforced with an automated audio regression suite of 44 measured pass-bars and golden renders on every build.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Your sessions recall exactly &mdash; versioned DSP</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Every audible improvement ships behind a DSP version gate. A session recalls bit-identical, not close, identical, module order included, while new sessions get the newest behaviour. One deliberate exception: sessions saved before module ordering existed open in the new tape-last order. Enforced with an automated audio regression suite of 44 measured pass-bars and golden renders on every build.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">We publish our measurements</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Marketing says warm. We say: 0.39% THD at 0 VU on a calibrated deck; alias floors driven down 16 to 35 dB by ADAA; EQ matched to analog prototypes within 0.16 dB at 20 kHz; presets loudness-matched to unity; comb-free wet/dry blending verified by null test. The measurement rig ships in our repository.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">We publish our measurements</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Marketing says warm. We say: 0.39% THD at 0 VU on a calibrated deck; alias floors driven down 16 to 35 dB by ADAA; EQ matched to analog prototypes within 0.16 dB at 20 kHz; presets loudness-matched to unity; comb-free wet/dry blending verified by null test. The measurement rig ships in our repository.</p>
       </div>
     </div>
   </section>
 
-  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:34px">THE_CONSOLE</h3>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 34px 0;max-width:820px">The interface is not a picture of a console. It is a console, photographed. Every panel, cap and instrument is rendered in Blender Cycles under one locked studio light and baked into the plugin.</p>
+  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE CONSOLE<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 34px 0;max-width:820px">The interface is not a picture of a console. It is a console, photographed. Every panel, cap and instrument is rendered in Blender Cycles under one locked studio light and baked into the plugin.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px">
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Real instruments</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">The VU pair, the edgewise gain-reduction meters and every slider tile are backlit by modeled bulbs behind translucent glass. Power a module down and its glass goes dead, its lamps go out. Nothing fades; hardware does not fade.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Real instruments</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">The VU pair, the edgewise gain-reduction meters and every slider tile are backlit by modeled bulbs behind translucent glass. Power a module down and its glass goes dead, its lamps go out. Nothing fades; hardware does not fade.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Modules you can pick up</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Drag AMBER, COMPRESS or GRIT by its title strip and it lifts off the rack with a cast shadow, its neighbours slide aside, and it carries the light of each bay it passes through.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Modules you can pick up</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Drag AMBER, COMPRESS or GRIT by its title strip and it lifts off the rack with a cast shadow, its neighbours slide aside, and it carries the light of each bay it passes through.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Light that spills</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Lit lamps and lenses cast their glow onto the panel around them, from a dedicated plate-level light layer. A phosphor oscilloscope carries the AGE LFO: dark green CRT, amber etched graticule, blooming trace.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Light that spills</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Lit lamps and lenses cast their glow onto the panel around them, from a dedicated plate-level light layer. A phosphor oscilloscope carries the AGE LFO: dark green CRT, amber etched graticule, blooming trace.</p>
       </div>
       <div>
-        <b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Chunky hardware, efficient code</b>
-        <p style="font-weight:300;font-size:13px;color:#81848A;line-height:1.8;margin:0">Bronze selector caps with dial-lamp values, cream pushbuttons with engraved legends, an emerald mains switch. Pressed, they travel; unpowered, they sit dark in the room light. The full chain runs around 6% of one core at 2&times; oversampling, and powered-off modules cost essentially nothing.</p>
+        <b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:8px;letter-spacing:1px;font-size:13px">Chunky hardware, efficient code</b>
+        <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0">Bronze selector caps with dial-lamp values, cream pushbuttons with engraved legends, an emerald mains switch. Pressed, they travel; unpowered, they sit dark in the room light. The full chain runs around 6% of one core at 2&times; oversampling, and powered-off modules cost essentially nothing.</p>
       </div>
     </div>
   </section>
 
-  <section data-screen-label="Skins" style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:26px">SKINS <span style="color:#C8A86B;margin-left:14px">// NEW IN v1.1.0</span></h3>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 18px 0;max-width:820px">Two new light skins, PAPER and PRESS, join HYBRID and GREEN. Pick one in TWEAK &gt; MASTER &gt; CHASSIS.</p>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 34px 0;max-width:820px">Your skin is saved for you, not in your sessions: every CREOSOTE window follows it, and loading a preset never changes it.</p>
+  <section data-screen-label="Skins" style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>SKINS <span style="color:#C8A86B;margin-left:14px">// NEW IN v1.1.0</span><span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px">Two new light skins, PAPER and PRESS, join HYBRID and GREEN. Pick one in TWEAK &gt; MASTER &gt; CHASSIS.</p>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 34px 0;max-width:820px">Your skin is saved for you, not in your sessions: every CREOSOTE window follows it, and loading a preset never changes it.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
       <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">GREEN</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-classic" src="assets/creosote/skin_classic.png?v=260929t" onClick="{{ openSkinClassic }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="GREEN skin"></image-slot></div></div>
       <div><span style="font-size:9px;letter-spacing:3px;color:#DCCDBF;text-transform:uppercase;font-weight:700;opacity:0.7;margin:0 0 8px 0;display:block">PAPER</span><div style="overflow:hidden;border-radius:2px"><image-slot id="creosote-skin-cream" src="assets/creosote/skin_cream.png?v=260929t" onClick="{{ openSkinCream }}" fit="contain" style="width:100%;aspect-ratio:2028/1450;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.04)" shape="rect" placeholder="PAPER skin"></image-slot></div></div>
@@ -250,38 +254,38 @@
     </div>
   </section>
 
-  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:60px;border-top:1px solid #3A3534">
-    <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:26px">PRESETS</h3>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0 0 20px 0;max-width:820px">An era-anchored factory library, voiced from classic recording chains: CLEAN PUNCH 82, BRITISH PROG 73, WORN TAPE 77, NATURAL SOUL 76, COLD MACHINE 75 and more, plus the THETA artist set.</p>
-    <p style="font-weight:300;font-size:15px;line-height:1.9;color:#81848A;margin:0;max-width:820px">Every factory preset loads in the module order it was voiced in, loudness-matched to unity against bypass, so you audition character and not volume. Your own presets remember the order you saved them in.</p>
+  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
+    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>PRESETS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 20px 0;max-width:820px">An era-anchored factory library, voiced from classic recording chains: CLEAN PUNCH 82, BRITISH PROG 73, WORN TAPE 77, NATURAL SOUL 76, COLD MACHINE 75 and more, plus the THETA artist set.</p>
+    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px">Every factory preset loads in the module order it was voiced in, loudness-matched to unity against bypass, so you audition character and not volume. Your own presets remember the order you saved them in.</p>
   </section>
 
-  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:60px;border-top:1px solid #3A3534">
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:100px;padding-top:24px">
     <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">ARCHITECTURE</h3>
+      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">ARCHITECTURE</div>
       <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Sample Rates</b>44.1 to 192 kHz; behaviour verified by measurement at 48 and 96 kHz.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Oversampling</b>2&times; / 4&times; / 8&times;, clean minimum-phase or vintage character.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">CPU</b>Around 6.6% of one core, full chain at 2&times; / 48 kHz. Bypassed modules near-zero.</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Interface</b>Resizable 50% to 200%, crisp at retina resolutions.</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Sample Rates</b>44.1 to 192 kHz; behaviour verified by measurement at 48 and 96 kHz.</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Oversampling</b>2&times; / 4&times; / 8&times;, clean minimum-phase or vintage character.</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">CPU</b>Around 6.6% of one core, full chain at 2&times; / 48 kHz. Bypassed modules near-zero.</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Interface</b>Resizable 50% to 200%, crisp at retina resolutions.</li>
       </ul>
     </div>
     <div>
-      <h3 style="font-size:11px;letter-spacing:4px;color:#DCCDBF;text-transform:uppercase;margin-bottom:30px">TECHNICAL_SPECIFICATIONS</h3>
+      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">TECHNICAL SPECIFICATIONS</div>
       <ul style="list-style:none;padding:0;margin:0">
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>AU · VST3 · AAX</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS (Apple silicon and Intel)</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Latency</b>Fixed and fully host-compensated (lookahead plus oversampling)</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Module Order</b>AMBER / COMPRESS / GRIT in any order, drag to reorder, click-free with the same latency in every order</li>
-        <li style="font-weight:300;font-size:13px;margin-bottom:24px;padding-left:20px;position:relative;color:#81848A;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#B0B2B7;display:block;margin-bottom:4px;letter-spacing:1px">Session Safety</b>Versioned DSP, sessions and presets recall bit-identical, module order included</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Formats</b>AU · VST3 · AAX</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Platform</b>macOS (Apple silicon and Intel)</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Latency</b>Fixed and fully host-compensated (lookahead plus oversampling)</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Module Order</b>AMBER / COMPRESS / GRIT in any order, drag to reorder, click-free with the same latency in every order</li>
+        <li style="font-weight:300;font-size:16px;margin-bottom:24px;padding-left:20px;position:relative;color:#b9b6ae;letter-spacing:0.01em" style-before="content:'//';position:absolute;left:0;color:#DCCDBF;font-weight:700;opacity:0.5"><b style="font-weight:700;color:#f0ede6;display:block;margin-bottom:4px;letter-spacing:1px">Session Safety</b>Versioned DSP, sessions and presets recall bit-identical, module order included</li>
       </ul>
     </div>
   </section>
 </main>
 
-<footer style="padding:40px 60px;font-size:9px;letter-spacing:6px;opacity:0.4;display:flex;justify-content:space-between;border-top:1px solid #3A3534;margin-top:100px">
+<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
   <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#DCCDBF;text-decoration:none;letter-spacing:6px;font-weight:700;transition:0.3s" style-hover="color:#DCCDBF;text-decoration:underline">YOUTUBE</a>
+  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
   <span>LAB NOTE #004 // CREOSOTE</span>
 </footer>
 

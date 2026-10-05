@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="mobile.css">
 </helmet>
-<div style="background:#0C1519;color:#81848A;font-family:'Montserrat',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:#0C1519;position:sticky;top:0;z-index:100">
+<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
   <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
     <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
     <span style="display:flex;flex-direction:column;gap:4px">
@@ -23,9 +24,7 @@
       <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
     </span>
   </a>
-  <div data-nav-title style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;max-width:calc(100% - 900px)">
-    <h2 style="font-weight:300;font-size:22px;letter-spacing:8px;color:#B0B2B7;text-transform:uppercase;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">DOWNLOADS</h2>
-  </div>
+  
   <div style="display:flex;gap:20px">
     <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
     <a href="free.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">FREE</a>
@@ -33,61 +32,66 @@
   </div>
 </nav>
 
-<main style="padding:40px 60px 80px 60px;max-width:1100px;margin:0 auto;width:100%;box-sizing:border-box;flex:1">
+<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
+  <header data-screen-label="Title" style="padding:48px 0 32px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
+    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">DOWNLOADS</h1>
+  </header>
 
-  <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:baseline;border-top:1px solid #3A3534;border-bottom:1px solid #3A3534;padding:22px 0;margin-bottom:50px">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#6E6764;text-transform:uppercase;font-weight:700">theta-audio-research / atria-launch</span>
+
+  <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;border-bottom:1px solid #242230;padding:22px 0;margin-bottom:50px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700">theta-audio-research / atria-launch</span>
     <span style="display:flex;align-items:center;gap:26px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700">{{ statusLine }}</span>
-      <button onClick="{{ reload }}" style="background:none;border:1px solid #3A3534;color:#DCCDBF;padding:9px 20px;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:4px;font-weight:700;text-transform:uppercase;cursor:pointer;transition:0.3s" style-hover="background:#DCCDBF;color:#0C1519">REFRESH</button>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#8d8779;text-transform:uppercase;font-weight:700">{{ statusLine }}</span>
+      <button onClick="{{ reload }}" style="background:none;border:1px solid #242230;color:#DCCDBF;padding:9px 20px;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:4px;font-weight:700;text-transform:uppercase;cursor:pointer;transition:0.3s" style-hover="background:#DCCDBF;color:#0C1519">REFRESH</button>
     </span>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#3A3534;margin-bottom:60px">
-    <div style="background:#0C1519;padding:34px 30px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:16px">TOTAL DOWNLOADS</div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#242230;margin-bottom:60px">
+    <div style="background:#06080c;padding:34px 30px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#8d8779;text-transform:uppercase;font-weight:700;margin-bottom:16px">TOTAL DOWNLOADS</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:44px;line-height:1;color:#C8A86B;font-weight:300">{{ totalDisplay }}</div>
     </div>
-    <div style="background:#0C1519;padding:34px 30px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:16px">RELEASES TRACKED</div>
+    <div style="background:#06080c;padding:34px 30px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#8d8779;text-transform:uppercase;font-weight:700;margin-bottom:16px">RELEASES TRACKED</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:44px;line-height:1;color:#DCCDBF;font-weight:300">{{ releaseCountDisplay }}</div>
     </div>
-    <div style="background:#0C1519;padding:34px 30px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#6E6764;text-transform:uppercase;font-weight:700;margin-bottom:16px">MOST DOWNLOADED</div>
+    <div style="background:#06080c;padding:34px 30px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:#8d8779;text-transform:uppercase;font-weight:700;margin-bottom:16px">MOST DOWNLOADED</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:22px;line-height:1.3;color:#DCCDBF;font-weight:300;margin-top:14px">{{ topLine }}</div>
     </div>
   </div>
 
   <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
-    <div style="border:1px solid #3A3534;padding:36px;margin-bottom:60px">
+    <div style="border:1px solid #242230;padding:36px;margin-bottom:60px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:#C8A86B;text-transform:uppercase;font-weight:700;margin-bottom:14px">ARCHIVE UNREACHABLE</div>
-      <p style="font-weight:300;font-size:13.5px;line-height:1.8;color:#81848A;margin:0;text-wrap:pretty">{{ errorText }}</p>
+      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;text-wrap:pretty">{{ errorText }}</p>
     </div>
   </sc-if>
 
   <sc-for list="{{ releases }}" as="rel" hint-placeholder-count="2">
     <section style="margin-bottom:56px">
-      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:baseline;border-bottom:1px solid #3A3534;padding-bottom:16px;margin-bottom:4px">
-        <span style="font-family:'Montserrat',sans-serif;font-size:16px;letter-spacing:7px;color:#B0B2B7;text-transform:uppercase;font-weight:300">{{ rel.product }}</span>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:baseline;border-bottom:1px solid #242230;padding-bottom:16px;margin-bottom:4px">
+        <span style="font-family:'Montserrat',sans-serif;font-size:16px;letter-spacing:7px;color:#f0ede6;text-transform:uppercase;font-weight:300">{{ rel.product }}</span>
         <span style="display:flex;align-items:baseline;gap:26px">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;font-weight:700">{{ rel.published }}</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#6E6764;text-transform:uppercase;font-weight:700">{{ rel.tag }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#8d8779;text-transform:uppercase;font-weight:700">{{ rel.published }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#8d8779;text-transform:uppercase;font-weight:700">{{ rel.tag }}</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:20px;color:#C8A86B;font-weight:300">{{ rel.totalDisplay }}</span>
         </span>
       </div>
 
       <sc-for list="{{ rel.assets }}" as="asset" hint-placeholder-count="1">
         <div style="display:grid;grid-template-columns:minmax(0,1fr) 90px 110px;gap:30px;align-items:baseline;padding:15px 0;border-bottom:1px solid #1E2A2E">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#81848A;font-weight:300;overflow-wrap:anywhere">{{ asset.name }}</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#6E6764;text-align:right">{{ asset.size }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#b9b6ae;font-weight:300;overflow-wrap:anywhere">{{ asset.name }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#8d8779;text-align:right">{{ asset.size }}</span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:15px;color:#DCCDBF;text-align:right;font-weight:300">{{ asset.count }}</span>
         </div>
       </sc-for>
     </section>
   </sc-for>
 
-  <div style="border-top:1px solid #3A3534;padding-top:30px">
-    <p style="font-weight:300;font-size:13px;line-height:1.85;color:#6E6764;margin:0;max-width:760px;text-wrap:pretty">Counts come straight from the release archive and include every download, gated or direct, plus mirrors and repeat pulls from the same person. Kit subscriber tags are the human number; treat this page as the upper bound. Figures refresh on load.</p>
+  <div style="border-top:1px solid #242230;padding-top:30px">
+    <p style="font-weight:300;font-size:16px;line-height:1.75;color:#8d8779;margin:0;max-width:760px;text-wrap:pretty">Counts come straight from the release archive and include every download, gated or direct, plus mirrors and repeat pulls from the same person. Kit subscriber tags are the human number; treat this page as the upper bound. Figures refresh on load.</p>
   </div>
 
 </main>
