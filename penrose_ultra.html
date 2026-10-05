@@ -251,7 +251,7 @@ footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,
 .shot.sq{aspect-ratio:640/630;border-radius:50%;border:0}
 @media (max-width:900px){ .knobs,.presets{grid-template-columns:repeat(2,minmax(0,1fr))} .steps{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:520px){ .knobs,.presets{grid-template-columns:minmax(0,1fr)} .sound li{grid-template-columns:minmax(0,1fr);gap:4px} }
-@media (prefers-reduced-motion:reduce){ .spin{animation:none} }
+
 </style>
 
 <style>.ctrls{align-items:start} .ctrl{grid-template-rows:3.2em auto auto} .ctrl label{align-items:flex-start;align-content:flex-start} .ctrl label output[hidden]{display:none}</style>
@@ -610,7 +610,7 @@ footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,
 
 <script>
 (function(){
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = false;
 const TAU = Math.PI*2;
 
 /* notes toggle */
