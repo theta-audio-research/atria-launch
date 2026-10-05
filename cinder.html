@@ -1,217 +1,906 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CINDER Product Page</title>
+<meta name="description" content="CINDER is a three-circuit distortion with a transfer display drawn by the code that shapes your audio, an LFO, and AUTO LEVEL held under −0.3 dBTP. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as gire.html and penrose_ultra.html. Single dark look by choice: THETA marketing pages
+   live on the void theme. CINDER's own colour enters only where the plug-in draws it: the rust well,
+   the cream curve and the ember accent (palette in Source/CinderLookAndFeel.h). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --ember:#f0824f; --cream:#f2e9dc; --rust:#3a2723; --rust-mid:#2f201c; --rust-low:#231613;
+  --cap:#5d4136; --cap-low:#38241d; --groove:#1b110d;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(44px,7vw,84px);letter-spacing:.42em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the transfer well: CINDER's own rust */
+.well{border:1px solid #4a3029;border-radius:12px;background:linear-gradient(158deg,var(--rust),var(--rust-mid) 44%,var(--rust-low));overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y;cursor:ew-resize}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--ember);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's: recessed track, warm cap on the active cell */
+.seg{display:inline-flex;border:1px solid #3a2a24;border-radius:6px;background:#1c110d;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:4px;background:transparent;color:rgba(242,233,220,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:linear-gradient(160deg,var(--cap),var(--cap-low));color:var(--cream)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#2a1b16;stroke:#7a4a36;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.os{stroke:var(--ember);animation-duration:.5s}
+.path .flow.ctl{stroke:var(--cream);opacity:.55;animation-duration:2.6s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views .rust{background:linear-gradient(158deg,var(--rust),var(--rust-mid) 44%,var(--rust-low))}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--ember);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:#a8674a}
+.ctrl.on label{color:var(--gold-hot)}
+.ctrl.on input[type=range]{accent-color:var(--ember)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* circuits */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.voice canvas{display:block;width:100%;height:auto;background:linear-gradient(158deg,var(--rust),var(--rust-low))}
+.voice .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.voice .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.voice .vn b{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.28em;color:var(--ember)}
+.voice .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.voice p{color:var(--text-2);font-size:15.5px}
+
+/* knob cards */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:112px;height:112px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--ember)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a1c20;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--ember);stroke-width:5;stroke-linecap:round}
+.knob-face{fill:url(#capGrad);stroke:#54392f;stroke-width:1.5}
+.knob-ptr{stroke:var(--groove);stroke-width:3;stroke-linecap:round}
+.knob-num{font-family:var(--f-mono);font-size:13px;fill:var(--text-2);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+.show{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);background:transparent;border:1px solid var(--gold-dim);border-radius:4px;padding:6px 10px;cursor:pointer;min-height:32px}
+.show:hover{background:rgba(200,168,107,.1)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--ember);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--ember)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
+.keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(240,130,79,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views{grid-template-columns:minmax(0,1fr)}
+  .voices,.knobs{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.four,.who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(198,83,124,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2} main h1,main h2,main h3{font-family:'Montserrat',sans-serif}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
-
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
-  </a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d4136"/><stop offset=".52" stop-color="#422c25"/><stop offset="1" stop-color="#2a1b16"/></linearGradient></defs></svg>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <section data-screen-label="Hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:48px 0 56px 0">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THREE-CIRCUIT DISTORTION · Alchemy Index · Coming soon</div>
-      <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 24px 0;color:#f0ede6">CINDER</h1>
-      <p style="margin:0;color:#b9b6ae;max-width:58ch;text-wrap:pretty">CINDER is in final calibration. Join the list and we will tell you the day it ships.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a href="mailto:info@theta.audio?subject=CINDER%20launch" data-notify="CINDER" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AU</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">VST3</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AAX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">macOS · Apple Silicon and Intel</span></div>
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Three-circuit distortion · Version 1.0</div>
+    <h1 class="wordmark">CINDER</h1>
+    <h2>Distortion <em>with the lid off.</em></h2>
+    <div class="lede">
+      <p>Three waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe, and a transfer curve drawn by the same code that processes your audio.</p>
+      <p>AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume, and nothing leaves above −0.3 dB true peak. 44 samples of latency, at every sample rate.</p>
     </div>
-    <div onClick="{{ open0 }}" style="cursor:zoom-in"><image-slot id="cinder-img-0-v009" src="assets/cinder/hero_ember_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="CINDER, EMBER"></image-slot></div>
-  </section>
-
-  
-
-  <div style="max-width:850px;margin:0 auto 70px auto;border-left:1px solid #CFC5B6;padding-left:40px">
-    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Most distortion plugins show you a curve. Very few show you <i>their</i> curve. The picture is usually drawn by separate code from a simplified model, so it tracks the sound loosely and diverges exactly where you care most: at the extremes, and once the second stage is involved.</p>
-    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">CINDER shares one waveshaper between the audio path, the display and the test harness, so the curve bends because the shaper bent. The THD readout goes a step further: it is not predicted from the curve at all. It is measured from the audio leaving the plugin, on the fundamental it finds in your signal. The build refuses to ship if that readout disagrees with an independent analysis of the same audio by more than half a decibel.</p>
-    <p style="font-weight:300;font-size:17px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume. Twelve samples of latency, at every sample rate.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get CINDER</a>
+      <a class="btn ghost" href="#lab">See the curve work</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip soon">Windows · coming soon</span></div>
   </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>TRANSFER · LFO ON DRIVE</span>
+        <span class="seg" role="group" aria-label="Circuit for the hero display">
+          <button type="button" data-hc="0" aria-pressed="true">EMBER</button><button type="button" data-hc="1" aria-pressed="false">CHAR</button><button type="button" data-hc="2" aria-pressed="false">ASH</button>
+        </span>
+      </div>
+      <canvas id="hero" width="880" height="800" aria-label="CINDER's transfer display, drawn from the plug-in's own shaper. An LFO sweeps DRIVE so the curve bends and relaxes. Drag sideways to move DRIVE."></canvas>
+      <div class="well-foot"><span>DRIVE <b id="h-drive">-</b></span><span>THD <b id="h-thd">-</b></span><span>CIRCUIT <b id="h-circ">EMBER</b></span></div>
+    </div>
+    <div class="tagline">DRAG THE CURVE SIDEWAYS TO SET DRIVE</div>
+  </div>
+</section>
 
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THREE CIRCUITS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px">
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">EMBER</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">A symmetric soft clipper: hyperbolic tangent, no even-order content to speak of (H2 sits at &minus;126 dB). It compresses peaks and thickens without changing the character of the source.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">CHAR</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">Clips harder on one half of the waveform than the other, the way a triode stage does. H2 measures &minus;26 dB against EMBER&rsquo;s &minus;126 dB at the same drive: a hundred decibels of difference from one button.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">ASH</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">A wavefolder. Past the first fold it stops sounding like clipping and starts sounding like a new instrument. It is the setting that will not behave, and it is on the panel for that reason.</p></div>
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <h2 class="h2">Bend the curve. <em>Count what it makes.</em></h2>
+      <p>A distortion is a curve. The input level goes in along the bottom, the output comes out up the side, and as long as the curve is a straight diagonal nothing happens. Bend it and every waveform passing through is bent with it: the peaks round off, the two halves stop matching, and new frequencies appear at whole multiples of the note you played. Those are the harmonics, and they are the sound of distortion.</p>
+      <p><strong>Even harmonics read as thickness. Odd harmonics read as edge.</strong> A curve that treats the top and bottom halves the same makes odd ones. A curve that treats them differently adds the even ones.</p>
     </div>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE SATURATION STAGE<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Two knobs, two harmonic families, deliberately separated.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty"><b style="color:#f0ede6;font-weight:700">TUBE</b> models a triode&rsquo;s bias shift and generates even harmonics: H2 climbs from &minus;126 dB to &minus;25 dB between 0 and 60. <b style="color:#f0ede6;font-weight:700">IRON</b> models transformer flux and generates the odd series: at IRON 60, H3 lands at &minus;19.02 dB and H5 at &minus;40.28 dB, both matching the reference formula to two decimal places.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">Even harmonics read as warmth and thickness; odd read as edge and aggression. Having them on separate controls means you can add body without adding bite, or the reverse.</p>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
-    <div>
-      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">VAR // THE TOLERANCE KNOB</div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">Real stereo hardware has two channels built from components that do not match. VAR introduces that mismatch on purpose: the right channel recomputes with slightly more drive, slightly more bias and slightly hotter saturation stages.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">At VAR 0 the two channels are identical to &minus;345 dB. The imperfection is something you ask for, never something you have to work around.</p>
+    <div class="prose">
+      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>TONE</strong>, <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
+      <p>One header owns the curve. The audio path, the display and the test harness all evaluate it, so the picture cannot drift from the sound.</p>
     </div>
-    <div>
-      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">BIAS AND SAG</div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 16px 0;max-width:820px;text-wrap:pretty"><b style="color:#f0ede6;font-weight:700">BIAS</b> pushes the signal off-centre before the shaper, so the circuit clips asymmetrically even when the circuit itself is symmetric. At BIAS 0.4, EMBER&rsquo;s second harmonic rises from &minus;126 dB to &minus;20.92 dB. The fastest route from clean to vocal.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty"><b style="color:#f0ede6;font-weight:700">SAG</b> droops the effective drive behind a slow rectified envelope, the way a supply rail sags under load. At SAG 100 the third harmonic falls from &minus;11.73 dB to &minus;17.90 dB. On drums it opens the tail out behind the hit.</p>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 240" role="img" aria-label="CINDER's signal path: input, 4x upsampler, the shaper with DRIVE, BIAS, TUBE, IRON and VAR, moved by SAG and the LFO, 4x downsampler, DC block, TONE, MIX against the delayed dry signal, OUTPUT, AUTO LEVEL and the true-peak ceiling, output">
+      <text x="10" y="132">IN</text>
+      <path class="wire" d="M34 128 H70"/><path class="flow" d="M34 128 H70"/>
+      <rect class="box" x="70" y="102" width="86" height="52" rx="4"/><text class="lbl" x="113" y="124" text-anchor="middle">UP 4×</text><text x="113" y="142" text-anchor="middle">63 TAP</text>
+      <path class="wire" d="M156 128 H190"/><path class="flow os" d="M156 128 H190"/>
+      <rect class="hot" x="190" y="92" width="170" height="72" rx="4"/><text class="lbl" x="275" y="116" text-anchor="middle">SHAPER · ADAA</text><text x="275" y="136" text-anchor="middle">EMBER · CHAR · ASH</text><text x="275" y="153" text-anchor="middle">+ TUBE · IRON · VAR</text>
+      <path class="wire" d="M360 128 H394"/><path class="flow os" d="M360 128 H394"/>
+      <rect class="box" x="394" y="102" width="86" height="52" rx="4"/><text class="lbl" x="437" y="124" text-anchor="middle">DOWN 4×</text><text x="437" y="142" text-anchor="middle">35 TAP</text>
+      <path class="wire" d="M480 128 H506"/><path class="flow" d="M480 128 H506"/>
+      <rect class="box" x="506" y="102" width="80" height="52" rx="4"/><text class="lbl" x="546" y="124" text-anchor="middle">DC</text><text x="546" y="142" text-anchor="middle">10 Hz</text>
+      <path class="wire" d="M586 128 H610"/><path class="flow" d="M586 128 H610"/>
+      <rect class="box" x="610" y="102" width="88" height="52" rx="4"/><text class="lbl" x="654" y="124" text-anchor="middle">TONE</text><text x="654" y="142" text-anchor="middle">TILT 800 Hz</text>
+      <path class="wire" d="M698 128 H724"/><path class="flow" d="M698 128 H724"/>
+      <circle class="box" cx="744" cy="128" r="20"/><text class="lbl" x="744" y="132" text-anchor="middle">MIX</text>
+      <path class="wire" d="M52 128 V44 H744 V108"/><path class="flow" d="M52 44 H744"/>
+      <text x="400" y="34" text-anchor="middle">DRY · DELAYED 12 SAMPLES TO MATCH</text>
+      <path class="wire" d="M764 128 H784"/><path class="flow" d="M764 128 H784"/>
+      <rect class="box" x="784" y="102" width="70" height="52" rx="4"/><text class="lbl" x="819" y="124" text-anchor="middle">OUT</text><text x="819" y="142" text-anchor="middle">TRIM</text>
+      <path class="wire" d="M854 128 H872"/><path class="flow" d="M854 128 H872"/>
+      <rect class="box" x="872" y="102" width="112" height="52" rx="4"/><text class="lbl" x="928" y="124" text-anchor="middle">AUTO LEVEL</text><text x="928" y="142" text-anchor="middle">−0.3 dBTP</text>
+      <path class="wire" d="M984 128 H1018"/><path class="flow" d="M984 128 H1018"/>
+      <text x="1022" y="132">OUT</text>
+      <rect class="box" x="190" y="196" width="78" height="32" rx="4"/><text class="lbl" x="229" y="216" text-anchor="middle">SAG</text>
+      <rect class="box" x="282" y="196" width="78" height="32" rx="4"/><text class="lbl" x="321" y="216" text-anchor="middle">LFO</text>
+      <path class="wire" d="M229 196 V164"/><path class="flow ctl" d="M229 196 V164"/>
+      <path class="wire" d="M321 196 V164"/><path class="flow ctl" d="M321 196 V164"/>
+      <text x="380" y="217" style="fill:var(--text-3)">MOVE DRIVE (OR BIAS) EVERY 32 SAMPLES</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>LIFT</b><p>The signal is upsampled four times, so the harmonics the curve makes have room above the audio band.</p></li>
+    <li><span class="num">2</span><b>BEND</b><p>The shaper bends it, with antiderivative anti-aliasing around the nonlinearity. TUBE and IRON reshape the curve, VAR detunes the right channel.</p></li>
+    <li><span class="num">3</span><b>RETURN</b><p>The downsampler brings it back to your session's rate, and a 10 Hz blocker takes out the DC an asymmetric curve leaves.</p></li>
+    <li><span class="num">4</span><b>VOICE</b><p>TONE tilts the result around 800 Hz. MIX blends it with the dry signal, delayed so the two stay in phase.</p></li>
+    <li><span class="num">5</span><b>LEVEL</b><p>OUTPUT trims, then AUTO LEVEL matches the loudness to the input and holds the ceiling at −0.3 dB true peak.</p></li>
+  </ol>
+</section>
+
+<!-- LAB -->
+<div class="sh" id="lab">The curve lab</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Move a knob. <em>Watch the harmonics.</em></h2><p>This is CINDER's shaper running in your browser. On the left is the transfer display as the plug-in draws it. On the right a 0.72 sine, the level the ember dot marks, goes through that curve: the faint trace is what went in, the cream one is what came out, and the bars underneath are the harmonics it gained, the second up to the seventh, in decibels below the fundamental.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Circuit">
+        <button type="button" data-lc="0" aria-pressed="true">EMBER</button><button type="button" data-lc="1" aria-pressed="false">CHAR</button><button type="button" data-lc="2" aria-pressed="false">ASH</button>
+      </span>
+      <span class="toggles"><button type="button" class="tog" id="t-reset">DEFAULTS</button></span>
     </div>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE DISPLAY<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">A 440 &times; 400 instrument in the centre of the panel, redrawn on every parameter change and never animated for its own sake.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">The bright curve is the active transfer function. Two ghost curves behind it show the same circuit at half your drive and at roughly half again above it, so you can see which way the character is heading before you turn anything.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Fifty-six input filaments rise from the axis to meet the curve, and their output heights are echoed as ticks on the left edge. Where the curve flattens, the ticks crowd together: the compression, drawn. An ember marker sits where a peak input of 0.72 meets the curve.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">In the corner, one measured line: <span style="font-family:'JetBrains Mono',monospace;color:#C8A86B">THD 23.0 % @ 1.00 kHz</span>. CINDER finds the fundamental in your input, reads every harmonic of it the output can contain, and names that fundamental. Feed it a chord or noise and it reads <span style="font-family:'JetBrains Mono',monospace;color:#C8A86B">THD --</span> rather than print a number that means nothing.</p>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE PANEL<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
-      <div onClick="{{ open1 }}" style="cursor:zoom-in"><image-slot id="cinder-img-1-v009" src="assets/cinder/hero_char_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, CHAR"></image-slot></div>
-      <div onClick="{{ open2 }}" style="cursor:zoom-in"><image-slot id="cinder-img-2-v009" src="assets/cinder/hero_ash_v009.png?v=261003" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="CINDER, ASH"></image-slot></div>
+    <div class="lab-views">
+      <canvas id="labcurve" class="rust" width="880" height="800" aria-label="The transfer display at the lab's settings"></canvas>
+      <canvas id="labwave" width="1100" height="800" aria-label="A 0.72 sine before and after the curve, with the harmonics it gained"></canvas>
     </div>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TONE MIX OUTPUT<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">A &plusmn;12 dB tilt EQ after the distortion: at TONE +12 it measures &minus;6.00 dB at 100 Hz and +6.00 dB at 8 kHz, a clean 12 dB tilt around the pivot. A parallel MIX with a verified linear law, so 50% is exactly halfway between the two extremes. An OUTPUT trim from &minus;18 to +12 dB, calibrated to within 1% of its marking.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">MIX at 0 is transparent to &minus;288 dB against the latency-delayed input. Nothing from a hot drive setting leaks into the dry leg.</p>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>AUTO LEVEL<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 18px 0;max-width:820px;text-wrap:pretty">Turn up a distortion and it gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling one in is rigged. You end up choosing the setting that was loudest rather than the one that was right.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 34px 0;max-width:820px;text-wrap:pretty">AUTO LEVEL takes that away. It holds the output where your input was, so moving DRIVE changes the tone and leaves the volume alone. Then it stops anything leaving above &minus;0.3 dBFS. One switch, four positions, no knobs to set.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px">
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">TRANSPARENT</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">Rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks the gain deliberately misses. No lookahead, so no latency.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">GLUE</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">Adds a 2.5:1 soft-knee compressor with its own makeup, the way a bus compressor sits on a mix.</p></div>
-      <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;letter-spacing:6px;color:#f0ede6;text-transform:uppercase;font-weight:300">CLIP</span><p style="font-weight:300;font-size:15px;line-height:1.65;margin:0">Drives 9 dB into that clipper on purpose: loud and aggressive, without the fizz a plain clipper folds back down the spectrum.</p></div>
+    <div class="readouts"><span>THD<b id="r-thd">-</b></span><span>H2<b id="r-h2">-</b></span><span>H3<b id="r-h3">-</b></span><span>PEAK IN 0.72 → OUT<b id="r-out">-</b></span></div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--cream)"></i>OUTPUT · LEFT</span><span><i style="background:var(--ember)"></i>RIGHT, WHEN VAR IS UP</span><span><i style="background:rgba(242,233,220,.25)"></i>INPUT</span><span>MEMORYLESS MODEL · BEFORE TONE, MIX AND AUTO LEVEL</span></div>
+</section>
+
+<!-- CIRCUITS -->
+<div class="sh" id="circuits">The three circuits</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Three curves, <em>three kinds of dirt.</em></h2><p>Each picture is a sine going through one circuit while its DRIVE climbs from 3 to 21 dB and back. The faint line is what goes in, the bright one what comes out. Every circuit normalises its own output, so more drive brings more harmonics and more compression, not just more level.</p></div>
+  <div class="voices">
+    <article class="voice">
+      <canvas id="c0" width="720" height="400" aria-label="A sine through EMBER: both halves round off the same way"></canvas>
+      <div class="body"><div class="vn"><b>EMBER</b><span>SYMMETRIC · TANH</span></div>
+      <p>A symmetric soft clipper: a hyperbolic tangent, so both halves of the waveform round off the same way. Mostly odd harmonics, with the second sitting 126 dB down. It compresses peaks and thickens without changing the character of the source. The neutral, always-works setting: warmth and glue rather than dirt.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="c1" width="720" height="400" aria-label="A sine through CHAR: the negative half is squashed twice as hard as the positive half"></canvas>
+      <div class="body"><div class="vn"><b>CHAR</b><span>ASYMMETRIC · 0.7 / 1.4</span></div>
+      <p>The same soft clipping, asymmetric: the negative half is squashed twice as hard as the positive half, the way a triode stage clips. That mismatch puts real second harmonic into the signal, 26 dB below the fundamental where EMBER's is 126 dB down: a hundred decibels of difference from one button. Thicker and more forward, with an amp-like bite.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="c2" width="720" height="400" aria-label="A sine through ASH: the curve turns back on itself and the waveform folds"></canvas>
+      <div class="body"><div class="vn"><b>ASH</b><span>WAVEFOLDER · SINE</span></div>
+      <p>A wavefolder. Instead of flattening as the signal gets loud, the curve turns back on itself and folds, so more DRIVE makes the tone stranger rather than just dirtier: buzzy and full of upper harmonics. Past the first fold it stops sounding like clipping and starts sounding like a new instrument. It is the setting that will not behave, and it is on the panel for that reason.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Every knob, <em>and what it moves.</em></h2><p>Press <span class="k">SHOW IN THE LAB</span> on a card and the curve lab above sweeps that control through its range. Every control automates. Drag a knob up and down or side to side, hold Shift for fine moves, double-click it to return it to its default, or double-click its number to type a value.</p></div>
+  <div class="knobs" id="knobs">
+    <article class="knob-card" data-knob="drive">
+      <div class="knob-name">DRIVE</div>
+      <h3>Into the bend.</h3>
+      <p>0 to 36 dB, default 12. How hard the signal is pushed into the circuit. Low values sit in the straight part of the curve, high values push into the bend. Because the circuits normalise their own output, turning DRIVE up adds harmonics and compression rather than simply getting louder.</p>
+      <button type="button" class="show" data-show="drive">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="bias">
+      <div class="knob-name">BIAS</div>
+      <h3>The fastest route to vocal.</h3>
+      <p>−1.00 to +1.00. Slides the signal off centre before it reaches the curve, so even a symmetric circuit clips asymmetrically. At BIAS 0.4, EMBER's second harmonic rises from −126 dB to −20.9 dB. Positive and negative lean opposite ways, and the DC it creates is removed afterwards, so your meters stay on zero.</p>
+      <button type="button" class="show" data-show="bias">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="tube">
+      <div class="knob-name">TUBE · IRON</div>
+      <h3>Warmth and bite, apart.</h3>
+      <p>The SATURATION row. TUBE adds a squared term over the circuit's curve, and squaring makes even harmonics: H2 climbs from −126 dB to −25 dB between 0 and 60. IRON adds a cubed term, the odd series. At high DRIVE its third harmonic partly opposes the circuit's own, so it rebalances the series rather than piling on. At some settings IRON sounds cleaner. That is the design.</p>
+      <button type="button" class="show" data-show="tube">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="var">
+      <div class="knob-name">VAR</div>
+      <h3>Two channels that disagree.</h3>
+      <p>0 to 10. Real hardware never has two identical channels. VAR mismatches the right one on purpose: at the top it runs 2.5 dB more drive, a slightly different bias and a little more TUBE and IRON, and the display draws it as a second, ember curve. At VAR 0 the channels match to −345 dB. On a mono track it has nothing to act on.</p>
+      <button type="button" class="show" data-show="var">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="sag">
+      <div class="knob-name">SAG</div>
+      <h3>A supply that can't keep up.</h3>
+      <p>0 to 100. A level follower pulls the drive down as the signal gets loud, up to 9 dB at 100, reacting in about 20 ms and recovering over about 250 ms. It ducks on the transient and breathes back in behind it: sustained material distorts less than the hit that started it. At SAG 100 the third harmonic falls from −11.7 dB to −17.9 dB.</p>
+    </article>
+    <article class="knob-card" data-knob="tone">
+      <div class="knob-name">TONE · MIX · OUTPUT</div>
+      <h3>After the curve.</h3>
+      <p>TONE is a ±12 dB tilt around 800 Hz: at +12 it measures −6.00 dB at 100 Hz and +6.00 dB at 8 kHz. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
+    </article>
+  </div>
+</section>
+
+<!-- LFO -->
+<div class="sh" id="lfo">The LFO</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <h2 class="h2">Let the drive <em>breathe on its own.</em></h2>
+      <p>The LFO knob sits beside BIAS, and it is the depth. At 100 it swings DRIVE 12 dB either side of wherever DRIVE is set, or BIAS a full 1.00 either side, and the swing never takes either past its own range. At 0 it is off, and CINDER sounds exactly as it did before the LFO existed: sessions and presets from earlier versions open there.</p>
+      <p><strong>Right-click the knob, or click the word LFO under it,</strong> and its options open over the panel. RATE runs 0.05 to 20 Hz. SYNC locks the sweep to your host's tempo and, while the transport runs, to the bar line, with DIVISION from 4 bars down to 1/32, triplets included. SHAPE is SINE, TRI, SQR or S&amp;H, and TARGET is DRIVE or BIAS.</p>
     </div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:34px 0 0 0;max-width:820px;text-wrap:pretty">Measured: twelve decibels of DRIVE move the output by <b style="color:#f0ede6;font-weight:700">0.08 dB</b> with AUTO LEVEL working, where the same move is <b style="color:#f0ede6;font-weight:700">9.56 dB</b> with it off. TRANSPARENT and GLUE land within 0.1 dB of each other, so switching between them is a character decision and not a volume control. OUTPUT still moves the output by exactly what it says.</p>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px">
-    <div>
-      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">TWELVE SAMPLES</div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">4&times; oversampling with antiderivative anti-aliasing around the nonlinearity, and twelve samples of reported latency: the same twelve at 44.1, 48 and 96 kHz, and in every AUTO LEVEL mode.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">The kernels are deliberately asymmetric: 63 taps on the upsampler and 35 on the downsampler. Same total taps, same multiply count, identical latency, and 14 dB more in-band alias rejection than the obvious even split.</p>
+    <div class="prose">
+      <p>On DRIVE it pulses the amount of distortion; on BIAS it rocks the even-harmonic lean back and forth and changes the colour more than the amount. SQR flips between two settings and S&amp;H jumps to a new one each cycle, and every edge goes through a 3 ms smoother so a jump never clicks.</p>
+      <p>Free-running, the sweep starts from the same point every time the host starts the plug-in, and S&amp;H draws from a fixed seed, so the same passage renders the same samples. Everything in the panel automates and saves with your session and your presets.</p>
     </div>
-    <div>
-      <div style="margin:0 0 24px 0;padding-bottom:12px;border-bottom:1px solid rgba(200,168,107,.35);font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">THE SAME RENDER EVERY TIME</div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 16px 0;max-width:820px;text-wrap:pretty">CINDER produces an identical result at any buffer size: 256 against 333 samples differ by &minus;346 dB, which is the float noise floor. That holds with SAG running, where the envelope state has to survive block boundaries.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0;max-width:820px;text-wrap:pretty">Your offline bounce is the mix you approved.</p>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="LFO shape"><button type="button" data-ls="0" aria-pressed="true">SINE</button><button type="button" data-ls="1" aria-pressed="false">TRI</button><button type="button" data-ls="2" aria-pressed="false">SQR</button><button type="button" data-ls="3" aria-pressed="false">S&amp;H</button></span>
+      <span class="toggles"><span>TARGET</span><span class="seg" role="group" aria-label="LFO target"><button type="button" data-lt="0" aria-pressed="true">DRIVE</button><button type="button" data-lt="1" aria-pressed="false">BIAS</button></span></span>
     </div>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>PROOF POINTS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 26px 0;max-width:820px;text-wrap:pretty">Measured by the evaluation harness against the exact DSP that ships. 41 of 41 gates pass, and a failing gate stops the release.</p>
-    <ul style="list-style:none;padding:0;margin:0;font-weight:300;font-size:15px;line-height:1.65;color:#b9b6ae;max-width:820px">
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Twelve samples of latency, identical at 44.1, 48 and 96 kHz, and the same in every AUTO LEVEL mode.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">MIX 0 is transparent to &minus;288 dB against the delayed input.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Bypass is latency-aligned, nulling at &minus;144 dB.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The MIX law is linear to &minus;142 dB of superposition error.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The THD readout is measured, not predicted, and agrees with an independent analysis of a real render to within 0.5 dB.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Circuit signatures are distinct and verified: EMBER H2 at &minus;126 dB, CHAR H2 at &minus;26 dB.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Block-size invariant to &minus;346 dB, including with the SAG envelope running.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">No DC offset under BIAS: mean output below &minus;60 dBFS on both channels.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">The top octave stays flat: &minus;0.53 dB at 15 kHz, and within 0.03 dB of 1 kHz through every AUTO LEVEL mode.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Every AUTO LEVEL mode holds &minus;0.3 dBFS.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">Aliasing: worst in-band product &minus;50.1 dB for inputs up to 14 kHz; &minus;32.4 dB worst case, from a 20.5 kHz input.</li>
-      <li style="margin-bottom:10px;padding-left:20px;position:relative" style-before="content:'//';position:absolute;left:0;color:#C8A86B;opacity:0.6">NaN and infinity in, finite audio out. Stable with every control pinned.</li>
+    <div class="lab-views">
+      <canvas id="lfocurve" class="rust" width="880" height="800" aria-label="The curve the LFO is moving"></canvas>
+      <canvas id="lfotrace" width="1100" height="800" aria-label="The LFO's output over the last few seconds and the DRIVE or BIAS it sets"></canvas>
+    </div>
+    <div class="ctrls four" id="lfoctrls"></div>
+  </div>
+  <figure class="faceshot">
+    <img src="assets/cinder/cinder_v0013_lfo.png?v=261005" alt="The CINDER panel: DRIVE 24.0 on EMBER at the left with BIAS and LFO under it, the transfer display in the middle, TONE, SAG, MIX, OUTPUT, the SATURATION row and the AUTO LEVEL switch on the right, and the LFO OPTIONS panel open with RATE 1.00 Hz, SYNC, DIVISION 1/4, SHAPE SINE and TARGET DRIVE">
+    <figcaption class="cap">THE WHOLE FACE · LFO OPTIONS OPEN</figcaption>
+  </figure>
+</section>
+
+<!-- DISPLAY -->
+<div class="sh" id="display">The display</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">The picture is <em>the shaper.</em></h2>
+    <p>Most distortion plug-ins show you a curve. Very few show you their curve: the picture is usually drawn by separate code from a simplified model, so it drifts exactly where you care most, at the extremes and once a second stage is involved. CINDER's display evaluates the same header as the audio, so the curve bends because the shaper bent.</p>
+    <p>The THD line in the corner goes a step further. It is not predicted from the curve at all. CINDER finds the fundamental in your input and reads every harmonic of it in the audio leaving the plug-in, after TONE, MIX, OUTPUT and AUTO LEVEL: <span class="k">THD 23.0 %  @ 1.00 kHz</span>. Feed it a chord or noise and it reads <span class="k">THD --</span> rather than print a number that means nothing. <strong>The build refuses to ship if that reading disagrees with an independent analysis of the same audio by more than half a decibel.</strong></p>
+  </div>
+  <div class="prose">
+    <ul class="keys">
+      <li><i style="border:1px dashed rgba(242,233,220,.4)"></i><span><strong>The dashed diagonal</strong> is unity. Wherever the curve pulls away from it, CINDER is changing the signal.</span></li>
+      <li><i style="background:var(--cream)"></i><span><strong>The cream curve</strong> is the transfer at your settings. Flat shoulders are compression; on ASH, the places it turns back are the folds.</span></li>
+      <li><i style="border:1px solid rgba(242,233,220,.25)"></i><span><strong>Two ghost curves</strong> show the same circuit at half your drive and at one and a half times plus 3 dB, so you see which way the shape is heading before you turn anything.</span></li>
+      <li><i style="background:linear-gradient(90deg,rgba(242,233,220,.2) 1px,transparent 1px) 0 0/4px 100%"></i><span><strong>56 filaments</strong> rise from the axis to meet the curve, densest near the middle where most audio lives. Their heights are echoed as ticks on the left edge: where the ticks crowd, levels are being squeezed together.</span></li>
+      <li><i style="background:radial-gradient(var(--ember) 30%,rgba(240,130,79,.2) 60%,transparent 70%)"></i><span><strong>The ember dot</strong> is a strong input, 0.72 of full scale, meeting the curve: the "you are here" for a loud passage.</span></li>
     </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TECHNICAL SPECIFICATIONS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">System</span><span style="font-weight:300;font-size:15px;line-height:1.65">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Formats</span><span style="font-weight:300;font-size:15px;line-height:1.65">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Channels</span><span style="font-weight:300;font-size:15px;line-height:1.65">Stereo, mono, and mono-to-stereo</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Parameters</span><span style="font-weight:300;font-size:15px;line-height:1.65">Twelve, all automatable and host-visible</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Presets</span><span style="font-weight:300;font-size:15px;line-height:1.65">INIT, RUST BUS, EMBER LEAD, ASH FOLD, exposed to the host&rsquo;s preset menu; user presets save locally</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Processing</span><span style="font-weight:300;font-size:15px;line-height:1.65">4&times; oversampling with ADAA · 63-tap interpolation kernel · 12 samples of latency</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Auto Level</span><span style="font-weight:300;font-size:15px;line-height:1.65">OFF / TRANSPARENT / GLUE / CLIP, ceiling &minus;0.3 dBFS</span></div>
-      <div style="display:grid;grid-template-columns:160px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779;text-transform:uppercase">Licence</span><span style="font-weight:300;font-size:15px;line-height:1.65">14-day full trial, then activation with your key</span></div>
+    <p class="small">The curves follow DRIVE, CIRCUIT, BIAS, TUBE, IRON and VAR, and stay still otherwise; the display repaints only when one of them moves. TONE, SAG, MIX, OUTPUT and AUTO LEVEL act after the curve. Only the THD line follows the audio.</p>
+  </div>
+</section>
+
+<!-- AUTO LEVEL -->
+<div class="sh" id="autolevel">Auto level</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">The tone changes. <em>The volume doesn't.</em></h2>
+    <p>Turn up a distortion and it gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling one in is rigged. <strong>AUTO LEVEL holds the output where your input was</strong>, so moving DRIVE changes the tone and leaves the volume alone. Twelve decibels of DRIVE move the output by 0.08 dB with it working, where the same move is 9.56 dB with it off.</p>
+    <p>One switch, four positions, no knobs to set. TRANSPARENT rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into that clipper on purpose: loud, without the fizz a plain clipper folds back down the spectrum. TRANSPARENT and GLUE land within 0.1 dB of each other, so switching between them is a character decision.</p>
+    <p>A short true-peak limiter sits behind every working mode, so the ceiling holds between the samples too, where a converter or an encoder will find it: driven sines up to 15 kHz and hard transients, measured 16× oversampled, never reach 0 dBTP. OFF never limits, and it is the default. Mode changes fade over 10 ms, and BYPASS takes AUTO LEVEL out with everything else.</p>
+  </div>
+  <div class="stack">
+    <div class="panel">
+      <canvas id="level" width="600" height="440" aria-label="Illustration: DRIVE climbs 12 dB and back; with AUTO LEVEL off the output level rises 9.56 dB, with it working it stays put"></canvas>
+      <div class="panel-foot">
+        <span class="seg" role="group" aria-label="AUTO LEVEL mode"><button type="button" data-al="0" aria-pressed="false">OFF</button><button type="button" data-al="1" aria-pressed="true">TRANSPARENT</button><button type="button" data-al="2" aria-pressed="false">GLUE</button><button type="button" data-al="3" aria-pressed="false">CLIP</button></span>
+        <span>LEVEL MOVES <b id="al-move">0.08 dB</b></span>
+      </div>
     </div>
-  </section>
+    <div class="cap">ILLUSTRATION · THE 9.56 dB AND 0.08 dB FIGURES ARE MEASURED IN THE RELEASE HARNESS</div>
+  </div>
+</section>
 
-  <section style="max-width:1120px;margin:24px auto 0 auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Availability<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:32px;text-align:center;display:grid;gap:14px;justify-items:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">CINDER · Launch sale</div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:22px;letter-spacing:0.08em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:44px;letter-spacing:0.08em;color:#f0ede6">$25</span></div>
-      <p style="margin:0;color:#b9b6ae;max-width:52ch">CINDER is in final calibration. Join the list and we will tell you the day it ships. Use code <span style="font-family:'JetBrains Mono',monospace;color:#ffc867;letter-spacing:0.12em">ALCHEMY50</span> at checkout.</p>
-      <div style="margin-top:6px"><a href="mailto:info@theta.audio?subject=CINDER%20launch" data-notify="CINDER" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">AU / VST3 / AAX INCLUDED · <a href="color_collection.html" style="color:#8d8779">PART OF THE ALCHEMY INDEX</a></div>
-    </div>
-  </section>
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <h2 class="h2">Fourteen days, <em>the whole plug-in.</em></h2>
+    <p>CINDER runs as a fully working trial for fourteen days from the first time it loads, and the line at the bottom of the window counts down the days left. When the trial ends without activation, CINDER goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Sandboxed hosts such as GarageBand keep their own copy of your Library, so activate CINDER in Logic Pro, Live, Pro Tools or another standard host.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that CINDER works offline. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move it without writing to us.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
 
-</main>
+<!-- BENCH -->
+<div class="sh" id="bench">On the bench</div>
+<section class="stack">
+  <div class="prose"><h2 class="h2">Measured, <em>every release.</em></h2></div>
+  <ul class="rows">
+    <li><b>44 SAMPLES</b><span>Twelve for the oversampler and 32 for the true-peak limiter's lookahead, under a millisecond at 48 kHz. The same 44 at 44.1, 48 and 96 kHz and in every AUTO LEVEL mode, OFF included, reported to the host so it lines the track up for you. The footer prints it: 44 SMP LATENCY.</span></li>
+    <li><b>ASYMMETRIC KERNELS</b><span>63 taps on the upsampler and 35 on the downsampler rather than the obvious even split. An image the interpolator lets through goes into the nonlinearity and comes back down into the audible band; decimator leakage only folds into the top octave, where the programme masks it. Same multiply count, same latency, 14 dB more in-band alias rejection.</span></li>
+    <li><b>ALIASING, STATED</b><span>The worst product in the musical band is −50.1 dB for inputs up to 14 kHz. The worst case anywhere is −32.4 dB, from a 20.5 kHz input, in the last half-octave before Nyquist.</span></li>
+    <li><b>THE SAME RENDER</b><span>256- and 333-sample blocks differ by −346 dB, the float noise floor, and the same holds with SAG's envelope running across block edges. Your offline bounce is the mix you approved.</span></li>
+    <li><b>CLEAN EXITS</b><span>MIX at 0 is transparent to −288 dB against the delayed input. BYPASS is a short crossfade against the latency-aligned dry signal and nulls at −144 dB. No DC under BIAS: the mean output stays below −60 dBFS at BIAS 0.5 and DRIVE 18.</span></li>
+    <li><b>FLAT TOP OCTAVE</b><span>−0.53 dB at 15 kHz against the small-signal slope, and within 0.03 dB of 1 kHz through every AUTO LEVEL mode.</span></li>
+    <li><b>FIFTY-THREE GATES</b><span>Fifty-three evaluation gates run against the exact DSP that ships on every release build, and the build is rejected if any one of them fails.</span></li>
+  </ul>
+  
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE // CINDER</span>
-</footer>
+<!-- WHO -->
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>MIX ENGINEERS</b><p>RUST BUS is parallel warmth for a whole mix or a drum bus. AUTO LEVEL means pushing DRIVE never wins an A/B on volume alone, and TRANSPARENT holds the ceiling without being heard.</p></article>
+  <article><b>GUITAR, BASS &amp; VOCALS</b><p>CHAR's asymmetry and a touch of BIAS give an amp-like bite without an amp sim. TUBE adds body without bite, IRON the reverse. EMBER LEAD is the place to start.</p></article>
+  <article><b>DRUMS</b><p>SAG ducks the drive on the hit and lets it breathe back in behind, so the tail opens out. MIX keeps the transient while the crunch sits under it.</p></article>
+  <article><b>SOUND DESIGN</b><p>ASH folds instead of flattening; sweep DRIVE and every change of shape is a new timbre. Put the LFO on it, add VAR for width, and expect OUTPUT well below zero.</p></article>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-out">
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Three-circuit distortion (insert)</td></tr>
+    <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder)</td></tr>
+    <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · TONE · SAG · MIX · OUTPUT · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
+    <tr><th>LFO</th><td>Depth 0–100 % on DRIVE (±12 dB) or BIAS (±1.00) · RATE 0.05–20 Hz or tempo SYNC, 4 BAR to 1/32 with triplets · SINE, TRI, SQR, S&amp;H</td></tr>
+    <tr><th>PROCESSING</th><td>4× oversampling, 63-tap up / 35-tap down, first-order ADAA around the nonlinearity</td></tr>
+    <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBTP ceiling</td></tr>
+    <tr><th>LATENCY</th><td>44 samples at every rate and in every mode, reported to the host</td></tr>
+    <tr><th>CHANNELS</th><td>Mono, mono to stereo, stereo</td></tr>
+    <tr><th>PRESETS</th><td>Four factory sounds (INIT, RUST BUS, EMBER LEAD, ASH FOLD) in the host's own preset menu; your own presets with save and save as</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
+  </table>
+  <div class="prose">
+    <h2 class="h2">Part of <em>the Alchemy Index.</em></h2>
+    <p>CINDER shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
+    <p>No amp sim, no cabinet, no convolution. A single-purpose distortion and the small set of utility controls that make one usable on a bus.</p>
+    
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">CINDER · 1.0</div>
+  <p>CINDER 1.0 is in final calibration and releases next week. Three circuits, the LFO, the full panel, nothing withheld.</p>
+  <div class="amt"><s>$50</s><strong>$25</strong></div>
+  <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=CINDER%20launch" data-notify="CINDER">Notify me at launch</a>
+    <!-- LAUNCH: <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/5b455b6d-07c2-49a8-a3c7-4417fbe54b04?embed=1">Acquire CINDER · $25</a> <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/e2269b34-b7e7-44e7-bc33-b9b63bb3d1e3?embed=1">Try 14 days free</a> -->
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED · WINDOWS COMING SOON</div>
+  
+</section>
+
+<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(function(){
+'use strict';
+const reduce = false;
+const TAU = Math.PI*2;
+const CREAM=[242,233,220], EMBER=[240,130,79];
+const rgba=(c,a)=>`rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+/* notes toggle */
+
+/* ================= CINDER's shaper, after Source/CinderShaper.h ================= */
+class Waveshape{
+  set(mode,driveDb,bias){
+    this.mode=mode;this.g=Math.pow(10,driveDb/20);this.off=0.22*bias;
+    this.w=Math.PI/2*(1+(this.g-1)*0.12);
+    this.z=this.raw(0);this.m=1e-6;
+    for(let i=0;i<=100;i++)this.m=Math.max(this.m,Math.abs(this.raw(-1+i/50)-this.z));
+    return this;}
+  raw(x){
+    if(this.mode===2)return Math.sin(this.w*(x+this.off));
+    const t=this.g*(x+this.off);
+    if(this.mode===1)return t>=0?Math.tanh(0.7*t):Math.tanh(1.4*t);
+    return Math.tanh(t);}
+  normalized(x){return (this.raw(x)-this.z)/this.m;}
+}
+class Shaper{
+  set(mode,driveDb,bias,tube01,iron01){
+    this.base=new Waveshape().set(mode,driveDb,bias);
+    this.a=0.35*tube01;this.b=0.45*iron01;this.staged=tube01>0||iron01>0;this.m2=1;
+    if(this.staged){this.m2=1e-6;for(let i=0;i<=100;i++){const y=this.base.normalized(-1+i/50);this.m2=Math.max(this.m2,Math.abs(y+this.a*y*y+this.b*y*y*y));}}
+    return this;}
+  f(x){const y=this.base.normalized(x);return this.staged?(y+this.a*y*y+this.b*y*y*y)/this.m2:y;}
+}
+// VAR channel-tolerance law (normative)
+function rightVariant(p){const v=p.var;return {circuit:p.circuit,drive:p.drive+0.25*v,bias:p.bias+0.008*v,tube:p.tube*(1+0.03*v),iron:p.iron*(1+0.03*v)};}
+function shaperFor(p){return new Shaper().set(p.circuit,p.drive,p.bias,p.tube/100,p.iron/100);}
+// the memoryless prediction for a 0.72 sine: 128-point DFT, H2..H7, THD over those six
+function harmonics(fn){
+  const M=128,s=new Float64Array(M);for(let n=0;n<M;n++)s[n]=fn.f(0.72*Math.sin(TAU*n/M));
+  const mag=[0];for(let k=1;k<=7;k++){let re=0,im=0;for(let n=0;n<M;n++){const w=TAU*k*n/M;re+=s[n]*Math.cos(w);im-=s[n]*Math.sin(w);}mag[k]=Math.hypot(re,im);}
+  const fund=Math.max(mag[1],1e-9);const ratio=[0,1];let sq=0;
+  for(let k=2;k<=7;k++){ratio[k]=mag[k]/fund;sq+=ratio[k]*ratio[k];}
+  return {ratio,thd:Math.sqrt(sq)*100};}
+const dB=r=>20*Math.log10(Math.max(r,1e-7));
+const fmtThd=t=>t<0.05?'0.0 %':(t<10?t.toFixed(1):t.toFixed(0))+' %';
+const fmtH=r=>{const d=dB(r);return d<-119?'< −120 dB':(d.toFixed(1).replace('-','−')+' dB');};
+
+/* the 56 filament inputs: centre-dense, fixed-seed jitter, as the prototype's LCG */
+const FIL=(function(){let seed=77031206;const rnd=()=>{seed=(seed*1103515245+12345)&0x7fffffff;return seed/2147483647;};
+  const a=[];for(let k=0;k<56;k++){const t=-1+2*k/55;a.push(Math.min(0.99,Math.max(-0.99,t*(0.55+0.45*t*t)+(rnd()-0.5)*0.03)));}return a;})();
+
+/* ================= the transfer display, after TransferDisplay.cpp (440 x 400 design space) ================= */
+const PX=x=>231+185*x, PY=y=>192-162*Math.max(-1,Math.min(1,y));
+function curve(cx,fn,col,w){cx.strokeStyle=col;cx.lineWidth=w;cx.beginPath();
+  for(let i=0;i<=96;i++){const x=-1+i/48;const px=PX(x),py=PY(fn(x));i?cx.lineTo(px,py):cx.moveTo(px,py);}cx.stroke();}
+function drawDisplay(cv,p,opts){
+  opts=opts||{};
+  const cx=cv.getContext('2d');const sx=cv.width/440,sy=cv.height/400;
+  cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,cv.width,cv.height);cx.setTransform(sx,0,0,sy,0,0);
+  // top shadow hanging from the edge
+  const sh=cx.createLinearGradient(0,0,0,84);sh.addColorStop(0,'rgba(0,0,0,.28)');sh.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=sh;cx.fillRect(0,0,440,90);
+  // graticule
+  cx.lineWidth=1;cx.strokeStyle=rgba(CREAM,.07);cx.strokeRect(46,30,370,324);
+  cx.strokeStyle=rgba(CREAM,.04);cx.beginPath();cx.moveTo(138.5,30);cx.lineTo(138.5,354);cx.moveTo(323.5,30);cx.lineTo(323.5,354);cx.moveTo(46,111);cx.lineTo(416,111);cx.moveTo(46,273);cx.lineTo(416,273);cx.stroke();
+  cx.strokeStyle=rgba(CREAM,.07);cx.beginPath();cx.moveTo(231,30);cx.lineTo(231,354);cx.moveTo(46,192);cx.lineTo(416,192);cx.stroke();
+  cx.strokeStyle=rgba(CREAM,.14);cx.setLineDash([3,5]);cx.beginPath();cx.moveTo(46,354);cx.lineTo(416,30);cx.stroke();cx.setLineDash([]);
+  const fn=shaperFor(p);
+  const gA=new Waveshape().set(p.circuit,p.drive*0.5,p.bias), gB=new Waveshape().set(p.circuit,Math.min(36,p.drive*1.5+3),p.bias);
+  // filaments and output ticks
+  for(let i=0;i<56;i++){const x=FIL[i];const px=PX(x),py=PY(fn.f(x));
+    cx.strokeStyle=rgba(CREAM,i%4===0?.17:.09);cx.lineWidth=.7;cx.beginPath();cx.moveTo(px,354);cx.lineTo(px,py);cx.stroke();
+    cx.strokeStyle=rgba(CREAM,.22);cx.lineWidth=1;cx.beginPath();cx.moveTo(46,py);cx.lineTo(53,py);cx.stroke();}
+  curve(cx,x=>gA.normalized(x),rgba(CREAM,.10),1);
+  curve(cx,x=>gB.normalized(x),rgba(CREAM,.07),1);
+  if(p.var>0){const r=rightVariant(p);const fr=shaperFor(r);curve(cx,x=>fr.f(x),rgba(EMBER,.45),1.2);}
+  curve(cx,x=>fn.f(x),rgba(CREAM,.88),1.6);
+  // the ember marker
+  const hx=PX(0.72),hy=PY(fn.f(0.72));
+  const gl=cx.createRadialGradient(hx,hy,0,hx,hy,26);gl.addColorStop(0,rgba(EMBER,.40));gl.addColorStop(.55,rgba(EMBER,.09));gl.addColorStop(1,rgba(EMBER,0));
+  cx.fillStyle=gl;cx.beginPath();cx.arc(hx,hy,26,0,TAU);cx.fill();
+  cx.fillStyle='#f0824f';cx.beginPath();cx.arc(hx,hy,3,0,TAU);cx.fill();
+  // captions
+  cx.font='500 8.5px "JetBrains Mono",monospace';cx.fillStyle=rgba(CREAM,.42);cx.textAlign='left';cx.fillText('T R A N S F E R',20,26);
+  cx.font='7.5px "JetBrains Mono",monospace';cx.fillStyle=rgba(CREAM,.40);cx.textAlign='right';cx.fillText('OUT',38,38);
+  cx.textAlign='left';cx.fillStyle=rgba(CREAM,.34);cx.font='8px "JetBrains Mono",monospace';cx.fillText('IN × f(x) × OUT',20,384);
+  if(opts.readout){cx.textAlign='right';cx.fillStyle=rgba(EMBER,.70);cx.fillText(opts.readout,414,380);cx.textAlign='left';}
+  if(opts.tag){cx.textAlign='right';cx.fillStyle=rgba(CREAM,.42);cx.font='500 8.5px "JetBrains Mono",monospace';cx.fillText(opts.tag,414,26);cx.textAlign='left';}
+  return fn;
+}
+
+/* ================= LFO, after Source/Lfo.h ================= */
+class Lfo{
+  constructor(){this.reset();}
+  reset(){this.phase=0;this.seed=0x2545F491>>>0;this.held=this.draw();this.sm=0;}
+  draw(){this.seed=(Math.imul(this.seed,1664525)+1013904223)>>>0;return (this.seed>>>8)/8388608-1;}
+  raw(shape){const p=this.phase;switch(shape){
+    case 1:return p<0.25?4*p:p<0.75?2-4*p:4*p-4;
+    case 2:return p<0.5?1:-1;
+    case 3:return this.held;
+    default:return Math.sin(TAU*p);}}
+  step(dt,rate,shape){ // advance in 1 ms sub-steps; the 3 ms one-pole smoother as the plug-in's
+    let left=Math.min(dt,0.1);const h=0.001,k=1-Math.exp(-h/0.003);
+    while(left>1e-9){const s=Math.min(h,left);left-=s;
+      this.sm+=(this.raw(shape)-this.sm)*(s===h?k:1-Math.exp(-s/0.003));
+      this.phase+=rate*s;if(this.phase>=1){this.phase-=Math.floor(this.phase);this.held=this.draw();}}
+    return this.sm;}
+}
+
+/* ================= HERO ================= */
+const hc=document.getElementById('hero');
+const hero={circuit:0,drive:12,bias:0,tube:0,iron:0,var:0};
+let heroCentre=14;const heroLfo=new Lfo();
+(function(){let x0=null,c0=0;
+  hc.addEventListener('pointerdown',e=>{x0=e.clientX;c0=heroCentre;hc.setPointerCapture(e.pointerId);});
+  hc.addEventListener('pointermove',e=>{if(x0==null)return;heroCentre=Math.min(30,Math.max(4,c0+(e.clientX-x0)/hc.getBoundingClientRect().width*36));kick();});
+  hc.addEventListener('pointerup',()=>{x0=null;});
+  hc.addEventListener('dblclick',()=>{heroCentre=14;kick();});
+})();
+document.querySelectorAll('[data-hc]').forEach(b=>b.addEventListener('click',()=>{hero.circuit=+b.dataset.hc;
+  document.querySelectorAll('[data-hc]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  document.getElementById('h-circ').textContent=['EMBER','CHAR','ASH'][hero.circuit];}));
+function drawHero(dt){
+  const s=heroLfo.step(dt,0.18,0);
+  hero.drive=Math.min(36,Math.max(0,heroCentre+0.6*12*s));
+  const fn=shaperFor(hero);const h=harmonics(fn);
+  drawDisplay(hc,hero,{readout:'THD '+h.thd.toFixed(1)+' %  @ 0.72 SINE',tag:'LFO 60 % · 0.18 HZ'});
+  document.getElementById('h-drive').textContent=hero.drive.toFixed(1)+' dB';
+  document.getElementById('h-thd').textContent=fmtThd(h.thd);
+}
+
+/* ================= LAB ================= */
+const DEFAULTS={circuit:0,drive:12,bias:0,tube:0,iron:0,var:0};
+const lab=Object.assign({},DEFAULTS);
+const lcv=document.getElementById('labcurve'),lwv=document.getElementById('labwave'),lw=lwv.getContext('2d');
+const CTRL=[
+  {id:'drive',label:'DRIVE',min:0,max:36,step:0.1,fmt:v=>v.toFixed(1)+' dB'},
+  {id:'bias',label:'BIAS',min:-1,max:1,step:0.01,fmt:v=>(v>0?'+':'')+v.toFixed(2)},
+  {id:'tube',label:'TUBE',min:0,max:100,step:1,fmt:v=>Math.round(v)+''},
+  {id:'iron',label:'IRON',min:0,max:100,step:1,fmt:v=>Math.round(v)+''},
+  {id:'var',label:'VAR',min:0,max:10,step:0.1,fmt:v=>v.toFixed(1)},
+];
+const sliders={};
+function makeSliders(box,defs,target,onUser){
+  const out={};
+  for(const c of defs){
+    const d=document.createElement('div');d.className='ctrl';
+    const toV=c.skew?(q=>c.min+(c.max-c.min)*Math.pow(q/1000,1/c.skew)):(q=>q), toP=c.skew?(v=>1000*Math.pow((v-c.min)/(c.max-c.min),c.skew)):(v=>v);
+    const rng=c.skew?'min="0" max="1000" step="1"':`min="${c.min}" max="${c.max}" step="${c.step}"`;
+    d.innerHTML=`<label for="c-${box.id}-${c.id}">${c.label}<output></output></label><input id="c-${box.id}-${c.id}" type="range" ${rng}>`;
+    box.appendChild(d);const inp=d.querySelector('input'),o=d.querySelector('output');
+    out[c.id]={c,inp,wrap:d,set(v){target[c.id]=v;inp.value=toP(v);o.textContent=c.fmt(v);}};
+    inp.addEventListener('input',()=>{if(onUser)onUser();const v=toV(+inp.value);target[c.id]=v;o.textContent=c.fmt(v);});
+    out[c.id].set(target[c.id]);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  renderVals() {
-    return {
-      overlayDisplay: this.state.zoomed ? 'flex' : 'none',
-      setZoomImg: (el) => { this._zoomImgEl = el; },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
-      openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ember_v009.png?v=261003' }); },
-      open1: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_char_v009.png?v=261003' }); },
-      open2: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/cinder/hero_ash_v009.png?v=261003' }); },
-    };
+  return out;}
+Object.assign(sliders,makeSliders(document.getElementById('ctrls'),CTRL,lab,()=>stopDemo()));
+function setLabCircuit(v){lab.circuit=v;document.querySelectorAll('[data-lc]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.lc===v?'true':'false'));}
+document.querySelectorAll('[data-lc]').forEach(b=>b.addEventListener('click',()=>{stopDemo();setLabCircuit(+b.dataset.lc);}));
+document.getElementById('t-reset').addEventListener('click',()=>{stopDemo();for(const k in sliders)sliders[k].set(DEFAULTS[k]);setLabCircuit(0);});
+
+// SHOW IN THE LAB: sweep one control through its range and back to where it was
+let demo=null;
+const DEMOS={
+  drive:{ids:['drive'],path:t=>({drive:36*Math.sin(Math.PI*t)})},
+  bias:{ids:['bias'],path:t=>({bias:Math.sin(TAU*t)})},
+  tube:{ids:['tube','iron'],path:t=>t<0.5?{tube:100*Math.sin(TAU*t),iron:0}:{tube:0,iron:-100*Math.sin(TAU*t)}},
+  var:{ids:['var'],path:t=>({var:10*Math.sin(Math.PI*t)})},
+};
+function stopDemo(){if(!demo)return;for(const id of demo.ids){sliders[id].wrap.classList.remove('on');sliders[id].set(demo.saved[id]);}demo=null;}
+function startDemo(key){stopDemo();const d=DEMOS[key];const saved={};for(const id of d.ids){saved[id]=lab[id];sliders[id].wrap.classList.add('on');}
+  demo={ids:d.ids,saved,t0:performance.now(),dur:7000,path:d.path};
+  document.getElementById('lab').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});}
+document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>{startDemo(b.dataset.show);kick();}));
+function runDemo(now){if(!demo)return;const t=(now-demo.t0)/demo.dur;if(t>=1){stopDemo();return;}
+  const v=demo.path(t);for(const k in v)sliders[k].set(v[k]);}
+
+let wavePhase=0;
+function drawWave(cx,W,H,fn,fnR,phase){
+  cx.clearRect(0,0,W,H);
+  const ml=70,mr=24,top=40,mid=250,amp=170,bot=H-40;
+  // DC block, as the plug-in's 10 Hz blocker after the decimator: remove the mean over a cycle
+  const mean=f=>{let s=0;for(let n=0;n<256;n++)s+=f.f(0.72*Math.sin(TAU*n/256));return s/256;};
+  const mL=mean(fn),mR=fnR?mean(fnR):0;
+  cx.font='18px "JetBrains Mono",monospace';cx.fillStyle='#8d8779';cx.textAlign='right';
+  for(const v of [1,0.5,0,-0.5,-1]){const y=mid-v*amp;cx.fillStyle=v===0?'rgba(141,135,121,.35)':'rgba(141,135,121,.12)';cx.fillRect(ml,y,W-ml-mr,1);cx.fillStyle='#8d8779';cx.fillText(v.toFixed(1).replace('-','−'),ml-12,y+6);}
+  cx.textAlign='left';
+  const N=360,cyc=2;
+  const trace=(g,col,w)=>{cx.strokeStyle=col;cx.lineWidth=w;cx.beginPath();for(let i=0;i<=N;i++){const u=i/N;const s=0.72*Math.sin(TAU*(cyc*u+phase));const y=mid-g(s)*amp;const x=ml+u*(W-ml-mr);i?cx.lineTo(x,y):cx.moveTo(x,y);}cx.stroke();};
+  trace(s=>s,'rgba(242,233,220,.25)',2);
+  if(fnR)trace(s=>fnR.f(s)-mR,'rgba(240,130,79,.75)',2);
+  trace(s=>fn.f(s)-mL,'#f2e9dc',3.2);
+  cx.fillStyle='rgba(242,233,220,.45)';cx.fillText('0.72 SINE · IN AND OUT',ml,28);
+  // harmonic bars H2..H7, 0 to -100 dB
+  const h=harmonics(fn),hR=fnR?harmonics(fnR):null;
+  const by0=470,by1=bot-34,bx0=ml,bw=(W-ml-mr)/6;
+  cx.fillStyle='rgba(242,233,220,.45)';cx.fillText('HARMONICS · dB BELOW THE FUNDAMENTAL',ml,by0-22);
+  for(const d of [0,-40,-80]){const y=by0+(by1-by0)*(-d/100);cx.fillStyle='rgba(141,135,121,.12)';cx.fillRect(ml,y,W-ml-mr,1);cx.fillStyle='#8d8779';cx.textAlign='right';cx.fillText(d===0?'0':String(d).replace('-','−'),ml-12,y+6);cx.textAlign='left';}
+  for(let k=2;k<=7;k++){const x=bx0+(k-2)*bw+bw*0.22;const d=Math.max(-100,dB(h.ratio[k]));const y=by0+(by1-by0)*(-d/100);
+    const even=k%2===0;cx.fillStyle=even?'rgba(255,200,103,.9)':'rgba(242,233,220,.85)';cx.fillRect(x,y,bw*0.34,by1-y);
+    if(hR){const dr=Math.max(-100,dB(hR.ratio[k]));const yr=by0+(by1-by0)*(-dr/100);cx.fillStyle='rgba(240,130,79,.8)';cx.fillRect(x+bw*0.38,yr,bw*0.16,by1-yr);}
+    cx.fillStyle='#8d8779';cx.fillText('H'+k,x,bot);}
+  cx.fillStyle='rgba(255,200,103,.9)';cx.textAlign='right';cx.fillText('EVEN',W-mr-80,by0-22);cx.fillStyle='rgba(242,233,220,.85)';cx.fillText('ODD',W-mr,by0-22);cx.textAlign='left';
+  return h;}
+function drawLab(dt){
+  wavePhase=(wavePhase+dt*0.12)%1;
+  const fn=drawDisplay(lcv,lab,{});
+  const fnR=lab.var>0?shaperFor(rightVariant(lab)):null;
+  const h=drawWave(lw,lwv.width,lwv.height,fn,fnR,wavePhase);
+  // the display's own readout is measured from audio; here it is the memoryless prediction
+  const cx=lcv.getContext('2d');cx.font='8px "JetBrains Mono",monospace';cx.textAlign='right';cx.fillStyle=rgba(EMBER,.70);cx.fillText('THD '+h.thd.toFixed(1)+' %  @ 0.72 SINE',414,380);cx.textAlign='left';
+  document.getElementById('r-thd').textContent=fmtThd(h.thd);
+  document.getElementById('r-h2').textContent=fmtH(h.ratio[2]);
+  document.getElementById('r-h3').textContent=fmtH(h.ratio[3]);
+  document.getElementById('r-out').textContent=fn.f(0.72).toFixed(3);
+}
+
+/* ================= CIRCUITS ================= */
+const cPhase=[0,0,0];
+function drawCircuits(t){
+  for(let c=0;c<3;c++){const cv=document.getElementById('c'+c),cx=cv.getContext('2d');const W=cv.width,H=cv.height;
+    cx.clearRect(0,0,W,H);
+    const drive=12-9*Math.cos(TAU*t/9);
+    const fn=new Shaper().set(c,drive,0,0,0);
+    let m=0;for(let n=0;n<128;n++)m+=fn.f(0.8*Math.sin(TAU*n/128));m/=128;
+    const mid=H/2+14,amp=140,ml=24,mr=24;
+    cx.fillStyle='rgba(242,233,220,.08)';cx.fillRect(ml,mid,W-ml-mr,1);
+    const tr=(g,col,w)=>{cx.strokeStyle=col;cx.lineWidth=w;cx.beginPath();for(let i=0;i<=300;i++){const u=i/300;const s=0.8*Math.sin(TAU*(2.5*u-t*0.25));const y=mid-g(s)*amp;const x=ml+u*(W-ml-mr);i?cx.lineTo(x,y):cx.moveTo(x,y);}cx.stroke();};
+    tr(s=>s,'rgba(242,233,220,.22)',2);
+    tr(s=>fn.f(s)-m,'#f2e9dc',3);
+    cx.font='22px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.45)';cx.fillText(['TANH · BOTH HALVES ALIKE','NEGATIVE HALF SQUASHED 2×','SIN · THE CURVE FOLDS BACK'][c],ml,34);
+    const h=harmonics(fn);
+    cx.fillStyle='#f0824f';cx.textAlign='right';cx.fillText('DRIVE '+drive.toFixed(0)+' dB · H2 '+fmtH(h.ratio[2]),W-mr,H-18);cx.textAlign='left';
   }
 }
 
+/* ================= LFO SECTION ================= */
+const lfoP={depth:70,rate:0.6,shape:0,target:0,drive:14,bias:0};
+const lfoBox=document.getElementById('lfoctrls');
+const lfoS=makeSliders(lfoBox,[
+  {id:'depth',label:'LFO',min:0,max:100,step:1,fmt:v=>Math.round(v)+' %'},
+  {id:'rate',label:'RATE',min:0.05,max:20,step:0.01,skew:0.3,fmt:v=>v.toFixed(2)+' Hz'},
+  {id:'drive',label:'DRIVE',min:0,max:36,step:0.1,fmt:v=>v.toFixed(1)+' dB'},
+  {id:'bias',label:'BIAS',min:-1,max:1,step:0.01,fmt:v=>(v>0?'+':'')+v.toFixed(2)},
+],lfoP,null);
+document.querySelectorAll('[data-ls]').forEach(b=>b.addEventListener('click',()=>{lfoP.shape=+b.dataset.ls;document.querySelectorAll('[data-ls]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+document.querySelectorAll('[data-lt]').forEach(b=>b.addEventListener('click',()=>{lfoP.target=+b.dataset.lt;document.querySelectorAll('[data-lt]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+const lfo=new Lfo();const lfoHist=[];
+const lfc=document.getElementById('lfocurve'),ltv=document.getElementById('lfotrace'),lt=ltv.getContext('2d');
+function drawLfo(now,dt){
+  const v=lfo.step(dt,lfoP.rate,lfoP.shape)*lfoP.depth/100;
+  const eff={circuit:0,tube:0,iron:0,var:0,
+    drive:lfoP.target===0?Math.min(36,Math.max(0,lfoP.drive+v*12)):lfoP.drive,
+    bias:lfoP.target===1?Math.min(1,Math.max(-1,lfoP.bias+v)):lfoP.bias};
+  const t=now/1000;lfoHist.push({t,v,val:lfoP.target===0?eff.drive:eff.bias});while(lfoHist.length&&t-lfoHist[0].t>4)lfoHist.shift();
+  drawDisplay(lfc,eff,{tag:lfoP.target===0?'DRIVE '+eff.drive.toFixed(1):'BIAS '+(eff.bias>0?'+':'')+eff.bias.toFixed(2)});
+  const W=ltv.width,H=ltv.height,ml=90,mr=30;lt.clearRect(0,0,W,H);
+  lt.font='18px "JetBrains Mono",monospace';
+  // upper: the LFO itself, -1..1
+  const yA=v=>200-v*140;
+  for(const g of [1,0,-1]){lt.fillStyle=g===0?'rgba(141,135,121,.35)':'rgba(141,135,121,.12)';lt.fillRect(ml,yA(g),W-ml-mr,1);lt.fillStyle='#8d8779';lt.textAlign='right';lt.fillText(g===0?'0':(g>0?'+1':'−1'),ml-12,yA(g)+6);}
+  lt.textAlign='left';lt.fillStyle='rgba(242,233,220,.45)';lt.fillText('LFO · '+['SINE','TRI','SQR','S&H'][lfoP.shape]+' · '+lfoP.rate.toFixed(2)+' HZ · DEPTH '+Math.round(lfoP.depth)+' %',ml,36);
+  const xt=h=>ml+(W-ml-mr)*(1-(t-h.t)/4);
+  lt.strokeStyle='#ffc867';lt.lineWidth=3;lt.beginPath();lfoHist.forEach((h,i)=>{const x=xt(h),y=yA(h.v);i?lt.lineTo(x,y):lt.moveTo(x,y);});lt.stroke();
+  // lower: the value it sets, inside the knob's own range
+  const isD=lfoP.target===0, lo=isD?0:-1, hi=isD?36:1;
+  const yB=val=>740-(val-lo)/(hi-lo)*260;
+  lt.fillStyle='rgba(242,233,220,.45)';lt.fillText((isD?'DRIVE dB':'BIAS')+' · HELD INSIDE ITS RANGE',ml,440);
+  for(const g of isD?[0,12,24,36]:[-1,0,1]){lt.fillStyle='rgba(141,135,121,.12)';lt.fillRect(ml,yB(g),W-ml-mr,1);lt.fillStyle='#8d8779';lt.textAlign='right';lt.fillText(String(g).replace('-','−'),ml-12,yB(g)+6);}
+  lt.textAlign='left';
+  const knob=isD?lfoP.drive:lfoP.bias;lt.strokeStyle='rgba(242,233,220,.35)';lt.setLineDash([6,8]);lt.lineWidth=1.5;lt.beginPath();lt.moveTo(ml,yB(knob));lt.lineTo(W-mr,yB(knob));lt.stroke();lt.setLineDash([]);
+  lt.strokeStyle='#f0824f';lt.lineWidth=3.2;lt.beginPath();lfoHist.forEach((h,i)=>{const x=xt(h),y=yB(h.val);i?lt.lineTo(x,y):lt.moveTo(x,y);});lt.stroke();
+  const last=lfoHist[lfoHist.length-1];if(last){lt.fillStyle='#f0824f';lt.beginPath();lt.arc(W-mr,yB(last.val),7,0,TAU);lt.fill();}
+  lt.fillStyle='rgba(242,233,220,.35)';lt.fillText('KNOB',W-mr-60,yB(knob)-10);
+}
+
+/* ================= AUTO LEVEL (illustration) ================= */
+const lc=document.getElementById('level'),lv=lc.getContext('2d');
+let alMode=1;const alHist=[];
+document.querySelectorAll('[data-al]').forEach(b=>b.addEventListener('click',()=>{alMode=+b.dataset.al;
+  document.querySelectorAll('[data-al]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  document.getElementById('al-move').textContent=alMode===0?'9.56 dB':alMode===3?'HELD · LOUD BY DESIGN':'0.08 dB';}));
+function drawLevel(now){
+  const W=lc.width,H=lc.height;lv.clearRect(0,0,W,H);
+  const t=now/1000,cyc=(t%10)/10,drv=12*(cyc<0.5?cyc*2:2-cyc*2);
+  // programme at -14 dBFS; OFF rises 9.56 dB across 12 dB of DRIVE (harness figure)
+  const off=-14+9.56*drv/12;
+  const outLvl=[off,-14+0.08*drv/12,-14+0.08*drv/12,-7][alMode];
+  alHist.push({t,drv,lvl:outLvl,off});while(alHist.length&&t-alHist[0].t>8)alHist.shift();
+  const ml=56,mr=20,top=78,bot=H-64;const yd=d=>top+(bot-top)*(0-d)/24;
+  lv.font='17px "JetBrains Mono",monospace';lv.textAlign='right';
+  for(const d of [0,-6,-12,-18,-24]){lv.fillStyle='rgba(141,135,121,.15)';lv.fillRect(ml,yd(d),W-ml-mr,1);lv.fillStyle='#8d8779';lv.fillText(d===0?'0':String(d).replace('-','−'),ml-10,yd(d)+5);}
+  lv.textAlign='left';
+  if(alMode!==0){lv.fillStyle='rgba(240,130,79,.8)';lv.fillRect(ml,yd(-0.3),W-ml-mr,2);lv.fillText('CEILING −0.3 dBTP',ml+8,yd(-0.3)+20);}
+  const xt=h=>ml+(W-ml-mr)*(1-(t-h.t)/8);
+  lv.beginPath();
+  for(let i=0;i<alHist.length;i++){const h=alHist[i];const x=xt(h);
+    let pk=h.lvl+6+2.5*Math.sin(h.t*9)*Math.sin(h.t*2.3);
+    if(alMode===2)pk=h.lvl+6+(pk-h.lvl-6)/2.5;
+    if(alMode!==0)pk=Math.min(-0.3,pk+(alMode===3?2:0));
+    i?lv.lineTo(x,yd(Math.min(0,pk))):lv.moveTo(x,yd(Math.min(0,pk)));}
+  for(let i=alHist.length-1;i>=0;i--){const h=alHist[i];lv.lineTo(xt(h),yd(h.lvl-8));}
+  lv.closePath();lv.fillStyle=alMode===3?'rgba(240,130,79,.20)':'rgba(242,233,220,.10)';lv.fill();
+  const line=(key,col,w)=>{lv.strokeStyle=col;lv.lineWidth=w;lv.beginPath();alHist.forEach((h,i)=>{const x=xt(h),y=yd(h[key]);i?lv.lineTo(x,y):lv.moveTo(x,y);});lv.stroke();};
+  if(alMode!==0)line('off','rgba(141,135,121,.6)',2);
+  line('lvl',alMode===0?'#f2e9dc':'#ffc867',3.5);
+  lv.fillStyle='#ffc867';lv.fillText(['OFF','TRANSPARENT','GLUE','CLIP'][alMode]+' · OUTPUT LEVEL',ml,26);
+  if(alMode!==0&&alHist.length){lv.fillStyle='#8d8779';lv.fillText('OFF',W-mr-40,yd(alHist[alHist.length-1].off)-12);}
+  lv.fillStyle='#8d8779';lv.fillText('DRIVE +'+drv.toFixed(1)+' dB',ml,H-20);
+  lv.fillStyle='rgba(240,130,79,.6)';lv.fillRect(ml+190,H-31,(W-ml-mr-190)*drv/12,10);
+}
+
+/* ================= knob glyphs on the control cards ================= */
+const KNOBDEF={drive:[12,0,36,'12.0'],bias:[0,-1,1,'0.00'],tube:[0,0,100,'0 · 0'],var:[0,0,10,'0.0'],sag:[0,0,100,'0'],tone:[0,-12,12,'0.0']};
+document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dataset.knob];if(!k)return;
+  const n=(k[0]-k[1])/(k[2]-k[1]);const bip=k[1]<0;
+  const a0=-135,a1=135,a=a0+(a1-a0)*n;const P=(deg,r)=>{const t=(deg-90)*Math.PI/180;return [r*Math.cos(t),r*Math.sin(t)];};
+  const arc=(from,to,r)=>{if(to<from)[from,to]=[to,from];const p=P(from,r),q=P(to,r);return `M${p[0].toFixed(1)} ${p[1].toFixed(1)} A${r} ${r} 0 ${to-from>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;};
+  let ticks='';for(let i=0;i<=10;i++){const d=a0+27*i;const p=P(d,52),q=P(d,57);ticks+=`<line class="tick" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;}
+  const ptr=P(a,30),from=bip?0:a0;
+  card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,46)}"/><path class="arc-val" d="${arc(from,Math.abs(a-from)<0.5?from+0.5:a,46)}"/><circle class="knob-face" r="36"/><line class="knob-ptr" x1="${(ptr[0]*0.35).toFixed(1)}" y1="${(ptr[1]*0.35).toFixed(1)}" x2="${ptr[0]}" y2="${ptr[1]}"/><text class="knob-num" y="72">${k[3]}</text></svg>`);
+});
+
+/* ================= main loop ================= */
+let last=performance.now(),looping=true;
+function frame(now){
+  const dt=Math.min(0.1,(now-last)/1000);last=now;
+  runDemo(now);
+  drawHero(dt);drawLab(dt);drawCircuits(now/1000);drawLfo(now,dt);drawLevel(now);
+  if(!reduce||demo)requestAnimationFrame(frame);else looping=false;
+}
+function kick(){if(reduce&&!looping){looping=true;last=performance.now();requestAnimationFrame(frame);}}
+document.addEventListener('input',kick);document.addEventListener('click',kick);
+// prime the scrolling traces so the still page reads complete
+{const n0=performance.now();for(let i=0;i<160;i++)drawLevel(n0-(160-i)*50);for(let i=0;i<160;i++)drawLfo(n0-(160-i)*25,0.025);}
+requestAnimationFrame(frame);
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
