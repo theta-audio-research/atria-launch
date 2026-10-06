@@ -1,137 +1,1234 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EUCLID Product Page</title>
+<meta name="description" content="EUCLID turns stereo sound into a field of points and moves the whole field with one geometric transform: shear, scale and rotate the Side of every frequency, and send each one to its own delay tap. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as cinder.html, gire.html and penrose_ultra.html. Single dark look by choice: THETA
+   marketing pages live on the void theme. EUCLID's own colour enters only where the plug-in draws it:
+   the eggplant shell and milled caps, the pink marker, and the glass cloud's mauve, cream and pink (PR #6)
+   (palette in Source/EuclidLookAndFeel.h and Source/GeometricFieldDisplay.cpp). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#f2e9dc; --pink:#df5d91; --pink-low:#7a2f4f;
+  --shell:#1a181f; --shell-hi:#231d2a; --shell-lo:#141118; --rim:#2d2934; --plate:#08070c;
+  --mauve:#b09fc4; --blush:#f4b3cd; --cyan:#78d6e6; --cloud-gold:#f0d660; --ice:#c4e2ff;
+  --cap:#5d4c66; --cap-low:#291f2f; --groove:#16101b;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(44px,7vw,84px);letter-spacing:.42em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the field well: EUCLID's eggplant shell around the near-black glass plate */
+.well{border:1px solid var(--rim);border-radius:14px;background:linear-gradient(158deg,var(--shell-hi),var(--shell) 48%,var(--shell-lo));overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y;cursor:grab}
+.well-ctrl{padding:var(--s3) var(--s4) var(--s2)}
+.well-ctrl input[type=range]{accent-color:var(--pink)}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--cream);font-weight:500;font-variant-numeric:tabular-nums}
+.well .plate-pad{padding:0 var(--s3)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's AUTO LEVEL well: recessed track, pink fill on the active cell */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;background:linear-gradient(180deg,#141019,#231d2a);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;padding:7px 10px;border:0;border-radius:4px;background:transparent;color:rgba(242,233,220,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,#e6729f,#8a3459);color:#fff4f8}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+.eq{font-family:var(--f-mono);font-size:15px;color:var(--cream);letter-spacing:.04em;border-left:2px solid var(--pink);padding:6px 0 6px 14px;background:linear-gradient(90deg,rgba(223,93,145,.08),transparent)}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:760px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#1d1624;stroke:#6a4a76;stroke-width:1.2}
+.path .side{fill:#1a1220;stroke:#7a3a5a;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.spec{stroke:var(--cyan);animation-duration:.7s}
+.path .flow.sd{stroke:var(--pink);animation-duration:.7s}
+.path .flow.ctl{stroke:var(--cream);opacity:.55;animation-duration:2.6s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views .glass{background:var(--plate)}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--cloud-gold);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:#9a6a9e}
+.ctrl.on label{color:var(--gold-hot)}
+.ctrl.on input[type=range]{accent-color:var(--pink)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* the four operations / side-spectrum panels */
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.voices.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.voice canvas{display:block;width:100%;height:auto;background:var(--plate)}
+.voice .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.voice .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3);flex-wrap:wrap}
+.voice .vn b{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.28em;color:var(--pink)}
+.voice .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.voice p{color:var(--text-2);font-size:15.5px}
+.voice .seg{justify-self:start}
+
+/* knob cards */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:112px;height:112px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--pink)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a1820;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:5;stroke-linecap:round;opacity:.85}
+.knob-skirt{fill:url(#skirtGrad);stroke:#3a3142;stroke-width:1}
+.knob-face{fill:url(#capGrad);stroke:#6b5a74;stroke-width:1}
+.knob-ptr{stroke:var(--groove);stroke-width:3;stroke-linecap:round}
+.knob-num{font-family:var(--f-mono);font-size:13px;fill:var(--text-2);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+.show{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);background:transparent;border:1px solid var(--gold-dim);border-radius:4px;padding:6px 10px;cursor:pointer;min-height:32px}
+.show:hover{background:rgba(200,168,107,.1)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--cloud-gold);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--pink)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
+.keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(223,93,145,.10),transparent 60%),radial-gradient(90% 120% at 0% 100%,rgba(120,214,230,.06),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views{grid-template-columns:minmax(0,1fr)}
+  .voices,.voices.three,.knobs{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2} main h1,main h2,main h3{font-family:'Montserrat',sans-serif}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
-
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
-  </a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d4c66"/><stop offset=".55" stop-color="#3e3247"/><stop offset="1" stop-color="#291f2f"/></linearGradient>
+  <linearGradient id="skirtGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#756a7c"/><stop offset="1" stop-color="#181420"/></linearGradient>
+</defs></svg>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <section data-screen-label="Hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:48px 0 56px 0">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">GEOMETRIC STEREO PROCESSOR · Alchemy Index · Coming soon</div>
-      <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 24px 0;color:#f0ede6">EUCLID</h1>
-      <p style="margin:0;color:#b9b6ae;max-width:58ch;text-wrap:pretty">EUCLID is in final calibration. Join the list and we will tell you the day it ships.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a href="mailto:info@theta.audio?subject=EUCLID%20launch" data-notify="EUCLID" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AU</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">VST3</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AAX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">macOS · Apple Silicon and Intel</span></div>
-    </div>
-    <div onClick="{{ open0 }}" style="cursor:zoom-in"><image-slot id="euclid-img-0" src="assets/euclid/hero_v3.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1730;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="EUCLID panel"></image-slot></div>
-  </section>
+<div class="wrap">
 
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Geometric stereo processor · Version 0.0.30</div>
+    <h1 class="wordmark">EUCLID</h1>
+    <h2>Turn sound <em>into geometry.</em></h2>
+    <div class="lede">
+      <p>EUCLID splits your stereo mix into 513 frequencies and gives each one a point on a plane: where it sits in the spectrum one way, how wide it is the other. Then it moves the whole plane at once. Shear it, scale it, rotate it, and every frequency's width follows the geometry.</p>
+      <p>The point's second coordinate is not thrown away. It sets that frequency's own delay tap, so one turn of ROTATION trades width for time across the whole spectrum. The Mid is never touched, so the mix folds to mono exactly as it went in.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get EUCLID</a>
+      <a class="btn ghost" href="#lab">Move the field</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip">Windows · VST3</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>FIELD · FACTORY PRESETS</span>
+        <span class="seg" role="group" aria-label="Factory preset for the hero display" id="heroPresets"></span>
+      </div>
+      <div class="plate-pad"><canvas id="hero" width="880" height="880" aria-label="EUCLID's glass cloud display, drawn from the plug-in's own transform running on a moving stereo mix. Input energy floats at the top, output energy sits on a floor plate, and a curved thread joins each frequency's width before and after. Drag to turn the view; double-click to return the view."></canvas></div>
+      <div class="ctrl well-ctrl"><label for="h-r">RADIUS<output id="h-radius"></output></label><input type="range" id="h-r" min="0" max="1000" step="1"></div>
+      <div class="well-foot"><span>TURN · TILT <b id="h-view">-</b></span><span>ROTATION <b id="h-rot">-</b></span><span>PRESET <b id="h-preset">FIELD SPIN</b></span></div>
+    </div>
+    <div class="tagline">DRAG THE CUBE TO TURN IT · DOUBLE-CLICK TO RESET</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Every stereo signal can be split into Mid, what the two speakers share, and Side, what makes them differ. Side is the width. A wide pad is mostly Side; a kick drum has almost none. Most stereo tools turn the Side up or down as one block, or in three or four fixed bands.</p>
+      <p>EUCLID looks at the Side of each of 513 frequencies separately and places every one on a plane. <strong>Across</strong> is where the frequency sits, in octaves either side of the <strong>ORIGIN</strong> you choose. <strong>Up</strong> is its Side share: how much of its energy is width. Then one transform moves all of them together.</p>
+    </div>
+    <div class="prose">
+      <p class="eq">p′ = R(rotation) · Scale(radius) · Shear(angle) · p</p>
+      <p><strong>ANGLE</strong> shears frequency into width, so one side of ORIGIN widens while the other narrows. <strong>RADIUS</strong> scales the whole field: at 0 everything folds to mono, at 4 the Side is 12 dB up. <strong>ROTATION</strong> turns the plane, so width starts to depend on frequency and position starts to depend on width.</p>
+      <p>The new height becomes the frequency's new Side. The new across position becomes its delay time. Both coordinates are heard, and at the neutral settings the output nulls against the input at −138.98 dB.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1120 260" role="img" aria-label="EUCLID's signal path: input, a 1024-point STFT every 256 samples, Mid and Side per bin, the point p of each bin, the shear, scale and rotation, the new Side with its phase kept, SPIN, WARP and FREEZE on the Side alone, the per-bin delay tap set by x prime, the inverse transform and overlap-add, MIX against the latency-aligned dry signal, OUTPUT, AUTO LEVEL and the true-peak ceiling, output">
+      <text x="8" y="134">IN</text>
+      <path class="wire" d="M30 130 H58"/><path class="flow" d="M30 130 H58"/>
+      <rect class="box" x="58" y="104" width="92" height="52" rx="4"/><text class="lbl" x="104" y="126" text-anchor="middle">STFT</text><text x="104" y="144" text-anchor="middle">1024 · HOP 256</text>
+      <path class="wire" d="M150 130 H176"/><path class="flow spec" d="M150 130 H176"/>
+      <rect class="box" x="176" y="104" width="86" height="52" rx="4"/><text class="lbl" x="219" y="126" text-anchor="middle">MID / SIDE</text><text x="219" y="144" text-anchor="middle">PER BIN</text>
+      <path class="wire" d="M262 130 H288"/><path class="flow spec" d="M262 130 H288"/>
+      <rect class="hot" x="288" y="88" width="190" height="84" rx="4"/><text class="lbl" x="383" y="112" text-anchor="middle">p = (x, y) → p′</text><text x="383" y="132" text-anchor="middle">SHEAR · SCALE · ROTATE</text><text x="383" y="150" text-anchor="middle">RATIO · SPAN · SYMMETRY</text><text x="383" y="165" text-anchor="middle">GRAVITY</text>
+      <path class="wire" d="M478 130 H504"/><path class="flow sd" d="M478 130 H504"/>
+      <rect class="side" x="504" y="104" width="118" height="52" rx="4"/><text class="lbl" x="563" y="126" text-anchor="middle">SIDE ONLY</text><text x="563" y="144" text-anchor="middle">SPIN · WARP · FREEZE</text>
+      <path class="wire" d="M622 130 H648"/><path class="flow sd" d="M622 130 H648"/>
+      <rect class="box" x="648" y="104" width="100" height="52" rx="4"/><text class="lbl" x="698" y="126" text-anchor="middle">TAP PER BIN</text><text x="698" y="144" text-anchor="middle">SET BY x′</text>
+      <path class="wire" d="M748 130 H772"/><path class="flow spec" d="M748 130 H772"/>
+      <rect class="box" x="772" y="104" width="74" height="52" rx="4"/><text class="lbl" x="809" y="126" text-anchor="middle">iSTFT</text><text x="809" y="144" text-anchor="middle">OLA</text>
+      <path class="wire" d="M846 130 H866"/><path class="flow" d="M846 130 H866"/>
+      <circle class="box" cx="886" cy="130" r="20"/><text class="lbl" x="886" y="134" text-anchor="middle">MIX</text>
+      <path class="wire" d="M44 130 V44 H886 V110"/><path class="flow" d="M44 44 H886"/>
+      <text x="470" y="34" text-anchor="middle">DRY · DELAYED 1024 SAMPLES TO MATCH</text>
+      <path class="wire" d="M906 130 H922"/><path class="flow" d="M906 130 H922"/>
+      <rect class="box" x="922" y="104" width="62" height="52" rx="4"/><text class="lbl" x="953" y="126" text-anchor="middle">OUT</text><text x="953" y="144" text-anchor="middle">TRIM</text>
+      <path class="wire" d="M984 130 H998"/><path class="flow" d="M984 130 H998"/>
+      <rect class="box" x="998" y="104" width="86" height="52" rx="4"/><text class="lbl" x="1041" y="126" text-anchor="middle">AUTO LVL</text><text x="1041" y="144" text-anchor="middle">−0.3 dBTP</text>
+      <path class="wire" d="M1084 130 H1100"/><path class="flow" d="M1084 130 H1100"/>
+      <rect class="box" x="288" y="208" width="86" height="32" rx="4"/><text class="lbl" x="331" y="228" text-anchor="middle">ORBIT</text>
+      <rect class="box" x="392" y="208" width="86" height="32" rx="4"/><text class="lbl" x="435" y="228" text-anchor="middle">SYNC</text>
+      <path class="wire" d="M331 208 V172"/><path class="flow ctl" d="M331 208 V172"/>
+      <path class="wire" d="M478 224 H698 V156"/><path class="flow ctl" d="M478 224 H698 V156"/>
+      <text x="500" y="250" style="fill:var(--text-3)">ORBIT SWINGS ROTATION · SYNC LOCKS ORBIT AND DELAY TO TEMPO</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>SPLIT</b><p>A 1024-point transform every 256 samples cuts the stereo signal into 513 frequencies, and each is split into its Mid and its Side.</p></li>
+    <li><span class="num">2</span><b>PLACE</b><p>Each frequency becomes a point: octaves from ORIGIN across, Side share up. GRAVITY can bend the share first.</p></li>
+    <li><span class="num">3</span><b>MOVE</b><p>Shear, scale and rotate move every point at once. The new height is the new Side, rebuilt with its own phase.</p></li>
+    <li><span class="num">4</span><b>DELAY</b><p>The new across position sets the frequency's delay tap. DEPTH brings the echoes in, FEEDBACK lets them regenerate.</p></li>
+    <li><span class="num">5</span><b>LEVEL</b><p>MIX blends against the dry signal, delayed so the two line up, then OUTPUT trims and AUTO LEVEL holds the loudness and the −0.3 dBTP ceiling.</p></li>
+  </ol>
+</section>
+
+<!-- LAB -->
+<div class="sh" id="lab">The field lab</div>
+<section class="stack">
+  <div class="prose"><p>This is EUCLID's transform running in your browser on the same mix as the hero display. On the left is the plane itself: blue dots are where each frequency starts, gold dots where the geometry puts it, and the pink lattice is the plane being moved. Height is width; across, after the move, is delay time. On the right is what that does to the sound: the Mid spectrum in grey, the Side going in and the Side coming out, and under them the delay tap each frequency now has.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Factory preset" id="labPresets"></span>
+      <span class="toggles"><button type="button" class="tog" id="t-reset">INIT</button></span>
+    </div>
+    <div class="lab-views">
+      <canvas id="labplane" class="glass" width="880" height="800" aria-label="The plane: each frequency's point before and after the transform"></canvas>
+      <canvas id="labspec" class="glass" width="1100" height="800" aria-label="The Mid spectrum, the Side spectrum going in and coming out, and each frequency's delay tap"></canvas>
+    </div>
+    <div class="readouts"><span>SIDE @ 100 Hz<b id="r-lo">-</b></span><span>@ 1 kHz<b id="r-mid">-</b></span><span>@ 10 kHz<b id="r-hi">-</b></span><span>MONO<b id="r-mono">-</b></span><span>TAPS<b id="r-taps">-</b></span></div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--ice)"></i>INPUT POINT · SIDE IN</span><span><i style="background:var(--cloud-gold)"></i>OUTPUT POINT · SIDE OUT</span><span><i style="background:var(--pink)"></i>THE MOVED PLANE · DELAY TAP</span><span>TAPS AT DELAY 320 ms · MAGNITUDE MODEL</span></div>
+</section>
+
+<!-- THE FOUR MOVES -->
+<div class="sh" id="geometry">The geometry</div>
+<section class="stack">
+  <div class="prose"><p>Each picture is the plane on its own, one operation at a time, sweeping back and forth. Dots are frequencies, coloured from low (blue) to high (gold); the pink cross is ORIGIN. The order matters: shear first, then scale, then rotate, so ANGLE decides the slope that RADIUS then stretches and ROTATION then turns.</p></div>
+  <div class="voices">
+    <article class="voice">
+      <canvas id="g0" width="720" height="400" aria-label="ANGLE: the plane shears so frequencies above ORIGIN rise and those below fall"></canvas>
+      <div class="body"><div class="vn"><b>ANGLE</b><span>SHEAR · ±80°</span></div>
+      <p>Frequency is tilted into width. Points above ORIGIN climb, points below drop, and the slope is the tangent of the angle: at 45° a frequency one field unit above ORIGIN gains 0.9 of Side share. The quickest route to a mix that gets wider as it goes up, or narrower.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="g1" width="720" height="400" aria-label="RADIUS and RATIO: the plane is scaled, evenly or more on one axis than the other"></canvas>
+      <div class="body"><div class="vn"><b>RADIUS · RATIO</b><span>SCALE · 0–4 · 0.25–4</span></div>
+      <p>RADIUS scales the plane from its centre. With nothing else moved it is exactly a Side gain: 0 is full mono, 1 leaves it alone, 4 is +12 dB of width. RATIO splits it into two scales, across by RATIO and up by one over RATIO, so you choose how much the field cares where a frequency is against how wide it already was.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="g2" width="720" height="400" aria-label="ROTATION: the whole plane turns, mixing frequency position and width"></canvas>
+      <div class="body"><div class="vn"><b>ROTATION</b><span>ROTATE · ±90°</span></div>
+      <p>The plane turns about its centre. Some of each point's frequency position becomes width, and some of its width becomes position, which is delay time. Turn it and the high end can open while the low end collapses, and the echoes fan out by how wide each frequency was.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="g3" width="720" height="400" aria-label="SYMMETRY and GRAVITY: the shear is mirrored about ORIGIN and the Side share is bent before the move"></canvas>
+      <div class="body"><div class="vn"><b>SYMMETRY · GRAVITY</b><span>MIRROR · BEND</span></div>
+      <p>SYMMETRY mirrors the shear about ORIGIN: at 0 the plane tilts one way, at 100 it spreads outward on both sides, so the top and the bottom both widen around a centre that stays put. GRAVITY bends the width before the move. Positive pulls anything not already wide toward mono; negative lifts near-mono material out.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><p>Press <span class="k">SHOW IN THE LAB</span> on a card and the field lab above sweeps that control through its range. Every control automates and glides over 35 ms. The knob's name shows at rest and its value on hover or while you drag; double-click it to type a value.</p></div>
+  <div class="knobs" id="knobs">
+    <article class="knob-card" data-knob="radius">
+      <div class="knob-name">RADIUS</div>
+      <p>0.000 to 4.000, default 1.000, with unity at the middle of the travel. The large knob on the left of the panel. On its own it is an exact Side gain from full mono to +12 dB. With the other moves in play it scales the whole plane, so it decides how far ANGLE and ROTATION reach.</p>
+      <button type="button" class="show" data-show="radius">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="origin">
+      <div class="knob-name">ORIGIN</div>
+      <p>20 Hz to 20 kHz, default 1 kHz. The frequency that sits at the centre of the field. Shear and rotation turn about it, and it is where the delay taps meet the base DELAY time. Move it and the same geometry lands on a different part of the mix.</p>
+      <button type="button" class="show" data-show="origin">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="angle">
+      <div class="knob-name">ANGLE · ROTATION</div>
+      <p>ANGLE runs ±80° and shears frequency into width. ROTATION runs ±90° and turns the whole plane, trading frequency position for width and width for delay time. Between them they are most of EUCLID's character, and most of where its delay taps land.</p>
+      <button type="button" class="show" data-show="angle">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="span">
+      <div class="knob-name">SPAN · RATIO</div>
+      <p>SPAN is how many octaves make one unit of the field, 0.5 to 10, default 3.5. Small SPAN makes a few octaves feel like the whole plane, so ANGLE and ROTATION bite hard; large SPAN spreads them gently over the spectrum. RATIO, 0.25 to 4, stretches across against up.</p>
+      <button type="button" class="show" data-show="span">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="symmetry">
+      <div class="knob-name">SYMMETRY · GRAVITY</div>
+      <p>SYMMETRY, 0 to 100 %, mirrors the shear about ORIGIN. GRAVITY, ±100 %, curves the Side share before anything moves: positive collapses near-mono material and leaves the wide parts wide, negative does the reverse. Both do nothing at their defaults, to the bit.</p>
+      <button type="button" class="show" data-show="gravity">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="mix">
+      <div class="knob-name">MIX · OUTPUT</div>
+      <p>MIX blends against the dry signal, delayed by exactly the plug-in's latency. It is a linear blend on purpose: the processed signal shares the dry signal's phase, so at neutral settings every MIX position nulls, and anywhere else MIX simply scales the Side change. OUTPUT trims −18 to +12 dB.</p>
+    </article>
+  </div>
+  <figure class="faceshot">
+    <img src="assets/euclid/euclid_v0030_panel.png?v=261006" alt="The EUCLID panel: RADIUS and ORIGIN on the left with SPIN, ORBIT and WARP under them and the FREEZE and SYNC pills, the field display in the middle with the input floating over a floor plate, ANGLE, ROTATION, RATIO, SPAN, SYMMETRY and GRAVITY on the right, the DELAY FIELD row with ORBIT RATE, DELAY, FEEDBACK, DEPTH, MIX and OUTPUT along the bottom, and BYPASS, AUTO LEVEL and the trial line in the footer">
+    <figcaption class="cap">THE WHOLE FACE · 1024 × 800 · RESIZES 50 TO 150 %</figcaption>
+  </figure>
   
+</section>
 
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="max-width:820px;margin-bottom:44px">
-      <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 18px 0;text-wrap:pretty">A stereo processor built on one plane. Every frequency bin in the music is a point on that plane: its horizontal position is log-frequency measured against ORIGIN, its vertical position is how wide it already is. One geometric transform moves every point at once.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 18px 0;text-wrap:pretty">The transform runs in one pass: shear, then scale, then rotate. Both coordinates come back out as sound. The new height becomes that bin's Side share, so a point's height is its width. The new horizontal position becomes its delay tap, so its place along the frequency axis is its time. Width and echo are not two effects side by side. They are two readings of one point.</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 28px 0;text-wrap:pretty">The field on screen is not a visualiser sitting over that. It plots the real post-transform coordinates and the real per-bin energy, taken from the live path. It invents no particles and draws no trails. When the field tilts on screen, the field tilted.</p>
-      <div style="display:flex;flex-direction:column;gap:13px">
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">ORIGIN</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">The pivot, in Hz. Everything turns around it.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">THE FIELD</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">RADIUS scales, ANGLE shears, ROTATION turns, and RATIO splits the scale between the two axes, so the field can stretch in width without stretching in frequency, or the reverse.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">SPAN</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">How many octaves make one unit across the plane, from half an octave to ten. A narrow SPAN puts the whole transform inside a few octaves; a wide one spreads it across the spectrum.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">SYMMETRY</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">Acts only below ORIGIN. At zero the plane is even either side of the pivot; raise it and the low half folds toward the pivot until it mirrors the high half.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">GRAVITY</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">Curves the width axis rather than moving it. Positive pulls every point toward the centre line, hardest on the ones already near it. Negative lifts them away.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">DELAY / FEEDBACK / DEPTH</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">The per-bin spectral delay the horizontal axis steers. DEPTH is how much of it is summed back in.</span></span>
+<!-- DELAY FIELD -->
+<div class="sh" id="delay">The delay field</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A point on a plane has two coordinates, and a frequency cannot be moved to another frequency. So EUCLID spends the second one on time. After the move, each frequency's across position sets its own delay tap. At ORIGIN the tap is the DELAY time; above and below it, the taps fan out either side, up to double and down to almost nothing.</p>
+      <p><strong>ROTATION steers the fan.</strong> With the plane straight, the taps follow frequency alone. Turn it and how wide a frequency was starts to decide how late it comes back, so the wide parts of the mix and the centre echo at different times from one knob.</p>
+    </div>
+    <div class="prose">
+      <p>DELAY sets the base time, 5 ms to 1.5 s. FEEDBACK, up to 95 %, feeds each tap back into itself. DEPTH brings the echoes in, and it starts at zero, so the plug-in is a pure stereo processor until you ask for time. The taps are whole steps of the transform, 5.33 ms at 48 kHz, which gives the repeats a granular, spectral grain rather than a clean copy. The echoes cost no extra latency: they live inside the transform EUCLID already runs.</p>
+      <p><strong>SYNC</strong> snaps DELAY to the nearest note value at your host's tempo, straight, dotted or triplet, from 1/32 to a whole bar. At 120 BPM, 320 ms lands on 333 ms, two thirds of a beat.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="toggles"><span>SYNC AT 120 BPM</span><span class="seg" role="group" aria-label="SYNC" id="dSync"></span></span>
+      <span id="d-hit">A HIT EVERY TWO BARS</span>
+    </div>
+    <canvas id="delayfield" class="glass" width="1100" height="520" style="display:block;width:100%;height:auto;background:var(--plate)" aria-label="Each frequency's delay taps: a hit, then its repeats arriving at that frequency's own time and fading with FEEDBACK"></canvas>
+    <div class="readouts"><span>BASE TAP<b id="d-base">-</b></span><span>SHORTEST<b id="d-min">-</b></span><span>LONGEST<b id="d-max">-</b></span><span>GRAIN<b>5.33 ms</b></span></div>
+    <div class="ctrls" id="dctrls"></div>
+  </div>
+</section>
+
+<!-- SIDE SPECTRUM -->
+<div class="sh" id="side">The Side spectrum</div>
+<section class="stack">
+  <div class="prose"><p>SPIN, WARP and FREEZE act on the Side spectrum the geometry has just made, and on nothing else. The Mid passes through untouched at every setting, so a mono fold of EUCLID's output is the input's own mono, and the harness checks it below −138 dB. ORBIT moves the geometry itself. All four sit under ORIGIN on the left of the panel, and all four do nothing at their defaults.</p></div>
+  <div class="voices">
+    <article class="voice">
+      <canvas id="s0" width="720" height="400" aria-label="SPIN on a vectorscope: a mono signal draws a vertical line, and SPIN opens it into a bloom while L plus R stays the same"></canvas>
+      <div class="body"><div class="vn"><b>SPIN</b><span>0–100 % · WIDTH FROM MONO</span></div>
+      <p>The one control that makes width from nothing. SPIN feeds a copy of each frequency's Mid in at 90° into its Side, which sounds wide yet cancels exactly when L and R are summed, and turns each Side's phase by an amount the field decides. The sign flips in bands a quarter of a field unit wide, so the image alternates left and right up the spectrum. On a mono source it lifts the Side to −9.8 dB below the Mid; the mono fold still nulls at −140 dB.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="s1" width="720" height="400" aria-label="WARP: the Side partials slide up and down in pitch while the Mid partials stay where they are"></canvas>
+      <div class="body"><div class="vn"><b>WARP</b><span>±12 st · SIDE IN PITCH</span></div>
+      <p>The Side alone moves in pitch, up to an octave either way, while the Mid stays where it was. A phase vocoder reads each frequency's true pitch from how its phase moves between frames and places it where the shift sends it. The width becomes a harmony of the centre: at +12 a 1 kHz Side tone lands on 2 kHz, 72 dB over what is left behind.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="s2" width="720" height="400" aria-label="FREEZE: the Mid keeps changing while the Side spectrum is held from the moment FREEZE was pressed"></canvas>
+      <div class="body"><div class="vn"><b>FREEZE</b><span>PILL · SIDE HELD</span></div>
+      <p>Press it and the Side spectrum is held as it was at that instant while the Mid plays on: a still stereo halo under live audio. Each held frequency keeps sounding at its own pitch with a little phase drift, so the hold sustains rather than buzzes. It fades in and out over eight transform steps, about 43 ms, and a render is the same every time. Click the picture to press it.</p>
+      <span class="seg" role="group" aria-label="FREEZE"><button type="button" id="fz" aria-pressed="false">FREEZE</button></span></div>
+    </article>
+    <article class="voice">
+      <canvas id="s3" width="720" height="400" aria-label="ORBIT: ROTATION swings either side of where the knob is set, once per cycle, locked to the bar"></canvas>
+      <div class="body"><div class="vn"><b>ORBIT · ORBIT RATE</b><span>ROTATION IN MOTION</span></div>
+      <p>ORBIT swings ROTATION either side of where the knob sits, up to ±90° at 100 %, once per cycle. Free, ORBIT RATE sets the cycle, 0.25 to 30 seconds. With SYNC on 1/4, 1/2, 1 BAR, 2 BARS or 4 BARS the cycle locks to the host, and while the transport runs it follows the song position, so the field is at the same angle on the same beat every pass of the loop.</p>
+      <span class="seg" role="group" aria-label="SYNC for ORBIT" id="oSync"></span></div>
+    </article>
+  </div>
+  
+</section>
+
+<!-- DISPLAY -->
+<div class="sh" id="display">The display</div>
+<section class="two">
+  <div class="prose">
+    <p>The field in the middle of the panel is drawn from the numbers the audio thread has just measured, thirty times a second. Nothing in it is decoration. With no audio coming in, it is an empty lattice, and that is correct.</p>
+    <p>The field floating at the top is your input, and the one standing on the floor plate is EUCLID's output. There is no box around them. Each is a grid of 96 frequency columns by 32 rows of width, and a cell reaches toward the middle as more energy lands in it. Between them hang 128 threads, one per sampled frequency, from where its width was to where the geometry put it. Every thread leaves its input heading straight down and lands heading straight down, so a frequency the geometry left alone hangs plumb and one it moved swings through an S as wide as the move. Because only the Side changes, the S only swings front to back: that is the DSP, not a limit of the drawing. Once SPIN, WARP or FREEZE are working, the floor shows the Side they made.</p>
+    <p class="small">Under the card, MONO is the output's measured stereo correlation and LATENCY is what EUCLID reports to the host. The whole display paints in under 2.5 ms at 1× against a 33 ms frame.</p>
+  </div>
+  <div class="prose">
+    <ul class="keys">
+      <li><i style="background:radial-gradient(var(--cream) 30%,rgba(242,233,220,.2) 60%,transparent 70%)"></i><span><strong>The top cloud</strong> is the input. Left to right is frequency on a log scale with ORIGIN in the middle; front to back is Side share; hanging lower means more energy.</span></li>
+      <li><i style="background:radial-gradient(var(--blush) 20%,var(--pink) 40%,rgba(223,93,145,.2) 60%,transparent 70%)"></i><span><strong>The floor cloud</strong> is the output, on the same grid. It warms from mauve to the accent pink as energy rises.</span></li>
+      <li><i style="background:linear-gradient(180deg,var(--cream),var(--pink))"></i><span><strong>The threads</strong> join each frequency's width going in to its width coming out: fading from cream where it came from to pink where it landed. A straight thread was left alone; one whose S swings back has been widened, and one that swings forward has been narrowed.</span></li>
+      <li><i style="background:radial-gradient(var(--pink) 15%,rgba(223,93,145,.25) 45%,transparent 70%)"></i><span><strong>The callouts</strong> follow the loudest thread: its Side share going in on the left, where it landed on the right with how far it moved, and a soft pink glow where it lands. In silence there are none.</span></li>
+      <li><i style="border:1px dashed var(--mauve)"></i><span><strong>The lattice</strong> is the empty field, drawn at half density so silence reads as air rather than a grey sheet.</span></li>
+      <li><i style="background:var(--pink)"></i><span><strong>MONO</strong> at 1.00 means the output would sum to mono with nothing lost; lower means wider.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- AUTO LEVEL -->
+<div class="sh" id="autolevel">Auto level</div>
+<section class="two">
+  <div class="prose">
+    <p>Add width and the mix gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling in a stereo effect is rigged. <strong>AUTO LEVEL holds the output where your input was</strong>, so moving RADIUS changes the image and leaves the volume alone. On the release harness's probe, a field pushed to RADIUS 4 moves the output by 14.35 dB with it off, 0.01 dB in TRANSPARENT and 0.02 dB in GLUE.</p>
+    <p>One switch in the footer, beside BYPASS, four positions. TRANSPARENT rides the gain too slowly to hear and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor. CLIP drives 9 dB into the clipper on purpose. The match follows OUTPUT, so the OUTPUT knob still sets the level, and it is stereo-linked, so the image the geometry made cannot wander.</p>
+    <p>A true-peak ceiling sits behind every working mode, so nothing leaves above −0.3 dB true peak; the harness reads −0.27, −0.28 and −0.23 dBTP in the three modes on a signal that reaches +7.65 dBTP with it off. OFF never limits, and it is the default. AUTO LEVEL stays working under BYPASS, so the level is already right on the first sample back, and mode changes crossfade over 10 ms.</p>
+  </div>
+  <div class="stack">
+    <div class="panel">
+      <canvas id="level" width="600" height="440" aria-label="Illustration: RADIUS climbs from 1 to 4 and back; with AUTO LEVEL off the output level rises 14.35 dB, with it working it stays put"></canvas>
+      <div class="panel-foot">
+        <span class="seg" role="group" aria-label="AUTO LEVEL mode"><button type="button" data-al="0" aria-pressed="false">OFF</button><button type="button" data-al="1" aria-pressed="true">TRANSPARENT</button><button type="button" data-al="2" aria-pressed="false">GLUE</button><button type="button" data-al="3" aria-pressed="false">CLIP</button></span>
+        <span>LEVEL MOVES <b id="al-move">0.01 dB</b></span>
       </div>
-      <div style="border:1px solid #242230;padding:24px;margin-top:26px;display:flex;flex-direction:column;gap:10px">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase">THE MONO CONDITION</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">No setting of the geometry touches Mid, and the wet/dry blend is linear rather than equal-power, so Mid cancels exactly on fold-down. With DEPTH at zero, the mono sum of the output is exactly the input, at any geometry and any MIX. Raising DEPTH sums the spectral delay into both channels, and those taps carry Mid. The guarantee is written at DEPTH zero because zero is where it is true.</span>
-      </div>
     </div>
-  </section>
+    <div class="cap">ILLUSTRATION · THE 14.35, 0.01 AND 0.02 dB FIGURES ARE MEASURED IN THE RELEASE HARNESS (RADIUS 4, RATIO 0.5, QUIET PROBE)</div>
+  </div>
+</section>
 
-  <section style="max-width:1000px;margin:0 auto 60px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TECHNICAL SPECIFICATIONS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">FORMATS</span><span style="font-weight:300;font-size:15px;line-height:1.65">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">SYSTEM</span><span style="font-weight:300;font-size:15px;line-height:1.65">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
-    </div>
-  </section>
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>EUCLID runs as a fully working trial for fourteen days from the first time it loads, and the line in the footer counts down the days left. When the trial ends without activation, EUCLID goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Sandboxed hosts such as GarageBand keep their own copy of your Library, so activate EUCLID in Logic Pro, Live, Pro Tools or another standard host.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that EUCLID works offline. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move it without writing to us.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+    
+  </div>
+</section>
 
-  <section style="max-width:1120px;margin:24px auto 0 auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Availability<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:32px;text-align:center;display:grid;gap:14px;justify-items:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">EUCLID · Launch sale</div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:22px;letter-spacing:0.08em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:44px;letter-spacing:0.08em;color:#f0ede6">$25</span></div>
-      <p style="margin:0;color:#b9b6ae;max-width:52ch">EUCLID is in final calibration. Join the list and we will tell you the day it ships. Use code <span style="font-family:'JetBrains Mono',monospace;color:#ffc867;letter-spacing:0.12em">ALCHEMY50</span> at checkout.</p>
-      <div style="margin-top:6px"><a href="mailto:info@theta.audio?subject=EUCLID%20launch" data-notify="EUCLID" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">AU / VST3 / AAX INCLUDED · <a href="color_collection.html" style="color:#8d8779">PART OF THE ALCHEMY INDEX</a></div>
-    </div>
-  </section>
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>MIX ENGINEERS</b><p>WIDE FIELD opens the top of a mix while the low end stays centred, in one move instead of four bands. MONO FOLD and RADIUS 0 check the centre. AUTO LEVEL keeps width from winning on volume.</p></article>
+  <article><b>MASTERING</b><p>Small ANGLE with ORIGIN low tilts width with frequency, and the Mid is never touched, so the mono fold is exactly what came in. Every setting nulls back to the input when you return it.</p></article>
+  <article><b>SOUND DESIGN</b><p>FIELD SPIN and TOTAL COLLAPSE turn the delay field and ORBIT into moving spectral echoes. FREEZE holds a halo under a live part, and WARP turns the width into a harmony.</p></article>
+  <article><b>PRODUCERS</b><p>SPIN makes a mono synth or vocal wide without a chorus. SYNC locks ORBIT and DELAY to the song, so the field turns on the bar and the echoes land on the grid.</p></article>
+</section>
 
-</main>
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Geometric stereo processor and spectral delay (insert)</td></tr>
+    <tr><th>ENGINE</th><td>1024-point square-root Hann STFT, 75 % overlap, per-bin Mid/Side, Side rebuilt with its own phase</td></tr>
+    <tr><th>GEOMETRY</th><td>RADIUS · ORIGIN · ANGLE · ROTATION · RATIO · SPAN · SYMMETRY · GRAVITY</td></tr>
+    <tr><th>SIDE SPECTRUM</th><td>SPIN · WARP (±12 st) · FREEZE · ORBIT (±90°) · ORBIT RATE (0.25–30 s)</td></tr>
+    <tr><th>DELAY FIELD</th><td>DELAY 5–1500 ms · FEEDBACK 0–95 % · DEPTH · one tap per bin, set by the field · SYNC FREE, 1/4, 1/2, 1, 2 or 4 BARS</td></tr>
+    <tr><th>OUTPUT</th><td>MIX · OUTPUT · AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBTP ceiling · BYPASS</td></tr>
+    <tr><th>LATENCY</th><td>1060 samples at every rate and in every mode, reported to the host</td></tr>
+    <tr><th>CHANNELS</th><td>Stereo in, stereo out</td></tr>
+    <tr><th>DISPLAY</th><td>Field display: 96 × 32 input and output fields, 128 bending threads, loudest-band callouts, live correlation, 30 Hz · drag to turn · window resizes 50–150 %</td></tr>
+    <tr><th>PRESETS</th><td>Six factory fields (INIT, WIDE FIELD, MONO FOLD, SPECTRAL TILT, FIELD SPIN, TOTAL COLLAPSE); your own presets with save and save as</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows 10 or later (VST3)</td></tr>
+  </table>
+  <div class="prose">
+    <p>EUCLID shares its AUTO LEVEL output stage with CINDER, GIRE and CONCORD, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
+    <p>No chorus, no Haas trick, no fixed crossover bands. One coordinate transform over every frequency, with both of its outputs audible.</p>
+    
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE // EUCLID IN CALIBRATION</span>
-</footer>
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">EUCLID</div>
+  <p>EUCLID is in final calibration and releases soon. The full field, the delay, the Side-spectrum set and AUTO LEVEL, nothing withheld.</p>
+  <div class="amt"><s>$50</s><strong>$25</strong></div>
+  <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=EUCLID%20launch" data-notify="EUCLID">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED · WINDOWS VST3</div>
+  
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-out">
+<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(function(){
+'use strict';
+const reduce = false;
+const TAU = Math.PI*2, PI = Math.PI;
+const CREAM=[242,233,220], CYAN=[120,214,230], GOLD=[240,214,96], ICE=[196,226,255], PINK=[223,93,145], GREY=[141,135,121];
+const MAUVE=[176,159,196], BLUSH=[244,179,205];   // PR #6: dusk mauve lattice, the accent lifted at full energy
+const rgba=(c,a)=>`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${a})`;
+const mixc=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const MONO='"JetBrains Mono",ui-monospace,monospace', BODY='Rubik,ui-sans-serif,sans-serif';
+function track(cx,px){if('letterSpacing' in cx)cx.letterSpacing=px+'px';}
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  renderVals() {
-    return {
-      overlayDisplay: this.state.zoomed ? 'flex' : 'none',
-      setZoomImg: (el) => { this._zoomImgEl = el; },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
-      openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/euclid/hero_v3.png?v=260929t' }); },
-    };
+/* notes toggle */
+
+/* ================= parameters, after createParameters() in PluginProcessor.cpp ================= */
+const deg=v=>(v>0?'+':'')+v.toFixed(1)+'°', pct=v=>v.toFixed(0)+' %', spct=v=>(v>0?'+':'')+v.toFixed(0)+' %';
+const PARAM={
+  origin:{label:'ORIGIN',min:20,max:20000,def:1000,skew:0.30,fmt:v=>v>=1000?(v/1000).toFixed(2)+' kHz':Math.round(v)+' Hz'},
+  radius:{label:'RADIUS',min:0,max:4,def:1,centre:1,fmt:v=>v.toFixed(3)},
+  angle:{label:'ANGLE',min:-80,max:80,def:0,fmt:deg},
+  rotation:{label:'ROTATION',min:-90,max:90,def:0,fmt:deg},
+  ratio:{label:'RATIO',min:0.25,max:4,def:1,centre:1,fmt:v=>v.toFixed(3)},
+  span:{label:'SPAN',min:0.5,max:10,def:3.5,centre:3.5,fmt:v=>v.toFixed(2)+' oct'},
+  symmetry:{label:'SYMMETRY',min:0,max:100,def:0,fmt:pct},
+  gravity:{label:'GRAVITY',min:-100,max:100,def:0,fmt:spct},
+  delay:{label:'DELAY',min:5,max:1500,def:320,centre:250,fmt:v=>v.toFixed(0)+' ms'},
+  feedback:{label:'FEEDBACK',min:0,max:95,def:35,fmt:pct},
+  spin:{label:'SPIN',min:0,max:100,def:0,fmt:pct},
+  warp:{label:'WARP',min:-12,max:12,def:0,fmt:v=>(v>0?'+':'')+v.toFixed(2)+' st'},
+  orbit:{label:'ORBIT',min:0,max:100,def:0,fmt:pct},
+  orbitrate:{label:'ORBIT RATE',min:0.25,max:30,def:4,centre:4,fmt:v=>v.toFixed(2)+' s'}
+};
+// JUCE NormalisableRange: proportion^skew, with setSkewForCentre giving log(0.5)/log((c-min)/(max-min))
+for(const k in PARAM){const p=PARAM[k];p.skewv=p.centre!==undefined?Math.log(0.5)/Math.log((p.centre-p.min)/(p.max-p.min)):(p.skew||1);}
+const toNorm=(k,v)=>{const p=PARAM[k];return Math.pow(clamp((v-p.min)/(p.max-p.min),0,1),p.skewv);};
+const fromNorm=(k,n)=>{const p=PARAM[k];n=clamp(n,0,1);return n<=0?p.min:p.min+(p.max-p.min)*Math.exp(Math.log(n)/p.skewv);};
+
+/* ================= the factory table, after PresetBar.h ================= */
+const PRESET_NAMES=['INIT','WIDE FIELD','MONO FOLD','SPECTRAL TILT','FIELD SPIN','TOTAL COLLAPSE'];
+const PRESETS={
+  'INIT':          {origin:1000,radius:1.000,angle:0,  rotation:0,  mix:100,gain:0,   delay:320,feedback:35,depth:0, ratio:1.000,span:3.50,symmetry:0,  gravity:0},
+  'WIDE FIELD':    {origin:700, radius:2.200,angle:26, rotation:0,  mix:100,gain:-3,  delay:320,feedback:35,depth:0, ratio:0.700,span:4.50,symmetry:35, gravity:-25},
+  'MONO FOLD':     {origin:1000,radius:0.000,angle:0,  rotation:0,  mix:100,gain:0,   delay:320,feedback:0, depth:0, ratio:1.000,span:3.50,symmetry:0,  gravity:0},
+  'SPECTRAL TILT': {origin:250, radius:1.400,angle:62, rotation:0,  mix:100,gain:-3.5,delay:180,feedback:42,depth:28,ratio:1.600,span:2.20,symmetry:0,  gravity:30},
+  'FIELD SPIN':    {origin:3000,radius:2.600,angle:20, rotation:62, mix:85, gain:-5,  delay:480,feedback:58,depth:46,ratio:2.400,span:1.40,symmetry:70, gravity:-15},
+  'TOTAL COLLAPSE':{origin:120, radius:3.800,angle:-74,rotation:-80,mix:100,gain:-7,  delay:900,feedback:82,depth:72,ratio:3.600,span:0.80,symmetry:100,gravity:-80}
+};
+for(const n of PRESET_NAMES){const spins=n==='FIELD SPIN',coll=n==='TOTAL COLLAPSE';
+  Object.assign(PRESETS[n],{spin:spins?35:0,warp:coll?-5:0,orbit:spins?40:0,freeze:false,sync:spins?3:0,orbitrate:4});}
+const presetCopy=n=>Object.assign({},PRESETS[n]);
+
+/* ================= engine constants ================= */
+const SR=48000, NFFT=1024, HOP=256, BINS=NFFT/2+1, BINHZ=SR/NFFT;
+const COLS=96, ROWS=32, CELLS=COLS*ROWS, THREADS=128;
+const BPM=120, BEATS_PER_BAR=4;
+const CYCLE_BEATS=[0,1,2,-1,-2,-4];
+const SYNC_NAMES=['FREE','1/4','1/2','1 BAR','2 BARS','4 BARS'];
+function orbitCycleSeconds(sync,rate){if(!sync)return clamp(rate,0.25,30);const b=CYCLE_BEATS[sync]>=0?CYCLE_BEATS[sync]:-CYCLE_BEATS[sync]*BEATS_PER_BAR;return b*60/BPM;}
+// SYNC's DELAY, after tempoDelayMs()
+function tempoDelayMs(knobMs,bpm){
+  const beats=[1/8,1/6,3/16,1/4,1/3,3/8,1/2,2/3,3/4,1,4/3,3/2,2,8/3,3,4];
+  const beatMs=60000/clamp(bpm,20,999);let best=beats[0]*beatMs,bd=1e9;
+  for(const b of beats){const d=Math.abs(Math.log((b*beatMs)/Math.max(1,knobMs)));if(d<bd){bd=d;best=b*beatMs;}}
+  while(best>1500)best*=0.5;while(best<5)best*=2;return best;}
+
+/* ================= the programme: a synthetic four-part stereo mix, as per-bin Mid and Side magnitudes ================= */
+const LOGF=new Float32Array(BINS);for(let k=0;k<BINS;k++)LOGF[k]=Math.log2(Math.max(k*BINHZ,20));
+function programme(t,M,S,steady){
+  const kick=steady?0.6:Math.exp(-(t%0.5)/0.11);
+  const hat=steady?0.6:0.3+0.7*Math.exp(-((t+0.25)%0.5)/0.05);
+  const voc=steady?0.8:0.45+0.55*Math.max(0,Math.sin(t*0.9+0.6));
+  const pad=steady?0.9:0.72+0.28*Math.sin(t*0.31);
+  const f0=196*(1+0.012*Math.sin(t*5.5));
+  const g=(lo,c,s)=>{const d=(lo-Math.log2(c))/s;return Math.exp(-0.5*d*d);};
+  M[0]=S[0]=0;
+  for(let k=1;k<BINS;k++){
+    const f=k*BINHZ,lo=LOGF[k];
+    const bass=60*(0.55+0.45*kick)*g(lo,62,0.42);
+    const click=7*kick*g(lo,3200,0.7);
+    const h=f/f0,d=(h-Math.round(h))*f0;const comb=h>0.6?Math.exp(-(d/34)*(d/34)):0;
+    const v=30*voc*comb*g(lo,850,0.95);
+    const p=10*pad*g(lo,1500,1.25)*(0.7+0.3*Math.sin(k*1.7+t*0.8));
+    const hh=8*hat*g(lo,9500,0.55)*(0.6+0.4*Math.sin(k*2.3+t*7.1));
+    const fl=0.22;
+    M[k]=bass*0.98+click*0.95+v*0.92+p*0.45+hh*0.68+fl*0.7;
+    S[k]=bass*0.02+click*0.05+v*0.08+p*0.55+hh*0.32+fl*0.3;
   }
 }
 
+/* ================= the transform, after processFrame() ================= */
+// fills x, y (shaped share), my (mapped share), xp (x prime), so (Side out magnitude) per bin
+function transform(p,rotDeg,M,S,F){
+  const originLog=Math.log2(Math.max(p.origin,20));
+  const sh=Math.tan(p.angle*PI/180)*0.90;
+  const aniso=Math.abs(p.ratio-1)>0.0005;
+  const ax=aniso?p.radius*p.ratio:p.radius, ay=aniso?p.radius/p.ratio:p.radius;
+  const shape=Math.abs(p.gravity)>0.001, gamma=shape?Math.pow(2,p.gravity*0.02):1;
+  const c=Math.cos(rotDeg*PI/180), s=Math.sin(rotDeg*PI/180), sym=p.symmetry*0.01;
+  for(let k=0;k<BINS;k++){
+    const E=M[k]+S[k];
+    const x=clamp((LOGF[k]-originLog)/p.span,-2.5,2.5);
+    const raw=S[k]/(E+1e-12), y=shape?Math.pow(raw,gamma):raw;
+    const shIn=x+sym*(Math.abs(x)-x);
+    const sx=ax*x, sy=ay*(y+sh*shIn);
+    const my=clamp(s*sx+c*sy,0,4);
+    const gain=S[k]>0?Math.min(32,my*E/S[k]):0;
+    F.x[k]=x;F.y[k]=y;F.my[k]=my;F.so[k]=S[k]*gain;F.E[k]=E;
+    F.xp[k]=clamp(c*sx-s*sy,-3,3);
+  }
+}
+const makeF=()=>({x:new Float32Array(BINS),y:new Float32Array(BINS),my:new Float32Array(BINS),xp:new Float32Array(BINS),so:new Float32Array(BINS),E:new Float32Array(BINS)});
+// tap per bin, after the spectral delay: whole hops, spread by x' either side of the base
+function tapMs(xp,baseMs){const base=baseMs*0.001*SR/HOP;const spread=clamp(xp/2.5,-1,1);
+  const maxF=Math.ceil(1.5*SR/HOP)+2;return clamp(Math.round(base*(1+spread)),1,maxF-1)*HOP/SR*1000;}
+
+/* ================= Engine: programme -> transform -> SPIN/WARP/FREEZE -> the display's surfaces and threads ================= */
+class Engine{
+  constructor(){
+    this.M=new Float32Array(BINS);this.S=new Float32Array(BINS);this.F=makeF();
+    this.warpTmp=new Float32Array(BINS);this.frozen=new Float32Array(BINS);this.freezeMix=0;this.captured=false;this.noise=0x45554c44;
+    this.sIn=new Float32Array(CELLS);this.sOut=new Float32Array(CELLS);
+    this.th={x:new Float32Array(THREADS),xp:new Float32Array(THREADS),inS:new Float32Array(THREADS),outS:new Float32Array(THREADS),en:new Float32Array(THREADS)};
+    this.smM=new Float32Array(BINS);this.smSi=new Float32Array(BINS);this.smSo=new Float32Array(BINS);
+    this.orbitPhase=0;this.rot=0;this.mono=1;this.sideTouched=false;
+  }
+  step(p,t,dt){
+    // ORBIT swings ROTATION up to +/-90 degrees; SYNC sets the cycle in beats at 120 BPM
+    this.orbitPhase=(this.orbitPhase+dt/orbitCycleSeconds(p.sync,p.orbitrate))%1;
+    if(p.sync)this.orbitPhase=(t/orbitCycleSeconds(p.sync,p.orbitrate))%1;
+    const turn=p.orbit>0.05?p.orbit*0.9*Math.sin(TAU*this.orbitPhase):0;
+    this.rot=p.rotation+turn;
+    programme(t,this.M,this.S,false);
+    const F=this.F,M=this.M;transform(p,this.rot,M,this.S,F);
+    const so=F.so;const half=NFFT/2;
+    // SPIN: Side + quadrature Mid * spin, turned by a rotor. In magnitude the two halves add in power.
+    const spin=p.spin*0.01;
+    if(spin>0.0005)for(let k=1;k<half;k++)so[k]=Math.hypot(so[k],M[k]*spin);
+    // WARP: each bin's magnitude lands on round(k * ratio)
+    const w=p.warp/12;
+    if(Math.abs(w)>0.0005){const r=Math.pow(2,w),T=this.warpTmp;T.fill(0);
+      for(let j=1;j<half;j++){const tg=Math.round(j*r);if(tg<1||tg>=half)continue;T[tg]+=so[j];}
+      for(let k=1;k<half;k++)so[k]=T[k];}
+    // FREEZE: hold the Side as it was when pressed, in and out over eight hops
+    this.freezeMix=p.freeze?Math.min(1,this.freezeMix+dt*SR/HOP/8):Math.max(0,this.freezeMix-dt*SR/HOP/8);
+    if(p.freeze&&!this.captured){this.frozen.set(so);this.captured=true;}
+    if(!p.freeze&&this.freezeMix<=0)this.captured=false;
+    if(this.freezeMix>0&&this.captured)for(let k=1;k<half;k++){this.noise=(Math.imul(this.noise,1664525)+1013904223)>>>0;
+      const held=this.frozen[k]*(0.92+0.16*((this.noise>>>8)/16777216));so[k]+=(held-so[k])*this.freezeMix;}
+    this.sideTouched=spin>0.0005||Math.abs(w)>0.0005||this.freezeMix>0;
+    // deposit both surfaces, the processor's own mapping
+    const bi=new Float32Array(CELLS),bo=new Float32Array(CELLS);
+    let num=0,den=0;
+    for(let k=0;k<BINS;k++){
+      const col=Math.round((clamp(F.x[k]/1.6,-1,1)*0.5+0.5)*(COLS-1));
+      const rIn=Math.round(Math.sqrt(clamp(F.y[k]/1.5,0,1))*(ROWS-1));
+      const shOut=this.sideTouched?so[k]/(F.E[k]+1e-12):F.my[k];
+      const rOut=Math.round(Math.sqrt(clamp(shOut/1.5,0,1))*(ROWS-1));
+      bi[rIn*COLS+col]+=F.E[k];bo[rOut*COLS+col]+=F.E[k];
+      num+=M[k]*M[k]-so[k]*so[k];den+=M[k]*M[k]+so[k]*so[k];
+      this.smM[k]=this.smM[k]*0.72+M[k]*0.28;this.smSi[k]=this.smSi[k]*0.72+this.S[k]*0.28;this.smSo[k]=this.smSo[k]*0.72+so[k]*0.28;
+      if(k>=3&&(k-3)%4===0&&(k-3)/4<THREADS){const i=(k-3)/4,th=this.th;
+        th.x[i]=F.x[k];th.xp[i]=th.xp[i]*0.72+F.xp[k]*0.28;
+        th.inS[i]=th.inS[i]*0.72+F.y[k]*0.28;th.outS[i]=th.outS[i]*0.72+shOut*0.28;
+        th.en[i]=th.en[i]*0.72+clamp(Math.log1p(F.E[k])/9,0,1)*0.28;}
+    }
+    for(let i=0;i<CELLS;i++){
+      this.sIn[i]=this.sIn[i]*0.72+clamp(Math.log1p(bi[i])/9,0,1)*0.28;
+      this.sOut[i]=this.sOut[i]*0.72+clamp(Math.log1p(bo[i])/9,0,1)*0.28;}
+    this.mono=den>0?num/den:1;
+  }
+}
+
+/* ================= the glass cloud, after GeometricFieldDisplay.cpp (440 x 440 design space) ================= */
+const RELIEF=0.34, EFULL=0.42, TFLOOR=0.12;
+// The camera the cube opens on, and returns to on double-click. The plug-in's 10A view: turned 30°, eye 17.5° up.
+// One constant, so a new default angle is a one-line change.
+const VIEW_DEFAULT={yaw:30,elevation:17.5};
+const VIEW_ELEVATION_MIN=5, VIEW_ELEVATION_MAX=60;   // the plug-in's clamp (PR #5): nearly level to looking down
+const lvl=v=>clamp(v/EFULL,0,1);
+const uFor=c=>-1+2*c/(COLS-1), vFor=r=>-1+2*r/(ROWS-1);
+const colFor=x=>Math.round((clamp(x/1.6,-1,1)*0.5+0.5)*(COLS-1));
+const rowFor=s=>Math.round(Math.sqrt(clamp(s/1.5,0,1))*(ROWS-1));
+function rr(cx,x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
+function drawCloud(cv,eng,view){
+  view=view||VIEW_DEFAULT;
+  const cx=cv.getContext('2d');const sc=cv.width/440;
+  cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,cv.width,cv.height);cx.setTransform(sc,0,0,sc,0,0);
+  const plate={x:0,y:0,w:440,h:414};
+  // A card in the shell's hue (PR #6): lit from the top left, sinking toward the foot.
+  const cg=cx.createLinearGradient(plate.x,plate.y,plate.w*0.6,plate.h);cg.addColorStop(0,'#241e2c');cg.addColorStop(1,'#16121b');
+  cx.fillStyle=cg;rr(cx,plate.x,plate.y,plate.w,plate.h,14);cx.fill();
+  cx.strokeStyle=rgba(CREAM,.07);cx.lineWidth=1;rr(cx,0.5,0.5,439,413,14);cx.stroke();
+  cx.save();rr(cx,plate.x,plate.y,plate.w,plate.h,14);cx.clip();
+  const plot={x:16,y:18,w:408,h:368};
+  const el=view.elevation*PI/180,sinE=Math.sin(el),cosE=Math.cos(el),yaw=view.yaw*PI/180,cy=Math.cos(yaw),sy=Math.sin(yaw);
+  // Sized for the widest a turning square gets (its diagonal), so the cube does not breathe as it turns.
+  const reach=Math.SQRT2,fhd=reach*sinE;
+  const span=Math.min(plot.w/(2*reach),(plot.h-8)/(2*fhd+2*cosE));
+  const cube=2*span*cosE;
+  const fc={x:plot.x+plot.w/2,y:plot.y+plot.h-fhd*span-6};
+  const P=(u,v,h)=>[fc.x+(u*cy-v*sy)*span,fc.y+(u*sy+v*cy)*span*sinE-h*cube];
+  const line=(a,b,w)=>{cx.lineWidth=w;cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.stroke();};
+  const quad=(a,b,c,d)=>{cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.lineTo(c[0],c[1]);cx.lineTo(d[0],d[1]);cx.closePath();};
+  // the floor: one plate under the output, its lattice in thirds, and no glass (PR #6)
+  quad(P(-1,-1,0),P(1,-1,0),P(1,1,0),P(-1,1,0));cx.fillStyle=rgba(PINK,.03);cx.fill();cx.strokeStyle=rgba(CREAM,.24);cx.lineWidth=0.8;cx.stroke();
+  cx.strokeStyle=rgba(CREAM,.07);
+  for(const t of [-1/3,1/3]){line(P(t,-1,0),P(t,1,0),0.7);line(P(-1,t,0),P(1,t,0),0.7);}
+  const cloud=(cells,ceil)=>{
+    for(let r=0;r<ROWS;r++){const v=vFor(r);
+      for(let c=0;c<COLS;c++){const t=lvl(cells[r*COLS+c]);
+        if(t<=0.02&&((c&1)||(r&1)))continue;
+        const pt=P(uFor(c),v,ceil?1-t*RELIEF:t*RELIEF);
+        const warm=clamp((t-0.12)/0.6,0,1);
+        const col=ceil?mixc(MAUVE,CREAM,t):mixc(mixc(MAUVE,PINK,warm),BLUSH,warm*warm*0.6);
+        const rad=0.7+(ceil?0.6:1.0)*t;
+        cx.fillStyle=rgba(col,ceil?0.30+0.45*t:0.42+0.55*t);cx.fillRect(pt[0]-rad,pt[1]-rad,rad*2,rad*2);}}};
+  cloud(eng.sIn,true);
+  const th=eng.th;let loud=null;
+  for(let i=0;i<THREADS;i++){const e=th.en[i];if(e<TFLOOR)continue;
+    const w=clamp((e-TFLOOR)/0.45,0,1),c=colFor(th.x[i]),ri=rowFor(th.inS[i]),ro=rowFor(th.outS[i]);
+    const top=P(uFor(c),vFor(ri),1-lvl(eng.sIn[ri*COLS+c])*RELIEF),bot=P(uFor(c),vFor(ro),lvl(eng.sOut[ro*COLS+c])*RELIEF);
+    const tk=0.6+0.5*w;
+    // a curve that leaves its input straight down and lands straight down: a bin left alone hangs plumb,
+    // a moved one swings through an S whose sweep is the move. Cream to pink along it.
+    const dy=(bot[1]-top[1])*0.45,c1=[top[0],top[1]+dy],c2=[bot[0],bot[1]-dy];
+    let prev=top;const a0=0.05+0.15*w,a1=0.12+0.42*w;
+    for(let k=1;k<=12;k++){const t=k/12,m=1-t,A=m*m*m,B=3*m*m*t,C=3*m*t*t,D=t*t*t;
+      const nx=[top[0]*A+c1[0]*B+c2[0]*C+bot[0]*D,top[1]*A+c1[1]*B+c2[1]*C+bot[1]*D],al=(k-0.5)/12;
+      cx.strokeStyle=rgba(mixc(CREAM,PINK,al),a0+(a1-a0)*al);line(prev,nx,tk);prev=nx;}
+    if(!loud||e>loud.e)loud={e,top,bot,sIn:th.inS[i],sOut:th.outS[i]};}
+  // a soft pink bloom where the loudest bin lands
+  if(loud){const b=26+18*clamp((loud.e-TFLOOR)/0.45,0,1);const g=cx.createRadialGradient(loud.bot[0],loud.bot[1],0,loud.bot[0],loud.bot[1],b);
+    g.addColorStop(0,rgba(PINK,.22));g.addColorStop(1,rgba(PINK,0));cx.fillStyle=g;cx.beginPath();cx.arc(loud.bot[0],loud.bot[1],b,0,TAU);cx.fill();}
+  cloud(eng.sOut,false);
+  // callouts: the loudest thread's two ends, each on a leader to a small mono label in the margin
+  if(loud){const inner={x:18,y:30,r:422,b:384},labelW=64;
+    const callout=(at,left,value,note,tint)=>{
+      const y=clamp(at[1],inner.y+10,inner.b-22),edge=left?inner.x+labelW:inner.r-labelW,dot=edge+(left?4:-4);
+      const elbow=left?Math.min(at[0]-12,edge+28):Math.max(at[0]+12,edge-28);
+      cx.strokeStyle=rgba(CREAM,.28);cx.lineWidth=0.7;cx.beginPath();cx.moveTo(dot,y);cx.lineTo(elbow,y);cx.lineTo(at[0],at[1]);cx.stroke();
+      cx.fillStyle=rgba(CREAM,.28);cx.beginPath();cx.arc(dot,y,2,0,TAU);cx.fill();
+      cx.fillStyle=rgba(tint,1);cx.beginPath();cx.arc(at[0],at[1],1.7,0,TAU);cx.fill();
+      cx.font='9px '+MONO;track(cx,0.7);cx.textBaseline='middle';cx.textAlign=left?'right':'left';
+      const tx=left?inner.x+labelW-6:edge+6;
+      cx.fillStyle=rgba(CREAM,.78);cx.fillText(value,tx,y-6.5);cx.fillStyle=rgba(tint,.80);cx.fillText(note,tx,y+6.5);};
+    callout(loud.top,true,'SIDE '+loud.sIn.toFixed(2),'IN',CREAM);
+    const moved=loud.sOut-loud.sIn;
+    callout(loud.bot,false,'SIDE '+loud.sOut.toFixed(2),(moved>=0?'+':'')+moved.toFixed(2),PINK);}
+  cx.font='9px '+BODY;track(cx,2.7);cx.textBaseline='alphabetic';
+  cx.fillStyle=rgba(CREAM,.55);cx.textAlign='left';cx.fillText('INPUT',18,24);
+  cx.fillStyle=rgba(PINK,.80);cx.fillText('OUTPUT',18,400);
+  cx.font='8.5px '+MONO;track(cx,0.7);cx.fillStyle=rgba(CREAM,.32);cx.textAlign='right';cx.fillText('LOG f × SIDE SHARE × ENERGY',422,400);
+  cx.restore();
+  const pairs=[['FIELD','96×32'],['MONO',eng.mono.toFixed(2)],['LATENCY','1060']];
+  cx.font='9.5px '+BODY;track(cx,2.3);cx.textBaseline='middle';
+  pairs.forEach((pr,i)=>{const x0=i*440/3,cw=440/3;
+    cx.fillStyle=rgba(CREAM,.34);cx.textAlign='right';cx.fillText(pr[0],x0+cw/2-5,427);
+    cx.font='10px '+MONO;track(cx,0.8);cx.fillStyle=rgba(CREAM,.78);cx.textAlign='left';cx.fillText(pr[1],x0+cw/2,427);
+    cx.font='9.5px '+BODY;track(cx,2.3);});
+  track(cx,0);cx.textBaseline='alphabetic';
+}
+
+/* ================= visibility: draw only what is on screen (everything draws once at load) ================= */
+const vis={};
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{vis[e.target.id]=e.isIntersecting;}),{rootMargin:'120px'});
+  document.querySelectorAll('canvas[id]').forEach(c=>{vis[c.id]=true;io.observe(c);});}
+const seen=id=>vis[id]!==false;
+
+/* segmented-control helper */
+function seg(host,labels,active,onPick,attr){host.innerHTML='';
+  labels.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.setAttribute('aria-pressed',i===active?'true':'false');
+    b.addEventListener('click',()=>{host.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));onPick(i);kick();});host.appendChild(b);});}
+
+/* ================= HERO ================= */
+const heroCv=document.getElementById('hero');
+const heroEng=new Engine();
+let heroP=presetCopy('FIELD SPIN');
+seg(document.getElementById('heroPresets'),PRESET_NAMES,4,i=>{heroP=presetCopy(PRESET_NAMES[i]);document.getElementById('h-preset').textContent=PRESET_NAMES[i];syncHeroR();});
+// Drag to turn the cube, as the plug-in (PR #5): sideways turns it with the near side following the hand,
+// a drag across the whole panel is one full turn; dragging down tilts toward looking from above, 5-60°.
+// Shift-drag sets RADIUS instead; the slider under the cube does the same. Double-click returns the view.
+const heroView=Object.assign({},VIEW_DEFAULT);let heroDragging=false,heroDragEnd=-1e9;
+const heroR=document.getElementById('h-r');
+const syncHeroR=()=>{heroR.value=Math.round(toNorm('radius',heroP.radius)*1000);document.getElementById('h-radius').textContent=heroP.radius.toFixed(3);};
+heroR.addEventListener('input',()=>{heroP.radius=fromNorm('radius',heroR.value/1000);syncHeroR();});
+(function(){let drag=null;
+  heroCv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw:heroView.yaw,el:heroView.elevation,n:toNorm('radius',heroP.radius),radius:e.shiftKey};
+    heroCv.setPointerCapture(e.pointerId);heroCv.style.cursor=drag.radius?'ew-resize':'grabbing';heroDragging=!drag.radius;});
+  heroCv.addEventListener('pointermove',e=>{if(!drag)return;const r=heroCv.getBoundingClientRect();
+    const dx=(e.clientX-drag.x)/r.width,dy=(e.clientY-drag.y)/r.height;
+    if(drag.radius){heroP.radius=fromNorm('radius',drag.n+dx);syncHeroR();}
+    else{heroView.yaw=((drag.yaw-dx*360)%360+360)%360;
+      if(e.pointerType==='mouse'||e.pointerType==='pen')heroView.elevation=clamp(drag.el+dy*120,VIEW_ELEVATION_MIN,VIEW_ELEVATION_MAX);}
+    kick();});
+  const end=()=>{if(drag&&!drag.radius)heroDragEnd=performance.now();drag=null;heroDragging=false;heroCv.style.cursor='';kick();};
+  heroCv.addEventListener('pointerup',end);heroCv.addEventListener('pointercancel',end);
+  heroCv.addEventListener('dblclick',()=>{Object.assign(heroView,VIEW_DEFAULT);kick();});
+})();
+syncHeroR();
+function drawHero(t,dt){
+  heroEng.step(heroP,t,dt);
+  if(!seen('hero'))return;
+  drawCloud(heroCv,heroEng,heroView);
+  // the view readout: shown while dragging, gone about a second after release
+  const since=performance.now()-heroDragEnd,a=heroDragging?1:clamp(1-(since-900)/400,0,1);
+  if(a>0){const cx=heroCv.getContext('2d');const sc=heroCv.width/440;cx.setTransform(sc,0,0,sc,0,0);
+    cx.font='500 9px '+MONO;track(cx,1.4);cx.textAlign='right';cx.fillStyle=rgba(CREAM,0.75*a);
+    cx.fillText('TURN '+Math.round(heroView.yaw)+'°  TILT '+heroView.elevation.toFixed(1)+'°',422,24);track(cx,0);cx.textAlign='left';}
+  document.getElementById('h-view').textContent=Math.round(heroView.yaw)+'° · '+heroView.elevation.toFixed(1)+'°';
+  document.getElementById('h-rot').textContent=deg(heroEng.rot);
+}
+
+/* ================= LAB ================= */
+const labEng=new Engine();
+let labP=presetCopy('WIDE FIELD');
+const LABCTRL=['origin','radius','angle','rotation','ratio','span','symmetry','gravity'];
+const labInputs={};
+function buildCtrls(host,keys,obj,store,prefix){
+  keys.forEach(k=>{const P_=PARAM[k];const d=document.createElement('div');d.className='ctrl';d.dataset.k=k;
+    d.innerHTML=`<label for="${prefix}-${k}">${P_.label}<output id="${prefix}-${k}-o"></output></label><input type="range" id="${prefix}-${k}" min="0" max="1000" step="1">`;
+    host.appendChild(d);const inp=d.querySelector('input'),out=d.querySelector('output');
+    store[k]={inp,out,div:d,sync:()=>{inp.value=Math.round(toNorm(k,obj()[k])*1000);out.textContent=P_.fmt(obj()[k]);}};
+    inp.addEventListener('input',()=>{obj()[k]=fromNorm(k,inp.value/1000);out.textContent=P_.fmt(obj()[k]);stopSweep();});
+    inp.addEventListener('dblclick',()=>{obj()[k]=P_.def;store[k].sync();});
+    store[k].sync();});}
+buildCtrls(document.getElementById('ctrls'),LABCTRL,()=>labP,labInputs,'lab');
+const syncLab=()=>LABCTRL.forEach(k=>labInputs[k].sync());
+const labSeg=document.getElementById('labPresets');
+seg(labSeg,PRESET_NAMES.slice(0,5).concat(['COLLAPSE']),1,i=>{labP=presetCopy(PRESET_NAMES[i]);stopSweep();syncLab();});
+document.getElementById('t-reset').addEventListener('click',()=>{labP=presetCopy('INIT');stopSweep();syncLab();
+  labSeg.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));kick();});
+// SHOW IN THE LAB
+let sweep=null;
+function stopSweep(){if(sweep){labInputs[sweep.k]&&labInputs[sweep.k].div.classList.remove('on');sweep=null;}}
+document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>{
+  stopSweep();const k=b.dataset.show;labP=presetCopy(k==='gravity'||k==='span'?'WIDE FIELD':'INIT');
+  if(k==='rotation'||k==='angle')labP.radius=1.6;
+  sweep={k,t0:performance.now()};labInputs[k].div.classList.add('on');syncLab();
+  document.getElementById('lab').scrollIntoView({behavior:reduce?'auto':'smooth'});kick();}));
+function runSweep(now){if(!sweep)return;const u=(now-sweep.t0)/1000;if(u>12){stopSweep();return;}
+  const n=0.5-0.5*Math.cos(u*TAU/6);const k=sweep.k;const n0=toNorm(k,PARAM[k].min),n1=toNorm(k,PARAM[k].max);
+  labP[k]=fromNorm(k,n0+(n1-n0)*n);labInputs[k].sync();}
+
+const labPlane=document.getElementById('labplane'),labSpec=document.getElementById('labspec');
+const PL={x0:44,x1:424,y0:352,y1:40,xmin:-3,xmax:3,ymax:4};
+// Side share on a square-root scale, as the display's rows: room for the 4.0 ceiling without crushing 0..1
+const plx=x=>PL.x0+(x-PL.xmin)/(PL.xmax-PL.xmin)*(PL.x1-PL.x0), ply=y=>PL.y0+Math.sqrt(clamp(y,0,PL.ymax)/PL.ymax)*(PL.y1-PL.y0);
+function mapPoint(p,rot,x,y){ // the transform on a bare (x, y), for the lattice
+  const sh=Math.tan(p.angle*PI/180)*0.9,aniso=Math.abs(p.ratio-1)>0.0005,ax=aniso?p.radius*p.ratio:p.radius,ay=aniso?p.radius/p.ratio:p.radius;
+  const gam=Math.abs(p.gravity)>0.001?Math.pow(2,p.gravity*0.02):1;const yy=Math.pow(Math.max(0,y),gam);
+  const c=Math.cos(rot*PI/180),s=Math.sin(rot*PI/180),shIn=x+p.symmetry*0.01*(Math.abs(x)-x);
+  const sx=ax*x,sy=ay*(yy+sh*shIn);return [c*sx-s*sy,s*sx+c*sy];}
+function drawPlane(){
+  const cx=labPlane.getContext('2d');const sc=labPlane.width/440;
+  cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,labPlane.width,labPlane.height);cx.setTransform(sc,0,0,sc,0,0);
+  cx.fillStyle='#08070c';cx.fillRect(0,0,440,400);
+  cx.save();cx.beginPath();cx.rect(PL.x0,PL.y1,PL.x1-PL.x0,PL.y0-PL.y1);cx.clip();
+  // grid
+  cx.lineWidth=1;cx.strokeStyle=rgba(CREAM,.05);
+  for(let x=-3;x<=3;x++){cx.beginPath();cx.moveTo(plx(x),PL.y1);cx.lineTo(plx(x),PL.y0);cx.stroke();}
+  for(const y of [0.25,1,2.25]){cx.beginPath();cx.moveTo(PL.x0,ply(y));cx.lineTo(PL.x1,ply(y));cx.stroke();}
+  // the moved plane
+  const rot=labEng.rot;cx.strokeStyle=rgba(PINK,.22);cx.lineWidth=0.9;
+  for(let gx=-2.5;gx<=2.5001;gx+=0.5){cx.beginPath();for(let i=0;i<=24;i++){const q=mapPoint(labP,rot,gx,i/24);i?cx.lineTo(plx(q[0]),ply(q[1])):cx.moveTo(plx(q[0]),ply(q[1]));}cx.stroke();}
+  for(const gy of [0,0.1,0.25,0.5,0.75,1]){cx.beginPath();for(let i=0;i<=40;i++){const q=mapPoint(labP,rot,-2.5+i/8,gy);i?cx.lineTo(plx(q[0]),ply(q[1])):cx.moveTo(plx(q[0]),ply(q[1]));}cx.stroke();}
+  // threads
+  const th=labEng.th;
+  for(let i=0;i<THREADS;i++){const e=th.en[i];if(e<TFLOOR)continue;const w=clamp((e-TFLOOR)/0.45,0,1);
+    const a=[plx(th.x[i]),ply(th.inS[i])],b=[plx(th.xp[i]),ply(th.outS[i])];
+    cx.strokeStyle=rgba(CREAM,0.04+0.10*w);cx.lineWidth=0.7;cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.stroke();
+    cx.fillStyle=rgba(ICE,0.35+0.5*w);cx.beginPath();cx.arc(a[0],a[1],1.2+1.6*w,0,TAU);cx.fill();
+    cx.fillStyle=rgba(GOLD,0.45+0.55*w);cx.beginPath();cx.arc(b[0],b[1],1.3+1.9*w,0,TAU);cx.fill();}
+  cx.restore();
+  // axes and the ORIGIN cross
+  cx.strokeStyle=rgba(CREAM,.18);cx.lineWidth=1;cx.strokeRect(PL.x0,PL.y1,PL.x1-PL.x0,PL.y0-PL.y1);
+  cx.strokeStyle=rgba(PINK,.6);cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(plx(0),PL.y1);cx.lineTo(plx(0),PL.y0);cx.stroke();cx.setLineDash([]);
+  cx.font='8px '+MONO;cx.fillStyle=rgba(CREAM,.42);cx.textAlign='right';
+  for(const y of [0,0.25,1,2.25,4])cx.fillText(String(y),PL.x0-6,ply(y)+3);
+  cx.textAlign='center';for(const x of [-3,-2,-1,0,1,2,3])cx.fillText(x===0?'ORIGIN':String(x).replace('-','−'),plx(x),PL.y0+13);
+  cx.textAlign='left';cx.font='500 8.5px '+MONO;track(cx,1.6);cx.fillStyle=rgba(CREAM,.45);cx.fillText('THE PLANE',PL.x0,26);
+  track(cx,0);cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.38);cx.fillText('↑ SIDE SHARE',PL.x0+6,PL.y1+12);
+  cx.textAlign='center';cx.fillText('x · OCTAVES FROM ORIGIN ÷ SPAN   →   x′ · SETS THE DELAY TAP',(PL.x0+PL.x1)/2,388);
+  cx.textAlign='right';cx.fillStyle=rgba(PINK,.75);cx.fillText('ROTATION '+deg(rot),PL.x1,26);cx.textAlign='left';
+}
+const SX0=56,SX1=532,fx=f=>SX0+(Math.log10(f)-Math.log10(20))/3*(SX1-SX0);
+const SY0=46,SY1=262,dbTop=40,dbBot=-24,dy=d=>SY0+(dbTop-clamp(d,dbBot,dbTop))/(dbTop-dbBot)*(SY1-SY0);
+const TY0=300,TY1=372;
+const db=m=>20*Math.log10(Math.max(m,1e-4));
+function bandDb(arrO,arrI,f){const k0=Math.max(1,Math.round(f/1.12/BINHZ)),k1=Math.max(k0,Math.round(f*1.12/BINHZ));let o=0,i=0;for(let k=k0;k<=k1;k++){o+=arrO[k];i+=arrI[k];}return db(o)-db(i);}
+const fmtDb=v=>(Math.abs(v)<0.05?'0.0':(v>0?'+':'')+v.toFixed(1)).replace('-','−')+' dB';
+function drawSpec(){
+  const cx=labSpec.getContext('2d');const sc=labSpec.width/550;
+  cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,labSpec.width,labSpec.height);cx.setTransform(sc,0,0,sc,0,0);
+  cx.fillStyle='#08070c';cx.fillRect(0,0,550,400);
+  cx.font='8px '+MONO;cx.lineWidth=1;
+  for(const f of [20,50,100,200,500,1000,2000,5000,10000,20000]){cx.strokeStyle=rgba(CREAM,.05);cx.beginPath();cx.moveTo(fx(f),SY0);cx.lineTo(fx(f),TY1);cx.stroke();
+    cx.fillStyle=rgba(CREAM,.38);cx.textAlign='center';cx.fillText(f>=1000?(f/1000)+'k':String(f),fx(f),TY1+14);}
+  cx.textAlign='right';for(const d of [40,20,0,-20]){cx.strokeStyle=rgba(CREAM,.05);cx.beginPath();cx.moveTo(SX0,dy(d));cx.lineTo(SX1,dy(d));cx.stroke();cx.fillStyle=rgba(CREAM,.38);cx.fillText(String(d).replace('-','−'),SX0-6,dy(d)+3);}
+  const curve=(arr,col,w,fill)=>{cx.beginPath();let first=true;
+    for(let k=1;k<BINS-1;k++){const x=fx(k*BINHZ),y=dy(db(arr[k]));if(first){cx.moveTo(x,y);first=false;}else cx.lineTo(x,y);}
+    if(fill){cx.lineTo(fx((BINS-2)*BINHZ),SY1);cx.lineTo(fx(BINHZ),SY1);cx.closePath();cx.fillStyle=fill;cx.fill();}
+    else{cx.strokeStyle=col;cx.lineWidth=w;cx.stroke();}};
+  curve(labEng.smM,null,0,rgba(GREY,.16));
+  curve(labEng.smSi,rgba(ICE,.75),1.2);
+  curve(labEng.smSo,rgba(GOLD,.95),1.6);
+  // ORIGIN
+  cx.strokeStyle=rgba(PINK,.55);cx.setLineDash([3,4]);cx.beginPath();cx.moveTo(fx(labP.origin),SY0);cx.lineTo(fx(labP.origin),TY1);cx.stroke();cx.setLineDash([]);
+  // taps
+  cx.strokeStyle=rgba(CREAM,.10);cx.strokeRect(SX0,TY0,SX1-SX0,TY1-TY0);
+  let mn=1e9,mx=0;cx.strokeStyle=rgba(PINK,.9);cx.lineWidth=1.4;cx.beginPath();
+  for(let k=2;k<BINS-1;k++){const ms=tapMs(labEng.F.xp[k],320);mn=Math.min(mn,ms);mx=Math.max(mx,ms);
+    const x=fx(k*BINHZ),y=TY1-(ms/660)*(TY1-TY0);k>2?cx.lineTo(x,y):cx.moveTo(x,y);}
+  cx.stroke();
+  cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.38);cx.textAlign='right';cx.fillText('640 ms',SX0-6,TY0+6);cx.fillText('0',SX0-6,TY1+3);
+  cx.textAlign='left';cx.font='500 8.5px '+MONO;track(cx,1.6);cx.fillStyle=rgba(CREAM,.45);cx.fillText('WHAT YOU HEAR',SX0,26);
+  track(cx,0);cx.font='7.5px '+MONO;
+  cx.fillStyle=rgba(GREY,.9);cx.fillText('MID',SX0+150,26);cx.fillStyle=rgba(ICE,.9);cx.fillText('SIDE IN',SX0+186,26);cx.fillStyle=rgba(GOLD,.95);cx.fillText('SIDE OUT',SX0+240,26);
+  cx.fillStyle=rgba(PINK,.85);cx.fillText('DELAY TAP PER FREQUENCY',SX0+4,TY0+11);
+  cx.textAlign='right';cx.fillStyle=rgba(CREAM,.38);cx.fillText('dB',SX1,26);
+  document.getElementById('r-lo').textContent=fmtDb(bandDb(labEng.smSo,labEng.smSi,100));
+  document.getElementById('r-mid').textContent=fmtDb(bandDb(labEng.smSo,labEng.smSi,1000));
+  document.getElementById('r-hi').textContent=fmtDb(bandDb(labEng.smSo,labEng.smSi,10000));
+  document.getElementById('r-mono').textContent=labEng.mono.toFixed(2);
+  document.getElementById('r-taps').textContent=Math.round(mn)+'–'+Math.round(mx)+' ms';
+}
+function drawLab(t,dt){runSweep(performance.now());labEng.step(labP,t,dt);if(seen('labplane'))drawPlane();if(seen('labspec'))drawSpec();}
+
+/* ================= the four moves ================= */
+const GEO=[0,1,2,3].map(i=>document.getElementById('g'+i));
+const GPTS=[];for(let r=0;r<6;r++)for(let c=0;c<17;c++)GPTS.push([-2+c*0.25,r*0.18,c/16]);
+function drawGeo(t){
+  GEO.forEach((cv,i)=>{if(!seen(cv.id))return;
+    const cx=cv.getContext('2d');const sc=cv.width/360;cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,cv.width,cv.height);cx.setTransform(sc,0,0,sc,0,0);
+    cx.fillStyle='#08070c';cx.fillRect(0,0,360,200);
+    const p=presetCopy('INIT');let label='';const s=reduce&&!looping?0.7:Math.sin(t*0.55+i*0.9);
+    if(i===0){p.angle=48*s;label='ANGLE '+deg(p.angle);}
+    if(i===1){p.radius=1+0.75*s;p.ratio=Math.pow(2,0.9*Math.sin(t*0.33+1));label='RADIUS '+p.radius.toFixed(2)+'  RATIO '+p.ratio.toFixed(2);}
+    if(i===2){p.rotation=45*s;label='ROTATION '+deg(p.rotation);}
+    if(i===3){p.angle=35;p.symmetry=50+50*s;p.gravity=70*Math.sin(t*0.41+2);label='SYM '+p.symmetry.toFixed(0)+' %  GRAV '+spct(p.gravity);}
+    const X=x=>180+x*44,Y=y=>182-y*52;
+    cx.strokeStyle=rgba(CREAM,.10);cx.lineWidth=1;cx.beginPath();cx.moveTo(14,Y(0));cx.lineTo(346,Y(0));cx.stroke();
+    cx.strokeStyle=rgba(PINK,.55);cx.beginPath();cx.moveTo(X(0)-7,Y(0));cx.lineTo(X(0)+7,Y(0));cx.moveTo(X(0),Y(0)-7);cx.lineTo(X(0),Y(0)+7);cx.stroke();
+    // identity lattice, faint
+    for(const q of GPTS){cx.fillStyle=rgba(CREAM,.10);cx.fillRect(X(q[0])-0.8,Y(q[1])-0.8,1.6,1.6);}
+    // moved lattice lines
+    cx.strokeStyle=rgba(PINK,.20);cx.lineWidth=0.8;
+    for(let r=0;r<6;r++){cx.beginPath();for(let c=0;c<17;c++){const m=mapPoint(p,p.rotation,-2+c*0.25,r*0.18);const yy=Math.max(-0.12,m[1]);c?cx.lineTo(X(m[0]),Y(yy)):cx.moveTo(X(m[0]),Y(yy));}cx.stroke();}
+    for(const q of GPTS){const m=mapPoint(p,p.rotation,q[0],q[1]);const floor=m[1]<0;
+      cx.fillStyle=floor?rgba(PINK,.45):rgba(mixc(ICE,GOLD,q[2]),.9);cx.beginPath();cx.arc(X(m[0]),Y(Math.max(0,m[1])),floor?1.4:2.1,0,TAU);cx.fill();}
+    cx.font='500 8.5px '+MONO;track(cx,1.2);cx.fillStyle=rgba(CREAM,.55);cx.textAlign='left';cx.fillText(label,14,20);
+    track(cx,0);cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.32);cx.fillText('MONO FLOOR',14,Y(0)+12);
+    cx.textAlign='right';cx.fillText('LOW → HIGH',346,20);
+  });
+}
+
+/* ================= delay field ================= */
+const dEng={M:new Float32Array(BINS),S:new Float32Array(BINS),F:makeF()};programme(0.2,dEng.M,dEng.S,true);
+let dP=presetCopy('INIT');dP.delay=320;dP.feedback=58;dP.rotation=30;dP.radius=1.6;dP.origin=800;let dSync=0;
+const dInputs={};buildCtrls(document.getElementById('dctrls'),['delay','feedback','rotation','origin'],()=>dP,dInputs,'dl');
+seg(document.getElementById('dSync'),SYNC_NAMES,0,i=>{dSync=i;});
+const dCv=document.getElementById('delayfield');
+function drawDelay(now){
+  if(!seen('delayfield'))return;
+  transform(dP,dP.rotation,dEng.M,dEng.S,dEng.F);
+  const base=dSync?tempoDelayMs(dP.delay,BPM):dP.delay;
+  const cx=dCv.getContext('2d');const sc=dCv.width/550;cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,dCv.width,dCv.height);cx.setTransform(sc,0,0,sc,0,0);
+  cx.fillStyle='#08070c';cx.fillRect(0,0,550,260);
+  const X0=56,X1=532,Y0=34,Y1=228;const T=Math.min(4000,Math.max(700,base*4.2));
+  const xf=f=>X0+(Math.log10(f)-Math.log10(30))/(Math.log10(20000)-Math.log10(30))*(X1-X0), ty=ms=>Y0+ms/T*(Y1-Y0);
+  cx.font='8px '+MONO;cx.lineWidth=1;
+  for(const f of [50,100,200,500,1000,2000,5000,10000]){cx.strokeStyle=rgba(CREAM,.05);cx.beginPath();cx.moveTo(xf(f),Y0);cx.lineTo(xf(f),Y1);cx.stroke();cx.fillStyle=rgba(CREAM,.38);cx.textAlign='center';cx.fillText(f>=1000?(f/1000)+'k':String(f),xf(f),Y1+14);}
+  const step=T>2000?1000:T>1000?500:250;cx.textAlign='right';
+  for(let ms=0;ms<=T;ms+=step){cx.strokeStyle=rgba(CREAM,.05);cx.beginPath();cx.moveTo(X0,ty(ms));cx.lineTo(X1,ty(ms));cx.stroke();cx.fillStyle=rgba(CREAM,.38);cx.fillText(ms+' ms',X0-6,ty(ms)+3);}
+  // the hit, every two bars at 120 BPM = 4 s
+  const play=reduce&&!looping?base*1.5:(now%4000);
+  cx.strokeStyle=rgba(CREAM,.10);cx.beginPath();cx.moveTo(X0,ty(base));cx.lineTo(X1,ty(base));cx.stroke();
+  cx.fillStyle=rgba(CREAM,.45);cx.textAlign='left';cx.textAlign='right';cx.fillText('DELAY '+base.toFixed(0)+' ms'+(dSync?' · SNAPPED TO TEMPO':''),X1-4,ty(base)-4);
+  let mn=1e9,mx=0;const fb=dP.feedback*0.01;
+  for(let i=0;i<THREADS;i++){const k=3+4*i;if(k>=BINS-1)break;const f=k*BINHZ;if(f<30)continue;
+    const tap=tapMs(dEng.F.xp[k],base);mn=Math.min(mn,tap);mx=Math.max(mx,tap);const x=xf(f);
+    const en=clamp(Math.log1p(dEng.F.E[k])/9/0.42,0.15,1);
+    for(let n=1;n<40;n++){const tm=n*tap;if(tm>T)break;const amp=Math.pow(fb,n-1);if(amp<0.02)break;
+      const since=play-tm;const lit=since>=0?Math.exp(-since/380):0;
+      const a=(0.22+0.78*lit)*Math.sqrt(amp)*en;const col=mixc(GOLD,PINK,clamp(n/6,0,1));
+      cx.fillStyle=rgba(col,a);cx.beginPath();cx.arc(x,ty(tm),1.4+2.4*Math.sqrt(amp)*(0.5+lit),0,TAU);cx.fill();}
+    // the hit itself at 0
+    const hl=Math.exp(-play/260);cx.fillStyle=rgba(ICE,0.2+0.7*hl*en);cx.fillRect(x-0.8,Y0-3,1.6,3+4*hl);}
+  // tap line
+  cx.strokeStyle=rgba(PINK,.55);cx.lineWidth=1.2;cx.beginPath();
+  for(let k=2;k<BINS-1;k++){const f=k*BINHZ;if(f<30)continue;const y=ty(tapMs(dEng.F.xp[k],base));const x=xf(f);k>2?cx.lineTo(x,y):cx.moveTo(x,y);}cx.stroke();
+  cx.strokeStyle=rgba(GOLD,.55);cx.beginPath();cx.moveTo(X0,ty(Math.min(play,T)));cx.lineTo(X1,ty(Math.min(play,T)));cx.stroke();
+  cx.font='500 8.5px '+MONO;track(cx,1.6);cx.fillStyle=rgba(CREAM,.45);cx.textAlign='left';cx.fillText('ECHOES PER FREQUENCY',X0,20);track(cx,0);
+  cx.textAlign='right';cx.font='7.5px '+MONO;cx.fillStyle=rgba(PINK,.8);cx.fillText('PINK LINE · FIRST TAP   DOTS · REPEATS, FADING WITH FEEDBACK',X1,20);
+  document.getElementById('d-base').textContent=base.toFixed(0)+' ms';
+  document.getElementById('d-min').textContent=mn.toFixed(1)+' ms';
+  document.getElementById('d-max').textContent=mx.toFixed(0)+' ms';
+}
+
+/* ================= SPIN / WARP / FREEZE / ORBIT ================= */
+const S0=document.getElementById('s0'),S1=document.getElementById('s1'),S2=document.getElementById('s2'),S3=document.getElementById('s3');
+function prep(cv){const cx=cv.getContext('2d');const sc=cv.width/360;cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,cv.width,cv.height);cx.setTransform(sc,0,0,sc,0,0);cx.fillStyle='#08070c';cx.fillRect(0,0,360,200);return cx;}
+function caption(cx,l,r,rc){cx.font='500 8.5px '+MONO;track(cx,1.2);cx.fillStyle=rgba(CREAM,.55);cx.textAlign='left';cx.fillText(l,14,20);track(cx,0);
+  if(r){cx.font='7.5px '+MONO;cx.fillStyle=rc||rgba(CREAM,.38);cx.textAlign='right';cx.fillText(r,346,20);}}
+// SPIN: a mono chord on a vectorscope (vertical = mono). Side = spin x quadrature Mid, sign by quarter-unit band of x', turned by spin*pi*x'
+const SP=[[110,1],[220,0.7],[440,0.55],[1320,0.4],[3960,0.3]].map(([f,a],i)=>{const x=Math.log2(f/1000)/3.5;return {f,a,x,sg:(Math.floor(x*4)&1)===0?1:-1,ph:i*1.7};});
+function drawSpin(t){if(!seen('s0'))return;const cx=prep(S0);
+  const spin=reduce&&!looping?0.35:0.62*(0.5-0.5*Math.cos(t*0.45));
+  const C=[110,108],R=78;
+  cx.strokeStyle=rgba(CREAM,.10);cx.lineWidth=1;cx.beginPath();cx.arc(C[0],C[1],R,0,TAU);cx.stroke();
+  cx.beginPath();cx.moveTo(C[0],C[1]-R);cx.lineTo(C[0],C[1]+R);cx.moveTo(C[0]-R,C[1]);cx.lineTo(C[0]+R,C[1]);cx.stroke();
+  let mm=0,ss=0;const n=900;cx.fillStyle=rgba(GOLD,.5);
+  for(let i=0;i<n;i++){const tt=t*0.01+i/48000*2.2;let m=0,s=0;
+    for(const p of SP){const w=TAU*p.f*tt+p.ph;m+=p.a*Math.cos(w);s+=spin*p.sg*p.a*-Math.sin(w+spin*PI*p.x);}
+    mm+=m*m;ss+=s*s;const k=R/3.4;cx.fillRect(C[0]+s*k*1.3-0.7,C[1]-m*k-0.7,1.4,1.4);}
+  cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.38);cx.textAlign='center';cx.fillText('M',C[0],C[1]-R-5);cx.fillText('S',C[0]+R+8,C[1]+3);
+  const sideDb=ss>0?10*Math.log10(ss/mm):-Infinity;
+  cx.textAlign='left';cx.font='8px '+MONO;
+  const rows=[['SPIN',(spin*100).toFixed(0)+' %'],['SIDE RE MID',isFinite(sideDb)&&sideDb>-60?sideDb.toFixed(1).replace('-','−')+' dB':'-'],['L + R','UNCHANGED'],['MID','UNTOUCHED']];
+  rows.forEach((r,i)=>{cx.fillStyle=rgba(CREAM,.38);cx.fillText(r[0],222,70+i*26);cx.fillStyle=i?rgba(GOLD,.9):rgba(PINK,.95);cx.fillText(r[1],222,82+i*26);});
+  caption(cx,'VECTORSCOPE · MONO IN','VERTICAL LINE = MONO');}
+// WARP: Mid partials above the axis stay; Side partials below slide by 2^(warp/12)
+function drawWarp(t){if(!seen('s1'))return;const cx=prep(S1);
+  const w=reduce&&!looping?7:12*Math.sin(t*0.32);const r=Math.pow(2,w/12);
+  const lx=f=>20+(Math.log10(f)-2)/(Math.log10(8000)-2)*320;const AX=104;
+  cx.strokeStyle=rgba(CREAM,.16);cx.beginPath();cx.moveTo(14,AX);cx.lineTo(346,AX);cx.stroke();
+  cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.32);cx.textAlign='center';
+  for(const f of [100,250,500,1000,2000,4000]){cx.fillText(f>=1000?(f/1000)+'k':String(f),lx(f),AX+4+90);cx.strokeStyle=rgba(CREAM,.05);cx.beginPath();cx.moveTo(lx(f),34);cx.lineTo(lx(f),184);cx.stroke();}
+  for(let h=1;h<=10;h++){const f=196*h,a=60/Math.pow(h,0.7);cx.fillStyle=rgba(CREAM,.55);cx.fillRect(lx(f)-1,AX-a,2,a);}
+  const side=[262,330,392,523,659,784,1047,1319];
+  side.forEach((f,i)=>{const a=52/Math.pow(i+1,0.45);cx.fillStyle=rgba(ICE,.16);cx.fillRect(lx(f)-1,AX+1,2,a);
+    const g=f*r;if(g>100&&g<8000){cx.fillStyle=rgba(GOLD,.9);cx.fillRect(lx(g)-1.2,AX+1,2.4,a);}});
+  cx.textAlign='left';cx.fillStyle=rgba(CREAM,.40);cx.fillText('MID · STAYS',14,40);cx.fillText('SIDE · MOVES',14,AX+16);
+  caption(cx,'WARP '+(w>0?'+':'')+w.toFixed(2).replace('-','−')+' st','× '+r.toFixed(3),rgba(GOLD,.9));}
+// FREEZE: Mid waterfall keeps moving; Side waterfall holds from the press
+const FZ={cols:[],held:null,mix:0,auto:true,on:false,last:0,tAuto:0};const FZROWS=22,FZCOLS=72;
+function pattern(seed,rows){const a=[];let s=seed>>>0;for(let r=0;r<rows;r++){s=(Math.imul(s,1664525)+1013904223)>>>0;a.push(Math.pow((s>>>8)/16777216,2.2));}return a;}
+const fzBtn=document.getElementById('fz');
+function setFreeze(v){FZ.on=v;fzBtn.setAttribute('aria-pressed',v?'true':'false');}
+fzBtn.addEventListener('click',()=>{FZ.auto=false;setFreeze(!FZ.on);kick();});
+S2.addEventListener('click',()=>{FZ.auto=false;setFreeze(!FZ.on);kick();});S2.style.cursor='pointer';
+function stepFreeze(t){
+  if(FZ.auto){const ph=Math.floor(t/5)%2===1;if(ph!==FZ.on)setFreeze(ph);}
+  if(t-FZ.last<1/14&&FZ.cols.length)return;FZ.last=t;
+  const beat=Math.floor(t*2);const mid=pattern(beat*7919+3,FZROWS),liveSide=pattern(beat*104729+11,FZROWS);
+  if(FZ.on&&!FZ.held)FZ.held=liveSide.slice();
+  FZ.mix=FZ.on?Math.min(1,FZ.mix+0.5):Math.max(0,FZ.mix-0.5);
+  if(!FZ.on&&FZ.mix<=0)FZ.held=null;
+  const side=liveSide.map((v,i)=>FZ.held?v+(FZ.held[i]*(0.9+0.2*Math.random())-v)*FZ.mix:v);
+  FZ.cols.push({mid,side,f:FZ.mix});if(FZ.cols.length>FZCOLS)FZ.cols.shift();}
+function drawFreeze(t){stepFreeze(t);if(!seen('s2'))return;const cx=prep(S2);
+  const X0=58,X1=346,cw=(X1-X0)/FZCOLS,band=(y0,key,col)=>{const h=64/FZROWS;
+    FZ.cols.forEach((c,i)=>{c[key].forEach((v,r)=>{if(v<0.04)return;cx.fillStyle=rgba(col,0.08+0.8*v);cx.fillRect(X0+i*cw,y0+64-(r+1)*h,cw+0.3,h-0.6);});
+      if(key==='side'&&c.f>0){cx.fillStyle=rgba(PINK,0.5*c.f);cx.fillRect(X0+i*cw,y0+66,cw+0.3,2);}});};
+  band(34,'mid',CREAM);band(116,'side',GOLD);
+  cx.font='7.5px '+MONO;cx.textAlign='left';cx.fillStyle=rgba(CREAM,.42);cx.fillText('MID',14,70);cx.fillText('LIVE',14,80);
+  cx.fillStyle=rgba(GOLD,.8);cx.fillText('SIDE',14,152);cx.fillStyle=FZ.on?rgba(PINK,.95):rgba(CREAM,.42);cx.fillText(FZ.on?'HELD':'LIVE',14,162);
+  caption(cx,'TIME →',FZ.on?'FREEZE ON · SIDE HELD':'FREEZE OFF',FZ.on?rgba(PINK,.95):null);}
+// ORBIT: ROTATION swinging around the knob, cycle from SYNC at 120 BPM
+let oSync=3;const oHist=[];
+seg(document.getElementById('oSync'),SYNC_NAMES,3,i=>{oSync=i;oHist.length=0;});
+function drawOrbit(t){
+  const knob=20,depth=60,cyc=orbitCycleSeconds(oSync,4);const ph=(t/cyc)%1;const rot=knob+depth*0.9*Math.sin(TAU*ph);
+  oHist.push([t,rot]);while(oHist.length&&t-oHist[0][0]>Math.max(4,cyc*2.2))oHist.shift();
+  if(!seen('s3'))return;const cx=prep(S3);
+  const C=[96,150],R=92,A=d=>(-90+d)*PI/180;
+  cx.strokeStyle=rgba(CREAM,.12);cx.lineWidth=6;cx.lineCap='round';cx.beginPath();cx.arc(C[0],C[1],R,A(-90),A(90));cx.stroke();
+  cx.strokeStyle=rgba(PINK,.55);cx.beginPath();cx.arc(C[0],C[1],R,A(knob-depth*0.9),A(knob+depth*0.9));cx.stroke();cx.lineCap='butt';
+  for(const d of [-90,-45,0,45,90]){const a=A(d);cx.strokeStyle=rgba(CREAM,.25);cx.lineWidth=1;cx.beginPath();cx.moveTo(C[0]+Math.cos(a)*(R+6),C[1]+Math.sin(a)*(R+6));cx.lineTo(C[0]+Math.cos(a)*(R+11),C[1]+Math.sin(a)*(R+11));cx.stroke();}
+  const ka=A(knob);cx.strokeStyle=rgba(CREAM,.6);cx.lineWidth=1.5;cx.beginPath();cx.moveTo(C[0],C[1]);cx.lineTo(C[0]+Math.cos(ka)*(R-14),C[1]+Math.sin(ka)*(R-14));cx.stroke();
+  const ra=A(rot);cx.strokeStyle=rgba(GOLD,.95);cx.lineWidth=2;cx.beginPath();cx.moveTo(C[0],C[1]);cx.lineTo(C[0]+Math.cos(ra)*(R+2),C[1]+Math.sin(ra)*(R+2));cx.stroke();
+  cx.fillStyle=rgba(GOLD,1);cx.beginPath();cx.arc(C[0]+Math.cos(ra)*R,C[1]+Math.sin(ra)*R,3.2,0,TAU);cx.fill();
+  cx.font='7.5px '+MONO;cx.fillStyle=rgba(CREAM,.4);cx.textAlign='center';cx.fillText('KNOB +20°',C[0],C[1]+14);
+  // trace
+  const X0=206,X1=346,Y0=44,Y1=176,span=Math.max(4,cyc*2.2),yA=d=>Y0+(90-d)/180*(Y1-Y0);
+  cx.strokeStyle=rgba(CREAM,.08);cx.strokeRect(X0,Y0,X1-X0,Y1-Y0);
+  const beat=60/BPM;for(let b=Math.ceil((t-span)/beat);b*beat<=t;b++){const x=X1-(t-b*beat)/span*(X1-X0);const bar=b%BEATS_PER_BAR===0;
+    cx.strokeStyle=rgba(CREAM,bar?.18:.06);cx.beginPath();cx.moveTo(x,Y0);cx.lineTo(x,Y1);cx.stroke();}
+  cx.strokeStyle=rgba(GOLD,.85);cx.lineWidth=1.4;cx.beginPath();oHist.forEach((h,i)=>{const x=X1-(t-h[0])/span*(X1-X0),y=yA(h[1]);i?cx.lineTo(x,y):cx.moveTo(x,y);});cx.stroke();
+  cx.textAlign='left';cx.fillStyle=rgba(CREAM,.38);cx.fillText('+90°',X0+3,Y0+9);cx.fillText('−90°',X0+3,Y1-3);
+  const bt=Math.floor(t/beat);cx.fillStyle=rgba(CREAM,.45);cx.fillText('BAR '+(Math.floor(bt/BEATS_PER_BAR)%4+1)+' · BEAT '+(bt%BEATS_PER_BAR+1),X0,Y1+14);
+  caption(cx,'ROTATION '+deg(rot),'ORBIT 60 % · '+(oSync?SYNC_NAMES[oSync]+' AT 120 BPM':'FREE · 4 s'));}
+
+/* ================= AUTO LEVEL ================= */
+const lc=document.getElementById('level'),lv=lc.getContext('2d');let alMode=1;const alHist=[];
+document.querySelectorAll('[data-al]').forEach(b=>b.addEventListener('click',()=>{alMode=+b.dataset.al;
+  document.querySelectorAll('[data-al]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  document.getElementById('al-move').textContent=['14.35 dB','0.01 dB','0.02 dB','HELD · LOUD BY DESIGN'][alMode];kick();}));
+function drawLevel(now){
+  const W=lc.width,H=lc.height;lv.clearRect(0,0,W,H);lv.fillStyle='#030506';lv.fillRect(0,0,W,H);
+  const t=now/1000,cyc=(t%10)/10,u=cyc<0.5?cyc*2:2-cyc*2;const radius=1+3*u;
+  const off=-22+14.35*u;
+  const outLvl=[off,-22+0.01*u,-22+0.02*u,-13][alMode];
+  alHist.push({t,lvl:outLvl,off});while(alHist.length&&t-alHist[0].t>8)alHist.shift();
+  const ml=56,mr=20,top=78,bot=H-64;const yd=d=>top+(bot-top)*(0-d)/30;
+  lv.font='17px '+MONO;lv.textAlign='right';
+  for(const d of [0,-6,-12,-18,-24,-30]){lv.fillStyle='rgba(141,135,121,.15)';lv.fillRect(ml,yd(d),W-ml-mr,1);lv.fillStyle='#8d8779';lv.fillText(d===0?'0':String(d).replace('-','−'),ml-10,yd(d)+5);}
+  lv.textAlign='left';
+  if(alMode!==0){lv.fillStyle='rgba(223,93,145,.85)';lv.fillRect(ml,yd(-0.3),W-ml-mr,2);lv.fillText('CEILING −0.3 dBTP',ml+8,yd(-0.3)+20);}
+  const xt=h=>ml+(W-ml-mr)*(1-(t-h.t)/8);
+  if(alHist.length>1){
+    lv.beginPath();
+    for(let i=0;i<alHist.length;i++){const h=alHist[i];let pk=h.lvl+8+2.5*Math.sin(h.t*9)*Math.sin(h.t*2.3);
+      if(alMode===2)pk=h.lvl+8+(pk-h.lvl-8)/2.5;if(alMode!==0)pk=Math.min(-0.3,pk+(alMode===3?2:0));
+      const x=xt(h);i?lv.lineTo(x,yd(Math.min(0,pk))):lv.moveTo(x,yd(Math.min(0,pk)));}
+    for(let i=alHist.length-1;i>=0;i--){const h=alHist[i];lv.lineTo(xt(h),yd(h.lvl-8));}
+    lv.closePath();lv.fillStyle=alMode===3?'rgba(223,93,145,.22)':'rgba(242,233,220,.10)';lv.fill();
+    const line=(key,col,w)=>{lv.strokeStyle=col;lv.lineWidth=w;lv.beginPath();alHist.forEach((h,i)=>{const x=xt(h),y=yd(h[key]);i?lv.lineTo(x,y):lv.moveTo(x,y);});lv.stroke();};
+    if(alMode!==0)line('off','rgba(141,135,121,.6)',2);
+    line('lvl',alMode===0?'#f2e9dc':'#f0d660',3.5);
+    if(alMode!==0){lv.fillStyle='#8d8779';lv.fillText('OFF',W-mr-40,yd(alHist[alHist.length-1].off)-12);}
+  }
+  lv.fillStyle='#f0d660';lv.fillText(['OFF','TRANSPARENT','GLUE','CLIP'][alMode]+' · OUTPUT LEVEL',ml,30);
+  lv.fillStyle='#8d8779';lv.fillText('RADIUS '+radius.toFixed(2),ml,H-20);
+  lv.fillStyle='rgba(223,93,145,.6)';lv.fillRect(ml+180,H-31,(W-ml-mr-180)*u,10);
+}
+
+/* ================= knob glyphs on the control cards: knob 2A, milled skirt, groove only ================= */
+const KNOBDEF={radius:['radius',1,'1.000'],origin:['origin',1000,'1.00 kHz'],angle:['angle',0,'0.0°'],span:['span',3.5,'3.50'],symmetry:['gravity',0,'0 %'],mix:[null,100,'100 %']};
+document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dataset.knob];if(!k)return;
+  const n=k[0]?toNorm(k[0],k[1]):1;const bip=k[0]&&PARAM[k[0]].min<0;
+  const a0=-135,a1=135,a=a0+(a1-a0)*n;const P=(d,r)=>{const t=(d-90)*PI/180;return [r*Math.cos(t),r*Math.sin(t)];};
+  const arc=(from,to,r)=>{if(to<from)[from,to]=[to,from];const p=P(from,r),q=P(to,r);return `M${p[0].toFixed(1)} ${p[1].toFixed(1)} A${r} ${r} 0 ${to-from>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;};
+  let ticks='';for(let i=0;i<=10;i++){const d=a0+27*i;const p=P(d,53),q=P(d,58);ticks+=`<line class="tick" x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}"/>`;}
+  let mill='';for(let d=0;d<360;d+=6){const p=P(d,36.5),q=P(d,40);mill+=`<line x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}" stroke="rgba(0,0,0,.35)" stroke-width="1"/>`;}
+  const g0=P(a,8),g1=P(a,0.62*34),from=bip?0:a0;
+  card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,47)}"/><path class="arc-val" d="${arc(from,Math.abs(a-from)<0.5?from+0.5:a,47)}"/><circle class="knob-skirt" r="40"/>${mill}<circle class="knob-face" r="34"/><line class="knob-ptr" x1="${g0[0].toFixed(1)}" y1="${g0[1].toFixed(1)}" x2="${g1[0].toFixed(1)}" y2="${g1[1].toFixed(1)}"/><text class="knob-num" y="72">${k[2]}</text></svg>`);
+});
+
+/* ================= main loop ================= */
+let last=performance.now(),looping=true,clock=0;
+function frame(now){
+  const dt=Math.min(0.1,(now-last)/1000);last=now;clock+=dt;const t=clock+3;
+  drawHero(t,dt);drawLab(t,dt);drawGeo(t);drawDelay(now);drawSpin(t);drawWarp(t);drawFreeze(t);drawOrbit(t);drawLevel(now);
+  if(!reduce||sweep)requestAnimationFrame(frame);else looping=false;
+}
+function kick(){if(reduce&&!looping){looping=true;last=performance.now();requestAnimationFrame(frame);}}
+document.addEventListener('input',kick);document.addEventListener('click',kick);
+// settle the clouds and prime the scrolling traces so the still page reads complete
+for(let i=0;i<24;i++){heroEng.step(heroP,3+i/30,1/30);labEng.step(labP,3+i/30,1/30);}
+{const n0=performance.now();for(let i=0;i<160;i++)drawLevel(n0-(160-i)*50);for(let i=0;i<80;i++){stepFreeze(i/14);}for(let i=0;i<120;i++)drawOrbit(3-(120-i)/30);}
+requestAnimationFrame(frame);
+})();
+
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
