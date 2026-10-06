@@ -1,142 +1,862 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MOIRÉ Product Page</title>
+<meta name="description" content="MOIRÉ is a real through-zero flanger: the wet delay sweeps past a delayed dry signal, the latency is reported to your DAW, and the display is computed from the same numbers as the sound. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2} main h1,main h2,main h3{font-family:'Montserrat',sans-serif}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as cinder.html, gire.html and euclid.html. Single dark look by choice: THETA marketing
+   pages live on the void theme. MOIRÉ's own colour enters only where the plug-in draws it: the teal
+   well, the cream terrain, the gold "now" ribbon and the pink first notch (palette in
+   Source/MoireLookAndFeel.h). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --accent:#6ec0b6; --pink:#df5d91; --cream:#f2e9dc; --teal:#2c4d4b; --teal-mid:#223b3a; --teal-low:#162928;
+  --cap:#45908c; --cap-low:#1b3e3d; --groove:#0e1f1e; --plate:#0b1a19;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
-  </a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
-  </div>
-</nav>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
 
-<main style="width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <section data-screen-label="Hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:48px 0 56px 0">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">DEEP THROUGH-ZERO FLANGER · Alchemy Index · Coming soon</div>
-      <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 24px 0;color:#f0ede6">MOIR&Eacute;</h1>
-      <p style="margin:0;color:#b9b6ae;max-width:58ch;text-wrap:pretty">MOIR&Eacute; is in final calibration. Join the list and we will tell you the day it ships.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a href="mailto:info@theta.audio?subject=MOIRE%20launch" data-notify="MOIRE" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AU</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">VST3</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AAX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">macOS · Apple Silicon and Intel</span></div>
-    </div>
-    <div onClick="{{ open0 }}" style="cursor:zoom-in"><image-slot id="moire-img-0" src="assets/moire/hero.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="MOIRE surface"></image-slot></div>
-  </section>
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
 
-  
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
 
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="max-width:820px;margin-bottom:44px">
-      <div>
-        <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 18px 0;text-wrap:pretty">Two combs, sliding through each other, and the moment they cross is silence. MOIRÉ is a real through-zero flanger, the kind where the wet delay sweeps past the dry signal instead of stopping short of it. Twice a cycle the two paths land on top of each other and cancel, and the whole track drops through a hole in itself.</p>
-        <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 28px 0;text-wrap:pretty">Crossing zero costs latency, and this is where flangers usually start lying. Switch THRU-ZERO on and the footer tells you exactly what it cost, and reports that figure to your DAW so every other track stays in sync. Switch it off and the dry path runs live at genuinely zero latency. Two honest modes, and the plugin tells you which one you are in.</p>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">FEEDBACK</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">Bipolar, centred at zero. Positive resonates on the comb peaks; negative resonates in the notches and hollows the sound out. Two different instruments in one knob.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">RATE / SHAPE</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">0.02 to 8 Hz. SINE for the classic arc, TRI for a linear ramp, RAND for an 18-step sample-and-hold, a stutter at high rates, a sequence at low ones.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">MANUAL</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">0.1 to 20 ms of base delay. Short is a tight metallic comb, long is a doubler that flanges, and it sets how many notches sit in the audible band.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">DISPLAY</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">SURFACE draws the comb response as terrain, flowing at the actual LFO rate. FIELD draws the left and right combs as rakes of notch lines and lets them interfere, the moiré the plugin is named after.</span></span>
-        </div>
-      </div>
-    </div>
-  </section>
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(44px,7vw,84px);letter-spacing:.42em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+.chip.soon{border-style:dashed;color:var(--text-3)}
 
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>THE PANEL<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
-      <div onClick="{{ open1 }}" style="cursor:zoom-in"><image-slot id="moire-img-1" src="assets/moire/hero_field.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="MOIRE field"></image-slot></div>
-      <div onClick="{{ open2 }}" style="cursor:zoom-in"><image-slot id="moire-img-2" src="assets/moire/hero_rand.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1410;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.04)" shape="rect" placeholder="MOIRE random"></image-slot></div>
-    </div>
-  </section>
+/* the comb well: MOIRÉ's own teal */
+.well{border:1px solid #2f5553;border-radius:12px;background:linear-gradient(158deg,var(--teal),var(--teal-mid) 44%,var(--teal-low));overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;cursor:pointer}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--pink);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
 
-  <section style="max-width:1000px;margin:0 auto 60px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TECHNICAL SPECIFICATIONS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">FORMATS</span><span style="font-weight:300;font-size:15px;line-height:1.65">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">SYSTEM</span><span style="font-weight:300;font-size:15px;line-height:1.65">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
-    </div>
-  </section>
+/* segmented buttons, as the plug-in's: recessed track, teal cap on the active cell */
+.seg{display:inline-flex;border:1px solid #23413f;border-radius:6px;background:var(--groove);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:4px;background:transparent;color:rgba(242,233,220,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:linear-gradient(160deg,var(--cap),var(--cap-low));color:var(--cream)}
 
-  <section style="max-width:1120px;margin:24px auto 0 auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Availability<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:32px;text-align:center;display:grid;gap:14px;justify-items:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">MOIR&Eacute; · Launch sale</div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:22px;letter-spacing:0.08em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:44px;letter-spacing:0.08em;color:#f0ede6">$25</span></div>
-      <p style="margin:0;color:#b9b6ae;max-width:52ch">MOIR&Eacute; is in final calibration. Join the list and we will tell you the day it ships. Use code <span style="font-family:'JetBrains Mono',monospace;color:#ffc867;letter-spacing:0.12em">ALCHEMY50</span> at checkout.</p>
-      <div style="margin-top:6px"><a href="mailto:info@theta.audio?subject=MOIRE%20launch" data-notify="MOIRE" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">AU / VST3 / AAX INCLUDED · <a href="color_collection.html" style="color:#8d8779">PART OF THE ALCHEMY INDEX</a></div>
-    </div>
-  </section>
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
 
-</main>
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#16302f;stroke:#45908c;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.wet{stroke:var(--accent)}
+.path .flow.fb{stroke:var(--pink);animation-duration:1.1s}
+.path .flow.ctl{stroke:var(--cream);opacity:.55;animation-duration:2.6s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE // MOIRE IN CALIBRATION</span>
-</footer>
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.lab-views canvas+canvas{border-top:1px solid var(--divider)}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views .teal{background:linear-gradient(158deg,var(--teal),var(--teal-mid) 44%,var(--teal-low))}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--pink);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--cap)}
+.ctrl.on label{color:var(--gold-hot)}
+.ctrl.on input[type=range]{accent-color:var(--pink)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-out">
-</div>
+/* display modes */
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.voice canvas,.voice img{display:block;width:100%;height:auto;background:linear-gradient(158deg,var(--teal),var(--teal-low))}
+.voice .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.voice .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.voice .vn b{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.28em;color:var(--accent)}
+.voice .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.voice p{color:var(--text-2);font-size:15.5px}
 
-</div>
+/* knob cards */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:112px;height:112px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--accent)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a1c20;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round}
+.knob-face{fill:url(#capGrad);stroke:#2e6462;stroke-width:1.5}
+.knob-ptr{stroke:var(--groove);stroke-width:3;stroke-linecap:round}
+.knob-num{font-family:var(--f-mono);font-size:13px;fill:var(--text-2);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+.show{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);background:transparent;border:1px solid var(--gold-dim);border-radius:4px;padding:6px 10px;cursor:pointer;min-height:32px}
+.show:hover{background:rgba(200,168,107,.1)}
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  renderVals() {
-    return {
-      overlayDisplay: this.state.zoomed ? 'flex' : 'none',
-      setZoomImg: (el) => { this._zoomImgEl = el; },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
-      openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/moire/hero.png?v=260929t' }); },
-      open1: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/moire/hero_field.png?v=260929t' }); },
-      open2: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/moire/hero_rand.png?v=260929t' }); },
-    };
-  }
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--pink);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--accent)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
+.keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+/* presets */
+.presets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.preset{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.preset:hover{border-color:#2f5553}
+.preset b{font-family:var(--f-display);font-weight:600;font-size:12.5px;letter-spacing:.22em;color:var(--cream)}
+.preset span{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--text-3)}
+.preset p{font-size:15px;color:var(--text-2)}
+.lab-presets{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center}
+.lab-presets select{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--cream);background:var(--groove);border:1px solid #23413f;border-radius:4px;padding:6px 8px;min-height:32px}
+.tog[aria-pressed="true"]{color:var(--cream);border-color:var(--cap);background:linear-gradient(160deg,rgba(69,144,140,.35),rgba(27,62,61,.35))}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views{grid-template-columns:minmax(0,1fr)}
+  .voices,.knobs{grid-template-columns:minmax(0,1fr)}
+  .presets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls.six{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.four,.who,.steps,.presets{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
 }
 
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(110,192,182,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true"><defs><linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#45908c"/><stop offset=".52" stop-color="#2e6462"/><stop offset="1" stop-color="#1b3e3d"/></linearGradient></defs></svg>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+<div class="wrap">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Deep through-zero flanger · Version 1.0.0</div>
+    <h1 class="wordmark">MOIR&Eacute;</h1>
+    <div class="lede">
+      <p>Two combs sliding through each other. MOIR&Eacute; is a real through-zero flanger: the wet delay sweeps past the dry signal instead of stopping short of it, so twice every cycle the two land on top of each other and the sound drops through a hole in itself.</p>
+      <p>Crossing zero costs latency, and MOIR&Eacute; tells you exactly how much, on its face and to your DAW. Switch THRU-ZERO off and the dry path runs live at zero latency. The display in the middle is computed from the same numbers as the sound, and it moves only when there is sound.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get MOIR&Eacute;</a>
+      <a class="btn ghost" href="#lab">Watch it cross zero</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip">Stereo</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span id="h-mode-cap">COMB SURFACE · INIT</span>
+        <span class="seg" role="group" aria-label="Display mode">
+          <button type="button" data-hm="0" aria-pressed="true">SURFACE</button><button type="button" data-hm="1" aria-pressed="false">FIELD</button>
+        </span>
+      </div>
+      <canvas id="hero" width="880" height="800" aria-label="MOIRÉ's comb display, drawn with the plug-in's own projection and comb equations at the INIT settings. Click it to switch between SURFACE and FIELD, as you would in the plug-in."></canvas>
+      <div class="well-foot"><span>NOTCH <b id="h-notch">-</b></span><span>SWEEP <b id="h-sweep">-</b></span><span>ORDERS <b id="h-orders">-</b></span></div>
+    </div>
+    <div class="tagline">CLICK THE DISPLAY TO CHANGE MODE</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A flanger adds a signal to a slightly late copy of itself. Wherever the delay is half a cycle, the two cancel; wherever it is a whole cycle, they add. The result is a comb: a row of notches spaced evenly up the spectrum, <strong>1 / delay apart</strong>. Sweep the delay and the whole comb slides, which is the jet-plane sound.</p>
+      <p>An ordinary flanger keeps the dry signal where it is, so the delay can get short but never reach zero, and the comb never quite closes. <strong>A through-zero flanger delays the dry signal too</strong>, to the middle of the sweep, so the wet tap passes it, crosses it and comes back.</p>
+    </div>
+    <div class="prose">
+      <p>Everything on MOIR&Eacute;'s face sets that delay or what happens around it. <strong>MANUAL</strong> is where the sweep starts. <strong>DEPTH</strong> is how far it travels. <strong>RATE</strong> and <strong>SHAPE</strong> are how it travels. <strong>SPREAD</strong> runs the right channel's sweep ahead of the left. <strong>FEEDBACK</strong> sends the delayed signal round again, sharpening the comb. <strong>INVERT</strong> flips the wet polarity, swapping peaks for notches. <strong>MIX</strong> sets how much of each you hear.</p>
+      <p>One constant sets the sweep span, 2.9 ms at full depth, and the processor and the display both read it, so the picture cannot drift from the sound.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 290" role="img" aria-label="MOIRÉ's signal path. The input splits. The wet path goes through a summing point that takes FEEDBACK, a fractional delay set by MANUAL, DEPTH and the LFO, and INVERT. The dry path goes through its own delay, set to the middle of the sweep when THRU-ZERO is on. MIX blends the two, then AUTO LEVEL, then out.">
+      <text x="10" y="150">IN</text>
+      <path class="wire" d="M40 146 H80"/><path class="flow" d="M40 146 H80"/>
+      <path class="wire" d="M80 146 V78 H120"/><path class="flow wet" d="M80 146 V78 H120"/>
+      <path class="wire" d="M80 146 V214 H232"/><path class="flow" d="M80 146 V214 H232"/>
+      <circle class="box" cx="138" cy="78" r="18"/><text class="lbl" x="138" y="82" text-anchor="middle">+</text>
+      <path class="wire" d="M156 78 H232"/><path class="flow wet" d="M156 78 H232"/>
+      <rect class="hot" x="232" y="50" width="196" height="56" rx="4"/><text class="lbl" x="330" y="73" text-anchor="middle">WET DELAY</text><text x="330" y="92" text-anchor="middle">MANUAL + DEPTH · 2.9 ms · LFO</text>
+      <path class="wire" d="M428 78 H476"/><path class="flow wet" d="M428 78 H476"/>
+      <rect class="box" x="476" y="56" width="96" height="44" rx="4"/><text class="lbl" x="524" y="75" text-anchor="middle">INVERT</text><text x="524" y="92" text-anchor="middle">± WET</text>
+      <path class="wire" d="M572 78 H660 V128"/><path class="flow wet" d="M572 78 H660 V128"/>
+      <path class="wire" d="M448 78 V24 H138 V60"/><path class="flow fb" d="M448 78 V24 H138 V60"/>
+      <text x="292" y="18" text-anchor="middle">FEEDBACK ±95 %</text>
+      <rect class="box" x="232" y="186" width="196" height="56" rx="4"/><text class="lbl" x="330" y="209" text-anchor="middle">DRY DELAY</text><text x="330" y="228" text-anchor="middle">THRU-ZERO · MID-SWEEP</text>
+      <path class="wire" d="M428 214 H660 V166"/><path class="flow" d="M428 214 H660 V166"/>
+      <rect class="box" x="232" y="124" width="96" height="40" rx="4"/><text class="lbl" x="280" y="142" text-anchor="middle">LFO</text><text x="280" y="157" text-anchor="middle">R + SPREAD</text>
+      <path class="wire" d="M300 124 V106"/><path class="flow ctl" d="M300 124 V106"/>
+      <circle class="box" cx="660" cy="146" r="20"/><text class="lbl" x="660" y="150" text-anchor="middle">MIX</text>
+      <path class="wire" d="M680 146 H750"/><path class="flow" d="M680 146 H750"/>
+      <rect class="box" x="750" y="120" width="130" height="52" rx="4"/><text class="lbl" x="815" y="142" text-anchor="middle">AUTO LEVEL</text><text x="815" y="160" text-anchor="middle">−0.3 dBFS · 0 SMP</text>
+      <path class="wire" d="M880 146 H1010"/><path class="flow" d="M880 146 H1010"/>
+      <text x="1022" y="150">OUT</text>
+      <text x="470" y="276" text-anchor="middle">DRY LEG = LIVE INPUT WITH THRU-ZERO OFF · INPUT DELAYED BY THE REPORTED LATENCY WITH IT ON</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>SPLIT</b><p>The input goes two ways. Each channel gets its own wet delay line and its own dry one.</p></li>
+    <li><span class="num">2</span><b>SWEEP</b><p>The LFO moves the wet delay between MANUAL and MANUAL plus 2.9 ms × DEPTH, read through a third-order Lagrange interpolator.</p></li>
+    <li><span class="num">3</span><b>RECIRCULATE</b><p>FEEDBACK sends the wet output back into its own line, positive or negative, up to 95 %.</p></li>
+    <li><span class="num">4</span><b>CROSS</b><p>With THRU-ZERO on, the dry signal waits at the middle of the sweep, so the wet tap passes through it twice a cycle.</p></li>
+    <li><span class="num">5</span><b>LEVEL</b><p>MIX blends the two linearly. AUTO LEVEL can match the result back to your input and hold it under −0.3 dBFS.</p></li>
+  </ol>
+</section>
+
+<!-- LAB -->
+<div class="sh" id="lab">The zero-cross lab</div>
+<section class="stack">
+  <div class="prose"><p>This is MOIR&Eacute;'s signal path worked out in your browser, from the same equations as the processor. The top view is the frequency response of each channel right now: cream for the left, gold for the right, the first notch marked in pink. The bottom view is the delay itself over two LFO cycles: the wet taps sweeping, the dry signal waiting at the middle, and a pink mark wherever they cross. Pick a factory preset, or move anything.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="lab-presets"><label for="l-preset">PRESET</label><select id="l-preset"></select></span>
+      <span class="seg" role="group" aria-label="LFO shape">
+        <button type="button" data-ls="0" aria-pressed="true">SINE</button><button type="button" data-ls="1" aria-pressed="false">TRI</button><button type="button" data-ls="2" aria-pressed="false">RAND</button>
+      </span>
+      <span class="toggles"><button type="button" class="tog" id="t-tz" aria-pressed="true">THRU-ZERO</button><button type="button" class="tog" id="t-inv" aria-pressed="false">INVERT</button></span>
+    </div>
+    <div class="lab-views">
+      <canvas id="resp" width="1100" height="520" aria-label="The magnitude response of the left and right channels at the lab's settings, 20 Hz to 20 kHz"></canvas>
+      <canvas id="sweep" width="1100" height="380" aria-label="The wet delay of each channel over two LFO cycles, the dry delay, and where they cross"></canvas>
+    </div>
+    <div class="readouts"><span>FIRST NOTCH<b id="r-notch">-</b></span><span>WET − DRY<b id="r-off">-</b></span><span>LEVEL ON NOISE<b id="r-lvl">-</b></span><span>LATENCY @ 48 kHz<b id="r-lat">-</b></span></div>
+    <div class="ctrls six" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:#f2e9dc"></i>LEFT</span><span><i style="background:#c8a86b"></i>RIGHT</span><span><i style="background:#6ec0b6"></i>DRY DELAY</span><span><i style="background:#df5d91"></i>FIRST NOTCH · ZERO CROSSING</span><span>LEVEL ON NOISE: BROADBAND, BEFORE AUTO LEVEL</span></div>
+</section>
+
+<!-- THRU-ZERO -->
+<div class="sh" id="thruzero">Through zero</div>
+<section class="two">
+  <div class="prose">
+    <p>Tape flanging was two machines playing the same tape, with a thumb on one reel. When the slowed machine fell behind and then caught up, the delay between them passed through zero, and for a moment the copies cancelled. That is the sound an ordinary digital flanger cannot make: its dry signal is never delayed, so its wet signal can never get behind it.</p>
+    <p>MOIR&Eacute; delays the dry path to the midpoint of the sweep, <span class="k">MANUAL + DEPTH × 1.45 ms</span>, so the wet tap swings from ahead of it to behind it and back. With <strong>INVERT on, FEEDBACK at zero and MIX at 50 %</strong>, the moment they meet the two are equal and opposite and the whole spectrum falls into the hole: 47.6 dB down across the band in the release harness, against 13.9 dB with INVERT off. That is the ZERO CROSS preset.</p>
+  </div>
+  <div class="prose">
+    <p><strong>That delay is real latency, and MOIR&Eacute; reports it.</strong> It rounds the midpoint to whole samples, tells your host, and prints it in the footer, <span class="k">THRU-ZERO: 1.6 MS REPORTED</span> at the default settings (76 samples at 48 kHz). Every other track is compensated to match. MANUAL and DEPTH move the figure, from a tenth of a millisecond to 21.45 ms at the top of both, and the report waits until the knob has rested for about 400 ms, because a host answers every latency change by restarting the plug-in, and reporting on each tick of a drag would click.</p>
+    <p>Switch THRU-ZERO off and the dry path runs live: zero latency, an ordinary flanger, and the footer says so. Bypass is latency-correct in both: the engine keeps running and the output crossfades to the dry leg, which is already delayed by exactly the reported figure, so nothing jumps when you toggle it. The harness measures the bypassed output against the input delayed by the reported latency: a −145.7 dB null.</p>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><p>Press <span class="k">SHOW IN THE LAB</span> on a card and the lab above sweeps that control through its range. Every control automates, and every move is smoothed so automation does not click; INVERT crossfades over 5 ms rather than flipping in one sample.</p></div>
+  <div class="knobs" id="knobs">
+    <article class="knob-card" data-knob="manual">
+      <div class="knob-name">MANUAL</div>
+      <p>0.1 to 20 ms, default 0.6. Where the sweep starts. Short is a bright, metallic comb with its notches far apart; at 0.1 ms they sit 10 kHz apart. Long is a dense comb, 50 Hz apart at 20 ms, that starts to sound like doubling. The display's NOTCH readout is the first notch at MANUAL: 833 Hz at the default.</p>
+      <button type="button" class="show" data-show="manual">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="depth">
+      <div class="knob-name">DEPTH</div>
+      <p>0 to 100 %, default 68. How far the sweep travels above MANUAL: 2.9 ms at 100 %. With THRU-ZERO on it also sets how far either side of the dry signal the wet tap swings, ±1.45 ms at full depth, and so how much latency is reported.</p>
+      <button type="button" class="show" data-show="depth">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="rate">
+      <div class="knob-name">RATE · SHAPE</div>
+      <p>0.02 to 8 Hz, default 0.34, skewed so the slow end has room: about 0.7 Hz at the middle of the throw. SINE is the classic arc. TRI moves at a constant speed. RAND is an 18-step sample-and-hold on a fixed pattern, so it plays the same sequence every pass: a stutter when fast, a slow melody of positions when slow.</p>
+      <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="feedback">
+      <div class="knob-name">FEEDBACK</div>
+      <p>−95 to +95 %, centred at zero. Positive feedback resonates on the comb's peaks and pitches the sweep; negative resonates in the gaps and hollows it out. Two instruments in one knob. At ±95 % each pass loses only 0.45 dB, so the tail rings for about three seconds.</p>
+      <button type="button" class="show" data-show="feedback">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="spread">
+      <div class="knob-name">SPREAD</div>
+      <p>0 to 180°, default 90. Runs the right channel's LFO ahead of the left. At 0 both channels sweep together and the effect is mono. At 180 one comb opens while the other closes, and the sweep moves across the stereo field. The FIELD display draws exactly this as two screens drifting apart.</p>
+      <button type="button" class="show" data-show="spread">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="mix">
+      <div class="knob-name">MIX · INVERT</div>
+      <p>MIX is a linear crossfade, 0 to 100 %, default 50. Fifty is the classic full flange, deepest notches, and it is deliberately not equal-power. INVERT, the POL switch, flips the wet path's polarity: peaks become notches, the lowest notch drops to the bottom of the spectrum, and through zero it is the switch that makes the crossing silent.</p>
+      <button type="button" class="show" data-show="mix">SHOW IN THE LAB</button>
+    </article>
+  </div>
+</section>
+
+<!-- DISPLAY -->
+<div class="sh" id="display">The display</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>The well in the middle of MOIR&Eacute; has two modes. Click it to switch; the choice is saved with your session.</p>
+      <p><strong>SURFACE</strong> draws the comb's response as terrain. Across is frequency, 60 Hz to 4 kHz on a log scale. Receding is one full LFO cycle in eighteen rows, and the terrain flows toward you at the real LFO rate, so the front ridge, drawn in gold with pink hatching under it, is always the response you are hearing now. The valleys of the first eight notches are traced across the sweep, the first in pink. Hanging from a gold grid above is the complementary comb, what the other INVERT setting would give, so pressing POL visibly swaps the two.</p>
+    </div>
+    <div class="prose">
+      <p><strong>FIELD</strong> is the moir&eacute; the plug-in is named after, and it is not decoration. A moir&eacute; is two regular patterns beating against each other, and a stereo flanger makes exactly two: the left comb and the right. FIELD draws each as a window screen whose pitch is that channel's comb, laid over the other. SPREAD turns the screens apart, up to 12° at 180, and offsets their pitch in time, so as the sweep runs the fringes slide. Where both screens agree the field turns pink. At SPREAD 0 it is one screen, which is what SPREAD 0 does to your stereo image.</p>
+      <p><strong>Both modes follow the input.</strong> The processor analyses what is coming in, 64 bands from 20 Hz to 20 kHz, and ridges and lines are lit by the energy at their frequency, so a notch carving through a bass note shows bright and a notch in empty air is a faint line. When the input drops below −45 dBFS the picture rests and the corner reads IDLE; it picks up again at the LFO's real phase when sound returns.</p>
+    </div>
+  </div>
+  <div class="voices">
+    <article class="voice">
+      <canvas id="d-surf" width="880" height="800" aria-label="SURFACE mode at the BARBER SLOW preset"></canvas>
+      <div class="body"><div class="vn"><b>SURFACE</b><span>BARBER SLOW</span></div>
+      <p>Full depth, a triangle LFO and 60 % feedback, with the notch valleys bending across the eighteen rows of one cycle.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="d-field" width="880" height="800" aria-label="FIELD mode at the WIDE WASH preset"></canvas>
+      <div class="body"><div class="vn"><b>FIELD</b><span>WIDE WASH</span></div>
+      <p>SPREAD at 180°: the two screens are 12° apart and their pitches breathe out of step, so the fringes cross the well.</p></div>
+    </article>
+  </div>
+  <p class="small">Drawn in your browser with the plug-in's own projections, row counts and comb equation, lit by a fixed pink-noise stand-in for your input. In the plug-in the light comes from the audio.</p>
+  <figure class="faceshot">
+    <img src="assets/moire/moire_v0115_panel.png?v=261006" alt="The MOIRÉ panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the comb surface in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL selector, and THRU-ZERO: 1.6 MS REPORTED in the footer" loading="lazy">
+    <figcaption class="cap">THE WHOLE FACE · INIT</figcaption>
+  </figure>
+</section>
+
+<!-- AUTO LEVEL -->
+<div class="sh" id="autolevel">Auto level</div>
+<section class="two">
+  <div class="prose">
+    <p>A flanger changes its own level as you play with it. Feedback piles energy onto the comb's peaks, MIX moves the notches in and out, and louder always sounds better for about a second, so every comparison you make while dialling one in is rigged. <strong>AUTO LEVEL matches the output back to your input</strong>, so moving FEEDBACK changes the colour and leaves the volume alone. Across FEEDBACK −95 to +95 on the release harness's probe the output strays up to 6.60 dB from the input with it off, and 2.43 dB in TRANSPARENT.</p>
+    <p>One switch, four positions. TRANSPARENT rides the gain too slowly to hear and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor with its own makeup. CLIP drives 9 dB into the clipper, loud on purpose. Every working mode holds the output at or under −0.3 dBFS, which is also what catches a runaway feedback tail: a hot probe at 95 % feedback that reaches +15 dBFS with it off leaves at −0.30 dBFS in all three. <strong>OFF passes the signal untouched</strong>, and it is the default.</p>
+    <p>AUTO LEVEL adds no latency, so the only figure MOIR&Eacute; ever reports is THRU-ZERO's. Under bypass it is held off and walks back to unity, so the bypassed signal is the clean dry path. It is the same output stage across the Alchemy Index, so level-matched A/Bs work the same way in every THETA plug-in.</p>
+  </div>
+  <div class="stack">
+    <div class="panel">
+      <canvas id="level" width="600" height="440" aria-label="Illustration: FEEDBACK sweeps from −95 to +95 %; with AUTO LEVEL off the output level on noise moves with it, with it working it stays near the input"></canvas>
+      <div class="panel-foot">
+        <span class="seg" role="group" aria-label="AUTO LEVEL mode"><button type="button" data-al="0" aria-pressed="false">OFF</button><button type="button" data-al="1" aria-pressed="true">TRANSPARENT</button></span>
+        <span>FEEDBACK <b id="al-fb">0 %</b></span>
+      </div>
+    </div>
+    <div class="cap" id="al-cap">ILLUSTRATION · THE OFF CURVE IS COMPUTED: THE COMB'S LEVEL ON WHITE NOISE AT MIX 100 %, +10.1 dB AT ±95. THE 6.60 AND 2.43 dB FIGURES ARE MEASURED ON THE RELEASE HARNESS'S PROBE</div>
+  </div>
+</section>
+
+<!-- PRESETS -->
+<div class="sh" id="presets">Factory sounds</div>
+<section class="stack">
+  <div class="prose"><p>Eight factory sounds, in the preset bar on MOIR&Eacute;'s face. Save over one and your version wins; save as and it joins them. Your presets are files in your Library, so every host on the Mac sees the same set. Click a card to load it into the lab.</p></div>
+  <div class="presets" id="presets-grid"></div>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>MOIR&Eacute; runs as a fully working trial for fourteen days from the first time it loads, and the line beside the version number in its header counts down the days left. When the trial ends without activation, MOIR&Eacute; goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">GarageBand and other sandboxed hosts keep their own copy of your Library. MOIR&Eacute; looks past it to your real one, so an activation in Logic Pro, Live or Pro Tools counts there too.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that MOIR&Eacute; works offline. One licence covers three computers, an activation covers every user account on that Mac, and DEACTIVATE THIS COMPUTER frees a seat so you can move it without writing to us.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>MIX ENGINEERS</b><p>The real tape-flange move on a bus or a vocal, with the latency it costs reported to your session. AUTO LEVEL keeps a resonant setting from winning an A/B on volume alone.</p></article>
+  <article><b>GUITAR &amp; SYNTHS</b><p>Positive feedback for the pitched jet, negative for the hollow one. TAPE JET and ZERO CROSS are the places to start.</p></article>
+  <article><b>DRUMS</b><p>A slow sweep across overheads or a loop, with SPREAD pulling it across the stereo field. Short MANUAL and high FEEDBACK make METAL COMB's ringing tone.</p></article>
+  <article><b>SOUND DESIGN</b><p>RAND steps through a fixed eighteen-position pattern. Add full feedback and every step rings at its own pitch, which is FRIKKIN LAZERBEAMS. Turn RATE up for a stutter.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Stereo through-zero flanger (insert)</td></tr>
+    <tr><th>CONTROLS</th><td>DEPTH · RATE · SHAPE · FEEDBACK · MANUAL · SPREAD · MIX · THRU-ZERO · INVERT · AUTO LEVEL · BYPASS</td></tr>
+    <tr><th>DELAY</th><td>MANUAL 0.1–20 ms · sweep 2.9 ms at 100 % DEPTH · third-order Lagrange interpolation, left and right independent</td></tr>
+    <tr><th>LFO</th><td>0.02–8 Hz · SINE, TRI, RAND (18-step fixed pattern) · right channel 0–180° ahead (SPREAD)</td></tr>
+    <tr><th>FEEDBACK</th><td>Bipolar, −95 to +95 %</td></tr>
+    <tr><th>THRU-ZERO</th><td>Dry path delayed to the sweep midpoint, rounded to whole samples and reported to the host · off: zero latency</td></tr>
+    <tr><th>LATENCY</th><td>THRU-ZERO on: MANUAL + 1.45 ms × DEPTH, up to 21.45 ms (76 samples at 48 kHz at the defaults) · off: 0 · the same in every AUTO LEVEL mode</td></tr>
+    <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBFS ceiling, no added latency</td></tr>
+    <tr><th>DISPLAY</th><td>SURFACE (comb terrain, 60 Hz–4 kHz, 18 rows per LFO cycle, 8 notch orders) · FIELD (two meshes, 0–10 kHz) · lit by a 64-band analysis of the input</td></tr>
+    <tr><th>CHANNELS</th><td>Stereo in, stereo out</td></tr>
+    <tr><th>PRESETS</th><td>Eight factory sounds (INIT, TAPE JET, ZERO CROSS, BARBER SLOW, METAL COMB, WIDE WASH, PINBACKER, FRIKKIN LAZERBEAMS); your own presets with save and save as</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>MOIR&Eacute; shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
+    <p>No chorus voices, no modulation matrix, no tempo grid. Two delay lines per channel, one LFO, and a display that shows what they are doing.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">MOIR&Eacute; · 1.0.0</div>
+  <p>MOIR&Eacute; is in final calibration. Through zero, the full panel, both display modes and AUTO LEVEL, nothing withheld.</p>
+  <div class="amt"><s>$50</s><strong>$25</strong></div>
+  <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=MOIRE%20launch" data-notify="MOIRE">Notify me at launch</a>
+    <!-- LAUNCH: swap in the Lemon Squeezy checkout links for product 1362444 (buy and 14-day trial), as gire.html does. -->
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED</div>
+</section>
+<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+const TAU=Math.PI*2;
+const CREAM=[242,233,220], GOLD=[200,168,107], PINK=[223,93,145], TEAL=[110,192,182];
+const rgba=(c,a)=>`rgba(${c[0]},${c[1]},${c[2]},${a})`;
+const f32=Math.fround;
+
+/* ================= MOIRÉ's parameters and LFO, after Source/Parameters.h and PluginProcessor.cpp ================= */
+const SWEEP_SPAN_MS=2.9;          // moire::sweepSpanMs: the DSP and the display read this one constant
+const RAND_STEPS=18;
+function lfoValue(shape,phase){
+  if(shape===1)return 1-Math.abs(2*phase-1);
+  if(shape===2){                   // fixed-seed sample-and-hold, the same hash the display draws as rows
+    const quantised=f32(Math.floor(f32(phase*RAND_STEPS+1e-4))/RAND_STEPS);
+    const q=f32(f32(Math.sin(f32(quantised*733.7)))*43758.5);
+    return q-Math.floor(q);}
+  return (1-Math.cos(TAU*phase))*0.5;
+}
+const DEFAULTS={depth:68,rate:0.34,shape:0,feedback:0,manual:0.6,spread:90,mix:50,autolevel:0,thruZero:1,invert:0};
+// Source/PresetBar.h factoryValues, value for value
+const PRESETS=[
+ {name:'INIT',v:{depth:68,rate:0.34,shape:0,feedback:0,manual:0.6,spread:90,mix:50,autolevel:0,thruZero:1,invert:0},
+  d:'The documented default: a gentle sine sweep, through zero, half wet.'},
+ {name:'TAPE JET',v:{depth:85,rate:0.12,shape:0,feedback:25,manual:0.4,spread:20,mix:50,autolevel:0,thruZero:1,invert:1},
+  d:'Slow, deep and inverted, so the crossing hollows out: the two-machine tape flange.'},
+ {name:'ZERO CROSS',v:{depth:100,rate:0.08,shape:1,feedback:0,manual:0.3,spread:0,mix:50,autolevel:0,thruZero:1,invert:1},
+  d:'No feedback, INVERT on, MIX at 50: each time the taps meet the whole band drops through the floor.'},
+ {name:'BARBER SLOW',v:{depth:100,rate:0.06,shape:1,feedback:60,manual:2,spread:120,mix:50,autolevel:0,thruZero:0,invert:0},
+  d:'A long triangle sweep with resonance, the channels a third of a cycle apart.'},
+ {name:'METAL COMB',v:{depth:20,rate:0.45,shape:0,feedback:85,manual:0.15,spread:0,mix:65,autolevel:1,thruZero:0,invert:0},
+  d:'A short, ringing comb with 85 % feedback, shipped with AUTO LEVEL working.'},
+ {name:'WIDE WASH',v:{depth:60,rate:0.22,shape:0,feedback:-35,manual:3.5,spread:180,mix:45,autolevel:0,thruZero:0,invert:0},
+  d:'Negative feedback and channels in opposition: a hollow sweep across the stereo field.'},
+ {name:'PINBACKER',v:{depth:100,rate:0.228,shape:1,feedback:-25.6,manual:0.21,spread:75,mix:100,autolevel:3,thruZero:1,invert:1},
+  d:'Fully wet, through zero, negative feedback, driven into AUTO LEVEL CLIP.'},
+ {name:'FRIKKIN LAZERBEAMS',v:{depth:100,rate:0.512,shape:2,feedback:95,manual:0.1,spread:180,mix:100,autolevel:1,thruZero:1,invert:0},
+  d:'RAND at full feedback: each of the eighteen steps rings at its own pitch.'},
+];
+const AL_NAMES=['OFF','TRANSPARENT','GLUE','CLIP'];
+const tauMs=(p,phase)=>p.manual+p.depth*0.01*SWEEP_SPAN_MS*lfoValue(p.shape,phase);
+const dryMs=p=>p.manual+p.depth*0.01*SWEEP_SPAN_MS*0.5;
+const latencySamples=(p,sr)=>p.thruZero?Math.round(dryMs(p)*0.001*sr):0;
+
+/* ================= the display, after Source/CombDisplay.cpp ================= */
+// magnitude(): the clamp keeps it finite; polarity +1 is the comb as mixed, -1 the INVERT complement
+function magnitude(f,t,g,pol){g=Math.min(0.98,Math.max(0.02,Math.abs(g)));const c=pol*Math.cos(TAU*f*t);return (Math.sqrt(1+g*g+2*g*c)-(1-g))/(2*g);}
+const cIso=(u,v,h)=>[220+(u-v)*132,238+(u+v)*60-h];
+const ceilP=(u,v,h)=>[220+(u-v)*132,94+(u+v)*60+h];
+const gIso=(u,v,h)=>[220+(u-v)*138,262+(u+v)*62-h];
+const ceilG=(u,v,h)=>[220+(u-v)*138,72+(u+v)*62+h];
+const ROWS=18,POINTS=232,MAX_ORDERS=8,F0=60,F1=4000;
+// a fixed pink-noise stand-in for the input's 64-band energy: in the plug-in the light comes from the audio
+const energyAt=hz=>Math.max(0.12,Math.min(0.92,0.86-0.16*Math.max(0,Math.log10(Math.max(hz,20)/400))-0.10*Math.max(0,Math.log10(120/Math.max(hz,20)))));
+function well(cx){const g=cx.createLinearGradient(220-170*Math.sin(2.76),200+170*Math.cos(2.76),220+170*Math.sin(2.76),200-170*Math.cos(2.76));
+  g.addColorStop(0,'#2c4d4b');g.addColorStop(.44,'#223b3a');g.addColorStop(1,'#162928');cx.fillStyle=g;rr(cx,0,0,440,400,12);cx.fill();}
+function rr(cx,x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath();}
+const line=(cx,a,b)=>{cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.stroke();};
+function mono(cx,size,col,text,x,y,align){cx.font=`400 ${size}px "JetBrains Mono",ui-monospace,monospace`;cx.fillStyle=col;cx.textAlign=align||'left';cx.textBaseline='alphabetic';
+  if(cx.letterSpacing!==undefined)cx.letterSpacing=(size*0.17).toFixed(1)+'px';cx.fillText(text,x,y);if(cx.letterSpacing!==undefined)cx.letterSpacing='0px';}
+function ordersDrawn(p){let n=0;for(let k=1;k<=MAX_ORDERS;k++)for(let r=0;r<ROWS;r++){const f=(2*k-1)/(2*tauMs(p,r/ROWS)*0.001);if(f>=F0&&f<=F1){n++;break;}}return n;}
+
+function paintSurface(cv,p,livePhase){
+  const cx=cv.getContext('2d');const s=cv.width/440;cx.setTransform(s,0,0,s,0,0);cx.clearRect(0,0,440,400);
+  const dec=Math.log(F1/F0),fb=p.feedback*0.01,pol=p.invert?-1:1;
+  const energy=new Float32Array(POINTS);for(let i=0;i<POINTS;i++)energy[i]=energyAt(F0*Math.exp(dec*i/(POINTS-1)));
+  const rowPhase=r=>{const q=livePhase+(ROWS-1-r)/ROWS;return q-Math.floor(q);};
+  const tau=ph=>tauMs(p,ph)*0.001;
+  well(cx);
+  cx.lineWidth=1;
+  for(let k=0;k<=5;k++){const q=-0.5+k/5,edge=k===0||k===5;cx.strokeStyle=rgba(GOLD,edge?.10:.05);line(cx,ceilG(-.5,q,0),ceilG(.5,q,0));line(cx,ceilG(q,-.5,0),ceilG(q,.5,0));}
+  cx.beginPath();[[-.5,-.5],[.5,-.5],[.5,.5],[-.5,.5]].forEach((c,i)=>{const pt=gIso(c[0],c[1],-6);i?cx.lineTo(pt[0],pt[1]):cx.moveTo(pt[0],pt[1]);});cx.closePath();
+  cx.fillStyle='rgba(11,26,25,.42)';cx.fill();cx.strokeStyle=rgba(CREAM,.06);cx.stroke();
+  for(let k=0;k<=5;k++){const q=-0.5+k/5,edge=k===0||k===5;cx.strokeStyle=rgba(CREAM,edge?.16:.07);line(cx,gIso(-.5,q,0),gIso(.5,q,0));line(cx,gIso(q,-.5,0),gIso(q,.5,0));}
+  cx.lineWidth=0.8;
+  for(let i=0;i<=5;i++)for(let j=0;j<=5;j++){const qi=-.5+i/5,qj=-.5+j/5;const a=gIso(qi,qj,0),b=ceilG(qi,qj,0);
+    cx.strokeStyle=rgba(CREAM,.10);line(cx,[a[0]-2.2,a[1]],[a[0]+2.2,a[1]]);line(cx,[a[0],a[1]-2.2],[a[0],a[1]+2.2]);
+    cx.strokeStyle=rgba(GOLD,.08);line(cx,[b[0]-2.2,b[1]],[b[0]+2.2,b[1]]);line(cx,[b[0],b[1]-2.2],[b[0],b[1]+2.2]);}
+  // the gold ghost: the complementary comb hangs from the ceiling
+  for(let r=0;r<ROWS;r++){const v=-.5+r/(ROWS-1),t=tau(rowPhase(r)),front=r/(ROWS-1);cx.beginPath();
+    for(let i=0;i<POINTS;i++){const k=i/(POINTS-1);const pt=ceilP(-.5+k,v,6+34*magnitude(F0*Math.exp(dec*k),t,fb,-pol));i?cx.lineTo(pt[0],pt[1]):cx.moveTo(pt[0],pt[1]);}
+    cx.strokeStyle=rgba(GOLD,.05+.20*front);cx.lineWidth=.8;cx.stroke();}
+  // the terrain, back to front with opaque fills; the front row is "now"
+  const h=new Float32Array(POINTS);
+  for(let r=0;r<ROWS;r++){const v=-.5+r/(ROWS-1),t=tau(rowPhase(r)),front=r/(ROWS-1),isNow=r===ROWS-1;
+    cx.beginPath();
+    for(let i=0;i<POINTS;i++){const k=i/(POINTS-1);h[i]=12+70*magnitude(F0*Math.exp(dec*k),t,fb,pol);const pt=cIso(-.5+k,v,h[i]);i?cx.lineTo(pt[0],pt[1]):cx.moveTo(pt[0],pt[1]);}
+    let pt=cIso(.5,v,-6);cx.lineTo(pt[0],pt[1]);pt=cIso(-.5,v,-6);cx.lineTo(pt[0],pt[1]);cx.closePath();cx.fillStyle='rgba(14,34,32,.92)';cx.fill();
+    const base=isNow?.95:(.16+.55*Math.pow(front,1.4)),w=isNow?1.6:(.75+.55*front),stride=isNow?1:2,ink=isNow?GOLD:CREAM;
+    if(isNow){cx.lineWidth=.75;for(let i=2;i<POINTS-2;i+=4){const k=i/(POINTS-1);cx.strokeStyle=rgba(PINK,.30*(.25+.75*energy[i]));line(cx,cIso(-.5+k,v,h[i]-1),cIso(-.5+k,v,-6));}}
+    cx.lineWidth=w;cx.lineCap='round';
+    for(let i=stride;i<POINTS;i+=stride){const e=.5*(energy[i]+energy[i-stride]);cx.strokeStyle=rgba(ink,base*(.22+.78*e));
+      line(cx,cIso(-.5+(i-stride)/(POINTS-1),v,h[i-stride]),cIso(-.5+i/(POINTS-1),v,h[i]));}
+    cx.lineCap='butt';}
+  // notch orders traced across the sweep, order 1 in pink
+  for(let k=1;k<=MAX_ORDERS;k++){cx.beginPath();let pen=false,any=false;
+    for(let r=0;r<ROWS;r++){const v=-.5+r/(ROWS-1);const f=(2*k-1)/(2*tau(rowPhase(r)));if(f<F0||f>F1){pen=false;continue;}
+      const pt=cIso(-.5+Math.log(f/F0)/dec,v,12);pen?cx.lineTo(pt[0],pt[1]):cx.moveTo(pt[0],pt[1]);pen=true;any=true;}
+    if(!any)continue;cx.strokeStyle=rgba(k===1?PINK:CREAM,.44-.04*k);cx.lineWidth=.8;cx.stroke();}
+  // well chrome
+  cx.save();rr(cx,0,0,440,400,12);cx.clip();const sh=cx.createLinearGradient(0,0,0,84);sh.addColorStop(0,'rgba(0,0,0,.28)');sh.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=sh;cx.fillRect(0,0,440,90);cx.restore();
+  cx.strokeStyle='rgba(255,255,255,.04)';cx.lineWidth=1;rr(cx,.5,.5,439,399,12);cx.stroke();
+  mono(cx,8.5,rgba(CREAM,.42),'COMB SURFACE',20,28);
+  mono(cx,8,rgba(CREAM,.34),'LOG f × LFO PHASE × MAGNITUDE',420,385,'right');
+  mono(cx,8,rgba(TEAL,.9),'LIVE',420,28,'right');
+}
+
+// FIELD: two window screens, each channel's comb as a mesh of pitch 1/tau along linear frequency
+const FIELD_MAX_HZ=10000,FIELD_MAX_ANGLE=12,FIELD_SHARP=3;
+const RAMP=(()=>{const lo=[14,34,32],hi=[242*.86,233*.86,220*.86],r=new Uint8ClampedArray(256*3);for(let i=0;i<256;i++){const t=i/255*.8;for(let c=0;c<3;c++)r[i*3+c]=lo[c]+(hi[c]-lo[c])*t;}return r;})();
+const fieldBufs=new Map();
+function paintField(cv,p,livePhase){
+  const cx=cv.getContext('2d');const w=cv.width,h=cv.height;cx.setTransform(1,0,0,1,0,0);
+  let img=fieldBufs.get(cv);if(!img||img.width!==w){img=cx.createImageData(w,h);fieldBufs.set(cv,img);}
+  const d=img.data;const g=Math.min(.98,Math.max(.02,Math.abs(p.feedback*0.01))),pol=p.invert?-1:1;
+  const spread=p.spread/360;const tauL=tauMs(p,livePhase)*0.001;let pr=livePhase+spread;pr-=Math.floor(pr);const tauR=tauMs(p,pr)*0.001;
+  const angle=FIELD_MAX_ANGLE*p.spread/180*Math.PI/180;const df=FIELD_MAX_HZ/Math.max(1,w-1);
+  const colE=new Float32Array(w);for(let x=0;x<w;x++)colE[x]=.12+.88*energyAt(x*df);
+  const A=1+g*g,B=2*g*pol,C=1-g,D=1/(2*g);
+  const rake=c=>{let m=(Math.sqrt(A+B*c)-C)*D*FIELD_SHARP;return m>=1?0:(m<=0?1:1-m);};
+  const hL=-.5*angle,hR=.5*angle,kL=TAU*df*tauL,kR=TAU*df*tauR;
+  const cL=Math.cos(hL),sL=Math.sin(hL),cR=Math.cos(hR),sR=Math.sin(hR);
+  const dcLu=Math.cos(kL*cL),dsLu=Math.sin(kL*cL),dcLv=Math.cos(-kL*sL),dsLv=Math.sin(-kL*sL);
+  const dcRu=Math.cos(kR*cR),dsRu=Math.sin(kR*cR),dcRv=Math.cos(-kR*sR),dsRv=Math.sin(-kR*sR);
+  for(let y=0;y<h;y++){const yy=y-.5*h;
+    let a=kL*yy*sL,luc=Math.cos(a),lus=Math.sin(a);a=kL*yy*cL;let lvc=Math.cos(a),lvs=Math.sin(a);
+    a=kR*yy*sR;let ruc=Math.cos(a),rus=Math.sin(a);a=kR*yy*cR;let rvc=Math.cos(a),rvs=Math.sin(a);
+    let o=y*w*4;
+    for(let x=0;x<w;x++,o+=4){
+      const mL=Math.max(rake(luc),rake(lvc)),mR=Math.max(rake(ruc),rake(rvc));const node=mL*mR;
+      let t=(Math.max(mL,mR)*.62+node*.45)*colE[x];t=t>1?1:(t<0?0:t);const i=(t*255|0)*3;
+      let r=RAMP[i],gg=RAMP[i+1],b=RAMP[i+2];
+      if(node>.55){const k=(node-.55)*.8;r+=(223-r)*k;gg+=(93-gg)*k;b+=(145-b)*k;}
+      d[o]=r;d[o+1]=gg;d[o+2]=b;d[o+3]=255;
+      let n=luc*dcLu-lus*dsLu;lus=luc*dsLu+lus*dcLu;luc=n;
+      n=lvc*dcLv-lvs*dsLv;lvs=lvc*dsLv+lvs*dcLv;lvc=n;
+      n=ruc*dcRu-rus*dsRu;rus=ruc*dsRu+rus*dcRu;ruc=n;
+      n=rvc*dcRv-rvs*dsRv;rvs=rvc*dsRv+rvs*dcRv;rvc=n;}}
+  cx.putImageData(img,0,0);
+  const s=w/440;cx.setTransform(s,0,0,s,0,0);
+  const sh=cx.createLinearGradient(0,0,0,92);sh.addColorStop(0,'rgba(0,0,0,.34)');sh.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=sh;cx.fillRect(0,0,440,96);
+  for(const sc of [[0,0,210,46],[240,356,200,44]]){const gr=cx.createRadialGradient(sc[0]+sc[2]/2,sc[1]+sc[3]/2,0,sc[0]+sc[2]/2,sc[1]+sc[3]/2,sc[3]/2+6);gr.addColorStop(0,'rgba(0,0,0,.55)');gr.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=gr;cx.fillRect(sc[0],sc[1],sc[2],sc[3]);}
+  mono(cx,8.5,rgba(CREAM,.62),'MOIRÉ FIELD',20,28);
+  mono(cx,8,rgba(CREAM,.52),'L SCREEN × R SCREEN · LINEAR 0–10 kHz · SPREAD OPENS THE ANGLE',420,385,'right');
+  mono(cx,8,rgba(TEAL,.9),'LIVE',420,28,'right');
+  // the field is a square image; clip its corners to the well
+  cx.globalCompositeOperation='destination-in';rr(cx,0,0,440,400,12);cx.fill();cx.globalCompositeOperation='source-over';
+}
+
+/* ================= hero ================= */
+const hero={p:Object.assign({},DEFAULTS),phase:0,mode:0,acc:0};
+const heroCv=document.getElementById('hero');
+function setHeroMode(m){hero.mode=m;document.querySelectorAll('[data-hm]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.hm===m?'true':'false'));
+  document.getElementById('h-mode-cap').textContent=(m?'MOIRÉ FIELD':'COMB SURFACE')+' · INIT';hero.acc=1;}
+document.querySelectorAll('[data-hm]').forEach(b=>b.addEventListener('click',()=>setHeroMode(+b.dataset.hm)));
+heroCv.addEventListener('click',()=>setHeroMode(hero.mode?0:1));
+{const p=hero.p;document.getElementById('h-notch').textContent=Math.round(1/(2*tauMs(p,0)*0.001))+' Hz';
+ document.getElementById('h-sweep').textContent=p.manual.toFixed(1)+'-'+(p.manual+p.depth*0.01*SWEEP_SPAN_MS).toFixed(1)+' ms';
+ document.getElementById('h-orders').textContent=ordersDrawn(p);}
+
+/* ================= the lab: the processor's equations, per channel ================= */
+// wet: the line takes input + feedback * wet, so W = s e^{-jwt} / (1 - g e^{-jwt}); dry: the live input or,
+// with THRU-ZERO on, the input delayed to the sweep midpoint; MIX is a linear crossfade.
+function response(p,tau,f){
+  const g=Math.max(-.95,Math.min(.95,p.feedback*0.01)),m=p.mix*0.01,s=p.invert?-1:1,dry=p.thruZero?dryMs(p)*0.001:0;
+  const a=-TAU*f*tau,er=Math.cos(a),ei=Math.sin(a);
+  const dr=1-g*er,di=-g*ei,den=dr*dr+di*di;           // W = e / (1 - g e)
+  const wr=(er*dr+ei*di)/den,wi=(ei*dr-er*di)/den;
+  const b=-TAU*f*dry;const hr=(1-m)*Math.cos(b)+m*s*wr,hi=(1-m)*Math.sin(b)+m*s*wi;
+  return Math.hypot(hr,hi);
+}
+const lab=Object.assign({},DEFAULTS);let labPhase=0;
+const CTRL=[
+ {id:'depth',label:'DEPTH',min:0,max:100,step:0.1,fmt:v=>v.toFixed(0)+' %'},
+ {id:'rate',label:'RATE',min:0.02,max:8,skew:0.28,fmt:v=>(v<1?v.toFixed(2):v.toFixed(1))+' Hz'},
+ {id:'feedback',label:'FEEDBACK',min:-95,max:95,step:0.1,fmt:v=>(v>0.5?'+':'')+Math.round(v)+' %'},
+ {id:'manual',label:'MANUAL',min:0.1,max:20,skew:0.4,fmt:v=>(v<10?v.toFixed(2):v.toFixed(1))+' ms'},
+ {id:'spread',label:'SPREAD',min:0,max:180,step:1,fmt:v=>Math.round(v)+'°'},
+ {id:'mix',label:'MIX',min:0,max:100,step:0.1,fmt:v=>v.toFixed(0)+' %'},
+];
+const sliders={};
+function makeSliders(box,defs,target,onUser){
+  const out={};
+  for(const c of defs){
+    const d=document.createElement('div');d.className='ctrl';
+    const toV=c.skew?(q=>c.min+(c.max-c.min)*Math.pow(q/1000,1/c.skew)):(q=>q), toP=c.skew?(v=>1000*Math.pow((v-c.min)/(c.max-c.min),c.skew)):(v=>v);
+    const rng=c.skew?'min="0" max="1000" step="1"':`min="${c.min}" max="${c.max}" step="${c.step}"`;
+    d.innerHTML=`<label for="c-${box.id}-${c.id}">${c.label}<output></output></label><input id="c-${box.id}-${c.id}" type="range" ${rng}>`;
+    box.appendChild(d);const inp=d.querySelector('input'),o=d.querySelector('output');
+    out[c.id]={c,inp,wrap:d,set(v){target[c.id]=v;inp.value=toP(v);o.textContent=c.fmt(v);}};
+    inp.addEventListener('input',()=>{if(onUser)onUser();const v=toV(+inp.value);target[c.id]=v;o.textContent=c.fmt(v);markCustom();});
+    out[c.id].set(target[c.id]);
+  }
+  return out;}
+Object.assign(sliders,makeSliders(document.getElementById('ctrls'),CTRL,lab,()=>stopDemo()));
+const sel=document.getElementById('l-preset');
+sel.innerHTML=PRESETS.map((p,i)=>`<option value="${i}">${p.name}</option>`).join('')+'<option value="-1" hidden>EDITED</option>';
+function setShape(v){lab.shape=v;document.querySelectorAll('[data-ls]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.ls===v?'true':'false'));}
+function setTog(id,key,v){lab[key]=v?1:0;document.getElementById(id).setAttribute('aria-pressed',v?'true':'false');}
+function loadPreset(i){stopDemo();const v=PRESETS[i].v;for(const k in sliders)sliders[k].set(v[k]);setShape(v.shape);setTog('t-tz','thruZero',v.thruZero);setTog('t-inv','invert',v.invert);lab.autolevel=v.autolevel;sel.value=String(i);labPhase=0;}
+function markCustom(){sel.value='-1';}
+sel.addEventListener('change',()=>{if(+sel.value>=0)loadPreset(+sel.value);});
+document.querySelectorAll('[data-ls]').forEach(b=>b.addEventListener('click',()=>{stopDemo();setShape(+b.dataset.ls);markCustom();}));
+document.getElementById('t-tz').addEventListener('click',()=>{setTog('t-tz','thruZero',!lab.thruZero);markCustom();});
+document.getElementById('t-inv').addEventListener('click',()=>{setTog('t-inv','invert',!lab.invert);markCustom();});
+
+// SHOW IN THE LAB: sweep one control through its range and back to where it was
+let demo=null;
+const DEMOS={
+  manual:{ids:['manual'],path:t=>({manual:0.1+19.9*Math.pow(Math.sin(Math.PI*t),3)})},
+  depth:{ids:['depth'],path:t=>({depth:100*Math.sin(Math.PI*t)})},
+  rate:{ids:['rate'],path:t=>({rate:0.02+3*Math.pow(Math.sin(Math.PI*t),2)})},
+  feedback:{ids:['feedback'],path:t=>({feedback:95*Math.sin(TAU*t)})},
+  spread:{ids:['spread'],path:t=>({spread:180*Math.sin(Math.PI*t)})},
+  mix:{ids:['mix'],path:t=>({mix:50+50*Math.sin(TAU*t)})},
+};
+function stopDemo(){if(!demo)return;for(const id of demo.ids){sliders[id].wrap.classList.remove('on');sliders[id].set(demo.saved[id]);}demo=null;}
+function startDemo(key){stopDemo();const d=DEMOS[key];const saved={};for(const id of d.ids){saved[id]=lab[id];sliders[id].wrap.classList.add('on');}
+  demo={ids:d.ids,saved,t0:performance.now(),dur:8000,path:d.path};
+  document.getElementById('lab').scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>startDemo(b.dataset.show)));
+function runDemo(now){if(!demo)return;const t=(now-demo.t0)/demo.dur;if(t>=1){stopDemo();return;}const v=demo.path(t);for(const k in v)sliders[k].set(v[k]);}
+
+const NF=720;const FREQS=new Float32Array(NF);for(let i=0;i<NF;i++)FREQS[i]=20*Math.pow(1000,i/(NF-1));
+const dBv=x=>20*Math.log10(Math.max(x,1e-6));
+function noiseLevelDb(p,tau){let s=0;const N=1024;for(let i=0;i<N;i++){const f=(i+.5)/N*24000;const r=response(p,tau,f);s+=r*r;}return 10*Math.log10(Math.max(s/N,1e-12));}
+function firstNotch(p,tau){let prev=response(p,tau,FREQS[0]),best=null;
+  for(let i=1;i<NF-1;i++){const cur=response(p,tau,FREQS[i]),nxt=response(p,tau,FREQS[i+1]);if(cur<prev&&cur<=nxt&&dBv(cur)<-6){best=i;break;}prev=cur;}return best;}
+const fmtHz=f=>f>=1000?(f/1000).toFixed(f>=10000?1:2)+' kHz':Math.round(f)+' Hz';
+const fmtDb=d=>d<-59?'−∞':(d>=0.05?'+':'')+d.toFixed(1).replace('-','−')+' dB';
+
+function drawLab(dt){
+  labPhase+=lab.rate*dt;labPhase-=Math.floor(labPhase);
+  const phL=labPhase;let phR=labPhase+lab.spread/360;phR-=Math.floor(phR);
+  const tL=tauMs(lab,phL)*0.001,tR=tauMs(lab,phR)*0.001;
+  // response
+  const cv=document.getElementById('resp'),cx=cv.getContext('2d');const W=cv.width,H=cv.height;cx.clearRect(0,0,W,H);
+  const ml=64,mr=24,top=48,bot=H-48,lo=-40,hi=30;const X=i=>ml+(W-ml-mr)*i/(NF-1),Y=d=>top+(bot-top)*(hi-Math.max(lo,Math.min(hi,d)))/(hi-lo);
+  cx.font='400 17px "JetBrains Mono",monospace';cx.textBaseline='middle';
+  for(let d=lo;d<=hi;d+=10){cx.strokeStyle=d===0?'rgba(242,233,220,.22)':'rgba(242,233,220,.06)';cx.lineWidth=d===0?1.4:1;line(cx,[ml,Y(d)],[W-mr,Y(d)]);cx.fillStyle='#8d8779';cx.textAlign='right';cx.fillText((d>0?'+':'')+d,ml-10,Y(d));}
+  for(const f of [50,100,200,500,1000,2000,5000,10000]){const x=ml+(W-ml-mr)*Math.log(f/20)/Math.log(1000);cx.strokeStyle='rgba(242,233,220,.06)';line(cx,[x,top],[x,bot]);cx.fillStyle='#8d8779';cx.textAlign='center';cx.fillText(f>=1000?f/1000+'k':f,x,bot+24);}
+  cx.textAlign='right';cx.fillStyle='#8d8779';cx.fillText('dB',ml-10,top-22);cx.textAlign='right';cx.fillText('Hz',W-mr,bot+24);
+  const curve=(tau,col,w,dash)=>{cx.strokeStyle=col;cx.lineWidth=w;cx.setLineDash(dash||[]);cx.beginPath();for(let i=0;i<NF;i++){const y=Y(dBv(response(lab,tau,FREQS[i])));i?cx.lineTo(X(i),y):cx.moveTo(X(i),y);}cx.stroke();cx.setLineDash([]);};
+  curve(tR,rgba(GOLD,.85),2.2,[10,7]);curve(tL,rgba(CREAM,.95),2.6);
+  const n=firstNotch(lab,tL);
+  if(n!==null){const x=X(n);cx.strokeStyle=rgba(PINK,.55);cx.lineWidth=1.5;line(cx,[x,top],[x,bot]);cx.fillStyle=rgba(PINK,1);cx.beginPath();cx.arc(x,Y(dBv(response(lab,tL,FREQS[n]))),6,0,TAU);cx.fill();}
+  // sweep
+  const sv=document.getElementById('sweep'),sx=sv.getContext('2d');const SW=sv.width,SH=sv.height;sx.clearRect(0,0,SW,SH);
+  const dry=lab.thruZero?dryMs(lab):0,maxD=Math.max(lab.manual+lab.depth*0.01*SWEEP_SPAN_MS,dry)*1.12+0.05;
+  const sml=64,smr=24,stop=44,sbot=SH-44;const SX=u=>sml+(SW-sml-smr)*u,SY=ms=>sbot-(sbot-stop)*ms/maxD;
+  sx.font='400 17px "JetBrains Mono",monospace';sx.textBaseline='middle';
+  for(let k=0;k<=4;k++){const ms=maxD*k/4;sx.strokeStyle='rgba(242,233,220,.06)';sx.lineWidth=1;line(sx,[sml,SY(ms)],[SW-smr,SY(ms)]);sx.fillStyle='#8d8779';sx.textAlign='right';sx.fillText(ms<1?ms.toFixed(2):ms.toFixed(1),sml-10,SY(ms));}
+  sx.textAlign='right';sx.fillText('ms',sml-10,stop-16);sx.textAlign='center';sx.fillText('ONE LFO CYCLE',SX(.25),sbot+24);sx.fillText('THE NEXT',SX(.75),sbot+24);
+  sx.strokeStyle='rgba(242,233,220,.14)';line(sx,[SX(.5),stop],[SX(.5),sbot]);
+  const N=600;const pathOf=(off,col,w,dash)=>{sx.strokeStyle=col;sx.lineWidth=w;sx.setLineDash(dash||[]);sx.beginPath();for(let i=0;i<=N;i++){const u=i/N;let ph=2*u+off;ph-=Math.floor(ph);const y=SY(tauMs(lab,ph));i?sx.lineTo(SX(u),y):sx.moveTo(SX(u),y);}sx.stroke();sx.setLineDash([]);};
+  sx.strokeStyle=rgba(TEAL,.9);sx.lineWidth=2.4;line(sx,[sml,SY(dry)],[SW-smr,SY(dry)]);
+  sx.fillStyle=rgba(TEAL,.9);sx.textAlign='right';sx.fillText(lab.thruZero?'DRY · '+dry.toFixed(2)+' ms':'DRY · LIVE',SW-smr-8,SY(dry)-16);
+  pathOf(lab.spread/360,rgba(GOLD,.8),2,[10,7]);pathOf(0,rgba(CREAM,.95),2.4);
+  if(lab.thruZero){sx.fillStyle=rgba(PINK,1);for(let i=1;i<=N;i++){const u0=(i-1)/N,u1=i/N;let p0=2*u0;p0-=Math.floor(p0);let p1=2*u1;p1-=Math.floor(p1);
+    const a=tauMs(lab,p0)-dry,b=tauMs(lab,p1)-dry;if((a<=0&&b>0)||(a>=0&&b<0)){sx.beginPath();sx.arc(SX(u1),SY(dry),6,0,TAU);sx.fill();}}}
+  const nowU=labPhase/2;sx.strokeStyle=rgba(CREAM,.5);sx.lineWidth=1.4;line(sx,[SX(nowU),stop],[SX(nowU),sbot]);
+  sx.fillStyle=rgba(CREAM,1);sx.beginPath();sx.arc(SX(nowU),SY(tauMs(lab,phL)),7,0,TAU);sx.fill();
+  // readouts
+  document.getElementById('r-notch').textContent=n===null?'none':fmtHz(FREQS[n]);
+  const off=(tL*1000-dry);document.getElementById('r-off').textContent=(lab.thruZero?(off>=0?'+':'−')+Math.abs(off).toFixed(2):(tL*1000).toFixed(2))+' ms';
+  document.getElementById('r-lvl').textContent=fmtDb(noiseLevelDb(lab,tL));
+  const ls=latencySamples(lab,48000);document.getElementById('r-lat').textContent=lab.thruZero?ls+' smp · '+(ls/48).toFixed(1)+' ms':'0 · TZ OFF';
+}
+
+/* ================= display demos ================= */
+const dSurf={p:Object.assign({},PRESETS[3].v),phase:0,cv:document.getElementById('d-surf')};
+const dField={p:Object.assign({},PRESETS[5].v),phase:0.1,cv:document.getElementById('d-field'),acc:1};
+
+/* ================= auto level illustration ================= */
+const lvCv=document.getElementById('level'),lv=lvCv.getContext('2d');let alMode=1,alT=0;
+document.querySelectorAll('[data-al]').forEach(b=>b.addEventListener('click',()=>{alMode=+b.dataset.al;document.querySelectorAll('[data-al]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.al===alMode?'true':'false'));}));
+// the comb's level on white noise, MIX 100 %, TZ off, at the delay's mean: |W|^2 averages to 1 / (1 - g^2)
+const offDb=fb=>-10*Math.log10(1-Math.pow(fb*0.01,2));
+function drawLevel(dt){
+  alT+=dt;const W=lvCv.width,H=lvCv.height;lv.clearRect(0,0,W,H);
+  const ml=56,mr=20,top=60,bot=H-70;const X=fb=>ml+(W-ml-mr)*(fb+95)/190,Y=d=>top+(bot-top)*(12-d)/18;
+  lv.font='400 13px "JetBrains Mono",monospace';lv.textBaseline='middle';
+  for(let d=-6;d<=12;d+=3){lv.strokeStyle=d===0?'rgba(242,233,220,.22)':'rgba(242,233,220,.06)';lv.lineWidth=1;line(lv,[ml,Y(d)],[W-mr,Y(d)]);lv.fillStyle='#8d8779';lv.textAlign='right';lv.fillText((d>0?'+':'')+d,ml-8,Y(d));}
+  lv.textAlign='center';for(const fb of [-95,-50,0,50,95]){lv.fillText((fb>0?'+':'')+fb,X(fb),bot+20);}lv.fillText('FEEDBACK %',X(0),bot+44);
+  lv.textAlign='left';lv.fillText('OUTPUT − INPUT, dB',ml,top-28);
+  lv.strokeStyle=alMode?'rgba(141,135,121,.6)':rgba(PINK,.95);lv.lineWidth=alMode?1.6:2.6;lv.beginPath();for(let i=0;i<=200;i++){const fb=-95+190*i/200;const y=Y(offDb(fb));i?lv.lineTo(X(fb),y):lv.moveTo(X(fb),y);}lv.stroke();
+  if(alMode){lv.strokeStyle=rgba(TEAL,.95);lv.lineWidth=2.6;line(lv,[X(-95),Y(0)],[X(95),Y(0)]);lv.fillStyle=rgba(TEAL,.95);lv.textAlign='left';lv.fillText('AUTO LEVEL',X(-20),Y(0)+18);}
+  lv.fillStyle='#8d8779';lv.textAlign='right';lv.fillText('OFF',X(95)-6,Y(offDb(95))+16);
+  const fb=95*Math.sin(alT*0.5);const y=alMode?Y(0):Y(offDb(fb));lv.fillStyle=rgba(CREAM,1);lv.beginPath();lv.arc(X(fb),y,6,0,TAU);lv.fill();
+  document.getElementById('al-fb').textContent=(fb>0.5?'+':'')+Math.round(fb)+' %';
+}
+
+/* ================= preset cards ================= */
+const fmtP=v=>`DEPTH ${v.depth} · ${v.rate} Hz ${['SINE','TRI','RAND'][v.shape]} · FB ${v.feedback>0?'+':''}${v.feedback} · ${v.manual} ms · ${v.spread}° · MIX ${v.mix} · ${v.thruZero?'TZ':'NO TZ'}${v.invert?' · POL':''} · ${AL_NAMES[v.autolevel]}`;
+document.getElementById('presets-grid').innerHTML=PRESETS.map((p,i)=>`<button type="button" class="preset" data-preset="${i}"><b>${p.name}</b><span>${fmtP(p.v)}</span><p>${p.d}</p></button>`).join('');
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{loadPreset(+b.dataset.preset);document.getElementById('lab').scrollIntoView({behavior:'smooth',block:'start'});}));
+
+/* ================= knob glyphs on the control cards ================= */
+const KNOBDEF={manual:[0.6,0.1,20,'0.60 ms',0.4],depth:[68,0,100,'68 %'],rate:[0.34,0.02,8,'0.34 Hz',0.28],feedback:[0,-95,95,'0 %'],spread:[90,0,180,'90°'],mix:[50,0,100,'50 %']};
+document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dataset.knob];if(!k)return;
+  const lin=(k[0]-k[1])/(k[2]-k[1]);const n=k[4]?Math.pow(lin,k[4]):lin;const bip=k[1]<0;
+  const a0=-135,a1=135,a=a0+(a1-a0)*n;const P=(deg,r)=>{const t=(deg-90)*Math.PI/180;return [r*Math.cos(t),r*Math.sin(t)];};
+  const arc=(from,to,r)=>{if(to<from)[from,to]=[to,from];const p=P(from,r),q=P(to,r);return `M${p[0].toFixed(1)} ${p[1].toFixed(1)} A${r} ${r} 0 ${to-from>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;};
+  let ticks='';for(let i=0;i<=10;i++){const d=a0+27*i;const p=P(d,52),q=P(d,57);ticks+=`<line class="tick" x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}"/>`;}
+  const ptr=P(a,30),from=bip?0:a0;
+  card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,46)}"/><path class="arc-val" d="${arc(from,Math.abs(a-from)<0.5?from+0.5:a,46)}"/><circle class="knob-face" r="36"/><line class="knob-ptr" x1="${(ptr[0]*0.35).toFixed(1)}" y1="${(ptr[1]*0.35).toFixed(1)}" x2="${ptr[0].toFixed(1)}" y2="${ptr[1].toFixed(1)}"/><text class="knob-num" y="72">${k[3]}</text></svg>`);
+});
+
+/* ================= main loop: only what is on screen is drawn ================= */
+const visible=new Set();
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?visible.add(e.target):visible.delete(e.target)),{rootMargin:'120px'});
+  [heroCv,document.getElementById('resp'),dSurf.cv,dField.cv,lvCv].forEach(el=>io.observe(el));}
+else [heroCv,document.getElementById('resp'),dSurf.cv,dField.cv,lvCv].forEach(el=>visible.add(el));
+const FIELD_DT=1/15;
+function drawDisplay(o,dt,mode){o.phase+=o.p.rate*dt;o.phase-=Math.floor(o.phase);
+  if(mode===1){o.acc=(o.acc||0)+dt;if(o.acc<FIELD_DT)return;o.acc=0;paintField(o.cv,o.p,o.phase);}else paintSurface(o.cv,o.p,o.phase);}
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(0.1,(now-last)/1000);last=now;
+  runDemo(now);
+  if(visible.has(heroCv)){if(hero.mode===1){hero.cv=heroCv;drawDisplay(hero,dt,1);}else{hero.cv=heroCv;drawDisplay(hero,dt,0);}}else{hero.phase+=hero.p.rate*dt;}
+  if(visible.has(document.getElementById('resp')))drawLab(dt);else{labPhase+=lab.rate*dt;labPhase-=Math.floor(labPhase);}
+  if(visible.has(dSurf.cv))drawDisplay(dSurf,dt,0);
+  if(visible.has(dField.cv))drawDisplay(dField,dt,1);
+  if(visible.has(lvCv))drawLevel(dt);
+  requestAnimationFrame(frame);
+}
+// draw everything once so a still page reads complete
+loadPreset(0);hero.cv=heroCv;paintSurface(heroCv,hero.p,0);drawLab(0);paintSurface(dSurf.cv,dSurf.p,0);paintField(dField.cv,dField.p,0.1);drawLevel(0);
+requestAnimationFrame(frame);
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
