@@ -269,6 +269,12 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- HOW IT WORKS -->
+<div class="sh" id="beforeafter">Before and after</div>
+<section style="display:flex;flex-direction:column;align-items:center;gap:14px">
+  <video src="assets/cinder/cinder_beforeafter_9x16.mp4?v=261010" controls playsinline preload="metadata" style="width:100%;max-width:360px;aspect-ratio:9/16;height:auto;display:block;border-radius:8px;background:#000" aria-label="CINDER before and after"></video>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#8d8779;text-transform:uppercase">Sound on</div>
+</section>
+
 <div class="sh" id="how">How it works</div>
 <section class="stack">
   <div class="two">
@@ -398,6 +404,16 @@ footer a:hover{color:var(--gold)}
       <p>TONE is a ±12 dB tilt around 800 Hz: at +12 it measures −6.00 dB at 100 Hz and +6.00 dB at 8 kHz. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
     </article>
   </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:20px">
+    <figure class="faceshot" style="margin:0">
+      <img src="assets/cinder/hero_v110.png?v=261010" alt="The CINDER v1.1.0 panel: DRIVE 28.7 on EMBER with BIAS and LFO under it, the transfer display in the middle, TONE, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row and AUTO LEVEL set to TRANSPARENT" width="2140" height="1410" loading="lazy">
+      <figcaption class="cap">THE WHOLE FACE</figcaption>
+    </figure>
+    <figure class="faceshot" style="margin:0">
+      <img src="assets/cinder/cinder_v110_eq.png?v=261011" alt="The CINDER v1.1.0 EQ options open: an eight-node curve set POST DRIVE, with band 6 a bell at 4.08 kHz, +12.8 dB, Q 1.60, and the AMOUNT, RESET and FLAT controls" width="2140" height="1410" loading="lazy">
+      <figcaption class="cap">EQ OPTIONS OPEN · POST DRIVE</figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- LFO -->
@@ -425,7 +441,7 @@ footer a:hover{color:var(--gold)}
     <div class="ctrls four" id="lfoctrls"></div>
   </div>
   <figure class="faceshot">
-    <img src="assets/cinder/cinder_v0013_lfo.png?v=261005" alt="The CINDER panel: DRIVE 24.0 on EMBER at the left with BIAS and LFO under it, the transfer display in the middle, TONE, SAG, MIX, OUTPUT, the SATURATION row and the AUTO LEVEL switch on the right, and the LFO OPTIONS panel open with RATE 1.00 Hz, SYNC, DIVISION 1/4, SHAPE SINE and TARGET DRIVE">
+    <img src="assets/cinder/cinder_v110_lfo.png?v=261011" alt="The CINDER v1.1.0 panel with the LFO options open: SOURCE LFO or ENVELOPE, TARGET BIAS, RATE 9.36 Hz, SYNC and DIVISION, SHAPE SQR, and the ENVELOPE FOLLOWER ATTACK and RELEASE controls" width="2140" height="1410" loading="lazy">
     <figcaption class="cap">THE WHOLE FACE · LFO OPTIONS OPEN</figcaption>
   </figure>
 </section>
