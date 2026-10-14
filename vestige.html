@@ -1,289 +1,883 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VESTIGE Product Page</title>
+<meta name="description" content="VESTIGE is a four-engine stereo algorithmic reverb with the echo built inside the room: DENSE, MOD, PLATE and VOID, a near-to-far SOURCE control, a tempo-locked echo and a tank you can freeze. Zero latency. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching gire.html and euclid.html. Single dark look by choice: THETA marketing pages live on the
+   void theme. VESTIGE's own colour enters only where the plug-in draws it: the navy display card,
+   the gold source hub and the cream filaments. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#DCCDBF; --silver:#B0B2B7; --grid:#81848A;
+  --navy:#111820; --navy-hi:#1B2632; --navy-line:#26313C; --steel:#7f9cc0;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(36px,5.2vw,64px);letter-spacing:.3em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the display well: VESTIGE's own navy card */
+.well{border:1px solid var(--navy-line);border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,var(--navy-hi),var(--navy) 70%);overflow:hidden;position:relative}
+.well img{display:block;width:100%;height:auto;cursor:zoom-in}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(220,205,191,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(220,205,191,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(220,205,191,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+.small{font-size:14px;color:var(--text-3)}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:700px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .tank{fill:var(--navy);stroke:#3a4a5c;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.echo{stroke:var(--cream);animation-duration:2.4s}
+.path .flow.loop{stroke:var(--steel);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ctrl input[type=range]{width:100%;accent-color:var(--steel)}
+.ctrl.on label{color:var(--gold-hot)}
+.ctrl.on input[type=range]{accent-color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:var(--cream);color:#0C1519;border-color:var(--cream)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* engines */
+.engines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.engine{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.engine canvas{display:block;width:100%;height:auto;background:var(--navy)}
+.engine .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.engine .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3);flex-wrap:wrap}
+.engine .vn b{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.28em;color:var(--gold-hot)}
+.engine .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.engine p{color:var(--text-2);font-size:15.5px}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.fig{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:4px}
+.fig strong{font-family:var(--f-display);font-weight:200;font-size:30px;line-height:1.1;color:var(--text)}
+.fig strong span{color:var(--text-3);font-size:18px}
+.fig p{font-size:14.5px;color:var(--text-2)}
+
+/* knob cards */
+.knobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:112px;height:112px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a1c20;stroke-width:5;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--steel);stroke-width:5;stroke-linecap:round}
+.knob-face{fill:#1e2a3a;stroke:#34465c;stroke-width:1.5}
+.knob-ptr{stroke:#0e141c;stroke-width:3;stroke-linecap:round}
+.knob-num{font-family:var(--f-mono);font-size:13px;fill:var(--text-2);text-anchor:middle}
+.tick{stroke:#3a3c44;stroke-width:1.2}
+.show{justify-self:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);background:transparent;border:1px solid var(--gold-dim);border-radius:4px;padding:6px 10px;cursor:pointer;min-height:32px}
+.show:hover{background:rgba(200,168,107,.1)}
+
+/* display map (kept from the 0.4 page) */
+.dmap{max-width:760px;margin:0 auto;aspect-ratio:680/400;width:100%}
+.dtable{display:flex;flex-direction:column}
+.drow{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid var(--divider)}
+.drow.head{padding:0 0 12px 0;border-bottom:1px solid var(--border)}
+.drow.head span{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;color:var(--text-3);text-transform:uppercase}
+.drow .el{font-weight:300;font-size:16px;letter-spacing:2px;color:var(--text);text-transform:uppercase;line-height:1.6}
+.drow .by{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;color:var(--cream);line-height:1.9}
+.drow .does{font-weight:300;font-size:15px;line-height:1.65;color:var(--text-2)}
+.drow:last-child{border-bottom:0}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block;cursor:zoom-in}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(127,156,192,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+
+/* zoom overlay */
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:1000;display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:40px}
+.zoom.open{display:flex}
+.zoom img{max-width:92vw;max-height:88vh;object-fit:contain}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .engines,.knobs{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .figs{grid-template-columns:minmax(0,1fr)}
+  .drow{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 20px}
+  .drow .does{grid-column:1 / -1}
+  .drow.head span:last-child{display:none}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2} main h1,main h2,main h3{font-family:'Montserrat',sans-serif}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
-
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
-  </a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <section data-screen-label="Hero" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:center;padding:48px 0 56px 0">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">FOUR-ENGINE ALGORITHMIC REVERB · Alchemy Index · Coming soon</div>
-      <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 24px 0;color:#f0ede6">VESTIGE</h1>
-      <p style="margin:0;color:#b9b6ae;max-width:58ch;text-wrap:pretty">VESTIGE is in final calibration. Join the list and we will tell you the day it ships.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px"><a href="mailto:info@theta.audio?subject=VESTIGE%20launch" data-notify="VESTIGE" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AU</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">VST3</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">AAX</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#b9b6ae;border:1px solid #242230;border-radius:4px;padding:4px 9px">macOS · Apple Silicon and Intel</span></div>
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Four-engine algorithmic reverb · Version 1.0.0</div>
+    <h1 class="wordmark">VESTIGE</h1>
+    <div class="lede">
+      <p>VESTIGE is a stereo algorithmic reverb whose echo tap sits between the pre-delay and the diffusers, so every repeat re-enters the room as a fresh strike rather than arriving as a delay bolted on in front of it.</p>
+      <p>Four engines: DENSE, MOD, PLATE and VOID. A SOURCE control that places the player near or far, DRIVE into the tank's own saturation, a tempo-locked echo with its own colour, and a tank you can freeze. No convolution and no impulse library: every tail is generated. Zero latency, at every setting.</p>
     </div>
-    <div onClick="{{ open0 }}" style="cursor:zoom-in"><image-slot id="vestige-img-0" src="assets/vestige/hero_v2.png?v=260929t" fit="contain" style="width:100%;height:auto;aspect-ratio:2140/1550;display:block;pointer-events:none;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1)" style-hover="transform:scale(1.03)" shape="rect" placeholder="VESTIGE panel"></image-slot></div>
-  </section>
-
-  
-
-  <section style="max-width:1000px;margin:0 auto 80px auto">
-    <div style="max-width:820px;margin-bottom:44px">
-      <div>
-        <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 18px 0;text-wrap:pretty">The delay is inside the room. VESTIGE is a stereo algorithmic reverb whose echo tap sits between the pre-delay and the diffusers, so every repeat re-enters the room as a fresh strike rather than arriving as a delay bolted on in front of it. Four engines, a tempo-locked regenerating echo with its own tone control, and a tank you can freeze. Zero latency.</p>
-        <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 28px 0;text-wrap:pretty">Four mutually incommensurate delay lines are mixed by a Householder matrix, each carrying its own nested allpasses so echo density grows per circulation instead of arriving flat. Decay runs in three independent bands, and the damping filter sits inside the loop, so highs can only ever die faster than mids, never slower.</p>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <div style="margin-bottom:8px">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;display:block;margin-bottom:16px">ENGINES</span>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:22px">
-            <span style="border-left:2px solid #242230;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">DENSE</span><span style="font-weight:300;font-size:16px;line-height:1.75">Buys density with memory rather than movement, so pitch-stable material stays pitch-stable.</span></span>
-            <span style="border-left:2px solid #242230;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">MOD</span><span style="font-weight:300;font-size:16px;line-height:1.75">Independent random-step walks per line sweep the mode picket, so a sparse network time-averages into a dense one.</span></span>
-            <span style="border-left:2px solid #242230;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">PLATE</span><span style="font-weight:300;font-size:16px;line-height:1.75">A 56-stage dispersive cascade ahead of the tank. High frequencies arrive first and the initial transient is smeared before density builds.</span></span>
-            <span style="border-left:2px solid #242230;padding:0 0 0 16px;display:flex;flex-direction:column;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:#DCCDBF">CHORUS</span><span style="font-weight:300;font-size:16px;line-height:1.75">The same tank driven by one coherent modulator, the four lines in quadrature, so it breathes as an ensemble instead of averaging into a smear.</span></span>
-            </div>
-          </div>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">THE ECHO</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">REPEAT from 20 ms to 2 s, SYNC to eleven divisions at host tempo, and TONE voicing the repeats ±3 octaves independently of the room. Dragging REPEAT glides the tap tape-style; a preset recall crossfades instead, so it can never chirp.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline;border-bottom:1px solid #161a26;padding-bottom:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">HOLD</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">Freezes what the tank is already holding and stops new input being injected, so you can play over the result. The echo ring keeps running underneath, so a tempo-locked delay keeps its place through the freeze.</span></span>
-          <span style="display:flex;gap:18px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#c8a86b;flex:0 0 106px">DISPLAY</span><span style="font-weight:300;font-size:15px;line-height:1.65;flex:1">A still impulse-scatter field, time, band and energy, with the source strike, the early reflections, the pre-delay floor and the decay envelope drawn on it. It re-seeds on a change and never animates idly.</span></span>
-        </div>
-      </div>
+    <div class="ctas">
+      <!-- PRODUCTION: swap both hrefs for VESTIGE's Lemon Squeezy buy and trial checkout links (GIRE's pattern: ...lemonsqueezy.com/checkout/buy/<id>?embed=1) -->
+      <a class="btn primary" href="#price">Buy · $25</a>
+      <a class="btn ghost" href="#price">Try 14 days free</a>
     </div>
-  </section>
-
-  <section data-screen-label="Reading the display" style="max-width:1000px;margin:0 auto 80px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>READING THE DISPLAY<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 16px 0;max-width:820px">The field in the middle of the panel is the room, drawn. Time runs away from you to the right, frequency band runs across to the left, and energy stands up out of the plane. The source strike hangs above the field as a single gold hub, and every line that falls from it is part of what VESTIGE is doing to your signal right now.</p>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;margin:0 0 34px 0;max-width:820px">Each element answers to specific controls, so turning a knob moves the part of the picture it belongs to and nothing else.</p>
-    <div data-om-raster ref="{{ setDiagram }}" role="img" aria-label="Animated map of how the VESTIGE display responds to PRE-DELAY, DECAY, SIZE, DIFFUSION and the live wet level" style="max-width:760px;margin:0 auto 44px auto;aspect-ratio:680/400"></div>
-    <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:0 0 12px 0;border-bottom:1px solid #242230">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#8d8779;text-transform:uppercase">ELEMENT</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#8d8779;text-transform:uppercase">DRIVEN BY</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#8d8779;text-transform:uppercase">AS THE CONTROL GOES UP</span>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>IMPULSE SCATTER · VAULT DOOR · MOD</span><span>STEREO → STEREO / ZERO LATENCY</span></div>
+      <img src="assets/vestige/vestige_inline.jpg?v=261014" data-zoom alt="The VESTIGE panel: DECAY as the large knob on the left with SOURCE and SIZE under it, the TIME, FEEDBACK and COLOR echo row and HOLD; the impulse-scatter display in the middle with ECHO, MODES and RT60 under it; PRE-DELAY, DIFFUSION, SPIN, WANDER, DAMPING, TONE, DRIVE and MIX on the right; BYPASS, SYNC and the DENSE, MOD, PLATE and VOID engine strip along the bottom">
+      <div class="well-foot"><span>ECHO <b>1.24K/S</b></span><span>MODES <b>21/100HZ</b></span><span>RT60 <b>2.40 S</b></span></div>
     </div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Source hub and pre-delay run</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">PRE-DELAY</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">The hub walks up and left, out of the box, and the dashed run from the strike into the room grows longer.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Envelope ridge and filament heights</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DECAY</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">Energy stands up further down and to the right, reaching out to the far edge of the field. At 0.4 s it drops away almost at once; at 20 s it holds all the way across.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Early taps</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">SIZE</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">The reflections slide down and to the right, arriving later, and dim as they go.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Early taps</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DIFFUSION</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">Six hard, widely spaced dots become twenty-eight fine ones across the same window.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Echo picket</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">REPEAT / REGEN</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">The spacing between lines widens with REPEAT, and more lines survive as REGEN rises. It is measured from the room&rsquo;s own edge, so DECAY never moves it.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0;border-bottom:1px solid #161a26">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Filaments, by band</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">DAMPING / BASS / ENGINE</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">DAMPING shortens the high-band side, BASS lengthens the low-band side, and ENGINE scales the height of the whole field.</span>
-      </div>
-      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,0.8fr) minmax(0,2fr);gap:30px;padding:18px 0">
-        <span style="font-weight:300;font-size:16px;letter-spacing:2px;color:#f0ede6;text-transform:uppercase;line-height:1.6">Everything</span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#DCCDBF;line-height:1.9">Live wet level</span>
-        <span style="font-weight:300;font-size:15px;line-height:1.65">The field lifts and drops together with the signal. Silence collapses it onto the plane.</span>
-      </div>
+    <div class="tagline">CLICK THE PANEL TO ENLARGE IT</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>An algorithmic reverb builds a room out of delay lines that feed back into each other. Every pass round the loop loses a little level, and how fast it loses it is the decay time. VESTIGE's tank is <strong>four delay lines of mutually incommensurate length, mixed by a Householder matrix</strong>, each carrying its own nested allpasses, so echo density grows with every circulation instead of arriving flat.</p>
+      <p>Decay runs in three independent bands. The mids follow DECAY on Jot's per-line law. Below 480 Hz the decay is scaled by TONE, from twice as long as the mids to half as long. The highs are rolled off by DAMPING inside the loop, so <strong>they can only ever die faster than the mids, never slower.</strong></p>
     </div>
-    <p style="font-weight:300;font-size:15px;line-height:1.65;color:#8d8779;margin:30px 0 0 0;max-width:820px">WANDER, SPIN, XOVER, TONE, MIX and HOLD are not drawn. A held tank still shows a decaying field; the picture describes the room, not the freeze.</p>
-  </section>
-
-  <section style="max-width:1000px;margin:0 auto 60px auto;padding-top:24px">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TECHNICAL SPECIFICATIONS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid #161a26"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">FORMATS</span><span style="font-weight:300;font-size:15px;line-height:1.65">VST3 · Audio Unit · AAX (Pro Tools)</span></div>
-      <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:#8d8779">SYSTEM</span><span style="font-weight:300;font-size:15px;line-height:1.65">macOS 11 or later · Apple Silicon and Intel (universal)</span></div>
+    <div class="prose">
+      <p>The difference is where the echo lives. Its tap sits after the pre-delay and before the four input diffusers, so each repeat is diffused and fed into the tank as a new strike. The echo loop closes on its own buffer and never through the tank: feeding a reverb back into its own input oscillates long before a feedback control reaches its top.</p>
+      <p>Every recirculation write is soft-saturated and rounded to a 26-bit fixed-point word. The rounding is deliberate. It is the arithmetic character of the tank, and it is what flushes the tail to true zero, so silence decays to silence rather than to a denormal floor.</p>
     </div>
-  </section>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1100 250" role="img" aria-label="VESTIGE's signal path: input summed to mono, DRIVE, band limit, pre-delay with SOURCE, the echo tap with its own feedback loop, four input diffusers, the four-line tank with its recirculation loop, multi-tap output reads, then MIX against the dry signal">
+      <text x="10" y="132">IN</text>
+      <path class="wire" d="M34 128 H70"/><path class="flow" d="M34 128 H70"/>
+      <rect class="box" x="70" y="102" width="92" height="52" rx="4"/><text class="lbl" x="116" y="124" text-anchor="middle">DRIVE</text><text x="116" y="142" text-anchor="middle">0–18 dB</text>
+      <path class="wire" d="M162 128 H184"/><path class="flow" d="M162 128 H184"/>
+      <rect class="box" x="184" y="102" width="112" height="52" rx="4"/><text class="lbl" x="240" y="124" text-anchor="middle">PRE-DELAY</text><text x="240" y="142" text-anchor="middle">+ SOURCE</text>
+      <path class="wire" d="M296 128 H322"/><path class="flow" d="M296 128 H322"/>
+      <rect class="box" x="322" y="102" width="92" height="52" rx="4"/><text class="lbl" x="368" y="124" text-anchor="middle">ECHO</text><text x="368" y="142" text-anchor="middle">TAP</text>
+      <path class="wire" d="M368 154 V200 H460 V154"/><path class="flow echo" d="M368 200 H460"/>
+      <text x="414" y="222" text-anchor="middle" style="fill:var(--cream)">TIME · FEEDBACK · COLOR</text>
+      <path class="wire" d="M414 128 H440"/><path class="flow" d="M414 128 H440"/>
+      <rect class="box" x="440" y="102" width="112" height="52" rx="4"/><text class="lbl" x="496" y="124" text-anchor="middle">DIFFUSERS</text><text x="496" y="142" text-anchor="middle">4 ALLPASS</text>
+      <path class="wire" d="M552 128 H582"/><path class="flow" d="M552 128 H582"/>
+      <rect class="tank" x="582" y="78" width="250" height="100" rx="6"/>
+      <text class="lbl" x="707" y="100" text-anchor="middle">TANK · 4 LINES</text>
+      <g id="pathLines"></g>
+      <path class="wire" d="M832 128 V40 H582 V100"/><path class="flow loop" d="M832 40 H582"/>
+      <text x="707" y="30" text-anchor="middle" style="fill:var(--steel)">HOUSEHOLDER · DAMPING IN LOOP · TONE · 26-BIT WRITE</text>
+      <path class="wire" d="M832 128 H864"/><path class="flow" d="M832 128 H864"/>
+      <rect class="box" x="864" y="102" width="96" height="52" rx="4"/><text class="lbl" x="912" y="124" text-anchor="middle">TAPS</text><text x="912" y="142" text-anchor="middle">L ≠ R</text>
+      <path class="wire" d="M960 128 H1004"/><path class="flow" d="M960 128 H1004"/>
+      <circle class="box" cx="1024" cy="128" r="20"/><text class="lbl" x="1024" y="132" text-anchor="middle">MIX</text>
+      <path class="wire" d="M1044 128 H1062"/><text x="1066" y="132">OUT</text>
+      <path class="wire" d="M22 140 V240 H1024 V148"/><text x="700" y="236" text-anchor="middle">DRY · UNTOUCHED AT MIX 0</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>STRIKE</b><p>The input is summed to mono, DC-blocked and band-limited at 16.5 kHz. DRIVE, when it is up, pushes it into the tank's own saturation curve.</p></li>
+    <li><span class="num">2</span><b>TRAVEL</b><p>PRE-DELAY holds it back up to 250 ms. SOURCE adds or takes away the time of flight from the player to the room.</p></li>
+    <li><span class="num">3</span><b>REPEAT</b><p>The echo tap writes repeats that will each enter the room as a new strike, every TIME, darkened by COLOR.</p></li>
+    <li><span class="num">4</span><b>DIFFUSE</b><p>Four allpasses in series smear each strike before the tank. DIFFUSION sets how hard.</p></li>
+    <li><span class="num">5</span><b>RECIRCULATE</b><p>Four lines and their nested allpasses, mixed by a Householder matrix, decaying in three bands.</p></li>
+    <li><span class="num">6</span><b>READ</b><p>The output is read from distinct points in the tank, so left and right are incoherent. Tail correlation measures −0.022.</p></li>
+  </ol>
+</section>
 
-  <section style="max-width:1120px;margin:24px auto 0 auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>Availability<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="border:1px solid #242230;border-radius:8px;background:#0c0c10;padding:32px;text-align:center;display:grid;gap:14px;justify-items:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">VESTIGE · Launch sale</div>
-      <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:22px;letter-spacing:0.08em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:44px;letter-spacing:0.08em;color:#f0ede6">$25</span></div>
-      <p style="margin:0;color:#b9b6ae;max-width:52ch">VESTIGE is in final calibration. Join the list and we will tell you the day it ships. Use code <span style="font-family:'JetBrains Mono',monospace;color:#ffc867;letter-spacing:0.12em">ALCHEMY50</span> at checkout.</p>
-      <div style="margin-top:6px"><a href="mailto:info@theta.audio?subject=VESTIGE%20launch" data-notify="VESTIGE" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid #c8a86b;white-space:nowrap;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">Notify me at launch</a></div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:#8d8779">AU / VST3 / AAX INCLUDED · <a href="color_collection.html" style="color:#8d8779">PART OF THE ALCHEMY INDEX</a></div>
+<!-- LAB -->
+<div class="sh" id="lab">The decay lab</div>
+<section class="stack">
+  <div class="prose"><p>This is VESTIGE's decay arithmetic running in your browser: the same four line lengths, the same nested allpasses, the same per-line law, damping filter and echo pole the plug-in computes when you turn a knob. It draws the energy left in three bands after a single strike, in decibels, against time. The vertical ticks along the top are the echo's repeats; each one strikes the room again, which is why the curves step back up.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Engine">
+        <button type="button" data-le="0" aria-pressed="false">DENSE</button><button type="button" data-le="1" aria-pressed="true">MOD</button><button type="button" data-le="2" aria-pressed="false">PLATE</button><button type="button" data-le="3" aria-pressed="false">VOID</button>
+      </span>
+      <span class="toggles">
+        <button type="button" class="tog" id="t-hold" aria-pressed="false">HOLD</button>
+        <button type="button" class="tog" id="t-reset">DEFAULTS</button>
+      </span>
     </div>
-  </section>
+    <canvas id="labplot" width="1600" height="640" aria-label="Energy decay of VESTIGE's tank in three bands after one strike, from the plug-in's decay laws"></canvas>
+    <div class="readouts"><span>T60 LOW<b id="r-low">-</b></span><span>T60 MID<b id="r-mid">-</b></span><span>T60 HIGH<b id="r-high">-</b></span><span>ARRIVES<b id="r-arr">-</b></span><span>REPEATS<b id="r-rep">-</b></span></div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:#8fb0d8"></i>LOW · 125 Hz</span><span><i style="background:var(--gold-hot)"></i>MID · 1 kHz</span><span><i style="background:var(--cream)"></i>HIGH · 8 kHz</span><span><i style="background:rgba(220,205,191,.45)"></i>ECHO REPEAT</span><span>MODEL OF THE ENGINE'S DECAY LAWS AT 48 kHz · ENERGY ENVELOPE, NOT AUDIO</span></div>
+</section>
 
-</main>
+<!-- ENGINES -->
+<div class="sh" id="engines">The four engines</div>
+<section class="stack">
+  <div class="prose"><p>ENGINE is structural. Switching it fades the output out, rebuilds the tank and fades back in. Each card draws the low, mid and high energy of the same strike through that engine at VESTIGE's default settings, from the decay model above.</p></div>
+  <div class="engines">
+    <article class="engine">
+      <canvas id="e0" width="720" height="300" aria-label="DENSE: energy of one strike"></canvas>
+      <div class="body"><div class="vn"><b>DENSE</b><span>NO MODULATION · 27% MORE LINE · 3 NESTED ALLPASSES</span></div>
+      <p>No delay-line modulation at all. The tank carries 27% more line length and one extra nested allpass per branch instead: density bought with memory rather than movement, so pitch-stable material stays pitch-stable. SPIN and WANDER go inert, and the panel says so.</p></div>
+    </article>
+    <article class="engine">
+      <canvas id="e1" width="720" height="300" aria-label="MOD: energy of one strike"></canvas>
+      <div class="body"><div class="vn"><b>MOD</b><span>THE DEFAULT · RANDOM-STEP WALKS PER LINE</span></div>
+      <p>Independent band-limited random-step walks on every line sweep the mode picket, so a sparse network time-averages into a dense one. SPIN is the step rate and WANDER the depth. The pitch movement is capped at 3 cents a pass, so a long tail never drifts out of tune with the dry signal.</p></div>
+    </article>
+    <article class="engine">
+      <canvas id="e2" width="720" height="300" aria-label="PLATE: energy of one strike"></canvas>
+      <div class="body"><div class="vn"><b>PLATE</b><span>56-STAGE DISPERSIVE CASCADE</span></div>
+      <p>A 56-stage dispersive allpass cascade ahead of the tank. High frequencies arrive first and the initial transient is smeared before density builds. DAMPING sets the metal, not the air. The cascade's colouration above 2 kHz is its own signature and does not move for any tank setting.</p></div>
+    </article>
+    <article class="engine">
+      <canvas id="e3" width="720" height="300" aria-label="VOID: energy of one strike, rising before it falls"></canvas>
+      <div class="body"><div class="vn"><b>VOID</b><span>6-STAGE APPROACH · SIDES OVER CENTRE</span></div>
+      <p>Nothing arrives early. Six long allpasses ahead of the diffusers delay the energy without colouring it, so the tail rises for a few hundred milliseconds before it falls. It runs DENSE's longer tank, closes the input at 4.5 kHz, puts the in-loop damping an octave below the knob and weights the output to the sides, so the centre is left empty. WANDER moves its level; its pitch movement is held to MOD's ceiling.</p></div>
+    </article>
+  </div>
+  <div class="prose"><p>What makes VOID different is measured, not asserted. Against MOD at the same settings:</p></div>
+  <div class="figs">
+    <div class="fig"><strong>435 <span>ms</span></strong><p>Where VOID's energy peaks, against 40 ms for MOD.</p></div>
+    <div class="fig"><strong>−0.39</strong><p>Left/right correlation of the tail, against −0.01 for MOD.</p></div>
+    <div class="fig"><strong>1.8 <span>kHz</span></strong><p>Centroid of the wet signal under sustained noise, against 3.5 kHz for MOD.</p></div>
+  </div>
+  <p class="small">VOID's wet loses about 2.5 dB more than MOD's when folded to mono. That is the price of an empty centre, and it is by design.</p>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE // VESTIGE IN CALIBRATION</span>
-</footer>
+<!-- CONTROLS -->
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><p>Press <span class="k">SHOW IN THE LAB</span> on any card and the decay lab above sweeps that control through its range. Size, decay and damping changes glide; a preset recall or an automation step on TIME crossfades instead, so the echo can never chirp. Every neutral position is exactly neutral: <strong>FEEDBACK 0, SOURCE 50 and DRIVE 0 are bit-identical to the signal path before those controls existed.</strong></p></div>
+  <div class="knobs" id="knobs">
+    <article class="knob-card" data-knob="decay">
+      <div class="knob-name">DECAY · SIZE</div>
+      <p>DECAY is the hero: 0.20 to 20 s for the mid band, skewed so the short end is not crowded into the first few degrees. SIZE runs 8 to 100 m and scales every delay in the tank, the early reflections and the time of flight with it. Dragging SIZE glides the lines rather than jumping them.</p>
+      <button type="button" class="show" data-show="decay">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="source">
+      <div class="knob-name">SOURCE</div>
+      <p>Places the player in the room, near (0) to far (100). Near brings the room in sooner and puts eight discrete stereo early reflections in front of the tail: the first 60 ms measure +4.9 dB. Far brings it in later, darkens the input with air down to about 2.9 kHz, smears the onset and brings the tail back up to level: the 8 kHz octave falls 13.9 dB while the steady level holds within 0.5 dB. The time of flight follows SIZE: ±25 ms at SIZE 34, ±73 ms at SIZE 100.</p>
+      <button type="button" class="show" data-show="source">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="drive">
+      <div class="knob-name">DRIVE</div>
+      <p>Pushes the input up to +18 dB into the same saturation curve the tank uses on its own recirculation, level-matched at −12 dBFS, so the room is struck harder rather than made louder. At 0 the stage is not run at all. It is not oversampled.</p>
+    </article>
+    <article class="knob-card" data-knob="tone">
+      <div class="knob-name">TONE · DAMPING</div>
+      <p>Two controls for the weight of the tail. TONE sets the low band's decay against the mids below a fixed 480 Hz: at 0 the bottom rings twice as long, at 100 half as long, and 50 is neutral. DAMPING, 1 to 20 kHz, is the cutoff of the filter inside the loop, so it shortens the top on every pass.</p>
+      <button type="button" class="show" data-show="tone">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="feedback">
+      <div class="knob-name">TIME · FEEDBACK · COLOR</div>
+      <p>The echo row. TIME runs 20 ms to 2 s, and SYNC snaps it to the nearest of eleven divisions at the host tempo. FEEDBACK runs 0 to 100%; at 0 the branch is skipped, not run quietly. COLOR voices the repeats ±3 octaves around the room's own darkening, independent of the tank, and 50 is neutral.</p>
+      <button type="button" class="show" data-show="feedback">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="diffusion">
+      <div class="knob-name">PRE-DELAY · DIFFUSION</div>
+      <p>PRE-DELAY holds the room back 0 to 250 ms. DIFFUSION sets how hard the four input allpasses smear each strike before the tank: low, the room answers with a handful of discrete reflections; high, they blur into one onset.</p>
+      <button type="button" class="show" data-show="predelay">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card" data-knob="spin">
+      <div class="knob-name">SPIN · WANDER</div>
+      <p>The modulation, on MOD and PLATE. SPIN is the rate of the random-step walks, 0 to 3 Hz; WANDER is their depth. The walks are what keep a four-line tank from ringing, so they are load-bearing rather than decorative. On DENSE they go inert; on VOID WANDER moves level instead.</p>
+    </article>
+    <article class="knob-card" data-knob="mix">
+      <div class="knob-name">MIX · BYPASS</div>
+      <p>An equal-power blend. At MIX 0 the dry signal is left alone: the residual is −300 dB, the measurement floor. BYPASS is a click-free crossfade with the tank left running underneath, nulling at −151.2 dB.</p>
+    </article>
+    <article class="knob-card" data-knob="hold">
+      <div class="knob-name">HOLD</div>
+      <p>Freezes what the tank is already holding and stops new input going in, so you can play over the result. The echo keeps running underneath, so a tempo-locked delay keeps its place through the freeze. HOLD is a performance switch and is not stored in presets.</p>
+      <button type="button" class="show" data-show="hold">SHOW IN THE LAB</button>
+    </article>
+  </div>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-out">
+<!-- ECHO -->
+<div class="sh" id="echo">The echo</div>
+<section class="two">
+  <div class="prose">
+    <p>A delay placed in front of a room arrives as a delay. VESTIGE puts it inside the room: <strong>between the pre-delay and the diffusers.</strong> Each repeat is diffused and enters the tank as a new strike, so a dotted-eighth echo becomes a dotted-eighth room, each one building its own tail on top of the last.</p>
+    <p>Dragging TIME glides the tap the way tape does. A preset recall or an automation step crossfades instead, so the tap can never chirp. A 400 ms tap arrives at 406.8 ms, measured. With SYNC on, TIME keeps its milliseconds and only the readout changes, so automation stays continuous and a preset reloads the same with or without a host tempo. The divisions run 1/32 to 1/2, with triplets and dotted values, and the snap works in the log domain so it feels the same across the whole sweep.</p>
+  </div>
+  <div class="prose">
+    <p>Damping is applied per unit of time, not per repeat. The tank recirculates roughly every 52 ms; the echo passes once per TIME. Sharing one coefficient would darken the repeats about fourteen times more slowly than the room and grow a bright tail that outlives it. So the echo's pole is the tank's cutoff scaled by how much longer its own loop is, and <strong>at COLOR 50 the repeats lose highs at the same rate per second as the room.</strong></p>
+    <p>COLOR moves that pole up to three octaves either way: darker than the room for a tape throw, brighter than it for a lit-up one. Between its extremes it spans 56.0 dB above 6 kHz. At 50 it is neutral and bit-exact.</p>
+    <p class="small">Every factory preset ships with FEEDBACK at 0, so recalling one never starts a regenerating delay you did not ask for.</p>
+  </div>
+</section>
+
+<!-- HOLD -->
+<div class="sh" id="hold">Hold</div>
+<section class="two">
+  <div class="prose">
+    <p>Press HOLD and the line gains cross to just under unity, the in-loop filters and the write-back saturator blend out, and new input stops going in. What the tank was holding stays there, and you play over it. The display draws the change: the decay envelope runs flat, the rays from the source dim because nothing new is arriving, the field reads HELD, and the RT60 readout says HELD instead of a number.</p>
+    <p>Lift it and the tank decays from where it was, with the echo still in time.</p>
+  </div>
+  <div class="prose">
+    <p>A held tank is a multi-minute sustain, not a mathematical freeze, and the figures say how long. <strong>Over half a minute frozen the low band falls 0.62 dB</strong> and the high band 13.30 dB, against −202 dB for the same material with HOLD off. The fundamentals hold for tens of minutes; the top settles over a couple of them.</p>
+  </div>
+</section>
+
+<!-- DISPLAY (the animation is the 0.4 page's, extended with SOURCE and HOLD) -->
+<div class="sh" id="display">Reading the display</div>
+<section class="stack">
+  <div class="prose" style="max-width:820px">
+    <p>The field in the middle of the panel is the room, drawn. Time runs away from you to the right, frequency band runs across to the left, and energy stands up out of the plane. The source strike hangs above the field as a single gold hub, and every line that falls from it is part of what VESTIGE is doing to your signal right now.</p>
+    <p>It is a still frame, 186 filaments from a fixed seed, re-drawn only when a control that shapes it moves. It never animates on its own. The one live part is height: the filaments rise and fall with the real wet level, band by band, thirty times a second. Each element answers to specific controls, so turning a knob moves the part of the picture it belongs to and nothing else.</p>
+  </div>
+  <div class="dmap" id="dmap" role="img" aria-label="Animated map of how the VESTIGE display responds to PRE-DELAY, DECAY, SIZE, DIFFUSION, SOURCE, HOLD and the live wet level"></div>
+  <div class="dtable">
+    <div class="drow head"><span>ELEMENT</span><span>DRIVEN BY</span><span>AS THE CONTROL GOES UP</span></div>
+    <div class="drow"><span class="el">Source hub and pre-delay run</span><span class="by">PRE-DELAY</span><span class="does">The hub walks up and left, out of the box, and the dashed run from the strike into the room grows longer.</span></div>
+    <div class="drow"><span class="el">Source hub and early taps</span><span class="by">SOURCE</span><span class="does">Near walks the hub in toward the room and brightens the early reflections; far walks it out and lays them down. The PRE label shows the gap actually heard. At 50 nothing moves.</span></div>
+    <div class="drow"><span class="el">Envelope ridge and filament heights</span><span class="by">DECAY</span><span class="does">Energy stands up further down and to the right, reaching out to the far edge of the field. At 0.4 s it drops away almost at once; at 20 s it holds all the way across.</span></div>
+    <div class="drow"><span class="el">Early taps</span><span class="by">SIZE</span><span class="does">The reflections slide down and to the right, arriving later, and dim as they go.</span></div>
+    <div class="drow"><span class="el">Early taps</span><span class="by">DIFFUSION</span><span class="does">Six hard, widely spaced dots become twenty-eight fine ones across the same window.</span></div>
+    <div class="drow"><span class="el">Echo picket</span><span class="by">TIME / FEEDBACK</span><span class="does">The spacing between lines widens with TIME, and more lines survive as FEEDBACK rises. It is measured from the room's own edge at the time actually playing, SYNC included, so DECAY never moves it.</span></div>
+    <div class="drow"><span class="el">Filaments, by band</span><span class="by">DAMPING / TONE / ENGINE</span><span class="does">DAMPING shortens the high-band side, TONE turned down lengthens the low-band side, and ENGINE scales the height of the whole field.</span></div>
+    <div class="drow"><span class="el">Envelope and rays</span><span class="by">HOLD</span><span class="does">The envelope runs flat across the field, the rays from the source dim, and the field reads HELD.</span></div>
+    <div class="drow"><span class="el">Everything</span><span class="by">Live wet level</span><span class="does">The field lifts and drops together with the signal. Silence collapses it onto the plane.</span></div>
+  </div>
+  <div class="two">
+    <div class="prose">
+      <p>Under the field sit three readouts. <span class="k">ECHO</span> is the density of reflections per second, <span class="k">MODES</span> the modal density per 100 Hz, and <span class="k">RT60</span> the decay of the <strong>composite</strong> tail, so a long regenerating echo is not hidden behind a short dialled decay.</p>
+    </div>
+    <div class="prose">
+      <p class="small">MODES and RT60 are read from the tank's actual configuration. ECHO is an analytic estimate from the same tables, not a measurement. SPIN, WANDER, DRIVE, COLOR and MIX are not drawn.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="sh" id="proof">What it guarantees</div>
+<section>
+  <ul class="rows">
+    <li><b>ZERO LATENCY</b><span>The plug-in reports and introduces no delay, at any setting, in any engine.</span></li>
+    <li><b>DRY LEFT ALONE</b><span>At MIX 0 the residual against the input is −300 dB, the measurement floor.</span></li>
+    <li><b>CLICK-FREE BYPASS</b><span>A crossfade with the tank running underneath, so the tail is there when you come back. Null residual −151.2 dB.</span></li>
+    <li><b>FLAT ACROSS RATES</b><span>The wet level is held flat from 44.1 to 192 kHz by a per-rate makeup table derived from measurement, not from theory.</span></li>
+    <li><b>HIGHS DIE FIRST</b><span>The damping filter is inside the loop, so the top can only ever decay faster than the mids, by construction.</span></li>
+    <li><b>SILENCE IS SILENCE</b><span>The 26-bit recirculation word flushes the tail to true zero rather than leaving a denormal floor.</span></li>
+    <li><b>NEUTRAL MEANS NEUTRAL</b><span>FEEDBACK 0, SOURCE 50, DRIVE 0 and COLOR 50 are each bit-identical to the path without them.</span></li>
+    <li><b>LIGHT ON THE CPU</b><span>DENSE and MOD measure 0.0027 of realtime at 48 kHz with a 512-sample buffer, PLATE 0.0059, one instance.</span></li>
+    <li><b>TESTED AS IT SHIPS</b><span>The DSP compiles into a standalone harness, so 49 automated checks run against the exact code that ships, alongside a sweep of five sample rates and all four engines, pluginval at strictness 10, and auval.</span></li>
+  </ul>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>The trial is the whole plug-in for fourteen days, and the header counts down the days left. After that, a computer that has not been activated goes silent until a licence is activated. In GarageBand and other sandboxed hosts it keeps playing.</p>
+    <p>The same installer everyone buys, running unlicensed for fourteen days. A licence unlocks it in place, no reinstall.</p>
+  </div>
+  <div class="prose">
+    <p>Activation needs an internet connection once. After that VESTIGE runs offline, and the licence does not expire. One licence covers three computers, one activation per computer however many user accounts it has. DEACTIVATE THIS COMPUTER frees a seat, so you can move VESTIGE to a new machine without writing to us.</p>
+    <p><strong>Once activated, VESTIGE is never silenced by a licence check.</strong> After a hardware change or a system reinstall it keeps playing, and the header asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>MIX ENGINEERS</b><p>Zero latency on every engine, a dry path that MIX 0 leaves alone, and decay that runs in three bands, so the low end and the top can be set against the mids rather than with them.</p></article>
+  <article><b>PRODUCERS</b><p>A tempo-locked echo that strikes the room on the grid, with its own colour, and HOLD to freeze a chord and play over it while the echo keeps time underneath.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>VOID's late, wide swell, FEEDBACK past the point where repeats stop dying, DRIVE into the tank's own curve, and twenty-second decays that HOLD can sustain for minutes.</p></article>
+  <article><b>POST &amp; SCORE</b><p>SOURCE moves a voice or an instrument from close to distant without re-patching, and SIZE scales the whole space, reflections and time of flight together.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Four-engine stereo algorithmic reverb with an internal regenerating echo (insert)</td></tr>
+    <tr><th>STRUCTURE</th><td>4-line feedback delay network, Householder mixing, 4 series input diffusers, 2–3 nested allpasses per line, 26-bit internal recirculation word. No convolution, no oversampling</td></tr>
+    <tr><th>ENGINES</th><td>DENSE · MOD · PLATE · VOID, structural, with a fade-rebuild-fade swap</td></tr>
+    <tr><th>DECAY</th><td>0.20–20.0 s in three bands: mid by DECAY; low below 480 Hz ×2.0–×0.5 by TONE; high by DAMPING (1–20 kHz) inside the loop</td></tr>
+    <tr><th>ROOM</th><td>SIZE 8–100 m · PRE-DELAY 0–250 ms · DIFFUSION 0–100 % · SPIN 0–3 Hz · WANDER 0–100 %</td></tr>
+    <tr><th>SOURCE</th><td>Near to far; ±25 ms of flight at SIZE 34, ±73 ms at SIZE 100; eight stereo early reflections near, air to 2.9 kHz far</td></tr>
+    <tr><th>DRIVE</th><td>0 to +18 dB into the tank's saturation curve, level-matched at −12 dBFS</td></tr>
+    <tr><th>ECHO</th><td>TIME 20 ms–2 s · FEEDBACK 0–100 % · COLOR ±3 octaves · SYNC to 11 divisions (1/32 to 1/2, triplets and dotted)</td></tr>
+    <tr><th>HOLD</th><td>Freezes the tank; low band within 0.62 dB over 30 s</td></tr>
+    <tr><th>OUTPUT</th><td>MIX equal-power 0–100 % · click-free BYPASS</td></tr>
+    <tr><th>CHANNELS</th><td>Stereo in, stereo out</td></tr>
+    <tr><th>LATENCY</th><td>Zero, in every configuration and at every setting</td></tr>
+    <tr><th>SAMPLE RATES</th><td>44.1–192 kHz, wet level matched across them</td></tr>
+    <tr><th>CPU</th><td>0.0027 of realtime (DENSE, MOD) to 0.0059 (PLATE) at 48 kHz / 512, one instance</td></tr>
+    <tr><th>DISPLAY</th><td>Impulse scatter, 186 filaments, live wet level at 30 Hz · ECHO, MODES, RT60 readouts · window 1024 × 710, resizes 75–150 %, size remembered</td></tr>
+    <tr><th>PRESETS</th><td>13 factory (VAULT DOOR, STONE CHAMBER, GLASS HALL, TAPE PLATE, NIGHT AIR, BRICK ROOM, LONG NAVE, VELVET ROOM, STILL WATER, BRASS PLATE, IRON SHEET, SOFT FOCUS, GHOST CHOIR), also as host programs; user presets with save and save as, shared across your hosts</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline · perpetual</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
+  </table>
+  <div class="prose">
+    <p>Every tail VESTIGE makes is generated by the tank as you play. There is no impulse-response library and nothing is sampled, so every control moves the room itself rather than choosing between recordings of rooms.</p>
+    <p class="small">The CPU figures were measured on a Mac before SOURCE and DRIVE were added; VOID costs about 18% more than MOD.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">VESTIGE</div>
+  <p>VESTIGE is calibrated and available for immediate deployment. All four engines, the echo, HOLD and the full factory bank, nothing withheld.</p>
+  <div class="amt"><s>$50</s><strong>$25</strong></div>
+  <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary lemonsqueezy-button" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/21753c56-1cbf-42cb-849d-8d2d667a9101?embed=1">Acquire VESTIGE · $25</a>
+    <a class="btn ghost lemonsqueezy-button" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/7974b52d-4680-4c62-a66d-2c2b433d676e?embed=1">Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED · WINDOWS COMING SOON</div>
+</section>
+
+<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<div class="zoom" id="zoom"><img id="zoomImg" alt=""></div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  _vsmBuild(t) {
-    const E = x => x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x + 2, 2) / 2;
-    const PH = [['PRE-DELAY','pd'],['DECAY','decay'],['SIZE','size'],['DIFFUSION','diff'],['WET LEVEL','wet']];
-    const D = 4.2, cyc = t % (D * PH.length), pi = Math.floor(cyc / D), u0 = (cyc - pi * D) / D;
-    const env = u0 < 0.36 ? E(u0 / 0.36) : u0 < 0.64 ? 1 : E(1 - (u0 - 0.64) / 0.36);
-    const v = { pd: 0.25, decay: 0.45, size: 0.25, diff: 0, wet: 1 };
-    const key = PH[pi][1];
-    if (key === 'wet') v.wet = 1 - env; else v[key] = v[key] + (1 - v[key]) * env;
-    if (!this._vsmSeed) {
-      let x = 20260929; const r = () => (x = (x * 1664525 + 1013904223) >>> 0) / 4294967296;
-      this._vsmSeed = Array.from({ length: 240 }, () => [r(), r(), r(), r()]);
-    }
-    const f = n => n.toFixed(1);
-    const G = '#81848A', GOLD = '#C8A86B', DIM = '#6E6764', CREAM = '#DCCDBF', SIL = '#B0B2B7';
-    const MONO = 'font-family="JetBrains Mono, monospace" letter-spacing="1.6"';
-    const T = (x, y, txt, col, anchor, size) => '<text x="'+f(x)+'" y="'+f(y)+'" '+MONO+' font-size="'+(size||9.5)+'" fill="'+(col||SIL)+'"'+(anchor?' text-anchor="'+anchor+'"':'')+'>'+txt+'</text>';
-    const O = [327, 318], TV = [178, -60], BV = [-176, -60];
-    const P = (u, w) => [O[0] + TV[0]*u + BV[0]*w, O[1] + TV[1]*u + BV[1]*w];
-    const H = [206 - 40 * v.pd, 62 - 14 * v.pd];
-    const pdU = 0.06 + 0.3 * v.pd;
-    let o = '<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">';
-    o += '<defs><linearGradient id="vsmCard" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#1B2632"/><stop offset="1" stop-color="#111820"/></linearGradient>';
-    o += '<radialGradient id="vsmGlow"><stop offset="0" stop-color="#F0E2C0" stop-opacity="0.55"/><stop offset="0.35" stop-color="'+GOLD+'" stop-opacity="0.18"/><stop offset="1" stop-color="'+GOLD+'" stop-opacity="0"/></radialGradient></defs>';
-    o += '<rect x="4" y="4" width="672" height="392" rx="16" fill="url(#vsmCard)" stroke="#26313C" stroke-width="1"/>';
-    const c = [P(0,0), P(1,0), P(1,1), P(0,1)];
-    o += '<path d="M '+c.map(p=>f(p[0])+' '+f(p[1])).join(' L ')+' Z" fill="none" stroke="'+G+'" stroke-width="1" stroke-opacity="0.75"/>';
-    let grid = '';
-    for (let k = 1; k < 5; k++) { const q = k/5, a1 = P(q,0), a2 = P(q,1), b1 = P(0,q), b2 = P(1,q); grid += 'M '+f(a1[0])+' '+f(a1[1])+' L '+f(a2[0])+' '+f(a2[1])+' M '+f(b1[0])+' '+f(b1[1])+' L '+f(b2[0])+' '+f(b2[1])+' '; }
-    o += '<path d="'+grid+'" stroke="'+G+'" stroke-width="0.6" stroke-opacity="0.35" fill="none"/>';
-    const e1 = P(pdU, 0.5), e2 = P(1, 0.5);
-    o += '<path d="M '+f(e1[0])+' '+f(e1[1])+' L '+f(e2[0])+' '+f(e2[1])+'" stroke="'+GOLD+'" stroke-width="1" stroke-dasharray="5 4" stroke-opacity="'+f(0.2+0.45*v.wet)+'" fill="none"/>';
-    const k = 0.7 + 5.2 * (1 - v.decay), spread = 1.8 - 1.1 * v.size;
-    let rays = '', fil = '';
-    for (const [r1, r2, r3, r4] of this._vsmSeed) {
-      const u = pdU + (1 - pdU) * Math.pow(r1, spread), w = 0.04 + 0.92 * r2;
-      const hgt = 105 * v.wet * Math.exp(-k * (u - pdU)) * (0.35 + 0.65 * r3);
-      if (hgt < 0.6) continue;
-      const base = P(u, w), top = [base[0], base[1] - hgt];
-      fil += 'M '+f(base[0])+' '+f(base[1])+' L '+f(top[0])+' '+f(top[1])+' ';
-      if (r4 < 0.55) rays += 'M '+f(H[0])+' '+f(H[1])+' L '+f(top[0])+' '+f(top[1])+' ';
-    }
-    o += '<path d="'+rays+'" stroke="'+SIL+'" stroke-width="0.45" stroke-opacity="'+f(0.05+0.13*v.wet)+'" fill="none"/>';
-    o += '<path d="'+fil+'" stroke="'+CREAM+'" stroke-width="0.6" stroke-opacity="0.32" fill="none"/>';
-    const n = Math.round(5 + 13 * v.diff);
-    let tl = '', dots = '';
-    const early = [];
-    for (let i = 0; i < n; i++) {
-      const q = n === 1 ? 0.5 : i / (n - 1);
-      const ang = (0.18 + 0.62 * q) * (1 + 0.35 * v.size);
-      const len = 118 + 70 * v.size + 40 * Math.sin(i * 1.7);
-      const x = H[0] + Math.sin(ang) * len * 1.05, y = H[1] + Math.cos(ang) * len * 1.25;
-      early.push([x, y]);
-      tl += 'M '+f(H[0])+' '+f(H[1])+' L '+f(x)+' '+f(y)+' ';
-      dots += '<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f(2.4 - 1.1*v.diff)+'" fill="'+GOLD+'" fill-opacity="'+f(0.35+0.6*v.wet)+'"/>';
-    }
-    o += '<path d="'+tl+'" stroke="'+GOLD+'" stroke-width="'+f(1 - 0.45*v.diff)+'" stroke-opacity="'+f((0.25+0.55*v.wet)*(1-0.35*v.diff))+'" fill="none"/>' + dots;
-    const L = (a1, b1, q) => a1 + (b1 - a1) * q;
-    const cy = yy => L(318, yy, 0.25 + 0.75 * v.wet);
-    const Q0 = [404, cy(46)], Q1 = [412, cy(L(175, 130, v.decay))], Q2 = [L(445, 490, v.decay), cy(L(292, 250, v.decay))], Q3 = [L(505, 585, v.decay), cy(L(318, 280, v.decay))];
-    o += '<path d="M '+f(Q0[0])+' '+f(Q0[1])+' C '+f(Q1[0])+' '+f(Q1[1])+' '+f(Q2[0])+' '+f(Q2[1])+' '+f(Q3[0])+' '+f(Q3[1])+'" stroke="'+SIL+'" stroke-width="1.4" fill="none" stroke-opacity="0.85"/>';
-    const bz = (q, i) => Math.pow(1-q,3)*Q0[i] + 3*Math.pow(1-q,2)*q*Q1[i] + 3*(1-q)*q*q*Q2[i] + q*q*q*Q3[i];
-    const mx = bz(0.5, 0), my = bz(0.5, 1);
-    o += '<circle cx="'+f(mx)+'" cy="'+f(my)+'" r="3" fill="'+CREAM+'"/><path d="M '+f(mx)+' '+f(my)+' L 598 '+f(my)+'" stroke="'+G+'" stroke-width="0.8"/>';
-    const tail = 0.4 * Math.pow(50, v.decay), db = v.wet < 0.002 ? '-INF' : Math.round(20 * Math.log10(v.wet) - 18 - 30 * v.decay);
-    o += T(606, my - 4, (tail < 10 ? tail.toFixed(2) : tail.toFixed(1)) + ' s', SIL) + T(606, my + 12, db + ' dB', GOLD);
-    o += '<circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="34" fill="url(#vsmGlow)"/><circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="4.2" fill="#E3C27D"/>';
-    const earlyMs = Math.round(20 + 90 * v.size), pre = Math.round(10 + 480 * v.pd);
-    const hx = H[0] - 70, hy = H[1] + 4;
-    o += '<path d="M '+f(H[0]-6)+' '+f(H[1])+' L '+f(H[0]-22)+' '+f(hy)+' L '+f(hx)+' '+f(hy)+'" stroke="'+G+'" stroke-width="0.8" fill="none"/><circle cx="'+f(hx)+'" cy="'+f(hy)+'" r="2.4" fill="'+SIL+'"/>';
-    o += T(hx - 8, hy - 3, earlyMs + ' ms', SIL, 'end') + T(hx - 8, hy + 13, 'EARLY', GOLD, 'end');
-    const mid = early[Math.floor(early.length * 0.3)] || [H[0], H[1] + 80];
-    const dx = 96, dy = H[1] + 118;
-    o += '<path d="M '+f(mid[0]-18)+' '+f(dy)+' L '+dx+' '+f(dy)+'" stroke="'+G+'" stroke-width="0.8" fill="none"/><circle cx="'+dx+'" cy="'+f(dy)+'" r="2.4" fill="'+SIL+'"/>';
-    const dens = (0.6 + 6.4 * v.diff).toFixed(1);
-    o += T(dx - 8, dy - 3, (0.08 + 0.18 * v.size).toFixed(2) + ' s', SIL, 'end') + T(dx - 8, dy + 13, dens + 'k/s', GOLD, 'end');
-    const pl = P(0, 1);
-    o += T(pl[0] - 4, pl[1] + 26, 'PRE ' + pre + ' ms', GOLD);
-    o += T(28, 30, 'SOURCE', SIL, null, 10);
-    o += T(652, 378, 'TIME &#215; BAND &#215; ENERGY', G, 'end');
-    const label = PH[pi][0] + (key === 'wet' ? ' FALLS' : ' UP');
-    o += '<text x="652" y="32" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="3" fill="'+CREAM+'">'+label+'</text>';
-    o += '<rect x="552" y="42" width="100" height="1" fill="'+DIM+'"/><rect x="552" y="42" width="'+f(100 * env)+'" height="1" fill="'+GOLD+'"/>';
-    PH.forEach((ph, i) => { o += '<rect x="'+(552 + i * 21)+'" y="50" width="16" height="2" fill="'+(i === pi ? GOLD : DIM)+'" fill-opacity="'+(i === pi ? 1 : 0.5)+'"/>'; });
-    return o + '</svg>';
+<script>
+(function(){
+'use strict';
+const TAU=Math.PI*2, FS=48000;
+const reduce=false;
+
+/* ================= VESTIGE's tank, after Source/ReverbEngine.h ================= */
+const MAIN=[29.31,35.87,39.71,44.93];
+const NEST=[[8.93,4.99,11.83],[6.59,10.61,12.97],[7.87,5.51,13.63],[9.41,6.07,14.87]];
+const EARLY_MS=[11.3,16.9,23.7,31.1,41.9,53.3,71.9,89.3];
+const APPROACH_MS=[17,29,47,71,97,131];
+const ENGINES=['DENSE','MOD','PLATE','VOID'];
+const DEFAULTS={engine:1,decay:2.4,size:34,predelay:24,source:50,damping:6.4,tone:50,time:375,feedback:0,color:50,hold:false};
+const BANDS=[{f:125,name:'LOW',col:'#8fb0d8'},{f:1000,name:'MID',col:'#ffc867'},{f:8000,name:'HIGH',col:'#DCCDBF'}];
+function denseTank(e){return e===0||e===3;}
+function bassMultiple(tone){tone=Math.min(100,Math.max(0,tone));if(tone===50)return 1.4;
+  const from=tone<50?2.0:1.4,to=tone<50?1.4:0.5,t=tone<50?tone/50:(tone-50)/50;return from*Math.pow(to/from,t);}
+function onePoleMag(hz,f){const a=1-Math.exp(-TAU*Math.min(hz,FS*0.45)/FS),w=TAU*f/FS,b=1-a;return a/Math.sqrt(1-2*b*Math.cos(w)+b*b);}
+function loops(p){const k=denseTank(p.engine)?3:2,st=denseTank(p.engine)?1.27:1,sc=p.size/34;
+  return MAIN.map((m,i)=>{let l=m;for(let a=0;a<k;a++)l+=NEST[i][a];return l*0.001*sc*st;});}
+function dampHz(p){return p.damping*1000*(p.engine===3?0.5:1);}
+// T60 per band: mean over the four lines of -3*loop/log10(per-pass gain)
+function bandT60(p,f){
+  if(p.hold)return Infinity;
+  const L=loops(p),dh=dampHz(p),bass=bassMultiple(p.tone);
+  let s=0;for(const l of L){
+    const g=Math.pow(10,-3*l/Math.max(0.05,p.decay*(f<480?bass:1)))*onePoleMag(dh,f);
+    s+=-3*l/Math.log10(Math.max(1e-9,g));}
+  return s/L.length;}
+function flightMs(p){return (p.source-50)/50*0.25*p.size/343*1000;}
+function echoGain(p){const r=Math.min(1,Math.max(0,p.feedback/100));return r>0?0.95*Math.pow(r,0.8):0;}
+function echoHz(p){const L=loops(p);const mean=L.reduce((a,b)=>a+b,0)/L.length;
+  let hz=dampHz(p)*(mean/(p.time*0.001));hz*=Math.pow(2,(p.color/100-0.5)*6);return Math.min(FS*0.45,Math.max(200,hz));}
+// energy (linear) in band f at time t (s) after the dry strike, from the decay laws
+function strikes(p,f){ // list of [time, energy] the room is struck with
+  const arrive=Math.max(0,(p.predelay+flightMs(p))/1000);
+  const far=Math.max(0,(p.source-50)/50);
+  const air=16500*Math.pow(2,-2.5*far);
+  let base=Math.pow(onePoleMag(air,f),2);
+  if(p.engine===3)base*=Math.pow(onePoleMag(4500,f),4);
+  const out=[[arrive,base]];
+  const g=echoGain(p),eh=echoHz(p),em=onePoleMag(eh,f);
+  if(g>0){let a=base;for(let k=1;k<64;k++){a*=Math.pow(g*em,2);const t=arrive+k*p.time/1000;if(a<1e-8||t>40)break;out.push([t,a]);}}
+  return out;}
+function energyAt(p,f,t,T60,S){
+  let e=0;const tau=T60===Infinity?Infinity:T60/(6*Math.LN10);
+  const near=Math.max(0,(50-p.source)/50),far=Math.max(0,(p.source-50)/50);
+  const sc=p.size/34,smear=0.004+0.03*far;
+  for(const [t0,a] of S){
+    if(p.engine===3){ // VOID: the strike is spread across the six-stage approach
+      const as=Math.min(2,Math.max(0.5,0.5+0.5*p.size/34));let c=0;
+      for(let j=0;j<6;j++){const d=APPROACH_MS[j]*as/1000;const dt=t-t0-c;c+=d;if(dt<0)continue;e+=a/6*(1-Math.exp(-dt/(0.7*d)))*(tau===Infinity?1:Math.exp(-dt/tau));}
+      continue;}
+    const dt=t-t0;if(dt<0)continue;
+    const rise=1-Math.exp(-dt/smear);
+    e+=a*rise*(tau===Infinity?1:Math.exp(-dt/tau))*Math.pow(10,0.3*far);
+    if(near>0&&a===S[0][1]){for(const ms of EARLY_MS){const d=dt-ms*0.001*sc;if(d>=0&&d<0.012)e+=a*near*2.1*(1-d/0.012);}}
   }
-  _vsmStart() {
-    if (!this._vsmEl) return;
-    if (this._vsmT0 == null) this._vsmT0 = performance.now();
-    const draw = () => { if (this._vsmEl) this._vsmEl.innerHTML = this._vsmBuild(Math.max(0, performance.now() - this._vsmT0) / 1000); };
-    draw();
-    if (this._vsmTimer) return;
-    const loop = () => {
-      if (!this._vsmEl) { this._vsmTimer = null; return; }
-      draw();
-      this._vsmTimer = document.hidden ? setTimeout(loop, 250) : requestAnimationFrame(loop);
-    };
-    this._vsmTimer = requestAnimationFrame(loop);
+  return e;}
+
+/* ================= LAB ================= */
+const lab=Object.assign({},DEFAULTS);
+const lp=document.getElementById('labplot'),lx=lp.getContext('2d');
+const CTRL=[
+  {id:'decay',label:'DECAY',min:0.2,max:20,skew:0.3155,fmt:v=>v.toFixed(2)+' s'},
+  {id:'size',label:'SIZE',min:8,max:100,fmt:v=>Math.round(v)+' m'},
+  {id:'predelay',label:'PRE-DELAY',min:0,max:250,fmt:v=>Math.round(v)+' ms'},
+  {id:'source',label:'SOURCE',min:0,max:100,fmt:v=>Math.round(v)===50?'50':Math.round(v)<50?Math.round(v)+' NEAR':Math.round(v)+' FAR'},
+  {id:'damping',label:'DAMPING',min:1,max:20,fmt:v=>v.toFixed(1)+' kHz'},
+  {id:'tone',label:'TONE',min:0,max:100,fmt:v=>Math.round(v)+''},
+  {id:'time',label:'TIME',min:20,max:2000,skew:0.3546,fmt:v=>Math.round(v)+' ms'},
+  {id:'feedback',label:'FEEDBACK',min:0,max:100,fmt:v=>Math.round(v)+' %'},
+  {id:'color',label:'COLOR',min:0,max:100,fmt:v=>Math.round(v)+''},
+];
+function toVal(c,pos){return c.skew?c.min+(c.max-c.min)*Math.pow(pos,1/c.skew):c.min+(c.max-c.min)*pos;}
+function toPos(c,v){const n=(v-c.min)/(c.max-c.min);return c.skew?Math.pow(n,c.skew):n;}
+const ctrlBox=document.getElementById('ctrls'),sliders={};
+for(const c of CTRL){
+  const d=document.createElement('div');d.className='ctrl';
+  d.innerHTML=`<label for="c-${c.id}">${c.label}<output id="o-${c.id}"></output></label><input id="c-${c.id}" type="range" min="0" max="1000" step="1">`;
+  ctrlBox.appendChild(d);const inp=d.querySelector('input'),out=d.querySelector('output');
+  sliders[c.id]={c,inp,out,wrap:d,set(v){lab[c.id]=v;inp.value=Math.round(toPos(c,v)*1000);out.textContent=c.fmt(v);}};
+  inp.addEventListener('input',()=>{stopDemo();const v=toVal(c,inp.value/1000);lab[c.id]=v;out.textContent=c.fmt(v);dirty=true;});
+  sliders[c.id].set(DEFAULTS[c.id]);
+}
+const tHold=document.getElementById('t-hold');
+function setHold(on){lab.hold=on;tHold.setAttribute('aria-pressed',on?'true':'false');dirty=true;}
+tHold.addEventListener('click',()=>{stopDemo();setHold(!lab.hold);});
+function setEngine(e){lab.engine=e;document.querySelectorAll('[data-le]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.le===e?'true':'false'));dirty=true;}
+document.querySelectorAll('[data-le]').forEach(b=>b.addEventListener('click',()=>{stopDemo();setEngine(+b.dataset.le);}));
+document.getElementById('t-reset').addEventListener('click',()=>{stopDemo();for(const k in sliders)sliders[k].set(DEFAULTS[k]);setHold(false);setEngine(1);});
+
+let demo=null,dirty=true;
+const DEMOS={
+  decay:{ids:['decay','size'],path:t=>({decay:0.4*Math.pow(25,Math.sin(Math.PI*t)),size:34+50*Math.sin(Math.PI*t)})},
+  source:{ids:['source'],path:t=>({source:50-50*Math.sin(TAU*t)})},
+  tone:{ids:['tone','damping'],path:t=>t<0.5?{tone:50-50*Math.sin(TAU*t),damping:6.4}:{tone:50,damping:6.4*Math.pow(3,Math.sin(TAU*(t-0.5)))}},
+  feedback:{ids:['feedback','time','color'],path:t=>({feedback:t<0.6?80*Math.sin(Math.PI*t/0.6*0.5):80,time:375,color:t<0.6?50:50-45*Math.sin(Math.PI*(t-0.6)/0.4)})},
+  predelay:{ids:['predelay'],path:t=>({predelay:24+200*Math.sin(Math.PI*t)})},
+  hold:{ids:[],path:t=>({}),hold:true},
+};
+function stopDemo(){if(!demo)return;for(const id of demo.ids){sliders[id].wrap.classList.remove('on');sliders[id].set(demo.saved[id]);}if(demo.hold)setHold(false);demo=null;dirty=true;}
+function startDemo(key){stopDemo();const d=DEMOS[key];const saved={};for(const id of d.ids){saved[id]=lab[id];sliders[id].wrap.classList.add('on');}
+  demo={key,ids:d.ids,saved,t0:performance.now(),dur:6500,path:d.path,hold:!!d.hold};
+  document.getElementById('lab').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});kick();}
+document.querySelectorAll('[data-show]').forEach(b=>b.addEventListener('click',()=>startDemo(b.dataset.show)));
+function runDemo(now){if(!demo)return;const t=(now-demo.t0)/demo.dur;if(t>=1){stopDemo();return;}
+  const v=demo.path(t);for(const k in v)sliders[k].set(v[k]);
+  if(demo.hold){const on=t>0.25&&t<0.8;if(lab.hold!==on)setHold(on);}
+  dirty=true;}
+
+const DBT=6,DBB=-72;
+function fmtS(s){return s===Infinity?'HELD':s<10?s.toFixed(2)+' s':s.toFixed(1)+' s';}
+function drawEnvelopes(cx,W,H,p,opt){
+  const ml=opt.ml,mr=opt.mr,mt=opt.mt,mb=opt.mb,pw=W-ml-mr,ph=H-mt-mb;
+  const T=BANDS.map(b=>bandT60(p,b.f));
+  const arrive=Math.max(0,(p.predelay+flightMs(p))/1000);
+  let win=opt.win||Math.min(24,Math.max(0.6,arrive+1.05*Math.max(...T.filter(x=>x!==Infinity),0.3)+(echoGain(p)>0?Math.min(6,p.time/1000*4):0)));
+  if(p.hold&&!opt.win)win=Math.max(win,3);
+  const xt=t=>ml+pw*t/win,yd=d=>mt+ph*(DBT-Math.max(DBB,Math.min(DBT,d)))/(DBT-DBB);
+  cx.clearRect(0,0,W,H);
+  cx.font=opt.font;
+  if(opt.grid){
+    const step=win<=1?0.1:win<=3?0.5:win<=8?1:win<=16?2:4;
+    cx.textAlign='center';
+    for(let t=0;t<=win+1e-6;t+=step){const x=xt(t);cx.fillStyle='rgba(141,135,121,.13)';cx.fillRect(x,mt,1,ph);cx.fillStyle='#8d8779';cx.fillText(step<1?Math.round(t*1000)+' ms':t+' s',Math.min(W-40,Math.max(ml+20,x)),H-16);}
+    cx.textAlign='right';
+    for(let d=0;d>=-72;d-=12){const y=yd(d);cx.fillStyle=d===-60?'rgba(122,104,64,.8)':'rgba(141,135,121,.12)';cx.fillRect(ml,y,pw,d===-60?1.5:1);cx.fillStyle='#8d8779';cx.fillText(d,ml-12,y+6);}
+    cx.textAlign='left';cx.fillStyle='#8d8779';cx.fillText('dB',ml-60,mt-14);
+    cx.fillStyle='rgba(122,104,64,.9)';cx.fillText('−60 dB',ml+8,yd(-60)-8);
   }
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); if (this._vsmTimer) { cancelAnimationFrame(this._vsmTimer); clearTimeout(this._vsmTimer); } this._vsmTimer = null; this._vsmEl = null; }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed;
-    if (this._last === want) return;
-    this._last = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  renderVals() {
-    return {
-      setDiagram: (el) => { if (el === this._vsmEl) return; this._vsmEl = el; if (el) this._vsmStart(); },
-      overlayDisplay: this.state.zoomed ? 'flex' : 'none',
-      setZoomImg: (el) => { this._zoomImgEl = el; },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openDualTerrain: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_terrain.png?v=260927' }); },
-      openDualSparse: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/gire/gire_v041_dual_sparse.png?v=260927' }); },
-      open0: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: 'assets/vestige/hero_v2.png?v=260929t' }); },
-    };
+  // pre-delay run
+  cx.strokeStyle='rgba(200,168,107,.6)';cx.setLineDash([6,6]);cx.lineWidth=opt.lw*0.7;cx.beginPath();cx.moveTo(xt(0),yd(DBB)-2);cx.lineTo(xt(arrive),yd(DBB)-2);cx.stroke();cx.setLineDash([]);
+  cx.fillStyle='#ffc867';cx.beginPath();cx.arc(xt(0),yd(DBB)-2,opt.lw*1.6,0,TAU);cx.fill();
+  // echo ticks
+  const S1=strikes(p,1000);
+  for(let i=1;i<S1.length;i++){const x=xt(S1[i][0]);if(x>W-mr)break;const lv=Math.max(0,1+10*Math.log10(S1[i][1])/72);
+    cx.fillStyle=`rgba(220,205,191,${0.15+0.5*lv})`;cx.fillRect(x-1,mt-(opt.grid?26:10),2,(opt.grid?18:8));}
+  const bands=opt.bands||[0,1,2];
+  let peakE=0;const curves=[];
+  for(const bi of bands){const b=BANDS[bi],S=strikes(p,b.f),N=opt.n,pts=[];
+    for(let i=0;i<=N;i++){const t=win*i/N;const e=energyAt(p,b.f,t,T[bi],S);pts.push([t,e]);if(e>peakE)peakE=e;}
+    curves.push([b,pts]);}
+  const ref=opt.norm?Math.max(peakE,1e-9):1;
+  for(const [b,pts] of curves){cx.strokeStyle=b.col;cx.lineWidth=opt.lw;cx.beginPath();let started=false;
+    for(const [t,e] of pts){const d=10*Math.log10(Math.max(1e-12,e/ref));if(d<DBB-1){if(started){cx.lineTo(xt(t),yd(DBB));}started=false;continue;}
+      const x=xt(t),y=yd(d);started?cx.lineTo(x,y):cx.moveTo(x,y);started=true;}
+    cx.stroke();}
+  return {T,arrive,win};
+}
+function drawLab(){
+  const r=drawEnvelopes(lx,lp.width,lp.height,lab,{ml:78,mr:24,mt:56,mb:48,font:'18px "JetBrains Mono",monospace',grid:true,lw:3,n:420,norm:false});
+  document.getElementById('r-low').textContent=fmtS(r.T[0]);
+  document.getElementById('r-mid').textContent=fmtS(r.T[1]);
+  document.getElementById('r-high').textContent=fmtS(r.T[2]);
+  document.getElementById('r-arr').textContent=Math.round(r.arrive*1000)+' ms';
+  const S=strikes(lab,1000);let n=0;for(let i=1;i<S.length;i++)if(10*Math.log10(S[i][1])>-60)n++;
+  document.getElementById('r-rep').textContent=echoGain(lab)>0?n+' ABOVE −60 dB':'OFF';
+}
+
+/* ================= ENGINE CARDS ================= */
+function drawEngines(){
+  for(let e=0;e<4;e++){const cv=document.getElementById('e'+e),cx=cv.getContext('2d');
+    const p=Object.assign({},DEFAULTS,{engine:e});
+    drawEnvelopes(cx,cv.width,cv.height,p,{ml:20,mr:20,mt:44,mb:20,font:'20px "JetBrains Mono",monospace',grid:false,lw:2.6,n:300,norm:true,win:1.2});
+    const T=bandT60(p,1000);
+    cx.fillStyle='rgba(220,205,191,.5)';cx.fillText('MID T60 '+fmtS(T)+' · HIGH '+fmtS(bandT60(p,8000))+' · FIRST 1.2 s',24,30);
   }
 }
 
+/* ================= knob glyphs on the control cards ================= */
+const KNOBDEF={decay:[2.4,0.2,20,0.3155,'2.40 s'],source:[50,0,100,0,'50'],drive:[0,0,100,0,'0'],tone:[50,0,100,0,'50'],feedback:[0,0,100,0,'0'],diffusion:[78,0,100,0,'78'],spin:[0.9,0,3,0,'0.90'],mix:[34,0,100,0,'34'],hold:[0,0,1,0,'OFF']};
+document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dataset.knob];if(!k)return;
+  let n=(k[0]-k[1])/(k[2]-k[1]);if(k[3])n=Math.pow(n,k[3]);
+  const a0=-135,a1=135,a=a0+(a1-a0)*n;const P=(deg,r)=>{const t=(deg-90)*Math.PI/180;return [r*Math.cos(t),r*Math.sin(t)];};
+  const arc=(from,to,r)=>{const p=P(from,r),q=P(to,r);return `M${p[0].toFixed(1)} ${p[1].toFixed(1)} A${r} ${r} 0 ${to-from>180?1:0} 1 ${q[0].toFixed(1)} ${q[1].toFixed(1)}`;};
+  let ticks='';for(let i=0;i<=10;i++){const d=a0+27*i;const p=P(d,52),q=P(d,57);ticks+=`<line class="tick" x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}"/>`;}
+  const g0=P(a,14),g1=P(a,33);
+  card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,46)}"/>${n>0.003?`<path class="arc-val" d="${arc(a0,a,46)}"/>`:''}<circle class="knob-face" r="36"/><line class="knob-ptr" x1="${g0[0]}" y1="${g0[1]}" x2="${g1[0]}" y2="${g1[1]}"/><text class="knob-num" y="72">${k[4]}</text></svg>`);
+});
+
+/* ================= signal path tank lines ================= */
+(function(){const g=document.getElementById('pathLines');let h='';
+  MAIN.forEach((m,i)=>{const y=114+i*14,w=40+m*2.2;h+=`<rect x="600" y="${y-4}" width="${w.toFixed(0)}" height="8" rx="2" fill="#1d2a3a" stroke="#3a4a5c"/><text x="${(608+w).toFixed(0)}" y="${y+4}" style="font-size:9.5px">${m.toFixed(2)} ms</text>`;});
+  g.innerHTML=h;})();
+
+/* ================= READING THE DISPLAY (the 0.4 page's map, plus SOURCE and HOLD) ================= */
+let vsmSeed=null;
+function vsmBuild(t){
+  const E=x=>x<0.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+  const PH=[['PRE-DELAY','pd'],['DECAY','decay'],['SIZE','size'],['DIFFUSION','diff'],['SOURCE','src'],['HOLD','hold'],['WET LEVEL','wet']];
+  const D=4.2,cyc=t%(D*PH.length),pi=Math.floor(cyc/D),u0=(cyc-pi*D)/D;
+  const env=u0<0.36?E(u0/0.36):u0<0.64?1:E(1-(u0-0.64)/0.36);
+  const v={pd:0.25,decay:0.45,size:0.25,diff:0,wet:1,src:0.5,hold:0};
+  const key=PH[pi][1];
+  if(key==='wet')v.wet=1-env;
+  else if(key==='src')v.src=0.5-0.5*Math.sin(TAU*u0);
+  else if(key==='hold')v.hold=env;
+  else v[key]=v[key]+(1-v[key])*env;
+  if(!vsmSeed){let x=20260929;const r=()=>(x=(x*1664525+1013904223)>>>0)/4294967296;vsmSeed=Array.from({length:240},()=>[r(),r(),r(),r()]);}
+  const near=Math.max(0,(0.5-v.src)*2),far=Math.max(0,(v.src-0.5)*2);
+  const pdEff=Math.min(1,Math.max(0,v.pd-0.22*near+0.3*far));
+  const tapScale=(1+0.8*near)*(1-0.6*far);
+  const f=n=>n.toFixed(1);
+  const G='#81848A',GOLD='#C8A86B',DIM='#6E6764',CREAM='#DCCDBF',SIL='#B0B2B7';
+  const MONO='font-family="JetBrains Mono, monospace" letter-spacing="1.6"';
+  const T=(x,y,txt,col,anchor,size)=>'<text x="'+f(x)+'" y="'+f(y)+'" '+MONO+' font-size="'+(size||9.5)+'" fill="'+(col||SIL)+'"'+(anchor?' text-anchor="'+anchor+'"':'')+'>'+txt+'</text>';
+  const O=[327,318],TV=[178,-60],BV=[-176,-60];
+  const P=(u,w)=>[O[0]+TV[0]*u+BV[0]*w,O[1]+TV[1]*u+BV[1]*w];
+  const H=[206-40*pdEff,62-14*pdEff];
+  const pdU=0.06+0.3*pdEff;
+  const inA=1-0.75*v.hold;
+  let o='<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">';
+  o+='<defs><linearGradient id="vsmCard" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#1B2632"/><stop offset="1" stop-color="#111820"/></linearGradient>';
+  o+='<radialGradient id="vsmGlow"><stop offset="0" stop-color="#F0E2C0" stop-opacity="0.55"/><stop offset="0.35" stop-color="'+GOLD+'" stop-opacity="0.18"/><stop offset="1" stop-color="'+GOLD+'" stop-opacity="0"/></radialGradient></defs>';
+  o+='<rect x="4" y="4" width="672" height="392" rx="16" fill="url(#vsmCard)" stroke="#26313C" stroke-width="1"/>';
+  const c=[P(0,0),P(1,0),P(1,1),P(0,1)];
+  o+='<path d="M '+c.map(p=>f(p[0])+' '+f(p[1])).join(' L ')+' Z" fill="none" stroke="'+G+'" stroke-width="1" stroke-opacity="0.75"/>';
+  let grid='';
+  for(let k=1;k<5;k++){const q=k/5,a1=P(q,0),a2=P(q,1),b1=P(0,q),b2=P(1,q);grid+='M '+f(a1[0])+' '+f(a1[1])+' L '+f(a2[0])+' '+f(a2[1])+' M '+f(b1[0])+' '+f(b1[1])+' L '+f(b2[0])+' '+f(b2[1])+' ';}
+  o+='<path d="'+grid+'" stroke="'+G+'" stroke-width="0.6" stroke-opacity="0.35" fill="none"/>';
+  const e1=P(pdU,0.5),e2=P(1,0.5);
+  o+='<path d="M '+f(e1[0])+' '+f(e1[1])+' L '+f(e2[0])+' '+f(e2[1])+'" stroke="'+GOLD+'" stroke-width="1" stroke-dasharray="5 4" stroke-opacity="'+f(0.2+0.45*v.wet)+'" fill="none"/>';
+  const k=(0.7+5.2*(1-v.decay))*(1-v.hold),spread=1.8-1.1*v.size;
+  let rays='',fil='';
+  for(const [r1,r2,r3,r4] of vsmSeed){
+    const u=pdU+(1-pdU)*Math.pow(r1,spread),w=0.04+0.92*r2;
+    const hgt=105*v.wet*Math.exp(-k*(u-pdU))*(0.35+0.65*r3)*(1-0.25*v.hold);
+    if(hgt<0.6)continue;
+    const base=P(u,w),top=[base[0],base[1]-hgt];
+    fil+='M '+f(base[0])+' '+f(base[1])+' L '+f(top[0])+' '+f(top[1])+' ';
+    if(r4<0.55)rays+='M '+f(H[0])+' '+f(H[1])+' L '+f(top[0])+' '+f(top[1])+' ';
+  }
+  o+='<path d="'+rays+'" stroke="'+SIL+'" stroke-width="0.45" stroke-opacity="'+f((0.05+0.13*v.wet)*inA)+'" fill="none"/>';
+  o+='<path d="'+fil+'" stroke="'+CREAM+'" stroke-width="0.6" stroke-opacity="0.32" fill="none"/>';
+  const n=Math.round(5+13*v.diff);
+  let tl='',dots='';const early=[];
+  for(let i=0;i<n;i++){
+    const q=n===1?0.5:i/(n-1);
+    const ang=(0.18+0.62*q)*(1+0.35*v.size);
+    const len=118+70*v.size+40*Math.sin(i*1.7);
+    const x=H[0]+Math.sin(ang)*len*1.05,y=H[1]+Math.cos(ang)*len*1.25;
+    early.push([x,y]);
+    tl+='M '+f(H[0])+' '+f(H[1])+' L '+f(x)+' '+f(y)+' ';
+    dots+='<circle cx="'+f(x)+'" cy="'+f(y)+'" r="'+f((2.4-1.1*v.diff)*Math.sqrt(tapScale))+'" fill="'+GOLD+'" fill-opacity="'+f(Math.min(1,(0.35+0.6*v.wet)*tapScale)*inA)+'"/>';
+  }
+  o+='<path d="'+tl+'" stroke="'+GOLD+'" stroke-width="'+f(1-0.45*v.diff)+'" stroke-opacity="'+f(Math.min(1,(0.25+0.55*v.wet)*(1-0.35*v.diff)*tapScale)*inA)+'" fill="none"/>'+dots;
+  const L=(a1,b1,q)=>a1+(b1-a1)*q;
+  const cy=yy=>L(318,yy,0.25+0.75*v.wet);
+  const dec=Math.min(1,v.decay+(1-v.decay)*v.hold);
+  const Q0=[404,cy(46)],Q1=[412,cy(L(175,130,dec))],Q2=[L(445,490,dec),cy(L(292,250,dec)*(1-v.hold)+110*v.hold)],Q3=[L(505,585,dec),cy(L(318,280,dec)*(1-v.hold)+120*v.hold)];
+  o+='<path d="M '+f(Q0[0])+' '+f(Q0[1])+' C '+f(Q1[0])+' '+f(Q1[1])+' '+f(Q2[0])+' '+f(Q2[1])+' '+f(Q3[0])+' '+f(Q3[1])+'" stroke="'+SIL+'" stroke-width="1.4" fill="none" stroke-opacity="0.85"/>';
+  const bz=(q,i)=>Math.pow(1-q,3)*Q0[i]+3*Math.pow(1-q,2)*q*Q1[i]+3*(1-q)*q*q*Q2[i]+q*q*q*Q3[i];
+  const mx=bz(0.5,0),my=bz(0.5,1);
+  o+='<circle cx="'+f(mx)+'" cy="'+f(my)+'" r="3" fill="'+CREAM+'"/><path d="M '+f(mx)+' '+f(my)+' L 598 '+f(my)+'" stroke="'+G+'" stroke-width="0.8"/>';
+  const tail=0.4*Math.pow(50,v.decay),db=v.wet<0.002?'-INF':Math.round(20*Math.log10(v.wet)-18-30*v.decay*(1-v.hold));
+  o+=T(606,my-4,v.hold>0.5?'HELD':((tail<10?tail.toFixed(2):tail.toFixed(1))+' s'),SIL)+T(606,my+12,db+' dB',GOLD);
+  o+='<circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="34" fill="url(#vsmGlow)" opacity="'+f(inA)+'"/><circle cx="'+f(H[0])+'" cy="'+f(H[1])+'" r="4.2" fill="#E3C27D"/>';
+  const earlyMs=Math.round((20+90*v.size)+(far-near)*25),pre=Math.max(0,Math.round(10+240*v.pd+(far-near)*25));
+  const hx=H[0]-70,hy=H[1]+4;
+  o+='<path d="M '+f(H[0]-6)+' '+f(H[1])+' L '+f(H[0]-22)+' '+f(hy)+' L '+f(hx)+' '+f(hy)+'" stroke="'+G+'" stroke-width="0.8" fill="none"/><circle cx="'+f(hx)+'" cy="'+f(hy)+'" r="2.4" fill="'+SIL+'"/>';
+  o+=T(hx-8,hy-3,earlyMs+' ms',SIL,'end')+T(hx-8,hy+13,'EARLY',GOLD,'end');
+  const mid=early[Math.floor(early.length*0.3)]||[H[0],H[1]+80];
+  const dx=96,dy=H[1]+118;
+  o+='<path d="M '+f(mid[0]-18)+' '+f(dy)+' L '+dx+' '+f(dy)+'" stroke="'+G+'" stroke-width="0.8" fill="none"/><circle cx="'+dx+'" cy="'+f(dy)+'" r="2.4" fill="'+SIL+'"/>';
+  const dens=(0.6+6.4*v.diff).toFixed(1);
+  o+=T(dx-8,dy-3,(0.08+0.18*v.size).toFixed(2)+' s',SIL,'end')+T(dx-8,dy+13,dens+'k/s',GOLD,'end');
+  const pl=P(0,1);
+  o+=T(pl[0]-4,pl[1]+26,'PRE '+pre+' ms',GOLD);
+  o+=T(28,30,'SOURCE',SIL,null,10);
+  if(v.hold>0.5)o+=T(28,378,'HELD',GOLD,null,10);
+  o+=T(652,378,'TIME &#215; BAND &#215; ENERGY',G,'end');
+  const label=key==='wet'?'WET LEVEL FALLS':key==='src'?(v.src<0.5?'SOURCE NEAR':v.src>0.5?'SOURCE FAR':'SOURCE'):key==='hold'?'HOLD ON':PH[pi][0]+' UP';
+  o+='<text x="652" y="32" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="3" fill="'+CREAM+'">'+label+'</text>';
+  o+='<rect x="552" y="42" width="100" height="1" fill="'+DIM+'"/><rect x="552" y="42" width="'+f(100*(key==='src'?Math.abs(Math.sin(TAU*u0)):env))+'" height="1" fill="'+GOLD+'"/>';
+  PH.forEach((ph,i)=>{o+='<rect x="'+(552+i*14.6).toFixed(1)+'" y="50" width="10.5" height="2" fill="'+(i===pi?GOLD:DIM)+'" fill-opacity="'+(i===pi?1:0.5)+'"/>';});
+  return o+'</svg>';
+}
+const dmap=document.getElementById('dmap');const t0=performance.now();
+
+/* ================= zoom ================= */
+const zoom=document.getElementById('zoom'),zimg=document.getElementById('zoomImg');
+document.querySelectorAll('[data-zoom]').forEach(im=>im.addEventListener('click',()=>{zimg.src=im.currentSrc||im.src;zimg.alt=im.alt;zoom.classList.add('open');}));
+zoom.addEventListener('click',()=>{zoom.classList.remove('open');zimg.removeAttribute('src');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')zoom.classList.remove('open');});
+
+/* ================= main loop ================= */
+let looping=false;
+function frame(now){
+  runDemo(now);
+  if(dirty){drawLab();dirty=false;}
+  dmap.innerHTML=vsmBuild(reduce?6.5:Math.max(0,now-t0)/1000);
+  if(!reduce||demo){requestAnimationFrame(frame);}else looping=false;
+}
+function kick(){if(!looping){looping=true;requestAnimationFrame(frame);}}
+drawEngines();drawLab();dmap.innerHTML=vsmBuild(6.5);
+document.addEventListener('input',kick);document.addEventListener('click',kick);
+kick();
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

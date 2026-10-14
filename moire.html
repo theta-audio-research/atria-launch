@@ -185,7 +185,7 @@ body.hide-notes .note{display:none}
 .who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--accent)}
 .who p{font-size:15.5px;color:var(--text-2)}
 .faceshot{margin:0;display:grid;gap:var(--s2)}
-.faceshot img{width:100%;height:auto;border:1px solid var(--border);border-radius:8px;display:block}
+.faceshot img{border:0;width:100%;height:auto;display:block}
 .keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
 .keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
 .keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
@@ -269,9 +269,9 @@ footer a:hover{color:var(--gold)}
   </div>
   <div>
     <div class="well">
-      <div class="well-head"><span id="h-mode-cap">COMB SURFACE · INIT</span>
+      <div class="well-head"><span id="h-mode-cap">MOIRÉ FIELD · INIT</span>
         <span class="seg" role="group" aria-label="Display mode">
-          <button type="button" data-hm="0" aria-pressed="true">SURFACE</button><button type="button" data-hm="1" aria-pressed="false">FIELD</button>
+          <button type="button" data-hm="0" aria-pressed="false">SURFACE</button><button type="button" data-hm="1" aria-pressed="true">FIELD</button>
         </span>
       </div>
       <canvas id="hero" width="880" height="800" aria-label="MOIRÉ's comb display, drawn with the plug-in's own projection and comb equations at the INIT settings. Click it to switch between SURFACE and FIELD, as you would in the plug-in."></canvas>
@@ -429,7 +429,7 @@ footer a:hover{color:var(--gold)}
   </div>
   <p class="small">Drawn in your browser with the plug-in's own projections, row counts and comb equation, lit by a fixed pink-noise stand-in for your input. In the plug-in the light comes from the audio.</p>
   <figure class="faceshot">
-    <img src="assets/moire/moire_v0115_panel.png?v=261006" alt="The MOIRÉ panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the comb surface in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL selector, and THRU-ZERO: 1.6 MS REPORTED in the footer" loading="lazy">
+    <img src="assets/moire/hero_v100.png?v=261013" width="2140" height="1410" alt="The MOIRÉ panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the comb surface in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL selector, and THRU-ZERO: 1.6 MS REPORTED in the footer" loading="lazy">
     <figcaption class="cap">THE WHOLE FACE · INIT</figcaption>
   </figure>
 </section>
@@ -511,12 +511,12 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
   <div class="eyebrow">MOIR&Eacute; · 1.0.0</div>
-  <p>MOIR&Eacute; is in final calibration. Through zero, the full panel, both display modes and AUTO LEVEL, nothing withheld.</p>
+  <p>MOIR&Eacute; is calibrated and available for immediate deployment. Through zero, the full panel, both display modes and AUTO LEVEL, nothing withheld.</p>
   <div class="amt"><s>$50</s><strong>$25</strong></div>
   <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas">
-    <a class="btn primary" href="mailto:info@theta.audio?subject=MOIRE%20launch" data-notify="MOIRE">Notify me at launch</a>
-    <!-- LAUNCH: swap in the Lemon Squeezy checkout links for product 1362444 (buy and 14-day trial), as gire.html does. -->
+    <a class="btn primary lemonsqueezy-button" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/1fe7dbb0-ddc2-4e9c-807c-ca9247445091?embed=1">Acquire MOIR&Eacute; · $25</a>
+    <a class="btn ghost lemonsqueezy-button" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/18c0385f-a57e-44c5-8b1f-ed6af9141f49?embed=1">Try 14 days free</a>
   </div>
   <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU / AAX INCLUDED</div>
 </section>
@@ -673,7 +673,7 @@ function paintField(cv,p,livePhase){
 }
 
 /* ================= hero ================= */
-const hero={p:Object.assign({},DEFAULTS),phase:0,mode:0,acc:0};
+const hero={p:Object.assign({},DEFAULTS),phase:0,mode:1,acc:1};
 const heroCv=document.getElementById('hero');
 function setHeroMode(m){hero.mode=m;document.querySelectorAll('[data-hm]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.hm===m?'true':'false'));
   document.getElementById('h-mode-cap').textContent=(m?'MOIRÉ FIELD':'COMB SURFACE')+' · INIT';hero.acc=1;}
