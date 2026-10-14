@@ -7,7 +7,13 @@
 <meta name="description" content="An auto mixer for YouTubers, podcasters and streamers. Pick a preset, play your edit once and press AUTO: a cleaner, fuller mix on target for loudness, with the voice lifted above the music. AU, VST3, AAX for macOS.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <link rel="stylesheet" href="mobile.css">
-<style>.site-nav > a:first-child{flex-shrink:0} .site-nav > div{flex-wrap:wrap} .site-nav > div a:hover{background:#DCCDBF !important;color:#0C1519 !important}</style>
+<style>.site-nav > a:first-child{flex-shrink:0} .site-nav > div{flex-wrap:wrap} .site-nav > div a:hover{background:#DCCDBF !important;color:#0C1519 !important}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+
+.hero > div:last-child{width:100%;max-width:400px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -297,6 +303,10 @@ footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,
   </div>
 </section>
 
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/penrose_ultra/face-0125.webp" alt="The full PENROSE ULTRA interface, version 0.1.25: SPECTRUM view, loudness readouts, TARGET, AUTO, LEVELLING and ANALYZE in the right margin, and the controls below" class="tall">
+</section>
+
 <!-- HOW -->
 <div class="sh" id="how">Three steps</div>
 <section class="stack">
@@ -535,10 +545,7 @@ footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,
     <div class="m"><small>RANGE</small><strong>0.5<u>LU</u></strong></div>
     <div class="m"><small>LIMITING</small><strong>0.0<u>dB</u></strong></div>
   </div>
-  <figure class="faceshot">
-    <img src="assets/penrose_ultra/face-0125.webp" alt="The full PENROSE ULTRA interface, version 0.1.25: SPECTRUM view, loudness readouts, TARGET, AUTO, LEVELLING and ANALYZE in the right margin, and the controls below" class="tall">
-    <figcaption class="cap">THE WHOLE FACE · BETA BUILD v0.1.25 · VOID SKIN</figcaption>
-  </figure>
+
 </section>
 
 <!-- SKINS + DRAWER -->

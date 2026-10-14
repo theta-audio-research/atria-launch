@@ -222,6 +222,12 @@ footer a:hover{color:var(--gold)}
 .code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
 .price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(198,83,124,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
 .price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+
+.hero > div:last-child{width:100%;max-width:400px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
 </style>
 </head>
 <body>
@@ -266,6 +272,10 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="tagline">DRAG THE CURVE SIDEWAYS TO SET DRIVE</div>
   </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/cinder/hero_v110.png?v=261010" alt="The CINDER v1.1.0 panel: DRIVE 28.7 on EMBER with BIAS and LFO under it, the transfer display in the middle, TONE, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row and AUTO LEVEL set to TRANSPARENT" width="2140" height="1410">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -405,10 +415,7 @@ footer a:hover{color:var(--gold)}
     </article>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:20px">
-    <figure class="faceshot" style="margin:0">
-      <img src="assets/cinder/hero_v110.png?v=261010" alt="The CINDER v1.1.0 panel: DRIVE 28.7 on EMBER with BIAS and LFO under it, the transfer display in the middle, TONE, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row and AUTO LEVEL set to TRANSPARENT" width="2140" height="1410" loading="lazy">
-      <figcaption class="cap">THE WHOLE FACE</figcaption>
-    </figure>
+
     <figure class="faceshot" style="margin:0">
       <img src="assets/cinder/cinder_v110_eq.png?v=261011" alt="The CINDER v1.1.0 EQ options open: an eight-node curve set POST DRIVE, with band 6 a bell at 4.08 kHz, +12.8 dB, Q 1.60, and the AMOUNT, RESET and FLAT controls" width="2140" height="1410" loading="lazy">
       <figcaption class="cap">EQ OPTIONS OPEN · POST DRIVE</figcaption>
@@ -442,7 +449,6 @@ footer a:hover{color:var(--gold)}
   </div>
   <figure class="faceshot">
     <img src="assets/cinder/cinder_v110_lfo.png?v=261011" alt="The CINDER v1.1.0 panel with the LFO options open: SOURCE LFO or ENVELOPE, TARGET BIAS, RATE 9.36 Hz, SYNC and DIVISION, SHAPE SQR, and the ENVELOPE FOLLOWER ATTACK and RELEASE controls" width="2140" height="1410" loading="lazy">
-    <figcaption class="cap">THE WHOLE FACE · LFO OPTIONS OPEN</figcaption>
   </figure>
 </section>
 

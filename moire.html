@@ -237,6 +237,12 @@ footer a:hover{color:var(--gold)}
 .code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
 .price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(110,192,182,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
 .price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+
+.hero > div:last-child{width:100%;max-width:400px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
 </style>
 </head>
 <body>
@@ -279,6 +285,10 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="tagline">CLICK THE DISPLAY TO CHANGE MODE</div>
   </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/moire/hero_v100.png?v=261013" width="2140" height="1410" alt="The MOIRÉ panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the comb surface in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL selector, and THRU-ZERO: 1.6 MS REPORTED in the footer">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -428,10 +438,7 @@ footer a:hover{color:var(--gold)}
     </article>
   </div>
   <p class="small">Drawn in your browser with the plug-in's own projections, row counts and comb equation, lit by a fixed pink-noise stand-in for your input. In the plug-in the light comes from the audio.</p>
-  <figure class="faceshot">
-    <img src="assets/moire/hero_v100.png?v=261013" width="2140" height="1410" alt="The MOIRÉ panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the comb surface in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL selector, and THRU-ZERO: 1.6 MS REPORTED in the footer" loading="lazy">
-    <figcaption class="cap">THE WHOLE FACE · INIT</figcaption>
-  </figure>
+
 </section>
 
 <!-- AUTO LEVEL -->
