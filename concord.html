@@ -212,6 +212,12 @@ footer a:hover{color:var(--gold)}
   .site-nav .links a{padding:6px 10px;letter-spacing:2px}
   .wordmark{letter-spacing:.24em}
 }
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+
+.hero > div:last-child{width:100%;max-width:400px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
 </style>
 </head>
 <body>
@@ -237,13 +243,13 @@ footer a:hover{color:var(--gold)}
     <h2>Eight voices. <em>One shared cycle.</em></h2>
     <div class="lede">
       <p>A chorus built around one LFO, not several unrelated ones. Every voice reads the same delay line, offset by its own share of the cycle and detuned outward from centre, so the ensemble moves together and spreads symmetrically across the stereo field.</p>
-      <p>The VOICE BRAID at the centre of the panel is the delay line, drawn by the same maths that runs the audio. Version 1.0 adds EXPORT IR, mono tracks, and one activation that covers every user account on your Mac.</p>
+      <p>The VOICE BRAID at the centre of the panel is the delay line, drawn by the same maths that runs the audio.</p>
     </div>
     <div class="ctas">
       <a class="btn primary" href="#price">Get CONCORD</a>
       <a class="btn ghost" href="#lab">Play with the braid</a>
     </div>
-    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip new">NEW · EXPORT IR</span><span class="chip new">NEW · MONO TRACKS</span></div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
   </div>
   <div>
     <div class="well">
@@ -257,6 +263,10 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="tagline">DRAG THE BRAID SIDEWAYS TO SET DEPTH</div>
   </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/concord/hero_v0111.png?v=261004" alt="The CONCORD panel: the controls either side of the VOICE BRAID, BBD and LO-CUT, and the AUTO LEVEL switch at the bottom right">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -428,7 +438,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="mono">Mono tracks</div>
 <section class="two">
   <div class="prose">
-    <p>New in 1.0, CONCORD loads on mono tracks, mono in and stereo out, so it is on the insert menu of a mono guitar, bass or vocal track in Pro Tools and Logic without a stereo bus in between. The engine was reading a mono sum all along; the mono input simply feeds it directly.</p>
+    <p>CONCORD loads on mono tracks, mono in and stereo out, so it is on the insert menu of a mono guitar, bass or vocal track in Pro Tools and Logic without a stereo bus in between. The engine was reading a mono sum all along; the mono input simply feeds it directly.</p>
     <p>The dry path stays where you put it: at MIX 0 or under BYPASS the mono signal comes out centred on both sides, not on the left only. The voices fan out around it by WIDTH.</p>
   </div>
   <div class="panel">
@@ -441,7 +451,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="ir">Export IR</div>
 <section class="two">
   <div class="prose">
-    <p>New in 1.0. The <span class="k">EXPORT IR</span> button beside BYPASS saves the impulse response of the current settings: a 24-bit stereo WAV, 250 ms long, at your session's sample rate. Load it into a convolution reverb or an IR loader and you have CONCORD as it sounds with the LFO held still: a frozen chorus voicing for a sampler, a template, or a collaborator without the plug-in.</p>
+    <p>The <span class="k">EXPORT IR</span> button beside BYPASS saves the impulse response of the current settings: a 24-bit stereo WAV, 250 ms long, at your session's sample rate. Load it into a convolution reverb or an IR loader and you have CONCORD as it sounds with the LFO held still: a frozen chorus voicing for a sampler, a template, or a collaborator without the plug-in.</p>
     <p>The file is rendered through a separate copy of the engine, so the audio that is playing is never touched. BYPASS and AUTO LEVEL are left out, since a level follower has no impulse response, and the output stage's lookahead is taken off the front: the dry impulse lands on the first sample. The file name comes from the preset and the rate, and the save dialog warns before replacing a file.</p>
     <p class="small">The trace is the first 60 ms of the impulse response of the braid lab's settings, computed sample by sample at 48 kHz: the dry impulse at zero and one tap per voice, left in cream above the line and right in teal below it.</p>
   </div>
@@ -479,7 +489,7 @@ footer a:hover{color:var(--gold)}
     <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and shows a banner asking you to reactivate.</p>
   </div>
   <div class="prose">
-    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs the internet once, and <strong>new in 1.0, one activation covers every user account on that Mac</strong>, so a shared studio machine uses one seat, not one per login. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move CONCORD without writing to us.</p>
+    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs the internet once, and <strong>one activation covers every user account on that Mac</strong>, so a shared studio machine uses one seat, not one per login. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move CONCORD without writing to us.</p>
     <p>After activation CONCORD works offline. When it can reach the internet it checks about once a week that the Mac still holds its seat, and no result of that check, and no lack of a connection, ever stops the sound.</p>
   </div>
 </section>
@@ -492,14 +502,6 @@ footer a:hover{color:var(--gold)}
   <article><b>MIX &amp; SOUND DESIGN</b><p>EXPORT IR prints a voicing for a convolver or a sampler. Short DELAY and high DEPTH tip CONCORD into flanging when a part needs to move.</p></article>
 </section>
 
-<!-- FACE -->
-<div class="sh" id="face">The panel</div>
-<section class="stack">
-  <figure class="faceshot">
-    <img src="assets/concord/hero_v0111.png?v=261004" alt="The CONCORD panel: the controls either side of the VOICE BRAID, BBD and LO-CUT, and the AUTO LEVEL switch at the bottom right" loading="lazy">
-    <figcaption class="cap">THE WHOLE FACE</figcaption>
-  </figure>
-</section>
 
 <!-- SPECS -->
 <div class="sh" id="specs">Technical specifications</div>

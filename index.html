@@ -42,12 +42,12 @@
   </a>
 </header><main style="flex:1;padding:0 60px 60px 60px;margin-top:-60px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:0;background:#000000">
 
-  <section data-screen-label="Launch teasers" style="width:100%;max-width:1050px;margin:140px auto 170px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:70px">
-    <a href="gire.html" style="display:block;text-decoration:none;transition:opacity 0.4s;background:#0a090d;box-shadow:0 0 30px 18px #0a090d,0 0 110px 50px rgba(10,9,13,0.75),0 0 220px 110px rgba(10,9,13,0.4)" style-hover="opacity:0.88">
-      <image-slot id="index-gire-launch" src="assets/gire/gire_launch_portrait.png?v=261010" fit="contain" style="width:100%;height:auto;aspect-ratio:1080/1350;display:block;pointer-events:none" shape="rect" placeholder="GIRE out now"></image-slot>
-    </a>
-    <a href="cinder.html" style="display:block;text-decoration:none;transition:opacity 0.4s;background:#0a090d;box-shadow:0 0 30px 18px #0a090d,0 0 110px 50px rgba(10,9,13,0.75),0 0 220px 110px rgba(10,9,13,0.4)" style-hover="opacity:0.88">
-      <image-slot id="index-cinder-portrait" src="assets/cinder/cinder_teaser_portrait.png?v=261010" fit="contain" style="width:100%;height:auto;aspect-ratio:1080/1350;display:block;pointer-events:none" shape="rect" placeholder="CINDER out Monday"></image-slot>
+  <section data-screen-label="Alchemy Index loop" style="width:100%;max-width:1180px;margin:0 auto 90px auto">
+    <a href="store.html" style="display:block;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.9">
+      <video ref="{{ setLoop }}" poster="" style="width:100%;height:auto;aspect-ratio:1920/1080;display:block;pointer-events:none">
+        <source src="assets/site/alchemy_index_loop.webm?v=261014" type="video/webm">
+        <source src="assets/site/alchemy_index_loop.mp4?v=261014" type="video/mp4">
+      </video>
     </a>
   </section>
 
@@ -81,6 +81,13 @@ class Component extends DCLogic {
     const layout = this.props.heroLayout ?? 'side-by-side';
     const isSide = layout !== 'stacked';
     return {
+      setLoop: (el) => {
+        if (!el || this._loopEl === el) return;
+        this._loopEl = el;
+        el.muted = true; el.defaultMuted = true; el.loop = true; el.playsInline = true; el.autoplay = true;
+        const go = () => { const p = el.play(); if (p && p.catch) p.catch(() => {}); };
+        go(); el.addEventListener('loadeddata', go, { once: true });
+      },
       heroDirection: isSide ? 'row' : 'column',
       heroGap: isSide ? 42 : 14,
       heroTextAlign: isSide ? 'flex-start' : 'center',
