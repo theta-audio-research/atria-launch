@@ -1,0 +1,579 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALCHEMY INDEX · Thirty-five modules, one rack · THETA AUDIO RESEARCH</title>
+<meta name="description" content="ALCHEMY INDEX by THETA Audio Research: thirty-five modules in one rack, with a patchable back panel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long product page in the THETA store's "void" style. Every picture is the plug-in
+   itself, rendered from the current build; moving pictures are the plug-in's own displays running. */
+:root{
+  --void:#06080c;
+  --panel:#0c0d12;
+  --rule:#1a1c26;
+  --gold:#c8a86b;
+  --text:#f0ede6;
+  --muted:#8a8f96;
+  --dim:#585868;
+  --audio:#5fc2ae;
+  --cv:#d8c35a;
+  --gate:#d9534f;
+  --display:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  --body:"Rubik",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gutter:clamp(16px,4vw,48px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:var(--gutter)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.32em;font-size:clamp(22px,3vw,32px);line-height:1.3}
+p{margin:0}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(6,8,12,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:24px;min-height:56px;flex-wrap:wrap}
+.top .brand{font-family:var(--display);font-weight:400;letter-spacing:.42em;font-size:14px}
+.top .maker{color:var(--dim)}
+.top nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+.top nav a{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--gold)}
+@media (max-width:760px){.top nav{display:none}}
+
+.hero{padding-block:clamp(40px,7vw,88px) clamp(40px,6vw,72px)}
+.hero .intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start;margin-bottom:clamp(28px,4vw,44px)}
+@media (max-width:900px){.hero .intro{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-family:var(--display);font-weight:300;letter-spacing:.42em;font-size:clamp(32px,6vw,72px);line-height:1.1;margin-block:16px 0;margin-right:-.42em}
+.hero .lede{font-size:clamp(17px,1.6vw,20px);color:#d9d5cc;font-weight:300;max-width:36em}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--rule);border-radius:2px;color:#c9c5bd;background:var(--panel)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:13px 20px;border-radius:2px;text-decoration:none;border:1px solid var(--gold);color:var(--void);background:var(--gold);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--gold)}
+.price{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted)}
+
+.flipbar{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:11px;letter-spacing:.16em;padding:8px 16px;background:transparent;color:var(--muted);border:0;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--void)}
+.flipbar .hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim)}
+.stage{perspective:2400px}
+.rack{position:relative;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.65,0,.25,1);aspect-ratio:1400/1352}
+.rack.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px;overflow:hidden;box-shadow:0 50px 100px -40px rgba(0,0,0,.95),0 0 0 1px #20222c}
+.face.back{transform:rotateY(180deg)}
+.face img{width:100%;height:100%;object-fit:cover}
+
+section{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--rule)}
+.sechead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+@media (max-width:860px){.sechead{grid-template-columns:minmax(0,1fr)}}
+.sechead .label{margin-bottom:14px;display:block}
+.sechead p{color:#cfcbc2;max-width:38em;font-weight:300}
+
+.features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media (max-width:980px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.features{grid-template-columns:minmax(0,1fr)}}
+.feat{background:var(--void);padding:22px 20px;min-width:0}
+.feat h3{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.feat p{font-size:14.5px;color:#bdb9b1;line-height:1.55}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.tabs button{font-family:var(--mono);font-size:11px;letter-spacing:.16em;padding:8px 14px;border:1px solid var(--rule);background:var(--panel);color:var(--muted);border-radius:2px;cursor:pointer}
+.tabs button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.family{margin-top:56px}
+.family:first-of-type{margin-top:0}
+.famhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:22px}
+.famhead h3{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.2em;color:var(--gold)}
+.famhead p{font-size:14px;color:var(--muted)}
+.mods{display:grid;gap:20px}
+
+.mod{border-radius:5px;overflow:hidden;border:1px solid var(--mrim);background:linear-gradient(168deg,var(--s1),var(--s2) 46%,var(--s3));display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);min-width:0}
+@media (max-width:980px){.mod{grid-template-columns:minmax(0,1fr)}}
+.mod .info{padding:22px 22px 24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.mod .title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.mod .title .nm{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.42em;font-size:22px;color:var(--ink);margin-right:-.42em}
+.mod .title .kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--hex)}
+.mod .lat{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:rgba(255,255,255,.5)}
+.mod .desc{font-size:15px;line-height:1.6;color:#ddd7cb;font-weight:300}
+.row{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:start}
+.row .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:rgba(255,255,255,.45);padding-top:4px}
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:3px 7px;border-radius:2px;background:rgba(0,0,0,.34);color:#efe7d8;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.pill i{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.pill.cv i{background:#d8a43a}
+.pill.gate i{background:#d9534f}
+.pill.audio i{background:#c9ccd1}
+.pill.note i{background:#9b6cff}
+.mod .media{background:rgba(0,0,0,.42);display:flex;flex-direction:column;min-width:0;border-left:1px solid rgba(0,0,0,.4)}
+@media (max-width:980px){.mod .media{border-left:0;border-top:1px solid rgba(0,0,0,.4)}}
+.mod .views{display:flex;border-bottom:1px solid rgba(255,255,255,.06)}
+.mod .views button{flex:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;padding:10px 8px;background:transparent;border:0;border-bottom:2px solid transparent;color:rgba(255,255,255,.5);cursor:pointer}
+.mod .views button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--hex)}
+.mod .shot{flex:1;display:flex;align-items:center;justify-content:center;padding:18px;min-height:260px}
+.mod .shot img{max-height:440px;width:auto;max-width:100%;border-radius:3px;box-shadow:0 18px 40px -18px rgba(0,0,0,.9)}
+.mod .shot img.wide{width:100%;max-height:none}
+
+.figure{border:1px solid var(--rule);background:#0a0b0f;padding:8px;border-radius:4px}
+.figure img{width:100%;border-radius:2px}
+.figure figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);padding:10px 4px 2px}
+figure{margin:0}
+.sigs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-block:28px}
+@media (max-width:760px){.sigs{grid-template-columns:minmax(0,1fr)}}
+.sig{border-top:2px solid var(--c);padding-top:14px}
+.sig h3{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--c);margin-bottom:6px}
+.sig p{font-size:14.5px;color:#bdb9b1}
+
+.utils{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:1060px){.utils{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.utils{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.utils{grid-template-columns:minmax(0,1fr)}}
+.util{background:linear-gradient(168deg,#2a2a2c,#1e1e20 46%,#141415);border:1px solid #2c2c2f;border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.util h3{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.32em;font-size:15px;color:#f2e9dc}
+.util p{font-size:13.5px;color:#b9b5ad;line-height:1.5}
+
+.specs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+@media (max-width:860px){.specs{grid-template-columns:minmax(0,1fr)}}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--muted);font-weight:400}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--gold)}
+.licence{display:grid;gap:14px}
+.licence div{border-left:2px solid var(--gold);padding:4px 0 4px 16px}
+.licence h3{font-family:var(--mono);font-size:12px;letter-spacing:.16em;margin-bottom:4px}
+.licence p{font-size:14.5px;color:#c4c0b8}
+footer{border-top:1px solid var(--rule);padding-block:36px 48px}
+footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.rack{transition:none}html{scroll-behavior:auto}}
+a.chip{text-decoration:none}
+a.chip:hover{color:var(--gold);border-color:var(--gold)}
+.faq{display:grid;gap:8px;max-width:860px}
+.faq details{background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:14px 18px}
+.faq summary{cursor:pointer;font-size:15px;color:#f2e9dc;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--gold,#c8a86b)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{margin-top:10px;font-size:14px;color:#b9b5ad;line-height:1.6}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+.site-nav{font-family:'Montserrat',sans-serif;padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:#06080c;position:relative;z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .home img{width:96px;height:auto;display:block}
+.site-nav .home span{display:flex;flex-direction:column;gap:4px}
+.site-nav .home b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:19px;letter-spacing:.10em;color:#DCCDBF;line-height:1}
+.site-nav .home i{font-style:normal;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8px;letter-spacing:.38em;color:#6E6764;line-height:1}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+@media (max-width:700px){.site-nav .home{min-height:52px}.site-nav .links a{padding:6px 10px;letter-spacing:2px}}
+</style>
+<nav class="site-nav">
+  <a class="home" href="index.html"><img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt=""><span><b>THETA</b><i>AUDIO RESEARCH</i></span></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+<div class="top">
+  <div class="wrap">
+    <span class="brand">ALCHEMY INDEX</span>
+    <span class="label maker">THETA AUDIO RESEARCH</span>
+    <nav aria-label="Sections">
+      <a href="#rack">Rack</a><a href="#modules">Modules</a><a href="#back">Back panel</a><a href="#utilities">Utilities</a><a href="#master">Master</a><a href="#specs">Specs</a><a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <span class="label">THETA Audio Research · Rack plug-in</span>
+        <h1>ALCHEMY INDEX</h1>
+      </div>
+      <div>
+        <p class="lede">Thirty-five modules in one rack: the six ALCHEMY INDEX plug-ins, every CATHODE and CREOSOTE module, each with its own face and its own sound, five TWILIGHT modules, and twelve utilities made for patching. Stack them in any order, then turn the rack around and patch the back.</p>
+        <div class="facts"><span class="chip">35 modules</span><span class="chip">Up to 4 copies each</span><span class="chip">CV + gate on every module</span><span class="chip">AU · VST3 · AAX</span></div>
+        <div class="cta"><a class="btn" href="#modules">See all 35 modules</a><a class="btn ghost" href="#back">The back of the rack</a><span class="price">$249 USD</span><a class="btn" href="mailto:info@theta.audio?subject=ALCHEMY%20INDEX%20launch" data-notify="ALCHEMY INDEX">Notify me at launch</a></div>
+      </div>
+    </div>
+    <div class="flipbar">
+      <span class="label">Rack</span>
+      <div class="seg" role="group" aria-label="Rack view">
+        <button type="button" id="vFront" aria-pressed="true">FRONT</button>
+        <button type="button" id="vBack" aria-pressed="false">BACK</button>
+      </div>
+      <span class="hint">PRESS TAB IN THE PLUG-IN TO FLIP THE RACK</span>
+    </div>
+    <div class="stage">
+      <div class="rack" id="rack3d">
+        <div class="face front"><picture><img src="assets/alchemy_index/rack_front.webp" alt="ALCHEMY INDEX with CINDER, GIRE, MOIRÉ, LFO TOOLS, CRUSH, GRIT and VESTIGE in the rack, the module browser on the left and the master section below" width="1800" height="1738"></picture></div>
+        <div class="face back"><picture><img src="assets/alchemy_index/rack_back.webp" alt="The back of the same rack: audio cables in series, LFO TOOLS driving GIRE, MOIRÉ and VESTIGE, and GIRE's sweep moving GRIT" width="1800" height="1738"></picture></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="rack">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">The front</span><h2>One window, every module</h2></div>
+      <p>Drag a module in from the browser on the left and it drops into the chain where you let go. Signal runs top to bottom through the strips, then through the master section. Every strip wears its own plug-in's colours, knobs and displays: GIRE still looks like GIRE, CATHODE's modules sit on CATHODE's chassis, and CREOSOTE's read off amber VU glass.</p>
+    </div>
+    <div class="features">
+      <div class="feat"><h3>Module browser</h3><p>All 35 modules in folding groups: ALCHEMY, CATHODE, CREOSOTE, TWILIGHT and the utilities. Drag one into the rack at any position, or click to add it at the end. Drag a strip back to remove it.</p></div>
+      <div class="feat"><h3>Any order, any count</h3><p>Reorder strips by their grip. Add the same module up to four times; repeats are numbered GRIT 1, GRIT 2.</p></div>
+      <div class="feat"><h3>Serial or parallel</h3><p>Serial by default. Switch to parallel lanes, or go further on the back panel with real cables.</p></div>
+      <div class="feat"><h3>Expand</h3><p>Open a strip to its plug-in's full editor, inline or popped out into its own window. Strips whose face already shows every control simply have no EXPAND.</p></div>
+      <div class="feat"><h3>Solo, bypass, remove</h3><p>Every strip has S, power and ×. Solo several at once. A bypassed strip keeps running silently, so it comes back instantly without a click.</p></div>
+      <div class="feat"><h3>Presets at every level</h3><p>Rack presets save everything. Each strip loads its own plug-in's factory and user presets, and the master has a preset menu of its own. SAVE and SAVE AS everywhere.</p></div>
+      <div class="feat"><h3>FULL or SLIM</h3><p>SLIM folds every strip to one line, so a long chain fits on screen. An expanded strip stays full size.</p></div>
+      <div class="feat"><h3>Live latency</h3><p>The rack reports only what the modules in it need, and updates as you add, remove or bypass them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">The library</span><h2>Thirty-five modules</h2></div>
+      <p>Every effect module is the full processor from its own THETA plug-in, with the same sound and the same face, and the utilities are built for the back of the rack. Pick a family below, then switch each card between the plug-in view, its strip in the rack, and its back panel.</p>
+    </div>
+    <div class="tabs" role="group" aria-label="Show modules">
+      <button type="button" data-f="alchemy" aria-pressed="true">ALCHEMY · 6</button>
+      <button type="button" data-f="cathode" aria-pressed="false">CATHODE · 7</button>
+      <button type="button" data-f="creosote" aria-pressed="false">CREOSOTE · 5</button>
+      <button type="button" data-f="twilight" aria-pressed="false">TWILIGHT · 5</button>
+      <button type="button" data-f="utility" aria-pressed="false">UTILITY · 12</button>
+    </div>
+    <div id="families"></div>
+  </div>
+</section>
+
+<section id="back">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">The back</span><h2>Turn the rack around</h2></div>
+      <p>Press TAB and the rack flips. Every module has audio, CV and gate jacks on its back. Patch an LFO into a phaser's rate, a drum hit into a reverb's HOLD, one module's level into another's drive. Add a module and it arrives already wired in stereo, in order, so nothing changes until you want it to.</p>
+    </div>
+    <figure class="figure"><img src="assets/alchemy_index/back_panels.webp" alt="The back of the rack: HOST, GIRE, CRUSH, COMPRESS, PENDULUM and MASTER, each back panel in its module's own finish with a printed signal-flow diagram, the audio in series and PENDULUM's two LFOs patched into GIRE and CRUSH" loading="lazy" width="1600" height="1666"><figcaption>Every back is built around its connections: two rack units tall, jacks spaced out, and every label in big, sharp white type straight on the panel, with the module's name set large. Each family's finish sits quietly behind them: ALCHEMY shells, CATHODE's chassis and model plate, CREOSOTE's console card, and each utility in its own face's colours.</figcaption></figure>
+    <div class="sigs">
+      <div class="sig" style="--c:var(--audio)"><h3>AUDIO</h3><p>Stereo pairs. Patch L and R comes with it, and moving a cable brings its partner too; hold ALT for one side. Every module also has DRY outs, so parallel tricks need no splitter.</p></div>
+      <div class="sig" style="--c:var(--cv)"><h3>CV</h3><p>Smooth control. SWEEP IN on GIRE and MOIRÉ and LFO IN on CINDER replace the built-in LFO with anything you patch. Each CV input has its own trim, so one cable can push a knob up or pull it down. Your DAW automation still works on top.</p></div>
+      <div class="sig" style="--c:var(--gate)"><h3>GATE</h3><p>On or off. A gate into a switch holds it while high: VESTIGE HOLD, EUCLID FREEZE, GIRE INVERT, or BYPASS on any strip. A trigger is a short gate: it resets, steps and taps.</p></div>
+    </div>
+    <div class="features">
+      <div class="feat"><h3>Strict, like a studio rack</h3><p>Audio goes to audio, CV and gate go to each other. While you drag, only the jacks that can take the cable light up.</p></div>
+      <div class="feat"><h3>One out, many ins</h3><p>Every output mults: patch one LFO into as many inputs as you like, each with its own trim, without a splitter.</p></div>
+      <div class="feat"><h3>Easy to rewire</h3><p>Grab a plugged end to move it, double-click a cable to pull it, or right-click a jack for every place it can go.</p></div>
+      <div class="feat"><h3>The signal path, printed</h3><p>Each effect prints its own path on the back in its trace colour: IN, the processor, MIX with the DRY tap, OUT. You can see exactly what DRY and the envelope outputs tap before you patch them.</p></div>
+      <div class="feat"><h3>Free on every strip</h3><p>BYPASS gate in, DRY L/R out, and IN ENV and OUT ENV followers, so any module's level can drive another.</p></div>
+      <div class="feat"><h3>Modules talk back</h3><p>Modules send their own signals out the back: GIRE's sweep, CINDER's LFO and sag, VESTIGE's tail, MOIRÉ's low, mid and high, the gain reduction from COMPRESS. Patch them anywhere.</p></div>
+      <div class="feat"><h3>Sidechains and loops</h3><p>COMPRESS and EQ take a sidechain, SUMMING AMP takes three extra stereo inputs, and AMBER opens an insert loop between its preamp and power stages. The host's sidechain bus arrives on the HOST panel.</p></div>
+      <div class="feat"><h3>Tricks on the jacks</h3><p>A gate stops GRIT's tape and spins it back up, clocks CRUSH's sample rate, or taps VESTIGE's echo time. Triggers step VESTIGE's engine, CONCORD's voices and CINDER's circuit, and reset any LFO to the bar.</p></div>
+      <div class="feat"><h3>Parallel paths stay in time</h3><p>When a branch runs through a module with latency, every other path into the same input waits for it, so parallel chains meet sample-aligned.</p></div>
+      <div class="feat"><h3>Notes from your DAW</h3><p>MIDI IN brings the host's MIDI onto the back as a violet NOTE cable, with GATE, PITCH, VELOCITY, the wheels and two CCs as signals you can patch anywhere.</p></div>
+      <div class="feat"><h3>Undo every cable</h3><p>UNDO and REDO on the back's toolbar, or Cmd/Ctrl Z, step through every cable and every trim you've touched.</p></div>
+      <div class="feat"><h3>Saved with your session</h3><p>Cables and trims live in the rack preset and the DAW session. Colour the cables by signal type or by the module they come from.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="utilities">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">Made for patching</span><h2>Utility modules</h2></div>
+      <p>Twelve small modules that exist to be patched, in the black and grey of the master section: LFOs, envelopes, macros, splitters, a mixer, the transport, a sequencer, a euclidean clock, chance, CV maths, and MIDI IN to bring your DAW's notes onto the back. They turn the back of the rack into an instrument of its own. Each has its own card in the <a href="#modules">module list</a>.</p>
+    </div>
+    <div class="facts"><a class="chip" href="#m-pendulum">PENDULUM</a> <a class="chip" href="#m-anima">ANIMA</a> <a class="chip" href="#m-archon">ARCHON</a> <a class="chip" href="#m-hydra">HYDRA</a> <a class="chip" href="#m-prism">PRISM</a> <a class="chip" href="#m-confluence">CONFLUENCE</a> <a class="chip" href="#m-axis">AXIS</a> <a class="chip" href="#m-orrery">ORRERY</a> <a class="chip" href="#m-kairos">KAIROS</a> <a class="chip" href="#m-tyche">TYCHE</a> <a class="chip" href="#m-logos">LOGOS</a> <a class="chip" href="#m-midiin">MIDI IN</a></div>
+  </div>
+</section>
+
+<section id="master">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">The bottom of the rack</span><h2>Master section</h2></div>
+      <p>Every chain ends in a master bus in ALCHEMY INDEX black and grey: EQ, compressor, clipper, limiter and AUTO LEVEL, with its own presets separate from the rack's. It looks after level and ceiling for the whole rack, so each module's own AUTO LEVEL can stay off unless you want it. Need the room? COLLAPSE folds it to one slim row with its preset menu, a switch per section, IN and OUT meters and the OUTPUT knob.</p>
+    </div>
+    <figure class="figure"><img src="assets/alchemy_index/master.webp" alt="The master section: four-band EQ, compressor, clipper with SOFT, HARD and TAPE, true-peak limiter, and the output with AUTO LEVEL" loading="lazy" width="1600" height="440"><figcaption>EQ → COMPRESSOR → CLIPPER → LIMITER → AUTO LEVEL → OUT</figcaption></figure>
+    <figure class="figure" style="margin-top:16px"><img src="assets/alchemy_index/master_collapsed.webp" alt="The master section collapsed to one slim row: preset menu, section switches, IN and OUT meters, OUTPUT knob and EXPAND" loading="lazy" width="1600" height="88"><figcaption>COLLAPSED: double-click the MASTER title, or press COLLAPSE</figcaption></figure>
+  </div>
+</section>
+
+<section id="specs">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">Details</span><h2>Specs and licence</h2></div>
+      <p>Latency is reported live for the modules in the rack. Most modules add none.</p>
+    </div>
+    <div class="specs">
+      <div class="tbl">
+        <table>
+          <thead><tr><th>MODULE</th><th>LATENCY IN THE RACK</th></tr></thead>
+          <tbody>
+            <tr><td>EUCLID</td><td class="n">1024 samples</td></tr>
+            <tr><td>COMPRESS</td><td class="n">10 ms (480 samples at 48 kHz), its fixed lookahead line</td></tr>
+            <tr><td>MOIRÉ</td><td class="n">76 samples</td></tr>
+            <tr><td>GRIT</td><td class="n">16 samples</td></tr>
+            <tr><td>CINDER</td><td class="n">12 samples</td></tr>
+            <tr><td>Every other module</td><td class="n">0</td></tr>
+          </tbody>
+        </table>
+        <table style="margin-top:24px">
+          <tbody>
+            <tr><th>FORMATS</th><td>AU, VST3 and AAX</td></tr>
+            <tr><th>SYSTEM</th><td>macOS 11 Big Sur or later, universal (Apple silicon and Intel)</td></tr>
+            <tr><th>SIDECHAIN</th><td>Stereo host sidechain input, patchable anywhere on the back</td></tr>
+            <tr><th>WINDOW</th><td>Resizable</td></tr>
+            <tr><th>COPIES</th><td>Up to 4 of any module per rack</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="licence">
+                <div><h3>STANDALONES INCLUDED</h3><p>Your rack licence also unlocks the six standalone plug-ins: GIRE, CONCORD, EUCLID, CINDER, VESTIGE and MOIRÉ.</p></div>
+        <div><h3>PRICE</h3><p>$249 USD for the whole rack.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sechead">
+      <div><span class="label">Questions</span><h2>FAQ</h2></div>
+      <p>The short answers.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Do the modules sound like the original plug-ins?</summary><p>Yes. Each effect module runs the same processing as its own THETA plug-in, and at MIX 0 every effect module passes your audio through untouched.</p></details>
+      <details><summary>Does a rack licence cover the standalone plug-ins?</summary><p>Yes. One ALCHEMY INDEX licence unlocks the whole rack and the six standalones: GIRE, CONCORD, EUCLID, CINDER, VESTIGE and MOIRÉ.</p></details>
+      <details><summary>Do I have to patch anything?</summary><p>No. Every module you add is wired in stereo, in order, so the front of the rack works like any effects chain. The back is there when you want it.</p></details>
+      <details><summary>Does my DAW automation still work when a cable moves a knob?</summary><p>Yes. CV adds to the knob's position, so automation and cables work together. ARCHON's eight macros are DAW parameters too, so one automation lane can drive anything in the patch.</p></details>
+      <details><summary>Can I sidechain?</summary><p>Yes. The host's sidechain arrives on the HOST panel at the back, and COMPRESS and EQ each take a sidechain input. ANIMA's follower turns any signal into a CV.</p></details>
+      <details><summary>Will parallel chains drift out of time?</summary><p>No. Where paths meet, the faster ones wait for the slowest, so parallel branches line up to the sample.</p></details>
+      <details><summary>Can I play the rack from a keyboard?</summary><p>Yes, in VST3 and AAX hosts. Put MIDI IN in the rack and its notes, pitch, velocity, wheels and CCs arrive on the back, ready to patch into anything.</p></details>
+      <details><summary>Which DAWs does it run in?</summary><p>Any macOS host that loads AU, VST3 or AAX plug-ins, Pro Tools included.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>ALCHEMY INDEX · THETA AUDIO RESEARCH</span><span>THETA.AUDIO</span></div></footer>
+
+<script>
+(function(){
+"use strict";
+const reduce = false;
+/* which renders move (the plug-in's own displays running); the rest are stills */
+const ANIM = new Set(["anima_strip", "axis_strip", "compress_panel", "compress_strip", "concord_panel", "concord_strip", "constellation_strip", "euclid_panel", "euclid_strip", "fade_strip", "field_strip", "gire_panel", "gire_strip", "grit_panel", "head_panel", "head_strip", "lfotools_panel", "lfotools_strip", "moire_panel", "moire_strip", "pendulum_strip", "phosphor_panel", "phosphor_strip", "theta_strip", "tyche_strip", "vestige_panel", "vestige_strip"]);
+const ALC=(hex,s)=>({fam:"alchemy",hex,s,ink:"#f2e9dc",rim:hex+"55"});
+const CAT=(hex)=>({fam:"cathode",hex,s:["#262119","#1c1710","#120e08"],ink:"#f2ece0",rim:"#3a3324"});
+const UTL={fam:"utility",hex:"#c8a86b",s:["#232325","#1a1a1c","#111112"],ink:"#ece8e0",rim:"#333336"};
+const TWL=(hex,s)=>({fam:"twilight",hex,s,ink:"#f0e8de",rim:hex+"44"});
+const CRE=(hex)=>({fam:"creosote",hex,s:["#2a2619","#1d1a12","#12100b"],ink:"#f0ede6",rim:"#3a3424"});
+const M=[
+ {k:"cinder",n:"CINDER",kind:"DISTORTION",lat:"12 SMP",...ALC("#f0824f",["#3b2823","#2d1f1b","#201512"]),
+  d:"Tube and iron saturation with anti-aliased waveshaping, 4× oversampling and power-supply sag. Three circuits, EMBER, CHAR and ASH, and a transfer curve that shows exactly how hard you're driving it. A built-in LFO can move DRIVE or BIAS.",
+  f:["CIRCUIT: EMBER · CHAR · ASH","DRIVE","BIAS","TONE","SAG","IRON","MIX","LFO + SYNC + TARGET"],
+  cv:["DRIVE","BIAS","TONE","SAG","OUTPUT","LFO RATE","LFO DEPTH","MIX"],gate:[],out:[],trim:["OUTPUT"]},
+ {k:"gire",n:"GIRE",kind:"PHASER",lat:"0 SMP",...ALC("#c6537c",["#4e2c3c","#392130","#251520"]),
+  d:"An analog-modelled phaser with three engines: JFET, OPTICAL and DUAL twelve-pole. The phase terrain draws every notch as it sweeps. ULTRA SLOW stretches the sweep out to minutes.",
+  f:["VOICE: JFET · OPTICAL · DUAL","RATE","DEPTH","CENTER","REGEN","WARMTH","BODY","STAGES","ULTRA SLOW","INVERT","MIX","AUTO LEVEL"],
+  cv:["RATE","DEPTH","CENTER","REGEN","WARMTH","BODY","MIX"],gate:["INVERT","ULTRA SLOW"],out:[["SWEEP","cv"],["SWEEP INV","cv"],["CYCLE","gate"]]},
+ {k:"moire",n:"MOIRÉ",kind:"FLANGER",lat:"76 SMP",...ALC("#397a78",["#2e504e","#213a39","#152726"]),
+  d:"A deep through-zero flanger. Its FIELD display turns the comb into a surface that moves with your audio. MANUAL places the comb by hand; RAND gives the sweep a stepped, random path.",
+  f:["RATE","DEPTH","MANUAL","FEEDBACK","SPREAD","LFO: SINE · TRI · RAND","THRU-ZERO","INVERT","MIX","AUTO LEVEL"],
+  cv:["RATE","DEPTH","MANUAL","FDBK","SPREAD","MIX"],gate:["THRU-ZERO","INVERT"],out:[]},
+ {k:"concord",n:"CONCORD",kind:"CHORUS",lat:"0 SMP",...ALC("#9a7b45",["#4b3a20","#372a17","#241a0d"]),
+  d:"A multi-voice stereo ensemble with 2, 4, 6 or 8 voices, a bucket-brigade BBD mode and a lo-cut that keeps the bass centred. The VOICE BRAID display shows each voice weaving through the stereo field.",
+  f:["VOICES: 2 · 4 · 6 · 8","RATE","DEPTH","DETUNE","DELAY","WIDTH","LO CUT","BBD","MIX","AUTO LEVEL"],
+  cv:["RATE","DEPTH","DETUNE","DELAY","WIDTH","LO CUT","MIX"],gate:["BBD"],out:[]},
+ {k:"euclid",n:"EUCLID",kind:"GEOMETRIC",lat:"1024 SMP",...ALC("#df5d91",["#231d2a","#1a181f","#101014"]),
+  d:"Maps every frequency's place in the stereo image to a point on a field, then moves the whole field with one transform, which also steers a delay for each frequency. SPIN, WARP, ORBIT and FREEZE, synced to the host.",
+  f:["RADIUS","ANGLE","ROTATION","GRAVITY","SPAN","WARP","SPIN","SYMMETRY","ORIGIN","ORBIT + RATE","DELAY · DEPTH · FEEDBACK","FREEZE","SYNC","MIX"],
+  cv:["RADIUS","ANGLE","ROTATION","GRAVITY","SPAN","WARP","SPIN","ORBIT","ORBIT RATE","FDBK","MIX"],gate:["FREEZE"],out:[],trim:["OUTPUT"]},
+ {k:"vestige",n:"VESTIGE",kind:"REVERB",lat:"0 SMP",...ALC("#536f9d",["#2a3750","#1c2536","#121821"]),
+  d:"A stereo algorithmic reverb with a regenerating echo living inside the room. Four engines, DENSE, MOD, PLATE and VOID, and a HOLD that freezes the tank. Factory rooms include GLASS HALL, STONE CHAMBER, LONG NAVE and VAULT DOOR.",
+  f:["ENGINE: DENSE · MOD · PLATE · VOID","DECAY","SIZE","PRE-DELAY","DAMPING","DIFFUSION","SPIN","WANDER","SOURCE","TONE","DRIVE","REPEAT + REGEN","SYNC","HOLD","MIX"],
+  cv:["DECAY","SIZE","PRE-DLY","DAMP","SPIN","WANDER","REPEAT","REGEN","DRIVE","MIX"],gate:["HOLD"],out:[]},
+ {k:"head",n:"HEAD",kind:"HEAD WEAR",lat:"0 SMP",...CAT("#72a58a"),
+  d:"A worn video head scraping the tape. WEAR dulls and roughens the top end; DRIFT lets the contact wander, so the sound comes and goes like a tired deck.",
+  f:["WEAR","DRIFT","MIX","POWER"],cv:["WEAR","DRIFT","MIX"],gate:[],out:[]},
+ {k:"lock",n:"LOCK",kind:"TRACKING",lat:"0 SMP",...CAT("#3a6ea5"),
+  d:"A deck that can't quite hold sync. Wow and slip pull the pitch, WARP bends it further, and SPEED sets how fast it hunts for lock.",
+  f:["WARP","SLIP","SPEED","RECOVER","MIX"],cv:["SPEED","SLIP","WARP","MIX"],gate:[],out:[]},
+ {k:"receiver",n:"RECEIVER",kind:"AGC · DROPOUT",lat:"0 SMP",...CAT("#2f7e8f"),
+  d:"A receiver's automatic gain control riding the signal, then random dropouts as it loses the station. PUMP sets how hard the AGC breathes.",
+  f:["PUMP","AGC SPEED","AGC MIX","DROP RATE","DROP DEPTH","DROP MIX"],cv:["AGC SPEED","PUMP","AGC MIX","DROP RATE","DROP DEPTH","DROP MIX"],gate:[],out:[]},
+ {k:"interference",n:"INTERFERENCE",kind:"RF INTERFERENCE",lat:"0 SMP",...CAT("#b8874a"),
+  d:"Another station bleeding through. Static, motion and a takeover signal, with its own LFO that can move the rate, length, frequency and takeover. Load your own file as the interfering source.",
+  f:["RATE","LENGTH","FREQ","STATIC","FILE LEVEL","DEPTH","MOTION + SPEED","SOURCE","LFO: 4 DESTINATIONS","MIX"],
+  cv:["RATE","DEPTH","LENGTH","STATIC","MOTION","MOT SPEED","FILE LVL","MIX"],gate:[],out:[]},
+ {k:"phosphor",n:"PHOSPHOR",kind:"CRT · CABLE",lat:"0 SMP",...CAT("#c8a86b"),
+  d:"The tone of an old picture tube and the cable feeding it: cable loss, mains hum, the filament's bump, and a warm, dull glow with its own stereo width.",
+  f:["CABLE LOSS","HUM","FILAMENT BUMP","DULL","WARM","WIDTH","MIX"],cv:["WARM","DULL","WIDTH","HUM","LOSS","MIX"],gate:[],out:[]},
+ {k:"crush",n:"CRUSH",kind:"BIT CRUSH",lat:"0 SMP",...CAT("#d85a30"),
+  d:"Bits, sample rate, alias and jitter, then a wavefolder and a resonant filter. An LFO or envelope can sweep any of it.",
+  f:["BITS","RATE","ALIAS","JITTER","DITHER","FOLD","DRIVE","FILTER + RES","MOD: LFO · ENV","MIX"],
+  cv:["BITS","RATE","FOLD","CUTOFF","RES","DRIVE","JITTER","MOD DEPTH","MIX"],gate:[],out:[]},
+ {k:"lfotools",n:"LFO TOOLS",kind:"MODULATION",lat:"0 SMP",...CAT("#7f77dd"),
+  d:"One LFO aimed at volume, pan, tone, width and warble at once, plus a transient shaper. On the back it's the rack's built-in modulator: its LFO and its transient follower can drive anything.",
+  f:["RATE","PHASE","SHAPE","SMOOTH","SYNC","VOL","PAN","TONE","WIDTH","WARBLE","TRANSIENT SHAPER"],
+  cv:["RATE","DEPTH","PHASE","SHAPE","SMOOTH","ATTACK","SUSTAIN"],gate:[],out:[["LFO","cv"],["LFO INV","cv"],["TRANSIENT","cv"],["HIT","gate"]]},
+ {k:"amber",n:"AMBER",kind:"VALVE",lat:"0 SMP",...CRE("#d85a30"),
+  d:"Three valve stages you can switch in one by one: a 12AX7 preamp, an EL84 power stage and a 5Y3 rectifier, each with its own era, condition, bias, load and plate.",
+  f:["PREAMP · POWER · RECT","ERA","CONDITION","BIAS","LOAD","PLATE","DRIVE","TONE","HARDWARE","MIX"],
+  cv:["DRIVE","TONE","PRE BIAS","PWR BIAS","LOAD","PLATE","MIX"],gate:[],out:[]},
+ {k:"compress",n:"COMPRESS",kind:"COMPRESSOR",lat:"0 SMP",...CRE("#3a6ea5"),
+  d:"CREOSOTE's compressor with several gain-cell modes, auto release, a sidechain filter and lookahead, all read off amber VU glass.",
+  f:["MODE","AUTO REL","INPUT","THRESH","RATIO","ATTACK","RELEASE","KNEE","SC FREQ","LOOKAHEAD","MAKEUP"],
+  cv:["THRESH","RATIO","ATTACK","RELEASE","INPUT","MAKEUP","SC FREQ"],gate:[],out:[]},
+ {k:"grit",n:"GRIT",kind:"TAPE",lat:"16 SMP",...CRE("#c8a86b"),
+  d:"A tape machine with the machine, track width and tape stock to choose, an A800 on 2-inch 24-track with 456 for a start. Drive, bias, wear, flutter, pump, drift and head wear, plus an AGE LFO that ages the tape as it plays.",
+  f:["MACHINE","WIDTH","TAPE","SPEED","DRIVE","TONE","BIAS","WEAR","FLUTTER","PUMP","DRIFT","HEADWEAR","AGE + LFO","LEVEL MATCH"],
+  cv:["DRIVE","BIAS","FLUTTER","WEAR","AGE","PUMP","TONE","SPEED","MIX"],gate:[],out:[]},
+ {k:"summing",n:"SUMMING AMP",kind:"SUMMING",lat:"0 SMP",...CRE("#c8a86b"),
+  d:"A console's summing amplifier: pre-gain into iron, crosstalk between channels, width and balance, watched by a pair of green VU meters.",
+  f:["PRE-GAIN","IRON","CROSSTALK","WIDTH","BALANCE","BLEND"],cv:["PRE-GAIN","IRON","XTALK","WIDTH","BALANCE","BLEND"],gate:[],out:[]},
+ {k:"eq",n:"EQ",kind:"8-BAND DYNAMIC EQ",lat:"0 SMP",...CRE("#7f77dd"),
+  d:"Eight bands, each with frequency, gain, Q and its own dynamics, attack and release, so a band can duck or lift with the signal. Drag the bands straight on the graph.",
+  f:["8 BANDS","FREQ","GAIN","Q","DYN","ATTACK","RELEASE","EQ IN","OUT","MIX"],cv:["BAND FREQ","BAND GAIN","BAND DYN","OUT","MIX"],gate:[],out:[]},
+ {k:"theta",n:"THETA",kind:"SOURCE · MIDI",...TWL("#d08a58",["#33241b","#2e2018","#211710"]),
+  d:"TWILIGHT's sound source: four binaural voices, each with its own wave, frequency, beat, level and tuning, and VOICE LAB to make the upper voices follow a lower one at an interval. In DRONE it plays at its knobs; in KEYS it plays the notes arriving from MIDI IN, MONO or POLY, through its envelope. Every voice comes out the back on its own, ready for a mixer.",
+  f:["V1–V4: ON · LINK · WAVE","FREQ","BEAT","LEVEL","SEMI","ENVELOPE: ATK · DEC · SUS · REL","VOICE LAB: FOLLOW · INTERVAL · INV","PLAY: DRONE · KEYS · MONO · POLY","KEYS: VOICES · VEL · OLDEST · QUIETEST","LINK ALL","BEAT LINK","RANDOM","MIX","IN"]},
+ {k:"constellation",n:"CONSTELLATION",kind:"STAR MIXER",...TWL("#5fc2ae",["#18292c","#152629","#0f1c1e"]),
+  d:"A five-input mixer drawn as a field of stars. Each input is a star you place: left and right is pan, near and far is level and air, and ORBIT sets them all circling. GRAVITY pulls them in and pulses, and SWAY moves the whole picture side to side, FREE or EMDR.",
+  f:["ORBIT","RATE","GRAVITY","HEAT","GRAVITY PULSE: RATE · DEPTH","SWAY: FREE · EMDR","SHAPE","WIDTH","MIX"]},
+ {k:"drift",n:"DRIFT",kind:"HARMONY",...TWL("#e07a4a",["#361f16","#321c14","#24130d"]),
+  d:"Two harmony layers sung over whatever comes in, on the notes arriving at its NOTE input: unison, octaves, fifths, major, minor, sus and cluster, with microtonal offsets, gliding and humanised so they never sit too still.",
+  f:["LAYER A + B: HARMONY","MICRO M0–M3","DENSITY","TONE","GLIDE","TRACK","HUMAN","SPREAD","MIX"]},
+ {k:"field",n:"FIELD",kind:"SHIMMER SPACE",...TWL("#8fbfa8",["#24302b","#1f2a25","#151f1b"]),
+  d:"TWILIGHT's shimmer space: a reverb with an octave-up shimmer in its tail, then a grain stage that smears or stutters the wet sound across the PRE / GRAIN by BLOOM pad. Its screen shows the tail blooming.",
+  f:["SIZE","PRE-DELAY","SHIMMER","DAMP","GRAIN ON","SMEAR · STUTTER","PRE/GRAIN × BLOOM PAD","MIX"]},
+ {k:"fade",n:"FADE",kind:"PULSE GATE",...TWL("#d9b394",["#2f3437","#282d30","#1d2124"]),
+  d:"TWILIGHT's pulse gate. A cycle at RATE opens and closes the sound, SHAPE morphs it from a hard gate through a pump to a sidechain duck, and SMOOTH and CHAOS round and loosen its edges. RESET restarts the cycle from any trigger.",
+  f:["RATE","DEPTH","SHAPE","SWING","ATTACK","HOLD","SMOOTH","CHAOS","MIX"]},
+ {k:"pendulum",n:"PENDULUM",kind:"DUAL LFO",lat:"0 SMP",...UTL,audio:false,
+  d:"Two LFOs, A and B, each with its own rate, seven shapes (sine, triangle, up and down saws, square, sample-and-hold and smooth random), a phase offset and a reset. With SYNC on, each one follows the song position, so they land on the bar wherever you start playback.",
+  f:["RATE","SHAPE: SINE · TRI · UP · DOWN · SQR · S&H · RND","PHASE","SYNC + DIVISION","RESET"],
+  cv:["RATE A","PHASE A","RATE B","PHASE B"],gate:["RESET A","RESET B"],out:[["A","cv"],["A INV","cv"],["A UNI","cv"],["A GATE","gate"],["B","cv"],["B INV","cv"],["B UNI","cv"],["B GATE","gate"]]},
+ {k:"anima",n:"ANIMA",kind:"ENVELOPE · FOLLOWER",lat:"0 SMP",...UTL,audio:true,
+  d:"An ADSR fired by a gate, and an envelope follower on whatever audio passes through. The audio itself goes through untouched, so drop ANIMA after a drum bus and its FOLLOWER can drive anything in the rack.",
+  f:["GATE","ATTACK","DECAY","SUSTAIN","RELEASE","FOL ATTACK","FOL RELEASE","FOL GAIN"],
+  cv:["ATTACK","DECAY","SUSTAIN","RELEASE","FOL GAIN"],gate:["GATE"],out:[["ENV","cv"],["ENV INV","cv"],["FOLLOWER","cv"],["FOLLOWER INV","cv"],["END","gate"]]},
+ {k:"archon",n:"ARCHON",kind:"MACROS",lat:"0 SMP",...UTL,audio:false,
+  d:"Eight macro knobs, each a CV output and each a DAW parameter. Patch M1 into three modules, set each trim, and one knob or one automation lane moves them all. Every output glides, so stepped automation never clicks. Each macro has a name plate you can type into, so the rack says what M1 does.",
+  f:["MACRO 1–8"],
+  cv:["MACRO 1–8"],gate:[],out:[["M1–M8","cv"]]},
+ {k:"hydra",n:"HYDRA",kind:"CV SPLITTER",lat:"0 SMP",...UTL,audio:false,
+  d:"One control signal in, four copies out, each with its own amount from −1 to +1 so any copy can be flipped, plus an offset and an inverted output. With nothing patched in, the IN knob becomes the signal: four constant sources from one module.",
+  f:["IN","OFFSET","AMOUNT 1–4"],
+  cv:["IN","OFFSET","AMOUNT 1–4"],gate:[],out:[["OUT 1–4","cv"],["INV","cv"]]},
+ {k:"prism",n:"PRISM",kind:"AUDIO SPLITTER",lat:"0 SMP",...UTL,audio:true,aout:["OUT 2–4 L/R"],
+  d:"One stereo input, four stereo outputs, each with its own level from off to +12 dB. OUT 1 carries on down the chain; OUT 2, 3 and 4 wait on the back for parallel branches. At 0 dB every output is its input, bit for bit.",
+  f:["LEVEL 1–4"],
+  cv:["LVL 1–4"],gate:[],out:[]},
+ {k:"confluence",n:"CONFLUENCE",kind:"4-CHANNEL MIXER",lat:"0 SMP",...UTL,audio:true,ain:["IN 2–4 L/R"],
+  d:"Four stereo channels, each with LEVEL, PAN and MUTE, summed to one output with its own level: where PRISM's branches come back together. IN 1 is the chain; IN 2, 3 and 4 are on the back. Every move glides, mutes included, so nothing clicks.",
+  f:["LEVEL 1–4","PAN 1–4","MUTE 1–4","OUT"],
+  cv:["LVL 1–4","PAN 1–4","OUT"],gate:["MUTE 1–4"],out:[]},
+ {k:"axis",n:"AXIS",kind:"TRANSPORT",...UTL,
+  d:"The host's clock as signals: a PLAY gate while the transport runs, a trigger on every bar and every beat division, the position in the bar as a ramp, the tempo as a CV and a trigger when playback stops. FREE RUN keeps its own clock going at the TEMPO knob when the host is stopped, so a patch never loses its pulse.",
+  f:["BEAT DIVISION","SHIFT","FREE RUN","TEMPO"]},
+ {k:"orrery",n:"ORRERY",kind:"STEP SEQUENCER",...UTL,
+  d:"Sixteen steps, each a CV value and a gate. LENGTH, step division, gate length, transpose, and four directions: forward, backward, ping-pong and random. On the host it locks to the bar wherever you start; switch to CLOCK IN and any trigger in the rack can step it.",
+  f:["16 STEPS: CV + GATE","LENGTH","STEP DIVISION","GATE LENGTH","TRANSPOSE","DIRECTION","CLOCK IN"]},
+ {k:"kairos",n:"KAIROS",kind:"CLOCK · EUCLIDEAN",...UTL,
+  d:"Host tempo as pulses, with MPC-style swing, and a euclidean rhythm running over them: HITS spread as evenly as they go across STEPS, turned by ROTATE. Separate triggers for the hits and the rests, a gate, and the pattern's position.",
+  f:["DIVISION","SWING","HITS","STEPS","ROTATE","FREE RUN","TEMPO"]},
+ {k:"tyche",n:"TYCHE",kind:"RANDOM · CHANCE",...UTL,
+  d:"Chance as a module. A random value on every draw, held, smoothed and scaled, and a coin toss that lets a trigger through some of the time. Draws come from its own clock or any trigger you patch in, and the SEED knob makes every chance repeatable when the session reopens.",
+  f:["RATE","DRAW","SMOOTH","SPREAD","CHANCE","SEED"]},
+ {k:"logos",n:"LOGOS",kind:"CV MATHS",...UTL,
+  d:"Two CV inputs through attenuverters, an offset, slew and a threshold: sum, difference, inverse, min, max and absolute value out, plus a comparator gate and AND, OR, XOR and NOT for two gate inputs. With nothing patched in, its knobs become the signals.",
+  f:["ATTEN A","ATTEN B","OFFSET","SLEW","THRESHOLD"]},
+ {k:"midiin",n:"MIDI IN",kind:"MIDI",...UTL,hex:"#9b6cff",audio:false,
+  d:"Where your DAW's MIDI enters the rack. It listens on one channel or all of them, across a note range you set, and puts the notes on the back as a violet NOTE cable, in MONO with LAST, LOW or HIGH priority or in POLY. GATE, TRIG, PITCH and VELOCITY come out as signals too, with the mod wheel, pitch bend, aftertouch and two CCs you choose by LEARN. Its screen is a MIDI monitor: keys, velocities, bend and mod as they arrive.",
+  f:["INPUT CH","LOW","HIGH","VOICES: MONO · POLY","PRIORITY: LAST · LOW · HIGH","TRANSPOSE","BEND","GLIDE","CC A + LEARN","CC B + LEARN"]}
+];
+const FAM={alchemy:["ALCHEMY MODULES","The six ALCHEMY INDEX plug-ins, each on its own coloured shell."],
+  cathode:["CATHODE MODULES","From CATHODE: a rack of broken broadcast and video gear, on CATHODE's dark chassis."],
+  creosote:["CREOSOTE MODULES","From CREOSOTE: an analog console strip of tape, tubes and iron, read off amber VU glass."],
+  twilight:["TWILIGHT MODULES","From TWILIGHT: one source and four toys. THETA's binaural voices, a star mixer, harmony layers, a shimmer space and a pulse gate, each on its own and joined by the patch."],
+  utility:["UTILITY MODULES","Built for the back of the rack: modulators, splitters and a mixer, in the black and grey of the master section."]};
+
+function src(k,view){const key=k+"_"+view;return (!reduce&&ANIM.has(key))?`assets/alchemy_index/${key}.webp`:`assets/alchemy_index/${key}_still.webp`}
+const J={};[{"k":"gire","n":"GIRE","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["CENTER","c","i"],["REGEN","c","i"],["WARMTH","c","i"],["BODY","c","i"],["MIX","c","i"],["INVERT","g","i"],["ULTRA SLOW","g","i"],["LFO RESET","g","i"],["SWEEP IN","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["SWEEP","c","o"],["SWEEP INV","c","o"],["CYCLE","g","o"]]},{"k":"vestige","n":"VESTIGE","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["DECAY","c","i"],["SIZE","c","i"],["PRE-DLY","c","i"],["DAMP","c","i"],["SPIN","c","i"],["WANDER","c","i"],["REPEAT","c","i"],["REGEN","c","i"],["DRIVE","c","i"],["MIX","c","i"],["HOLD","g","i"],["TAP","g","i"],["ENGINE","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["TAIL","c","o"],["SPIN","c","o"],["REPEAT","g","o"]]},{"k":"moire","n":"MOIRÉ","lat":76,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["MANUAL","c","i"],["FDBK","c","i"],["SPREAD","c","i"],["MIX","c","i"],["THRU-ZERO","g","i"],["INVERT","g","i"],["LFO RESET","g","i"],["SWEEP IN","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["LFO","c","o"],["RANDOM","c","o"],["CYCLE","g","o"],["LOW","c","o"],["MID","c","o"],["HIGH","c","o"]]},{"k":"concord","n":"CONCORD","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["DETUNE","c","i"],["DELAY","c","i"],["WIDTH","c","i"],["LO CUT","c","i"],["MIX","c","i"],["BBD","g","i"],["VOICES","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["LFO","c","o"],["LFO 90","c","o"]]},{"k":"cinder","n":"CINDER","lat":12,"trim":["OUTPUT"],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["DRIVE","c","i"],["BIAS","c","i"],["TONE","c","i"],["SAG","c","i"],["OUTPUT","c","i"],["LFO RATE","c","i"],["LFO DEPTH","c","i"],["MIX","c","i"],["LFO RESET","g","i"],["LFO IN","c","i"],["CIRCUIT","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["LFO","c","o"],["SAG","c","o"]]},{"k":"euclid","n":"EUCLID","lat":1024,"trim":["OUTPUT"],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RADIUS","c","i"],["ANGLE","c","i"],["ROTATION","c","i"],["GRAVITY","c","i"],["SPAN","c","i"],["WARP","c","i"],["SPIN","c","i"],["ORBIT","c","i"],["ORBIT RATE","c","i"],["FDBK","c","i"],["MIX","c","i"],["FREEZE","g","i"],["ORBIT RESET","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["ORBIT X","c","o"],["ORBIT Y","c","o"],["ORBIT","g","o"]]},{"k":"head","n":"HEAD","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["WEAR","c","i"],["DRIFT","c","i"],["MIX","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["DRIFT","c","o"]]},{"k":"lock","n":"LOCK","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["SPEED","c","i"],["SLIP","c","i"],["WARP","c","i"],["MIX","c","i"],["SLIP","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["WOW","c","o"],["SLIP","g","o"]]},{"k":"receiver","n":"RECEIVER","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["AGC SPEED","c","i"],["PUMP","c","i"],["AGC MIX","c","i"],["DROP RATE","c","i"],["DROP DEPTH","c","i"],["DROP MIX","c","i"],["DROP","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["AGC","c","o"],["DROP","c","o"],["DROPOUT","g","o"]]},{"k":"interference","n":"INTERFERENCE","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["LENGTH","c","i"],["STATIC","c","i"],["MOTION","c","i"],["MOT SPEED","c","i"],["FILE LVL","c","i"],["MIX","c","i"],["LFO RETRIG","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["LFO","c","o"],["CYCLE","g","o"],["EVENT","g","o"],["STATIC","c","o"]]},{"k":"phosphor","n":"PHOSPHOR","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["WARM","c","i"],["DULL","c","i"],["WIDTH","c","i"],["HUM","c","i"],["LOSS","c","i"],["MIX","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"]]},{"k":"crush","n":"CRUSH","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["BITS","c","i"],["RATE","c","i"],["FOLD","c","i"],["CUTOFF","c","i"],["RES","c","i"],["DRIVE","c","i"],["JITTER","c","i"],["MOD DEPTH","c","i"],["MIX","c","i"],["CLOCK","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["MOD","c","o"],["LFO","c","o"]]},{"k":"lfotools","n":"LFO TOOLS","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["PHASE","c","i"],["SHAPE","c","i"],["SMOOTH","c","i"],["ATTACK","c","i"],["SUSTAIN","c","i"],["RESET","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["LFO","c","o"],["LFO INV","c","o"],["TRANSIENT","c","o"],["HIT","g","o"]]},{"k":"amber","n":"AMBER","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["RETURN L","a","i"],["RETURN R","a","i"],["BYPASS","g","i"],["DRIVE","c","i"],["TONE","c","i"],["PRE BIAS","c","i"],["PWR BIAS","c","i"],["LOAD","c","i"],["PLATE","c","i"],["MIX","c","i"],["OUT L","a","o"],["OUT R","a","o"],["SEND L","a","o"],["SEND R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["SAG","c","o"],["HEAT","c","o"]]},{"k":"compress","n":"COMPRESS","lat":480,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["SC L","a","i"],["SC R","a","i"],["BYPASS","g","i"],["THRESH","c","i"],["RATIO","c","i"],["ATTACK","c","i"],["RELEASE","c","i"],["INPUT","c","i"],["MAKEUP","c","i"],["SC FREQ","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["GR","c","o"],["SQUASH","g","o"]]},{"k":"grit","n":"GRIT","lat":16,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["DRIVE","c","i"],["BIAS","c","i"],["FLUTTER","c","i"],["WEAR","c","i"],["AGE","c","i"],["PUMP","c","i"],["TONE","c","i"],["SPEED","c","i"],["MIX","c","i"],["AGE RESET","g","i"],["TAPE STOP","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["AGE LFO","c","o"],["WOBBLE","c","o"],["PUMP","c","o"]]},{"k":"summing","n":"SUMMING AMP","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["IN 2 L","a","i"],["IN 2 R","a","i"],["IN 3 L","a","i"],["IN 3 R","a","i"],["IN 4 L","a","i"],["IN 4 R","a","i"],["BYPASS","g","i"],["PRE-GAIN","c","i"],["IRON","c","i"],["XTALK","c","i"],["WIDTH","c","i"],["BALANCE","c","i"],["BLEND","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"]]},{"k":"eq","n":"EQ","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["SC L","a","i"],["SC R","a","i"],["BYPASS","g","i"],["B4 FREQ","c","i"],["B4 GAIN","c","i"],["B4 DYN","c","i"],["OUT","c","i"],["MIX","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["DYN","c","o"]]},{"k":"pendulum","n":"PENDULUM","lat":0,"trim":[],"p":[["BYPASS","g","i"],["RATE A","c","i"],["PHASE A","c","i"],["RESET A","g","i"],["RATE B","c","i"],["PHASE B","c","i"],["RESET B","g","i"],["A","c","o"],["A INV","c","o"],["A UNI","c","o"],["A GATE","g","o"],["B","c","o"],["B INV","c","o"],["B UNI","c","o"],["B GATE","g","o"]]},{"k":"anima","n":"ANIMA","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["GATE","g","i"],["ATTACK","c","i"],["DECAY","c","i"],["SUSTAIN","c","i"],["RELEASE","c","i"],["FOL GAIN","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["ENV","c","o"],["ENV INV","c","o"],["FOLLOWER","c","o"],["FOLLOWER INV","c","o"],["END","g","o"]]},{"k":"archon","n":"ARCHON","lat":0,"trim":[],"p":[["BYPASS","g","i"],["MACRO 1","c","i"],["MACRO 2","c","i"],["MACRO 3","c","i"],["MACRO 4","c","i"],["MACRO 5","c","i"],["MACRO 6","c","i"],["MACRO 7","c","i"],["MACRO 8","c","i"],["M1","c","o"],["M2","c","o"],["M3","c","o"],["M4","c","o"],["M5","c","o"],["M6","c","o"],["M7","c","o"],["M8","c","o"]]},{"k":"hydra","n":"HYDRA","lat":0,"trim":[],"p":[["BYPASS","g","i"],["IN","c","i"],["OFFSET","c","i"],["AMOUNT 1","c","i"],["AMOUNT 2","c","i"],["AMOUNT 3","c","i"],["AMOUNT 4","c","i"],["OUT 1","c","o"],["OUT 2","c","o"],["OUT 3","c","o"],["OUT 4","c","o"],["INV","c","o"]]},{"k":"prism","n":"PRISM","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["LVL 1","c","i"],["LVL 2","c","i"],["LVL 3","c","i"],["LVL 4","c","i"],["OUT L","a","o"],["OUT R","a","o"],["OUT 2 L","a","o"],["OUT 2 R","a","o"],["OUT 3 L","a","o"],["OUT 3 R","a","o"],["OUT 4 L","a","o"],["OUT 4 R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"]]},{"k":"confluence","n":"CONFLUENCE","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["IN 2 L","a","i"],["IN 2 R","a","i"],["IN 3 L","a","i"],["IN 3 R","a","i"],["IN 4 L","a","i"],["IN 4 R","a","i"],["BYPASS","g","i"],["LVL 1","c","i"],["PAN 1","c","i"],["MUTE 1","g","i"],["LVL 2","c","i"],["PAN 2","c","i"],["MUTE 2","g","i"],["LVL 3","c","i"],["PAN 3","c","i"],["MUTE 3","g","i"],["LVL 4","c","i"],["PAN 4","c","i"],["MUTE 4","g","i"],["OUT","c","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"]]},{"k":"axis","n":"AXIS","lat":0,"trim":[],"p":[["BYPASS","g","i"],["SHIFT","c","i"],["TEMPO","c","i"],["FREE RUN","g","i"],["PLAY","g","o"],["BAR","g","o"],["BEAT","g","o"],["POS","c","o"],["TEMPO","c","o"],["STOP","g","o"]]},{"k":"orrery","n":"ORRERY","lat":0,"trim":[],"p":[["BYPASS","g","i"],["LENGTH","c","i"],["GATE","c","i"],["TRANSPOSE","c","i"],["CLOCK","g","i"],["RESET","g","i"],["CV","c","o"],["GATE","g","o"],["TRIG","g","o"],["STEP","c","o"],["END","g","o"]]},{"k":"kairos","n":"KAIROS","lat":0,"trim":[],"p":[["BYPASS","g","i"],["SWING","c","i"],["STEPS","c","i"],["HITS","c","i"],["ROTATE","c","i"],["FREE RUN","g","i"],["RESET","g","i"],["CLOCK","g","o"],["EUCLID","g","o"],["REST","g","o"],["GATE","g","o"],["POS","c","o"]]},{"k":"tyche","n":"TYCHE","lat":0,"trim":[],"p":[["BYPASS","g","i"],["RATE","c","i"],["CHANCE","c","i"],["SMOOTH","c","i"],["SPREAD","c","i"],["TRIG","g","i"],["S&H","c","o"],["SMOOTH","c","o"],["UNI","c","o"],["PASS","g","o"],["COIN","g","o"],["CLOCK","g","o"]]},{"k":"logos","n":"LOGOS","lat":0,"trim":[],"p":[["BYPASS","g","i"],["A","c","i"],["B","c","i"],["ATTEN A","c","i"],["ATTEN B","c","i"],["OFFSET","c","i"],["SLEW","c","i"],["THRESH","c","i"],["X","g","i"],["Y","g","i"],["SUM","c","o"],["DIFF","c","o"],["INV","c","o"],["MIN","c","o"],["MAX","c","o"],["ABS","c","o"],["CMP","g","o"],["AND","g","o"],["OR","g","o"],["XOR","g","o"],["NOT X","g","o"]]},{"k":"midiin","n":"MIDI IN","lat":0,"trim":[],"p":[["BYPASS","g","i"],["GATE","g","o"],["TRIG","g","o"],["PITCH","c","o"],["VELO","c","o"],["MOD","c","o"],["BEND","c","o"],["AFTER","c","o"],["CC A","c","o"],["CC B","c","o"],["NOTE","g","o"]]},{"k":"field","n":"FIELD","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["SIZE","c","i"],["PRE-DLY","c","i"],["SHIMMER","c","i"],["DAMP","c","i"],["GRAIN X","c","i"],["GRAIN Y","c","i"],["MIX","c","i"],["GRAIN","g","i"],["STUTTER","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["TAIL","c","o"]]},{"k":"fade","n":"FADE","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["RATE","c","i"],["DEPTH","c","i"],["SHAPE","c","i"],["SWING","c","i"],["ATTACK","c","i"],["HOLD","c","i"],["SMOOTH","c","i"],["CHAOS","c","i"],["MIX","c","i"],["RESET","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["PULSE","c","o"],["CYCLE","g","o"]]},{"k":"constellation","n":"CONSTELLATION","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["STAR 2 L","a","i"],["STAR 2 R","a","i"],["STAR 3 L","a","i"],["STAR 3 R","a","i"],["STAR 4 L","a","i"],["STAR 4 R","a","i"],["STAR 5 L","a","i"],["STAR 5 R","a","i"],["BYPASS","g","i"],["ORBIT","c","i"],["RATE","c","i"],["GRAVITY","c","i"],["HEAT","c","i"],["PULSE RATE","c","i"],["PULSE DEPTH","c","i"],["MIX","c","i"],["SWAY SHAPE","c","i"],["SWAY RATE","c","i"],["SWAY WIDTH","c","i"],["SWAY","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["1 X","c","o"],["1 Y","c","o"],["2 X","c","o"],["2 Y","c","o"],["3 X","c","o"],["3 Y","c","o"],["4 X","c","o"],["4 Y","c","o"],["5 X","c","o"],["5 Y","c","o"],["GRAVITY","c","o"],["SWAY","c","o"]]},{"k":"theta","n":"THETA","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["V1 LEVEL","c","i"],["V2 LEVEL","c","i"],["V3 LEVEL","c","i"],["V4 LEVEL","c","i"],["V1 BEAT","c","i"],["V2 BEAT","c","i"],["V3 BEAT","c","i"],["V4 BEAT","c","i"],["MIX","c","i"],["IN","c","i"],["V1 ON","g","i"],["V2 ON","g","i"],["V3 ON","g","i"],["V4 ON","g","i"],["PITCH 1","c","i"],["PITCH 2","c","i"],["PITCH 3","c","i"],["PITCH 4","c","i"],["NOTE IN","g","i"],["OUT L","a","o"],["OUT R","a","o"],["V1 L","a","o"],["V1 R","a","o"],["V2 L","a","o"],["V2 R","a","o"],["V3 L","a","o"],["V3 R","a","o"],["V4 L","a","o"],["V4 R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"],["ENV 1","c","o"],["ENV 2","c","o"],["ENV 3","c","o"],["ENV 4","c","o"],["GATE 1","g","o"],["GATE 2","g","o"],["GATE 3","g","o"],["GATE 4","g","o"],["NOTE OUT","g","o"]]},{"k":"drift","n":"DRIFT","lat":0,"trim":[],"p":[["IN L","a","i"],["IN R","a","i"],["BYPASS","g","i"],["DENS A","c","i"],["TONE A","c","i"],["DENS B","c","i"],["TONE B","c","i"],["GLIDE","c","i"],["TRACK","c","i"],["HUMAN","c","i"],["SPREAD","c","i"],["MIX","c","i"],["HARM A","g","i"],["HARM B","g","i"],["NOTE IN","g","i"],["OUT L","a","o"],["OUT R","a","o"],["DRY L","a","o"],["DRY R","a","o"],["IN ENV","c","o"],["OUT ENV","c","o"]]}].forEach(x=>J[x.k]=x);
+function pairs(ps){const out=[],seen=new Set();ps.forEach(([l,t])=>{if(t==="a"&&/ [LR]$/.test(l)){const b=l.slice(0,-2);if(seen.has(b))return;seen.add(b);out.push(b+" L/R")}else out.push(l)});return out}
+function jackRows(k){const j=J[k];if(!j)return "";const P=j.p;const row=(name,dir,t,cls)=>{const xs=pairs(P.filter(p=>p[2]===dir&&p[1]===t));return xs.length?`<div class="row"><span class="k">${name}</span><div class="pills">${pills(xs,cls)}</div></div>`:""};
+  return row("AUDIO IN","i","a","audio")+row("CV IN","i","c","cv")+row("GATE IN","i","g","gate")+row("AUDIO OUT","o","a","audio")+row("CV OUT","o","c","cv")+row("GATE OUT","o","g","gate")+row("NOTE OUT","o","n","note")+(j.trim.length?`<div class="row"><span class="k">REAR TRIM</span><div class="pills">${j.trim.map(x=>`<span class="pill">${x}</span>`).join("")}</div></div>`:"")}
+function pills(list,cls){return list.map(x=>`<span class="pill ${cls}"><i></i>${x}</span>`).join("")}
+const fams=document.getElementById("families");
+Object.keys(FAM).forEach(f=>{
+  const sec=document.createElement("div");sec.className="family";sec.dataset.fam=f;
+  sec.innerHTML=`<div class="famhead"><h3>${FAM[f][0]}</h3><p>${FAM[f][1]}</p></div><div class="mods"></div>`;
+  const g=sec.querySelector(".mods");
+  M.filter(m=>m.fam===f).forEach(m=>{
+    const el=document.createElement("article");el.className="mod";el.id="m-"+m.k;
+    const u=m.fam==="utility"||m.fam==="twilight";
+    el.style.cssText=`--s1:${m.s[0]};--s2:${m.s[1]};--s3:${m.s[2]};--hex:${m.hex};--ink:${m.ink};--mrim:${m.rim}`;
+    el.innerHTML=`<div class="info">
+        <div class="title"><span class="nm">${m.n}</span><span class="kind">${m.kind}</span></div>
+        ${J[m.k]?`<span class="lat">LATENCY ${J[m.k].lat} SMP</span>`:""}
+        <p class="desc">${m.d}</p>
+        <div class="row"><span class="k">CONTROLS</span><div class="pills">${m.f.map(x=>`<span class="pill">${x}</span>`).join("")}</div></div>
+        ${jackRows(m.k)}
+      </div>
+      <div class="media">
+        <div class="views" role="tablist" aria-label="${m.n} views">
+          ${u?"":`<button type="button" role="tab" aria-selected="true" data-v="panel">PLUG-IN</button>`}
+          <button type="button" role="tab" aria-selected="${u}" data-v="strip">RACK STRIP</button>
+          ${m.noback?"":`<button type="button" role="tab" aria-selected="false" data-v="back">BACK PANEL</button>`}
+        </div>
+        <div class="shot"><img ${u?`class="wide" src="${src(m.k,"strip")}" alt="${m.n} as a strip in the rack"`:`src="${src(m.k,"panel")}" alt="${m.n} as it looks in ALCHEMY INDEX"`} loading="lazy"></div>
+      </div>`;
+    const img=el.querySelector(".shot img");
+    el.querySelectorAll(".views button").forEach(b=>b.addEventListener("click",()=>{
+      el.querySelectorAll(".views button").forEach(x=>x.setAttribute("aria-selected",String(x===b)));
+      const v=b.dataset.v;img.className=v==="panel"?"":"wide";
+      img.src=v==="back"?`assets/alchemy_index/${m.k}_back.webp`:src(m.k,v);
+      img.alt=m.n+(v==="panel"?" as it looks in ALCHEMY INDEX":v==="strip"?" as a strip in the rack":" back panel with its jacks");
+    }));
+    g.appendChild(el);
+  });
+  fams.appendChild(sec);
+});
+function showFam(f){
+  document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.f===f)));
+  document.querySelectorAll(".family").forEach(s=>{s.hidden=s.dataset.fam!==f});
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>showFam(b.dataset.f)));
+showFam("alchemy");
+document.querySelectorAll('a[href^="#m-"]').forEach(a=>a.addEventListener("click",()=>{const m=M.find(x=>"#m-"+x.k===a.getAttribute("href"));if(m)showFam(m.fam)}));
+
+let flipped=false,userFlip=false;
+const rack=document.getElementById("rack3d"),bF=document.getElementById("vFront"),bB=document.getElementById("vBack");
+function setFlip(v){flipped=v;rack.classList.toggle("flipped",v);bF.setAttribute("aria-pressed",String(!v));bB.setAttribute("aria-pressed",String(v))}
+bF.addEventListener("click",()=>{userFlip=true;setFlip(false)});bB.addEventListener("click",()=>{userFlip=true;setFlip(true)});
+if(!reduce)setInterval(()=>{if(!userFlip&&!document.hidden)setFlip(!flipped)},7000);
+})();
+</script>
+
+</html>
+<script src="./download-gate.js"></script>
