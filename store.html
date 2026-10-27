@@ -8,6 +8,10 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
@@ -17,33 +21,32 @@
 <script src="./subscribe.js"></script>
 <style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}@keyframes pu-store-spin{to{transform:rotate(360deg)}}
 </style>
+<style>
+@media (max-width:960px){ [data-tar-nav] [data-links] [data-hide-sm]{display:none !important} }
+@media (max-width:700px){ [data-tar-nav]{padding:14px 18px !important} [data-tar-nav] [data-links] a{padding:8px 9px !important;letter-spacing:2px !important} [data-tar-foot]{padding:36px 18px !important} }
+</style>
 </helmet>
 <div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden">
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" style="min-height:82px;display:flex;align-items:center;gap:22px;text-decoration:none;transition:opacity 0.4s" style-hover="opacity:0.82">
-    <img src="assets/logo/theta-xor-warped-full-phosphor-transparent.svg?v=260909" alt="" style="width:124px;height:auto;display:block;flex-shrink:0">
-    <span style="display:flex;flex-direction:column;gap:4px">
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:600;font-size:21px;letter-spacing:0.10em;color:#DCCDBF;line-height:1;margin-right:-0.10em;white-space:nowrap">THETA</span>
-      <span style="font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125;font-weight:400;font-size:8.5px;letter-spacing:0.38em;color:#6E6764;line-height:1;white-space:nowrap">AUDIO RESEARCH</span>
-    </span>
+<nav data-tar-nav style="padding:20px clamp(18px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:16px;position:sticky;top:0;z-index:100;background:rgba(6,8,12,0.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(243,236,224,0.08)">
+  <a href="index.html" aria-label="Theta Audio Research" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
+    <img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block">
   </a>
-  <div data-nb style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #242230;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="free.html" style="color:#A6DCA6;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #6E9B6E;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#6E9B6E;color:#0C1519">FREE</a>
-    <a href="support.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #242230;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">SUPPORT</a>
-    <a href="faq.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #242230;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">FAQ</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #242230;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+  <div data-links style="display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-end">
+    <a href="free.html" style="color:#f3ece0;text-decoration:none;font-size:10px;letter-spacing:3px;font-weight:700;border:1px solid rgba(243,236,224,0.22);padding:9px 14px;transition:0.3s;text-transform:uppercase;white-space:nowrap" style-hover="background:#f3ece0;color:#06080c;border-color:#f3ece0">FREE</a>
+    <a href="faq.html" data-hide-sm style="color:#f3ece0;text-decoration:none;font-size:10px;letter-spacing:3px;font-weight:700;border:1px solid rgba(243,236,224,0.22);padding:9px 14px;transition:0.3s;text-transform:uppercase;white-space:nowrap" style-hover="background:#f3ece0;color:#06080c;border-color:#f3ece0">FAQ</a>
+    <a href="support.html" style="color:#f3ece0;text-decoration:none;font-size:10px;letter-spacing:3px;font-weight:700;border:1px solid rgba(243,236,224,0.22);padding:9px 14px;transition:0.3s;text-transform:uppercase;white-space:nowrap" style-hover="background:#f3ece0;color:#06080c;border-color:#f3ece0">SUPPORT</a>
+    <a href="account.html" style="color:#f3ece0;text-decoration:none;font-size:10px;letter-spacing:3px;font-weight:700;border:1px solid rgba(243,236,224,0.22);padding:9px 14px;transition:0.3s;text-transform:uppercase;white-space:nowrap" style-hover="background:#f3ece0;color:#06080c;border-color:#f3ece0">ACCOUNT</a>
   </div>
 </nav>
 
-<header data-screen-label="Hero" style="width:100%;max-width:1120px;box-sizing:border-box;margin:0 auto;padding:48px clamp(16px,4vw,40px) 16px clamp(16px,4vw,40px)">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research · Store</div>
-  <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 20px 0;color:#f0ede6">ACQUISITIONS</h1>
-  <p style="margin:0;color:#b9b6ae;font-size:17px;line-height:1.6;font-weight:300;max-width:58ch">Every plug-in, collection and free tool. Paid modules come with a 14-day trial of the full installer.</p>
-</header>
-
 <main style="flex:1;width:100%;max-width:1120px;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);display:flex;flex-direction:column;align-items:center;gap:0">
+  <header data-screen-label="Store title" style="width:100%;max-width:1120px;position:relative;padding:clamp(40px,7vw,88px) 0 clamp(32px,5vw,56px) 0;margin-bottom:8px">
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:70%;background:repeating-linear-gradient(180deg,rgba(30,92,255,0.14) 0 3px,transparent 3px 11px);-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 100%);mask-image:linear-gradient(to top,#000 0%,transparent 100%);pointer-events:none"></div>
+    <h1 style="position:relative;font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(40px,7vw,88px);line-height:1;letter-spacing:0.18em;color:#f3ece0;text-transform:uppercase;margin:0 0 22px 0">The store</h1>
+    <p style="position:relative;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;color:#1e5cff;text-transform:uppercase;margin:0">14-day trials of every released plugin · macOS · VST3 / AU / AAX</p>
+  </header>
+
 
   <div style="width:100%;max-width:1120px;display:flex;align-items:center;gap:16px;margin:24px 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>RELEASED · AVAILABLE NOW<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
   <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
@@ -488,10 +491,15 @@
   <section style="width:100%;display:flex;justify-content:center;margin-top:90px"><div data-th-subscribe></div></section>
 </main>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH · 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>STORE</span>
+<footer data-tar-foot style="padding:48px clamp(18px,4vw,56px);border-top:1px solid rgba(243,236,224,0.08);display:flex;flex-direction:column;align-items:center;gap:22px">
+  <div aria-hidden="true" style="width:min(420px,80vw);height:34px;background:repeating-linear-gradient(90deg,#f3ece0 0 6px,transparent 6px 10px,#f3ece0 10px 12px,transparent 12px 17px)"></div>
+  <span style="font-weight:700;font-size:11px;letter-spacing:0.42em;color:#f3ece0;text-transform:uppercase;margin-right:-0.42em">THETA AUDIO RESEARCH</span>
+  <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase">
+    <a href="faq.html" style="color:#8d8779;text-decoration:none" style-hover="color:#f3ece0">FAQ</a>
+    <a href="support.html" style="color:#8d8779;text-decoration:none" style-hover="color:#f3ece0">SUPPORT</a>
+    <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#f3ece0">YOUTUBE</a>
+    <span style="color:#4a4740">© 2026</span>
+  </div>
 </footer>
 
 </div>
