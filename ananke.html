@@ -1,97 +1,1001 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ANANKE Product Page</title>
+<meta name="description" content="ANANKE is a feed-forward compressor with a Peak to RMS detector, transient relief, a crest-protection path, a shapeable sidechain and EMBER analog character in Tube, Diode and Bright. Constant 3.5 ms latency. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as pneuma.html, cinder.html and gire.html. Single dark look by choice: THETA marketing
+   pages live on the void theme. ANANKE's own colour enters only where the plug-in draws it in its DARK
+   skin: the gold transfer curve and knee, the red gain-reduction fill with its amber line, and the amber
+   CHARACTER axis (palette in Source/Common/Theme/ThetaColors.h, applyDark). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#06080c; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --gr-fill:#b0392a; --gr-line:#d98828; --amber:#e09a34; --slate:#a2b4c4;
+  --cut:#d0553f; --lift:#5aa0d8; --even:#ffc867; --odd:#d0553f;
+  --cap:#14181f; --grid:#111420; --label:#707070;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(40px,5vw,66px);letter-spacing:.3em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the metering well: ANANKE's DARK "Void" inset, divider frame, gold top edge */
+.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
+.well-foot b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--gold-hot)}
+.well-foot b.cut{color:var(--cut)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's DARK pills: gold fill on the active cell */
+.seg{display:inline-flex;border:1px solid #1e2028;border-radius:5px;background:#0a0c10;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:rgba(240,237,230,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#0c0c10;font-weight:500}
+.seg.amber button[aria-pressed="true"]{background:var(--amber)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:#030506;overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#1f1610;stroke:#7a5a2a;stroke-width:1.2}
+.path .key{fill:#120c0c;stroke:#5a2a24;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.ctl{stroke:var(--gr-line);opacity:.8;animation-duration:1.1s}
+.path .alt{fill:none;stroke:#3a3846;stroke-width:1.2;stroke-dasharray:4 5}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:#030506;display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-top .grp{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views canvas+canvas{border-left:1px solid var(--divider)}
+.lab-views.wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.readouts b.cut{color:var(--cut)}
+.ctrls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.ctrls.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--gold)}
+.ctrl.heat label{color:var(--amber)} .ctrl.heat input[type=range]{accent-color:var(--amber)}
+.ctrl.gr label{color:var(--gr-line)} .ctrl.gr input[type=range]{accent-color:var(--gr-line)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+.legend i.blk{height:10px;width:10px;border-radius:2px}
+.legend i.dash{background:repeating-linear-gradient(90deg,rgba(240,237,230,.5) 0 5px,transparent 5px 9px)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em}
+.card .nm span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em;text-align:right}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.face-top{margin-block:0 var(--s6)}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:8px}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(217,136,40,.08),transparent 55%),radial-gradient(120% 140% at 0% 100%,rgba(176,57,42,.12),transparent 55%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views,.lab-views.wide{grid-template-columns:minmax(0,1fr)}
+  .lab-views canvas+canvas{border-left:0;border-top:1px solid var(--divider)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.five,.ctrls.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+[data-launch][hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">ANANKE</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">ANANKE</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=ANANKE%20updates" data-notify="ANANKE" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Compressor · Analog character</div>
+    <h1 class="wordmark">ANANKE</h1>
+    <div class="lede">
+      <p>A feed-forward compressor that holds a level without clamping on it. A detector that blends peak and RMS, a RELIEF control that loosens the grip only while a transient passes, and a second, peak-only path that catches what gets through. Slam a vocal or a bus and it still breathes.</p>
+      <p>Behind the dynamics sits EMBER, an analog colour stage in three voices, TUBE, DIODE and BRIGHT, placed before or after the gain. With DRIVE at 0 it adds nothing at all: the null is exact.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get ANANKE</a>
+      <a class="btn ghost" href="#dynamics">Work the compressor</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon &amp; Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>DARK · TRANSFER · GAIN REDUCTION · LIVE</span><span>4.0 s</span></div>
+      <canvas id="hero" width="1040" height="600" aria-label="ANANKE's metering in its DARK skin. On the left the transfer curve, gold, with the soft knee lit and a dot riding it at the current level. On the right four seconds of a mix bus: the input level, the output in gold, and the gain reduction hanging from the top as a red fill with an amber edge."></canvas>
+      <div class="well-foot"><span>GR <b id="h-gr" class="cut">-</b></span><span>AUTO REL <b id="h-rel">-</b></span><span>RELIEF EASING <b id="h-ease">-</b></span></div>
+    </div>
+    <div class="tagline">RED IS WHAT IT TAKES · GOLD IS WHAT IS LEFT</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #012 // ANANKE STABLE ALPHA</span>
-</footer>
+<section class="face-top">
+  <img src="assets/ananke/hero.png?v=261029" alt="The ANANKE panel in its DARK skin: the transfer curve and gain reduction history across the top, the DYNAMICS card with the envelope and sidechain controls, the CHARACTER card with DRIVE, TYPE and ROUTING, and the OUTPUT strip" width="1762" height="1144">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A compressor turns a signal down when it gets loud. A detector measures the level, a gain computer decides how much to take off above the threshold, and an envelope decides how quickly that happens and how quickly it lets go. Every compressor makes the same trade: <strong>grab fast enough to hold the peaks and you flatten the transients that made the sound alive.</strong></p>
+      <p>ANANKE splits that trade into separate controls. The main path rides the level. RELIEF loosens it only during a transient, CREST adds a fast peak-only path above it, and RANGE sets the most it may ever take.</p>
+    </div>
+    <div class="prose">
+      <p>The audio is always delayed by a fixed <strong>3.5 ms</strong>, and the detector listens to the undelayed signal, so <strong>LOOKAHEAD</strong> just moves where the gain lands inside that budget. The latency the host sees never changes when you turn it.</p>
+      <p>After the gain, <strong>EMBER</strong> adds analog colour, or colours the input before it is compressed. <strong>MIX</strong> blends with the time-aligned dry, <strong>MAKEUP</strong> and <strong>AUTO GAIN</strong> restore level, and a 5 ms crossfaded <strong>BYPASS</strong> compares without a click.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 300" role="img" aria-label="ANANKE's signal path. Audio: input, a fixed 3.5 millisecond delay, the gain, the CHARACTER stage before or after the gain, MIX with the time-aligned dry, MAKEUP, a crossfaded BYPASS, output. Key: the input or an external sidechain, the sidechain filters, the Peak to RMS detector, the gain computer, the envelope, then RANGE, RELIEF and CREST, which set the gain.">
+      <text x="10" y="88">IN</text>
+      <path class="wire" d="M34 84 H64"/><path class="flow" d="M34 84 H64"/>
+      <rect class="box" x="64" y="60" width="104" height="48" rx="4"/><text class="lbl" x="116" y="81" text-anchor="middle">DELAY</text><text x="116" y="98" text-anchor="middle">3.5 MS FIXED</text>
+      <path class="wire" d="M168 84 H204"/><path class="flow" d="M168 84 H204"/>
+      <rect class="hot" x="204" y="60" width="96" height="48" rx="4"/><text class="lbl" x="252" y="81" text-anchor="middle" style="fill:var(--gr-line)">GAIN</text><text x="252" y="98" text-anchor="middle">× LINKED</text>
+      <path class="wire" d="M300 84 H336"/><path class="flow" d="M300 84 H336"/>
+      <rect class="box" x="336" y="60" width="150" height="48" rx="4" style="stroke:#6a4a1c"/><text class="lbl" x="411" y="81" text-anchor="middle" style="fill:var(--amber)">CHARACTER</text><text x="411" y="98" text-anchor="middle">TUBE · DIODE · BRIGHT</text>
+      <path class="wire" d="M486 84 H522"/><path class="flow" d="M486 84 H522"/>
+      <rect class="box" x="522" y="60" width="96" height="48" rx="4"/><text class="lbl" x="570" y="81" text-anchor="middle">MIX</text><text x="570" y="98" text-anchor="middle">DRY / WET</text>
+      <path class="wire" d="M618 84 H654"/><path class="flow" d="M618 84 H654"/>
+      <rect class="box" x="654" y="60" width="112" height="48" rx="4"/><text class="lbl" x="710" y="81" text-anchor="middle">MAKEUP</text><text x="710" y="98" text-anchor="middle">+ AUTO GAIN</text>
+      <path class="wire" d="M766 84 H802"/><path class="flow" d="M766 84 H802"/>
+      <rect class="box" x="802" y="60" width="100" height="48" rx="4"/><text class="lbl" x="852" y="81" text-anchor="middle">BYPASS</text><text x="852" y="98" text-anchor="middle">5 MS FADE</text>
+      <path class="wire" d="M902 84 H940"/><path class="flow" d="M902 84 H940"/>
+      <text x="948" y="88">OUT</text>
+      <path class="alt" d="M186 84 V26 H570 V60"/>
+      <text x="236" y="20">DRY, TIME-ALIGNED · CHARACTER PRE OR POST THE GAIN: ONE SWITCH</text>
+      <path class="wire" d="M48 84 V234 H64"/>
+      <rect class="key" x="64" y="210" width="104" height="48" rx="4"/><text class="lbl" x="116" y="231" text-anchor="middle">KEY</text><text x="116" y="248" text-anchor="middle">INT / EXT</text>
+      <path class="wire" d="M168 234 H196"/><path class="flow ctl" d="M168 234 H196"/>
+      <rect class="key" x="196" y="210" width="128" height="48" rx="4"/><text class="lbl" x="260" y="231" text-anchor="middle">SC FILTER</text><text x="260" y="248" text-anchor="middle">HPF · LPF · BELL</text>
+      <path class="wire" d="M324 234 H352"/><path class="flow ctl" d="M324 234 H352"/>
+      <rect class="key" x="352" y="210" width="128" height="48" rx="4"/><text class="lbl" x="416" y="231" text-anchor="middle">DETECTOR</text><text x="416" y="248" text-anchor="middle">PEAK ↔ RMS</text>
+      <path class="wire" d="M480 234 H508"/><path class="flow ctl" d="M480 234 H508"/>
+      <rect class="key" x="508" y="210" width="140" height="48" rx="4"/><text class="lbl" x="578" y="231" text-anchor="middle">COMPUTER</text><text x="578" y="248" text-anchor="middle">THRESH · RATIO · KNEE</text>
+      <path class="wire" d="M648 234 H676"/><path class="flow ctl" d="M648 234 H676"/>
+      <rect class="key" x="676" y="210" width="140" height="48" rx="4"/><text class="lbl" x="746" y="231" text-anchor="middle">ENVELOPE</text><text x="746" y="248" text-anchor="middle">ATK · REL · HOLD</text>
+      <path class="wire" d="M816 234 H844"/><path class="flow ctl" d="M816 234 H844"/>
+      <rect class="key" x="844" y="210" width="150" height="48" rx="4"/><text class="lbl" x="919" y="231" text-anchor="middle">RANGE · RELIEF</text><text x="919" y="248" text-anchor="middle">+ CREST PATH</text>
+      <path class="wire" d="M919 210 V160 H252 V108"/><path class="flow ctl" d="M919 210 V160 H252 V108"/>
+      <text x="300" y="152" style="fill:var(--text-3)">GAIN LEADS THE AUDIO BY LOOKAHEAD, 0–3.5 MS</text>
+      <text x="20" y="286" style="fill:var(--text-3)">SIDECHAIN BUS · MONO OR STEREO · LINK 0–100 % · STEREO OR MID-SIDE</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>KEY</b><p>The detector hears the input or an external sidechain, shaped by a high pass, a low pass and a bell.</p></li>
+    <li><span class="num">2</span><b>DETECT</b><p>Peak and RMS blend into one level. More RMS rides the phrase and lets the crest go by.</p></li>
+    <li><span class="num">3</span><b>COMPUTE</b><p>Threshold, ratio up to ∞:1 and a soft knee set the gain reduction the level asks for.</p></li>
+    <li><span class="num">4</span><b>MOVE</b><p>Attack, release or AUTO, and HOLD set the motion. RANGE caps it, RELIEF eases it, CREST backs it up.</p></li>
+    <li><span class="num">5</span><b>COLOUR</b><p>EMBER adds harmonics before or after the gain, then MIX, MAKEUP and a click-free BYPASS.</p></li>
+  </ol>
+</section>
+
+<!-- DYNAMICS -->
+<div class="sh" id="dynamics">The compressor</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>The gain computer is a classic soft knee. Below the knee the signal passes untouched. Above it, every dB over the threshold comes out as 1/RATIO of a dB, and across the knee the two meet on a smooth curve, <strong>KNEE</strong> dB wide. RATIO runs from 1:1 to ∞:1, so the top of the knob is a limiter.</p>
+      <p><strong>RANGE</strong> is a floor on the gain reduction: at its default of −6 dB, ANANKE can never take more than 6 dB, whatever the ratio says. That makes a high ratio safe to reach for. Pull RANGE to the bottom for unlimited reduction.</p>
+    </div>
+    <div class="prose">
+      <p>The envelope is a smooth, decoupled peak detector (Giannoulis and Reiss): <strong>ATTACK</strong> and <strong>RELEASE</strong> act separately, so a long release never slows the attack. <strong>AUTO REL</strong> makes the release depend on the program: light, brief reduction recovers in 40 ms, deep sustained reduction in up to 500 ms, blended on a slow average of how hard it has been working.</p>
+      <p>Linked detection keys every channel from the loudest, so the stereo image never shifts. Each <strong>VOICE</strong> rescales the timing and knee you have set (below). On the graph, the transfer curve is drawn the way the plug-in draws it, and a dot rides it at the current level.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="grp"><span class="seg" role="group" aria-label="Source"><button type="button" data-src="0" aria-pressed="true">VOCAL</button><button type="button" data-src="1" aria-pressed="false">DRUMS</button><button type="button" data-src="2" aria-pressed="false">BASS</button><button type="button" data-src="3" aria-pressed="false">MIX BUS</button></span></span>
+      <span class="grp"><span>VOICE</span><span class="seg" role="group" aria-label="Voice"><button type="button" data-vc="0" aria-pressed="true">CLEAN</button><button type="button" data-vc="1" aria-pressed="false">WARM</button><button type="button" data-vc="2" aria-pressed="false">PUNCH</button></span><span class="seg" role="group" aria-label="Auto release"><button type="button" data-ar="1" aria-pressed="false">AUTO REL</button></span></span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="dyntime" width="1040" height="560" aria-label="Four seconds of the source: its level, the threshold, and the output level in gold, with the gain reduction hanging from the top as a red fill with an amber line."></canvas>
+      <canvas id="dyncurve" width="800" height="560" aria-label="The transfer curve, input level across, output level up: the unity diagonal, the threshold, the knee as a lit band, the RANGE floor as a dashed line, and a dot at the current level."></canvas>
+    </div>
+    <div class="readouts"><span>GR NOW<b id="d-now" class="cut">-</b></span><span>DEEPEST<b id="d-min" class="cut">-</b></span><span>RELEASE<b id="d-rel">-</b></span><span>DETECTOR<b id="d-det">-</b></span><span>AUTO GAIN<b id="d-ag">-</b></span></div>
+    <div class="ctrls" id="dynctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:rgba(240,237,230,.4)"></i>INPUT LEVEL</span><span><i style="background:var(--gold)"></i>OUTPUT LEVEL</span><span><i class="blk" style="background:rgba(176,57,42,.75)"></i>GAIN REDUCTION</span><span><i style="background:var(--gr-line)"></i>GR LINE</span><span><i class="dash"></i>THRESHOLD · RANGE FLOOR</span><span>THE GAIN COMPUTER, ENVELOPE AND AUTO RELEASE FOLLOW THE PLUG-IN'S CODE · THE SOURCES ARE SYNTHETIC</span></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--text)">CLEAN</b><span>TRANSPARENT VCA</span></div>
+      <p>Your settings exactly as dialled: attack, release and knee at face value. The neutral reference, and the default.</p>
+      <div class="fine">ATTACK ×1 · RELEASE ×1 · KNEE ×1</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold-hot)">WARM</b><span>OPTICAL</span></div>
+      <p>Slower to grab and slower to let go, with a wider knee, and program-dependent release always on, the way an optical cell lags behind the music. Smooth and forgiving on vocals and dialogue.</p>
+      <div class="fine">ATTACK ×1.6 · RELEASE ×1.5 · KNEE ×1.6 · AUTO RELEASE</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--gr-line)">PUNCH</b><span>FAST VCA</span></div>
+      <p>Quicker attack, snappier release and a narrower, harder knee: the tight, forward grab of a fast FET or VCA. For drums, bass and anything that should hit.</p>
+      <div class="fine">ATTACK ×0.45 · RELEASE ×0.8 · KNEE ×0.45</div>
+    </article>
+  </div>
+  <p class="small">A VOICE shapes the dynamics only. Colour is its own stage, so any voice can run perfectly clean or be driven to taste.</p>
+</section>
+
+<!-- TRANSIENTS -->
+<div class="sh" id="transients">Relief and crest</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>RELIEF</strong> is the "slam without the clamp" control. A fast and a slow peak follower on the key give a measure of how transient the signal is right now, independent of its level. While a transient passes, the gain reduction actually applied is eased by RELIEF times that measure. Between hits the measure falls back to zero, so <strong>sustained compression, its depth and its pump stay exactly as set</strong>. Only the hard clamp on each attack relaxes.</p>
+      <p>That is not the same as a slower attack. The envelope inside keeps its timing, so release, AUTO REL and HOLD behave as before. RELIEF at 0 is bit-identical to no RELIEF.</p>
+    </div>
+    <div class="prose">
+      <p><strong>CREST</strong> adds a second detector: pure peak, a hard knee, the same ratio, and a 0.15 ms attack. It only engages when a peak climbs more than CREST dB above the threshold, so the main path can ride the level gently on RMS while the fast path catches the plosive or the rim shot that would get through. The two combine on whichever asks for more, and RANGE caps both. At the top of its travel CREST is off, an exact null.</p>
+      <p><strong>DETECT</strong> blends the main detector between peak and RMS, 45 % RMS by default. <strong>LOOKAHEAD</strong> moves the gain up to 3.5 ms ahead of the audio. <strong>HOLD</strong> freezes the envelope after the last attack before it releases.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Source"><button type="button" data-tsrc="0" aria-pressed="true">DRUMS</button><button type="button" data-tsrc="1" aria-pressed="false">VOCAL</button></span>
+      <span>THRESH −24 dB · RATIO 6:1 · KNEE 6 dB · ATTACK 2 ms · RELEASE 120 ms · RANGE OFF</span>
+    </div>
+    <canvas id="trans" width="1100" height="520" style="display:block;width:100%;height:auto" aria-label="One and a half seconds of the source. Above, the input peak level and the output peak level in gold. Below, the gain reduction: the dashed line is the same compressor with RELIEF and CREST off and no lookahead, the red fill and amber line are the settings below."></canvas>
+    <div class="readouts"><span>PEAK IN<b id="t-pin">-</b></span><span>PEAK OUT<b id="t-pout">-</b></span><span>GR ON HITS<b id="t-hit" class="cut">-</b></span><span>GR BETWEEN<b id="t-bed" class="cut">-</b></span><span>CREST PATH<b id="t-crest">-</b></span></div>
+    <div class="ctrls five" id="transctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:rgba(240,237,230,.4)"></i>INPUT PEAK</span><span><i style="background:var(--gold)"></i>OUTPUT PEAK</span><span><i class="dash"></i>GR, PLAIN COMPRESSOR</span><span><i class="blk" style="background:rgba(176,57,42,.75)"></i>GR WITH THESE SETTINGS</span><span><i style="background:var(--slate)"></i>CREST PATH</span><span>RELIEF AND CREST DETECTORS FOLLOW THE PLUG-IN'S CODE · THE SOURCES ARE SYNTHETIC</span></div>
+</section>
+
+<!-- CHARACTER -->
+<div class="sh" id="character">Ember character</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>EMBER</strong> is ANANKE's colour stage, decoupled from the dynamics. DRIVE sets how much, TYPE sets the voice, and ROUTING puts it <strong>POST</strong> the gain, colouring the transients that survive compression, or <strong>PRE</strong>, colouring the input so the compressor reacts to the harmonics. DRIVE starts at 0, and at 0 the whole stage is skipped: <strong>bit-identical to the uncoloured compressor.</strong></p>
+      <p>The shaper is anti-aliased by first-order ADAA on its residual only, the part it adds, so the clean signal stays flat to the top of the band and there is no oversampling and no added latency. A 5 Hz DC blocker strips the offset the asymmetric curves create.</p>
+    </div>
+    <div class="prose">
+      <p>Like a transformer, TUBE and DIODE drive the lows harder: a low shelf at 150 Hz pushes them into the shaper up to 5 dB hot, and a matching shelf after it takes back half, so the bottom thickens before it gets louder. TUBE adds cathode sag, a linked bloom that lets the bias breathe with the level. BRIGHT adds a 12 kHz air lift instead.</p>
+      <p>Makeup is matched on the fundamental at half power, so an A/B with DRIVE is not just louder. Changing TYPE while it is audible ducks the colour out, swaps, and ramps back: no click. <span class="k">CHARACTER DELTA</span> plays only what EMBER adds.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg amber" role="group" aria-label="Type"><button type="button" data-ct="0" aria-pressed="true">TUBE</button><button type="button" data-ct="1" aria-pressed="false">DIODE</button><button type="button" data-ct="2" aria-pressed="false">BRIGHT</button></span>
+      <span>A SINE THROUGH EMBER · DRAG FREQ BELOW 150 Hz TO HEAR THE BODY SHELF</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="chgraph" width="1040" height="620" aria-label="The spectrum out of EMBER on a log frequency axis: the fundamental, and the harmonics EMBER adds, gold for even and red for odd, with the tone filter shown as a falling line at the top."></canvas>
+      <canvas id="chwave" width="800" height="620" aria-label="One cycle of the sine before and after EMBER, the part EMBER added, and bars for the second to seventh harmonic in decibels below the fundamental."></canvas>
+    </div>
+    <div class="readouts"><span>H2<b id="c-h2">-</b></span><span>H3<b id="c-h3">-</b></span><span>THD<b id="c-thd">-</b></span><span>EVEN / ODD<b id="c-eo">-</b></span><span>MAKEUP<b id="c-mk">-</b></span><span>TONE<b id="c-tone">-</b></span></div>
+    <div class="ctrls three" id="chctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--text)"></i>FUNDAMENTAL</span><span><i style="background:var(--even)"></i>EVEN HARMONICS</span><span><i style="background:var(--odd)"></i>ODD HARMONICS</span><span><i style="background:rgba(240,237,230,.3)"></i>BEFORE EMBER</span><span>COMPUTED FROM THE PLUG-IN'S KERNELS, SHELVES, TONE FILTER AND MAKEUP · STEADY SINE, SAG AT REST</span></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold-hot)">TUBE</b><span>BIASED TANH</span></div>
+      <p>A tanh curve run from an operating point well off its centre, which is what gives a valve its second harmonic. The ladder is even-led and stays clean above it: a −12 dBFS sine at DRIVE 50 % gives H2 at −36.0 dB and H3 at −56.8 dB. Full drive at −6 dBFS reaches H2 −15.5 dB. A soft 6 kHz top and the cathode-sag bloom make it the warmest of the three.</p>
+      <div class="fine">EVEN · THICKNESS · VOCALS, DIALOGUE, BASS</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--amber)">DIODE</b><span>EXPONENTIAL PAIR</span></div>
+      <p>Two exponential limbs, the positive one clamping harder, like a diode's forward drop. Even and odd arrive together and the ladder reaches far up: at DRIVE 50 % on a −12 dBFS sine, H2 −40.3 dB, H3 −37.4 dB, H5 −53.6 dB, H7 −63.1 dB. Grit and density, with a 9 kHz top.</p>
+      <div class="fine">EVEN + ODD · GRIT · DRUMS, GUITARS, BUSES</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--odd)">BRIGHT</b><span>NEAR-SYMMETRIC TANH</span></div>
+      <p>Almost centred, so when it is driven the odd harmonics lead: full drive on a −6 dBFS sine gives H3 at −20.2 dB over H2 at −26.2 dB. No body shelf; an open 14 kHz top and a 12 kHz air lift instead. Edge and presence that cut through.</p>
+      <div class="fine">ODD · EDGE · SNARE, PRESENCE, SYNTHS</div>
+    </article>
+  </div>
+</section>
+
+<!-- SIDECHAIN -->
+<div class="sh" id="sidechain">Sidechain and stereo</div>
+<section class="two">
+  <div class="prose">
+    <p>The key the detector hears can be shaped without touching the audio. The <strong>SC HPF</strong> is on by default at 85 Hz, so a kick or a rumble does not pump a whole vocal or bus. Add the <strong>SC LPF</strong> to keep hats and sibilance out of it, and the <strong>SC EQ</strong> bell to make the compressor react to one region, or ignore it.</p>
+    <p>Flip <span class="k">EXT SC</span> and the detector keys off the sidechain input instead, for ducking a bed under a voice or a bass under a kick. <span class="k">LISTEN</span> plays the key, filters and all, so you hear exactly what the detector hears.</p>
+  </div>
+  <ul class="rows">
+    <li><b>SC FILTERS</b><span>HPF 20–400 Hz (off below 25 Hz) · LPF 200 Hz–20 kHz · bell 200 Hz–8 kHz, ±12 dB</span></li>
+    <li><b>EXT SC</b><span>Key from the host's sidechain bus, mono or stereo. An explicit switch, so connecting a bus never changes the sound by itself.</span></li>
+    <li><b>LINK</b><span>100 % keys every channel from the loudest, one gain for all, no image shift. Lower it toward dual mono and each side starts to answer to itself.</span></li>
+    <li><b>MID-SIDE</b><span>Compress mid and side instead of left and right. LINK then blends detection between M and S: hold the centre steady and let the sides breathe.</span></li>
+  </ul>
+</section>
+
+<!-- LISTENING -->
+<div class="sh" id="listen">Hear what it does</div>
+<section class="two">
+  <div class="prose">
+    <p>Compression is easy to overdo because the ear adapts to it. ANANKE gives you three ways to hear only the change. <strong>DELTA</strong> plays what the compressor removes, time-aligned: if you hear the body of the vocal in there, it is working too hard. <strong>CHARACTER DELTA</strong> plays only the harmonics EMBER adds. <strong>SC LISTEN</strong> plays the detector's key.</p>
+    <p>The metering sits across the top: the transfer curve with its knee, and a scrolling gain-reduction history you can drag to zoom in time, next to an integrated loudness readout to <strong>BS.1770-4</strong>.</p>
+  </div>
+  <ul class="rows">
+    <li><b>A / B</b><span>Two full settings slots and COPY, to compare two approaches without losing either.</span></li>
+    <li><b>PRESETS</b><span>Save and save as, in the plug-in's own menu. DEFAULT is always there to return to.</span></li>
+    <li><b>AUTO GAIN</b><span>Adds half the reduction a 0 dBFS peak would see, capped by RANGE, so bypass comparisons stay fair. MAKEUP adds on top.</span></li>
+    <li><b>BYPASS</b><span>A 5 ms crossfade that keeps the delay, so it never clicks and never moves the track in time. The host's own bypass drives it too, and the detector keeps running, so it comes back at the right gain.</span></li>
+    <li><b>VIEW</b><span>Resizable window. Three skins: LIGHT, DARK and NUCLEAR. Oversampling OFF, 2× or 4× around the whole compressor.</span></li>
+  </ul>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>ANANKE runs as a fully working trial for fourteen days from the first time it loads, and the brand bar counts down the days left. When the trial ends without activation, ANANKE goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA-.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence line in the brand bar, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that ANANKE works offline and never goes online on its own. One licence covers three computers, and on a Mac one activation covers every user account.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>DIALOGUE &amp; POST</b><p>ANANKE began as the final stage of a dialogue channel strip. RMS-leaning detection rides the syllable, CREST catches the plosive, and the image never shifts.</p></article>
+  <article><b>VOCALS</b><p>WARM and AUTO REL for a level that sits without pumping, RELIEF to keep the consonants alive, TUBE post for weight, and DELTA to check you have not taken the body.</p></article>
+  <article><b>DRUMS &amp; BASS</b><p>PUNCH, a fast attack and RELIEF up: the kit gets dense and the hits still crack. HOLD and EXT SC duck a bass under the kick; DIODE adds grit.</p></article>
+  <article><b>MIX BUS</b><p>Low ratio, wide knee, RANGE at a few dB and the SC HPF on: glue without the low end pumping the bus. MIX for parallel, M/S to hold the centre.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Feed-forward compressor with analog character (insert) · mono or stereo · optional sidechain input</td></tr>
+    <tr><th>DYNAMICS</th><td>THRESH −60–0 dB · RATIO 1:1–∞:1 · KNEE 0–24 dB · ATTACK 0.1–200 ms · RELEASE 5–1000 ms or AUTO (40–500 ms) · HOLD 0–500 ms · RANGE 0 to −60 dB / Off · RELIEF 0–100 %</td></tr>
+    <tr><th>DETECTION</th><td>Peak ↔ RMS blend, RMS window 1–50 ms · CREST path +3 to +30 dB above threshold, or off · LOOKAHEAD 0–3.5 ms · LINK 0–100 % · Stereo or Mid-Side</td></tr>
+    <tr><th>VOICE</th><td>CLEAN · WARM (optical) · PUNCH (fast VCA)</td></tr>
+    <tr><th>SIDECHAIN</th><td>Internal or external key · HPF 20–400 Hz · LPF 200 Hz–20 kHz · bell 200 Hz–8 kHz ±12 dB · LISTEN</td></tr>
+    <tr><th>CHARACTER</th><td>EMBER: TUBE · DIODE · BRIGHT · DRIVE 0–100 % · PRE or POST · ADAA anti-aliased, half-power makeup</td></tr>
+    <tr><th>OUTPUT</th><td>MAKEUP −12 to +24 dB · AUTO GAIN · MIX 0–100 %</td></tr>
+    <tr><th>METERING</th><td>Transfer curve · gain-reduction history, zoomable · integrated LUFS (BS.1770-4)</td></tr>
+    <tr><th>MONITORING</th><td>DELTA · CHARACTER DELTA · SC LISTEN</td></tr>
+    <tr><th>LATENCY</th><td>Constant 3.5 ms (168 samples at 48 kHz), reported to the host; LOOKAHEAD moves inside it. Oversampling 2× or 4× adds its filter delay, also reported.</td></tr>
+    <tr><th>PRESETS</th><td>Save and save as, in the plug-in's own menu · A/B with copy</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · one activation per Mac · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools, listed under Dynamics)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 Big Sur or later · Universal: Apple Silicon and Intel · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>ANANKE's dynamics core is the Pass-4 compressor from ROGERIAN's dialogue strip, lifted into its own plug-in the way PNEUMA took ROGERIAN's equaliser, and grown well past it: CREST, RELIEF, the shapeable sidechain, Mid-Side and EMBER are ANANKE's own.</p>
+    <p>No standalone app. ANANKE lives in your DAW.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow" id="price-ver">ANANKE</div>
+  <p>A compressor that holds the level and leaves the transients, a crest path and a shapeable sidechain, three analog voices, and the tools to hear exactly what it changes. Nothing withheld.</p>
+  <div class="amt"><s>$99</s><strong>$49.50</strong></div>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=ANANKE%20launch" data-notify="ANANKE" data-prelaunch>Notify me at launch</a>
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/05446b6f-aad2-43de-9134-b9b263d2e5c0?embed=1" data-launch hidden>Acquire ANANKE · $49.50</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4a46ee37-5d7e-44eb-8465-d30df537b30e?embed=1" data-launch hidden>Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS UNIVERSAL · VST3 / AU / AAX INCLUDED</div>
+</section>
+
+<footer><a href="store.html">STORE</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(() => {
+'use strict';
+const RM = false;
+const C = {
+  bg:'#06080c', grid:'#111420', label:'#5d6068', gold:'#c8a86b', goldHot:'#ffc867',
+  grFill:'rgba(176,57,42,.38)', grLine:'#d98828', amber:'#e09a34', slate:'#a2b4c4', cut:'#d0553f',
+  even:'#ffc867', odd:'#d0553f', cream:'#f0ede6', text3:'#8d8779'
+};
+const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+// ---------- maths ----------
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lin2db = a => 20 * Math.log10(Math.max(a, 1e-9));
+const db2lin = d => Math.pow(10, d / 20);
+const fmtDb = v => (v > 0 ? '+' : '') + v.toFixed(1) + ' dB';
+const fmtGr = v => (v < 0.05 ? '0.0' : '−' + v.toFixed(1)) + ' dB';
+const fmtHz = v => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + ' kHz' : Math.round(v) + ' Hz';
+
+// static gain computer (Compressor::gainForLevel): level dB in -> gain dB (<= 0), soft knee W
+function gfl(x, T, R, W) {
+  const o = x - T;
+  if (W > 1e-4) {
+    if (2 * o < -W) return 0;
+    if (2 * o > W) return o * (1 / R - 1);
+    const t = o + W / 2; return (1 / R - 1) * t * t / (2 * W);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
+  return o <= 0 ? 0 : o * (1 / R - 1);
+}
+// VOICE multipliers (Compressor::setStyle): attack, release, knee, optical auto-release
+const VOICE = [{ a: 1, r: 1, k: 1, opt: false }, { a: 1.6, r: 1.5, k: 1.6, opt: true }, { a: .45, r: .8, k: .45, opt: false }];
+const JUCEskew = (n, lo, hi, s) => lo + (hi - lo) * Math.pow(n, 1 / s);   // NormalisableRange skew, n in 0..1
+const JUCEinv = (v, lo, hi, s) => Math.pow((v - lo) / (hi - lo), s);
+
+// ---------- the compressor, per step, as Compressor::process ----------
+// Runs on a peak-level envelope (dBFS) rather than samples: the sources below are envelopes, so the RMS
+// branch needs no sqrt2 sine normalisation. Everything after the key follows the plug-in line for line.
+const FS = 4000, DT = 1000 / FS;   // 4 kHz control rate, 0.25 ms per step
+function makeComp() {
+  return { y1: 0, yL: 0, grAvg: 0, hold: 0, ms: 0, fast: 0, slow: 0, tr: 0, y1B: 0, yLB: 0, relMs: 0, crestGr: 0 };
+}
+const e1 = tcMs => 1 - Math.exp(-DT / Math.max(tcMs, .01));   // one-pole step coefficient
+function compStep(s, pkDb, p) {
+  const v = VOICE[p.voice || 0], pk = db2lin(pkDb);
+  // detector: Peak <-> RMS blend
+  s.ms += e1(p.rmsMs || 10) * (pk * pk - s.ms);
+  const level = (1 - p.blend) * pk + p.blend * Math.sqrt(s.ms), xDb = lin2db(level);
+  // RELIEF transient detector (fast 0.3/15 ms, slow 8/120 ms; T smoothed 1 ms in / 25 ms out)
+  s.fast += (pk > s.fast ? e1(.3) : e1(15)) * (pk - s.fast);
+  s.slow += (pk > s.slow ? e1(8) : e1(120)) * (pk - s.slow);
+  const trRaw = clamp((s.fast / (s.slow + 1e-9) - 1.15) * 1.6, 0, 1);
+  s.tr += (trRaw > s.tr ? e1(1) : e1(25)) * (trRaw - s.tr);
+  // gain computer + decoupled smooth peak envelope
+  const rInst = -gfl(xDb, p.T, p.R, p.W * v.k);
+  let relMs = p.rel * v.r;
+  if (p.auto || v.opt) {
+    s.grAvg += e1(400) * (s.y1 - s.grAvg);
+    relMs = 40 + 460 * clamp(s.grAvg / 8, 0, 1);
   }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/ananke/hero.png?v=260808', 1762, 1762 / 1144),
-      openDynamics: this._mk('assets/ananke/dynamics.png?v=260808', 1153, 1153 / 435),
-      openCharacter: this._mk('assets/ananke/character.png?v=260808', 346, 346 / 435),
+  s.relMs = relMs;
+  const holdSteps = Math.round((p.hold || 0) / DT);
+  if (rInst >= s.y1) { s.y1 = rInst; s.hold = holdSteps; }
+  else if (s.hold > 0) s.hold--;
+  else s.y1 += e1(relMs) * (rInst - s.y1);
+  s.yL += e1(p.atk * v.a) * (s.y1 - s.yL);
+  const cap = p.range <= -59.5 ? 1e9 : -p.range;
+  if (s.yL > cap) s.yL = cap;
+  let y = s.yL * (1 - (p.relief || 0) * s.tr);
+  s.crestGr = 0;
+  if (p.crest !== undefined && p.crest < 29.5) {
+    const rB = -gfl(pkDb, p.T + p.crest, p.R, 0);
+    s.y1B = rB >= s.y1B ? rB : s.y1B + e1(40) * (rB - s.y1B);
+    s.yLB += e1(.15) * (s.y1B - s.yLB);
+    const yB = Math.min(s.yLB, cap);
+    s.crestGr = yB;
+    y = Math.max(y, yB);
+  }
+  s.det = xDb;
+  return y;   // applied gain reduction, dB >= 0
+}
+
+// ---------- synthetic sources: peak envelopes in dBFS, one value per 0.25 ms step ----------
+const pw = d => Math.pow(10, d / 10);
+function makeSource(kind) {
+  let n = 0, rnd = 0, syl = -14, sylEnd = 0, sylStart = 0, plo = -99, gap = false, note = 0;
+  const hit = (t, period, offs, peak, decayMs) => { const p = ((t - offs) % period + period) % period; return peak - 8.686 * (p * 1000 / decayMs); };
+  return () => {
+    const t = n / FS; n++;
+    rnd = rnd * .9 + (Math.random() * 2 - 1) * .25;
+    let s = pw(-60);
+    const drums = () => {
+      s += pw(hit(t, .5, 0, -4, 70)) + pw(hit(t, 1, .5, -6, 95)) + pw(hit(t, .25, .125, -22, 28)) + pw(hit(t, .25, 0, -26, 22));
     };
+    const vocal = (g) => {
+      const ms = n * DT;
+      if (ms >= sylEnd) {
+        gap = Math.random() < .12;
+        sylStart = ms; sylEnd = ms + (gap ? 220 + Math.random() * 280 : 110 + Math.random() * 230);
+        syl = -21 + Math.random() * 15;
+        plo = Math.random() < .3 ? syl + 9 + Math.random() * 4 : -99;
+      }
+      if (gap) return;
+      const into = ms - sylStart, len = sylEnd - sylStart;
+      const shape = Math.min(1, into / 14) * (into > len - 40 ? Math.max(0, (len - into) / 40) : 1);
+      s += pw(syl + g + 2.5 * Math.sin(into / 1000 * 2 * Math.PI * 5.5) + lin2db(.02 + .98 * shape));
+      if (plo > -90) s += pw(plo + g - 8.686 * into / 6);
+    };
+    const bass = (g) => {
+      const p = t % .375, idx = Math.floor(t / .375) % 4;
+      const lv = [-9, -12, -10, -14][idx];
+      s += pw(lv + g - p * 9 + 6 * Math.exp(-p * 1000 / 25));
+    };
+    if (kind === 0) vocal(0);
+    else if (kind === 1) drums();
+    else if (kind === 2) bass(0);
+    else { drums(); s = s * .5; vocal(-4); bass(-6); }
+    return 10 * Math.log10(s) + rnd;
+  };
+}
+
+// ---------- canvas helpers ----------
+function strokePts(ctx, pts, col, w) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); }
+// visibility-gated animation loop
+function loop(canvas, draw) {
+  let on = false, raf = 0, last = performance.now(), t = 0;
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt; draw(t, dt); if (on) raf = requestAnimationFrame(tick); };
+  if (RM) { draw(t, 1 / 60); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !on) { on = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+    else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+  }));
+  io.observe(canvas); draw(t, 1 / 60);
+}
+// ring buffer of steps
+function ring(N) { return { N, inp: new Float32Array(N).fill(-90), gr: new Float32Array(N), aux: new Float32Array(N), head: 0 }; }
+function push(rb, i, g, a) { rb.inp[rb.head] = i; rb.gr[rb.head] = g; rb.aux[rb.head] = a || 0; rb.head = (rb.head + 1) % rb.N; }
+
+// transfer curve, as CompPanel::drawTransfer: 10 dB grid, unity diagonal, knee band, threshold, gold curve, brighter knee arc
+const IN0 = -60, IN1 = 0;
+function drawTransfer(ctx, r, p, dot, fs) {
+  const X = d => r.x + (d - IN0) / (IN1 - IN0) * r.w, Y = d => r.y + r.h - (clamp(d, IN0, IN1) - IN0) / (IN1 - IN0) * r.h;
+  ctx.fillStyle = C.bg; ctx.fillRect(r.x, r.y, r.w, r.h);
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.strokeRect(r.x + .5, r.y + .5, r.w - 1, r.h - 1);
+  ctx.font = `${fs}px ${MONO}`; ctx.fillStyle = C.label;
+  for (let d = -50; d < 0; d += 10) {
+    const x = Math.round(X(d)) + .5, y = Math.round(Y(d)) + .5;
+    ctx.beginPath(); ctx.moveTo(x, r.y); ctx.lineTo(x, r.y + r.h); ctx.moveTo(r.x, y); ctx.lineTo(r.x + r.w, y); ctx.stroke();
+    ctx.fillText(String(d), x + 3, r.y + r.h - 6);
+  }
+  ctx.strokeStyle = 'rgba(112,112,112,.5)'; ctx.beginPath(); ctx.moveTo(X(IN0), Y(IN0)); ctx.lineTo(X(IN1), Y(IN1)); ctx.stroke();
+  const W = p.W * VOICE[p.voice || 0].k;
+  if (W > .01) { const k0 = X(clamp(p.T - W / 2, IN0, IN1)), k1 = X(clamp(p.T + W / 2, IN0, IN1)); ctx.fillStyle = 'rgba(200,168,107,.10)'; ctx.fillRect(k0, r.y, Math.max(1, k1 - k0), r.h); }
+  ctx.strokeStyle = 'rgba(112,112,112,.4)'; ctx.beginPath(); ctx.moveTo(Math.round(X(p.T)) + .5, r.y); ctx.lineTo(Math.round(X(p.T)) + .5, r.y + r.h); ctx.stroke();
+  // RANGE floor: where the cap overrides the curve (this page draws it; the plug-in draws the curve alone)
+  if (p.range > -59.5) {
+    const pts = []; for (let i = 0; i <= 200; i++) { const d = IN0 + i / 200 * (IN1 - IN0); if (-gfl(d, p.T, p.R, W) > -p.range) pts.push([X(d), Y(d + p.range)]); }
+    if (pts.length > 1) { ctx.setLineDash([6, 6]); strokePts(ctx, pts, 'rgba(217,136,40,.75)', 1.6); ctx.setLineDash([]); }
+  }
+  const curve = [], knee = [];
+  for (let i = 0; i <= 240; i++) { const d = IN0 + i / 240 * (IN1 - IN0), o = d + gfl(d, p.T, p.R, W); curve.push([X(d), Y(o)]); if (W > .01 && d >= p.T - W / 2 && d <= p.T + W / 2) knee.push([X(d), Y(o)]); }
+  strokePts(ctx, curve, C.gold, 2.4);
+  if (knee.length > 1) strokePts(ctx, knee, '#ffe3a8', 3.6);
+  ctx.fillStyle = C.label; ctx.fillText('TRANSFER', r.x + 8, r.y + fs + 6);
+  ctx.fillText('KNEE ' + W.toFixed(1), r.x + 8, r.y + 2 * fs + 12);
+  if (dot && dot.inDb > IN0) {
+    const x = X(dot.inDb), y = Y(dot.inDb - dot.gr);
+    ctx.fillStyle = 'rgba(255,200,103,.18)'; ctx.beginPath(); ctx.arc(x, y, 14, 0, 7); ctx.fill();
+    ctx.fillStyle = C.goldHot; ctx.beginPath(); ctx.arc(x, y, 6, 0, 7); ctx.fill();
   }
 }
+// GR history, as CompPanel::drawHistory: flat along the top at 0, dipping down; red fill + amber line.
+// This page adds the input level (faint) and output level (gold) under it.
+function drawHistory(ctx, r, rb, opts) {
+  const { lvlTop, lvlH, grMax, fs, la } = opts;
+  ctx.fillStyle = C.bg; ctx.fillRect(r.x, r.y, r.w, r.h);
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.strokeRect(r.x + .5, r.y + .5, r.w - 1, r.h - 1);
+  ctx.font = `${fs}px ${MONO}`;
+  const ly = d => lvlTop + (0 - clamp(d, -60, 0)) / 60 * lvlH;
+  for (const d of [-12, -24, -36, -48]) { const y = Math.round(ly(d)) + .5; ctx.strokeStyle = C.grid; ctx.beginPath(); ctx.moveTo(r.x, y); ctx.lineTo(r.x + r.w, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d + ' dB', r.x + 6, y - 4); }
+  if (opts.thr !== undefined) { const y = ly(opts.thr); ctx.setLineDash([6, 6]); ctx.strokeStyle = 'rgba(240,237,230,.45)'; ctx.beginPath(); ctx.moveTo(r.x, y); ctx.lineTo(r.x + r.w, y); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = 'rgba(240,237,230,.65)'; ctx.fillText('THRESHOLD', r.x + r.w - fs * 7, y - 6); }
+  const W = Math.floor(r.w), N = rb.N, per = N / W, lag = la || 0;
+  const pin = [], pout = [], pgr = [];
+  const gy = g => r.y + clamp(g, 0, grMax) / grMax * (r.h * .32);
+  for (let px = 0; px < W; px++) {
+    let mi = -120, mo = -120, mg = 0;
+    const i0 = Math.floor(px * per), i1 = Math.max(i0 + 1, Math.floor((px + 1) * per));
+    for (let i = i0; i < i1; i++) {
+      const k = (rb.head + i - lag + N) % N, kg = (rb.head + i + N) % N;
+      const vin = rb.inp[k], g = rb.gr[kg];
+      if (vin > mi) mi = vin; if (vin - g > mo) mo = vin - g; if (g > mg) mg = g;
+    }
+    const x = r.x + px;
+    pin.push([x, ly(mi)]); pout.push([x, ly(mo)]); pgr.push([x, gy(mg)]);
+  }
+  strokePts(ctx, pin, 'rgba(240,237,230,.32)', 1.4);
+  strokePts(ctx, pout, C.gold, 2);
+  // GR fill from the ceiling down to the line
+  ctx.fillStyle = C.grFill; ctx.beginPath(); ctx.moveTo(r.x, r.y); pgr.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(r.x + W, r.y); ctx.closePath(); ctx.fill();
+  strokePts(ctx, pgr, C.grLine, 2);
+  ctx.fillStyle = C.label;
+  for (let d = 6; d < grMax; d += 6) { const y = gy(d); ctx.fillText('−' + d, r.x + r.w - fs * 2.6, y + 4); }
+  ctx.fillText('GAIN REDUCTION', r.x + 8, r.y + fs + 6);
+  return { pgr };
+}
+
+// ---------- HERO ----------
+(() => {
+  const cv = document.getElementById('hero'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = { T: -16, R: 3, W: 6, atk: 8, rel: 120, auto: true, voice: 1, range: -12, blend: .45, relief: .4, crest: 12, rmsMs: 10, hold: 0 };
+  const src = makeSource(3), st = makeComp(), rb = ring(FS * 4);
+  for (let i = 0; i < FS * 4; i++) { const L = src(); push(rb, L, compStep(st, L, P)); }
+  const el = id => document.getElementById(id);
+  let acc = 0, lastTxt = -1, dotIn = -60, dotGr = 0;
+  const tr = { x: 0, y: 0, w: 380, h: H }, hr = { x: 392, y: 0, w: W - 392, h: H };
+  loop(cv, (t, dt) => {
+    acc += dt * FS;
+    let lastL = -90, lastG = 0;
+    while (acc >= 1) { const L = src(), g = compStep(st, L, P); push(rb, L, g); lastL = st.det; lastG = g; acc -= 1; }
+    if (lastL > -89) { dotIn += (lastL - dotIn) * .35; dotGr += (lastG - dotGr) * .35; }
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    drawTransfer(ctx, tr, P, { inDb: dotIn, gr: dotGr }, 15);
+    drawHistory(ctx, hr, rb, { lvlTop: H * .38, lvlH: H * .6, grMax: 18, fs: 15 });
+    if (t - lastTxt > .12 || dt === 0) {
+      lastTxt = t;
+      el('h-gr').textContent = fmtGr(dotGr);
+      el('h-rel').textContent = Math.round(st.relMs) + ' ms';
+      el('h-ease').textContent = Math.round(P.relief * st.tr * 100) + ' %';
+    }
+  });
+})();
+
+// ---------- control builder ----------
+function sliders(host, defs, onChange) {
+  const vals = {};
+  defs.forEach(d => {
+    vals[d.id] = d.v;
+    const w = document.createElement('div'); w.className = 'ctrl' + (d.cls ? ' ' + d.cls : '');
+    const id = 'c-' + d.id;
+    w.innerHTML = `<label for="${id}">${d.name}<output id="${id}-o"></output></label><input type="range" id="${id}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.v}">`;
+    host.appendChild(w);
+    const inp = w.querySelector('input'), out = w.querySelector('output');
+    const upd = () => { vals[d.id] = +inp.value; out.textContent = d.fmt(vals[d.id]); };
+    inp.addEventListener('input', () => { upd(); onChange(); });
+    upd();
+  });
+  return vals;
+}
+function segGroup(attr, onPick, toggle) {
+  const bs = document.querySelectorAll(`[${attr}]`);
+  bs.forEach(b => b.addEventListener('click', () => {
+    if (toggle) { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); onPick(on); return; }
+    bs.forEach(o => o.setAttribute('aria-pressed', String(o === b))); onPick(+b.getAttribute(attr));
+  }));
+}
+// knob ranges as the plug-in's NormalisableRanges (slider 0..1000 -> value)
+const RATIO = { f: n => JUCEskew(n / 1000, 1, 100, .4), i: v => Math.round(JUCEinv(v, 1, 100, .4) * 1000) };
+const ATK = { f: n => JUCEskew(n / 1000, .1, 200, .4), i: v => Math.round(JUCEinv(v, .1, 200, .4) * 1000) };
+const REL = { f: n => JUCEskew(n / 1000, 5, 1000, .4), i: v => Math.round(JUCEinv(v, 5, 1000, .4) * 1000) };
+const HOLD = { f: n => JUCEskew(n / 1000, 0, 500, .5), i: v => Math.round(JUCEinv(v, 0, 500, .5) * 1000) };
+const CREST = { f: n => JUCEskew(n / 1000, 3, 30, .6), i: v => Math.round(JUCEinv(v, 3, 30, .6) * 1000) };
+const fmtRatio = v => v >= 99.5 ? '∞:1' : v >= 10 ? Math.round(v) + ':1' : v.toFixed(1) + ':1';
+const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms' : Math.round(v) + ' ms';
+
+// ---------- DYNAMICS LAB ----------
+(() => {
+  const tc = document.getElementById('dyntime'), tx = tc.getContext('2d');
+  const cc = document.getElementById('dyncurve'), cx = cc.getContext('2d');
+  let kind = 0, voice = 0, auto = false, src = makeSource(0), st = makeComp();
+  const V = sliders(document.getElementById('dynctrls'), [
+    { id: 'thr', name: 'THRESH', min: -60, max: 0, step: .5, v: -20, fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'ratio', name: 'RATIO', min: 0, max: 1000, step: 1, v: RATIO.i(3), fmt: v => fmtRatio(RATIO.f(v)) },
+    { id: 'knee', name: 'KNEE', min: 0, max: 24, step: .5, v: 6, fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'atk', name: 'ATTACK', min: 0, max: 1000, step: 1, v: ATK.i(10), fmt: v => fmtMs(ATK.f(v)) },
+    { id: 'rel', name: 'RELEASE', min: 0, max: 1000, step: 1, v: REL.i(120), fmt: v => fmtMs(REL.f(v)) },
+    { id: 'range', name: 'RANGE', min: -60, max: 0, step: .5, v: -12, cls: 'gr', fmt: v => v <= -59.5 ? 'Off' : v.toFixed(1) + ' dB' }
+  ], () => { mn = 0; });
+  const P = () => ({ T: V.thr, R: RATIO.f(V.ratio), W: V.knee, atk: ATK.f(V.atk), rel: REL.f(V.rel), auto, voice, range: V.range, blend: .45, rmsMs: 10 });
+  segGroup('data-src', v => { kind = v; src = makeSource(v); mn = 0; });
+  segGroup('data-vc', v => { voice = v; mn = 0; });
+  segGroup('data-ar', on => { auto = on; mn = 0; }, true);
+  const rb = ring(FS * 4);
+  { const p = P(); for (let i = 0; i < FS * 4; i++) { const L = src(); push(rb, L, compStep(st, L, p)); } }
+  const el = id => document.getElementById(id);
+  let acc = 0, lastTxt = -1, mn = 0, dotIn = -60, dotGr = 0;
+  loop(tc, (t, dt) => {
+    const p = P();
+    acc += dt * FS;
+    while (acc >= 1) { const L = src(), g = compStep(st, L, p); push(rb, L, g); mn = Math.max(mn, g); dotIn += (st.det - dotIn) * .02; dotGr += (g - dotGr) * .02; acc -= 1; }
+    drawHistory(tx, { x: 0, y: 0, w: tc.width, h: tc.height }, rb, { lvlTop: tc.height * .36, lvlH: tc.height * .6, grMax: 24, fs: 14, thr: p.T });
+    drawTransfer(cx, { x: 0, y: 0, w: cc.width, h: cc.height }, p, { inDb: dotIn, gr: dotGr }, 14);
+    if (t - lastTxt > .1 || dt === 0) {
+      lastTxt = t;
+      el('d-now').textContent = fmtGr(dotGr);
+      el('d-min').textContent = fmtGr(mn);
+      el('d-rel').textContent = Math.round(st.relMs) + ' ms' + (auto || VOICE[voice].opt ? ' · AUTO' : '');
+      el('d-det').textContent = st.det.toFixed(1) + ' dB';
+      const cap = p.range <= -59.5 ? 1e9 : -p.range;
+      el('d-ag').textContent = fmtDb(Math.min(-gfl(0, p.T, p.R, p.W), cap) * .5);
+    }
+  });
+})();
+
+// ---------- RELIEF / CREST LAB ----------
+(() => {
+  const cv = document.getElementById('trans'), ctx = cv.getContext('2d');
+  let kind = 1, src = makeSource(1);
+  const V = sliders(document.getElementById('transctrls'), [
+    { id: 'relief', name: 'RELIEF', min: 0, max: 100, step: 1, v: 60, cls: 'gr', fmt: v => v < .5 ? 'Off' : v + ' %' },
+    { id: 'crest', name: 'CREST', min: 0, max: 1000, step: 1, v: CREST.i(9), fmt: v => { const c = CREST.f(v); return c >= 29.5 ? 'Off' : '+' + c.toFixed(1) + ' dB'; } },
+    { id: 'blend', name: 'DETECT', min: 0, max: 100, step: 1, v: 45, fmt: v => v < .5 ? 'Peak' : v > 99.5 ? 'RMS' : v + '% RMS' },
+    { id: 'la', name: 'LOOKAHEAD', min: 0, max: 3.5, step: .05, v: 1, fmt: v => v.toFixed(2) + ' ms' },
+    { id: 'hold', name: 'HOLD', min: 0, max: 1000, step: 1, v: 0, fmt: v => { const h = HOLD.f(v); return h < .5 ? 'Off' : Math.round(h) + ' ms'; } }
+  ], () => {});
+  segGroup('data-tsrc', v => { kind = v === 0 ? 1 : 0; src = makeSource(kind); });
+  const base = { T: -24, R: 6, W: 6, atk: 2, rel: 120, auto: false, voice: 0, range: -60, rmsMs: 10 };
+  const N = Math.round(FS * 1.5), rb = ring(N), rbPlain = ring(N), sA = makeComp(), sB = makeComp();
+  const el = id => document.getElementById(id);
+  let acc = 0, lastTxt = -1;
+  loop(cv, (t, dt) => {
+    const p = Object.assign({}, base, { relief: V.relief / 100, crest: CREST.f(V.crest), blend: V.blend / 100, hold: HOLD.f(V.hold) });
+    const plain = Object.assign({}, base, { relief: 0, crest: 30, blend: V.blend / 100, hold: HOLD.f(V.hold) });
+    acc += dt * FS * .5;   // half speed: 1.5 s of program fills the panel in 3 s
+    while (acc >= 1) { const L = src(); const g = compStep(sA, L, p); push(rb, L, g, sA.crestGr); push(rbPlain, L, compStep(sB, L, plain)); acc -= 1; }
+    const Wd = cv.width, Hd = cv.height, la = Math.round(V.la / DT);
+    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, Wd, Hd);
+    // level panel (top) and GR panel (bottom)
+    const top = { y: 20, h: 250 }, gp = { y: 300, h: 200 }, grMax = 24, fs = 14;
+    const ly = d => top.y + (0 - clamp(d, -48, 0)) / 48 * top.h, gy = g => gp.y + clamp(g, 0, grMax) / grMax * gp.h;
+    ctx.font = `${fs}px ${MONO}`;
+    for (const d of [0, -12, -24, -36, -48]) { const y = Math.round(ly(d)) + .5; ctx.strokeStyle = C.grid; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Wd, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d + ' dB', 6, y - 4); }
+    const yT = ly(base.T); ctx.setLineDash([6, 6]); ctx.strokeStyle = 'rgba(240,237,230,.4)'; ctx.beginPath(); ctx.moveTo(0, yT); ctx.lineTo(Wd, yT); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(240,237,230,.6)'; ctx.fillText('THRESHOLD', Wd - 104, yT - 6);
+    for (let d = 0; d <= grMax; d += 6) { const y = Math.round(gy(d)) + .5; ctx.strokeStyle = d === 0 ? '#1d2230' : C.grid; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Wd, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d ? '−' + d : 'GR 0', 6, y + (d ? -4 : 16)); }
+    // per-pixel: output pairs input x[m] with the gain written LA steps later (gain leads by lookahead)
+    const pin = [], pout = [], pgA = [], pgB = [], pcr = [];
+    let pIn = -120, pOut = -120, hitGr = 0, bedSum = 0, bedN = 0, crMax = 0;
+    const per = (N - la) / Wd;
+    for (let px = 0; px < Wd; px++) {
+      let mi = -120, mo = -120, gA = 0, gB = 0, cr = 0;
+      const i0 = Math.floor(px * per), i1 = Math.max(i0 + 1, Math.floor((px + 1) * per));
+      for (let i = i0; i < i1; i++) {
+        const k = (rb.head + i) % N, kg = (rb.head + i + la) % N;
+        const vin = rb.inp[k], g = rb.gr[kg], gp_ = rbPlain.gr[k];
+        mi = Math.max(mi, vin); mo = Math.max(mo, vin - g); gA = Math.max(gA, g); gB = Math.max(gB, gp_); cr = Math.max(cr, rb.aux[kg]);
+        if (vin > base.T + 6) hitGr = Math.max(hitGr, g); else if (vin > -60) { bedSum += g; bedN++; }
+      }
+      pin.push([px, ly(mi)]); pout.push([px, ly(mo)]); pgA.push([px, gy(gA)]); pgB.push([px, gy(gB)]); pcr.push([px, gy(cr)]);
+      pIn = Math.max(pIn, mi); pOut = Math.max(pOut, mo); crMax = Math.max(crMax, cr);
+    }
+    strokePts(ctx, pin, 'rgba(240,237,230,.32)', 1.4);
+    strokePts(ctx, pout, C.gold, 2);
+    ctx.fillStyle = C.grFill; ctx.beginPath(); ctx.moveTo(0, gp.y); pgA.forEach(q => ctx.lineTo(q[0], q[1])); ctx.lineTo(Wd, gp.y); ctx.closePath(); ctx.fill();
+    strokePts(ctx, pgA, C.grLine, 2);
+    if (crMax > .05) strokePts(ctx, pcr, 'rgba(162,180,196,.85)', 1.4);
+    ctx.setLineDash([5, 5]); strokePts(ctx, pgB, 'rgba(240,237,230,.55)', 1.4); ctx.setLineDash([]);
+    if (t - lastTxt > .15 || dt === 0) {
+      lastTxt = t;
+      el('t-pin').textContent = pIn.toFixed(1) + ' dBFS';
+      el('t-pout').textContent = pOut.toFixed(1) + ' dBFS';
+      el('t-hit').textContent = fmtGr(hitGr);
+      el('t-bed').textContent = fmtGr(bedN ? bedSum / bedN : 0);
+      el('t-crest').textContent = CREST.f(V.crest) >= 29.5 ? 'OFF' : crMax > .05 ? fmtGr(crMax) : 'IDLE';
+    }
+  });
+})();
+
+// ---------- CHARACTER LAB (EMBER) ----------
+(() => {
+  const g = document.getElementById('chgraph'), gx = g.getContext('2d');
+  const w = document.getElementById('chwave'), wx = w.getContext('2d');
+  // Compressor::setCharacter voicing per type: bias, kMax, taper, bodyMax (dB), toneHz
+  const TY = [{ b: .40, k: 1.5, t: 1.4, body: 5, tone: 6000 }, { b: 0, k: 1.7, t: 1.4, body: 2.5, tone: 9000 }, { b: .05, k: 2.6, t: 1.2, body: 0, tone: 14000 }];
+  let type = 0;
+  const fPos = v => 40 * Math.pow(125, v / 1000), fInv = f => Math.round(Math.log(f / 40) / Math.log(125) * 1000);
+  const V = sliders(document.getElementById('chctrls'), [
+    { id: 'drv', name: 'DRIVE', min: 0, max: 100, step: 1, v: 60, cls: 'heat', fmt: v => v < .5 ? 'Off' : v + '%' },
+    { id: 'cf', name: 'FREQ', min: 0, max: 1000, step: 1, v: fInv(110), fmt: v => fmtHz(fPos(v)) },
+    { id: 'lvl', name: 'LEVEL', min: -36, max: 0, step: .5, v: -9, fmt: v => v.toFixed(1) + ' dBFS' }
+  ], () => draw());
+  segGroup('data-ct', v => { type = v; draw(); });
+  const fTanh = (x, k, b) => { const t0 = Math.tanh(k * b), s = 1 / (k * (1 - t0 * t0)); return (Math.tanh(k * (x + b)) - t0) * s; };
+  const fDiode = (x, k) => { const kd = 1.25 * k, kn = .75 * k; return x >= 0 ? -Math.expm1(-kd * x) / kd : Math.expm1(kn * x) / kn; };
+  // analog magnitudes for the linear voicing stages (RBJ low shelf 150 Hz Q .707, RBJ bell, one-pole tone LP)
+  function biq(n2, n1, n0, d2, d1, d0, wn) { const nr = n0 - n2 * wn * wn, ni = n1 * wn, dr = d0 - d2 * wn * wn, di = d1 * wn; return Math.sqrt((nr * nr + ni * ni) / (dr * dr + di * di)); }
+  const lshelf = (f, f0, g) => { const A = Math.pow(10, g / 40), r = Math.sqrt(A) / .7071; return A * biq(1, r, A, A, r, 1, f / f0); };
+  const bellM = (f, f0, g) => { const A = Math.pow(10, g / 40); return biq(1, A / .7071, 1, 1, 1 / (A * .7071), 1, f / f0); };
+  const NP = 512;
+  function model() {
+    const T = TY[type], d = V.drv / 100, k = T.k * Math.pow(d, T.t), f0 = fPos(V.cf), A = db2lin(V.lvl);
+    const tone = 16000 * Math.pow(T.tone / 16000, d), body = T.body * d;
+    // makeup gTarget: half-power equal-fundamental at A_ref 0.25, clamped 1..1.334
+    let gT = 1;
+    if (k >= 1e-3) { let w1 = 0; for (let j = 0; j < 32; j++) { const th = 2 * Math.PI * (j + .5) / 32, sn = Math.sin(th); w1 += (type === 1 ? fDiode(.25 * sn, k) : fTanh(.25 * sn, k, T.b)) * sn; } w1 *= 2 / 32; gT = clamp(Math.sqrt(.25 / Math.max(w1, 1e-9)), 1, 1.334); }
+    const pre = body ? lshelf(f0, 150, body) : 1, Ain = A * pre;
+    const dry = new Float32Array(NP), y = new Float32Array(NP);
+    let mean = 0;
+    for (let n = 0; n < NP; n++) { const x = Ain * Math.sin(2 * Math.PI * n / NP); dry[n] = A * Math.sin(2 * Math.PI * n / NP); y[n] = k >= 1e-3 ? (type === 1 ? fDiode(x, k) : fTanh(x, k, T.b)) : x; mean += y[n]; }
+    mean /= NP;
+    // harmonics of the shaped cycle, then the post stages per harmonic: de-emphasis (-B/2), air, tone LP, makeup
+    const h = [], ph = [];
+    for (let q = 1; q <= 7; q++) {
+      let re = 0, im = 0; for (let n = 0; n < NP; n++) { const a = 2 * Math.PI * q * n / NP; re += (y[n] - mean) * Math.cos(a); im -= (y[n] - mean) * Math.sin(a); }
+      const fq = f0 * q;
+      let m = 2 * Math.hypot(re, im) / NP;
+      if (k >= 1e-3) {
+        if (body && type !== 2) m *= lshelf(fq, 150, -body / 2);
+        if (type === 2) m *= bellM(fq, 12000, 1.8 * d);
+        m *= 1 / Math.sqrt(1 + Math.pow(fq / tone, 2));
+        m *= gT;
+      }
+      h.push(fq < 24000 ? m : 0); ph.push(Math.atan2(im, re));
+    }
+    const out = new Float32Array(NP), res = new Float32Array(NP);
+    for (let n = 0; n < NP; n++) { let s = 0; for (let q = 1; q <= 7; q++) s += h[q - 1] * Math.cos(2 * Math.PI * q * n / NP + ph[q - 1]); out[n] = s; res[n] = s - h[0] * Math.cos(2 * Math.PI * n / NP + ph[0]); }
+    return { A, f0, h, dry, out, res, gT, tone, k, d };
+  }
+  const FMIN = 20, FMAX = 20000, LMIN = Math.log10(FMIN), LR = Math.log10(FMAX) - LMIN;
+  const fx = (f, wd) => (Math.log10(f) - LMIN) / LR * wd;
+  const SPMIN = -100, SPMAX = 6;
+  function draw() {
+    const m = model(), Wd = g.width, Hd = g.height, sy = d => (SPMAX - clamp(d, SPMIN, SPMAX)) / (SPMAX - SPMIN) * Hd;
+    gx.fillStyle = C.bg; gx.fillRect(0, 0, Wd, Hd);
+    gx.strokeStyle = C.grid; gx.lineWidth = 1; gx.font = `15px ${MONO}`; gx.fillStyle = C.label;
+    for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f, Wd)) + .5; gx.beginPath(); gx.moveTo(x, 0); gx.lineTo(x, Hd); gx.stroke(); gx.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, Hd - 8); }
+    for (const d of [0, -24, -48, -72]) { const y = Math.round(sy(d)) + .5; gx.beginPath(); gx.moveTo(0, y); gx.lineTo(Wd, y); gx.stroke(); gx.fillText(d + ' dBFS', Wd - 98, y + 16); }
+    // tone LP and body shelf, drawn as faint response lines along the top
+    if (m.k >= 1e-3) {
+      const pts = []; for (let px = 0; px <= Wd; px += 3) { const f = Math.pow(10, LMIN + px / Wd * LR); pts.push([px, 40 - 6 * 20 * Math.log10(1 / Math.sqrt(1 + Math.pow(f / m.tone, 2)))]); }
+      strokePts(gx, pts, 'rgba(224,154,52,.55)', 1.4);
+      gx.fillStyle = 'rgba(224,154,52,.8)'; gx.fillText('TONE ' + fmtHz(m.tone), fx(Math.min(m.tone, 9000), Wd) - 60, 28);
+    }
+    const line = (f, d, col, lab, wdt) => {
+      const x = fx(f, Wd), y = sy(d);
+      const gr = gx.createLinearGradient(0, Hd, 0, y); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, col);
+      gx.strokeStyle = gr; gx.lineWidth = wdt || 3; gx.beginPath(); gx.moveTo(x, Hd); gx.lineTo(x, y); gx.stroke();
+      gx.fillStyle = col; gx.beginPath(); gx.arc(x, y, 4.5, 0, 7); gx.fill();
+      gx.fillStyle = 'rgba(240,237,230,.6)'; gx.font = `13px ${MONO}`; gx.fillText(lab, x + 6, y - 7);
+    };
+    const fundDb = lin2db(m.h[0]);
+    line(m.f0, lin2db(m.A), 'rgba(240,237,230,.3)', '', 2);
+    line(m.f0, fundDb, C.cream, 'F', 3);
+    for (let q = 2; q <= 7; q++) { const f = m.f0 * q; if (f > 20000 || m.h[q - 1] <= 0) continue; const dB = lin2db(m.h[q - 1]); if (dB < SPMIN) continue; line(f, dB, q % 2 ? C.odd : C.even, 'H' + q); }
+    // wave panel
+    const W2 = w.width; wx.fillStyle = C.bg; wx.fillRect(0, 0, W2, w.height);
+    const top = { x: 30, y: 30, w: W2 - 60, h: 300 }, mid = top.y + top.h / 2;
+    wx.strokeStyle = C.grid; wx.lineWidth = 1; wx.beginPath(); wx.moveTo(top.x, mid + .5); wx.lineTo(top.x + top.w, mid + .5); wx.stroke();
+    const sc = (top.h / 2 - 10) / Math.max(1.15 * m.A * Math.max(1, m.gT), .02);
+    const wave = (arr, col, lw, gain) => { wx.strokeStyle = col; wx.lineWidth = lw; wx.beginPath(); for (let n = 0; n <= NP; n++) { const x = top.x + n / NP * top.w, yy = mid - arr[n % NP] * sc * (gain || 1); n ? wx.lineTo(x, yy) : wx.moveTo(x, yy); } wx.stroke(); };
+    wave(m.dry, 'rgba(240,237,230,.28)', 2);
+    wave(m.res, 'rgba(224,154,52,.9)', 2, 4);
+    wave(m.out, C.cream, 3);
+    wx.font = `14px ${MONO}`; wx.fillStyle = C.text3; wx.fillText('ONE CYCLE · ADDED HARMONICS ×4 IN AMBER', top.x, top.y - 10);
+    const bt = { x: 30, y: 390, w: W2 - 60, h: 190 };
+    wx.fillStyle = C.text3; wx.fillText('dB BELOW THE FUNDAMENTAL', bt.x, bt.y - 14);
+    for (const d of [0, -20, -40, -60, -80]) { const y = bt.y + (-d) / 80 * bt.h; wx.strokeStyle = C.grid; wx.beginPath(); wx.moveTo(bt.x + 44, y + .5); wx.lineTo(bt.x + bt.w, y + .5); wx.stroke(); wx.fillStyle = C.label; wx.fillText(String(d), bt.x, y + 5); }
+    const bw = (bt.w - 60) / 6;
+    let ev = 0, od = 0, hs = 0;
+    for (let q = 2; q <= 7; q++) {
+      const rel = m.h[q - 1] > 0 ? lin2db(m.h[q - 1] / m.h[0]) : -200, hgt = clamp((80 + rel) / 80, 0, 1) * bt.h, x = bt.x + 56 + (q - 2) * bw;
+      wx.fillStyle = q % 2 ? C.odd : C.even; wx.globalAlpha = .85; wx.fillRect(x, bt.y + bt.h - hgt, bw - 18, hgt); wx.globalAlpha = 1;
+      wx.fillStyle = C.cream; wx.fillText('H' + q, x, bt.y + bt.h + 22);
+      const p2 = m.h[q - 1] * m.h[q - 1]; hs += p2; if (q % 2) od += p2; else ev += p2;
+    }
+    const el = id => document.getElementById(id), off = m.k < 1e-3;
+    const rel = q => { const r = lin2db(m.h[q - 1] / m.h[0]); return off || r < -120 ? '--' : r.toFixed(1) + ' dB'; };
+    el('c-h2').textContent = rel(2); el('c-h3').textContent = rel(3);
+    const thd = Math.sqrt(hs) / m.h[0];
+    el('c-thd').textContent = off ? 'NULL' : (thd * 100).toFixed(thd < .1 ? 2 : 1) + ' %';
+    el('c-eo').textContent = off ? '--' : Math.round(100 * ev / (ev + od)) + ' / ' + Math.round(100 * od / (ev + od));
+    el('c-mk').textContent = off ? '0.0 dB' : fmtDb(lin2db(m.gT));
+    el('c-tone').textContent = off ? 'OPEN' : fmtHz(m.tone);
+  }
+  draw();
+})();
+})();
 </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

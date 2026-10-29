@@ -1,250 +1,971 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BARYON Product Page</title>
+<meta name="description" content="BARYON is a subharmonic generator for the low end: a three-band tracked divider and a DFC-style pitch-tracking synthesizer that finds the fundamental, shaped by punch, edge saturation, an LFO, dynamic EQ, ANANKE compression, a gate and a true look-ahead limiter. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-  <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as pneuma.html, cinder.html and gire.html. Single dark look by choice: THETA marketing
+   pages live on the void theme. BARYON's own colour enters only inside the wells, where the page draws
+   what the plug-in draws: its RETRO / CRT skin, two phosphors. GREEN (P1) is the instrument talking about
+   itself (frames, axes, labels); AMBER (P3) is measured signal only (palette in Source/Common/Theme/Theme.h). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --crt:#070a07; --crt-card:#0b0f0a; --crt-bdr:#145c30; --crt-div:#16301f;
+  --grn:#3bf87a; --grn-hot:#9dffbe; --grn-mut:#23a552; --grn-dim:#136b33;
+  --amb:#ffb000; --amb-hot:#ffd45e; --amb-mut:#c08400; --amb-dim:#6d4b00; --alert:#ff5a3c;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(40px,5vw,66px);letter-spacing:.3em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+
+/* the CRT well: BARYON's RETRO screen, green chrome, amber data, scanlines over the glass */
+.well{border:1px solid var(--crt-bdr);border-radius:4px;background:var(--crt);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.crt{position:relative}
+.crt::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(120% 90% at 50% 50%,transparent 60%,rgba(0,0,0,.45))}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--grn-mut)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--crt-div);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--grn-mut)}
+.well-foot b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--amb-hot)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's pills: green chrome, amber on the active cell */
+.seg{display:inline-flex;border:1px solid var(--crt-bdr);border-radius:5px;background:var(--crt-card);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--grn-mut);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--amb);color:#0b0f0a;font-weight:500}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:#030506;overflow-x:auto}
+.path svg{display:block;width:100%;min-width:760px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#1a1406;stroke:#7a5a10;stroke-width:1.2}
+.path .grp{fill:#07100a;stroke:#1d5c33;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.sub{stroke:var(--amb);animation-duration:.9s}
+.path .alt{fill:none;stroke:#3a3846;stroke-width:1.2;stroke-dasharray:4 5}
+.path .sum{fill:#0c0c10;stroke:var(--gold);stroke-width:1.2}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab: a CRT bench */
+.lab{border:1px solid var(--crt-bdr);border-radius:10px;background:var(--crt);display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--crt-div);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--grn-mut)}
+.lab-top .grp{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views canvas+canvas{border-left:1px solid var(--crt-div)}
+.lab-views.wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--crt-div);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--grn-mut)}
+.readouts b{color:var(--amb-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.readouts b.bad{color:var(--alert)} .readouts b.ok{color:var(--grn-hot)}
+.ctrls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--crt-div)}
+.ctrls.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--grn)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--amb-hot);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--amb)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;color:var(--gold-hot)}
+.card .nm span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em;text-align:right}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.face-top{margin-block:0 var(--s6)}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:8px}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(255,176,0,.07),transparent 55%),radial-gradient(120% 140% at 0% 100%,rgba(59,248,122,.06),transparent 55%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views,.lab-views.wide{grid-template-columns:minmax(0,1fr)}
+  .lab-views canvas+canvas{border-left:0;border-top:1px solid var(--crt-div)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.four{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+.tabshot{margin:var(--s6) 0 0 0;display:grid;gap:var(--s5)} .tabshot img{display:block;width:100%;height:auto;border-radius:8px} .tabshot.trio{grid-template-columns:repeat(3,minmax(0,1fr))} @media (max-width:800px){.tabshot.trio{grid-template-columns:1fr}}
+[data-launch][hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">BARYON</h1>
-  </header>
+<div class="wrap">
 
-  <div style="max-width:1000px;margin:0 auto 50px auto"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-hero" src="assets/baryon/sub_3band.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="BARYON SUB, three bands"></image-slot></div></div>
-
-  <section style="max-width:820px;margin:0 auto 70px auto">
-    <p style="font-weight:300;font-size:16px;color:#d8d3c8;line-height:1.7;margin:0 0 20px 0;max-width:820px;text-wrap:pretty"><span style="color:#f0ede6;font-weight:400">Add mass.</span> BARYON generates, shapes and animates the sub-bass your source only hints at.</p>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;max-width:820px;text-wrap:pretty">It listens to the bass you have and generates the octave you can feel: three independent bands of pitch-tracked subharmonics, shaped by an analog-modelled saturation stage, a compressor, a dual dynamic EQ, a beat-locked LFO, and a gated, limited output section. A complete low-end instrument in one window, on DSP that is measured, unit-tested and torture-certified.</p>
-  </section>
-
-  <section style="max-width:600px;margin:0 auto 100px auto;text-align:center">
-    <div style="border:1px solid #3A3534;padding:40px">
-      <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 auto 30px auto;max-width:820px;text-wrap:pretty">BARYON is in low-frequency calibration. Leave your address and we will send one notice the day it ships.</p>
-      <a href="mailto:info@theta.audio?subject=BARYON%20updates" data-notify="BARYON" style="display:inline-block;border:1px solid #c8a86b;color:#c8a86b;padding:18px 40px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;transition:0.4s;border-radius:4px;white-space:nowrap;width:auto;max-width:none" style-hover="background:#c8a86b;color:#06080c">Notify me at launch</a>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Subharmonic generator · Low-end instrument</div>
+    <h1 class="wordmark">BARYON</h1>
+    <div class="lede">
+      <p>BARYON listens to the bass you have and plays the bass underneath it. A three-band generator tracks the low end and divides it down an octave, a third or a fourth. A second engine, modelled on the NEVE DFC console's synthesizer, finds the true fundamental of a bass line and plays any interval from unison to two octaves below it.</p>
+      <p>Around the generators sit the tools that make new low end sit in a mix: PUNCH and TONE, an EDGE saturator for the sub alone, a beat-locked LFO, dynamic EQ before and after, ANANKE compression, a gate and a true look-ahead limiter.</p>
     </div>
-  </section>
-
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>SUB · THE GENERATOR<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">The heart of the plugin: a three-band subharmonic generator with three generation philosophies, selectable per instance.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-dfc" src="assets/baryon/dfc.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="SUB, generation modes"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">DIVIDE</b>&nbsp; The classic divider approach. The source band is squared and fed to a flip-flop that toggles on every rising zero crossing.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">SYNTH</b>&nbsp; Waveform modelling. BARYON estimates the dominant pitch of each band from its zero-crossing period and runs a clean, continuous-phase sine.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">HYBRID</b>&nbsp; The grit of the divider blended with the body of the sine.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Per-band cells</b>&nbsp; Each band gets its own colour-coded cell: a hero LEVEL knob, ON and SOLO pills, LOW/HIGH crossover controls, and a per-band RATIO selector.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>LFO · MOTION FOR THE LOW END<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">A dedicated modulator that breathes life into the generated sub: tremolo applied to the sub only, never your dry signal.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-lfo" src="assets/baryon/lfo.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="LFO"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Five waveforms</b>&nbsp; SINE, TRI, SAW, SQUARE and S&amp;H. Rate runs free or SYNC to host tempo.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Position RETRIG</b>&nbsp; In sync mode the LFO&rsquo;s phase is derived from the host&rsquo;s song position every block, staying beat-locked through loops and relocates.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">PHASE (0 to 180&deg;)</b>&nbsp; Offsets the right channel&rsquo;s LFO for widening motion no static tool can produce.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">The display</b>&nbsp; Shows the selected shape over a full-scale ghost, with a gold cursor riding the curve at the engine&rsquo;s published phase.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>CHARACTER · PUNCH, EDGE, COLOUR<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">Two stages of harmonic identity, laid out on shared columns so the eye never hunts.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-character" src="assets/baryon/character.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="CHARACTER"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">PUNCH / EDGE</b>&nbsp; Shapes the generated sub itself: PUNCH carves a tight, kick-friendly knee; TONE rolls the top; DRIVE feeds a six-mode EDGE saturator.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Colour stage</b>&nbsp; A hero DRIVE pushes the compressor&rsquo;s colour stage, with switchable oversampling (OFF / 2&times; / 4&times;) to keep aggressive settings alias-free.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Headroom</b>&nbsp; DC blockers sit at the end of the nonlinear chain, draining offset in under a second while leaving 20 Hz programme within 0.095 dB.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>DYNAMICS · ANANKE COMPRESSION<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">ANANKE, the compression engine from the ROGERIAN suite, configured as a focused, single-purpose processor.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-dynamics" src="assets/baryon/dynamics.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="DYNAMICS"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">TRANSFER display</b>&nbsp; Draws the actual gain law on a 10 dB grid: threshold marker, the soft-knee region, and the &infin;:1 hard-limit curve.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Gain-reduction history</b>&nbsp; Hangs from the ceiling: the shaded area is the gain removed, sampled from the audio thread every 2.5 ms.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Controls</b>&nbsp; THRESH, RATIO, KNEE, ATTACK, RELEASE, and RMS: the detector&rsquo;s averaging window from 1 to 50 ms.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>EQ · THE EDITING SURFACE<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">Two independent processors, EQ IN before the generator and EQ OUT after it, each with a 24 dB/oct high-pass and low-pass plus a dynamic bell with FREQ, GAIN, Q, THRESH and DYN range.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-eq" src="assets/baryon/eq.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="EQ"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Direct manipulation</b>&nbsp; Drag a node for frequency and gain, Cmd-drag for Q, Opt-drag to set the dynamic range.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Live bells</b>&nbsp; The dynamic bells animate with the music: a faint REACH line marks full configured travel and a haloed LIVE line rides the current position.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">LINK</b>&nbsp; Runs one detection path on the mono sum, so both channels&rsquo; bells always move identically.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 90px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>OUTPUT · METER, GATE, CEILING<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <p style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0 0 30px 0;max-width:820px;text-wrap:pretty">The final say. A post-limiter L/R meter spans the top: gold bars that turn amber past the limiter ceiling, and a peak readout in dB.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:0 0 34px 0"><div style="overflow:hidden;border-radius:2px"><image-slot id="baryon-output" src="assets/baryon/output.png?v=261013" fit="contain" style="width:100%;height:auto;aspect-ratio:2324/1410;display:block" shape="rect" placeholder="OUTPUT"></image-slot></div></div>
-    <ul style="font-weight:300;font-size:16px;color:#b9b6ae;line-height:1.7;margin:0;padding:0;list-style:none;max-width:820px">
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Gain staging</b>&nbsp; Compressor MAKEUP, PARALLEL, master DRY/WET and OUT TRIM.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Limiter</b>&nbsp; A stereo-linked, look-ahead brickwall: CEILING, LOOKAHEAD, RELEASE and a CLIP mode.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Gate</b>&nbsp; A fast fixed 0.3 ms attack preserves transients; HOLD stops chatter on decaying hits; RANGE sets how far closed it goes.</li>
-            <li style="margin-bottom:10px">· <b style="color:#DCCDBF;font-weight:700">Gate display</b>&nbsp; The THRESH knob wears the incoming level as a live ring, and the gate view beside it scrolls three seconds of history.</li>
-    </ul>
-  </section>
-  <section style="max-width:1000px;margin:0 auto 60px auto">
-    <div style="display:flex;align-items:center;gap:16px;margin:0 0 32px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase"><span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))"></span>TECHNICAL SPECIFICATIONS<span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)"></span></div>
-    <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">Type</span><span style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae">Three-band subharmonic generator with dynamic EQ, compressor, saturation, LFO, gate and look-ahead limiter</span></div>
-      <div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">Signal flow</span><span style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae">IN TRIM &rarr; input dynamic EQ &rarr; 3-band generator (+LFO) &rarr; mix &rarr; output dynamic EQ &rarr; compressor &rarr; saturation (up to 4&times; oversampled) &rarr; DC block &rarr; gate &rarr; look-ahead limiter &rarr; OUT TRIM</span></div>
-      <div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:30px;padding:16px 0;border-bottom:1px solid rgba(58,53,52,0.6)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">Latency</span><span style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae">Fully reported to the host (limiter look-ahead plus oversampling) and automatically compensated</span></div>
-      <div style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:30px;padding:16px 0"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">Formats</span><span style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae">VST3 · Audio Unit · Standalone</span></div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get BARYON</a>
+      <a class="btn ghost" href="#generator">Divide a note</a>
     </div>
-  </section>
-</main>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon &amp; Intel</span><span class="chip">Mono · Stereo</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>WATERFALL · 20 Hz – 1 kHz · LIVE</span><span>OUTPUT</span></div>
+      <div class="crt"><canvas id="hero" width="1040" height="640" aria-label="BARYON's waterfall display, drawn as the plug-in draws it: frequency runs left to right from 20 hertz to 1 kilohertz, time runs back into the screen. A bass line and kick run through it, and the sub BARYON generates raises the ridges at the far left, an octave under each note."></canvas></div>
+      <div class="well-foot"><span>NOTE <b id="h-note">-</b></span><span>SUB <b id="h-sub">-</b></span><span>ADDED <b id="h-add">-</b></span></div>
+    </div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #021 // BARYON v0.0.68 DSP V11</span>
-</footer>
+<section class="face-top" style="margin-top:var(--s6)">
+  <img src="assets/baryon/sub_3band_clean.png?v=261029" alt="The BARYON panel: the SUB module with its three band cells, the source-to-sub map, and the PUNCH and EDGE controls" width="2232" height="1318">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6)">
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A bass note's lowest partial is often weak, and on small speakers it is gone entirely. EQ cannot fix that, because a boost can only raise what is already there. A subharmonic generator <strong>makes new low end</strong>: it follows the pitch of what you play and synthesises a tone below it, so the bass gets weight it never had.</p>
+      <p>The hard part is following the pitch. Bass notes are rich in harmonics, and a strong second harmonic can fool a tracker into reading the note an octave high. BARYON gives you <strong>two generators</strong> that answer this in different ways, and you pick one per instance.</p>
+    </div>
+    <div class="prose">
+      <p>INPUT EQ first focuses what the generator hears. The <strong>3-BAND</strong> engine or the <strong>DFC</strong> engine then generates the sub, PUNCH and TONE shape it, <strong>EDGE</strong> saturates it, and SUB LEVEL, WIDTH and the LFO set how it moves. The sub joins the focused source, MIX blends that against your untouched input, and the finishing chain handles the rest.</p>
+      <p>After the mix come <strong>OUTPUT EQ</strong>, the <strong>ANANKE</strong> compressor, master <strong>SAT</strong> with ROUND and IRON, a <strong>GATE</strong>, and a look-ahead <strong>LIMITER</strong>. Mono and stereo tracks both work, and BASS MONO keeps the generated sub in the centre.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 320" role="img" aria-label="BARYON's signal path. Top row: input, trim, input EQ, then the generator (the 3-band engine or the DFC engine), edge saturation, sub level, width and LFO, summed with the focused source. Bottom row: mix against the dry signal, output EQ, ANANKE compressor, saturation with round and iron, gate, look-ahead limiter, output trim, output.">
+      <text x="10" y="104">IN</text>
+      <path class="wire" d="M34 100 H52"/><path class="flow" d="M34 100 H52"/>
+      <rect class="box" x="52" y="76" width="78" height="48" rx="4"/><text class="lbl" x="91" y="97" text-anchor="middle">TRIM</text><text x="91" y="114" text-anchor="middle">±24 dB</text>
+      <path class="wire" d="M130 100 H156"/><path class="flow" d="M130 100 H156"/>
+      <rect class="box" x="156" y="70" width="124" height="60" rx="4"/><text class="lbl" x="218" y="93" text-anchor="middle">INPUT EQ</text><text x="218" y="112" text-anchor="middle">HPF · LPF · DYN</text>
+      <path class="wire" d="M280 100 H316"/><path class="flow" d="M280 100 H316"/>
+      <rect class="grp" x="316" y="44" width="262" height="112" rx="6"/>
+      <text class="lbl" x="330" y="62" style="fill:var(--grn)">GENERATOR · ONE OR THE OTHER</text>
+      <rect class="hot" x="330" y="72" width="234" height="36" rx="4"/><text class="lbl" x="344" y="95" style="fill:var(--amb)">3-BAND</text><text x="420" y="95">÷2 · ÷3 · ÷4</text>
+      <rect class="hot" x="330" y="112" width="234" height="36" rx="4"/><text class="lbl" x="344" y="135" style="fill:var(--amb)">DFC</text><text x="420" y="135">0 TO −24 ST</text>
+      <path class="wire" d="M578 100 H604"/><path class="flow sub" d="M578 100 H604"/>
+      <rect class="box" x="604" y="70" width="96" height="60" rx="4"/><text class="lbl" x="652" y="93" text-anchor="middle">PUNCH</text><text x="652" y="112" text-anchor="middle">TONE · EDGE</text>
+      <path class="wire" d="M700 100 H726"/><path class="flow sub" d="M700 100 H726"/>
+      <rect class="box" x="726" y="70" width="148" height="60" rx="4"/><text class="lbl" x="800" y="93" text-anchor="middle">SUB LEVEL</text><text x="800" y="112" text-anchor="middle">WIDTH · LFO</text>
+      <path class="wire" d="M874 100 H916"/><path class="flow sub" d="M874 100 H916"/>
+      <circle class="sum" cx="930" cy="100" r="14"/><text x="930" y="104" text-anchor="middle" style="fill:var(--gold);font-size:14px">+</text>
+      <path class="alt" d="M298 100 V26 H930 V86"/><text x="560" y="20" text-anchor="middle">FOCUSED SOURCE</text>
+      <path class="wire" d="M930 114 V196 H118 V232"/><path class="flow" d="M930 114 V196 H118 V232"/>
+      <path class="alt" d="M86 124 V232"/><text x="40" y="186">DRY</text>
+      <rect class="box" x="52" y="232" width="96" height="56" rx="4"/><text class="lbl" x="100" y="255" text-anchor="middle">MIX</text><text x="100" y="273" text-anchor="middle">DRY / WET</text>
+      <path class="wire" d="M148 260 H172"/><path class="flow" d="M148 260 H172"/>
+      <rect class="box" x="172" y="232" width="118" height="56" rx="4"/><text class="lbl" x="231" y="255" text-anchor="middle">OUTPUT EQ</text><text x="231" y="273" text-anchor="middle">HPF · LPF · DYN</text>
+      <path class="wire" d="M290 260 H314"/><path class="flow" d="M290 260 H314"/>
+      <rect class="box" x="314" y="232" width="110" height="56" rx="4"/><text class="lbl" x="369" y="255" text-anchor="middle">ANANKE</text><text x="369" y="273" text-anchor="middle">TRUE-RMS COMP</text>
+      <path class="wire" d="M424 260 H448"/><path class="flow" d="M424 260 H448"/>
+      <rect class="box" x="448" y="232" width="146" height="56" rx="4"/><text class="lbl" x="521" y="255" text-anchor="middle">SAT · ROUND</text><text x="521" y="273" text-anchor="middle">IRON · OS 2× / 4×</text>
+      <path class="wire" d="M594 260 H618"/><path class="flow" d="M594 260 H618"/>
+      <rect class="box" x="618" y="232" width="86" height="56" rx="4"/><text class="lbl" x="661" y="255" text-anchor="middle">GATE</text><text x="661" y="273" text-anchor="middle">dB GLIDE</text>
+      <path class="wire" d="M704 260 H728"/><path class="flow" d="M704 260 H728"/>
+      <rect class="box" x="728" y="232" width="118" height="56" rx="4"/><text class="lbl" x="787" y="255" text-anchor="middle">LIMITER</text><text x="787" y="273" text-anchor="middle">LOOK-AHEAD</text>
+      <path class="wire" d="M846 260 H870"/><path class="flow" d="M846 260 H870"/>
+      <rect class="box" x="870" y="232" width="96" height="56" rx="4"/><text class="lbl" x="918" y="255" text-anchor="middle">OUT TRIM</text><text x="918" y="273" text-anchor="middle">±24 dB</text>
+      <path class="wire" d="M966 260 H1000"/><path class="flow" d="M966 260 H1000"/>
+      <text x="1006" y="264">OUT</text>
+      <text x="726" y="168" style="fill:var(--text-3)">LFO: SUB OR POST (BEFORE THE LIMITER)</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>FOCUS</b><p>INPUT EQ's high-pass, low-pass and dynamic bell decide which part of the low end the generator listens to.</p></li>
+    <li><span class="num">2</span><b>TRACK</b><p>3-BAND follows each band's zero crossings. DFC measures the fundamental with a YIN detector.</p></li>
+    <li><span class="num">3</span><b>GENERATE</b><p>A tone below the note, locked to it. Its level follows the note, and the sub gate stops it droning on noise.</p></li>
+    <li><span class="num">4</span><b>SHAPE</b><p>PUNCH adds a resonant knee, TONE rolls off the top, EDGE adds harmonics to the sub alone.</p></li>
+    <li><span class="num">5</span><b>FINISH</b><p>Output EQ, compression, saturation, gate and a ceiling, then OUT TRIM. BYPASS stays time-aligned.</p></li>
+  </ol>
+</section>
+
+<!-- 3-BAND -->
+<div class="sh" id="generator">The classic generator</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>The 3-BAND engine works like the classic hardware boxes. Each band <strong>band-passes its own slice</strong> of the low end, between a LOW and a HIGH frequency you set, and watches that slice cross zero. Every rising crossing is one cycle of the note. Count them and you can divide.</p>
+      <p><strong>DIVIDE</strong> is the dbx divider: a flip-flop toggles on each crossing, so its square wave runs at exactly half the note. <strong>SYNTH</strong> plays a clean sine at the note divided by the band's RATIO (an octave, a third or a fourth), snapped to the crossings so it stays locked like the divider does. <strong>HYBRID</strong> blends the two: 55 % sine for body, 45 % square for grit.</p>
+    </div>
+    <div class="prose">
+      <p>The sub's level follows the band's own envelope, so it swells and dies with the note. A <strong>SUB GATE</strong> keeps it silent until the band is really playing, so noise and bleed never drone. When a new hit lands, the band resets its phase, so <strong>identical hits give identical subs</strong>. On a steady kick loop the difference between hit three and hit four measures 0.000000.</p>
+      <p>The narrow band is what keeps the lock. In the lab below, open the band's HIGH edge past the second harmonic and push H2 up: the crossings double, and the divider jumps up an octave. That is the problem the DFC engine was built to solve.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="grp">
+        <span class="seg" role="group" aria-label="Generation mode"><button type="button" data-gm="0" aria-pressed="false">DIVIDE</button><button type="button" data-gm="1" aria-pressed="true">SYNTH</button><button type="button" data-gm="2" aria-pressed="false">HYBRID</button></span>
+        <span class="seg" role="group" aria-label="Ratio"><button type="button" data-gr="2" aria-pressed="true">÷2</button><button type="button" data-gr="3" aria-pressed="false">÷3</button><button type="button" data-gr="4" aria-pressed="false">÷4</button></span>
+        <span class="seg" role="group" aria-label="Source"><button type="button" data-gs="0" aria-pressed="true">SUSTAINED</button><button type="button" data-gs="1" aria-pressed="false">PLUCKED</button></span>
+      </span>
+      <span>BAND 1 · SUB GATE −50 dB</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="genwave" width="1040" height="560" aria-label="The last quarter second: the band-passed source in green and the sub the band generates in amber."></canvas>
+      <canvas id="genspec" width="800" height="560" aria-label="The spectrum of the source in green and of the generated sub in amber, from 8 to 250 hertz, with the target frequency marked."></canvas>
+    </div>
+    <div class="readouts"><span>TRACKED<b id="g-tr">-</b></span><span>TARGET<b id="g-tg">-</b></span><span>SUB PEAK<b id="g-pk">-</b></span><span>STATUS<b id="g-st">-</b></span></div>
+    <div class="ctrls" id="genctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--grn)"></i>SOURCE</span><span><i style="background:var(--amb)"></i>GENERATED SUB</span><span><i style="background:var(--grn-dim)"></i>THE BAND</span><span>RUNS THE PLUG-IN'S SubBand CODE AT 48 kHz, PORTED LINE FOR LINE · BEFORE PUNCH, TONE AND EDGE · THE SOURCE IS SYNTHETIC</span></div>
+  <ul class="rows">
+    <li><b>THREE BANDS</b><span>Each band has its own LOW and HIGH edge (20 to 300 Hz), RATIO, LEVEL (0 to 200 %), ON and SOLO. The defaults split the low end at 52, 72, 112 and 160 Hz, with the top band off. Each band's knob glows with the sub that band is generating right now.</span></li>
+    <li><b>ANALOG VARIANCE</b><span>The three bands carry fixed, tiny differences in even-order curve and level, like three channels of a console. Each is inaudible alone; summed, they give depth instead of three clones.</span></li>
+    <li><b>PUNCH · TONE</b><span>PUNCH is a driven zero-delay resonant high-pass on the sub, 20 to 120 Hz, whose AMOUNT raises the resonance into a tight knee for kicks. TONE is a low-pass on the sub from 40 to 160 Hz.</span></li>
+    <li><b>WIDTH · BASS MONO</b><span>On a stereo track BASS MONO, on by default, generates one sub from the mono sum and keeps it centred. Turn it off and each side gets its own generator, with WIDTH from 0 to 200 %.</span></li>
+  </ul>
+</section>
+
+<!-- DFC -->
+<div class="sh" id="dfc">Find the fundamental</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Switch the generator to <strong>DFC</strong> and BARYON becomes a pitch-tracking synthesizer, modelled on the subharmonic synthesizer in the NEVE DFC film console and the Bass Character section of Harrison's Bass Flow. Two bands each have a sweepable <strong>CAPTURE</strong> centre from 15 to 160 Hz and a <strong>WIDTH</strong> from one to twelve semitones either side.</p>
+      <p>Instead of counting crossings, each band runs a <strong>YIN detector</strong>. It compares a whole frame of the bass with itself at every lag and picks the first lag where the signal truly repeats. A strong second harmonic makes extra crossings, but it does not make the waveform repeat any sooner, so YIN reads the fundamental where a zero-crossing tracker reads the harmonic.</p>
+    </div>
+    <div class="prose">
+      <p>Each band plays a sine at <strong>any whole semitone from 0 to −24</strong> below the live fundamental. At 0 it reinforces the note itself, the Bass Flow "Body" move. At −12 it is an octave down, at −24 two. Because the tone follows the actual note, it never fights the source the way a fixed EQ boost at the wrong frequency can.</p>
+      <p>The detector searches wider than it accepts. A note outside the capture band reads as unvoiced, so the band <strong>holds or gates instead of jumping an octave</strong>. In the plug-in's own test, a 50 Hz note with a 100 Hz second harmonic at 78 % of its level gives a 25 Hz sub 78 dB above any 50 Hz error.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Semitones"><button type="button" data-ds="0" aria-pressed="false">0</button><button type="button" data-ds="-5" aria-pressed="false">−5</button><button type="button" data-ds="-7" aria-pressed="false">−7</button><button type="button" data-ds="-12" aria-pressed="true">−12</button><button type="button" data-ds="-19" aria-pressed="false">−19</button><button type="button" data-ds="-24" aria-pressed="false">−24</button></span>
+      <span>DFC 1 · ONE YIN ANALYSIS, AS THE PLUG-IN RUNS IT</span>
+    </div>
+    <div class="lab-views">
+      <canvas id="dfcyin" width="800" height="560" aria-label="The YIN difference curve across the lags the detector searches, with its threshold, the accepted range shaded, and the lag it picks marked in amber."></canvas>
+      <canvas id="dfcpitch" width="800" height="560" aria-label="A frequency ladder from 10 to 300 hertz: the source's partials, the capture band, what a zero-crossing tracker reads, what the DFC detector finds, and the note it plays."></canvas>
+    </div>
+    <div class="readouts"><span>FUNDAMENTAL<b id="d-f0">-</b></span><span>ZERO-CROSSING READS<b id="d-zc">-</b></span><span>DFC FINDS<b id="d-yin">-</b></span><span>PLAYS<b id="d-out">-</b></span></div>
+    <div class="ctrls" id="dfcctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--grn)"></i>SOURCE PARTIALS</span><span><i style="background:var(--alert)"></i>ZERO-CROSSING READING</span><span><i style="background:var(--amb)"></i>DFC</span><span>CAPTURE BAND-PASS, DECIMATION TO 3 kHz, LAG SEARCH 0.9× LOW TO 2.2× HIGH AND THRESHOLD 0.15 FOLLOW DfcSynthesizer.h · THE SOURCE IS SYNTHETIC</span></div>
+  <ul class="rows">
+    <li><b>FIRST LOCK</b><span>YIN needs a full frame before it can judge. Until then a level-gated zero-crossing estimate stands in, once three periods agree, so the sub arrives with the note, measured at about 41 ms. YIN takes over the moment it locks.</span></li>
+    <li><b>SLIDES</b><span>A jump of more than about a semitone and a half is a new note and retunes in 5 ms. Smaller moves are slides and glide over 25 ms, so a bend sounds smooth instead of stepped.</span></li>
+    <li><b>PUNCH FOLLOWS</b><span>In DFC mode the PUNCH corner rides the note being played, by DFC 1 or DFC 2, so the resonant knee always sits on the sub note itself.</span></li>
+    <li><b>OCT</b><span>An octave-up layer: the band sum is rectified for its octave-up partials, then softly fuzzed and mixed in at OCT LEVEL. For growl and audibility on small speakers.</span></li>
+  </ul>
+
+  <figure class="tabshot"><img src="assets/baryon/dfc.png?v=261013" alt="BARYON in DFC mode: the pitch-tracking generator" width="2324" height="1410" loading="lazy"></figure>
+</section>
+
+<!-- EDGE / CHARACTER -->
+<div class="sh" id="edge">Edge and colour</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A pure sine an octave below a bass note is felt more than heard, and on a laptop it is not heard at all. <strong>EDGE</strong> saturates the generated sub, and only the sub, so it grows harmonics that let small speakers suggest the note. DRIVE runs from 0 to 24 dB into one of six curves.</p>
+      <p>The same six curves drive the master <strong>SAT</strong> stage later in the chain, with its own DRIVE and MIX and oversampling at OFF, 2× or 4×. EDGE always runs with antiderivative anti-aliasing; the master stage uses it at 4×, where it costs only half a decibel at 20 kHz.</p>
+    </div>
+    <div class="prose">
+      <p>Symmetric curves (TANH, ARCTAN, TAPE, HARD) make odd harmonics. Asymmetric curves (TUBE, DIODE) add even ones. <strong>INVERT</strong> mirrors an asymmetric curve, so the even-harmonic emphasis moves to the other half of the wave and the tone swings from forward to round. On a symmetric curve there is nothing to mirror, so INVERT switches to a soft asinh rounding instead.</p>
+      <p>In the plug-in, TUBE also lets its bias sag with sustained level and clamps its crest like a conducting grid, and TAPE is flux-weighted so lows saturate first. <strong>ROUND</strong> blends in the asinh curve after SAT; <strong>IRON</strong> adds output-transformer colour.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="grp">
+        <span class="seg" role="group" aria-label="Curve"><button type="button" data-sm="0" aria-pressed="false">TANH</button><button type="button" data-sm="1" aria-pressed="false">ARCTAN</button><button type="button" data-sm="2" aria-pressed="true">TUBE</button><button type="button" data-sm="3" aria-pressed="false">TAPE</button><button type="button" data-sm="4" aria-pressed="false">DIODE</button><button type="button" data-sm="5" aria-pressed="false">HARD</button></span>
+        <span class="seg" role="group" aria-label="Invert"><button type="button" data-si="0" aria-pressed="true">NORMAL</button><button type="button" data-si="1" aria-pressed="false">INVERT</button></span>
+      </span>
+      <span id="satname">TUBE · ASYMMETRIC · EVEN</span>
+    </div>
+    <div class="lab-views">
+      <canvas id="satcurve" width="800" height="560" aria-label="The transfer curve of the selected shaper at the current drive, against a straight line, with the range the sine covers shaded."></canvas>
+      <canvas id="satwave" width="800" height="560" aria-label="One cycle of the sine before and after the shaper, and bars for the second to seventh harmonic in decibels below the fundamental."></canvas>
+    </div>
+    <div class="readouts"><span>H2<b id="s-h2">-</b></span><span>H3<b id="s-h3">-</b></span><span>THD<b id="s-thd">-</b></span><span>LEADS WITH<b id="s-lead">-</b></span></div>
+    <div class="ctrls four" id="satctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:rgba(59,248,122,.5)"></i>LINEAR</span><span><i style="background:var(--amb)"></i>SHAPED</span><span><i style="background:var(--amb-hot)"></i>EVEN HARMONICS</span><span><i style="background:var(--alert)"></i>ODD HARMONICS</span><span>COMPUTED FROM THE CURVES IN Saturation.h · THE CURVE ALONE: NO TUBE SAG, NO TAPE FLUX SHELVES, NO ADAA</span></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b>EDGE</b><span>SUB ONLY</span></div>
+      <p>Saturation on the generated sub before SUB LEVEL, so the harmonics follow the sub and never touch your source. Default curve TUBE, at 0 dB drive.</p>
+      <div class="fine">DRIVE 0–24 dB · 6 CURVES · INVERT</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b>SAT · ROUND</b><span>MASTER</span></div>
+      <p>Saturation on the whole processed signal after the compressor, default TAPE, with a MIX and oversampling. ROUND blends in the smooth asinh curve to take the corners off.</p>
+      <div class="fine">DRIVE 0–24 dB · MIX · ROUND 0–100 % · OS OFF / 2× / 4×</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b>IRON</b><span>TRANSFORMER</span></div>
+      <p>A behavioural output transformer: flux-weighted so distortion rises as frequency falls, with a magnetic bloom that eases at sustained level and a little air at the top. At 0 it is a true bypass.</p>
+      <div class="fine">AMOUNT 0–100 % · AFTER SAT</div>
+    </article>
+  </div>
+
+  <figure class="tabshot"><img src="assets/baryon/character.png?v=261013" alt="The CHARACTER tab" width="2324" height="1410" loading="lazy"></figure>
+</section>
+
+<!-- MOTION -->
+<div class="sh" id="lfo">Motion</div>
+<section class="two">
+  <div class="prose">
+    <p>The LFO moves the level of the generated sub, so the low end can breathe, pulse or pump in time while your source stays still. Put it in the <strong>POST</strong> position and it moves the whole processed signal instead, after the compressor, so the compressor cannot flatten the movement, and still before the limiter.</p>
+    <p>With <strong>SYNC</strong> on, the LFO's phase is worked out from the host's song position every block, so it stays on the beat through loops and jumps.</p>
+  </div>
+  <ul class="rows">
+    <li><b>SHAPES</b><span>SINE · TRI · SAW · SQUARE · S&amp;H</span></li>
+    <li><b>RATE</b><span>0.02 to 8 Hz free, or SYNC at 1/1, 1/2, 1/4, 1/8 or 1/16 of the host tempo</span></li>
+    <li><b>DEPTH · PHASE</b><span>DEPTH 0 to 100 %. PHASE offsets the right channel's LFO by up to 180° for movement across the stereo field.</span></li>
+    <li><b>RETRIG</b><span>Beat-locked to song position in SYNC; in free mode it restarts when the transport starts.</span></li>
+  </ul>
+
+  <figure class="tabshot"><img src="assets/baryon/lfo.png?v=261013" alt="The LFO tab" width="2324" height="1410" loading="lazy"></figure>
+</section>
+
+<!-- EQ + DYNAMICS -->
+<div class="sh" id="dynamics">EQ, dynamics, output</div>
+<section class="stack">
+  <div class="prose"><p>Everything around the generators is built for the bottom octave. Both EQs span 20 to 250 Hz on screen, the compressor is ANANKE from THETA's ROGERIAN suite, and every stage after the mix is stereo-linked so the low end stays put in the image.</p></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b>EQ IN · EQ OUT</b><span>DYNAMIC</span></div>
+      <p>Before the generator and after the mix, each with a 24 dB/oct high-pass and low-pass and one dynamic bell that moves with the music. Drag nodes on the plot; LINK runs one detector so both channels move together; LISTEN solos either EQ.</p>
+      <div class="fine">HPF 15–250 Hz · LPF 40–250 Hz · BELL 20–250 Hz ±12 dB · Q 0.3–6 · THRESH · DYN ±12 dB</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b>ANANKE</b><span>TRUE-RMS COMP</span></div>
+      <p>Feed-forward, true-RMS detection with a hard or soft knee, up to ∞:1, AUTO program-dependent timing, PARALLEL mix, and a DRIVE that thickens the tone without raising the level (measured +0.28 dB at full drive).</p>
+      <div class="fine">THRESH −48–0 dB · RATIO 1–20 or ∞ · KNEE 0–24 dB · ATK 0.1–100 ms · REL 10–1000 ms · RMS 1–50 ms</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b>GATE · LIMITER</b><span>OUTPUT</span></div>
+      <p>The gate glides open in decibels, so it opens without a click, and HOLD stops chatter on decaying hits. The limiter is a true look-ahead brickwall: with its safety clip off, the worst over in the plug-in's torture test is 0.000 dB.</p>
+      <div class="fine">GATE THRESH · ATK 0.2–20 ms · HOLD 0–200 ms · RANGE · LIMIT CEILING −12–0 dB · LOOK-AHEAD 0–5 ms · CLIP</div>
+    </article>
+  </div>
+  <ul class="rows">
+    <li><b>DISPLAYS</b><span>Every display draws the audio BARYON is actually making: the waterfall and band map read the generators' real output, the EQ curves move with the live bells, and the gain-reduction view sits over the waterfall.</span></li>
+    <li><b>GAIN STAGING</b><span>IN TRIM and OUT TRIM at ±24 dB, SUB LEVEL up to 200 %, compressor MAKEUP and PARALLEL, and a master DRY/WET MIX. BYPASS is time-aligned with the processed signal, so A/B never jumps.</span></li>
+  </ul>
+
+  <figure class="tabshot trio"><img src="assets/baryon/dynamics.png?v=261013" alt="The DYNAMICS tab" width="2324" height="1410" loading="lazy"><img src="assets/baryon/eq.png?v=261013" alt="The EQ tab" width="2324" height="1410" loading="lazy"><img src="assets/baryon/output.png?v=261013" alt="The OUTPUT tab" width="2324" height="1410" loading="lazy"></figure>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>BARYON runs as a fully working trial for fourteen days from the first time it loads, and the panel counts down the days left. When the trial ends without activation, BARYON goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA-.</p>
+  </div>
+  <div class="prose">
+    <p>Paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that BARYON works offline and never goes online on its own. One licence covers three computers.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>BASS &amp; KICK</b><p>Put weight under a DI bass that never had it, or tighten a kick with PUNCH. Identical hits give identical subs, so a loop stays steady.</p></article>
+  <article><b>808 &amp; SYNTH BASS</b><p>DFC at 0 st reinforces the fundamental of a slide without fighting it; −12 st adds the octave under it and follows every bend.</p></article>
+  <article><b>POST &amp; LFE</b><p>Build a sub feed from a full mix or a stem: focus the source with EQ IN, generate, and finish it with the gate and the limiter's ceiling.</p></article>
+  <article><b>SOUND DESIGN</b><p>Two octaves down, OCT fuzz on top, an LFO pumping in time and EDGE pushed hard. The low end as an instrument.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Subharmonic generator with dynamic EQ, compression, saturation, LFO, gate and look-ahead limiter (insert)</td></tr>
+    <tr><th>3-BAND</th><td>3 bands · 20–300 Hz edges · DIVIDE / SYNTH / HYBRID · ÷2 / ÷3 / ÷4 · level 0–200 % · solo</td></tr>
+    <tr><th>DFC</th><td>2 bands · capture 15–160 Hz · width ±1–12 st · 0 to −24 semitones · YIN fundamental tracking · OCT layer</td></tr>
+    <tr><th>SUB</th><td>SUB LEVEL 0–200 % · SUB GATE −80 to −20 dB · PUNCH 20–120 Hz · TONE 40–160 Hz · EDGE 0–24 dB, 6 curves · BASS MONO · WIDTH</td></tr>
+    <tr><th>EQ</th><td>Input and output: 24 dB/oct HPF and LPF, one dynamic bell · LINK · LISTEN</td></tr>
+    <tr><th>DYNAMICS</th><td>ANANKE true-RMS compressor · gate · true look-ahead brickwall limiter</td></tr>
+    <tr><th>LATENCY</th><td>Limiter look-ahead (0–5 ms, 1.5 ms default) plus the oversampler's delay when SAT runs at 2× or 4×. All reported to the host.</td></tr>
+    <tr><th>CHANNELS</th><td>Mono or stereo</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools, listed under Harmonic)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · universal: Apple Silicon and Intel · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>All of BARYON's DSP is written from scratch, with no third-party DSP libraries. Its engine laws are a test suite of 135 assertions that runs on every build, including the torture tests quoted on this page.</p>
+    <p>No standalone app ships. BARYON lives in your DAW.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">BARYON · 0.1.1 · DSP v13</div>
+  <p>Two generators, the full sub-shaping chain, dynamic EQ before and after, ANANKE compression, a gate and a true look-ahead limiter. Nothing withheld.</p>
+  <div class="amt"><s>$99</s><strong>$49.50</strong></div>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=BARYON%20launch" data-notify="BARYON" data-prelaunch>Notify me at launch</a>
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/9aac88fc-f4c4-4d1d-8528-b6bf9ddf608c?embed=1" data-launch hidden>Acquire BARYON · $49.50</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/90a04c19-f7ba-4055-87fc-01096b89875a?embed=1" data-launch hidden>Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON &amp; INTEL · VST3 / AU / AAX INCLUDED</div>
+</section>
+
+<footer><a href="store.html">STORE</a><span>THETA AUDIO RESEARCH // 2026 · BARYON 0.1.1 · DSP v13</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { triggered: false, zoomed: null };
-  canvasRef = React.createRef();
+<script>
+(() => {
+'use strict';
+const RM = false;
+const C = {
+  crt:'#070a07', grid:'#0f2416', grid0:'#16301f', grnDim:'#136b33', grnMut:'#23a552', grn:'#3bf87a', grnHot:'#9dffbe',
+  amb:'#ffb000', ambHot:'#ffd45e', ambMut:'#c08400', ambDim:'#6d4b00', alert:'#ff5a3c'
+};
+const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
-  componentDidMount() {
-    this.phase = 0;
-    this.pulseProgress = 0;
-    this.triggered = false;
-    const canvas = this.canvasRef.current;
-    const container = canvas.parentElement;
-    const resize = () => { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; };
-    resize();
-    window.addEventListener('resize', resize);
-    this._resize = resize;
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-    const ctx = canvas.getContext('2d');
-    const loop = () => {
-      const width = canvas.width, height = canvas.height;
-      ctx.fillStyle = '#050505';
-      ctx.fillRect(0, 0, width, height);
-      this.phase += 0.08;
-      if (this.triggered) {
-        this.pulseProgress *= 0.95;
-        if (this.pulseProgress < 0.005) { this.pulseProgress = 0; this.triggered = false; }
-      }
-      ctx.beginPath();
-      ctx.lineWidth = 2.0;
-      ctx.strokeStyle = '#B0B2B7';
-      for (let x = 0; x < width; x++) {
-        const baseFrequency = 0.02, baseAmplitude = 15;
-        const subFrequency = 0.005, subAmplitude = this.pulseProgress * 140;
-        let y = (height / 2) + Math.sin(x * baseFrequency + this.phase) * baseAmplitude + Math.cos(x * subFrequency + this.phase * 0.4) * subAmplitude;
-        if (this.triggered && this.pulseProgress > 0.3) {
-          y += (Math.random() - 0.5) * (this.pulseProgress * 15);
-          if (y < 40) y = 40 + Math.sin(x) * 4;
-          if (y > height - 40) y = height - 40 - Math.sin(x) * 4;
-        }
-        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        const peakThreshold = 65;
-        if (Math.abs(y - height / 2) > peakThreshold && this.pulseProgress > 0.1) {
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(x, y, this.pulseProgress * 4.5, 0, Math.PI * 2);
-          ctx.fillStyle = '#FF2A2A';
-          ctx.shadowColor = '#FF0000';
-          ctx.shadowBlur = 15;
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-      if (this.pulseProgress > 0.4) { ctx.strokeStyle = '#FF3333'; ctx.shadowColor = 'rgba(255,0,0,0.3)'; ctx.shadowBlur = 25; }
-      else if (this.pulseProgress > 0.1) { ctx.strokeStyle = '#DCCDBF'; ctx.shadowBlur = 5; }
-      else { ctx.shadowBlur = 0; }
-      ctx.stroke();
-      this._raf = requestAnimationFrame(loop);
-    };
-    loop();
-  }
-
-  componentWillUnmount() {
-    if (this._raf) cancelAnimationFrame(this._raf);
-    if (this._resize) window.removeEventListener('resize', this._resize);
-    if (this._esc) document.removeEventListener('keydown', this._esc);
-  }
-
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-
-  trigger() { this.triggered = true; this.pulseProgress = 1.0; }
-
-  _mk(src, w, r) {
-    return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
-  }
-
-  renderVals() {
-    const z = this.state.zoomed;
-    const R = 2324 / 1410;
-    return {
-      canvasRef: this.canvasRef,
-      triggerPulse: () => this.trigger(),
-      onMove: () => { if (Math.random() < 0.25) this.trigger(); },
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openSub3band: this._mk('assets/baryon/sub_3band.png?v=260819c', 2324, R),
-      openDfc: this._mk('assets/baryon/dfc.png?v=260819c', 2324, R),
-      openLfo: this._mk('assets/baryon/lfo.png?v=260819c', 2324, R),
-      openCharacter: this._mk('assets/baryon/character.png?v=260819c', 2324, R),
-      openDynamics: this._mk('assets/baryon/dynamics.png?v=260819c', 2324, R),
-      openEq: this._mk('assets/baryon/eq.png?v=260819c', 2324, R),
-      openOutput: this._mk('assets/baryon/output.png?v=260819c', 2324, R),
-    };
-  }
+// ---------- maths ----------
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lin2db = a => 20 * Math.log10(Math.max(a, 1e-12));
+const TAU = 2 * Math.PI;
+const NOTES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+function noteName(f) {
+  if (!(f > 0)) return '--';
+  const m = 69 + 12 * Math.log2(f / 440), r = Math.round(m), c = Math.round((m - r) * 100);
+  return NOTES[((r % 12) + 12) % 12] + (Math.floor(r / 12) - 1) + (Math.abs(c) >= 5 ? (c > 0 ? ' +' : ' ') + c + 'c' : '');
 }
+const fmtHz = v => v >= 1000 ? (v / 1000).toFixed(2) + ' kHz' : (v < 100 ? v.toFixed(1) : Math.round(v)) + ' Hz';
+
+// RBJ biquad, transposed direct form II (Biquad.h)
+function biquad(type, sr, f, Q) {
+  f = clamp(f, 1, sr * 0.4995); Q = Math.max(Q, 1e-4);
+  const w = TAU * f / sr, cw = Math.cos(w), al = Math.sin(w) / (2 * Q);
+  let b0, b1, b2; const a0 = 1 + al, a1 = -2 * cw, a2 = 1 - al;
+  if (type === 'lp') { b0 = (1 - cw) / 2; b1 = 1 - cw; b2 = (1 - cw) / 2; }
+  else { b0 = (1 + cw) / 2; b1 = -(1 + cw); b2 = (1 + cw) / 2; }
+  return { b0: b0 / a0, b1: b1 / a0, b2: b2 / a0, a1: a1 / a0, a2: a2 / a0, z1: 0, z2: 0 };
+}
+function bq(s, x) { const y = s.b0 * x + s.z1; s.z1 = s.b1 * x - s.a1 * y + s.z2; s.z2 = s.b2 * x - s.a2 * y; return y; }
+// BandPass2: 12 dB/oct HP then LP at Q 0.7071
+function bandPass(sr, lo, hi) { lo = Math.max(1, lo); if (hi <= lo) hi = lo * 1.05; const h = biquad('hp', sr, lo, .7071), l = biquad('lp', sr, hi, .7071); return x => bq(l, bq(h, x)); }
+
+// visibility-gated animation loop
+function loop(canvas, draw) {
+  let on = false, raf = 0, last = performance.now(), t = 0;
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt; draw(t, dt); if (on) raf = requestAnimationFrame(tick); };
+  if (RM) { for (let i = 0; i < 60; i++) { t += 1 / 30; draw(t, 1 / 30); } return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !on) { on = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+    else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+  }));
+  io.observe(canvas); draw(t, 1 / 60);
+}
+
+// controls
+function sliders(host, defs, onChange) {
+  const vals = {};
+  defs.forEach(d => {
+    vals[d.id] = d.v;
+    const w = document.createElement('div'); w.className = 'ctrl';
+    const id = 'c-' + d.id;
+    w.innerHTML = `<label for="${id}">${d.name}<output id="${id}-o"></output></label><input type="range" id="${id}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.v}">`;
+    host.appendChild(w);
+    const inp = w.querySelector('input'), out = w.querySelector('output');
+    const upd = () => { vals[d.id] = +inp.value; out.textContent = d.fmt(vals[d.id]); };
+    inp.addEventListener('input', () => { upd(); onChange(); });
+    upd();
+  });
+  return vals;
+}
+function segGroup(attr, onPick) {
+  const bs = document.querySelectorAll(`[${attr}]`);
+  bs.forEach(b => b.addEventListener('click', () => { bs.forEach(o => o.setAttribute('aria-pressed', String(o === b))); onPick(+b.getAttribute(attr)); }));
+}
+function glowLine(ctx, pts, col, w, glow) {
+  ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = w; ctx.lineJoin = 'round';
+  if (glow) { ctx.shadowColor = col; ctx.shadowBlur = glow; }
+  ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); ctx.restore();
+}
+function label(ctx, s, x, y, col, size, align) { ctx.fillStyle = col; ctx.font = `${size || 14}px ${MONO}`; ctx.textAlign = align || 'left'; ctx.fillText(s, x, y); ctx.textAlign = 'left'; }
+
+// ---------- HERO: the waterfall ----------
+(() => {
+  const cv = document.getElementById('hero'), ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const NB = 150, NR = 34, FL = Math.log10(20), FR = Math.log10(1000) - FL;
+  const BF = Array.from({ length: NB }, (_, i) => Math.pow(10, FL + i / (NB - 1) * FR));
+  const rows = []; for (let j = 0; j < NR; j++) rows.push(new Float32Array(NB).fill(-90));
+  const line = [41.2, 41.2, 49.0, 55.0, 36.7, 36.7, 49.0, 43.65];   // E1 E1 G1 A1 D1 D1 G1 F1
+  const pw = d => Math.pow(10, d / 10);
+  const peak = (f, fc, w) => { const o = Math.log2(f / fc) / w; return Math.exp(-o * o); };
+  let acc = 0, subDb = -90, f0 = 41.2, addDb = 0;
+  function spectrum(t, out) {
+    const beat = t * 2, p = beat % 1, bi = Math.floor(beat) % line.length;
+    f0 = line[bi];
+    const bassEnv = .25 + .75 * Math.exp(-p * 2.4), kick = (Math.floor(beat) % 2 === 0) ? Math.exp(-p * 9) : Math.exp(-p * 12) * .6;
+    const sub = bassEnv;   // sub follows the band envelope
+    subDb = lin2db(sub) - 6;
+    let sSrc = 0, sOut = 0;
+    for (let i = 0; i < NB; i++) {
+      const f = BF[i];
+      let s = pw(-58 - 4 * Math.log2(f / 20));
+      s += pw(-6 + lin2db(kick) * .9) * peak(f, 58, .38);
+      for (let k = 1; k <= 12; k++) { const a = -9 - 4.2 * (k - 1) + (k === 1 ? -7 : 0); s += pw(a + lin2db(bassEnv)) * peak(f, f0 * k, .045); }
+      const sub2 = pw(-6 + lin2db(sub)) * peak(f, f0 / 2, .045);
+      sSrc += s; sOut += s + sub2;
+      out[i] = 10 * Math.log10(s + sub2);
+    }
+    addDb = 10 * Math.log10(sOut / sSrc);
+  }
+  const elN = document.getElementById('h-note'), elS = document.getElementById('h-sub'), elA = document.getElementById('h-add');
+  let lastTxt = -1;
+  loop(cv, (t, dt) => {
+    spectrum(t + 0.4, rows[0]);
+    acc += dt;
+    if (acc >= .055) { acc = 0; const r = rows.pop(); r.set(rows[0]); rows.splice(1, 0, r); }
+    ctx.fillStyle = C.crt; ctx.fillRect(0, 0, W, H);
+    const geo = j => { const tt = j / (NR - 1); return { x0: 70 + tt * 190, w: (W - 130) * (1 - tt * .26), y: H - 92 - tt * 300, hs: 250 * (1 - tt * .45), tt }; };
+    // floor grid (green chrome)
+    ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
+    for (const f of [20, 50, 100, 200, 500, 1000]) {
+      const u = (Math.log10(f) - FL) / FR, a = geo(0), b = geo(NR - 1);
+      ctx.beginPath(); ctx.moveTo(a.x0 + u * a.w, a.y); ctx.lineTo(b.x0 + u * b.w, b.y); ctx.stroke();
+    }
+    for (let j = NR - 1; j >= 0; j--) {
+      const g = geo(j), r = rows[j], pts = [];
+      for (let i = 0; i < NB; i++) { const v = clamp((r[i] + 84) / 84, 0, 1); pts.push([g.x0 + i / (NB - 1) * g.w, g.y - v * g.hs]); }
+      ctx.fillStyle = C.crt; ctx.beginPath(); ctx.moveTo(pts[0][0], g.y);
+      pts.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(pts[NB - 1][0], g.y); ctx.closePath(); ctx.fill();
+      const a = .18 + .82 * Math.pow(1 - g.tt, 1.6);
+      if (j === 0) glowLine(ctx, pts, C.ambHot, 2.4, 14);
+      else glowLine(ctx, pts, `rgba(255,176,0,${a.toFixed(3)})`, 1.3, 0);
+    }
+    // axis + labels (green)
+    const a = geo(0);
+    ctx.strokeStyle = C.grnDim; ctx.beginPath(); ctx.moveTo(a.x0, a.y + .5); ctx.lineTo(a.x0 + a.w, a.y + .5); ctx.stroke();
+    for (const f of [20, 30, 50, 100, 200, 500, 1000]) { const x = a.x0 + (Math.log10(f) - FL) / FR * a.w; ctx.beginPath(); ctx.moveTo(x, a.y); ctx.lineTo(x, a.y + 8); ctx.stroke(); label(ctx, f >= 1000 ? '1k' : String(f), x, a.y + 30, C.grnMut, 16, 'center'); }
+    label(ctx, 'Hz', a.x0 + a.w + 14, a.y + 30, C.grnDim, 14);
+    const b = geo(NR - 1); label(ctx, '← TIME', b.x0 + b.w + 10, b.y + 4, C.grnDim, 14);
+    // sub marker on the live row
+    const xs = a.x0 + (Math.log10(f0 / 2) - FL) / FR * a.w;
+    ctx.setLineDash([4, 6]); ctx.strokeStyle = 'rgba(59,248,122,.45)'; ctx.beginPath(); ctx.moveTo(xs, a.y); ctx.lineTo(xs, 40); ctx.stroke(); ctx.setLineDash([]);
+    label(ctx, 'SUB ' + fmtHz(f0 / 2), xs + 8, 56, C.grn, 15);
+    if (t - lastTxt > .12) {
+      lastTxt = t;
+      elN.textContent = noteName(f0) + ' · ' + fmtHz(f0);
+      elS.textContent = noteName(f0 / 2) + ' · ' + fmtHz(f0 / 2);
+      elA.textContent = '+' + addDb.toFixed(1) + ' dB';
+    }
+  });
+})();
+
+// ---------- 3-BAND LAB: SubBand, ported from SubharmonicGenerator.h ----------
+const SR = 48000;
+function runSubBand(inp, o) {
+  const bp = bandPass(SR, o.lo, o.hi);
+  const k = s => Math.exp(-1 / (s * SR));
+  const atk = k(.005), rel = k(.120), fS = k(.008), gS = k(.010), eSl = k(.12);
+  const gate = Math.pow(10, o.gateDb / 20), r = o.ratio;
+  let env = 0, envS = 0, sinceOn = 1 << 30, xc = 0, prev = 0, sinceX = 0, rawHz = 60, tr = 60, flip = 1, ph = 0, g = 0;
+  const n = inp.length, out = new Float32Array(n), band = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const b = bp(inp[i]); band[i] = b;
+    const ab = Math.abs(b);
+    env = ab + (ab > env ? atk : rel) * (env - ab);
+    envS = env + eSl * (envS - env);
+    sinceOn++;
+    if (env > gate * 2 && env > 3 * envS && sinceOn > .08 * SR) { ph = 0; flip = 1; xc = 0; sinceOn = 0; }
+    sinceX++;
+    if (prev <= 0 && b > 0) {
+      if (sinceX > 1 && sinceX < SR) { const hz = SR / sinceX; if (hz > o.lo * .5 && hz < o.hi * 2) rawHz = hz; }
+      sinceX = 0; flip = -flip; xc++;
+      if (o.mode !== 0) ph = TAU * (xc % r) / r;
+    }
+    prev = b;
+    tr = rawHz + fS * (tr - rawHz);
+    ph += TAU * (tr / r) / SR; if (ph >= TAU) ph -= TAU;
+    const sine = Math.sin(ph), sq = flip;
+    let raw = o.mode === 0 ? sq : o.mode === 1 ? sine : .55 * sine + .45 * sq;
+    raw += .030 * raw * raw;                                   // band 1 analog variance
+    const gt = env > gate ? 1 : 0; g = gt + gS * (g - gt);
+    out[i] = raw * env * g;
+  }
+  return { out, band, tracked: tr };
+}
+// Hann-windowed DFT magnitude at the given frequencies, on the last `len` samples (decimated by `step`)
+function dftMag(x, freqs, len, step) {
+  const n0 = x.length - len, N = Math.floor(len / step), res = new Float32Array(freqs.length);
+  const win = new Float32Array(N); let ws = 0;
+  for (let j = 0; j < N; j++) { win[j] = .5 - .5 * Math.cos(TAU * j / (N - 1)); ws += win[j]; }
+  for (let q = 0; q < freqs.length; q++) {
+    const w = TAU * freqs[q] * step / SR; let re = 0, im = 0;
+    for (let j = 0; j < N; j++) { const v = x[n0 + j * step] * win[j]; re += v * Math.cos(w * j); im -= v * Math.sin(w * j); }
+    res[q] = 2 * Math.sqrt(re * re + im * im) / ws;
+  }
+  return res;
+}
+(() => {
+  const wv = document.getElementById('genwave'), wx = wv.getContext('2d');
+  const sp = document.getElementById('genspec'), sx = sp.getContext('2d');
+  let mode = 1, ratio = 2, src = 0;
+  const V = sliders(document.getElementById('genctrls'), [
+    { id: 'gf', name: 'NOTE', min: 30, max: 160, step: .1, v: 60, fmt: v => v.toFixed(1) + ' Hz' },
+    { id: 'gh2', name: 'H2', min: 0, max: 150, step: 1, v: 71, fmt: v => v + ' %' },
+    { id: 'glo', name: 'LOW', min: 20, max: 200, step: 1, v: 52, fmt: v => v + ' Hz' },
+    { id: 'ghi', name: 'HIGH', min: 30, max: 300, step: 1, v: 72, fmt: v => v + ' Hz' },
+    { id: 'ggate', name: 'SUB GATE', min: -80, max: -20, step: 1, v: -50, fmt: v => v + ' dB' }
+  ], () => draw());
+  segGroup('data-gm', v => { mode = v; draw(); });
+  segGroup('data-gr', v => { ratio = v; draw(); });
+  segGroup('data-gs', v => { src = v; draw(); });
+  const NS = Math.round(SR * .9);
+  const SF = []; for (let i = 0; i < 170; i++) SF.push(8 * Math.pow(250 / 8, i / 169));
+  const el = id => document.getElementById(id);
+  function draw() {
+    const f = V.gf, a2 = .45 * V.gh2 / 100, inp = new Float32Array(NS);
+    for (let i = 0; i < NS; i++) {
+      const t = i / SR; let e = Math.min(1, t / .01);
+      if (src === 1) { const p = t % .45; e = Math.min(1, p / .004) * Math.exp(-p * 5); }
+      inp[i] = e * (.45 * Math.sin(TAU * f * t) + a2 * Math.sin(TAU * 2 * f * t + .7));
+    }
+    const res = runSubBand(inp, { lo: V.glo, hi: Math.max(V.ghi, V.glo * 1.05), mode, ratio, gateDb: V.ggate });
+    // wave panel: last 250 ms
+    const W = wv.width, H = wv.height, win = Math.round(SR * .25), n0 = NS - win;
+    wx.fillStyle = C.crt; wx.fillRect(0, 0, W, H);
+    const lane = (y0, h, arr, col, scale, lbl) => {
+      const mid = y0 + h / 2;
+      wx.strokeStyle = C.grid0; wx.lineWidth = 1; wx.beginPath(); wx.moveTo(0, mid + .5); wx.lineTo(W, mid + .5); wx.stroke();
+      const pts = []; for (let x = 0; x < W; x++) { const i = n0 + Math.floor(x / W * win); pts.push([x, mid - arr[i] * scale]); }
+      glowLine(wx, pts, col, 2.2, 6);
+      label(wx, lbl, 14, y0 + 22, C.grnMut, 14);
+    };
+    let mx = 1e-6; for (let i = n0; i < NS; i++) mx = Math.max(mx, Math.abs(inp[i]), Math.abs(res.out[i]));
+    const sc = 110 / mx;
+    lane(10, 260, inp, C.grn, sc, 'SOURCE');
+    lane(290, 260, res.out, C.amb, sc, 'SUB · ' + ['DIVIDE', 'SYNTH', 'HYBRID'][mode] + ' ÷' + ratio);
+    label(wx, '250 ms', W - 14, H - 14, C.grnDim, 13, 'right');
+    // spectrum panel
+    const SW = sp.width, SH = sp.height, R = { x: 46, y: 24, w: SW - 70, h: SH - 80 };
+    sx.fillStyle = C.crt; sx.fillRect(0, 0, SW, SH);
+    const lx = v => R.x + Math.log(v / 8) / Math.log(250 / 8) * R.w, ly = d => R.y + clamp(-d, 0, 70) / 70 * R.h;
+    // band shading
+    sx.fillStyle = 'rgba(59,248,122,.07)'; sx.fillRect(lx(Math.max(8, V.glo)), R.y, lx(Math.min(250, Math.max(V.ghi, V.glo))) - lx(Math.max(8, V.glo)), R.h);
+    sx.strokeStyle = C.grid; sx.lineWidth = 1; sx.font = `14px ${MONO}`;
+    for (const v of [10, 20, 30, 50, 100, 200]) { const x = lx(v) + .5; sx.beginPath(); sx.moveTo(x, R.y); sx.lineTo(x, R.y + R.h); sx.stroke(); label(sx, String(v), x, R.y + R.h + 22, C.grnMut, 14, 'center'); }
+    for (const d of [0, -20, -40, -60]) { const y = ly(d) + .5; sx.strokeStyle = d === 0 ? C.grid0 : C.grid; sx.beginPath(); sx.moveTo(R.x, y); sx.lineTo(R.x + R.w, y); sx.stroke(); label(sx, String(d), R.x - 8, y + 5, C.grnMut, 13, 'right'); }
+    label(sx, 'Hz', R.x + R.w, R.y + R.h + 44, C.grnDim, 13, 'right');
+    const L = Math.round(SR * .5), mi = dftMag(inp, SF, L, 4), mo = dftMag(res.out, SF, L, 4);
+    let ref = 1e-9; for (let q = 0; q < SF.length; q++) ref = Math.max(ref, mi[q], mo[q]);
+    const pI = [], pO = []; let pk = 0, pkf = 0;
+    for (let q = 0; q < SF.length; q++) { pI.push([lx(SF[q]), ly(lin2db(mi[q] / ref))]); pO.push([lx(SF[q]), ly(lin2db(mo[q] / ref))]); if (mo[q] > pk) { pk = mo[q]; pkf = SF[q]; } }
+    glowLine(sx, pI, 'rgba(59,248,122,.8)', 1.6, 0);
+    glowLine(sx, pO, C.amb, 2.4, 8);
+    const target = f / ratio;
+    sx.setLineDash([5, 6]); sx.strokeStyle = 'rgba(255,212,94,.6)'; sx.beginPath(); sx.moveTo(lx(target), R.y); sx.lineTo(lx(target), R.y + R.h); sx.stroke(); sx.setLineDash([]);
+    label(sx, 'TARGET', lx(target) + 6, R.y + 18, C.ambHot, 13);
+    // readouts
+    el('g-tr').textContent = fmtHz(res.tracked);
+    el('g-tg').textContent = fmtHz(target) + ' · ' + noteName(target);
+    let rmsI = 0, rmsO = 0; for (let i = NS - L; i < NS; i++) { rmsI += inp[i] * inp[i]; rmsO += res.out[i] * res.out[i]; }
+    const quiet = Math.sqrt(rmsO / rmsI) < .04;
+    el('g-pk').textContent = quiet ? '--' : fmtHz(pkf);
+    const st = el('g-st'), rel = pkf / target;
+    if (quiet) { st.textContent = 'BAND MISSES THE NOTE'; st.className = 'bad'; }
+    else if (Math.abs(rel - 1) < .07) { st.textContent = 'LOCKED'; st.className = 'ok'; }
+    else if (Math.abs(rel - 2) < .14) { st.textContent = 'OCTAVE ERROR · UP'; st.className = 'bad'; }
+    else { st.textContent = 'TWO PITCHES'; st.className = 'bad'; }
+  }
+  draw();
+})();
+
+// ---------- DFC LAB: capture band, decimation and one YIN analysis (DfcSynthesizer.h) ----------
+(() => {
+  const yc = document.getElementById('dfcyin'), yx = yc.getContext('2d');
+  const pc = document.getElementById('dfcpitch'), px = pc.getContext('2d');
+  let semis = -12;
+  const V = sliders(document.getElementById('dfcctrls'), [
+    { id: 'df', name: 'NOTE', min: 25, max: 120, step: .1, v: 50, fmt: v => v.toFixed(1) + ' Hz' },
+    { id: 'dh2', name: 'H2', min: 0, max: 150, step: 1, v: 120, fmt: v => v + ' %' },
+    { id: 'dh3', name: 'H3', min: 0, max: 100, step: 1, v: 20, fmt: v => v + ' %' },
+    { id: 'dc', name: 'CAPTURE', min: 15, max: 160, step: .5, v: 70, fmt: v => v.toFixed(0) + ' Hz' },
+    { id: 'dw', name: 'WIDTH', min: 0, max: 100, step: 1, v: 100, fmt: v => '±' + (1 + v / 100 * 11).toFixed(1) + ' st' }
+  ], () => draw());
+  segGroup('data-ds', v => { semis = v; draw(); });
+  const el = id => document.getElementById(id);
+  function draw() {
+    const f = V.df, half = 1 + V.dw / 100 * 11, fr = Math.pow(2, half / 12);
+    let lo = Math.max(12, V.dc / fr), hi = Math.min(180, V.dc * fr); if (hi <= lo) hi = lo * 1.05;
+    const N = Math.round(SR * .5), bp = bandPass(SR, lo, hi), sig = new Float32Array(N);
+    const a1 = .45, a2 = .45 * V.dh2 / 100, a3 = .45 * V.dh3 / 100;
+    for (let i = 0; i < N; i++) { const t = i / SR; sig[i] = bp(a1 * Math.sin(TAU * f * t) + a2 * Math.sin(TAU * 2 * f * t) + a3 * Math.sin(TAU * 3 * f * t + .4)); }
+    // zero-crossing reading on the capture band (what a SubBand-style tracker counts)
+    let lastX = -1, periods = [];
+    for (let i = 1; i < N; i++) if (sig[i - 1] <= 0 && sig[i] > 0) { if (lastX >= 0) periods.push(i - lastX); lastX = i; }
+    const tailP = periods.slice(-12), zcHz = tailP.length ? SR / (tailP.reduce((s, v) => s + v, 0) / tailP.length) : 0;
+    // decimate (box average) to ~3 kHz
+    const dec = Math.max(1, Math.round(SR / 3000)), srd = SR / dec, D = [];
+    for (let i = 0; i + dec <= N; i += dec) { let s = 0; for (let j = 0; j < dec; j++) s += sig[i + j]; D.push(s / dec); }
+    let maxLag = Math.floor(srd / (.9 * lo)) + 1, minLag = Math.floor(srd / (2.2 * hi));
+    maxLag = Math.min(maxLag, 320, 1024 / 2 - 1); minLag = Math.max(2, Math.min(minLag, maxLag - 1));
+    const Wn = maxLag, frame = Wn + maxLag, sc = D.slice(D.length - frame);
+    const cmnd = new Float64Array(maxLag + 1); cmnd[0] = 1; let run = 0;
+    for (let tau = 1; tau <= maxLag; tau++) { let s = 0; for (let j = 0; j < Wn; j++) { const d = sc[j] - sc[j + tau]; s += d * d; } run += s; cmnd[tau] = run > 0 ? s * tau / run : 1; }
+    let best = -1;
+    for (let tau = minLag; tau <= maxLag; tau++) if (cmnd[tau] < .15) { while (tau + 1 <= maxLag && cmnd[tau + 1] < cmnd[tau]) tau++; best = tau; break; }
+    if (best < 0) { let m = 1e300; for (let tau = minLag; tau <= maxLag; tau++) if (cmnd[tau] < m) { m = cmnd[tau]; best = tau; } }
+    let te = best;
+    if (best > minLag && best < maxLag) { const y0 = cmnd[best - 1], y1 = cmnd[best], y2 = cmnd[best + 1], dn = y0 + y2 - 2 * y1; if (Math.abs(dn) > 1e-12) te = best + .5 * (y0 - y2) / dn; }
+    const yinHz = srd / te, onEdge = best <= minLag || best >= maxLag;
+    const voiced = !onEdge && cmnd[best] < .15 && yinHz >= lo * .9 && yinHz <= hi * 1.1;
+    const outHz = yinHz * Math.pow(2, semis / 12);
+
+    // --- left: the CMNDF ---
+    const W = yc.width, H = yc.height, R = { x: 56, y: 30, w: W - 86, h: H - 100 };
+    yx.fillStyle = C.crt; yx.fillRect(0, 0, W, H);
+    const tx = tau => R.x + (tau - 1) / (maxLag - 1) * R.w, ty = v => R.y + (1 - clamp(v, 0, 1.6) / 1.6) * R.h;
+    // accepted range (hz within lo*0.9..hi*1.1)
+    const tA = Math.max(minLag, srd / (hi * 1.1)), tB = Math.min(maxLag, srd / (lo * .9));
+    yx.fillStyle = 'rgba(59,248,122,.07)'; yx.fillRect(tx(tA), R.y, tx(tB) - tx(tA), R.h);
+    yx.fillStyle = 'rgba(0,0,0,.45)'; yx.fillRect(R.x, R.y, tx(minLag) - R.x, R.h);
+    yx.strokeStyle = C.grid; yx.lineWidth = 1;
+    for (const v of [0, .5, 1, 1.5]) { const y = ty(v) + .5; yx.beginPath(); yx.moveTo(R.x, y); yx.lineTo(R.x + R.w, y); yx.stroke(); label(yx, v.toFixed(1), R.x - 8, y + 5, C.grnMut, 13, 'right'); }
+    for (const hz of [200, 100, 60, 40, 30, 20, 15]) { const tau = srd / hz; if (tau < 1 || tau > maxLag) continue; const x = tx(tau) + .5; yx.beginPath(); yx.moveTo(x, R.y); yx.lineTo(x, R.y + R.h); yx.stroke(); label(yx, hz + '', x, R.y + R.h + 22, C.grnMut, 13, 'center'); }
+    label(yx, 'PERIOD AS Hz →', R.x + R.w, R.y + R.h + 46, C.grnDim, 13, 'right');
+    yx.setLineDash([6, 6]); yx.strokeStyle = 'rgba(59,248,122,.6)'; yx.beginPath(); yx.moveTo(R.x, ty(.15)); yx.lineTo(R.x + R.w, ty(.15)); yx.stroke(); yx.setLineDash([]);
+    label(yx, 'THRESHOLD 0.15', R.x + 8, ty(.15) - 8, C.grn, 13);
+    const pts = []; for (let tau = 1; tau <= maxLag; tau++) pts.push([tx(tau), ty(cmnd[tau])]);
+    glowLine(yx, pts, C.amb, 2.2, 6);
+    const bx = tx(te), by = ty(cmnd[best]);
+    yx.strokeStyle = voiced ? C.ambHot : C.alert; yx.lineWidth = 2; yx.beginPath(); yx.arc(bx, by, 9, 0, 7); yx.stroke();
+    label(yx, (voiced ? 'PICKS ' : 'REFUSED ') + fmtHz(yinHz), clamp(bx + 14, R.x, R.x + R.w - 150), by - 14, voiced ? C.ambHot : C.alert, 14);
+    label(yx, 'YIN DIFFERENCE · LAG SEARCH', R.x, 20, C.grnMut, 13);
+
+    // --- right: the ladder ---
+    const PW = pc.width, PH = pc.height, L0 = 10, L1 = 300, P = { x: 30, w: PW - 60 };
+    px.fillStyle = C.crt; px.fillRect(0, 0, PW, PH);
+    const fx = v => P.x + Math.log(v / L0) / Math.log(L1 / L0) * P.w;
+    px.strokeStyle = C.grid; px.lineWidth = 1;
+    for (const v of [10, 20, 30, 50, 100, 200, 300]) { const x = fx(v) + .5; px.beginPath(); px.moveTo(x, 30); px.lineTo(x, PH - 50); px.stroke(); label(px, String(v), x, PH - 26, C.grnMut, 13, 'center'); }
+    const lanes = ['SOURCE', 'CAPTURE', 'ZERO-CROSSING', 'DFC FINDS', 'DFC PLAYS'], ly = k => 70 + k * 92;
+    lanes.forEach((s, k) => { label(px, s, P.x, ly(k) - 30, C.grnMut, 13); px.strokeStyle = C.grid0; px.beginPath(); px.moveTo(P.x, ly(k) + .5); px.lineTo(P.x + P.w, ly(k) + .5); px.stroke(); });
+    const tick = (k, v, col, hgt, txt, wd) => { if (!(v >= L0 && v <= L1)) return; const x = fx(v); px.save(); px.strokeStyle = col; px.lineWidth = wd || 3; px.shadowColor = col; px.shadowBlur = 8; px.beginPath(); px.moveTo(x, ly(k)); px.lineTo(x, ly(k) - hgt); px.stroke(); px.restore(); if (txt) label(px, txt, clamp(x + 6, P.x, P.x + P.w - 120), ly(k) - hgt + 12, col, 13); };
+    [[f, a1], [2 * f, a2], [3 * f, a3]].forEach(([v, a], i) => { if (a > 0) tick(0, v, i ? 'rgba(59,248,122,.7)' : C.grn, 10 + 40 * a / .45, i ? 'H' + (i + 1) : 'F ' + noteName(f), i ? 2 : 3); });
+    px.fillStyle = 'rgba(59,248,122,.18)'; px.fillRect(fx(lo), ly(1) - 20, fx(hi) - fx(lo), 20);
+    label(px, fmtHz(lo) + ' – ' + fmtHz(hi), fx(lo), ly(1) + 20, C.grn, 13);
+    tick(2, zcHz, C.alert, 40, fmtHz(zcHz) + (Math.abs(zcHz / f - 1) > .06 ? ' · WRONG' : ''));
+    if (voiced) { tick(3, yinHz, C.amb, 40, fmtHz(yinHz)); tick(4, outHz, C.ambHot, 50, noteName(outHz) + ' · ' + fmtHz(outHz), 4); }
+    else { label(px, 'UNVOICED · HOLDS OR GATES', P.x + 120, ly(3) - 10, C.alert, 13); label(px, 'NO NEW NOTE', P.x + 120, ly(4) - 10, C.alert, 13); }
+
+    el('d-f0').textContent = noteName(f) + ' · ' + fmtHz(f);
+    const zc = el('d-zc'); zc.textContent = fmtHz(zcHz); zc.className = Math.abs(zcHz / f - 1) > .06 ? 'bad' : '';
+    const yy = el('d-yin'); yy.textContent = voiced ? fmtHz(yinHz) : 'UNVOICED'; yy.className = voiced ? '' : 'bad';
+    el('d-out').textContent = voiced ? noteName(outHz) + ' · ' + fmtHz(outHz) : '--';
+  }
+  draw();
+})();
+
+// ---------- EDGE / SAT LAB: the curves in Saturation.h ----------
+(() => {
+  const cc = document.getElementById('satcurve'), cx = cc.getContext('2d');
+  const wc = document.getElementById('satwave'), wx = wc.getContext('2d');
+  let mode = 2, inv = 0;
+  const names = ['TANH · SYMMETRIC · ODD', 'ARCTAN · SYMMETRIC · ODD', 'TUBE · ASYMMETRIC · EVEN', 'TAPE · SYMMETRIC · ODD', 'DIODE · ASYMMETRIC · EVEN', 'HARD · SYMMETRIC · ODD'];
+  const V = sliders(document.getElementById('satctrls'), [
+    { id: 'sd', name: 'DRIVE', min: 0, max: 24, step: .1, v: 6, fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'sl', name: 'LEVEL', min: -24, max: 0, step: .5, v: -6, fmt: v => v.toFixed(1) + ' dBFS' }
+  ], () => draw());
+  segGroup('data-sm', v => { mode = v; draw(); });
+  segGroup('data-si', v => { inv = v; draw(); });
+  const sym = m => m === 0 || m === 1 || m === 3 || m === 5;
+  function f(m, x, k) {
+    switch (m) {
+      case 0: return Math.tanh(k * x) / Math.tanh(k);
+      case 1: return Math.atan(k * x) / Math.atan(k);
+      case 2: { const b = .5, y = Math.tanh(k * x + b) - Math.tanh(b); return y / (Math.tanh(k + b) - Math.tanh(b)); }
+      case 3: { const xk = k * x; return (xk / Math.sqrt(1 + xk * xk)) / (k / Math.sqrt(1 + k * k)); }
+      case 4: { const a = .7, y = x >= 0 ? 1 - Math.exp(-k * a * x) : -(1 - Math.exp(k * x)); return y / Math.max(1e-6, 1 - Math.exp(-k * a)); }
+      default: { const u = k * x; return u >= 1 ? 1 : u <= -1 ? -1 : 1.5 * u - .5 * u * u * u; }
+    }
+  }
+  function stage(x, k) {
+    let y;
+    if (inv && sym(mode)) y = Math.asinh(k * x) / Math.asinh(k);
+    else if (inv) y = -f(mode, -x, k);
+    else y = f(mode, x, k);
+    if (mode === 2) { const t = .92; if (!inv) { if (y > t) y = t + (y - t) / (1 + 6 * (y - t)); } else if (y < -t) y = -t + (y + t) / (1 - 6 * (y + t)); }
+    return y;
+  }
+  const el = id => document.getElementById(id), NP = 256;
+  function draw() {
+    const k = Math.max(1, Math.pow(10, V.sd / 20)), A = Math.pow(10, V.sl / 20);
+    document.getElementById('satname').textContent = names[mode] + (inv ? (sym(mode) ? ' · INVERT = ROUND' : ' · MIRRORED') : '');
+    // curve
+    let ym = 1; for (let i = 0; i <= 100; i++) ym = Math.max(ym, Math.abs(stage(-1 + i / 50, k)));
+    const W = cc.width, H = cc.height, R = { x: 40, y: 30, w: W - 80, h: H - 80 }, YR = Math.ceil(ym * 1.15 * 4) / 4;
+    cx.fillStyle = C.crt; cx.fillRect(0, 0, W, H);
+    const X = v => R.x + (v + 1) / 2 * R.w, Y = v => R.y + (YR - clamp(v, -YR, YR)) / (2 * YR) * R.h;
+    cx.fillStyle = 'rgba(59,248,122,.07)'; cx.fillRect(X(-A), R.y, X(A) - X(-A), R.h);
+    cx.strokeStyle = C.grid; cx.lineWidth = 1;
+    for (const v of [-2, -1.5, -1, -.5, 0, .5, 1, 1.5, 2]) { if (Math.abs(v) > YR) continue; cx.beginPath(); cx.moveTo(X(v) + .5, R.y); cx.lineTo(X(v) + .5, R.y + R.h); cx.stroke(); cx.beginPath(); cx.moveTo(R.x, Y(v) + .5); cx.lineTo(R.x + R.w, Y(v) + .5); cx.stroke(); }
+    cx.strokeStyle = C.grid0; cx.beginPath(); cx.moveTo(X(0) + .5, R.y); cx.lineTo(X(0) + .5, R.y + R.h); cx.moveTo(R.x, Y(0) + .5); cx.lineTo(R.x + R.w, Y(0) + .5); cx.stroke();
+    cx.setLineDash([6, 6]); glowLine(cx, [[X(-1), Y(-1)], [X(1), Y(1)]], 'rgba(59,248,122,.5)', 1.4, 0); cx.setLineDash([]);
+    const pts = []; for (let i = 0; i <= 300; i++) { const x = -1 + 2 * i / 300; pts.push([X(x), Y(stage(x, k))]); }
+    glowLine(cx, pts, C.amb, 2.6, 8);
+    label(cx, 'IN →', R.x + R.w, R.y + R.h + 30, C.grnMut, 13, 'right'); label(cx, 'OUT', R.x + 4, R.y - 10, C.grnMut, 13);
+    label(cx, 'k = ' + k.toFixed(2), R.x + R.w, R.y - 10, C.grnMut, 13, 'right');
+    // one cycle + harmonics
+    const dry = new Float32Array(NP), out = new Float32Array(NP); let mean = 0;
+    for (let n = 0; n < NP; n++) { dry[n] = A * Math.sin(TAU * n / NP); out[n] = stage(dry[n], k); mean += out[n]; }
+    mean /= NP; for (let n = 0; n < NP; n++) out[n] -= mean;
+    const h = [];
+    for (let q = 1; q <= 7; q++) { let re = 0, im = 0; for (let n = 0; n < NP; n++) { const p = TAU * q * n / NP; re += out[n] * Math.cos(p); im -= out[n] * Math.sin(p); } h.push(2 * Math.sqrt(re * re + im * im) / NP); }
+    const W2 = wc.width, H2 = wc.height; wx.fillStyle = C.crt; wx.fillRect(0, 0, W2, H2);
+    const top = { x: 30, y: 40, w: W2 - 60, h: 260 }, mid = top.y + top.h / 2;
+    wx.strokeStyle = C.grid0; wx.beginPath(); wx.moveTo(top.x, mid + .5); wx.lineTo(top.x + top.w, mid + .5); wx.stroke();
+    let pk = 1e-6; for (let n = 0; n < NP; n++) pk = Math.max(pk, Math.abs(dry[n]), Math.abs(out[n]));
+    const scl = (top.h / 2 - 8) / pk;
+    const wave = (arr, col, lw, gl) => { const p = []; for (let n = 0; n <= NP; n++) p.push([top.x + n / NP * top.w, mid - arr[n % NP] * scl]); glowLine(wx, p, col, lw, gl); };
+    wave(dry, 'rgba(59,248,122,.45)', 1.6, 0); wave(out, C.amb, 2.6, 8);
+    label(wx, 'ONE CYCLE · DC REMOVED', top.x, top.y - 14, C.grnMut, 13);
+    const bt = { x: 30, y: 360, w: W2 - 60, h: 150 };
+    label(wx, 'dB BELOW THE FUNDAMENTAL', bt.x, bt.y - 16, C.grnMut, 13);
+    for (const d of [0, -20, -40, -60, -80]) { const y = bt.y + (-d) / 80 * bt.h; wx.strokeStyle = C.grid; wx.beginPath(); wx.moveTo(bt.x + 44, y + .5); wx.lineTo(bt.x + bt.w, y + .5); wx.stroke(); label(wx, String(d), bt.x + 30, y + 5, C.grnMut, 13, 'right'); }
+    const bw = (bt.w - 60) / 6;
+    for (let q = 2; q <= 7; q++) {
+      const r = lin2db(h[q - 1] / h[0]), hg = clamp((80 + r) / 80, 0, 1) * bt.h, x = bt.x + 56 + (q - 2) * bw;
+      wx.save(); wx.fillStyle = q % 2 ? C.alert : C.ambHot; wx.shadowColor = wx.fillStyle; wx.shadowBlur = 8; wx.globalAlpha = .9; wx.fillRect(x, bt.y + bt.h - hg, bw - 18, hg); wx.restore();
+      label(wx, 'H' + q, x, bt.y + bt.h + 22, C.grn, 13);
+    }
+    const rel = q => { const r = lin2db(h[q - 1] / h[0]); return r < -110 ? '--' : r.toFixed(1) + ' dB'; };
+    el('s-h2').textContent = rel(2); el('s-h3').textContent = rel(3);
+    let hs = 0, ev = 0, od = 0; for (let q = 2; q <= 7; q++) { hs += h[q - 1] * h[q - 1]; if (q % 2) od += h[q - 1] * h[q - 1]; else ev += h[q - 1] * h[q - 1]; }
+    const thd = Math.sqrt(hs) / h[0]; el('s-thd').textContent = (thd * 100).toFixed(thd < .1 ? 2 : 1) + ' %';
+    el('s-lead').textContent = thd < 1e-4 ? '--' : (ev > od ? 'EVEN' : 'ODD');
+  }
+  draw();
+})();
+})();
 </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

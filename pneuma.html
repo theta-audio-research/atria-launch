@@ -1,105 +1,995 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PNEUMA Product Page</title>
+<meta name="description" content="PNEUMA is a 16-band dynamic equaliser where every band can push its own region into tube, tape or clip harmonics, with two-way dynamics, three analog colour modules and zero or linear phase. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}#pneuma-hero::part(ring),#pneuma-graph::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as cinder.html and gire.html. Single dark look by choice: THETA marketing pages live
+   on the void theme. PNEUMA's own colour enters only where the plug-in draws it in its DARK skin:
+   the crimson input / cyan output analyzer, the gold curve, the slate dynamic line, and the amber-to-red
+   PUSH heat (palette in Source/Common/Theme/ThetaColors.h, applyDark). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#06080c; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --spec-pre:#8e2334; --spec-post:#4fc4d8; --slate:#a2b4c4; --amber:#e09a34;
+  --cut:#d0553f; --lift:#5aa0d8; --musical:#62a87c; --violet:#8f7fc9;
+  --cap:#14181f; --grid:#111420; --label:#707070;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(40px,5vw,66px);letter-spacing:.3em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the EQ well: PNEUMA's DARK "Void" graph, divider frame, gold top edge */
+.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
+.well-foot b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--gold-hot)}
+.well-foot b.cut{color:var(--cut)} .well-foot b.lift{color:var(--lift)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's DARK pills: gold fill on the active cell */
+.seg{display:inline-flex;border:1px solid #1e2028;border-radius:5px;background:#0a0c10;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:rgba(240,237,230,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#0c0c10;font-weight:500}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:#030506;overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#1f1610;stroke:#7a5a2a;stroke-width:1.2}
+.path .band{fill:#0b1216;stroke:#2c4a55;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.heat{stroke:var(--amber);animation-duration:.6s}
+.path .flow.ctl{stroke:var(--slate);opacity:.6;animation-duration:2.6s}
+.path .alt{fill:none;stroke:#3a3846;stroke-width:1.2;stroke-dasharray:4 5}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:#030506;display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views canvas+canvas{border-left:1px solid var(--divider)}
+.lab-views.wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+canvas.drag{cursor:grab;touch-action:none}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.readouts b.cut{color:var(--cut)} .readouts b.lift{color:var(--lift)}
+.ctrls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--gold)}
+.ctrl.cut label{color:var(--cut)} .ctrl.cut input[type=range]{accent-color:var(--cut)}
+.ctrl.lift label{color:var(--lift)} .ctrl.lift input[type=range]{accent-color:var(--lift)}
+.ctrl.heat label{color:var(--amber)} .ctrl.heat input[type=range]{accent-color:var(--amber)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+.legend i.blk{height:10px;width:10px;border-radius:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em}
+.card .nm span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em;text-align:right}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.face-top{margin-block:0 var(--s6)}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:8px}
+.keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
+.keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,196,216,.08),transparent 55%),radial-gradient(120% 140% at 0% 100%,rgba(142,35,52,.12),transparent 55%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views,.lab-views.wide{grid-template-columns:minmax(0,1fr)}
+  .lab-views canvas+canvas{border-left:0;border-top:1px solid var(--divider)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.five{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+[data-launch][hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">PNEUMA</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">PNEUMA</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=PNEUMA%20updates" data-notify="PNEUMA" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Dynamic equaliser · Harmonics on every band</div>
+    <h1 class="wordmark">PNEUMA</h1>
+    <div class="lede">
+      <p>Sixteen analog-matched bands, each with its own two-way dynamics and its own PUSH: a knob that drives that band's region, and only that region, into tube, tape or clip harmonics. Warm the low mids, put a little edge on the presence band, and leave the rest of the mix clean.</p>
+      <p>Behind the curves sit three independent analog modules, BODY, AIR and SAT, and a choice of zero or linear phase. With PUSH at 0, a band adds nothing at all: the null is exact.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get PNEUMA</a>
+      <a class="btn ghost" href="#push">Push a band</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>DARK · ANALYZER · LIVE</span><span>±12 dB</span></div>
+      <canvas id="hero" width="1040" height="660" aria-label="PNEUMA's EQ display in its DARK skin. A drum and vocal loop runs through it: the crimson mass is the input, the cyan mass is the output. Band 3 ducks the low mids on every hit, shown in red; band 5 tames the hats and lifts the quiet between them, red and blue; band 4 is pushed and throws amber harmonics above itself."></canvas>
+      <div class="well-foot"><span>EQ 3 · ABOVE <b id="h-b3" class="cut">-</b></span><span>EQ 5 <b id="h-b5">-</b></span><span>EQ 4 · PUSH · TUBE <b id="h-heat">-</b></span></div>
+    </div>
+    <div class="tagline">RED CUTS ON THE HIT · BLUE LIFTS BETWEEN · AMBER IS HEAT</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #011 // PNEUMA STABLE ALPHA</span>
-</footer>
+<section class="face-top">
+  <img src="assets/pneuma/hero.png?v=261029c" alt="The PNEUMA panel: the EQ graph with the input and output analyzer, the selected band strip, and the BODY, SATURATION and AIR plates" width="1762" height="1528">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box;opacity:{{ overlayOpacity }};pointer-events:{{ overlayPointer }};transition:opacity 0.2s ease">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:90vw;max-height:85vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>An equaliser changes how loud each part of the spectrum is. That is all a clean one can do: it moves levels up and down. An analog console EQ did a second thing nobody asked for. Boost a band and you drove that frequency harder into the transformers and tubes behind it, so the boost came back with harmonics of its own. <strong>The band you leaned on got warmer, and the rest of the signal did not.</strong></p>
+      <p>Most plug-ins model that by putting a saturator after the whole EQ, which colours everything at once. PNEUMA gives every band its own.</p>
+    </div>
+    <div class="prose">
+      <p>Each of the sixteen bands has a curve (<strong>FREQ, GAIN, Q</strong> and a shape), a level detector that can move the gain on its own (<strong>ABOVE</strong> and <strong>BELOW</strong> one threshold), and <strong>PUSH</strong>, which taps the band's region and drives it into the shaper. The bands can each work on stereo, mid, side, left or right.</p>
+      <p>After the bands, <strong>BODY</strong>, <strong>AIR</strong> and <strong>SAT</strong> add broadband colour, before or after the EQ. <strong>OUTPUT</strong> trims, and a click-free <strong>BYPASS</strong> compares.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 260" role="img" aria-label="PNEUMA's signal path: input, the colour modules if routed pre, the sixteen bands each with filter, dynamics and PUSH, the colour modules BODY, AIR and SAT if routed post, output trim, output. A sidechain input can key the dynamics.">
+      <text x="10" y="132">IN</text>
+      <path class="wire" d="M34 128 H64"/><path class="flow" d="M34 128 H64"/>
+      <rect class="box" x="64" y="104" width="92" height="48" rx="4"/><text class="lbl" x="110" y="125" text-anchor="middle">COLOUR</text><text x="110" y="142" text-anchor="middle">IF PRE</text>
+      <path class="wire" d="M156 128 H190"/><path class="flow" d="M156 128 H190"/>
+      <rect class="band" x="190" y="70" width="410" height="116" rx="6"/>
+      <text class="lbl" x="206" y="92">16 BANDS · ZERO OR LINEAR PHASE</text>
+      <rect class="box" x="206" y="108" width="104" height="58" rx="4"/><text class="lbl" x="258" y="131" text-anchor="middle">FILTER</text><text x="258" y="150" text-anchor="middle">f · GAIN · Q</text>
+      <path class="wire" d="M310 137 H336"/><path class="flow" d="M310 137 H336"/>
+      <rect class="box" x="336" y="108" width="112" height="58" rx="4"/><text class="lbl" x="392" y="131" text-anchor="middle">DYNAMICS</text><text x="392" y="150" text-anchor="middle">ABOVE · BELOW</text>
+      <path class="wire" d="M448 137 H474"/><path class="flow" d="M448 137 H474"/>
+      <rect class="hot" x="474" y="108" width="110" height="58" rx="4"/><text class="lbl" x="529" y="131" text-anchor="middle" style="fill:var(--amber)">PUSH</text><text x="529" y="150" text-anchor="middle">+ HARMONICS</text>
+      <path class="wire" d="M600 128 H634"/><path class="flow" d="M600 128 H634"/>
+      <rect class="box" x="634" y="96" width="168" height="64" rx="4"/><text class="lbl" x="718" y="120" text-anchor="middle">BODY · AIR · SAT</text><text x="718" y="140" text-anchor="middle">IF POST · IRON</text>
+      <path class="wire" d="M802 128 H836"/><path class="flow" d="M802 128 H836"/>
+      <rect class="box" x="836" y="104" width="86" height="48" rx="4"/><text class="lbl" x="879" y="125" text-anchor="middle">OUTPUT</text><text x="879" y="142" text-anchor="middle">±24 dB</text>
+      <path class="wire" d="M922 128 H958"/><path class="flow" d="M922 128 H958"/>
+      <rect class="box" x="958" y="104" width="76" height="48" rx="4"/><text class="lbl" x="996" y="125" text-anchor="middle">BYPASS</text><text x="996" y="142" text-anchor="middle">CLICK-FREE</text>
+      <path class="alt" d="M110 104 V40 H718 V96"/>
+      <text x="300" y="32">PRE / POST: ONE SWITCH, CROSSFADED</text>
+      <rect class="box" x="336" y="208" width="112" height="34" rx="4"/><text class="lbl" x="392" y="230" text-anchor="middle">SIDECHAIN</text>
+      <path class="wire" d="M392 208 V166"/><path class="flow ctl" d="M392 208 V166"/>
+      <text x="462" y="230" style="fill:var(--text-3)">DYN KEY INT / EXT</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>SHAPE</b><p>Each band filters: bell, shelf, cut, notch, tilt, band pass or all pass, on the channel you route it to.</p></li>
+    <li><span class="num">2</span><b>MOVE</b><p>The band's detector rides its gain: down when the region gets loud, up when it goes quiet, or both.</p></li>
+    <li><span class="num">3</span><b>PUSH</b><p>The band's region, after its own boost or cut, goes through the shaper. Only the harmonics come back.</p></li>
+    <li><span class="num">4</span><b>COLOUR</b><p>BODY, AIR and SAT add broadband even and odd harmonics, before or after the bands.</p></li>
+    <li><span class="num">5</span><b>TRIM</b><p>OUTPUT sets the level. BYPASS crossfades, so A/B never clicks.</p></li>
+  </ol>
+</section>
+
+<!-- PUSH -->
+<div class="sh" id="push">Harmonics on every band</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>PUSH sits under every band's knobs.</strong> Turn it up and PNEUMA taps that band's region with a band pass at the band's own frequency and Q. The tap comes after the band's filter, so a band you have boosted drives harder, the way a console boost hit the iron behind it. That signal goes into the shaper, and PNEUMA keeps only what the shaper added: the shaped signal minus the tap. That residual is the harmonics, and it is added back on top of the band.</p>
+      <p>Because the dry band is never touched, <strong>PUSH 0 is bit-identical to no PUSH at all.</strong> A band with PUSH up colours its own region. The low-mid band can thicken while the presence band stays clean, in mid only, or on the sides only.</p>
+    </div>
+    <div class="prose">
+      <p>The voice is the SATURATION plate's MODE, shared by every band so the whole plug-in speaks one knee: <strong>TUBE</strong> leans on the second harmonic and gives way to the third when pushed, <strong>TAPE</strong> is odd-led with softer evens under it, <strong>CLIP</strong> is purely odd. Click <span class="k">PUSH · TUBE</span> on the band plate to change it with the colour drawer closed.</p>
+      <p>The shaper runs oversampled, 4× in MAXTONE and 2× in LOWLAT, with antiderivative anti-aliasing at the high rate. Both depths add <strong>zero latency</strong>: the filters' delay lands on the harmonics only, never on the dry path. Under each PUSH knob a <strong>HARMONICS</strong> meter reads, in decibels, how much of the band's output PUSH added, running amber to red as the band gets genuinely hot.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="PUSH voice"><button type="button" data-pv="0" aria-pressed="true">TUBE</button><button type="button" data-pv="1" aria-pressed="false">TAPE</button><button type="button" data-pv="2" aria-pressed="false">CLIP</button></span>
+      <span>DRAG THE NODE · A SINE AT THE BAND'S CENTRE</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="pushgraph" class="drag" width="1040" height="620" aria-label="The band on PNEUMA's graph. A sine sits at the band's frequency, cyan; the harmonics PUSH adds rise above it in amber and red. Drag the node to move the band."></canvas>
+      <canvas id="pushwave" width="800" height="620" aria-label="One cycle of the band's output before and after PUSH, the harmonics PUSH added, and bars for the second to seventh harmonic in decibels below the fundamental."></canvas>
+    </div>
+    <div class="readouts"><span>HARMONICS<b id="p-meter">-</b></span><span>H2<b id="p-h2">-</b></span><span>H3<b id="p-h3">-</b></span><span>THD<b id="p-thd">-</b></span><span>LANDS AT<b id="p-lands">-</b></span></div>
+    <div class="ctrls five" id="pushctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--spec-post)"></i>FUNDAMENTAL</span><span><i style="background:var(--gold-hot)"></i>EVEN HARMONICS</span><span><i style="background:var(--cut)"></i>ODD HARMONICS</span><span><i style="background:rgba(240,237,230,.3)"></i>BEFORE PUSH</span><span>COMPUTED FROM THE PLUG-IN'S SHAPER EQUATIONS · MEMORYLESS, BEFORE OVERSAMPLING FILTERS</span></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold-hot)">TUBE</b><span>BIASED TANH</span></div>
+      <p>A tanh curve run from a real operating point instead of its centre, which is what puts a valve's second harmonic into the signal. At gentle settings the second leads the third: a −12 dBFS sine at PUSH 25 % gives H2 at −29.5 dB and H3 at −46.8 dB. Push harder and the third catches up, the way a tube compresses into odd harmonics when driven.</p>
+      <div class="fine">THICKNESS FIRST · BEST ON LOW MIDS AND VOCAL BODY</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--amber)">TAPE</b><span>SIGMOID · SMALL BIAS</span></div>
+      <p>An algebraic sigmoid with a small offset, like the bias imbalance in a tape machine: odd-led, with the evens sitting underneath. The same −12 dBFS sine at PUSH 50 % gives H3 at −26.6 dB and H2 at −31.8 dB. Rounder than CLIP, firmer than TUBE.</p>
+      <div class="fine">GLUE AND DENSITY · DRUMS, BASS, BUSES</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--cut)">CLIP</b><span>CUBIC · SYMMETRIC</span></div>
+      <p>A cubic soft clip with a harder knee, symmetric by design, so it makes odd harmonics only. The second, fourth and sixth stay at zero at every setting. At PUSH 100 % on a −6 dBFS sine the third reaches −9.8 dB below the fundamental: bite, edge and presence.</p>
+      <div class="fine">EDGE · PRESENCE BANDS, SNARE CRACK, GUITARS</div>
+    </article>
+  </div>
+  <ul class="rows">
+    <li><b>ROUTED HEAT</b><span>A band routed to MID adds its harmonics to the middle of the image, one routed to SIDE adds them to the sides only, and LEFT or RIGHT stay in their own ear. A pushed side band widens with grain and leaves the centre clean.</span></li>
+    <li><b>HEADROOM</b><span>The SATURATION plate's HEADROOM sets where the knee sits for PUSH as well: 18 dB puts 0 VU at −18 dBFS, and lower values make every band's PUSH hotter at the same level.</span></li>
+    <li><b>SOLO THE HEAT</b><span>SOLO on the SAT plate plays the engine's whole addition: every band's PUSH residual plus the modules' harmonics and IRON, each in its own channel. Turn a PUSH knob while soloing and you hear exactly what it adds.</span></li>
+  </ul>
+</section>
+
+<!-- DYNAMICS -->
+<div class="sh" id="dynamics">Two-way dynamics</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Every band has one threshold and two ranges. <strong>ABOVE</strong> acts when the band's region is louder than the threshold, <strong>BELOW</strong> when it is quieter, and the two meet smoothly at the threshold, through an 8 dB knee. Set ABOVE negative and BELOW positive and a single band tames the peaks and lifts the tails at the same time.</p>
+      <p>Each band listens to its own region, on its own routing: a side band reacts to the sides. <strong>ATTACK</strong> and <strong>RELEASE</strong> set the ballistics, and <strong>ONSET</strong> blends a 0.5 ms detector in, so the band answers transients as well as level. Flip <span class="k">DYN KEY</span> to EXT and every band keys off the sidechain input instead.</p>
+    </div>
+    <div class="prose">
+      <p><strong>AUTO</strong>, on by default, sets the threshold for you from a slow running average of the band's own level, so a dynamic band works the moment you set a range. Turn it off and THRESHOLD is yours.</p>
+      <p>BELOW is gated at −70 dB. Without that gate, a lift would grab hold of fades, pre-roll and bare noise floor, because the quieter a signal gets the harder BELOW engages. On the graph a faint slate line shows how far each band's ABOVE range can take it, and a brighter slate line shows where it is right now. On this page the space between the dialed curve and the live one is tinted red where gain is taken and blue where it is given, to make the movement easy to read.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Source"><button type="button" data-src="0" aria-pressed="true">DRUMS</button><button type="button" data-src="1" aria-pressed="false">VOCAL</button><button type="button" data-src="2" aria-pressed="false">BASS</button></span>
+      <span>EQ 5 · BELL 2.5 kHz · AUTO OFF</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="dyntime" width="1040" height="560" aria-label="The last four seconds of the band's level, its detector and threshold, and underneath, the gain the band applied: red where it cut, blue where it lifted."></canvas>
+      <canvas id="dyngraph" width="800" height="560" aria-label="The band on PNEUMA's graph: the dialed curve in gold, the reach of ABOVE and BELOW as faint lines, and the live curve moving between them over the crimson input and cyan output."></canvas>
+    </div>
+    <div class="readouts"><span>GAIN NOW<b id="d-now">-</b></span><span>DEEPEST CUT<b id="d-min" class="cut">-</b></span><span>MOST LIFT<b id="d-max" class="lift">-</b></span><span>DETECTOR<b id="d-det">-</b></span></div>
+    <div class="ctrls" id="dynctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:rgba(240,237,230,.45)"></i>BAND LEVEL</span><span><i style="background:var(--gold)"></i>DETECTOR</span><span><i class="blk" style="background:var(--cut)"></i>GAIN TAKEN</span><span><i class="blk" style="background:var(--lift)"></i>GAIN GIVEN</span><span><i style="background:var(--slate)"></i>LIVE CURVE</span><span>THE DETECTOR, KNEE AND GATE FOLLOW THE PLUG-IN'S CODE · THE SOURCES ARE SYNTHETIC</span></div>
+</section>
+
+<!-- CHARACTER -->
+<div class="sh" id="character">Curve character</div>
+<section class="stack">
+  <div class="prose"><p>One switch reshapes every bell at once, around the frequency, Q and gain you set. NEUTRAL is the standard analog-matched bell. The other six change how a boost spreads, the way different consoles answer the same knob position. The dashed line is NEUTRAL; drag GAIN and watch MUSICAL and A tighten as the boost grows.</p></div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Character" id="charseg"><button type="button" data-ch="0" aria-pressed="false">NEUTRAL</button><button type="button" data-ch="1" aria-pressed="false">COOL</button><button type="button" data-ch="2" aria-pressed="false">SHARP</button><button type="button" data-ch="3" aria-pressed="true">MUSICAL</button><button type="button" data-ch="4" aria-pressed="false">N</button><button type="button" data-ch="5" aria-pressed="false">A</button><button type="button" data-ch="6" aria-pressed="false">P</button></span>
+      <span id="charname">MUSICAL · PROPORTIONAL Q</span>
+    </div>
+    <canvas id="chargraph" width="1100" height="420" style="display:block;width:100%;height:auto" aria-label="A boost at 250 Hz and a cut at 3 kHz drawn in the selected character, over the same two bands in NEUTRAL, dashed."></canvas>
+    <div class="ctrls five" id="charctrls"></div>
+  </div>
+  <ul class="rows">
+    <li><b>NEUTRAL</b><span>The standard analog-matched bell, bit-identical to PNEUMA before characters existed.</span></li>
+    <li><b>COOL</b><span>A flat-topped plateau built from two bells either side of your frequency, so a boost spreads out and the centre never gets over-loud.</span></li>
+    <li><b>SHARP</b><span>A focused peak: a smaller shoulder at your Q with a tip four and a half times narrower on top.</span></li>
+    <li><b>MUSICAL</b><span>Proportional Q. Broad at small gains and tightening toward 12 dB, so small moves are gentle bends and big moves stay controlled.</span></li>
+    <li><b>N</b><span>Broad inductor. A widened bell over a wide supporting skirt: the big-iron low-shelf feel on any band.</span></li>
+    <li><b>A</b><span>Proportional forward. Tightens with gain harder than MUSICAL and keeps full energy at the centre: the punchy, assertive move.</span></li>
+    <li><b>P</b><span>Passive tilt. A boost carries a shallow counter-dip at 2.2 times its frequency, weight without mud; a cut mirrors it.</span></li>
+  </ul>
+</section>
+
+<!-- BANDS -->
+<div class="sh" id="bands">The bands</div>
+<section class="two">
+  <div class="prose">
+    <p>PNEUMA opens on the classic seven: a 25 Hz low cut, a low shelf, three bells, a high shelf and a 12.5 kHz high cut, with every gain at zero. Nine more bands sleep out of sight. <strong>Double-click empty graph space and a sleeping band wakes on the analyzer's nearest real resonance</strong>, not just where you clicked, and a hairline flashes the frequency it found. Right-click any node to snap it to a peak.</p>
+    <p>Drag a node to move it. The selected band's strip carries its shape, channel, FREQ, GAIN or SLOPE, Q, the dynamics and PUSH. LISTEN narrows the monitor to one band so you can hunt a resonance by ear.</p>
+  </div>
+  <ul class="rows">
+    <li><b>SHAPES</b><span>Bell · Low and High Shelf · Low and High Cut at 12, 24 or 48 dB/oct · Notch · Tilt · Band Pass · All Pass</span></li>
+    <li><b>RANGE</b><span>20 Hz to 20 kHz · ±30 dB gain · Q 0.1 to 18</span></li>
+    <li><b>CHANNEL</b><span>Each band on Stereo, Mid, Side, Left or Right. Detection and LISTEN follow the routing, and the node wears an M, S, L or R badge.</span></li>
+    <li><b>PHASE</b><span>ZERO: minimum phase, no added latency. LINEAR: a linear-phase filter of the exact drawn curve in three quality tiers, reported to the host. Dynamics render static in LINEAR.</span></li>
+    <li><b>VIEW</b><span>Graph range ±6, 12, 18, 24 or 36 dB. Resizable window, 0.7× to 2×. Three skins: LIGHT, DARK and NUCLEAR. The colour drawer folds the module row away for a shorter window.</span></li>
+  </ul>
+</section>
+
+<!-- MODULES -->
+<div class="sh" id="modules">Body, air and saturation</div>
+<section class="stack">
+  <div class="prose"><p>Three analog modules sit on the plates under the graph. Each has its own switch and its own AMOUNT, none of them gates another, and every AMOUNT starts at 0, so a fresh instance is still an exact null. One switch puts all three before the EQ or after it, crossfaded so it never clicks.</p></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:#c8862f">BODY</b><span>EVEN · LOW MID</span></div>
+      <p>Flux-driven even-harmonic warmth with a head-bump bloom: low-end weight that reads as size rather than level. BIAS leans the curve, FREQ sets where the bloom sits.</p>
+      <div class="fine">AMOUNT 0–100 % · BIAS ±1.00 · FREQ 60–600 Hz</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold)">SATURATION</b><span>BROADBAND</span></div>
+      <p>Its own saturator for the whole signal. DRIVE comes with automatic make-up, MODE picks TUBE, TAPE or CLIP (the same voice PUSH uses), HEADROOM calibrates the knee, and IRON adds a very light console-transformer glue. Felt more than heard: try 20 to 40 %.</p>
+      <div class="fine">AMOUNT · DRIVE 0–24 dB · HEADROOM 12–24 dB · IRON</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:#6f8c99">AIR</b><span>ODD · HF SHEEN</span></div>
+      <p>Parallel odd-harmonic grit on the top end, an isolated second harmonic for sweetness under it, and SHEEN, a linear high shelf of up to +4 dB that tracks TILT, so the top opens up without just getting fizzier.</p>
+      <div class="fine">AMOUNT · TILT 2–16 kHz · FOCUS · EVEN · SHEEN</div>
+    </article>
+  </div>
+  <ul class="rows">
+    <li><b>QUALITY</b><span>MAXTONE runs the modules 2× oversampled with anti-aliased shaping and reports about 2 ms of latency, compensated by the host. LOWLAT runs them at the session rate with zero latency. The same switch sets PUSH to 4× or 2×, at zero latency either way.</span></li>
+    <li><b>SOLO</b><span>SOLO on BODY or AIR plays only what that module adds. SOLO on SAT plays the engine's whole addition, every band's PUSH included.</span></li>
+  </ul>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>PNEUMA runs as a fully working trial for fourteen days from the first time it loads, and the brand bar counts down the days left. When the trial ends without activation, PNEUMA goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA-.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence line in the brand bar, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that PNEUMA works offline and never goes online on its own. One licence covers three computers, and on a Mac one activation covers every user account.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>MIX ENGINEERS</b><p>Dynamic bands do the riding, so a static boost can be smaller. PUSH on two or three bands gives the console-EQ feel without a saturator colouring the whole channel.</p></article>
+  <article><b>MASTERING</b><p>LINEAR phase for the broad moves, mid and side bands for the image, two-way dynamics to hold a resonance down only when it flares. Every colour knob starts at an exact null.</p></article>
+  <article><b>VOCALS</b><p>A dynamic band in the sibilance range cuts on the S and lifts the air back between words. PUSH on TUBE in the chest region adds weight you can hear before you can see.</p></article>
+  <article><b>DRUMS &amp; BASS</b><p>Duck the box on every kick, key a bass band from the kick with the sidechain, and push the snare's crack on CLIP while the low end stays clean.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Dynamic parametric equaliser with per-band harmonics (insert)</td></tr>
+    <tr><th>BANDS</th><td>16 (7 classic + 9 sleeping) · 20 Hz–20 kHz · ±30 dB · Q 0.1–18 · 9 shapes · cuts at 12 / 24 / 48 dB/oct</td></tr>
+    <tr><th>DYNAMICS</th><td>Per band: ABOVE and BELOW ±30 dB · THRESHOLD −60–0 dB or AUTO · ATTACK 0.1–100 ms · RELEASE 5–500 ms · ONSET · sidechain key</td></tr>
+    <tr><th>PUSH</th><td>Per band, 0–100 % · TUBE / TAPE / CLIP · 4× (MAXTONE) or 2× (LOWLAT) oversampled, zero latency · HARMONICS meter</td></tr>
+    <tr><th>CHARACTER</th><td>NEUTRAL · COOL · SHARP · MUSICAL · N · A · P</td></tr>
+    <tr><th>ROUTING</th><td>Per band: Stereo · Mid · Side · Left · Right</td></tr>
+    <tr><th>MODULES</th><td>BODY · AIR · SATURATION with IRON, pre or post EQ</td></tr>
+    <tr><th>LATENCY</th><td>ZERO phase with LOWLAT: none. MAXTONE: about 2 ms. LINEAR at 48 kHz: 4,224 / 8,320 / 16,512 samples (Standard / High / Maximum). All reported to the host.</td></tr>
+    <tr><th>PRESETS</th><td>Save and save as, in the plug-in's own menu</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools, listed under EQ)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS · Apple Silicon (arm64) · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>PNEUMA's tonal core is the Pass-4 equaliser from ROGERIAN: matched to analog prototypes, so bells and shelves keep their shape near the top of the band instead of cramping at Nyquist.</p>
+    <p>No standalone app. PNEUMA lives in your DAW.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow" id="price-ver">PNEUMA</div>
+  <p>Sixteen bands, two-way dynamics and PUSH on every one of them, three analog modules, zero and linear phase. Nothing withheld.</p>
+  <div class="amt"><s>$99</s><strong>$49.50</strong></div>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=PNEUMA%20launch" data-notify="PNEUMA" data-prelaunch>Notify me at launch</a>
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/b8cd8a1d-3d95-4eca-abbf-eb1f4dfac7c9?embed=1" data-launch hidden>Acquire PNEUMA · $49.50</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/ae8352f5-58e4-4ae5-baff-695b3a359917?embed=1" data-launch hidden>Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON · VST3 / AU / AAX INCLUDED</div>
+</section>
+
+<footer><a href="store.html">STORE</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(() => {
+'use strict';
+const RM = false;
+const C = {
+  bg:'#06080c', grid:'#111420', label:'#5d6068', gold:'#c8a86b', goldHot:'#ffc867',
+  pre:'#8e2334', post:'#4fc4d8', slate:'#a2b4c4', amber:'#e09a34', cut:'#d0553f', lift:'#5aa0d8',
+  cream:'#f0ede6', text3:'#8d8779'
+};
+const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this._esc);
-  }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-
-  _mk(src, w, r) {
-    return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
-  }
-
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      overlayOpacity: z ? 1 : 0,
-      overlayPointer: z ? 'auto' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/pneuma/hero.png?v=260808', 1762, 1762 / 1528),
-      openGraph: this._mk('assets/pneuma/graph.png?v=260808', 1742, 1742 / 668),
-    };
+// ---------- maths ----------
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const sstep = x => { const t = clamp(x, 0, 1); return t * t * (3 - 2 * t); };
+const lin2db = a => 20 * Math.log10(Math.max(a, 1e-9));
+// |H(jw)| of (n2 s^2 + n1 s + n0)/(d2 s^2 + d1 s + d0), s = jw
+function biq(n2, n1, n0, d2, d1, d0, w) {
+  const nr = n0 - n2 * w * w, ni = n1 * w, dr = d0 - d2 * w * w, di = d1 * w;
+  return Math.sqrt((nr * nr + ni * ni) / (dr * dr + di * di));
+}
+const bell = (f, f0, Q, g) => { const A = Math.pow(10, g / 40); return biq(1, A / Q, 1, 1, 1 / (A * Q), 1, f / f0); };
+const lshelf = (f, f0, Q, g) => { const A = Math.pow(10, g / 40), r = Math.sqrt(A) / Q; return A * biq(1, r, A, A, r, 1, f / f0); };
+const hshelf = (f, f0, Q, g) => { const A = Math.pow(10, g / 40), r = Math.sqrt(A) / Q; return A * biq(A, r, 1, 1, r, A, f / f0); };
+const hpass = (f, f0, Q, n) => { let m = biq(1, 0, 0, 1, 1 / Q, 1, f / f0); for (let i = 1; i < n; i++) m *= biq(1, 0, 0, 1, 1.4142, 1, f / f0); return m; };
+const lpass = (f, f0, Q, n) => { let m = biq(0, 0, 1, 1, 1 / Q, 1, f / f0); for (let i = 1; i < n; i++) m *= biq(0, 0, 1, 1, 1.4142, 1, f / f0); return m; };
+const SR = 48000;
+// EQ CHARACTER bell (Equalizer.h characterBell), magnitude
+function charBell(f, f0, Q, g, mode) {
+  switch (mode) {
+    case 1: { const d = clamp(0.42 / Q, 0.1, 0.7), R = Math.pow(2, d), Qs = clamp(1.2 * Q, 0.5, 8), gs = 0.73 * g;
+              return bell(f, f0 / R, Qs, gs) * bell(f, f0 * R, Qs, gs); }
+    case 2: return bell(f, f0, Q, 0.55 * g) * bell(f, f0, clamp(4.5 * Q, 0.5, 18), 0.50 * g);
+    case 3: return bell(f, f0, clamp(Q * (0.60 + 0.50 * Math.min(Math.abs(g) / 12, 1)), 0.1, 18), g);
+    case 4: return bell(f, f0, clamp(Q * 0.55, 0.1, 18), 0.85 * g) * bell(f, f0, clamp(Q * 0.22, 0.1, 18), 0.15 * g);
+    case 5: return bell(f, f0, clamp(Q * (0.70 + 0.90 * Math.min(Math.abs(g) / 12, 1)), 0.1, 18), g);
+    case 6: return bell(f, f0, clamp(Q * 0.8, 0.1, 18), 0.95 * g) * bell(f, Math.min(f0 * 2.2, SR * 0.45), clamp(Q * 1.1, 0.1, 18), -0.18 * g);
+    default: return bell(f, f0, Q, g);
   }
 }
+function bandMag(b, f, g, mode) {
+  switch (b.t) {
+    case 'bell': return charBell(f, b.f, b.q, g, mode || 0);
+    case 'ls': return lshelf(f, b.f, b.q, g);
+    case 'hs': return hshelf(f, b.f, b.q, g);
+    case 'hp': return hpass(f, b.f, b.q, b.n || 1);
+    case 'lp': return lpass(f, b.f, b.q, b.n || 1);
+  }
+  return 1;
+}
+function respDb(bands, f, gains, mode) {
+  let m = 1;
+  for (let i = 0; i < bands.length; i++) m *= bandMag(bands[i], f, gains ? gains[i] : bands[i].g, mode);
+  return lin2db(m);
+}
+
+// PUSH shaper (Equalizer.h drvShape), unity slope at 0
+const tG = 0.9, tB = 0.55, pB = 0.16;
+const T0 = Math.tanh(tG * tB), TD = tG * (1 - T0 * T0), S0 = pB / Math.sqrt(1 + pB * pB), PD = Math.pow(1 + pB * pB, -1.5);
+function shape(u, m) {
+  if (m === 0) return (Math.tanh(tG * (u + tB)) - T0) / TD;
+  if (m === 1) { const x = u + pB; return (x / Math.sqrt(1 + x * x) - S0) / PD; }
+  return u <= -1 ? -2 / 3 : u >= 1 ? 2 / 3 : u - u * u * u / 3;
+}
+// one cycle of a sine at the band centre: tap amplitude A, PUSH amt, voice m
+const NP = 256;
+function pushModel(A, amt, m) {
+  const G = 1 + amt * 9, dry = new Float32Array(NP), res = new Float32Array(NP);
+  let mean = 0;
+  for (let n = 0; n < NP; n++) {
+    const v = A * Math.sin(2 * Math.PI * n / NP);
+    dry[n] = v; res[n] = amt * (shape(G * v, m) - G * v) / G; mean += res[n];
+  }
+  mean /= NP;
+  let eR = 0, eD = 0;
+  for (let n = 0; n < NP; n++) { res[n] -= mean; eR += res[n] * res[n]; eD += dry[n] * dry[n]; }
+  const out = new Float32Array(NP), h = [];
+  for (let n = 0; n < NP; n++) out[n] = dry[n] + res[n];
+  for (let k = 1; k <= 7; k++) {
+    let re = 0, im = 0;
+    for (let n = 0; n < NP; n++) { const p = 2 * Math.PI * k * n / NP; re += out[n] * Math.cos(p); im -= out[n] * Math.sin(p); }
+    h.push(2 * Math.sqrt(re * re + im * im) / NP);
+  }
+  let hs = 0; for (let k = 1; k < 7; k++) hs += h[k] * h[k];
+  return { dry, res, out, h, meter: amt > 0 ? 10 * Math.log10(Math.max(eR, 1e-30) / eD) : -Infinity, thd: Math.sqrt(hs) / h[0] };
+}
+
+// ---------- graph geometry ----------
+const FMIN = 20, FMAX = 20000, LMIN = Math.log10(FMIN), LR = Math.log10(FMAX) - LMIN;
+const fx = (f, x0, w) => x0 + (Math.log10(f) - LMIN) / LR * w;
+const xf = (x, x0, w) => Math.pow(10, LMIN + (x - x0) / w * LR);
+function grid(ctx, r, dbR, opts) {
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
+  ctx.font = `${opts && opts.fs || 15}px ${MONO}`; ctx.fillStyle = C.label;
+  for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) {
+    const x = Math.round(fx(f, r.x, r.w)) + .5;
+    ctx.beginPath(); ctx.moveTo(x, r.y); ctx.lineTo(x, r.y + r.h); ctx.stroke();
+    ctx.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, r.y + r.h - 6);
+  }
+  const step = dbR > 12 ? 6 : 6;
+  for (let d = -dbR; d <= dbR; d += step) {
+    const y = Math.round(r.y + (dbR - d) / (2 * dbR) * r.h) + .5;
+    ctx.strokeStyle = d === 0 ? '#1d2230' : C.grid;
+    ctx.beginPath(); ctx.moveTo(r.x, y); ctx.lineTo(r.x + r.w, y); ctx.stroke();
+    if (d !== -dbR && d !== dbR) ctx.fillText((d > 0 ? '+' : '') + d, r.x + 4, y - 4);
+  }
+}
+const gy = (d, r, dbR) => r.y + (dbR - clamp(d, -dbR, dbR)) / (2 * dbR) * r.h;
+function strokePts(ctx, pts, col, w) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); }
+function node(ctx, x, y, n, on, fs) {
+  const r = fs ? fs * .75 : 11;
+  if (on) { ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); }
+  else { ctx.strokeStyle = C.label; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); }
+  ctx.fillStyle = on ? '#0a0c10' : C.label; ctx.font = `500 ${fs || 13}px ${MONO}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(String(n), x, y + 1); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+}
+// fill between dialed and live curves: red where the live curve is below (gain taken), blue above (given)
+function dynFill(ctx, sp, lp) {
+  for (let i = 1; i < sp.length; i++) {
+    const d0 = lp[i][1] - sp[i][1];
+    if (Math.abs(d0) < .6) continue;
+    ctx.fillStyle = d0 > 0 ? 'rgba(208,85,63,.42)' : 'rgba(90,160,216,.42)';
+    ctx.beginPath(); ctx.moveTo(sp[i - 1][0], sp[i - 1][1]); ctx.lineTo(sp[i][0], sp[i][1]); ctx.lineTo(lp[i][0], lp[i][1]); ctx.lineTo(lp[i - 1][0], lp[i - 1][1]); ctx.closePath(); ctx.fill();
+  }
+}
+function liveLine(ctx, lp) { strokePts(ctx, lp, 'rgba(0,0,0,.55)', 4.4); strokePts(ctx, lp, C.slate, 2.4); }
+
+// analyzer layers exactly as EqPanel::drawSpectrum (DARK tokens): solid crimson PRE + brighter(0.18) contour,
+// cyan POST on a top-to-floor alpha gradient (.62 / .82 at 55 % / .97) + brighter(0.25) edge at 70 %
+function specLayers(ctx, pre, post, W, H) {
+  const fill = pts => { ctx.beginPath(); ctx.moveTo(pts[0][0], H); pts.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(pts[pts.length - 1][0], H); ctx.closePath(); ctx.fill(); };
+  const edge = (pts, col, w) => { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); };
+  ctx.fillStyle = '#8e2334'; fill(pre); edge(pre, '#9f4553', 1.6);
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, 'rgba(79,196,216,.62)'); g.addColorStop(.55, 'rgba(79,196,216,.82)'); g.addColorStop(1, 'rgba(79,196,216,.97)');
+  ctx.fillStyle = g; fill(post); edge(post, 'rgba(114,208,224,.7)', 1.6);
+}
+
+// visibility-gated animation loop
+function loop(canvas, draw) {
+  let on = false, raf = 0, last = performance.now(), t = 1.3;
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt; draw(t, dt); if (on) raf = requestAnimationFrame(tick); };
+  if (RM) { draw(t, 1 / 60); return { redraw: () => draw(t, 0) }; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !on) { on = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+    else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+  }));
+  io.observe(canvas); draw(t, 1 / 60);
+  return { redraw: () => draw(t, 0) };
+}
+
+// ---------- synthetic program: a drum and vocal loop, as a spectrum in dBFS ----------
+const NB = 180, BF = new Float32Array(NB);
+for (let i = 0; i < NB; i++) BF[i] = Math.pow(10, LMIN + i / (NB - 1) * LR);
+const pw = d => Math.pow(10, d / 10);
+const g2 = (f, fc, wOct) => { const o = Math.log2(f / fc) / wOct; return -12 * o * o; };
+function program(f, t) {
+  const beat = t * 2, p = beat % 1, k = Math.floor(beat) % 4, p8 = (beat * 2) % 1;
+  const kick = Math.exp(-p * 7), snare = (k === 1 || k === 3) ? Math.exp(-p * 8) : 0, hat = Math.exp(-p8 * 18) * (p8 < .5 || true ? 1 : 0);
+  const syl = .5 + .5 * Math.sin(t * 2 * Math.PI * 2.3 + Math.sin(t * 1.7) * 2), phrase = (t % 4) < 3.2 ? 1 : 0;
+  let s = pw(-46 - 4.2 * Math.log2(Math.max(f, 80) / 80) - (f < 35 ? 30 * Math.log2(35 / f) : 0));
+  s += pw(-8 + lin2db(kick + 1e-3) * .9 + g2(f, 58, .45));
+  s += pw(-24 + g2(f, 110, .35)) + pw(-32 + g2(f, 220, .3));
+  if (snare) { s += pw(-12 + lin2db(snare) * .8 + g2(f, 210, .5)); s += pw(-24 + lin2db(snare) + g2(f, 4200, 1.3)); }
+  s += pw(-30 + lin2db(hat) * .9 + g2(f, 9500, .9));
+  if (phrase) { const v = lin2db(.15 + .85 * syl); s += pw(-24 + v + g2(f, 650, .5)) + pw(-27 + v + g2(f, 1250, .55)) + pw(-31 + v + g2(f, 2700, .6)) + pw(-38 + v * 1.4 + g2(f, 6800, .45)); }
+  return 10 * Math.log10(s);
+}
+const SPMIN = -100, SPMAX = 8;
+const sy = (d, r) => r.y + (SPMAX - clamp(d, SPMIN, SPMAX)) / (SPMAX - SPMIN) * r.h;
+
+// ---------- HERO ----------
+(() => {
+  const cv = document.getElementById('hero'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, R = { x: 0, y: 0, w: W, h: H }, dbR = 12;
+  const bands = [
+    { t: 'hp', f: 28, q: .71, n: 1, g: 0 },
+    { t: 'ls', f: 100, q: .71, g: 1.5 },
+    { t: 'bell', f: 230, q: 1.3, g: -1, above: -7, below: 0, thr: -20, atk: 4, rel: 90 },
+    { t: 'bell', f: 1250, q: .9, g: 3, push: .9 },
+    { t: 'bell', f: 7600, q: 1.6, g: 0, above: -6, below: 4, thr: -30, atk: 2, rel: 60 },
+    { t: 'hs', f: 11000, q: .71, g: 1.5 },
+    { t: 'lp', f: 19000, q: .71, n: 1, g: 0 }
+  ];
+  const env = [0, 0, -60, 0, -60, 0, 0], live = bands.map(b => b.g), disp = new Float32Array(NB).fill(-90), jit = new Float32Array(NB);
+  let heatDisp = -60;
+  const eB3 = document.getElementById('h-b3'), eB5 = document.getElementById('h-b5'), eH = document.getElementById('h-heat');
+  let lastTxt = 0;
+  loop(cv, (t, dt) => {
+    // dynamics: band level from the program at the band's frequency
+    bands.forEach((b, i) => {
+      if (b.above === undefined) return;
+      const L = program(b.f, t) + 3;
+      const c = 1 - Math.exp(-dt * 1000 / (L > env[i] ? b.atk : b.rel));
+      env[i] += c * (L - env[i]);
+      const a = sstep((env[i] - b.thr) / 8), lo = sstep((b.thr - env[i]) / 8) * sstep((env[i] + 70) / 8);
+      live[i] = b.g + b.above * a + b.below * lo;
+    });
+    grid(ctx, R, dbR, { fs: 15 });
+    // analyzer: crimson input behind, cyan output in front
+    for (let i = 0; i < NB; i++) { jit[i] = jit[i] * .8 + (Math.random() * 2 - 1) * .9; const v = program(BF[i], t) + jit[i]; disp[i] = dt === 0 ? v : Math.max(v, disp[i] - 60 * dt); }
+    const pre = [], post = [];
+    for (let i = 0; i < NB; i++) { const x = fx(BF[i], 0, W); pre.push([x, sy(disp[i], R)]); post.push([x, sy(disp[i] + respDb(bands, BF[i], live, 0), R)]); }
+    specLayers(ctx, pre, post, W, H);
+    // PUSH sparks: band 4's harmonics above it
+    const b4 = bands[3], tap = Math.pow(10, (program(b4.f, t) + 12 + b4.g) / 20), pm = pushModel(clamp(tap, .02, 1.2), b4.push, 0);
+    heatDisp = dt === 0 ? pm.meter : heatDisp + (pm.meter - heatDisp) * Math.min(1, dt * 8);
+        for (let k = 2; k <= 6; k++) {
+      const f = b4.f * k; if (f > 19000) break;
+      const x = fx(f, 0, W), y = H - clamp((64 + lin2db(pm.h[k - 1] / pm.h[0])) / 64, 0, 1) * H * .62;
+      const gr = ctx.createLinearGradient(0, H, 0, y); gr.addColorStop(0, 'rgba(224,154,52,0)'); gr.addColorStop(1, k % 2 ? 'rgba(208,85,63,.95)' : 'rgba(255,200,103,.95)');
+      ctx.strokeStyle = gr; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x, y); ctx.stroke();
+      ctx.fillStyle = k % 2 ? C.cut : C.goldHot; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 7); ctx.fill();
+      ctx.fillStyle = 'rgba(240,237,230,.5)'; ctx.font = `13px ${MONO}`; ctx.fillText('H' + k, x + 5, y - 6);
+    }
+    // curves
+    const sp = [], lp = [];
+    for (let px = 0; px <= W; px += 3) { const f = xf(px, 0, W); sp.push([px, gy(respDb(bands, f, null, 0), R, dbR)]); lp.push([px, gy(respDb(bands, f, live, 0), R, dbR)]); }
+    ctx.fillStyle = 'rgba(200,168,107,.08)'; ctx.beginPath(); ctx.moveTo(0, gy(0, R, dbR)); sp.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(W, gy(0, R, dbR)); ctx.closePath(); ctx.fill();
+    // REACH: faint slate line at the full ABOVE extent, as EqPanel::drawCurve draws it
+    const reach = bands.map(b => b.g + (b.above || 0)), tp = [];
+    for (let px = 0; px <= W; px += 3) tp.push([px, gy(respDb(bands, xf(px, 0, W), reach, 0), R, dbR)]);
+    strokePts(ctx, tp, 'rgba(162,180,196,.30)', 1.4);
+    dynFill(ctx, sp, lp); liveLine(ctx, lp);
+    strokePts(ctx, sp, 'rgba(200,168,107,.95)', 2.6);
+    // nodes, dynamic-range handles, PUSH heat ring
+    bands.forEach((b, i) => {
+      const x = fx(b.f, 0, W), y = (b.t === 'hp' || b.t === 'lp') ? gy(0, R, dbR) : gy(b.g, R, dbR);
+      if (b.push) {
+        const hr = clamp((heatDisp + 40) / 40, 0, 1);
+        ctx.strokeStyle = `rgba(224,154,52,${.25 + .6 * hr})`; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 16 + 8 * hr, 0, 7); ctx.stroke();
+      }
+      if (b.above !== undefined) {
+        // range handle at the configured extent, in the NEUTRAL character colour (dynColour)
+        const yr = gy(b.g + b.above, R, dbR), dir = b.above < 0 ? -1 : 1, s = 7;
+        ctx.fillStyle = 'rgba(208,145,63,.5)'; ctx.beginPath(); ctx.moveTo(x - s, yr + dir * s); ctx.lineTo(x + s, yr + dir * s); ctx.lineTo(x, yr); ctx.closePath(); ctx.fill();
+      }
+      node(ctx, x, y, i + 1, true, 15);
+    });
+    if (t - lastTxt > .12 || dt === 0) {
+      lastTxt = t;
+      const d3 = live[2] - bands[2].g, d5 = live[4] - bands[4].g;
+      eB3.textContent = (d3 > -0.05 ? '0.0' : d3.toFixed(1)) + ' dB';
+      eB5.textContent = (d5 >= 0 ? '+' : '') + d5.toFixed(1) + ' dB'; eB5.className = d5 < -0.05 ? 'cut' : d5 > 0.05 ? 'lift' : '';
+      eH.textContent = isFinite(heatDisp) ? Math.round(heatDisp) + ' dB' : '--';
+    }
+  });
+})();
+
+// ---------- control builder ----------
+function sliders(host, defs, onChange) {
+  const vals = {};
+  defs.forEach(d => {
+    vals[d.id] = d.v;
+    const w = document.createElement('div'); w.className = 'ctrl' + (d.cls ? ' ' + d.cls : '');
+    const id = 'c-' + d.id;
+    w.innerHTML = `<label for="${id}">${d.name}<output id="${id}-o"></output></label><input type="range" id="${id}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.v}">`;
+    host.appendChild(w);
+    const inp = w.querySelector('input'), out = w.querySelector('output');
+    const upd = () => { vals[d.id] = +inp.value; out.textContent = d.fmt(vals[d.id]); };
+    inp.addEventListener('input', () => { upd(); onChange(); });
+    upd();
+    d.set = v => { inp.value = v; upd(); };
+  });
+  return vals;
+}
+function segGroup(attr, onPick) {
+  const bs = document.querySelectorAll(`[${attr}]`);
+  bs.forEach(b => b.addEventListener('click', () => { bs.forEach(o => o.setAttribute('aria-pressed', String(o === b))); onPick(+b.getAttribute(attr)); }));
+}
+const fmtHz = v => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + ' kHz' : Math.round(v) + ' Hz';
+const fmtDb = v => (v > 0 ? '+' : '') + v.toFixed(1) + ' dB';
+
+// ---------- PUSH LAB ----------
+(() => {
+  const g = document.getElementById('pushgraph'), gx = g.getContext('2d');
+  const w = document.getElementById('pushwave'), wx = w.getContext('2d');
+  let voice = 0;
+  const fPos = v => 40 * Math.pow(125, v / 1000); // slider 0..1000 -> 40 Hz..5 kHz
+  const fInv = f => Math.log(f / 40) / Math.log(125) * 1000;
+  const V = sliders(document.getElementById('pushctrls'), [
+    { id: 'f', name: 'FREQ', min: 0, max: 1000, step: 1, v: Math.round(fInv(320)), fmt: v => fmtHz(fPos(v)) },
+    { id: 'g', name: 'GAIN', min: -12, max: 12, step: .1, v: 3, fmt: fmtDb },
+    { id: 'q', name: 'Q', min: .3, max: 6, step: .01, v: 1.2, fmt: v => v.toFixed(2) },
+    { id: 'push', name: 'PUSH', min: 0, max: 100, step: 1, v: 40, cls: 'heat', fmt: v => v + ' %' },
+    { id: 'lvl', name: 'LEVEL', min: -36, max: 0, step: .5, v: -12, fmt: v => v.toFixed(1) + ' dBFS' }
+  ], () => draw());
+  segGroup('data-pv', v => { voice = v; draw(); });
+  const R = { x: 0, y: 0, w: g.width, h: g.height }, dbR = 18;
+  const el = id => document.getElementById(id);
+  function draw() {
+    const f0 = fPos(V.f), amt = V.push / 100, A = Math.pow(10, (V.lvl + V.g) / 20);
+    const pm = pushModel(A, amt, voice), fund = V.lvl + V.g;
+    // graph
+    grid(gx, R, dbR, { fs: 15 });
+    gx.font = `14px ${MONO}`; gx.fillStyle = C.label; gx.textAlign = 'right';
+    for (const d of [0, -24, -48, -72]) gx.fillText(d + ' dBFS', R.w - 8, sy(d, R) + 15);
+    gx.textAlign = 'left';
+    // the region PUSH taps
+    gx.fillStyle = 'rgba(224,154,52,.07)'; gx.beginPath(); gx.moveTo(0, R.h);
+    for (let px = 0; px <= R.w; px += 3) { const f = xf(px, 0, R.w), m = biq(0, 1 / V.q, 0, 1, 1 / V.q, 1, f / f0); gx.lineTo(px, sy(fund + lin2db(m), R)); }
+    gx.lineTo(R.w, R.h); gx.closePath(); gx.fill();
+    // band curve
+    const pts = []; for (let px = 0; px <= R.w; px += 3) pts.push([px, gy(lin2db(bell(xf(px, 0, R.w), f0, V.q, V.g)), R, dbR)]);
+    strokePts(gx, pts, 'rgba(200,168,107,.95)', 2.6);
+    // spectral lines
+    const line = (f, d, col, lab) => {
+      const x = fx(f, 0, R.w), y = sy(d, R);
+      const gr = gx.createLinearGradient(0, R.h, 0, y); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, col);
+      gx.strokeStyle = gr; gx.lineWidth = 3; gx.beginPath(); gx.moveTo(x, R.h); gx.lineTo(x, y); gx.stroke();
+      gx.fillStyle = col; gx.beginPath(); gx.arc(x, y, 4, 0, 7); gx.fill();
+      gx.fillStyle = 'rgba(240,237,230,.6)'; gx.font = `13px ${MONO}`; gx.fillText(lab, x + 6, y - 6);
+    };
+    line(f0, fund, C.post, 'F');
+    let lands = [];
+    for (let k = 2; k <= 7; k++) {
+      const f = f0 * k; if (f > 20000) break;
+      const rel = lin2db(pm.h[k - 1] / pm.h[0]); if (rel < -90) continue;
+      line(f, fund + rel, k % 2 ? C.cut : C.goldHot, 'H' + k); lands.push(f);
+    }
+    node(gx, fx(f0, 0, R.w), gy(V.g, R, dbR), 4, true, 15);
+    // hot ring
+    if (amt > 0) { const hr = clamp((pm.meter + 40) / 40, 0, 1); gx.strokeStyle = `rgba(224,154,52,${.25 + .65 * hr})`; gx.lineWidth = 2; gx.beginPath(); gx.arc(fx(f0, 0, R.w), gy(V.g, R, dbR), 16 + 9 * hr, 0, 7); gx.stroke(); }
+    // wave panel
+    const W2 = w.width, H2 = w.height; wx.fillStyle = C.bg; wx.fillRect(0, 0, W2, H2);
+    const top = { x: 30, y: 30, w: W2 - 60, h: 300 }, mid = top.y + top.h / 2;
+    wx.strokeStyle = C.grid; wx.lineWidth = 1; wx.beginPath(); wx.moveTo(top.x, mid + .5); wx.lineTo(top.x + top.w, mid + .5); wx.stroke();
+    const sc = (top.h / 2 - 10) / Math.max(1.05 * A, .05);
+    const wave = (arr, col, lw, gain) => { wx.strokeStyle = col; wx.lineWidth = lw; wx.beginPath(); for (let n = 0; n <= NP; n++) { const x = top.x + n / NP * top.w, y = mid - arr[n % NP] * sc * (gain || 1); n ? wx.lineTo(x, y) : wx.moveTo(x, y); } wx.stroke(); };
+    wave(pm.dry, 'rgba(240,237,230,.28)', 2);
+    wave(pm.res, 'rgba(224,154,52,.9)', 2, 4);
+    wave(pm.out, C.post, 3);
+    wx.font = `14px ${MONO}`; wx.fillStyle = C.text3; wx.fillText('ONE CYCLE · ADDED HARMONICS ×4 IN AMBER', top.x, top.y - 10);
+    // bars
+    const bt = { x: 30, y: 390, w: W2 - 60, h: 190 };
+    wx.fillStyle = C.text3; wx.fillText('dB BELOW THE FUNDAMENTAL', bt.x, bt.y - 14);
+    for (const d of [0, -20, -40, -60, -80]) { const y = bt.y + (-d) / 80 * bt.h; wx.strokeStyle = C.grid; wx.beginPath(); wx.moveTo(bt.x + 44, y + .5); wx.lineTo(bt.x + bt.w, y + .5); wx.stroke(); wx.fillStyle = C.label; wx.fillText(String(d), bt.x, y + 5); }
+    const bw = (bt.w - 60) / 6;
+    for (let k = 2; k <= 7; k++) {
+      const rel = lin2db(pm.h[k - 1] / pm.h[0]), hgt = clamp((80 + rel) / 80, 0, 1) * bt.h, x = bt.x + 56 + (k - 2) * bw;
+      wx.fillStyle = k % 2 ? C.cut : C.goldHot; wx.globalAlpha = .85; wx.fillRect(x, bt.y + bt.h - hgt, bw - 18, hgt); wx.globalAlpha = 1;
+      wx.fillStyle = C.cream; wx.fillText('H' + k, x, bt.y + bt.h + 22);
+    }
+    // readouts
+    const fmtRel = k => { const r = lin2db(pm.h[k - 1] / pm.h[0]); return amt === 0 || r < -120 ? '--' : r.toFixed(1) + ' dB'; };
+    el('p-meter').textContent = amt === 0 ? 'NULL' : pm.meter.toFixed(1) + ' dB';
+    el('p-h2').textContent = fmtRel(2); el('p-h3').textContent = fmtRel(3);
+    el('p-thd').textContent = amt === 0 ? '0 %' : (pm.thd * 100).toFixed(pm.thd < .1 ? 2 : 1) + ' %';
+    el('p-lands').textContent = lands.length ? lands.slice(0, 3).map(fmtHz).join(' · ') : '--';
+  }
+  // drag the node
+  let drag = false;
+  const pick = e => {
+    const r = g.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * g.width, y = (e.clientY - r.top) / r.height * g.height;
+    const f = clamp(xf(x, 0, g.width), 40, 5000), gn = clamp(dbR - y / g.height * 2 * dbR, -12, 12);
+    V.f = Math.round(fInv(f)); V.g = Math.round(gn * 10) / 10;
+    document.getElementById('c-f').value = V.f; document.getElementById('c-g').value = V.g;
+    document.getElementById('c-f-o').textContent = fmtHz(fPos(V.f)); document.getElementById('c-g-o').textContent = fmtDb(V.g);
+    draw();
+  };
+  g.addEventListener('pointerdown', e => { drag = true; g.setPointerCapture(e.pointerId); pick(e); });
+  g.addEventListener('pointermove', e => { if (drag) pick(e); });
+  g.addEventListener('pointerup', () => { drag = false; });
+  draw();
+})();
+
+// ---------- DYNAMICS LAB ----------
+(() => {
+  const tc = document.getElementById('dyntime'), tx = tc.getContext('2d');
+  const gc = document.getElementById('dyngraph'), gx = gc.getContext('2d');
+  let src = 0;
+  segGroup('data-src', v => { src = v; resetStats(); });
+  const V = sliders(document.getElementById('dynctrls'), [
+    { id: 'thr', name: 'THRESHOLD', min: -60, max: 0, step: .5, v: -24, fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'above', name: 'ABOVE', min: -30, max: 30, step: .5, v: -8, cls: 'cut', fmt: fmtDb },
+    { id: 'below', name: 'BELOW', min: -30, max: 30, step: .5, v: 5, cls: 'lift', fmt: fmtDb },
+    { id: 'atk', name: 'ATTACK', min: 0, max: 1000, step: 1, v: 500, fmt: v => tAtk(v).toFixed(1) + ' ms' },
+    { id: 'rel', name: 'RELEASE', min: 0, max: 1000, step: 1, v: 500, fmt: v => tRel(v).toFixed(0) + ' ms' },
+    { id: 'onset', name: 'ONSET', min: 0, max: 100, step: 1, v: 0, fmt: v => v + ' %' }
+  ], () => {});
+  // skewed ranges with the plug-in's centres: attack 0.1–100 centred 5 ms, release 5–500 centred 40 ms
+  function skew(v, lo, hi, mid) { const s = Math.log(.5) / Math.log((mid - lo) / (hi - lo)); return lo + (hi - lo) * Math.pow(v / 1000, 1 / s); }
+  function tAtk(v) { return skew(v, .1, 100, 5); } function tRel(v) { return skew(v, 5, 500, 40); }
+  document.getElementById('c-atk-o').textContent = tAtk(V.atk).toFixed(1) + ' ms';
+  document.getElementById('c-rel-o').textContent = tRel(V.rel).toFixed(0) + ' ms';
+  // band-region level, dBFS, per millisecond
+  let rnd = 0, sylLvl = -18, sylNext = 0;
+  function level(ms) {
+    const t = ms / 1000; rnd = rnd * .95 + (Math.random() * 2 - 1) * .3;
+    if (src === 0) { const beat = t * 2, p = (beat % 1) / 2, acc = Math.floor(beat) % 2 ? -11 : -4, hat = ((t * 4) % 1);
+      return Math.max(acc - p * 1000 / 160 * 8.7, -46 + 6 * Math.exp(-hat * 9)) + rnd; }
+    if (src === 1) { const ph = t % 4.2; if (ph > 3.3) return -95 + rnd;
+      if (ms >= sylNext) { sylLvl = -22 + Math.random() * 14; sylNext = ms + 160 + Math.random() * 160; }
+      const into = 1 - (sylNext - ms) / 240; return sylLvl - (into > .7 ? (into - .7) * 40 : 0) + rnd; }
+    const ph = t % 1; return ph < .85 ? -10 - Math.min(10, ph * 1000 / 30) - ph * 4 + rnd : -10 - 10 - 3.4 - (ph - .85) * 400 + rnd;
+  }
+  const N = 4000, lv = new Float32Array(N).fill(-95), dt_ = new Float32Array(N).fill(-95), gn = new Float32Array(N);
+  let head = 0, ms = 0, env = 1e-5, envF = 1e-5, acc = 0, mn = 0, mx = 0, cur = 0, det = -95;
+  function resetStats() { mn = 0; mx = 0; }
+  function step() {
+    const L = level(ms), a = Math.pow(10, L / 20);
+    const aC = 1 - Math.exp(-1 / tAtk(V.atk)), rC = 1 - Math.exp(-1 / tRel(V.rel)), fC = 1 - Math.exp(-1 / .5);
+    env += (a > env ? aC : rC) * (a - env); envF += (a > envF ? fC : rC) * (a - envF);
+    const lvl = lin2db(env); det = lin2db(env + V.onset / 100 * Math.max(0, envF - env));
+    const above = sstep((det - V.thr) / 8), below = sstep((V.thr - det) / 8) * sstep((lvl + 70) / 8);
+    cur = V.above * above + V.below * below;
+    lv[head] = L; dt_[head] = det; gn[head] = cur; head = (head + 1) % N; ms++;
+    mn = Math.min(mn, cur); mx = Math.max(mx, cur);
+  }
+  for (let i = 0; i < 3000; i++) step();
+  const el = id => document.getElementById(id);
+  const disp = new Float32Array(NB).fill(-90);
+  let lastTxt = 0;
+  loop(tc, (t, dt) => {
+    acc += dt * 1000; while (acc >= 1) { step(); acc -= 1; }
+    // time panel
+    const W = tc.width, H = tc.height, top = { x: 0, y: 20, w: W, h: 330 }, gr = { y: 380, h: 160 };
+    tx.fillStyle = C.bg; tx.fillRect(0, 0, W, H);
+    const ly = d => top.y + (0 - clamp(d, -72, 0)) / 72 * top.h;
+    tx.font = `14px ${MONO}`;
+    for (const d of [0, -24, -48, -72]) { const y = Math.round(ly(d)) + .5; tx.strokeStyle = C.grid; tx.beginPath(); tx.moveTo(0, y); tx.lineTo(W, y); tx.stroke(); tx.fillStyle = C.label; tx.fillText(d + ' dB', 6, y - 5); }
+    const yT = ly(V.thr); tx.setLineDash([6, 6]); tx.strokeStyle = 'rgba(240,237,230,.5)'; tx.beginPath(); tx.moveTo(0, yT); tx.lineTo(W, yT); tx.stroke(); tx.setLineDash([]);
+    tx.fillStyle = 'rgba(240,237,230,.7)'; tx.fillText('THRESHOLD', W - 110, yT - 6);
+    const trace = (arr, col, lw) => { tx.strokeStyle = col; tx.lineWidth = lw; tx.beginPath(); for (let x = 0; x < W; x++) { const i = (head + Math.floor(x / W * N)) % N, y = ly(arr[i]); x ? tx.lineTo(x, y) : tx.moveTo(x, y); } tx.stroke(); };
+    trace(lv, 'rgba(240,237,230,.35)', 1.4); trace(dt_, C.gold, 2.2);
+    // gain strip
+    const g0 = gr.y + gr.h / 2, gs = (gr.h / 2 - 6) / 15;
+    tx.strokeStyle = '#1d2230'; tx.beginPath(); tx.moveTo(0, g0 + .5); tx.lineTo(W, g0 + .5); tx.stroke();
+    tx.fillStyle = C.label; tx.fillText('+15', 6, gr.y + 14); tx.fillText('−15', 6, gr.y + gr.h - 4); tx.fillText('GAIN', 6, g0 - 6);
+    for (let x = 0; x < W; x += 2) { const i = (head + Math.floor(x / W * N)) % N, v = clamp(gn[i], -15, 15); if (Math.abs(v) < .05) continue; tx.fillStyle = v < 0 ? 'rgba(208,85,63,.85)' : 'rgba(90,160,216,.85)'; const y = g0 - v * gs; tx.fillRect(x, Math.min(y, g0), 2, Math.abs(y - g0)); }
+    // graph panel
+    const GW = gc.width, GH = gc.height, R = { x: 0, y: 0, w: GW, h: GH }, dbR = 18, f0 = 2500, q = 1.2;
+    grid(gx, R, dbR, { fs: 14 });
+    const base = lv[(head + N - 1) % N];
+    for (let i = 0; i < NB; i++) { const f = BF[i], near = Math.exp(-Math.pow(Math.log2(f / f0) / 1.1, 2)); const v = -64 - 3.5 * Math.log2(Math.max(f, 100) / 100) + near * (base + 58) * .9 + (Math.random() * 2 - 1) * 1.5; disp[i] = Math.max(v, disp[i] - 70 * Math.max(dt, .016)); }
+    const pre = [], post = [];
+    for (let i = 0; i < NB; i++) { const x = fx(BF[i], 0, GW); pre.push([x, sy(disp[i], R)]); post.push([x, sy(disp[i] + lin2db(bell(BF[i], f0, q, cur)), R)]); }
+    specLayers(gx, pre, post, GW, GH);
+    const curve = gdb => { const p = []; for (let px = 0; px <= GW; px += 3) p.push([px, gy(lin2db(bell(xf(px, 0, GW), f0, q, gdb)), R, dbR)]); return p; };
+    const sp = curve(0), lp = curve(cur);
+    strokePts(gx, curve(V.above), 'rgba(162,180,196,.30)', 1.4);
+    dynFill(gx, sp, lp); liveLine(gx, lp); strokePts(gx, sp, 'rgba(200,168,107,.95)', 2.4);
+    node(gx, fx(f0, 0, GW), gy(0, R, dbR), 5, true, 14);
+    if (t - lastTxt > .1 || dt === 0) {
+      lastTxt = t;
+      const now = el('d-now'); now.textContent = fmtDb(cur); now.className = cur < -.05 ? 'cut' : cur > .05 ? 'lift' : '';
+      el('d-min').textContent = fmtDb(mn); el('d-max').textContent = fmtDb(mx); el('d-det').textContent = det.toFixed(1) + ' dB';
+    }
+  });
+  document.getElementById('dynctrls').addEventListener('input', resetStats);
+})();
+
+// ---------- CHARACTER ----------
+(() => {
+  const cv = document.getElementById('chargraph'), ctx = cv.getContext('2d');
+  const names = ['NEUTRAL · STANDARD BELL', 'COOL · PLATEAU', 'SHARP · FOCUSED', 'MUSICAL · PROPORTIONAL Q', 'N · BROAD INDUCTOR', 'A · PROPORTIONAL FORWARD', 'P · PASSIVE TILT'];
+  const cols = [C.amber, C.lift, C.cut, '#62a87c', '#c08948', '#cf6a3d', '#8f7fc9'];
+  let mode = 3;
+  const fPos = v => 40 * Math.pow(125, v / 1000), fInv = f => Math.log(f / 40) / Math.log(125) * 1000;
+  const V = sliders(document.getElementById('charctrls'), [
+    { id: 'cg', name: 'GAIN', min: 0, max: 18, step: .1, v: 9, fmt: v => '±' + v.toFixed(1) + ' dB' },
+    { id: 'cq', name: 'Q', min: .3, max: 4, step: .01, v: 1, fmt: v => v.toFixed(2) },
+    { id: 'cf1', name: 'BOOST AT', min: 0, max: 1000, step: 1, v: Math.round(fInv(250)), fmt: v => fmtHz(fPos(v)) },
+    { id: 'cf2', name: 'CUT AT', min: 0, max: 1000, step: 1, v: Math.round(fInv(3000)), fmt: v => fmtHz(fPos(v)) },
+    { id: 'cr', name: 'RANGE', min: 0, max: 2, step: 1, v: 1, fmt: v => '±' + [12, 18, 24][v] + ' dB' }
+  ], () => draw());
+  segGroup('data-ch', v => { mode = v; document.getElementById('charname').textContent = names[v]; draw(); });
+  function draw() {
+    const R = { x: 0, y: 0, w: cv.width, h: cv.height }, dbR = [12, 18, 24][V.cr];
+    grid(ctx, R, dbR, { fs: 14 });
+    const f1 = fPos(V.cf1), f2 = fPos(V.cf2);
+    const pts = m => { const p = []; for (let px = 0; px <= R.w; px += 2) { const f = xf(px, 0, R.w); p.push([px, gy(lin2db(charBell(f, f1, V.cq, V.cg, m) * charBell(f, f2, V.cq, -V.cg, m)), R, dbR)]); } return p; };
+    const n = pts(0), s = pts(mode);
+    ctx.fillStyle = 'rgba(200,168,107,.08)'; ctx.beginPath(); ctx.moveTo(0, gy(0, R, dbR)); s.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(R.w, gy(0, R, dbR)); ctx.closePath(); ctx.fill();
+    if (mode) { ctx.setLineDash([7, 6]); strokePts(ctx, n, 'rgba(240,237,230,.4)', 1.6); ctx.setLineDash([]); }
+    strokePts(ctx, s, cols[mode], 3);
+    node(ctx, fx(f1, 0, R.w), gy(V.cg, R, dbR), 2, true, 14);
+    node(ctx, fx(f2, 0, R.w), gy(-V.cg, R, dbR), 4, true, 14);
+  }
+  draw();
+})();
+})();
 </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

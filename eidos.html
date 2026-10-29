@@ -1,96 +1,1096 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EIDOS Product Page</title>
+<meta name="description" content="EIDOS is a dynamic resonance suppressor: it measures how far each frequency stands above its own neighbourhood and takes back only the excess, only while it is happening. Linear phase, minimum phase or zero latency in one instance. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as pneuma.html, cinder.html and gire.html. Single dark look by choice: THETA marketing
+   pages live on the void theme. EIDOS's own colour enters only where the plug-in draws it in its DARK
+   skin: the muted-gold input trace, the silver band-weight line, the gold nodes and the amber-to-red
+   reduction heat (palette in Source/Common/Theme/ThetaColors.h, applyDark; drawing in SpectrumPanel.h). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#06080c; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840; --gold-muted:#9e8b65; --silver:#b0b0b0;
+  --amber:#e09a34; --heat-lo:#e8a33d; --heat-mid:#e68b36; --heat-hot:#e2622d; --heat-peak:#dc4228;
+  --slate:#a2b4c4; --cut:#d0553f; --lift:#5aa0d8; --teal:#4aa889;
+  --cap:#14181f; --grid:#111420; --label:#707070;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(40px,5vw,66px);letter-spacing:.3em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the hero well: EIDOS's DARK graph, divider frame, gold top edge */
+.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
+.well-foot b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--gold-hot)}
+.well-foot b.cut{color:var(--heat-hot)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's DARK pills: gold fill on the active cell */
+.seg{display:inline-flex;border:1px solid #1e2028;border-radius:5px;background:#0a0c10;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:rgba(240,237,230,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#0c0c10;font-weight:500}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:#030506;overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#1f1610;stroke:#7a5a2a;stroke-width:1.2}
+.path .band{fill:#0b1216;stroke:#2c4a55;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.heat{stroke:var(--amber);animation-duration:.6s}
+.path .flow.ctl{stroke:var(--slate);opacity:.6;animation-duration:2.6s}
+.path .alt{fill:none;stroke:#3a3846;stroke-width:1.2;stroke-dasharray:4 5}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:#030506;display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views canvas+canvas{border-left:1px solid var(--divider)}
+.lab-views.wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+canvas.drag{cursor:grab;touch-action:none}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.readouts b.cut{color:var(--heat-hot)} .readouts b.ok{color:var(--teal)}
+.ctrls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.ctrls.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--gold)}
+.ctrl.heat label{color:var(--amber)} .ctrl.heat input[type=range]{accent-color:var(--amber)}
+.ctrl.slate label{color:var(--slate)} .ctrl.slate input[type=range]{accent-color:var(--slate)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+.legend i.blk{height:10px;width:10px;border-radius:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em}
+.card .nm span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em;text-align:right}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.face-top{margin-block:0 var(--s6)}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:8px}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(232,163,61,.09),transparent 55%),radial-gradient(120% 140% at 0% 100%,rgba(220,66,40,.11),transparent 55%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views,.lab-views.wide{grid-template-columns:minmax(0,1fr)}
+  .lab-views canvas+canvas{border-left:0;border-top:1px solid var(--divider)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls,.ctrls.five{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ctrls.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.five,.ctrls.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+[data-launch][hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">EIDOS</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">EIDOS</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=EIDOS%20updates" data-notify="EIDOS" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Dynamic resonance suppressor · Three latency tiers</div>
+    <h1 class="wordmark">EIDOS</h1>
+    <div class="lede">
+      <p>EIDOS listens for the frequencies that stand out from their own neighbourhood, a ringing room, a harsh vocal, a whistling cymbal, and takes back only the excess, only while it is happening. Everything around them is left alone, and EIDOS never boosts.</p>
+      <p>Five bands on the graph tell it where it may work and how hard. One instance runs linear phase for the finished stem, minimum phase for the mix, or zero latency for tracking, and switches between them without a click.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get EIDOS</a>
+      <a class="btn ghost" href="#detect">Find a resonance</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon + Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>DARK · VOCAL SMOOTH · DEPTH 80 %</span><span>LINEAR · 4096 SMP</span></div>
+      <canvas id="hero" width="1040" height="660" aria-label="EIDOS's graph in its DARK skin. A sung vocal with a ringing room runs through it: the muted gold trace is the input spectrum, the five gold nodes above the midline are the reduction bands with their silver weight line, and the amber to red fill hanging below the midline is the cut EIDOS is applying right now, deepest on the room ring near 3 kHz and on each S."></canvas>
+      <div class="well-foot"><span>DEEPEST CUT <b id="h-deep" class="cut">-</b></span><span>AT <b id="h-at">-</b></span><span>CUT OVER 1 dB <b id="h-span">-</b></span></div>
+    </div>
+    <div class="tagline">GOLD IS THE INPUT · THE NODES SAY WHERE · AMBER HANGS WHERE IT CUTS</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #015 // EIDOS CUT THE RING</span>
-</footer>
+<section class="face-top">
+  <img src="assets/eidos/hero.png?v=261029b" alt="The EIDOS panel: QUALITY and LATENCY rows over the graph with its five reduction bands, the REDUCTION plate of eight knobs and the MODES plate" width="1370" height="1000">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A resonance is a frequency that rings longer and louder than the ones around it: the mode of a small room, the honk of a cheap mic, a cymbal's whistle, a voice's edge at 3 kHz. A static EQ cut fixes it everywhere, including the moments it was fine. <strong>EIDOS cuts a frequency only by the amount it stands above its own neighbourhood, and only while it does.</strong></p>
+      <p>Every frame, EIDOS compares each frequency with the average level of the spectrum around it, its <strong>local envelope</strong>. The difference is the excess. Whatever excess clears the bar is taken back, scaled by <strong>DEPTH</strong> and by the five bands.</p>
+    </div>
+    <div class="prose">
+      <p><strong>DETAIL</strong> sets how wide that neighbourhood is, from about an octave down to a sixth of one. <strong>SELECT</strong> raises the bar, so only the worst offenders are touched. <strong>FOCUS</strong> spares transients and saves the cut for resonances that persist, and <strong>ATTACK</strong> and <strong>RELEASE</strong> set how fast a cut grabs and lets go.</p>
+      <p>The cut is applied one of three ways, picked on the <strong>LATENCY</strong> row. <strong>DELTA</strong> plays only what was removed, so you can hear exactly what EIDOS is taking.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 260" role="img" aria-label="EIDOS's signal path. The input runs straight to the apply stage. Beside it, a detector analyses the input, or the mid of a stereo pair, or the sidechain, measures each frequency's excess over its local envelope, weights it by depth, the five bands and focus, smooths it with attack and release, and drives the apply stage: linear phase, minimum phase or zero latency. Then mix against a dry copy delayed by the same latency, output trim and bypass.">
+      <text x="10" y="44">IN</text>
+      <path class="wire" d="M34 40 H760 V96"/><path class="flow" d="M34 40 H760 V96"/>
+      <path class="wire" d="M44 40 V137 H66"/><path class="flow ctl" d="M44 40 V137 H66"/>
+      <rect class="band" x="56" y="70" width="474" height="116" rx="6"/>
+      <text class="lbl" x="70" y="92">DETECTION · ON INPUT, MID OR SIDECHAIN</text>
+      <rect class="box" x="66" y="108" width="104" height="58" rx="4"/><text class="lbl" x="118" y="131" text-anchor="middle">ANALYSE</text><text x="118" y="150" text-anchor="middle">FFT · 32 BANDS</text>
+      <path class="wire" d="M170 137 H190"/><path class="flow ctl" d="M170 137 H190"/>
+      <rect class="box" x="190" y="108" width="140" height="58" rx="4"/><text class="lbl" x="260" y="131" text-anchor="middle">DETECT</text><text x="260" y="150" text-anchor="middle">EXCESS · ENVELOPE</text>
+      <path class="wire" d="M330 137 H350"/><path class="flow ctl" d="M330 137 H350"/>
+      <rect class="box" x="350" y="108" width="164" height="58" rx="4"/><text class="lbl" x="432" y="131" text-anchor="middle">WEIGHT</text><text x="432" y="150" text-anchor="middle">DEPTH · BANDS · FOCUS</text>
+      <path class="wire" d="M514 137 H550"/><path class="flow ctl" d="M514 137 H550"/>
+      <rect class="box" x="550" y="104" width="112" height="48" rx="4"/><text class="lbl" x="606" y="125" text-anchor="middle">SMOOTH</text><text x="606" y="142" text-anchor="middle">ATK · REL</text>
+      <path class="wire" d="M662 128 H690"/><path class="flow ctl" d="M662 128 H690"/>
+      <rect class="hot" x="690" y="96" width="140" height="64" rx="4"/><text class="lbl" x="760" y="122" text-anchor="middle" style="fill:var(--amber)">APPLY · CUT</text><text x="760" y="142" text-anchor="middle">LINEAR·MIN·LL</text>
+      <path class="wire" d="M830 128 H862"/><path class="flow heat" d="M830 128 H862"/>
+      <rect class="box" x="862" y="104" width="78" height="48" rx="4"/><text class="lbl" x="901" y="125" text-anchor="middle">MIX</text><text x="901" y="142" text-anchor="middle">· DELTA</text>
+      <path class="wire" d="M940 128 H962"/><path class="flow" d="M940 128 H962"/>
+      <rect class="box" x="962" y="104" width="104" height="48" rx="4"/><text class="lbl" x="1014" y="125" text-anchor="middle">OUTPUT</text><text x="1014" y="142" text-anchor="middle">· BYPASS</text>
+      <path class="alt" d="M770 40 H901 V104"/>
+      <text x="560" y="26">DRY, DELAYED BY THE SAME LATENCY</text>
+      <rect class="box" x="190" y="208" width="140" height="34" rx="4"/><text class="lbl" x="260" y="230" text-anchor="middle">SIDECHAIN</text>
+      <path class="wire" d="M260 208 V166"/><path class="flow ctl" d="M260 208 V166"/>
+      <text x="344" y="230" style="fill:var(--text-3)">SC INT / EXT · STEREO LINKED / M-S</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>MEASURE</b><p>The input is cut into overlapping frames and turned into a spectrum, or run through 32 band filters in LL.</p></li>
+    <li><span class="num">2</span><b>COMPARE</b><p>Each frequency is held against the average of its neighbourhood. What sticks out is the excess.</p></li>
+    <li><span class="num">3</span><b>WEIGHT</b><p>DEPTH and the five bands decide how much of that excess may go. SELECT and FOCUS decide which.</p></li>
+    <li><span class="num">4</span><b>SMOOTH</b><p>ATTACK and RELEASE shape every cut in time, so the gain never zips or pumps.</p></li>
+    <li><span class="num">5</span><b>APPLY</b><p>The cut lands in linear phase, minimum phase or zero latency. Cut only: the gain never goes above 1.</p></li>
+  </ol>
+</section>
+
+<!-- DETECT -->
+<div class="sh" id="detect">Excess over the envelope</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>EIDOS does not look for loud frequencies. It looks for frequencies that are <strong>loud for where they are</strong>. For every bin it averages the level, in decibels, of the spectrum around it, a window DETAIL sets from one octave wide at 0 % to a sixth of an octave at 100 %. That average is the local envelope, the gold dashed line below. Anything above it is excess.</p>
+      <p>In SOFT, the default, a bin has to clear the envelope by half a decibel plus SELECT before anything happens, and then <strong>DEPTH × the band weight</strong> of the excess is removed. At DEPTH 100 % with a band fully up, a resonance is pulled right down to its envelope, never below.</p>
+    </div>
+    <div class="prose">
+      <p><strong>SELECT</strong> raises the bar by up to 24 dB. At 0 it treats every excess, which smooths broadly; turn it up and only the peaks that really stand out get cut. <strong>MAX CUT</strong>, a host parameter, puts a floor under any single cut, −24 dB by default.</p>
+      <p><strong>HARD</strong> is the aggressive mode: it drops the half-decibel allowance and takes one and a half times the excess, and it also cuts anything that rises over a fixed level line that DEPTH lowers. Its cut is always at least SOFT's on the same material. The scatter on the right shows every bin: its excess across, its cut down.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Source"><button type="button" data-ds="0" aria-pressed="true">VOCAL</button><button type="button" data-ds="1" aria-pressed="false">ACOUSTIC GTR</button><button type="button" data-ds="2" aria-pressed="false">CYMBALS</button></span>
+      <span class="seg" role="group" aria-label="Detect mode"><button type="button" data-dm="0" aria-pressed="true">SOFT</button><button type="button" data-dm="1" aria-pressed="false">HARD</button></span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="detspec" width="1040" height="600" aria-label="One frame of the source's spectrum with the local envelope EIDOS measures under it as a gold dashed line. Bins that clear the bar are shaded amber. Below, the cut each bin gets, hanging from the zero line."></canvas>
+      <canvas id="detxfer" width="800" height="600" aria-label="Cut against excess. The line is the selected mode's rule at the current DEPTH and SELECT, the dashed line is the other mode, and each dot is one bin of the frame."></canvas>
+    </div>
+    <div class="readouts"><span>ENVELOPE<b id="x-env">-</b></span><span>BINS CUT<b id="x-bins">-</b></span><span>DEEPEST<b id="x-deep" class="cut">-</b></span><span>AT<b id="x-at">-</b></span></div>
+    <div class="ctrls four" id="detctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--gold-muted)"></i>INPUT</span><span><i style="background:var(--gold)"></i>LOCAL ENVELOPE</span><span><i class="blk" style="background:var(--heat-mid)"></i>EXCESS OVER THE BAR</span><span><i class="blk" style="background:var(--heat-peak)"></i>CUT</span><span>ONE FRAME · N 4096 AT 48 kHz · BAND WEIGHT 1 EVERYWHERE · THE DETECTOR FOLLOWS ResonanceEngine.h · THE SOURCES ARE SYNTHETIC</span></div>
+</section>
+
+<!-- FOCUS -->
+<div class="sh" id="focus">Focus and ballistics</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A snare crack and a ringing snare overtone can stand above their neighbours by the same amount. One is the hit, and you want it. The other is the problem. <strong>FOCUS</strong> tells them apart by how long they last.</p>
+      <p>Alongside the live spectrum, EIDOS keeps a slow one, averaged over about a second, and measures the excess there too. A resonance that persists shows up in the slow spectrum; a transient barely registers. As FOCUS rises, each cut is scaled by how much excess the slow spectrum holds at that frequency: <strong>sustained rings keep their cut, and hits pass through</strong>.</p>
+    </div>
+    <div class="prose">
+      <p><strong>ATTACK</strong>, 1 to 200 ms, sets how fast a cut grabs, and <strong>RELEASE</strong>, 10 to 1000 ms, how long it holds once the resonance stops. The defaults are 15 and 80 ms. A short attack catches an S on its first frame; a long release keeps a room mode from pumping between notes.</p>
+      <p>The lab runs two frequencies of one source through the detector frame by frame: the <strong>RING</strong>, which persists, and the <strong>HITS</strong>, which do not. Turn FOCUS up and watch the hit cuts fall away while the ring's stays.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Source"><button type="button" data-fs="0" aria-pressed="true">DRUMS</button><button type="button" data-fs="1" aria-pressed="false">VOCAL</button><button type="button" data-fs="2" aria-pressed="false">GUITAR</button></span>
+      <span id="f-name">RING 1.9 kHz SNARE OVERTONE · HITS 5.2 kHz STICK CRACK</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="ftime" width="1040" height="560" aria-label="The last four seconds of the ring's and the hits' excess over their envelope, the bar they must clear, and underneath, the cut each one got: amber for the ring, red for the hits."></canvas>
+      <canvas id="fgraph" width="800" height="560" aria-label="The two frequencies on EIDOS's graph, with their bands above the midline and their live cuts hanging below it."></canvas>
+    </div>
+    <div class="readouts"><span>RING CUT<b id="f-ring" class="cut">-</b></span><span>HIT CUT<b id="f-hit" class="cut">-</b></span><span>RING KEPT<b id="f-kept">-</b></span><span>HITS SPARED<b id="f-spared" class="ok">-</b></span></div>
+    <div class="ctrls five" id="fctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--gold)"></i>RING EXCESS</span><span><i style="background:rgba(240,237,230,.6)"></i>HIT EXCESS</span><span><i class="blk" style="background:var(--heat-mid)"></i>RING CUT</span><span><i class="blk" style="background:var(--heat-peak)"></i>HIT CUT</span><span>KEPT AND SPARED COMPARE THE LAST FOUR SECONDS WITH FOCUS AT 0 · ONE FRAME PER 21.3 ms HOP, AS THE LINEAR ENGINE · SOFT, BAND WEIGHT 1</span></div>
+</section>
+
+<!-- LATENCY -->
+<div class="sh" id="latency">Three engines, one instance</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Every resonance suppressor has to decide where its cut lives in time. EIDOS lets you choose per session, in the same instance, from the <strong>LATENCY</strong> row.</p>
+      <p><strong>LINEAR</strong> analyses 4096-point frames with 75 % overlap and applies the cut to each frequency without touching its phase: true linear phase, the most precise of the three, at 4096 samples of delay (85 ms at 48 kHz). The cost of linear phase is <strong>pre-ring</strong>: a narrow cut smears a little energy ahead of the note. On a finished stem or a dialogue bounce, that is the right trade.</p>
+      <p><strong>MIN</strong> runs the same detector on 1024-point frames and turns the cut into its minimum-phase equivalent before applying it: the same depth, nothing ahead of the note, 1024 samples of delay (21 ms).</p>
+    </div>
+    <div class="prose">
+      <p><strong>LL</strong> drops frames altogether. Thirty-two band filters, about a third of an octave apart, follow the input sample by sample, and a cascade of 32 dynamic bells applies the cut. <strong>No added latency</strong>, for tracking, live sound and picture sync. The price is resolution: 32 taps instead of 2049 bins, so a very narrow ring is cut a third of an octave wide.</p>
+      <p>Switching is click-free: the active engine fades to silence, the swap and the new latency report happen there, and the new engine waits until it is full before fading back in. QUALITY and BYPASS never change the latency, so neither makes the host re-sync.</p>
+      <p>The lab shows what each engine does to a single static cut: on the left, the impulse response of the removed signal, as DELTA would play it; on the right, the cut each engine actually lands.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Latency tier"><button type="button" data-lt="0" aria-pressed="true">LINEAR</button><button type="button" data-lt="1" aria-pressed="false">MIN</button><button type="button" data-lt="2" aria-pressed="false">LL</button></span>
+      <span id="l-name">LINEAR · STFT 4096 · ZERO PHASE</span>
+    </div>
+    <div class="lab-views">
+      <canvas id="lir" width="900" height="560" aria-label="The removed signal's impulse response for the selected engine, around the moment the note arrives. Energy to the left of the arrival line is pre-ring."></canvas>
+      <canvas id="lmag" width="900" height="560" aria-label="The cut asked for, dashed, and the cut the selected engine lands, as a heat fill hanging from the zero line, with the LL taps marked along the bottom."></canvas>
+    </div>
+    <div class="readouts"><span>LATENCY<b id="l-lat">-</b></span><span>PRE-RING<b id="l-pre">-</b></span><span>RESOLUTION<b id="l-res">-</b></span><span>LANDS AT<b id="l-lands" class="cut">-</b></span></div>
+    <div class="ctrls four" id="lctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--amber)"></i>REMOVED SIGNAL</span><span><i style="background:rgba(240,237,230,.45)"></i>CUT ASKED FOR</span><span><i class="blk" style="background:var(--heat-hot)"></i>CUT LANDED</span><span>COMPUTED FROM THE APPLY STAGES: ZERO-PHASE BINS WITH THE ±2-BIN SMOOTHING, THE CEPSTRAL MINIMUM-PHASE FOLD, AND THE 32-BELL SVF CASCADE · A STATIC CUT, NO DETECTION</span></div>
+</section>
+
+<!-- BANDS -->
+<div class="sh" id="bands">The bands</div>
+<section class="two">
+  <div class="prose">
+    <p>The graph is the control surface. Five numbered nodes sit above the midline; together they draw a <strong>weight map</strong> across the spectrum, the silver line, and EIDOS removes DEPTH × that weight of the excess at every frequency. Where no band reaches, nothing is cut. Each band is a smooth bell on a log-frequency scale: height is its amount, width its spread in octaves.</p>
+    <p>Drag a node: across for frequency, up for more. Cmd-drag for width. Double-click to bypass it. <strong>Hold SHIFT and press a node to LISTEN</strong>: EIDOS plays a narrow band around it, and dragging sweeps it, so you can hunt the ring by ear and then drop the band on it.</p>
+    <p>A fresh instance opens with every band at zero and DEPTH at zero: flat and dry, an exact null.</p>
+  </div>
+  <ul class="rows">
+    <li><b>RANGE</b><span>20 Hz to 20 kHz · amount 0 to 100 % · width 0.05 to 3 octaves</span></li>
+    <li><b>DEFAULTS</b><span>120 Hz, 450 Hz, 1.5 kHz, 4.5 kHz and 12 kHz, wide enough to overlap into a plateau once raised</span></li>
+    <li><b>REFINE</b><span>Four host parameters reshape the whole map: TILT (±6 dB/oct about 1 kHz), BIAS SCALE (0 to 200 %), BIAS SHIFT (±24 semitones, to retune every band at once for a new key or a new voice) and MAX CUT.</span></li>
+    <li><b>VIEW</b><span>Live input spectrum behind, live reduction below. Resizable window, 75 to 200 %. Three skins: LIGHT, DARK and NUCLEAR.</span></li>
+    <li><b>ROGERIAN</b><span>EIDOS is the RES module of ROGERIAN, our dialogue channel strip, as a plug-in of its own. The parameters are the same, so a ROGERIAN RES setting transcribes one to one.</span></li>
+  </ul>
+</section>
+
+<!-- MODES -->
+<div class="sh" id="modes">Modes</div>
+<section class="stack">
+  <div class="prose"><p>The MODES plate sets how EIDOS listens. Every combination works in all three engines.</p></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold-hot)">DETECT</b><span>SOFT · HARD</span></div>
+      <p>SOFT follows the material: the bar is the local envelope plus half a decibel and SELECT. HARD takes one and a half times the excess with no allowance, and adds a fixed level line that DEPTH pulls down, so loud resonances are caught even in dense mixes.</p>
+      <div class="fine">HARD CUTS AT LEAST AS DEEP AS SOFT, EVERYWHERE</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold)">STEREO</b><span>LINKED · M-S</span></div>
+      <p>LINKED detects on the mid and applies one cut to both sides, so the image never shifts. M-S runs independent detectors on mid and side, for a ring that lives only in the room or only in the centre. STEREO LINK, a host parameter, blends from dual mono to fully linked.</p>
+      <div class="fine">LINK 0 TO 100 % · DEFAULT 100</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--slate)">SIDECHAIN</b><span>INT · EXT</span></div>
+      <p>EXT detects on the sidechain input and cuts the main signal. Key a dialogue track's resonance control from its boom, or a reverb return from its dry source. If the host leaves the sidechain unconnected, EIDOS falls back to the main input.</p>
+      <div class="fine">DETECTION ONLY · THE SIDECHAIN IS NEVER HEARD</div>
+    </article>
+  </div>
+  <ul class="rows">
+    <li><b>QUALITY</b><span>ECO runs detection every other frame for about 35 to 40 % less CPU. NORM is 75 % overlap. HIGH is 87.5 % overlap, finer in time at about twice the CPU. Latency is the same in all three, and OFFLINE, a host parameter, can force HIGH for bounces.</span></li>
+    <li><b>DELTA</b><span>Plays the removed signal, dry minus wet. If DELTA sounds like the problem, you are done. If it sounds like the performance, back off.</span></li>
+    <li><b>BYPASS</b><span>A true internal bypass: the engine keeps running and the output crossfades over 12 ms to a dry copy delayed by exactly the reported latency. The host's own bypass button drives the same path, so toggling never clicks and never moves the latency.</span></li>
+    <li><b>SESSION</b><span>A/B with COPY, 64 steps of undo where a whole knob gesture counts as one, and presets that store the sound but never the bypass.</span></li>
+  </ul>
+</section>
+
+<!-- PRESETS -->
+<div class="sh" id="presets">Factory presets</div>
+<section class="two">
+  <div class="prose">
+    <p>Ten starting points ship inside the plug-in, voiced per source. Each one sets every parameter, so moving between them never leaves anything behind. Save your own beside them; saving under a factory name keeps your version in front of it.</p>
+    <p class="small">LIVE VOCAL LL is the only factory preset that switches the engine, to zero latency.</p>
+  </div>
+  <ul class="rows">
+    <li><b>DIALOGUE TAME</b><span>Production dialogue: low-mid boxiness, presence edge and sibilance, MAX CUT −18 dB.</span></li>
+    <li><b>VO PODCAST</b><span>Close-mic voice: proximity boom and the 5 kHz bite.</span></li>
+    <li><b>VOCAL SMOOTH</b><span>Sung vocal: harshness around 3 kHz and 7 kHz, gentle elsewhere.</span></li>
+    <li><b>LIVE VOCAL LL</b><span>The same idea on the zero-latency engine, for tracking and stage.</span></li>
+    <li><b>ACOUSTIC GTR · DRUM OH · CYMBAL WASH · ROOM MIC</b><span>Body boom, overhead clang, cymbal whistle and room modes, with FOCUS set to spare the attacks.</span></li>
+    <li><b>MASTER BUS · DE-HARSH</b><span>A light, selective pass over a full mix, and a two-band presence fix.</span></li>
+  </ul>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>EIDOS runs as a fully working trial for fourteen days from the first time it loads, and the pill in the header counts down the days left. When the trial ends without activation, EIDOS goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA- and need EIDOS 0.2.0 or later.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence pill, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that EIDOS works offline. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat when you move.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the licence file damaged, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>DIALOGUE &amp; POST</b><p>Built inside a dialogue channel strip. Tame a room's honk and a lav's edge on every line without riding an EQ, and key it from the boom with the sidechain.</p></article>
+  <article><b>MIX ENGINEERS</b><p>Harsh vocals, boxy guitars, clanging overheads. EIDOS cuts the moment the problem appears and gives it back when it goes, so the tone you chose survives.</p></article>
+  <article><b>MASTERING</b><p>LINEAR phase, a high SELECT and a shallow MAX CUT for a full mix: only the frequencies that genuinely jump out are touched, and the image stays put.</p></article>
+  <article><b>LIVE &amp; TRACKING</b><p>LL adds no latency, so a singer can monitor through it and a stage vocal can run through it. Flip the same instance to LINEAR for the bounce.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Dynamic resonance suppressor, cut only (insert)</td></tr>
+    <tr><th>ENGINES</th><td>LINEAR: STFT 4096, Hann, linear phase · MIN: STFT 1024, cepstral minimum phase · LL: 32 log-spaced dynamic bells, zero latency</td></tr>
+    <tr><th>LATENCY</th><td>LINEAR 4,096 samples (85.3 ms at 48 kHz) · MIN 1,024 (21.3 ms) · LL 0. Reported to the host; QUALITY and BYPASS never change it.</td></tr>
+    <tr><th>BANDS</th><td>5 weight bands · 20 Hz–20 kHz · amount 0–100 % · width 0.05–3 oct</td></tr>
+    <tr><th>CONTROLS</th><td>DEPTH · DETAIL (1 to ⅙ oct) · SELECT 0–24 dB · FOCUS · ATTACK 1–200 ms · RELEASE 10–1000 ms · MIX · OUTPUT ±24 dB</td></tr>
+    <tr><th>MODES</th><td>DETECT SOFT / HARD · STEREO LINKED / M-S · SIDECHAIN INT / EXT · DELTA</td></tr>
+    <tr><th>QUALITY</th><td>ECO · NORM (75 % overlap) · HIGH (87.5 %) · offline render MATCH or HIGH</td></tr>
+    <tr><th>HOST-ONLY</th><td>TILT ±6 dB/oct · MAX CUT −36–0 dB (default −24) · BIAS SCALE 0–200 % · BIAS SHIFT ±24 st · STEREO LINK 0–100 % · OFFLINE</td></tr>
+    <tr><th>I/O</th><td>Mono or stereo, plus an optional sidechain for detection</td></tr>
+    <tr><th>PRESETS</th><td>10 factory, unlimited user · A/B with COPY · 64-step undo</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Universal (Apple Silicon and Intel) · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>EIDOS's detector and its three engines come from ROGERIAN's RES module, null-tested at every stage: at DEPTH 0 every engine passes the input through exactly, delayed only by its stated latency.</p>
+    <p>No standalone app. EIDOS lives in your DAW.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow" id="price-ver">EIDOS</div>
+  <p>Three engines, five bands, SOFT and HARD detection, FOCUS, linked, mid-side and sidechain detection, ten factory presets. Nothing withheld.</p>
+  <div class="amt"><s>$99</s><strong>$49.50</strong></div>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=EIDOS%20launch" data-notify="EIDOS" data-prelaunch>Notify me at launch</a>
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/811b678c-375d-4cd3-b287-9ead06cf49e9?embed=1" data-launch hidden>Acquire EIDOS · $49.50</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/86662b4a-f0ea-477c-b9fd-98cfbe882399?embed=1" data-launch hidden>Try 14 days free</a>
+  </div>
+  <div class="cap">MACOS UNIVERSAL · VST3 / AU / AAX INCLUDED</div>
+</section>
+
+<footer><a href="store.html">STORE</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(() => {
+'use strict';
+const RM = false;
+const C = {
+  bg:'#06080c', grid:'#111420', mid:'#1d2230', label:'#5d6068', gold:'#c8a86b', goldHot:'#ffc867', goldMuted:'#9e8b65',
+  silver:'#b0b0b0', amber:'#e09a34', hLo:'#e8a33d', hMid:'#e68b36', hHot:'#e2622d', hPeak:'#dc4228',
+  slate:'#a2b4c4', cream:'#f0ede6', text3:'#8d8779', cap:'#0a0c10'
+};
+const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+// notes toggle
+
+// ---------- maths ----------
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lin2db = a => 20 * Math.log10(Math.max(a, 1e-9));
+const db2lin = d => Math.pow(10, d / 20);
+const sstep = x => { const t = clamp(x, 0, 1); return t * t * (3 - 2 * t); };
+function rng(seed) { let s = (seed >>> 0) || 1; return () => { s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0; return s / 4294967296; }; }
+
+// ---------- geometry (20 Hz .. 20 kHz log, as SpectrumPanel) ----------
+const FMIN = 20, FMAX = 20000, LMIN = Math.log10(FMIN), LR = Math.log10(FMAX) - LMIN;
+const fx = (f, x0, w) => x0 + clamp((Math.log10(f) - LMIN) / LR, 0, 1) * w;
+const xf = (x, x0, w) => Math.pow(10, LMIN + (x - x0) / w * LR);
+const fmtHz = v => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + ' kHz' : Math.round(v) + ' Hz';
+const fmtCut = v => (v > -0.05 ? '0.0' : v.toFixed(1)) + ' dB';
+function strokePts(ctx, pts, col, w) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); }
+function freqGrid(ctx, r, fs) {
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.font = `${fs || 15}px ${MONO}`; ctx.fillStyle = C.label;
+  for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) {
+    const x = Math.round(fx(f, r.x, r.w)) + .5;
+    ctx.beginPath(); ctx.moveTo(x, r.y); ctx.lineTo(x, r.y + r.h); ctx.stroke();
+    ctx.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, r.y + r.h - 6);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
+}
+function heatGrad(ctx, y0, y1) {
+  const g = ctx.createLinearGradient(0, y0, 0, y1);
+  g.addColorStop(0, 'rgba(232,163,61,.38)'); g.addColorStop(.5, 'rgba(230,139,54,.66)'); g.addColorStop(.8, 'rgba(226,98,45,.88)'); g.addColorStop(1, C.hPeak);
+  return g;
+}
+function node(ctx, x, y, n, on, fs) {
+  const r = fs ? fs * .75 : 11;
+  if (on) { ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); }
+  else { ctx.strokeStyle = C.label; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); }
+  ctx.fillStyle = on ? C.cap : C.label; ctx.font = `500 ${fs || 13}px ${MONO}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(String(n), x, y + 1); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+}
+
+// band weight map W(f) (BandCurve.h evalBandW): Gaussian per band on log2 frequency, sigma = q octaves
+function bandW(bands, f) {
+  let w = 0;
+  for (const b of bands) { if (!b.on || b.amt <= 0) continue; const lr = Math.log2(f / b.f), s = Math.max(.02, b.q); w += b.amt * Math.exp(-(lr * lr) / (2 * s * s)); }
+  return w;
+}
+
+// ---------- the detector (ResonanceEngine.h processFrame, SOFT / HARD / FOCUS / SELECT / ballistics) ----------
+const SR = 48000;
+class Detector {
+  constructor(N) {
+    this.N = N; const h = this.h = N / 2;
+    this.mag = new Float32Array(h + 1); this.cs = new Float64Array(h + 2); this.csl = new Float64Array(h + 2);
+    this.ml = new Float32Array(h + 1); this.Gp = new Float32Array(h + 1).fill(1); this.Gt = new Float32Array(h + 1).fill(1);
+    this.tgt = new Float32Array(h + 1).fill(0);
+    this.lo = new Int32Array(h + 1); this.hi = new Int32Array(h + 1); this.det = -1; this.init = true;
+    this.magRef = 20 * Math.log10(N * .25);
+    this.red = new Float32Array(320); this.dispB = new Float32Array(320);
+    for (let i = 0; i < 320; i++) this.dispB[i] = clamp(20 * Math.pow(1000, i / 319) * N / SR, 0, h);
+    this.W = null;
   }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/eidos/hero.png?v=260808', 1370, 1370 / 1000),
-    };
+  setDetail(d) {
+    if (d === this.det) return;
+    const w = 1 + (1 / 6 - 1) * d, lm = Math.pow(2, -w / 2), hm = Math.pow(2, w / 2), h = this.h;
+    for (let k = 0; k <= h; k++) { this.lo[k] = clamp(Math.round(k * lm), 0, h); this.hi[k] = clamp(Math.round(k * hm), 0, h); }
+    this.det = d;
+  }
+  // dbfs: per-bin level in dBFS (length h+1). p: depth, detail, sel (0..1), focus, mode, maxCut, cA, cR, cL
+  frame(dbfs, p) {
+    const h = this.h, mag = this.mag, cs = this.cs, csl = this.csl, ml = this.ml, Gp = this.Gp, Gt = this.Gt, W = this.W;
+    this.setDetail(p.detail);
+    cs[0] = 0; csl[0] = 0;
+    for (let k = 0; k <= h; k++) {
+      mag[k] = dbfs[k] + this.magRef; cs[k + 1] = cs[k] + mag[k];
+      if (this.init) ml[k] = mag[k]; else ml[k] += p.cL * (mag[k] - ml[k]);
+      csl[k + 1] = csl[k] + ml[k];
+    }
+    this.init = false;
+    const selDb = p.sel * 24, T = -6 - p.depth * 36;
+    for (let k = 0; k <= h; k++) {
+      const lo = this.lo[k], hi = this.hi[k], inv = 1 / (hi - lo + 1);
+      const R = (cs[hi + 1] - cs[lo]) * inv, E = mag[k] - R;
+      const frac = clamp(p.depth * (W ? W[k] : 1), 0, 1);
+      let gr;
+      if (p.mode === 0) gr = -Math.max(0, E - .5 - selDb) * frac;
+      else { const oA = Math.max(0, E - selDb) * 1.5, oB = Math.max(0, mag[k] - this.magRef - T - selDb); gr = -Math.max(oA, oB) * frac; }
+      if (p.focus > 0) {
+        const El = ml[k] - (csl[hi + 1] - csl[lo]) * inv, s = sstep(El / 12);
+        gr *= 1 + p.focus * (s - 1);
+      }
+      gr = Math.max(gr, p.maxCut);
+      this.tgt[k] = gr;
+      const t = Math.min(1, Math.pow(10, gr / 20)), c = t < Gp[k] ? p.cA : p.cR;
+      Gp[k] = c * t + (1 - c) * Gp[k];
+    }
+    for (let k = 0; k <= h; k++) {             // ±2-bin spectral smoothing
+      const a = Math.max(0, k - 2), b = Math.min(h, k + 2); let s = 0;
+      for (let j = a; j <= b; j++) s += Gp[j];
+      Gt[k] = s / (b - a + 1);
+    }
+    for (let i = 0; i < 320; i++) {            // 320-point log display grid, EMA 0.35 (or set when p.snap)
+      const bf = this.dispB[i], b0 = Math.floor(bf), b1 = Math.min(h, b0 + 1), fr = bf - b0;
+      const g = Gt[b0] + fr * (Gt[b1] - Gt[b0]), red = -20 * Math.log10(Math.max(1e-4, g));
+      this.red[i] = p.snap ? red : this.red[i] + .35 * (red - this.red[i]);
+    }
+    // envelope in dBFS for drawing
+    return this;
+  }
+  envDb(k) { const lo = this.lo[k], hi = this.hi[k]; return (this.cs[hi + 1] - this.cs[lo]) / (hi - lo + 1) - this.magRef; }
+}
+
+// ---------- synthetic program spectra, per bin, dBFS (N 4096 at 48 kHz) ----------
+const NL = 4096, HL = NL / 2, BINHZ = SR / NL;
+const L2F = new Float32Array(HL + 1); for (let k = 1; k <= HL; k++) L2F[k] = Math.log2(k * BINHZ); L2F[0] = L2F[1] - 1;
+const p10 = d => Math.pow(10, d / 10);
+function floorFill(P, lvl, rnd) { for (let k = 0; k <= HL; k++) P[k] = p10(lvl - 3 * (L2F[k] - 9.97)) * -Math.log(1 - rnd() + 1e-12); }
+function addNoise(P, fc, wOct, lvl, rnd) {
+  if (lvl < -140) return; const l2 = Math.log2(fc), a = p10(lvl);
+  for (let k = 1; k <= HL; k++) { const o = (L2F[k] - l2) / wOct; if (o < -3.5 || o > 3.5) continue; P[k] += a * Math.pow(10, -1.2 * o * o) * -Math.log(1 - rnd() + 1e-12); }
+}
+function addTone(P, f, lvl, wb) {
+  if (lvl < -140 || f > 20000) return; const c = f / BINHZ, a = p10(lvl), w2 = 2 * wb * wb;
+  for (let k = Math.max(1, Math.floor(c - 4 * wb)); k <= Math.min(HL, Math.ceil(c + 4 * wb)); k++) { const d = k - c; P[k] += a * Math.exp(-d * d / w2); }
+  for (let k = Math.max(1, Math.floor(c - 40)); k <= Math.min(HL, Math.ceil(c + 40)); k++) { const d = Math.abs(k - c); if (d >= 2) P[k] += a * 8e-4 / (d * d * d); }
+}
+function toDb(P, out) { for (let k = 0; k <= HL; k++) out[k] = 10 * Math.log10(P[k] + 1e-14); return out; }
+function formant(f, list, tilt) { let s = 0; for (const F of list) { const o = Math.log2(f / F[0]) / F[2]; s += p10(F[1] - 12 * o * o); } return 10 * Math.log10(s + 1e-14) - tilt * Math.max(0, Math.log2(f / 300)); }
+const VF = [[550, -14, .55], [1150, -20, .5], [2700, -27, .42], [3500, -31, .35]];
+
+// vocal: sung line, a room ring at 3.15 kHz that hangs after each phrase, a 5.2 kHz edge, sibilance
+const voc = { ring: 0 };
+function vocalFrame(t, P, rnd, dt) {
+  const ph = t % 4.2, on = ph < 3.4 ? 1 : 0;
+  const syl = .35 + .65 * Math.abs(Math.sin(t * Math.PI * 1.6 + .4 * Math.sin(t * 2.1)));
+  const v = on * syl * sstep(ph / .08) * sstep((3.4 - ph) / .1);
+  voc.ring = dt === 0 ? v : (v > voc.ring ? v : voc.ring * Math.exp(-dt / .45));
+  floorFill(P, -98, rnd);
+  addNoise(P, 250, 2.2, -74, rnd);
+  addNoise(P, 2600, 1.7, -66 + 10 * v, rnd);
+  addNoise(P, 900, 2.4, -50 + lin2db(v + 1e-6), rnd);
+  const f0 = 196 + 22 * Math.sin(t * 2 * Math.PI * .23) + 6 * Math.sin(t * 2 * Math.PI * 5.5);
+  if (v > .01) for (let hN = 1; hN * f0 < 12000; hN++) addTone(P, hN * f0, formant(hN * f0, VF, 4) + lin2db(v), .95);
+  addTone(P, 3150, -22 + lin2db(voc.ring + 1e-6), 1.3);
+  addTone(P, 5200, -46 + lin2db(v + 1e-6), 1.6);
+  const s1 = (t + .3) % 1.4, sib = s1 < .16 ? Math.sin(Math.PI * s1 / .16) : 0;
+  addNoise(P, 7000, .5, -27 + lin2db(sib + 1e-7), rnd);
+}
+function gtrFrame(P, rnd) {
+  floorFill(P, -100, rnd);
+  addNoise(P, 300, 2.2, -70, rnd);
+  addNoise(P, 3000, 1.6, -60, rnd);
+  for (const [f0, a] of [[110, 0], [146.8, -2], [196, -3], [246.9, -5]])
+    for (let hN = 1; hN * f0 < 9000; hN++) { const f = hN * f0; addTone(P, f, -26 + a - 5.5 * Math.log2(hN) + 8 * Math.exp(-Math.pow(Math.log2(f / 210) / .5, 2)), .9); }
+  addTone(P, 2380, -40, 1.2); addTone(P, 4300, -51, 1.4);
+}
+function cymFrame(P, rnd) {
+  floorFill(P, -100, rnd);
+  addNoise(P, 6500, 1.5, -46, rnd); addNoise(P, 12000, .9, -52, rnd);
+  for (const [f, l] of [[3420, -37], [4630, -43], [5120, -35], [7310, -39], [8840, -44], [10420, -41], [12650, -47]]) addTone(P, f, l, 1.3);
+}
+
+// analyzer backdrop (SpectrumPanel::drawSpectrum): per pixel, LF interpolate / HF peak, +4.5 dB/oct, 2x [1 2 1]
+function backdrop(lin, W, x0, wpx) {
+  const out = new Float32Array(W + 1);
+  const at = k => lin2db(lin[clamp(k, 0, HL)]);
+  for (let px = 0; px <= W; px++) {
+    const fLo = xf(x0 + px - .5, x0, wpx), fHi = xf(x0 + px + .5, x0, wpx), bLo = fLo / BINHZ, bHi = fHi / BINHZ;
+    let d;
+    if (bHi - bLo < 1) { const bc = (bLo + bHi) / 2, k0 = Math.floor(bc), fr = bc - k0; d = at(k0) + fr * (at(k0 + 1) - at(k0)); }
+    else { let m = 0; for (let k = Math.max(0, Math.floor(bLo)); k <= Math.min(HL, Math.floor(bHi) + 1); k++) m = Math.max(m, lin[k]); d = lin2db(m); }
+    d += 4.5 * Math.log2(Math.max(20, (fLo + fHi) / 2) / 1000);
+    out[px] = clamp(d, -90, 6);
+  }
+  for (let pass = 0; pass < 2; pass++) { let prev = out[0]; for (let px = 1; px < W; px++) { const cur = out[px]; out[px] = .25 * prev + .5 * cur + .25 * out[px + 1]; prev = cur; } }
+  return out;
+}
+
+// EIDOS's graph, as SpectrumPanel paints it: grid, input backdrop, reduction from the midline, W(f) line, nodes
+function eidosGraph(ctx, R, o) {
+  const fs = o.fs || 15;
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  freqGrid(ctx, R, fs);
+  const dbY = d => R.y + (6 - d) / 96 * R.h;
+  ctx.strokeStyle = C.grid; for (let d = 0; d >= -80; d -= 20) { const y = Math.round(dbY(d)) + .5; ctx.beginPath(); ctx.moveTo(R.x, y); ctx.lineTo(R.x + R.w, y); ctx.stroke(); }
+  if (o.spec) {
+    const W = o.spec.length - 1, pts = [];
+    for (let px = 0; px <= W; px++) pts.push([R.x + px, dbY(o.spec[px])]);
+    const g = ctx.createLinearGradient(0, R.y, 0, R.y + R.h); g.addColorStop(0, 'rgba(158,139,101,.2)'); g.addColorStop(1, 'rgba(158,139,101,.03)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(R.x, R.y + R.h); pts.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(R.x + R.w, R.y + R.h); ctx.closePath(); ctx.fill();
+    strokePts(ctx, pts, 'rgba(158,139,101,.6)', 1.6);
+  }
+  const yTop = R.y + R.h / 2, H = R.h / 2 - 10, full = o.redMax || 18;
+  if (o.red) {
+    const n = o.red.length, xAt = i => fx(FMIN * Math.pow(FMAX / FMIN, i / (n - 1)), R.x, R.w), yAt = i => yTop + clamp(o.red[i] / full, 0, 1) * H;
+    ctx.fillStyle = heatGrad(ctx, yTop, yTop + H);
+    ctx.beginPath(); ctx.moveTo(R.x, yTop); ctx.lineTo(R.x + R.w, yTop); for (let i = n - 1; i >= 0; i--) ctx.lineTo(xAt(i), yAt(i)); ctx.closePath(); ctx.fill();
+    const e = []; for (let i = 0; i < n; i++) e.push([xAt(i), yAt(i)]); strokePts(ctx, e, 'rgba(224,154,52,.55)', 1.6);
+  }
+  ctx.strokeStyle = C.mid; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(R.x, yTop + .5); ctx.lineTo(R.x + R.w, yTop + .5); ctx.stroke();
+  ctx.fillStyle = C.label; ctx.font = `${fs - 2}px ${MONO}`; ctx.fillText('REDUCTION · −' + full + ' dB FS', R.x + 8, yTop + fs + 2);
+  if (o.bands) {
+    const amtY = a => R.y + (1 - a) * R.h / 2, pts = [];
+    for (let px = 0; px <= R.w; px += 3) { const w = bandW(o.bands, xf(R.x + px, R.x, R.w)); pts.push([R.x + px, Math.max(R.y + 4, amtY(Math.min(w, 1)))]); }
+    strokePts(ctx, pts, 'rgba(176,176,176,.6)', 2);
+    o.bands.forEach((b, i) => node(ctx, fx(b.f, R.x, R.w), amtY(b.amt), o.labels ? o.labels[i] : i + 1, b.on, fs));
   }
 }
 
+// visibility-gated animation loop
+function loop(canvas, draw) {
+  let on = false, raf = 0, last = performance.now(), t = 1.3;
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt; draw(t, dt); if (on) raf = requestAnimationFrame(tick); };
+  if (RM) { draw(t, 0); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !on) { on = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+    else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+  }));
+  io.observe(canvas); draw(t, 0);
+}
+
+// ---------- control builder ----------
+function sliders(host, defs, onChange) {
+  const vals = {};
+  defs.forEach(d => {
+    vals[d.id] = d.v;
+    const w = document.createElement('div'); w.className = 'ctrl' + (d.cls ? ' ' + d.cls : '');
+    const id = 'c-' + d.id;
+    w.innerHTML = `<label for="${id}">${d.name}<output id="${id}-o"></output></label><input type="range" id="${id}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.v}">`;
+    host.appendChild(w);
+    const inp = w.querySelector('input'), out = w.querySelector('output');
+    const upd = () => { vals[d.id] = +inp.value; out.textContent = d.fmt(vals[d.id]); };
+    inp.addEventListener('input', () => { upd(); onChange(); });
+    upd();
+  });
+  return vals;
+}
+function segGroup(attr, onPick) {
+  const bs = document.querySelectorAll(`[${attr}]`);
+  bs.forEach(b => b.addEventListener('click', () => { bs.forEach(o => o.setAttribute('aria-pressed', String(o === b))); onPick(+b.getAttribute(attr)); }));
+}
+const pct = v => Math.round(v) + ' %';
+// JUCE skew 0.4 (ATTACK / RELEASE): slider 0..1000 -> value
+const skew = (s, lo, hi) => lo + (hi - lo) * Math.pow(s / 1000, 1 / .4);
+const unskew = (v, lo, hi) => Math.round(Math.pow((v - lo) / (hi - lo), .4) * 1000);
+
+// ---------- HERO: VOCAL SMOOTH on a sung vocal, LINEAR, NORM ----------
+(() => {
+  const cv = document.getElementById('hero'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height, R = { x: 0, y: 0, w: W, h: H };
+  // FactoryPresets.h VOCAL SMOOTH
+  const bands = [{ f: 320, amt: .35, q: .7, on: true }, { f: 1000, amt: .2, q: .6, on: true }, { f: 3000, amt: .6, q: .6, on: true }, { f: 6800, amt: .5, q: .55, on: true }, { f: 11000, amt: .3, q: .7, on: true }];
+  const det = new Detector(NL); det.W = new Float32Array(HL + 1); for (let k = 0; k <= HL; k++) det.W[k] = bandW(bands, Math.max(1, k * BINHZ));
+  const hopT = 1024 / SR, prm = { depth: .8, detail: .5, sel: .2, focus: .3, mode: 0, maxCut: -24, cA: 1 - Math.exp(-hopT / .008), cR: 1 - Math.exp(-hopT / .07), cL: 1 - Math.exp(-hopT / 1) };
+  const P = new Float64Array(HL + 1), dB = new Float32Array(HL + 1), lin = new Float32Array(HL + 1), rnd = rng(7);
+  let simT = 0, acc = 0, spec = null, lastTxt = 0;
+  const eD = document.getElementById('h-deep'), eA = document.getElementById('h-at'), eS = document.getElementById('h-span');
+  const step = () => {
+    vocalFrame(simT, P, rnd, hopT); toDb(P, dB); det.frame(dB, prm);
+    for (let k = 0; k <= HL; k++) { const m = db2lin(dB[k]); lin[k] += (m > lin[k] ? .6 : .25) * (m - lin[k]); }
+    simT += hopT;
+  };
+  for (let i = 0; i < 60; i++) step();
+  loop(cv, (t, dt) => {
+    acc += dt; let n = 0; while (acc >= hopT && n < 4) { step(); acc -= hopT; n++; } if (acc > hopT) acc = 0;
+    if (n || !spec) spec = backdrop(lin, R.w, 0, R.w);
+    eidosGraph(ctx, R, { spec, red: det.red, bands, fs: 18 });
+    if (t - lastTxt > .15 || dt === 0) {
+      lastTxt = t; let mx = 0, at = 0, span = 0;
+      for (let i = 0; i < 320; i++) { if (det.red[i] > mx) { mx = det.red[i]; at = i; } if (det.red[i] > 1) span++; }
+      eD.textContent = fmtCut(-mx); eA.textContent = fmtHz(20 * Math.pow(1000, at / 319));
+      eS.textContent = (span / 319 * 10).toFixed(1) + ' oct';
+    }
+  });
+})();
+
+// ---------- DETECT LAB: one frame, SOFT / HARD, DEPTH, DETAIL, SELECT, MAX CUT ----------
+(() => {
+  const sc = document.getElementById('detspec'), sx = sc.getContext('2d');
+  const tc = document.getElementById('detxfer'), tx = tc.getContext('2d');
+  let src = 0, mode = 0;
+  const frames = [0, 1, 2].map(s => {
+    const P = new Float64Array(HL + 1), r = rng(101 + s * 17);
+    if (s === 0) { voc.ring = 1; vocalFrame(1.02, P, r, 0); } else if (s === 1) gtrFrame(P, r); else cymFrame(P, r);
+    return toDb(P, new Float32Array(HL + 1));
+  });
+  const V = sliders(document.getElementById('detctrls'), [
+    { id: 'dd', name: 'DEPTH', min: 0, max: 100, step: 1, v: 60, fmt: pct },
+    { id: 'dt', name: 'DETAIL', min: 0, max: 100, step: 1, v: 50, fmt: pct },
+    { id: 'ds', name: 'SELECT', min: 0, max: 100, step: 1, v: 0, fmt: v => (v * .24).toFixed(1) + ' dB' },
+    { id: 'dm', name: 'MAX CUT', min: -36, max: 0, step: .5, v: -24, cls: 'heat', fmt: v => v.toFixed(1) + ' dB' }
+  ], () => draw());
+  segGroup('data-ds', v => { src = v; draw(); });
+  segGroup('data-dm', v => { mode = v; draw(); });
+  const el = id => document.getElementById(id);
+  function draw() {
+    const det = new Detector(NL), dbf = frames[src];
+    const p = { depth: V.dd / 100, detail: V.dt / 100, sel: V.ds / 100, focus: 0, mode, maxCut: V.dm, cA: 1, cR: 1, cL: 1, snap: true };
+    det.frame(dbf, p);
+    // spectrum panel
+    const W = sc.width, Hh = sc.height, top = { x: 0, y: 10, w: W, h: 370 }, bot = { y: 410, h: 170 };
+    sx.fillStyle = C.bg; sx.fillRect(0, 0, W, Hh);
+    freqGrid(sx, { x: 0, y: top.y, w: W, h: top.h + 30 }, 14);
+    const DMIN = -110, DMAX = -10, yS = d => top.y + (DMAX - clamp(d, DMIN, DMAX)) / (DMAX - DMIN) * top.h;
+    sx.font = `13px ${MONO}`;
+    for (let d = -20; d >= -100; d -= 20) { const y = Math.round(yS(d)) + .5; sx.strokeStyle = C.grid; sx.beginPath(); sx.moveTo(0, y); sx.lineTo(W, y); sx.stroke(); sx.fillStyle = C.label; sx.fillText(d + ' dBFS', W - 92, y - 4); }
+    // per pixel: input (peak over bins), envelope (at the peak bin), bar = envelope + allowance + select
+    const selDb = V.ds * .24, allow = mode === 0 ? .5 : 0;
+    const inP = [], envP = [], barP = [], cutP = [];
+    for (let px = 0; px <= W; px += 2) {
+      const bLo = Math.max(1, Math.floor(xf(px - 1, 0, W) / BINHZ)), bHi = Math.max(bLo, Math.min(HL, Math.ceil(xf(px + 1, 0, W) / BINHZ)));
+      let kb = bLo, cut = 0;
+      for (let k = bLo; k <= bHi; k++) { if (dbf[k] > dbf[kb]) kb = k; cut = Math.max(cut, -20 * Math.log10(Math.max(1e-4, det.Gt[k]))); }
+      if (bHi - bLo < 1) { const c = xf(px, 0, W) / BINHZ; kb = clamp(Math.round(c), 1, HL); cut = -20 * Math.log10(Math.max(1e-4, det.Gt[kb])); }
+      const e = det.envDb(kb);
+      inP.push([px, yS(dbf[kb])]); envP.push([px, yS(e)]); barP.push([px, yS(e + allow + selDb), dbf[kb] > e + allow + selDb]); cutP.push([px, cut]);
+    }
+    // excess shading: between the bar and the input where the input clears it
+    sx.fillStyle = 'rgba(230,139,54,.55)';
+    for (let i = 1; i < inP.length; i++) if (barP[i][2] && inP[i][1] < barP[i][1]) sx.fillRect(inP[i][0] - 1, inP[i][1], 2, barP[i][1] - inP[i][1]);
+    strokePts(sx, inP, 'rgba(158,139,101,.85)', 1.4);
+    sx.setLineDash([7, 5]); strokePts(sx, envP, C.gold, 2.2); sx.setLineDash([]);
+    if (selDb + allow > .01) { sx.setLineDash([2, 5]); strokePts(sx, barP, 'rgba(255,200,103,.55)', 1.4); sx.setLineDash([]); }
+    // reduction strip
+    const full = Math.max(6, -V.dm), y0 = bot.y;
+    sx.strokeStyle = C.mid; sx.beginPath(); sx.moveTo(0, y0 + .5); sx.lineTo(W, y0 + .5); sx.stroke();
+    sx.fillStyle = heatGrad(sx, y0, y0 + bot.h);
+    sx.beginPath(); sx.moveTo(0, y0); cutP.forEach(p => sx.lineTo(p[0], y0 + clamp(p[1] / full, 0, 1) * bot.h)); sx.lineTo(W, y0); sx.closePath(); sx.fill();
+    sx.fillStyle = C.label; sx.font = `13px ${MONO}`; sx.fillText('CUT · −' + full.toFixed(0) + ' dB AT THE BOTTOM', 8, y0 + 18);
+    // transfer panel
+    const TW = tc.width, TH = tc.height, r = { x: 70, y: 40, w: TW - 100, h: TH - 110 };
+    tx.fillStyle = C.bg; tx.fillRect(0, 0, TW, TH);
+    const ex = e => r.x + clamp(e / 30, 0, 1) * r.w, cy = c => r.y + clamp(-c / 36, 0, 1) * r.h;
+    tx.font = `14px ${MONO}`;
+    for (let e = 0; e <= 30; e += 6) { const x = Math.round(ex(e)) + .5; tx.strokeStyle = C.grid; tx.beginPath(); tx.moveTo(x, r.y); tx.lineTo(x, r.y + r.h); tx.stroke(); tx.fillStyle = C.label; tx.fillText(e + '', x - 6, r.y + r.h + 22); }
+    for (let c = 0; c >= -36; c -= 6) { const y = Math.round(cy(c)) + .5; tx.strokeStyle = c === 0 ? C.mid : C.grid; tx.beginPath(); tx.moveTo(r.x, y); tx.lineTo(r.x + r.w, y); tx.stroke(); tx.fillStyle = C.label; tx.fillText(String(c), 14, y + 5); }
+    tx.fillStyle = C.text3; tx.fillText('EXCESS OVER THE ENVELOPE, dB', r.x, TH - 24); tx.fillText('CUT, dB', 14, 24);
+    const rule = (m, e) => Math.max(-(m === 0 ? Math.max(0, e - .5 - selDb) : 1.5 * Math.max(0, e - selDb)) * (V.dd / 100), V.dm);
+    const line = m => { const pts = []; for (let e = 0; e <= 30; e += .1) pts.push([ex(e), cy(rule(m, e))]); return pts; };
+    tx.setLineDash([6, 6]); strokePts(tx, line(1 - mode), 'rgba(240,237,230,.35)', 1.6); tx.setLineDash([]);
+    strokePts(tx, line(mode), 'rgba(255,200,103,.7)', 1.6);
+    // bins as dots (100 Hz .. 18 kHz): each bin's excess against the cut it got, before smoothing
+    for (let k = Math.round(100 / BINHZ); k <= Math.round(18000 / BINHZ); k += 2) {
+      const E = dbf[k] - det.envDb(k); if (E < -1) continue;
+      tx.fillStyle = det.tgt[k] < -.05 ? 'rgba(226,98,45,.75)' : 'rgba(158,139,101,.45)';
+      tx.beginPath(); tx.arc(ex(E), cy(det.tgt[k]), 3.2, 0, 7); tx.fill();
+    }
+    tx.fillStyle = C.goldHot; tx.font = `500 14px ${MONO}`; tx.fillText(mode ? 'HARD' : 'SOFT', r.x + r.w - 52, cy(rule(mode, 30)) - 10);
+    if (mode) { tx.fillStyle = C.text3; tx.font = `13px ${MONO}`; tx.fillText('LOUD BINS CAN FALL BELOW THE LINE: THE LEVEL TERM', r.x + 8, r.y + r.h - 10); }
+    // readouts
+    let mx = 0, at = 0, nb = 0;
+    for (let k = 1; k <= HL; k++) { const c = -det.tgt[k]; if (c > .1) nb++; if (c > mx) { mx = c; at = k; } }
+    el('x-env').textContent = (1 + (1 / 6 - 1) * V.dt / 100).toFixed(2) + ' OCT';
+    el('x-bins').textContent = nb + ' / ' + (HL + 1);
+    el('x-deep').textContent = fmtCut(-mx); el('x-at').textContent = mx > .05 ? fmtHz(at * BINHZ) : '--';
+  }
+  draw();
+})();
+
+// ---------- FOCUS LAB: a persistent ring vs transient hits, per 21.3 ms hop ----------
+(() => {
+  const tc = document.getElementById('ftime'), tx = tc.getContext('2d');
+  const gc = document.getElementById('fgraph'), gx = gc.getContext('2d');
+  const SRC = [
+    { ring: 1900, hit: 5200, name: 'RING 1.9 kHz SNARE OVERTONE · HITS 5.2 kHz STICK CRACK',
+      E: (t, r) => { const b = t % .5, k = Math.floor(t / .5) % 2; return [11.5 * Math.exp(-(t % 1) / 1.6) + r() * 1.2, (k ? 17 : 12) * Math.exp(-b / .035) + r() * 1.5]; } },
+    { ring: 3150, hit: 7000, name: 'RING 3.15 kHz ROOM · HITS 7 kHz SIBILANCE',
+      E: (t, r) => { const ph = t % 4.2, v = ph < 3.4 ? 1 : Math.exp(-(ph - 3.4) / .45), s1 = (t + .3) % 1.4, s = s1 < .16 ? Math.sin(Math.PI * s1 / .16) : 0; return [10 * v + r() * 1.5, 15 * s + r() * 1.2]; } },
+    { ring: 220, hit: 2800, name: 'RING 220 Hz BODY · HITS 2.8 kHz STRING SQUEAK',
+      E: (t, r) => { const c = t % .8, sq = c > .72 ? Math.exp(-(c - .72) / .03) : 0; return [9 + 1.5 * Math.sin(t * 7) + r() * 1.2, 15 * sq + r() * 1.2]; } }
+  ];
+  let src = 0;
+  const V = sliders(document.getElementById('fctrls'), [
+    { id: 'fo', name: 'FOCUS', min: 0, max: 100, step: 1, v: 70, fmt: pct },
+    { id: 'fa', name: 'ATTACK', min: 0, max: 1000, step: 1, v: unskew(15, 1, 200), fmt: v => skew(v, 1, 200).toFixed(1) + ' ms' },
+    { id: 'fr', name: 'RELEASE', min: 0, max: 1000, step: 1, v: unskew(80, 10, 1000), fmt: v => Math.round(skew(v, 10, 1000)) + ' ms' },
+    { id: 'fd', name: 'DEPTH', min: 0, max: 100, step: 1, v: 70, fmt: pct },
+    { id: 'fs', name: 'SELECT', min: 0, max: 100, step: 1, v: 0, fmt: v => (v * .24).toFixed(1) + ' dB' }
+  ], () => {});
+  const hopT = 1024 / SR, N = Math.round(4 / hopT), cL = 1 - Math.exp(-hopT / 1);
+  const eR = new Float32Array(N), eH = new Float32Array(N), gR = new Float32Array(N), gH = new Float32Array(N), gR0 = new Float32Array(N), gH0 = new Float32Array(N);
+  let head = 0, simT = 0, acc = 0, rnd = rng(5);
+  const st = { lR: 0, lH: 0, R: 1, H: 1, R0: 1, H0: 1, init: true };
+  segGroup('data-fs', v => { src = v; document.getElementById('f-name').textContent = SRC[v].name; st.init = true; });
+  function cutOf(E, El, focus) {
+    let gr = -Math.max(0, E - .5 - V.fs * .24) * (V.fd / 100);
+    if (focus > 0) gr *= 1 + focus * (sstep(El / 12) - 1);
+    return Math.max(gr, -24);
+  }
+  function step() {
+    const [Er, Eh] = SRC[src].E(simT, () => rnd() * 2 - 1);
+    if (st.init) { st.lR = Er; st.lH = Eh; st.init = false; }
+    st.lR += cL * (Er - st.lR); st.lH += cL * (Eh - st.lH);
+    const cA = 1 - Math.exp(-hopT / (skew(V.fa, 1, 200) / 1000)), cR = 1 - Math.exp(-hopT / (skew(V.fr, 10, 1000) / 1000));
+    const sm = (g, gr) => { const t = Math.min(1, db2lin(gr)); return g + (t < g ? cA : cR) * (t - g); };
+    st.R = sm(st.R, cutOf(Er, st.lR, V.fo / 100)); st.H = sm(st.H, cutOf(Eh, st.lH, V.fo / 100));
+    st.R0 = sm(st.R0, cutOf(Er, st.lR, 0)); st.H0 = sm(st.H0, cutOf(Eh, st.lH, 0));
+    eR[head] = Er; eH[head] = Eh; gR[head] = lin2db(st.R); gH[head] = lin2db(st.H); gR0[head] = lin2db(st.R0); gH0[head] = lin2db(st.H0);
+    head = (head + 1) % N; simT += hopT;
+  }
+  for (let i = 0; i < N; i++) step();
+  const el = id => document.getElementById(id);
+  let lastTxt = 0;
+  loop(tc, (t, dt) => {
+    acc += dt; let n = 0; while (acc >= hopT && n < 4) { step(); acc -= hopT; n++; } if (acc > hopT) acc = 0;
+    const W = tc.width, H = tc.height, top = { y: 24, h: 290 }, sR = { y: 350, h: 90 }, sH = { y: 455, h: 90 };
+    tx.fillStyle = C.bg; tx.fillRect(0, 0, W, H);
+    const ly = e => top.y + (24 - clamp(e, 0, 24)) / 24 * top.h;
+    tx.font = `14px ${MONO}`;
+    for (const e of [0, 6, 12, 18, 24]) { const y = Math.round(ly(e)) + .5; tx.strokeStyle = C.grid; tx.beginPath(); tx.moveTo(0, y); tx.lineTo(W, y); tx.stroke(); tx.fillStyle = C.label; tx.fillText(e + ' dB', 6, y - 5); }
+    const bar = .5 + V.fs * .24, yb = ly(bar);
+    tx.setLineDash([6, 6]); tx.strokeStyle = 'rgba(240,237,230,.5)'; tx.beginPath(); tx.moveTo(0, yb); tx.lineTo(W, yb); tx.stroke(); tx.setLineDash([]);
+    tx.fillStyle = 'rgba(240,237,230,.7)'; tx.fillText('THE BAR', W - 84, yb - 6);
+    const trace = (arr, col, lw) => { tx.strokeStyle = col; tx.lineWidth = lw; tx.beginPath(); for (let x = 0; x < W; x++) { const i = (head + Math.floor(x / W * N)) % N, y = ly(arr[i]); x ? tx.lineTo(x, y) : tx.moveTo(x, y); } tx.stroke(); };
+    trace(eH, 'rgba(240,237,230,.6)', 1.6); trace(eR, C.gold, 2.4);
+    const strip = (r, arr, ghost, col, lab) => {
+      tx.strokeStyle = C.mid; tx.beginPath(); tx.moveTo(0, r.y + .5); tx.lineTo(W, r.y + .5); tx.stroke();
+      const sc = r.h / 18;
+      for (let x = 0; x < W; x += 2) {
+        const i = (head + Math.floor(x / W * N)) % N, v = clamp(-arr[i], 0, 18), g0 = clamp(-ghost[i], 0, 18);
+        if (g0 > .05) { tx.fillStyle = 'rgba(240,237,230,.08)'; tx.fillRect(x, r.y, 2, g0 * sc); }
+        if (v > .05) { tx.fillStyle = col; tx.fillRect(x, r.y, 2, v * sc); }
+      }
+      tx.fillStyle = C.label; tx.fillText(lab, 6, r.y + r.h - 4);
+    };
+    strip(sR, gR, gR0, 'rgba(230,139,54,.9)', 'RING CUT · −18');
+    strip(sH, gH, gH0, 'rgba(220,66,40,.9)', 'HIT CUT · −18');
+    tx.fillStyle = C.text3; tx.fillText('FAINT: THE SAME CUT WITH FOCUS AT 0', W - 330, H - 6);
+    // graph panel: the two bands and their live cuts
+    const GW = gc.width, GH = gc.height, R = { x: 0, y: 0, w: GW, h: GH }, s = SRC[src];
+    const cr = -gR[(head + N - 1) % N], ch = -gH[(head + N - 1) % N], red = new Float32Array(320);
+    for (let i = 0; i < 320; i++) { const f = 20 * Math.pow(1000, i / 319), a = Math.log2(f / s.ring) / .22, b = Math.log2(f / s.hit) / .3; red[i] = cr * Math.exp(-a * a / 2) + ch * Math.exp(-b * b / 2); }
+    eidosGraph(gx, R, { red, bands: [{ f: s.ring, amt: .8, q: .4, on: true }, { f: s.hit, amt: .8, q: .4, on: true }], labels: ['R', 'H'], fs: 14 });
+    if (t - lastTxt > .12 || dt === 0) {
+      lastTxt = t;
+      let mR = 0, mR0 = 0, mH = 0, mH0 = 0; for (let i = 0; i < N; i++) { mR -= gR[i]; mR0 -= gR0[i]; mH -= gH[i]; mH0 -= gH0[i]; }
+      el('f-ring').textContent = fmtCut(-cr); el('f-hit').textContent = fmtCut(-ch);
+      el('f-kept').textContent = mR0 > .5 ? Math.round(100 * mR / mR0) + ' %' : '--';
+      el('f-spared').textContent = mH0 > .5 ? Math.round(100 * (1 - mH / mH0)) + ' %' : '--';
+    }
+  });
+})();
+
+// ---------- LATENCY LAB: one static cut through LINEAR / MIN / LL ----------
+function fft(re, im, inv) {
+  const n = re.length;
+  for (let i = 1, j = 0; i < n; i++) { let bit = n >> 1; for (; j & bit; bit >>= 1) j ^= bit; j ^= bit; if (i < j) { let t = re[i]; re[i] = re[j]; re[j] = t; t = im[i]; im[i] = im[j]; im[j] = t; } }
+  for (let len = 2; len <= n; len <<= 1) {
+    const a = 2 * Math.PI / len * (inv ? 1 : -1), wr0 = Math.cos(a), wi0 = Math.sin(a);
+    for (let i = 0; i < n; i += len) {
+      let wr = 1, wi = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const u = i + j, v = u + len / 2, vr = re[v] * wr - im[v] * wi, vi = re[v] * wi + im[v] * wr;
+        re[v] = re[u] - vr; im[v] = im[u] - vi; re[u] += vr; im[u] += vi;
+        const t = wr * wr0 - wi * wi0; wi = wr * wi0 + wi * wr0; wr = t;
+      }
+    }
+  }
+  if (inv) for (let i = 0; i < n; i++) { re[i] /= n; im[i] /= n; }
+}
+(() => {
+  const ic = document.getElementById('lir'), ix = ic.getContext('2d');
+  const mc = document.getElementById('lmag'), mx = mc.getContext('2d');
+  const NAMES = ['LINEAR · STFT 4096 · ZERO PHASE', 'MIN · STFT 1024 · CEPSTRAL MINIMUM PHASE', 'LL · 32 DYNAMIC BELLS · ZERO LATENCY'];
+  const RATES = [44100, 48000, 96000];
+  let tier = 0;
+  const fPos = v => 100 * Math.pow(120, v / 1000), fInv = f => Math.round(Math.log(f / 100) / Math.log(120) * 1000);
+  const V = sliders(document.getElementById('lctrls'), [
+    { id: 'lf', name: 'FREQ', min: 0, max: 1000, step: 1, v: fInv(3000), fmt: v => fmtHz(fPos(v)) },
+    { id: 'lc', name: 'CUT', min: -24, max: 0, step: .5, v: -9, cls: 'heat', fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'lw', name: 'WIDTH', min: .05, max: 1, step: .01, v: .15, fmt: v => v.toFixed(2) + ' oct' },
+    { id: 'lr', name: 'RATE', min: 0, max: 2, step: 1, v: 1, fmt: v => (RATES[v] / 1000).toFixed(1) + ' kHz' }
+  ], () => draw());
+  segGroup('data-lt', v => { tier = v; document.getElementById('l-name').textContent = NAMES[v]; draw(); });
+  const cutAt = f => V.lc * Math.exp(-Math.pow(Math.log2(Math.max(f, 1) / fPos(V.lf)), 2) / (2 * V.lw * V.lw));
+  // smoothed gain grid for an STFT of size N at rate sr (target, then ±2-bin moving average)
+  function grid(N, sr) {
+    const h = N / 2, g = new Float64Array(h + 1), s = new Float64Array(h + 1);
+    for (let k = 0; k <= h; k++) g[k] = db2lin(Math.max(cutAt(k * sr / N), -24));
+    for (let k = 0; k <= h; k++) { const a = Math.max(0, k - 2), b = Math.min(h, k + 2); let t = 0; for (let j = a; j <= b; j++) t += g[j]; s[k] = t / (b - a + 1); }
+    return s;
+  }
+  // LL taps (ResonanceFilterbank.h): 32 log-spaced, Q = 1/(ratio-1), bell centre gain A, v0 + k(A-1) v1
+  const M = 32, ratio = Math.pow(1000, 1 / (M - 1)), Qp = 1 / (ratio - 1), kq = 1 / Qp;
+  const taps = Array.from({ length: M }, (_, m) => 20 * Math.pow(1000, m / (M - 1)));
+  function llMag(f, sr) {
+    let db = 0;
+    for (const fm of taps) {
+      if (fm >= .47 * sr) continue;
+      const A = db2lin(Math.max(cutAt(fm), -24)), w = Math.tan(Math.PI * Math.min(f, .49 * sr) / sr) / Math.tan(Math.PI * fm / sr), re = 1 - w * w;
+      db += 10 * Math.log10((re * re + Math.pow(kq * A * w, 2)) / (re * re + Math.pow(kq * w, 2)));
+    }
+    return db;
+  }
+  function llImpulse(sr, len) {
+    const y = new Float64Array(len); y[0] = 1;
+    for (const fm of taps) {
+      if (fm >= .47 * sr) continue;
+      const A = db2lin(Math.max(cutAt(fm), -24)), g = Math.tan(Math.PI * fm / sr), a1 = 1 / (1 + g * (g + kq)), a2 = g * a1, a3 = g * a2, m1 = kq * (A - 1);
+      let ic1 = 0, ic2 = 0;
+      for (let n = 0; n < len; n++) { const v0 = y[n], v3 = v0 - ic2, v1 = a1 * ic1 + a2 * v3, v2 = ic2 + a2 * ic1 + a3 * v3; ic1 = 2 * v1 - ic1; ic2 = 2 * v2 - ic2; y[n] = v0 + m1 * v1; }
+    }
+    return y;
+  }
+  const el = id => document.getElementById(id);
+  function draw() {
+    const sr = RATES[V.lr], L = Math.round(.016 * sr);
+    const d = new Float64Array(2 * L + 1);  // removed signal (dry - wet), index L = arrival
+    let lat = 0, magAt = null, resTxt = '';
+    if (tier < 2) {
+      const N = tier === 0 ? 4096 : 1024, h = N / 2, G = grid(N, sr), re = new Float64Array(N), im = new Float64Array(N);
+      lat = N;
+      if (tier === 0) {
+        for (let k = 0; k <= h; k++) { re[k] = G[k]; if (k && k < h) re[N - k] = G[k]; }
+        fft(re, im, true);
+        for (let n = -L; n <= L; n++) d[n + L] = (n === 0 ? 1 : 0) - re[(n + N) % N];
+      } else {
+        for (let k = 0; k <= h; k++) { re[k] = Math.log(Math.max(1e-6, G[k])); if (k && k < h) re[N - k] = re[k]; }
+        fft(re, im, true);
+        for (let n = 0; n < N; n++) { const w = n === 0 || n === h ? 1 : n < h ? 2 : 0; re[n] *= w; im[n] = 0; }
+        fft(re, im, false);
+        for (let k = 0; k < N; k++) { const m = Math.exp(re[k]), ph = im[k]; re[k] = m * Math.cos(ph); im[k] = m * Math.sin(ph); }
+        fft(re, im, true);
+        for (let n = 0; n <= L; n++) d[n + L] = (n === 0 ? 1 : 0) - (n < N ? re[n] : 0);
+      }
+      magAt = f => { const b = f * N / sr, k0 = Math.floor(b), fr = b - k0; if (k0 >= h) return lin2db(G[h]); return lin2db(G[k0] + fr * (G[k0 + 1] - G[k0])); };
+      resTxt = (sr / N).toFixed(1) + ' Hz BINS';
+    } else {
+      const y = llImpulse(sr, L + 1);
+      for (let n = 0; n <= L; n++) d[n + L] = (n === 0 ? 1 : 0) - y[n];
+      magAt = f => llMag(f, sr); resTxt = '32 TAPS · ⅓ OCT';
+    }
+    // impulse panel
+    const W = ic.width, H = ic.height, r = { x: 20, y: 30, w: W - 40, h: H - 90 }, y0 = r.y + r.h / 2;
+    ix.fillStyle = C.bg; ix.fillRect(0, 0, W, H);
+    let pk = 1e-9; for (let i = 0; i < d.length; i++) pk = Math.max(pk, Math.abs(d[i]));
+    const xT = n => r.x + (n + L) / (2 * L) * r.w, yA = v => y0 - v / pk * (r.h / 2 - 10);
+    ix.fillStyle = 'rgba(220,66,40,.06)'; ix.fillRect(r.x, r.y, r.w / 2, r.h);
+    ix.font = `14px ${MONO}`; ix.fillStyle = C.label;
+    for (const ms of [-15, -10, -5, 0, 5, 10, 15]) { const x = Math.round(r.x + (ms / 16 + 1) / 2 * r.w) + .5; ix.strokeStyle = ms === 0 ? 'rgba(240,237,230,.45)' : C.grid; ix.beginPath(); ix.moveTo(x, r.y); ix.lineTo(x, r.y + r.h); ix.stroke(); ix.fillText((ms > 0 ? '+' : '') + ms + ' ms', x - 22, r.y + r.h + 22); }
+    ix.strokeStyle = C.mid; ix.beginPath(); ix.moveTo(r.x, y0 + .5); ix.lineTo(r.x + r.w, y0 + .5); ix.stroke();
+    ix.strokeStyle = C.amber; ix.lineWidth = 1.6; ix.beginPath();
+    const step = Math.max(1, Math.floor(d.length / (r.w * 2)));
+    for (let i = 0; i < d.length; i += step) { const x = xT(i - L), y = yA(d[i]); i ? ix.lineTo(x, y) : ix.moveTo(x, y); }
+    ix.stroke();
+    ix.fillStyle = C.text3; ix.fillText('PRE-RING', r.x + 8, r.y + 18); ix.fillText('AFTER THE NOTE ARRIVES', r.x + r.w / 2 + 10, r.y + 18);
+    ix.fillStyle = 'rgba(240,237,230,.6)'; ix.fillText('ARRIVAL · ' + (lat ? '+' + (lat / sr * 1000).toFixed(1) + ' ms LATE' : 'NO DELAY'), r.x + r.w / 2 + 10, r.y + r.h - 10);
+    // magnitude panel
+    const MW = mc.width, MH = mc.height, R = { x: 0, y: 20, w: MW, h: MH - 70 }, full = 24, yC = c => R.y + clamp(-c / full, 0, 1) * R.h;
+    mx.fillStyle = C.bg; mx.fillRect(0, 0, MW, MH);
+    freqGrid(mx, { x: 0, y: R.y, w: MW, h: R.h + 30 }, 14);
+    mx.font = `14px ${MONO}`;
+    for (let c = 0; c >= -24; c -= 6) { const y = Math.round(yC(c)) + .5; mx.strokeStyle = c === 0 ? C.mid : C.grid; mx.beginPath(); mx.moveTo(0, y); mx.lineTo(MW, y); mx.stroke(); if (c) { mx.fillStyle = C.label; mx.fillText(c + ' dB', MW - 64, y - 4); } }
+    const got = [], ask = []; let deep = 0;
+    for (let px = 0; px <= MW; px += 2) { const f = xf(px, 0, MW), g = Math.min(0, magAt(f)); got.push([px, g]); ask.push([px, yC(Math.max(cutAt(f), -24))]); deep = Math.min(deep, g); }
+    mx.fillStyle = heatGrad(mx, R.y, R.y + R.h * .75);
+    mx.beginPath(); mx.moveTo(0, R.y); got.forEach(p => mx.lineTo(p[0], yC(p[1]))); mx.lineTo(MW, R.y); mx.closePath(); mx.fill();
+    strokePts(mx, got.map(p => [p[0], yC(p[1])]), 'rgba(224,154,52,.8)', 1.8);
+    mx.setLineDash([7, 6]); strokePts(mx, ask, 'rgba(240,237,230,.6)', 1.6); mx.setLineDash([]);
+    mx.fillStyle = tier === 2 ? C.goldHot : 'rgba(255,200,103,.25)';
+    for (const fm of taps) if (fm < .47 * sr) mx.fillRect(fx(fm, 0, MW) - 1, R.y + R.h + 2, 2, 8);
+    // readouts
+    let ePre = 0, eAll = 0; for (let i = 0; i < d.length; i++) { const e = d[i] * d[i]; eAll += e; if (i < L) ePre += e; }
+    el('l-lat').textContent = lat ? lat + ' SMP · ' + (lat / sr * 1000).toFixed(1) + ' ms' : '0 SMP';
+    el('l-pre').textContent = eAll > 0 && ePre / eAll > 1e-6 ? Math.round(100 * ePre / eAll) + ' % OF IT' : 'NONE';
+    el('l-res').textContent = resTxt;
+    el('l-lands').textContent = fmtCut(deep);
+  }
+  draw();
+})();
+})();
 </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

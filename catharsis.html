@@ -1,97 +1,1032 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CATHARSIS Product Page</title>
+<meta name="description" content="CATHARSIS is dialogue noise reduction with two engines: a zero-latency 12-band multiband expander for picture and live work, and a spectral MMSE-LSA engine for the deepest clean-up. It keeps a steady bed of the real room instead of gating to silence. VST3, AU and AAX for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   the same frame as pneuma.html, cinder.html and gire.html. Single dark look by choice: THETA marketing
+   pages live on the void theme. CATHARSIS's own colour enters only where the plug-in draws it in its DARK
+   skin: the muted-gold input spectrum, the amber band handles, the silver noise floor, and the purple
+   "removed" heat (palette in Source/Common/Theme/ThetaColors.h, applyDark). */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#06080c; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840; --gold-muted:#9e8b65;
+  --amber:#e09a34; --silver:#b0b0b0;
+  --heat-lo:#3e2178; --heat-mid:#5a2bb0; --heat-hi:#7e3ae0; --heat-peak:#9e44ff; --heat-text:#b98cff;
+  --cut:#d0553f; --grid:#111420; --label:#707070;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(30px,3.7vw,48px);letter-spacing:.26em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the display well: CATHARSIS's DARK card face, gold top edge */
+.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--panel);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
+.well-foot b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--gold-hot)}
+.well-foot b.heat,.readouts b.heat{color:var(--heat-text)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons, as the plug-in's DARK pills: gold fill on the active cell */
+.seg{display:inline-flex;border:1px solid #1e2028;border-radius:5px;background:#0a0c10;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:rgba(240,237,230,.55);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--gold);color:#0c0c10;font-weight:500}
+.pill{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 14px;min-height:38px;border:1px solid rgba(240,237,230,.55);border-radius:5px;background:transparent;color:var(--text);cursor:pointer}
+.pill:hover{border-color:var(--gold);color:var(--gold)}
+.pill[aria-busy="true"]{border-color:var(--amber);color:var(--amber)}
+.tools{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:#030506;overflow-x:auto}
+.path svg{display:block;width:100%;min-width:720px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .lane{font-family:var(--f-display);font-weight:500;font-size:10.5px;letter-spacing:.3em;fill:var(--text-3)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .hot{fill:#150f22;stroke:#5a2bb0;stroke-width:1.2}
+.path .band{fill:#0b0d12;stroke:#2a2838;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.heat{stroke:var(--heat-peak);animation-duration:.9s}
+.path .flow.ctl{stroke:var(--silver);opacity:.6;animation-duration:2.6s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:#030506;display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab-views{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+.lab-views canvas{display:block;width:100%;height:auto}
+.lab-views canvas+canvas{border-left:1px solid var(--divider)}
+.lab-views.wide{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+canvas.drag{cursor:grab;touch-action:none}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrls.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--gold)}
+.ctrl.heat label{color:var(--heat-text)} .ctrl.heat input[type=range]{accent-color:var(--heat-hi)}
+.ctrl.room label{color:var(--silver)} .ctrl.room input[type=range]{accent-color:var(--silver)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+.legend i.blk{height:10px;width:10px;border-radius:2px}
+.legend i.dash{background:repeating-linear-gradient(90deg,rgba(240,237,230,.55) 0 5px,transparent 5px 9px)!important}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em}
+.card .nm span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em;text-align:right}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.face-top{margin-block:0 var(--s6)}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:8px}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(200,168,107,.08),transparent 55%),radial-gradient(120% 140% at 0% 100%,rgba(126,58,224,.14),transparent 55%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two,.lab-views,.lab-views.wide{grid-template-columns:minmax(0,1fr)}
+  .lab-views canvas+canvas{border-left:0;border-top:1px solid var(--divider)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ctrls.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.ctrls.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .who,.steps{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+[data-launch][hidden]{display:none !important}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">CATHARSIS</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">CATHARSIS</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=CATHARSIS%20updates" data-notify="CATHARSIS" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Dialogue noise reduction · Two engines</div>
+    <h1 class="wordmark">CATHARSIS</h1>
+    <div class="lede">
+      <p>Room tone, air conditioning, traffic and preamp hiss come out from under the dialogue, and the words stay as they were spoken. MULTIBAND does it in twelve bands with zero latency, so it can sit on a live chain or against picture. SPECTRAL works bin by bin for the deepest clean-up, at 512 samples.</p>
+      <p>CATHARSIS only ever subtracts. It never resynthesises a voice and never invents a sound. AMBIENCE keeps a steady bed of the real room, so a gap sounds like a quiet room instead of the tape stopping.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#price">Get CATHARSIS</a>
+      <a class="btn ghost" href="#multiband">Try the engine</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon + Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span>DARK · MULTIBAND · LIVE</span><span>REMOVED −24 dB</span></div>
+      <canvas id="hero" width="1040" height="660" aria-label="CATHARSIS's display in its DARK skin. A voice over location room tone runs through the multiband engine. The faint gold mass in the top half is the input spectrum and the twelve amber dots are the band handles. The purple fill hanging below the centre line is what is being removed right now: deep in the gaps between phrases, almost nothing while the voice speaks."></canvas>
+      <div class="well-foot"><span>GAPS <b id="h-gap" class="heat">-</b></span><span>NOW <b id="h-now">-</b></span><span>LATENCY <b>0 SAMPLES</b></span></div>
+    </div>
+    <div class="tagline">GOLD IS THE INPUT · PURPLE IS WHAT LEAVES</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #016 // CATHARSIS TWO ENGINES</span>
-</footer>
+<section class="face-top">
+  <img src="assets/catharsis/hero.png?v=261029b" alt="The CATHARSIS panel in its DARK skin: the ENGINE switch, the twelve band handles over the display, and the REDUCTION, PROFILE and MODES plates" width="1828" height="1132">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>A noise reducer has to answer one question, over and over, many times a second: <strong>is this part of the signal the room, or the voice?</strong> CATHARSIS answers it by keeping a running estimate of the room's own level, its noise floor, and comparing everything it hears against it. What sits close to the floor is room and gets turned down. What stands well above it is voice and passes untouched.</p>
+      <p>Both engines work that way. They differ in how finely they look and what that costs. <strong>MULTIBAND</strong> splits the signal into twelve bands and adds no delay at all. <strong>SPECTRAL</strong> looks at 257 frequency bins at a time and needs 512 samples to do it.</p>
+    </div>
+    <div class="prose">
+      <p><strong>AMOUNT</strong> sets how far down the room can go, up to 30 dB. It starts at 0, where both engines are exactly transparent: a fresh instance passes audio untouched until you turn it up. <strong>AMBIENCE</strong> sets how much of the room to leave, and <strong>MODE</strong> chooses between tracking the floor live and using a profile you captured with <strong>LEARN NOISE</strong>.</p>
+      <p>Detection is stereo-linked in both engines. One decision drives both channels, so the room tone that is left cannot wander across the image. A click-free <strong>BYPASS</strong> crossfades against the dry signal, delayed to match.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1080 280" role="img" aria-label="CATHARSIS's signal path. The input goes to one of two engines. MULTIBAND: a twelve-band split that sums exactly, a noise floor per band, a cut-only expander with AMBIENCE, then the sum and MIX, at zero latency. SPECTRAL: a 512-point STFT, a noise power estimate per bin, the OM-LSA gain with AMBIENCE, and cepstral smoothing, at 512 samples. The noise PROFILE, tracked live or learned, feeds both. A faded ENGINE switch and a click-free BYPASS lead to the output.">
+      <text x="8" y="152">IN</text>
+      <path class="wire" d="M30 148 H58 V88 H90 M58 148 V208 H90"/><path class="flow" d="M30 148 H58 V88 H90"/><path class="flow" d="M58 148 V208 H90"/>
+      <text class="lane" x="90" y="48">MULTIBAND · ZERO LATENCY</text>
+      <rect class="box" x="90" y="64" width="124" height="48" rx="4"/><text class="lbl" x="152" y="85" text-anchor="middle">12 BANDS</text><text x="152" y="102" text-anchor="middle">LR4 · EXACT SUM</text>
+      <path class="wire" d="M214 88 H240"/><path class="flow" d="M214 88 H240"/>
+      <rect class="box" x="240" y="64" width="124" height="48" rx="4"/><text class="lbl" x="302" y="85" text-anchor="middle">FLOOR</text><text x="302" y="102" text-anchor="middle">PER BAND</text>
+      <path class="wire" d="M364 88 H390"/><path class="flow" d="M364 88 H390"/>
+      <rect class="hot" x="390" y="64" width="136" height="48" rx="4"/><text class="lbl" x="458" y="85" text-anchor="middle" style="fill:var(--heat-text)">EXPAND</text><text x="458" y="102" text-anchor="middle">CUT ONLY · AMB</text>
+      <path class="wire" d="M526 88 H552"/><path class="flow heat" d="M526 88 H552"/>
+      <rect class="box" x="552" y="64" width="110" height="48" rx="4"/><text class="lbl" x="607" y="85" text-anchor="middle">SUM</text><text x="607" y="102" text-anchor="middle">+ MIX</text>
+      <rect class="box" x="90" y="184" width="124" height="48" rx="4"/><text class="lbl" x="152" y="205" text-anchor="middle">STFT</text><text x="152" y="222" text-anchor="middle">512 · 50 %</text>
+      <path class="wire" d="M214 208 H240"/><path class="flow" d="M214 208 H240"/>
+      <rect class="box" x="240" y="184" width="124" height="48" rx="4"/><text class="lbl" x="302" y="205" text-anchor="middle">NOISE PSD</text><text x="302" y="222" text-anchor="middle">PER BIN</text>
+      <path class="wire" d="M364 208 H390"/><path class="flow" d="M364 208 H390"/>
+      <rect class="hot" x="390" y="184" width="136" height="48" rx="4"/><text class="lbl" x="458" y="205" text-anchor="middle" style="fill:var(--heat-text)">OM-LSA</text><text x="458" y="222" text-anchor="middle">GAIN · AMB</text>
+      <path class="wire" d="M526 208 H552"/><path class="flow heat" d="M526 208 H552"/>
+      <rect class="box" x="552" y="184" width="110" height="48" rx="4"/><text class="lbl" x="607" y="205" text-anchor="middle">SMOOTH</text><text x="607" y="222" text-anchor="middle">CEPSTRAL</text>
+      <text class="lane" x="90" y="258">SPECTRAL · 512 SAMPLES</text>
+      <rect class="band" x="240" y="131" width="124" height="34" rx="4"/><text class="lbl" x="302" y="153" text-anchor="middle" style="fill:var(--silver)">PROFILE</text>
+      <path class="wire" d="M302 131 V112 M302 165 V184"/><path class="flow ctl" d="M302 131 V112"/><path class="flow ctl" d="M302 165 V184"/>
+      <text x="374" y="146" style="fill:var(--text-3)">AUTO · LIVE</text><text x="374" y="162" style="fill:var(--text-3)">LEARN · CAPTURED</text>
+      <path class="wire" d="M662 88 H700 V148 H730 M662 208 H700 V148"/><path class="flow" d="M662 88 H700 V148 H730"/><path class="flow" d="M662 208 H700 V148"/>
+      <rect class="box" x="730" y="124" width="124" height="48" rx="4"/><text class="lbl" x="792" y="145" text-anchor="middle">ENGINE</text><text x="792" y="162" text-anchor="middle">FADED SWITCH</text>
+      <path class="wire" d="M854 148 H884"/><path class="flow" d="M854 148 H884"/>
+      <rect class="box" x="884" y="124" width="112" height="48" rx="4"/><text class="lbl" x="940" y="145" text-anchor="middle">BYPASS</text><text x="940" y="162" text-anchor="middle">CLICK-FREE</text>
+      <path class="wire" d="M996 148 H1030"/><path class="flow" d="M996 148 H1030"/>
+      <text x="1036" y="152">OUT</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>LOOK</b><p>MULTIBAND splits the signal into twelve bands. SPECTRAL takes it apart into 257 bins.</p></li>
+    <li><span class="num">2</span><b>TRACK</b><p>Each band or bin keeps an estimate of the room's floor, followed live or captured with LEARN NOISE.</p></li>
+    <li><span class="num">3</span><b>DECIDE</b><p>What sits near the floor is turned down, as far as AMOUNT allows. What stands above it passes.</p></li>
+    <li><span class="num">4</span><b>KEEP</b><p>AMBIENCE stops the room at a set level below its own floor, so gaps keep a quiet, steady bed.</p></li>
+    <li><span class="num">5</span><b>COMPARE</b><p>BYPASS crossfades against the delay-matched dry signal, so A/B never clicks in either engine.</p></li>
+  </ol>
+</section>
+
+<!-- MULTIBAND -->
+<div class="sh" id="multiband">Multiband · zero latency</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>MULTIBAND is a twelve-band downward expander.</strong> Eleven crossovers, at 60, 120, 250 and 500 Hz, 0.9, 1.5, 2.5, 4, 6.3, 10 and 14 kHz, split the signal so that the twelve bands add back up to the input exactly. Nothing is delayed and nothing is smeared in phase, so with AMOUNT at 0 the output is the input, bit for bit.</p>
+      <p>Each band follows its own level and keeps a noise floor: the lowest that level has been over about the last second. <strong>SENS</strong> sets a threshold that many decibels above the floor. When the band falls below it, it is turned down by as much as it fell short, up to <strong>AMOUNT</strong>. It only ever cuts: a band is never raised.</p>
+    </div>
+    <div class="prose">
+      <p>On a steady room, the reduction you get is the smaller of AMOUNT and SENS. The room sits right on its floor, a full SENS below the threshold, so for constant hiss SENS sets the depth and AMOUNT caps it. Raise both together for more.</p>
+      <p>The twelve <strong>band handles</strong> on the display set how much of AMOUNT each band uses: drag one up for more, down for less, double-click to bypass it. Shift-click a handle to <strong>LISTEN</strong> to exactly what that band is taking away. <strong>SUGGEST</strong> reads the measured floor and sets SENS, AMOUNT and the handles for you, leaning harder on the noisiest bands.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Room"><button type="button" data-room="0" aria-pressed="true">LOCATION</button><button type="button" data-room="1" aria-pressed="false">AIR CON</button><button type="button" data-room="2" aria-pressed="false">HISS</button></span>
+      <span class="tools">
+        <span class="seg" role="group" aria-label="Mode"><button type="button" data-mode="0" aria-pressed="true">AUTO</button><button type="button" data-mode="1" aria-pressed="false">LEARN</button></span>
+        <button type="button" class="pill" id="mb-learn">LEARN NOISE</button>
+        <button type="button" class="pill" id="mb-suggest">SUGGEST</button>
+      </span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="mbtime" width="1040" height="600" aria-label="The last four seconds of one band: its level, its noise floor, the threshold SENS above the floor, and the band's output. Underneath, in purple, how far the band was turned down. Shaded columns mark where the voice was speaking."></canvas>
+      <canvas id="mbgraph" class="drag" width="800" height="600" aria-label="CATHARSIS's display: the input spectrum, twelve band handles and the purple reduction below the centre line. Click a handle to follow that band on the left, drag it up or down to change its share of AMOUNT, double-click it to bypass it."></canvas>
+    </div>
+    <div class="readouts"><span>BAND<b id="m-band">-</b></span><span>FLOOR<b id="m-floor">-</b></span><span>GAPS<b id="m-gap" class="heat">-</b></span><span>NOW<b id="m-now">-</b></span><span>PROFILE<b id="m-prof">LIVE</b></span></div>
+    <div class="ctrls" id="mbctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:rgba(240,237,230,.45)"></i>BAND LEVEL</span><span><i style="background:var(--silver)"></i>NOISE FLOOR</span><span><i class="dash"></i>FLOOR + SENS</span><span><i style="background:var(--gold)"></i>BAND OUT</span><span><i class="blk" style="background:var(--heat-hi)"></i>REMOVED</span><span>THE SPLIT, FLOOR TRACKER, EXPANDER, LEARN AND SUGGEST RUN THE PLUG-IN'S CODE, PORTED · THE VOICE AND ROOMS ARE SYNTHETIC</span></div>
+  <ul class="rows">
+    <li><b>ZERO LATENCY</b><span>MULTIBAND reports 0 samples to the host, and means it: it is the only engine running, not a spectral path with its gain switched off. Use it on a live chain, while recording, or against picture.</span></li>
+    <li><b>BALLISTICS</b><span>ATTACK, 0.2 to 50 ms, sets how fast a band clamps down when the voice stops. RELEASE, 5 to 1000 ms, sets how fast it opens again. The defaults, 5 and 80 ms, suit most dialogue.</span></li>
+    <li><b>MIX</b><span>Blends the processed signal against the dry, ramped so a move never steps. In MULTIBAND only: the spectral engine has no internal mix.</span></li>
+  </ul>
+</section>
+
+<!-- SPECTRAL -->
+<div class="sh" id="spectral">Spectral · bin by bin</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>SPECTRAL works on 257 frequency bins at once,</strong> from a 512-point transform with half-overlapping frames. Every bin carries its own estimate of the room's power, from a tracker that weighs, frame by frame, how likely it is that speech is present in that bin. It follows a changing room within a fraction of a second, without mistaking held vowels for noise.</p>
+      <p>The gain for each bin is the Ephraim-Malah log-spectral amplitude estimator, the classical answer to the warbling "musical noise" a plain spectral subtractor leaves behind. CATHARSIS weights it by that speech-presence probability, so bins that are almost certainly room go straight to the floor, and bins that might be voice are given the benefit of the doubt.</p>
+    </div>
+    <div class="prose">
+      <p>The floor is not flat. AMOUNT digs <strong>deeper where noise lives and speech does not</strong>, under 100 Hz and above 10 kHz, and holds back across 250 Hz to 3 kHz, where intelligibility lives. The curve is smooth in frequency, because a step in a gain floor is itself something the ear can find.</p>
+      <p>The engine reports 512 samples, 10.7 ms at 48 kHz, and the host compensates. Measured at AMOUNT 24 with a captured profile: <strong>gaps down 25 dB, words down 0.2 dB</strong>.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span>THE FLOOR BY FREQUENCY · THE GAIN RULE FOR ONE BIN</span>
+      <span id="sp-name">BIN AT 1.0 kHz</span>
+    </div>
+    <div class="lab-views wide">
+      <canvas id="spfloor" class="drag" width="1040" height="540" aria-label="How far SPECTRAL can turn each frequency down at the current AMOUNT, as a purple fill. The dashed line is the flat AMOUNT it is built around. Deeper below 100 Hz and above 10 kHz, gentler from 250 Hz to 3 kHz. Drag to choose the bin shown on the right."></canvas>
+      <canvas id="spgain" width="800" height="540" aria-label="The gain for one bin against how far speech stands above the room in that bin. The dashed curve is the plain log-spectral amplitude gain; the purple curve is the gain CATHARSIS applies, weighted by speech presence, held at the floor and, with AMBIENCE on, never below the retained bed; the silver line is that bin's floor."></canvas>
+    </div>
+    <div class="readouts"><span>FLOOR HERE<b id="s-floor" class="heat">-</b></span><span>LSA<b id="s-lsa">-</b></span><span>P(SPEECH)<b id="s-p">-</b></span><span>APPLIED<b id="s-om" class="heat">-</b></span><span>LATENCY<b>512 SAMPLES</b></span></div>
+    <div class="ctrls three" id="spctrls"></div>
+  </div>
+  <div class="legend"><span><i class="blk" style="background:var(--heat-hi)"></i>MOST IT CAN REMOVE</span><span><i class="dash"></i>FLAT AMOUNT · PLAIN LSA</span><span><i style="background:var(--heat-peak)"></i>APPLIED GAIN</span><span><i style="background:var(--silver)"></i>BIN FLOOR</span><span>COMPUTED FROM THE PLUG-IN'S VOICING CURVE AND GAIN EQUATIONS · ONE BIN, STEADY STATE, BEFORE CEPSTRAL SMOOTHING</span></div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold-hot)">MMSE-LSA</b><span>EPHRAIM · MALAH</span></div>
+      <p>The estimator that minimises error in the log spectrum, which is close to how loudness is heard. It tracks a smoothed "a-priori" signal-to-noise ratio per bin instead of reacting to every frame's raw value, which is what stops bins flickering on and off.</p>
+      <div class="fine">THE BASE GAIN · EVERY BIN, EVERY FRAME</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--heat-text)">OM-LSA</b><span>SPEECH PRESENCE</span></div>
+      <p>The gain is raised to the power of the probability that speech is present, and the floor fills the rest. A bin that is surely room lands on the floor; a bin that might be a consonant keeps most of its level. The probability has its own fast smoothing, so it follows onsets.</p>
+      <div class="fine">THE CURE FOR LOW-SNR WARBLE</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--silver)">CEPSTRAL</b><span>SMOOTHING</span></div>
+      <p>The finished gain is smoothed over time in the cepstral domain. The spectral envelope and the voice's pitch move freely; the random bin-to-bin flicker between them, which is what musical noise is made of, is held steady. It costs two transforms per frame and no latency.</p>
+      <div class="fine">ENVELOPE AND PITCH FREE · FLICKER HELD</div>
+    </article>
+  </div>
+  <ul class="rows">
+    <li><b>ONSETS</b><span>A sudden rise in broadband energy, a plosive or a hard consonant, speeds the a-priori estimate up for three frames, so attacks are not smeared and the "p" in a word arrives on time.</span></li>
+    <li><b>SAMPLE RATES</b><span>512 samples at 44.1, 48, 96 and 192 kHz, measured, bypassed or not, in mono and stereo. Output is identical whatever block size the host uses.</span></li>
+  </ul>
+</section>
+
+<!-- AMBIENCE -->
+<div class="sh" id="ambience">Keep the room</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Clean dialogue over dead silence is the giveaway of a denoised recording. Real rooms have a sound, and when it vanishes in every gap the edit is audible. <strong>AMBIENCE sets how much of the room to leave</strong>, in decibels below the room's own level.</p>
+      <p>The bed is referenced to the noise floor CATHARSIS is tracking, not to what is playing. So it has the real room's tone and shape, it holds still while the voice comes and goes, and it is independent of AMOUNT: suppress as hard as you like and still land on a defined, quiet room.</p>
+    </div>
+    <div class="prose">
+      <p>That is different from <strong>MIX</strong>. MIX brings back the dry signal, so the room returns with every movement the processing made, rising under each word and falling in each gap. AMBIENCE returns a bed that does not move. Try both in the lab above: set AMBIENCE to −20 dB and watch the gold band output settle on a steady line in the gaps.</p>
+      <p>AMBIENCE works in both engines. Off by default, and nothing is synthesised: the bed is the real room, at a lower level.</p>
+    </div>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="nm"><b style="color:var(--text-2)">OFF</b><span>FULL DEPTH</span></div>
+      <p>Gaps go as far down as AMOUNT and SENS take them. The right choice for a line that will be laid over a fresh room tone or a music bed.</p>
+      <div class="fine">FOR STEMS THAT GET A NEW ROOM</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--gold)">MIX</b><span>DRY BACK IN</span></div>
+      <p>Returns a share of the untouched signal. The room comes back moving with the processing, louder under the words than between them.</p>
+      <div class="fine">MULTIBAND ONLY · A GENTLER OVERALL HAND</div>
+    </article>
+    <article class="card">
+      <div class="nm"><b style="color:var(--silver)">AMBIENCE</b><span>A STEADY BED</span></div>
+      <p>Holds every band or bin at a fixed distance under the room's own floor. The gaps keep a quiet, unchanging room with its real colour.</p>
+      <div class="fine">BOTH ENGINES · −60 TO 0 dB UNDER THE ROOM</div>
+    </article>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<div class="sh" id="profile">Auto, learn and suggest</div>
+<section class="two">
+  <div class="prose">
+    <p>In <strong>AUTO</strong>, CATHARSIS follows the room as it changes, which suits a moving camera, a scene that cuts between locations, or a fan that cycles. In <strong>LEARN</strong>, it uses a profile you captured, which suits a fixed room where the noise is steady and you want the reduction to stay exactly where you set it.</p>
+    <p>To capture one, play a passage of room with nobody speaking and press <strong>LEARN NOISE</strong>. MULTIBAND listens for about 1.5 s and SPECTRAL for about 0.5 s. The profile is saved with the session, survives buffer and sample-rate changes and offline bounces, and is not written into presets.</p>
+  </div>
+  <ul class="rows">
+    <li><b>AUTO</b><span>A live floor per band (the minimum over about a second) or per bin (a speech-presence tracker). Nothing to set up.</span></li>
+    <li><b>LEARN</b><span>Expands against the captured profile in both engines. Until a capture exists, LEARN tracks live.</span></li>
+    <li><b>SUGGEST</b><span>One click: SENS 6 dB, AMOUNT 12 dB, and each band handle set between 55 and 100 % by how noisy that band measured. MULTIBAND only.</span></li>
+    <li><b>ENGINE</b><span>Switching fades out, swaps, waits for the new engine to fill and fades back in, and tells the host the new latency. ENGINE is not automatable, by design: no host can move delay compensation in the middle of a pass. Choose it before you play or bounce.</span></li>
+    <li><b>VIEW</b><span>Three skins, LIGHT, DARK and NUCLEAR, kept as your preference and never in presets or sessions. Presets save and save as from the plug-in's own menu.</span></li>
+  </ul>
+</section>
+
+<!-- LICENCE -->
+<div class="sh" id="licence">The licence</div>
+<section class="two">
+  <div class="prose">
+    <p>CATHARSIS runs as a fully working trial for seven days from the first time it loads, and the footer counts down the days left. When the trial ends without activation, CATHARSIS goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA-.</p>
+  </div>
+  <div class="prose">
+    <p>Click the licence note in the footer, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that CATHARSIS works offline and never goes online on its own. One licence covers three computers, and on a Mac one activation covers every user account.</p>
+    <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
+  </div>
+</section>
+
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>DIALOGUE EDITORS</b><p>Production sound with a hum, a fan or traffic under it. LEARN a clean patch of room, set AMBIENCE so the cuts still breathe, and let the editorial stay invisible.</p></article>
+  <article><b>PODCAST &amp; VO</b><p>Home studios with a computer fan or a hiss in the preamp. SUGGEST gets most rooms most of the way in one click; SPECTRAL takes the rest.</p></article>
+  <article><b>FIELD &amp; DOC</b><p>Interviews in rooms you could not choose. AUTO follows a changing location, and nothing is ever resynthesised, so the words are exactly the words that were said.</p></article>
+  <article><b>BROADCAST &amp; LIVE</b><p>MULTIBAND adds no delay, so it can sit on a microphone channel, a stream or a talkback chain without moving the voice off the picture.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Dialogue noise reduction (insert)</td></tr>
+    <tr><th>MULTIBAND</th><td>12-band downward expander, cut only · Linkwitz-Riley crossovers at 60, 120, 250, 500, 900 Hz, 1.5, 2.5, 4, 6.3, 10, 14 kHz, exact reconstruction · 0 samples latency</td></tr>
+    <tr><th>SPECTRAL</th><td>STFT MMSE-LSA with speech-presence (OM-LSA) weighting and cepstral smoothing · 512-point frames, 50 % overlap · 512 samples latency at every rate</td></tr>
+    <tr><th>CONTROLS</th><td>AMOUNT 0–30 dB · SENS 0–30 dB · ATTACK 0.2–50 ms · RELEASE 5–1000 ms · MIX 0–100 % · AMBIENCE off, −60 to 0 dB</td></tr>
+    <tr><th>PER BAND</th><td>12 handles: share of AMOUNT 0–100 %, bypass, LISTEN to what is removed</td></tr>
+    <tr><th>PROFILE</th><td>AUTO (live tracking) or LEARN (captured, saved with the session) · SUGGEST</td></tr>
+    <tr><th>CHANNELS</th><td>Mono and stereo · stereo-linked detection in both engines</td></tr>
+    <tr><th>SAMPLE RATES</th><td>44.1 to 192 kHz</td></tr>
+    <tr><th>PRESETS</th><td>Save and save as, in the plug-in's own menu</td></tr>
+    <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools, listed under Noise Reduction)</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Universal: Apple Silicon and Intel · Developer ID signed, notarized</td></tr>
+  </table>
+  <div class="prose">
+    <p>CATHARSIS's engines began as the NOISE stage of ROGERIAN DIA and have been their own since: stereo-linked, twelve bands instead of six, three generations of work against musical noise, AMBIENCE, and a LEARN that holds through every host re-prepare.</p>
+    <p>Classical signal processing, deterministic by nature: the same audio and the same settings give the same result on every pass, wherever playback starts.</p>
+    <p>No standalone app in the installer. CATHARSIS lives in your DAW.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow" id="price-ver">CATHARSIS</div>
+  <p>Two engines, twelve bands at zero latency, the spectral estimator for the hard cases, LEARN, SUGGEST and AMBIENCE. Nothing withheld.</p>
+  <div class="amt"><s>$99</s><strong>$49.50</strong></div>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=CATHARSIS%20launch" data-notify="CATHARSIS" data-prelaunch>Notify me at launch</a>
+    <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/65531cf3-5ba4-43c7-baf6-51b735a07555?embed=1" data-launch hidden>Acquire CATHARSIS · $49.50</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/1859c809-8c29-46d0-b042-63c388fe7f11?embed=1" data-launch hidden>Try 7 days free</a>
+  </div>
+  <div class="cap">MACOS · UNIVERSAL · VST3 / AU / AAX INCLUDED</div>
+</section>
+
+<footer><a href="store.html">STORE</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(() => {
+'use strict';
+const RM = false;
+// CATHARSIS DARK tokens (ThetaColors.h applyDark)
+const C = {
+  bg:'#06080c', card:'#0c0c10', grid:'#111420', divider:'#111420', label:'#707070', gold:'#c8a86b', goldHot:'#ffc867', goldMuted:'#9e8b65',
+  silver:'#b0b0b0', amber:'#e09a34', heatLo:'#3e2178', heatMid:'#5a2bb0', heatHi:'#7e3ae0', heatPeak:'#9e44ff', cream:'#f0ede6', text3:'#8d8779'
+};
+const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
+const SR = 48000;
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+// notes toggle
+
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const lin2db = a => 20 * Math.log10(Math.max(a, 1e-12));
+const rgba = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+
+// ---------- the MULTIBAND engine: a mono port of Source/Modules/Catharsis/NoiseReducer.h ----------
+const XOVER = [60, 120, 250, 500, 900, 1500, 2500, 4000, 6300, 10000, 14000], NBANDS = 12, NX = 11;
+const EDGE = [20, ...XOVER, 20000];
+const bandCentre = b => Math.sqrt(EDGE[b] * EDGE[b + 1]);
+function rbjLP(sr, fc, Q) {
+  const w0 = 2 * Math.PI * fc / sr, c = Math.cos(w0), al = Math.sin(w0) / (2 * Q), a0 = 1 + al;
+  return { b0: (1 - c) * .5 / a0, b1: (1 - c) / a0, b2: (1 - c) * .5 / a0, a1: -2 * c / a0, a2: (1 - al) / a0, z1: 0, z2: 0 };
+}
+const bq = (f, x) => { const y = f.b0 * x + f.z1; f.z1 = f.b1 * x - f.a1 * y + f.z2; f.z2 = f.b2 * x - f.a2 * y; return y; };
+class Multiband {
+  constructor(sr) {
+    this.sr = sr;
+    this.lp = XOVER.map(fc => [rbjLP(sr, Math.min(fc, .45 * sr), Math.SQRT1_2), rbjLP(sr, Math.min(fc, .45 * sr), Math.SQRT1_2)]);  // LR4 = two Butterworth
+    this.subLen = Math.round(.040 * sr); this.ringSize = 25;   // 40 ms x 25: ~1 s sliding minimum
+    this.band = [];
+    for (let b = 0; b < NBANDS; b++) this.band.push({ env: 0, nf: -120, g: 0, subMin: 1e9, subCount: 0, ring: new Float32Array(25).fill(1e9), pos: 0, first: true, lvl: -120 });
+    this.amount = 0; this.sens = 12; this.mix = 1; this.mixCur = 1; this.mode = 0; this.ambOn = false; this.ambBelow = 0;
+    this.bandAmt = new Float32Array(NBANDS).fill(1); this.bandOn = new Array(NBANDS).fill(true);
+    this.learning = false; this.haveLearned = false; this.learnMin = new Float32Array(NBANDS).fill(1e9); this.learned = new Float32Array(NBANDS).fill(-120);
+    this.learnLen = Math.round(1.5 * sr); this.learnCount = 0; this.learnSettle = 0;
+    this.l = new Float64Array(NX); this.bs = new Float64Array(NBANDS);
+    this.setTimes(5, 80);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
+  setTimes(atk, rel) {
+    const sr = this.sr; this.atkMs = atk;
+    this.aAtk = 1 - Math.exp(-1 / (atk * .001 * sr));
+    this.aRelG = 1 - Math.exp(-1 / (rel * .001 * sr));
+    this.aRelE = 1 - Math.exp(-1 / (rel * 1.5 * .001 * sr));
+    this.aMix = 1 - Math.exp(-1 / (.005 * sr));
   }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/catharsis/hero.png?v=260801k', 916, 916 / 587),
-      openMultiband: this._mk('assets/catharsis/multiband.png?v=260801k', 916, 916 / 587),
-    };
+  setAmbience(pct) { const f = clamp(pct, 0, 100) * .01; this.ambOn = f > 0; this.ambBelow = this.ambOn ? -20 * Math.log10(Math.max(1e-4, f)) : 0; }
+  startLearn() { this.learning = true; this.learnCount = 0; this.learnSettle = Math.max(1, Math.round(Math.max(60, 5 * this.atkMs) * .001 * this.sr)); this.learnMin.fill(1e9); }
+  floor(b) { return (this.mode === 1 && this.haveLearned) ? this.learned[b] : this.band[b].nf; }
+  process(x) {
+    if (this.mixCur !== this.mix) { this.mixCur += (this.mix - this.mixCur) * this.aMix; if (Math.abs(this.mix - this.mixCur) < 1e-5) this.mixCur = this.mix; }
+    let settling = false;
+    if (this.learning && this.learnSettle > 0) { settling = true; if (x !== 0) this.learnSettle--; }
+    const l = this.l, bs = this.bs;
+    // telescoping LR4 split: sums to exactly x
+    for (let i = 0; i < NX; i++) l[i] = bq(this.lp[i][1], bq(this.lp[i][0], x));
+    bs[0] = l[0]; for (let i = 1; i < NX; i++) bs[i] = l[i] - l[i - 1]; bs[NX] = x - l[NX - 1];
+    let out = 0;
+    for (let i = 0; i < NBANDS; i++) {
+      const B = this.band[i], a = Math.abs(bs[i]);
+      B.env += (a > B.env ? this.aAtk : this.aRelE) * (a - B.env);
+      const lvl = 20 * Math.log10(B.env + 1e-9); B.lvl = lvl;
+      if (B.first) { B.nf = lvl; B.first = false; }
+      if (lvl < B.subMin) B.subMin = lvl;
+      if (++B.subCount >= this.subLen) {
+        B.ring[B.pos] = B.subMin; B.pos = (B.pos + 1) % this.ringSize; B.subMin = 1e9; B.subCount = 0;
+        let m = 1e9; for (let k = 0; k < this.ringSize; k++) if (B.ring[k] < m) m = B.ring[k]; B.nf = m;
+      }
+      if (this.learning && !settling && lvl > -140 && lvl < this.learnMin[i]) this.learnMin[i] = lvl;
+      let targ = 0;
+      if (this.bandOn[i]) {
+        const fl = this.floor(i), thr = fl + this.sens;
+        if (lvl < thr) {
+          targ = -Math.min(this.amount * this.bandAmt[i], thr - lvl);
+          if (this.ambOn) targ = Math.max(targ, Math.min(0, fl - this.ambBelow - lvl));
+        }
+      }
+      B.g += (targ < B.g ? this.aAtk : this.aRelG) * (targ - B.g);
+      out += bs[i] * Math.pow(10, B.g / 20);
+    }
+    if (this.learning && !settling && ++this.learnCount >= this.learnLen) {
+      for (let b = 0; b < NBANDS; b++) this.learned[b] = this.learnMin[b] < 1e8 ? this.learnMin[b] : -120;
+      this.learning = false; this.haveLearned = true;
+    }
+    return x + (out - x) * this.mixCur;
+  }
+  reduction(b) { return Math.max(0, -this.band[b].g) * this.mixCur; }
+}
+
+// ---------- synthetic program: a voice over a room ----------
+// The voice is a glottal pulse train through three formant resonators, vowel by vowel, with
+// fricatives (high-passed noise) on some syllable onsets. Phrases are separated by gaps of room tone.
+const VOWELS = [[730, 1090, 2440], [270, 2290, 3010], [300, 870, 2240], [530, 1840, 2480], [570, 840, 2410], [440, 1020, 2240], [660, 1720, 2410], [490, 1350, 1690]];
+function rbjBP(sr, fc, Q) { const w0 = 2 * Math.PI * fc / sr, c = Math.cos(w0), al = Math.sin(w0) / (2 * Q), a0 = 1 + al; return { b0: al / a0, b1: 0, b2: -al / a0, a1: -2 * c / a0, a2: (1 - al) / a0, z1: 0, z2: 0 }; }
+function rbjHP(sr, fc, Q) { const w0 = 2 * Math.PI * fc / sr, c = Math.cos(w0), al = Math.sin(w0) / (2 * Q), a0 = 1 + al; return { b0: (1 + c) * .5 / a0, b1: -(1 + c) / a0, b2: (1 + c) * .5 / a0, a1: -2 * c / a0, a2: (1 - al) / a0, z1: 0, z2: 0 }; }
+function setBP(f, sr, fc, Q) { const n = rbjBP(sr, fc, Q); f.b0 = n.b0; f.b1 = n.b1; f.b2 = n.b2; f.a1 = n.a1; f.a2 = n.a2; }
+const ROOMS = [
+  { pink: -50, white: -78, hum: -99, rumble: -46, wander: 2.5 },   // LOCATION: pink wash, low traffic rumble, slow drift
+  { pink: -60, white: -72, hum: -54, rumble: -58, wander: .8 },    // AIR CON: 60 Hz hum and harmonics, fan hiss
+  { pink: -72, white: -58, hum: -99, rumble: -99, wander: .3 }     // HISS: preamp or tape, bright and steady
+];
+const dbA = d => Math.pow(10, d / 20);
+class Program {
+  constructor(sr, seed) {
+    this.sr = sr; this.s = seed; this.room = ROOMS[0];
+    this.pk = new Float64Array(7); this.rum = 0; this.rum2 = 0; this.ph = 0; this.hph = 0; this.wand = 0; this.wandT = 0;
+    this.f = [rbjBP(sr, 700, 6), rbjBP(sr, 1200, 10), rbjBP(sr, 2500, 14)]; this.fric = rbjHP(sr, 4200, .9); this.fric2 = rbjHP(sr, 4200, .9);
+    this.inPhrase = false; this.left = Math.round(.5 * sr); this.pre = 0; this.syl = 0; this.sylLen = 1; this.sylAmp = 0; this.fricLen = 0; this.f0 = 120; this.glide = 0; this.glot = 0;
+    this.talking = false;
+  }
+  rnd() { this.s = (this.s * 1664525 + 1013904223) >>> 0; return this.s / 4294967296; }
+  gauss() { return (this.rnd() + this.rnd() + this.rnd() + this.rnd() - 2) * 1.732; }
+  nextSyllable() {
+    const sr = this.sr;
+    this.sylLen = Math.round((.12 + .14 * this.rnd()) * sr); this.syl = 0; this.sylAmp = .55 + .45 * this.rnd();
+    const v = VOWELS[Math.floor(this.rnd() * VOWELS.length)];
+    setBP(this.f[0], sr, v[0], v[0] / 90); setBP(this.f[1], sr, v[1], v[1] / 110); setBP(this.f[2], sr, v[2], v[2] / 140);
+    this.fricLen = this.rnd() < .38 ? Math.round((.04 + .05 * this.rnd()) * sr) : 0;
+    this.f0 = 112 + 26 * this.rnd(); this.glide = (this.rnd() - .6) * 30 / this.sylLen;
+    this.pre = this.rnd() < .3 ? Math.round((.07 + .16 * this.rnd()) * sr) : 0;   // a breath between words
+  }
+  sample() {
+    const sr = this.sr, R = this.room, p = this.pk, w = this.gauss();
+    p[0] = .99886 * p[0] + w * .0555179; p[1] = .99332 * p[1] + w * .0750759; p[2] = .969 * p[2] + w * .153852;
+    p[3] = .8665 * p[3] + w * .3104856; p[4] = .55 * p[4] + w * .5329522; p[5] = -.7616 * p[5] - w * .016898;
+    const pink = (p[0] + p[1] + p[2] + p[3] + p[4] + p[5] + p[6] + w * .5362) * .11; p[6] = w * .115926;
+    const w2 = this.gauss();
+    this.rum += .004 * (w2 - this.rum); this.rum2 += .004 * (this.rum - this.rum2);
+    if (++this.wandT >= 2400) { this.wandT = 0; this.wand += .25 * ((this.rnd() * 2 - 1) - this.wand); }
+    const drift = dbA(R.wander * this.wand);
+    this.hph += 60 / sr; if (this.hph > 1) this.hph -= 1;
+    const tp = 2 * Math.PI * this.hph, h = Math.sin(tp) + .5 * Math.sin(2 * tp) + .35 * Math.sin(3 * tp) + .2 * Math.sin(5 * tp);
+    const room = pink * dbA(R.pink) * drift + w2 * dbA(R.white) + this.rum2 * 40 * dbA(R.rumble) * drift + h * dbA(R.hum);
+    let v = 0;
+    if (--this.left <= 0) {
+      this.inPhrase = !this.inPhrase;
+      this.left = Math.round((this.inPhrase ? 1.5 + 1.3 * this.rnd() : .9 + .8 * this.rnd()) * sr);
+      if (this.inPhrase) this.nextSyllable();
+    }
+    this.talking = false;
+    if (this.syl >= this.sylLen && this.inPhrase) this.nextSyllable();
+    if (this.pre > 0) this.pre--;
+    else if (this.syl < this.sylLen) {
+      const fr = this.fricLen; let e = 0, fe = 0;
+      if (this.syl < fr) fe = Math.sin(Math.PI * this.syl / fr);
+      else { const u = (this.syl - fr) / Math.max(1, this.sylLen - fr); e = u < .12 ? u / .12 : u > .55 ? Math.max(0, 1 - (u - .55) / .45) : 1; e *= e; }
+      this.f0 += this.glide; this.ph += this.f0 / sr; if (this.ph >= 1) this.ph -= 1;
+      this.glot += .35 * ((1 - 2 * this.ph) - this.glot);
+      const src = this.glot * e * this.sylAmp;
+      v = (bq(this.f[0], src) + bq(this.f[1], src) * .55 + bq(this.f[2], src) * .3) * .55;
+      if (fe > 0) v += bq(this.fric2, bq(this.fric, this.gauss())) * fe * .05 * this.sylAmp;
+      this.talking = e > .05 || fe > .2;
+      this.syl++;
+    }
+    return room + v;
   }
 }
 
+// ---------- a running chain: program -> engine, with an input history for the analyzer and gap/word meters ----------
+const FN = 2048, HANN = new Float32Array(FN);
+for (let n = 0; n < FN; n++) HANN[n] = .5 - .5 * Math.cos(2 * Math.PI * n / (FN - 1));
+function fft(re, im) {
+  const n = re.length;
+  for (let i = 1, j = 0; i < n; i++) { let bit = n >> 1; for (; j & bit; bit >>= 1) j ^= bit; j ^= bit; if (i < j) { let t = re[i]; re[i] = re[j]; re[j] = t; t = im[i]; im[i] = im[j]; im[j] = t; } }
+  for (let len = 2; len <= n; len <<= 1) {
+    const ang = -2 * Math.PI / len, wr = Math.cos(ang), wi = Math.sin(ang);
+    for (let i = 0; i < n; i += len) {
+      let cr = 1, ci = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const a = i + j, b = a + len / 2, tr = re[b] * cr - im[b] * ci, ti = re[b] * ci + im[b] * cr;
+        re[b] = re[a] - tr; im[b] = im[a] - ti; re[a] += tr; im[a] += ti;
+        const nr = cr * wr - ci * wi; ci = cr * wi + ci * wr; cr = nr;
+      }
+    }
+  }
+}
+class Chain {
+  constructor(seed) {
+    this.P = new Program(SR, seed); this.E = new Multiband(SR);
+    this.hist = new Float32Array(FN); this.hp = 0;
+    this.re = new Float64Array(FN); this.im = new Float64Array(FN); this.pow = new Float64Array(FN / 2 + 1);
+    this.wi = 0; this.wo = 0; this.wt = 0; this.wc = 0;
+    this.gap = [1e-12, 1e-12]; this.si = 1e-12; this.so = 1e-12; this.aNow = Math.exp(-1 / (.12 * SR));
+    this.onBlock = null;
+  }
+  run(n) {
+    const P = this.P, E = this.E, h = this.hist;
+    for (let i = 0; i < n; i++) {
+      const x = P.sample(), y = E.process(x);
+      h[this.hp] = x; this.hp = (this.hp + 1) & (FN - 1);
+      this.wi += x * x; this.wo += y * y; if (P.talking) this.wt++;
+      this.si = this.si * this.aNow + x * x; this.so = this.so * this.aNow + y * y;
+      if (++this.wc === 2400) {   // 50 ms windows with no voice in them, leaky over a few seconds
+        const k = .93;
+        if (this.wt === 0) { this.gap[0] = this.gap[0] * k + this.wi; this.gap[1] = this.gap[1] * k + this.wo; }
+        this.wi = this.wo = 0; this.wt = 0; this.wc = 0;
+      }
+      if (this.onBlock && (i % 48) === 47) this.onBlock();
+    }
+  }
+  gapDb() { return 10 * Math.log10(this.gap[1] / this.gap[0]); }
+  nowDb() { return 10 * Math.log10(this.so / this.si); }
+  spectrum() {
+    const re = this.re, im = this.im, h = this.hist;
+    for (let n = 0; n < FN; n++) { re[n] = h[(this.hp + n) & (FN - 1)] * HANN[n]; im[n] = 0; }
+    fft(re, im);
+    const s = 16 / (FN * FN);
+    for (let k = 0; k <= FN / 2; k++) this.pow[k] = (re[k] * re[k] + im[k] * im[k]) * s;
+    return this.pow;
+  }
+}
+
+// ---------- the display, as NrPanel::drawDisplay draws it in DARK ----------
+const FMIN = 20, FMAX = 20000, LR = Math.log10(FMAX / FMIN);
+const fx = (f, x0, w) => x0 + Math.log10(f / FMIN) / LR * w;
+const xf = (x, x0, w) => FMIN * Math.pow(10, (x - x0) / w * LR);
+const SPEC_MIN = -84, RED_MAX = 24, DISP_OFF = 24;   // display offset only: puts this synthetic room where a real one sits on the panel
+function smoothPts(ctx, pts, moveFirst) {
+  // Catmull-Rom through pts, as NrPanel::appendSmooth
+  if (moveFirst) ctx.moveTo(pts[0][0], pts[0][1]);
+  for (let i = 0; i + 1 < pts.length; i++) {
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+    ctx.bezierCurveTo(p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6, p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6, p2[0], p2[1]);
+  }
+}
+function heatGrad(ctx, midY, bot) {
+  const g = ctx.createLinearGradient(0, midY, 0, bot);
+  g.addColorStop(0, rgba(C.heatLo, .32)); g.addColorStop(.4, rgba(C.heatMid, .66)); g.addColorStop(.75, rgba(C.heatHi, .9)); g.addColorStop(1, C.heatPeak);
+  return g;
+}
+class Display {
+  constructor(canvas, chain, opts) {
+    this.cv = canvas; this.ctx = canvas.getContext('2d'); this.ch = chain; this.o = opts || {};
+    this.disp = null; this.sel = -1;
+    const W = canvas.width, H = canvas.height, pad = this.o.pad || 24;
+    this.d = { x: 0, y: pad, w: W, h: H - pad - 6 };
+  }
+  hx(b) { return fx(bandCentre(b), this.d.x, this.d.w); }
+  hy(b) { return this.d.y + (1 - clamp(this.ch.E.bandAmt[b], 0, 1)) * this.d.h * .5; }
+  draw() {
+    const ctx = this.ctx, d = this.d, W = this.cv.width, H = this.cv.height, E = this.ch.E, fs = this.o.fs || 15;
+    const midY = d.y + d.h * .5, Hbot = d.h * .5 - 7, top = d.y + 14;
+    ctx.fillStyle = C.card; ctx.fillRect(0, 0, W, H);
+    // decade grid
+    ctx.font = `${fs - 2}px ${MONO}`; ctx.textAlign = 'center';
+    for (const f of [100, 1000, 10000]) {
+      const x = Math.round(fx(f, d.x, d.w)) + .5;
+      ctx.strokeStyle = rgba('#111420', 1); ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x, d.y); ctx.lineTo(x, d.y + d.h); ctx.stroke();
+      ctx.fillStyle = rgba(C.label, .75); ctx.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x, d.y + d.h - 6);
+    }
+    ctx.textAlign = 'left';
+    // input spectrum, octave-smoothed per pixel
+    const pw = this.ch.spectrum(), step = 4, n = Math.floor(W / step) + 1;
+    if (!this.disp || this.disp.length !== n) this.disp = new Float32Array(n).fill(SPEC_MIN);
+    const pts = [];
+    for (let i = 0; i < n; i++) {
+      const x = i * step, f = xf(x, d.x, d.w), k0 = f * Math.pow(2, -1 / 12) * FN / SR, k1 = f * Math.pow(2, 1 / 12) * FN / SR;
+      let s = 0, c = 0;
+      if (k1 - k0 < 2) { const kf = clamp(f * FN / SR, 1, FN / 2 - 1), k = Math.floor(kf), fr = kf - k; s = pw[k] * (1 - fr) + pw[k + 1] * fr; c = 1; }   // sparse low end: interpolate between bins
+      else for (let k = Math.max(1, Math.floor(k0)); k <= Math.min(FN / 2, Math.ceil(k1)); k++) { s += pw[k]; c++; }
+      const db = 10 * Math.log10(s / Math.max(1, c) + 1e-20) + DISP_OFF;
+      this.disp[i] = this.disp[i] * .55 + db * .45;
+      pts.push([x, midY - clamp((this.disp[i] - SPEC_MIN) / -SPEC_MIN, 0, 1) * (midY - top)]);
+    }
+    ctx.beginPath(); ctx.moveTo(0, midY); pts.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(W, midY); ctx.closePath();
+    ctx.fillStyle = rgba(C.goldMuted, .14); ctx.fill();
+    ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.strokeStyle = rgba(C.goldMuted, .42); ctx.lineWidth = 1.4; ctx.stroke();
+    // bottom half: live per-band reduction, the noise being removed
+    const ry = b => midY + clamp(E.reduction(b) / RED_MAX, 0, 1) * Hbot;
+    const rp = [[d.x, ry(0)]]; for (let b = 0; b < NBANDS; b++) rp.push([this.hx(b), ry(b)]); rp.push([d.x + d.w, ry(NBANDS - 1)]);
+    ctx.beginPath(); ctx.moveTo(d.x, midY); ctx.lineTo(rp[0][0], rp[0][1]); smoothPts(ctx, rp, false); ctx.lineTo(d.x + d.w, midY); ctx.closePath();
+    ctx.fillStyle = heatGrad(ctx, midY, midY + Hbot); ctx.fill();
+    ctx.beginPath(); smoothPts(ctx, rp, true); ctx.strokeStyle = rgba(C.heatPeak, .85); ctx.lineWidth = 2.4; ctx.lineJoin = 'round'; ctx.stroke();
+    // 0 dB midline
+    ctx.strokeStyle = rgba('#7e3ae0', .55); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(d.x, Math.round(midY) + .5); ctx.lineTo(d.x + d.w, Math.round(midY) + .5); ctx.stroke();
+    // top half: band handles joined by a smooth amber curve
+    const hp = []; for (let b = 0; b < NBANDS; b++) hp.push([this.hx(b), this.hy(b)]);
+    ctx.beginPath(); smoothPts(ctx, hp, true); ctx.strokeStyle = rgba(C.amber, .45); ctx.lineWidth = 2; ctx.stroke();
+    const r = this.o.r || 12;
+    ctx.font = `500 ${Math.round(r * 1.05)}px ${MONO}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (let b = 0; b < NBANDS; b++) {
+      const [x, y] = hp[b];
+      if (E.bandOn[b]) { ctx.fillStyle = C.amber; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.fillStyle = '#0a0806'; }
+      else { ctx.strokeStyle = C.label; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.stroke(); ctx.fillStyle = C.label; }
+      ctx.fillText(String(b + 1), x, y + 1);
+      if (b === this.sel) { ctx.strokeStyle = C.cream; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, r + 6, 0, 7); ctx.stroke(); }
+    }
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    // labels: top strip = interaction hint, mid strip = reduction scale
+    ctx.fillStyle = C.label; ctx.font = `${fs - 2}px ${MONO}`;
+    ctx.fillText(this.o.hint || 'AMOUNT (drag up)  ·  DBL-CLICK = BYPASS', d.x + 10, d.y + r + fs + 12);
+    ctx.fillText('REMOVED  ·  -' + RED_MAX + ' dB', d.x + 10, midY + fs + 6);
+    if (E.learning) { ctx.fillStyle = C.amber; ctx.textAlign = 'right'; ctx.fillText('LEARNING NOISE...', d.x + d.w - 10, d.y + r + fs + 12); ctx.textAlign = 'left'; }
+  }
+}
+
+// visibility-gated animation loop
+function loop(canvas, draw) {
+  let on = false, raf = 0, last = performance.now(), t = 0;
+  const tick = now => { const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt; draw(t, dt); if (on) raf = requestAnimationFrame(tick); };
+  if (RM) { draw(t, 0); return { redraw: () => draw(t, 0) }; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !on) { on = true; last = performance.now(); raf = requestAnimationFrame(tick); }
+    else if (!e.isIntersecting && on) { on = false; cancelAnimationFrame(raf); }
+  }));
+  io.observe(canvas); draw(t, 0);
+  return { redraw: () => draw(t, 0) };
+}
+const fmtRed = v => (!isFinite(v) || v > -.05) ? '0.0 dB' : v.toFixed(1) + ' dB';
+
+// ---------- HERO ----------
+(() => {
+  const ch = new Chain(20261029), E = ch.E;
+  E.amount = 20; E.sens = 16;
+  ch.run(SR * 3);   // pre-roll: the floor tracker needs a second of room
+  const disp = new Display(document.getElementById('hero'), ch, { fs: 21, r: 17, pad: 30, hint: 'AMOUNT 20 dB  ·  SENS 16 dB  ·  LOCATION' });
+  const eG = document.getElementById('h-gap'), eN = document.getElementById('h-now');
+  let lastTxt = -1;
+  loop(disp.cv, (t, dt) => {
+    ch.run(Math.round(dt * SR));
+    disp.draw();
+    if (t - lastTxt > .15 || dt === 0) { lastTxt = t; eG.textContent = fmtRed(ch.gapDb()); eN.textContent = fmtRed(ch.nowDb()); }
+  });
+})();
+
+// ---------- control builder ----------
+function sliders(host, defs, onChange) {
+  const vals = {};
+  defs.forEach(d => {
+    vals[d.id] = d.v;
+    const w = document.createElement('div'); w.className = 'ctrl' + (d.cls ? ' ' + d.cls : '');
+    const id = 'c-' + d.id;
+    w.innerHTML = `<label for="${id}">${d.name}<output id="${id}-o"></output></label><input type="range" id="${id}" min="${d.min}" max="${d.max}" step="${d.step}" value="${d.v}">`;
+    host.appendChild(w);
+    const inp = w.querySelector('input'), out = w.querySelector('output');
+    const upd = () => { vals[d.id] = +inp.value; out.textContent = d.fmt(vals[d.id]); };
+    inp.addEventListener('input', () => { upd(); onChange(d.id); });
+    upd();
+    vals['set_' + d.id] = v => { inp.value = v; upd(); };
+  });
+  return vals;
+}
+function segGroup(attr, onPick) {
+  const bs = document.querySelectorAll(`[${attr}]`);
+  const pick = b => bs.forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+  bs.forEach(b => b.addEventListener('click', () => { pick(b); onPick(+b.getAttribute(attr)); }));
+}
+const fmtHz = f => { const v = Number(f.toPrecision(2)); return v >= 1000 ? (v / 1000) + ' kHz' : v + ' Hz'; };
+// JUCE NormalisableRange with skew: value = start + range * p^(1/skew)
+const skewed = (p, lo, hi, sk) => lo + (hi - lo) * Math.pow(p, 1 / sk);
+const unskew = (v, lo, hi, sk) => Math.pow((v - lo) / (hi - lo), sk);
+const ambTxt = v => v < .05 ? 'OFF' : Math.round(20 * Math.log10(v * .01)) + ' dB';
+
+// ---------- MULTIBAND LAB ----------
+(() => {
+  const ch = new Chain(777), E = ch.E;
+  const tc = document.getElementById('mbtime'), tx = tc.getContext('2d');
+  const disp = new Display(document.getElementById('mbgraph'), ch, { fs: 21, r: 16, pad: 28, hint: 'CLICK TO FOLLOW · DRAG UP = MORE · DBL-CLICK = BYPASS' });
+  let sel = 8; disp.sel = sel;
+  const V = sliders(document.getElementById('mbctrls'), [
+    { id: 'amt', name: 'AMOUNT', min: 0, max: 30, step: .1, v: 18, cls: 'heat', fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'sens', name: 'SENS', min: 0, max: 30, step: .1, v: 12, fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'atk', name: 'ATTACK', min: 0, max: 1, step: .001, v: unskew(5, .2, 50, .4), fmt: v => skewed(v, .2, 50, .4).toFixed(1) + ' ms' },
+    { id: 'rel', name: 'RELEASE', min: 0, max: 1, step: .001, v: unskew(80, 5, 1000, .4), fmt: v => Math.round(skewed(v, 5, 1000, .4)) + ' ms' },
+    { id: 'mix', name: 'MIX', min: 0, max: 100, step: 1, v: 100, fmt: v => v + ' %' },
+    { id: 'amb', name: 'AMBIENCE', min: 0, max: 100, step: .1, v: 0, cls: 'room', fmt: ambTxt }
+  ], () => apply());
+  function apply() {
+    E.amount = V.amt; E.sens = V.sens; E.setTimes(skewed(V.atk, .2, 50, .4), skewed(V.rel, 5, 1000, .4)); E.mix = V.mix / 100; E.setAmbience(V.amb);
+  }
+  apply();
+  segGroup('data-room', v => { ch.P.room = ROOMS[v]; });
+  segGroup('data-mode', v => { E.mode = v; });
+  const bL = document.getElementById('mb-learn');
+  bL.addEventListener('click', () => { E.startLearn(); });
+  document.getElementById('mb-suggest').addEventListener('click', () => {
+    // NrPanel::doSuggest: SENS 6, AMOUNT 12, band shares 0.55..1.0 by relative floor
+    const fl = []; for (let b = 0; b < NBANDS; b++) fl.push(E.floor(b));
+    const mn = Math.min(...fl), mx = Math.max(...fl);
+    V.set_sens(6); V.set_amt(12);
+    for (let b = 0; b < NBANDS; b++) { const t = mx > mn + 1 ? (fl[b] - mn) / (mx - mn) : 1; E.bandAmt[b] = .55 + .45 * t; E.bandOn[b] = true; }
+    apply();
+  });
+  // history: one point per millisecond, every band
+  const N = 4000, LV = [], FL = [], GN = [], TK = new Uint8Array(N);
+  for (let b = 0; b < NBANDS; b++) { LV.push(new Float32Array(N).fill(-120)); FL.push(new Float32Array(N).fill(-120)); GN.push(new Float32Array(N)); }
+  let head = 0;
+  ch.onBlock = () => {
+    for (let b = 0; b < NBANDS; b++) { const B = E.band[b]; LV[b][head] = B.lvl; FL[b][head] = E.floor(b); GN[b][head] = B.g * E.mixCur; }
+    TK[head] = ch.P.talking ? 1 : 0; head = (head + 1) % N;
+  };
+  ch.run(SR * 4);
+  const el = id => document.getElementById(id);
+  let lastTxt = -1;
+  loop(tc, (t, dt) => {
+    ch.run(Math.round(dt * SR));
+    disp.sel = sel; disp.draw();
+    // time panel
+    const W = tc.width, H = tc.height, top = { y: 18, h: 380 }, gr = { y: 432, h: 150 };
+    tx.fillStyle = C.bg; tx.fillRect(0, 0, W, H);
+    for (let x = 0; x < W; x += 2) { const i = (head + Math.floor(x / W * N)) % N; if (TK[i]) { tx.fillStyle = 'rgba(200,168,107,.06)'; tx.fillRect(x, top.y, 2, top.h); } }
+    const lo = -110, hi = -20, ly = v => top.y + (hi - clamp(v, lo, hi)) / (hi - lo) * top.h;
+    tx.font = `18px ${MONO}`;
+    for (let v = -100; v <= -20; v += 20) { const y = Math.round(ly(v)) + .5; tx.strokeStyle = C.grid; tx.lineWidth = 1; tx.beginPath(); tx.moveTo(0, y); tx.lineTo(W, y); tx.stroke(); tx.fillStyle = C.label; tx.fillText(v + ' dB', 6, y - 5); }
+    const at = x => (head + Math.floor(x / W * N)) % N;
+    const trace = (fn, col, lw, dash) => { tx.setLineDash(dash || []); tx.strokeStyle = col; tx.lineWidth = lw; tx.beginPath(); for (let x = 0; x < W; x += 2) { const y = ly(fn(at(x))); x ? tx.lineTo(x, y) : tx.moveTo(x, y); } tx.stroke(); tx.setLineDash([]); };
+    const lv = LV[sel], fl = FL[sel], gn = GN[sel];
+    trace(i => lv[i], 'rgba(240,237,230,.35)', 1.4);
+    trace(i => fl[i] + E.sens, 'rgba(240,237,230,.55)', 1.4, [7, 6]);
+    trace(i => fl[i], C.silver, 2);
+    trace(i => lv[i] + gn[i], C.gold, 2.2);
+    tx.fillStyle = 'rgba(240,237,230,.7)'; tx.textAlign = 'right';
+    const li = (head + N - 1) % N;
+    tx.fillText('FLOOR + SENS', W - 10, ly(fl[li] + E.sens) - 8); tx.fillStyle = C.silver; tx.fillText('FLOOR', W - 10, ly(fl[li]) + 20); tx.textAlign = 'left';
+    // removed strip
+    tx.strokeStyle = '#1d2230'; tx.beginPath(); tx.moveTo(0, gr.y + .5); tx.lineTo(W, gr.y + .5); tx.stroke();
+    tx.fillStyle = heatGrad(tx, gr.y, gr.y + gr.h);
+    for (let x = 0; x < W; x += 2) { const v = clamp(-gn[at(x)], 0, 30); if (v < .05) continue; tx.fillRect(x, gr.y, 2, v / 30 * gr.h); }
+    tx.fillStyle = C.label; tx.fillText('REMOVED · BAND ' + (sel + 1) + ' · ' + fmtHz(EDGE[sel]) + '–' + fmtHz(EDGE[sel + 1]), 6, gr.y - 8); tx.textAlign = 'right'; tx.fillText('−30 dB', W - 6, gr.y + gr.h - 4); tx.textAlign = 'left';
+    if (t - lastTxt > .15 || dt === 0) {
+      lastTxt = t;
+      el('m-band').textContent = (sel + 1) + ' · ' + fmtHz(bandCentre(sel));
+      el('m-floor').textContent = Math.round(E.floor(sel)) + ' dB';
+      el('m-gap').textContent = fmtRed(ch.gapDb()); el('m-now').textContent = fmtRed(ch.nowDb());
+      el('m-prof').textContent = E.learning ? 'LEARNING…' : E.haveLearned ? (E.mode === 1 ? 'CAPTURED · IN USE' : 'CAPTURED · AUTO') : 'LIVE';
+      bL.setAttribute('aria-busy', String(E.learning));
+    }
+  });
+  // handles: click to follow, drag for share of AMOUNT, double-click to bypass
+  const gc = disp.cv;
+  const pos = e => { const r = gc.getBoundingClientRect(); return [(e.clientX - r.left) / r.width * gc.width, (e.clientY - r.top) / r.height * gc.height]; };
+  const hit = (x, y) => { let best = -1, bd = 30; for (let b = 0; b < NBANDS; b++) { const dd = Math.hypot(x - disp.hx(b), y - disp.hy(b)); if (dd < bd) { bd = dd; best = b; } } return best; };
+  let drag = -1;
+  gc.addEventListener('pointerdown', e => { const [x, y] = pos(e), b = hit(x, y); if (b < 0) return; sel = b; drag = b; gc.setPointerCapture(e.pointerId); });
+  gc.addEventListener('pointermove', e => { if (drag < 0) return; const [, y] = pos(e), d = disp.d; E.bandAmt[drag] = clamp(1 - (y - d.y) / (d.h * .5), 0, 1); });
+  gc.addEventListener('pointerup', () => { drag = -1; });
+  gc.addEventListener('dblclick', e => { const [x, y] = pos(e), b = hit(x, y); if (b >= 0) E.bandOn[b] = !E.bandOn[b]; });
+})();
+
+// ---------- SPECTRAL LAB ----------
+// buildFloorCurve() voicing, the MMSE-LSA gain and its OM-LSA weighting, from SpectralDenoiser.h
+const BPF = [20, 100, 250, 1000, 3000, 6000, 10000, 20000], BPD = [6, 3, -2, -4, -3, 0, 4, 6];
+function floorOffset(f) {
+  const lf = Math.log(Math.min(Math.max(f, 20), 20000));
+  for (let i = 0; i < BPF.length - 1; i++) if (lf <= Math.log(BPF[i + 1])) { const t = clamp((lf - Math.log(BPF[i])) / (Math.log(BPF[i + 1]) - Math.log(BPF[i])), 0, 1); return BPD[i] + (BPD[i + 1] - BPD[i]) * t; }
+  return BPD[BPD.length - 1];
+}
+const floorDepth = (f, amt) => amt <= 0 ? 0 : Math.max(0, amt + floorOffset(f));
+function E1(x) {   // exponential integral
+  if (x <= 1) { let s = -0.5772156649015329 - Math.log(x), term = 1; for (let k = 1; k < 40; k++) { term *= -x / k; s -= term / k; } return s; }
+  let b = x + 1, c = 1e300, d = 1 / b, h = d;   // continued fraction (Lentz)
+  for (let i = 1; i < 100; i++) { const an = -i * i; b += 2; d = 1 / (an * d + b); c = b + an / c; const del = c * d; h *= del; if (Math.abs(del - 1) < 1e-12) break; }
+  return h * Math.exp(-x);
+}
+const XIH1 = 31.6227766016838;   // speech-present hypothesis, 15 dB
+const lsaGain = (xi, gam) => { const v = Math.max(xi / (1 + xi) * gam, 1e-6); return xi / (1 + xi) * Math.exp(.5 * E1(v)); };
+(() => {
+  const fc = document.getElementById('spfloor'), fx2 = fc.getContext('2d'), gc = document.getElementById('spgain'), gx = gc.getContext('2d');
+  const fPos = v => 20 * Math.pow(1000, v / 1000), fInv = f => Math.log(f / 20) / Math.log(1000) * 1000;
+  const V = sliders(document.getElementById('spctrls'), [
+    { id: 'samt', name: 'AMOUNT', min: 0, max: 30, step: .1, v: 24, cls: 'heat', fmt: v => v.toFixed(1) + ' dB' },
+    { id: 'samb', name: 'AMBIENCE', min: 0, max: 100, step: .1, v: 0, cls: 'room', fmt: ambTxt },
+    { id: 'sf', name: 'BIN', min: 0, max: 1000, step: 1, v: Math.round(fInv(1000)), fmt: v => fmtHz(fPos(v)) }
+  ], () => draw());
+  const el = id => document.getElementById(id);
+  function draw() {
+    const amt = V.samt, f0 = fPos(V.sf);
+    // ---- floor by frequency ----
+    const W = fc.width, H = fc.height, top = 40, bot = H - 40, dMax = 36, dy = dd => top + clamp(dd, 0, dMax) / dMax * (bot - top);
+    fx2.fillStyle = C.card; fx2.fillRect(0, 0, W, H);
+    fx2.fillStyle = 'rgba(200,168,107,.06)'; const xa = fx(250, 0, W), xb = fx(3000, 0, W); fx2.fillRect(xa, top, xb - xa, bot - top);
+    fx2.font = `18px ${MONO}`; fx2.fillStyle = C.text3; fx2.textAlign = 'center'; fx2.fillText('INTELLIGIBILITY · HOLDS BACK', (xa + xb) / 2, bot - 12); fx2.textAlign = 'left';
+    for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f, 0, W)) + .5; fx2.strokeStyle = C.grid; fx2.lineWidth = 1; fx2.beginPath(); fx2.moveTo(x, top); fx2.lineTo(x, bot); fx2.stroke(); fx2.fillStyle = C.label; fx2.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, H - 14); }
+    for (let dd = 0; dd <= dMax; dd += 6) { const y = Math.round(dy(dd)) + .5; fx2.strokeStyle = dd === 0 ? '#2a2440' : C.grid; fx2.beginPath(); fx2.moveTo(0, y); fx2.lineTo(W, y); fx2.stroke(); if (dd) { fx2.fillStyle = C.label; fx2.fillText('−' + dd, 6, y - 5); } }
+    const pts = []; for (let x = 0; x <= W; x += 3) pts.push([x, dy(floorDepth(xf(x, 0, W), amt))]);
+    fx2.beginPath(); fx2.moveTo(0, top); pts.forEach(p => fx2.lineTo(p[0], p[1])); fx2.lineTo(W, top); fx2.closePath(); fx2.fillStyle = heatGrad(fx2, top, dy(dMax)); fx2.fill();
+    fx2.beginPath(); pts.forEach((p, i) => i ? fx2.lineTo(p[0], p[1]) : fx2.moveTo(p[0], p[1])); fx2.strokeStyle = rgba(C.heatPeak, .9); fx2.lineWidth = 2.6; fx2.stroke();
+    if (amt > 0) { fx2.setLineDash([7, 6]); fx2.strokeStyle = 'rgba(240,237,230,.5)'; fx2.lineWidth = 1.6; fx2.beginPath(); fx2.moveTo(0, dy(amt)); fx2.lineTo(W, dy(amt)); fx2.stroke(); fx2.setLineDash([]); fx2.fillStyle = 'rgba(240,237,230,.7)'; fx2.textAlign = 'right'; fx2.fillText('AMOUNT ' + amt.toFixed(1) + ' dB', W - 10, dy(amt) - 8); fx2.textAlign = 'left'; }
+    const bx = fx(f0, 0, W), byy = dy(floorDepth(f0, amt));
+    fx2.strokeStyle = 'rgba(176,176,176,.6)'; fx2.lineWidth = 1.2; fx2.beginPath(); fx2.moveTo(bx, top); fx2.lineTo(bx, bot); fx2.stroke();
+    fx2.fillStyle = C.silver; fx2.beginPath(); fx2.arc(bx, byy, 7, 0, 7); fx2.fill();
+    fx2.fillStyle = C.label; fx2.fillText('MOST IT CAN REMOVE', 6, top - 14);
+    // ---- gain rule for that bin ----
+    // ---- gain rule for that bin, against its a-priori SNR (steady state: a-posteriori = 1 + a-priori) ----
+    const GW = gc.width, GH = gc.height, L = 64, Rr = GW - 16, T = 40, B = GH - 48, gMin = -42, xmin = -25, xmax = 20;
+    const gxp = g => L + (g - xmin) / (xmax - xmin) * (Rr - L), gyp = d => T + (0 - clamp(d, gMin, 0)) / -gMin * (B - T);
+    gx.fillStyle = C.card; gx.fillRect(0, 0, GW, GH); gx.font = `18px ${MONO}`;
+    for (let g = -20; g <= 20; g += 10) { const x = Math.round(gxp(g)) + .5; gx.strokeStyle = C.grid; gx.beginPath(); gx.moveTo(x, T); gx.lineTo(x, B); gx.stroke(); gx.fillStyle = C.label; gx.textAlign = 'center'; gx.fillText((g > 0 ? '+' : '') + g, x, B + 22); }
+    gx.textAlign = 'left';
+    for (let d = 0; d >= -42; d -= 6) { const y = Math.round(gyp(d)) + .5; gx.strokeStyle = d === 0 ? '#2a2440' : C.grid; gx.beginPath(); gx.moveTo(L, y); gx.lineTo(Rr, y); gx.stroke(); gx.fillStyle = C.label; gx.textAlign = 'right'; gx.fillText(String(d), L - 8, y + 5); gx.textAlign = 'left'; }
+    gx.fillStyle = C.text3; gx.fillText('GAIN, dB', L, T - 14); gx.textAlign = 'right'; gx.fillText('SPEECH-TO-NOISE IN THIS BIN, dB', Rr, T - 14); gx.textAlign = 'left';
+    const depth = floorDepth(f0, amt), Gf = Math.pow(10, -depth / 20), amb = V.samb / 100;
+    const rule = sdb => {   // returns [plain LSA, applied] for an a-priori SNR in dB
+      const xi = Math.max(Math.pow(10, sdb / 10), 0.00316227766), gam = 1 + xi;
+      const G = Math.min(1, lsaGain(xi, gam));
+      const p = 1 / (1 + (1 + XIH1) * Math.exp(-Math.min(gam * XIH1 / (1 + XIH1), 50)));   // P(speech | Y), equal priors
+      if (amt <= 0) return [G, 1, p];
+      let Ga = clamp(Math.exp(p * Math.log(Math.max(G, 1e-12)) + (1 - p) * Math.log(Gf)), Gf, 1);
+      if (amb > 0) Ga = Math.min(1, Math.max(Ga, amb * Math.sqrt(1 / gam)));   // AMBIENCE: never below amb x the noise amplitude
+      return [G, Ga, p];
+    };
+    const lsa = [], om = [];
+    for (let px = L; px <= Rr; px += 2) { const r = rule(xmin + (px - L) / (Rr - L) * (xmax - xmin)); lsa.push([px, gyp(lin2db(Math.max(r[0], 1e-6)))]); om.push([px, gyp(lin2db(r[1]))]); }
+    gx.setLineDash([7, 6]); gx.strokeStyle = 'rgba(240,237,230,.5)'; gx.lineWidth = 1.8; gx.beginPath(); lsa.forEach((q, i) => i ? gx.lineTo(q[0], q[1]) : gx.moveTo(q[0], q[1])); gx.stroke(); gx.setLineDash([]);
+    if (amt > 0) { gx.strokeStyle = C.silver; gx.lineWidth = 1.4; gx.beginPath(); gx.moveTo(L, gyp(-depth)); gx.lineTo(Rr, gyp(-depth)); gx.stroke();
+      gx.fillStyle = C.silver; gx.textAlign = 'right'; gx.fillText('FLOOR −' + depth.toFixed(1) + ' dB', Rr - 6, gyp(-depth) + (depth > 36 ? -10 : 24)); gx.textAlign = 'left'; }
+    gx.strokeStyle = C.heatPeak; gx.lineWidth = 3; gx.beginPath(); om.forEach((q, i) => i ? gx.lineTo(q[0], q[1]) : gx.moveTo(q[0], q[1])); gx.stroke();
+    // readouts at 0 dB a-priori SNR: as much speech as room in this bin
+    const r0 = rule(0);
+    el('s-floor').textContent = amt > 0 ? '−' + depth.toFixed(1) + ' dB' : '0.0 dB';
+    el('s-lsa').textContent = lin2db(r0[0]).toFixed(1) + ' dB'; el('s-p').textContent = Math.round(r0[2] * 100) + ' %'; el('s-om').textContent = lin2db(r0[1]).toFixed(1) + ' dB';
+    el('sp-name').textContent = 'BIN AT ' + fmtHz(f0) + ' · GAINS READ AT 0 dB';
+  }
+  let drag = false;
+  const pick = e => { const r = fc.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * fc.width; V.set_sf(Math.round(fInv(clamp(xf(x, 0, fc.width), 20, 20000)))); draw(); };
+  fc.addEventListener('pointerdown', e => { drag = true; fc.setPointerCapture(e.pointerId); pick(e); });
+  fc.addEventListener('pointermove', e => { if (drag) pick(e); });
+  fc.addEventListener('pointerup', () => { drag = false; });
+  draw();
+})();
+})();
 </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
