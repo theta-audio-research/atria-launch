@@ -239,7 +239,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-top:var(--s6)">
-  <img src="assets/baryon/sub_3band_clean.png?v=261029" alt="The BARYON panel: the SUB module with its three band cells, the source-to-sub map, and the PUNCH and EDGE controls" width="2232" height="1318">
+  <img src="assets/baryon/sub_v012.png?v=261029" alt="The BARYON panel: the SUB module with its three band cells, the source-to-sub map, and the PUNCH and EDGE controls" width="1116" height="659">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -251,12 +251,12 @@ footer a:hover{color:var(--gold)}
       <p>The hard part is following the pitch. Bass notes are rich in harmonics, and a strong second harmonic can fool a tracker into reading the note an octave high. BARYON gives you <strong>two generators</strong> that answer this in different ways, and you pick one per instance.</p>
     </div>
     <div class="prose">
-      <p>INPUT EQ first focuses what the generator hears. The <strong>3-BAND</strong> engine or the <strong>DFC</strong> engine then generates the sub, PUNCH and TONE shape it, <strong>EDGE</strong> saturates it, and SUB LEVEL, WIDTH and the LFO set how it moves. The sub joins the focused source, MIX blends that against your untouched input, and the finishing chain handles the rest.</p>
+      <p>INPUT EQ first focuses what the generator hears. The <strong>3-BAND</strong> engine or the <strong>ROOT</strong> engine then generates the sub, PUNCH and TONE shape it, <strong>EDGE</strong> saturates it, and SUB LEVEL, WIDTH and the LFO set how it moves. The sub joins the focused source, MIX blends that against your untouched input, and the finishing chain handles the rest.</p>
       <p>After the mix come <strong>OUTPUT EQ</strong>, the <strong>ANANKE</strong> compressor, master <strong>SAT</strong> with ROUND and IRON, a <strong>GATE</strong>, and a look-ahead <strong>LIMITER</strong>. Mono and stereo tracks both work, and BASS MONO keeps the generated sub in the centre.</p>
     </div>
   </div>
   <div class="path">
-    <svg viewBox="0 0 1080 320" role="img" aria-label="BARYON's signal path. Top row: input, trim, input EQ, then the generator (the 3-band engine or the DFC engine), edge saturation, sub level, width and LFO, summed with the focused source. Bottom row: mix against the dry signal, output EQ, ANANKE compressor, saturation with round and iron, gate, look-ahead limiter, output trim, output.">
+    <svg viewBox="0 0 1080 320" role="img" aria-label="BARYON's signal path. Top row: input, trim, input EQ, then the generator (the 3-band engine or the ROOT engine), edge saturation, sub level, width and LFO, summed with the focused source. Bottom row: mix against the dry signal, output EQ, ANANKE compressor, saturation with round and iron, gate, look-ahead limiter, output trim, output.">
       <text x="10" y="104">IN</text>
       <path class="wire" d="M34 100 H52"/><path class="flow" d="M34 100 H52"/>
       <rect class="box" x="52" y="76" width="78" height="48" rx="4"/><text class="lbl" x="91" y="97" text-anchor="middle">TRIM</text><text x="91" y="114" text-anchor="middle">±24 dB</text>
@@ -266,7 +266,7 @@ footer a:hover{color:var(--gold)}
       <rect class="grp" x="316" y="44" width="262" height="112" rx="6"/>
       <text class="lbl" x="330" y="62" style="fill:var(--grn)">GENERATOR · ONE OR THE OTHER</text>
       <rect class="hot" x="330" y="72" width="234" height="36" rx="4"/><text class="lbl" x="344" y="95" style="fill:var(--amb)">3-BAND</text><text x="420" y="95">÷2 · ÷3 · ÷4</text>
-      <rect class="hot" x="330" y="112" width="234" height="36" rx="4"/><text class="lbl" x="344" y="135" style="fill:var(--amb)">DFC</text><text x="420" y="135">0 TO −24 ST</text>
+      <rect class="hot" x="330" y="112" width="234" height="36" rx="4"/><text class="lbl" x="344" y="135" style="fill:var(--amb)">ROOT</text><text x="420" y="135">0 TO −24 ST</text>
       <path class="wire" d="M578 100 H604"/><path class="flow sub" d="M578 100 H604"/>
       <rect class="box" x="604" y="70" width="96" height="60" rx="4"/><text class="lbl" x="652" y="93" text-anchor="middle">PUNCH</text><text x="652" y="112" text-anchor="middle">TONE · EDGE</text>
       <path class="wire" d="M700 100 H726"/><path class="flow sub" d="M700 100 H726"/>
@@ -296,7 +296,7 @@ footer a:hover{color:var(--gold)}
   </div>
   <ol class="steps">
     <li><span class="num">1</span><b>FOCUS</b><p>INPUT EQ's high-pass, low-pass and dynamic bell decide which part of the low end the generator listens to.</p></li>
-    <li><span class="num">2</span><b>TRACK</b><p>3-BAND follows each band's zero crossings. DFC measures the fundamental with a YIN detector.</p></li>
+    <li><span class="num">2</span><b>TRACK</b><p>3-BAND follows each band's zero crossings. ROOT measures the fundamental with a YIN detector.</p></li>
     <li><span class="num">3</span><b>GENERATE</b><p>A tone below the note, locked to it. Its level follows the note, and the sub gate stops it droning on noise.</p></li>
     <li><span class="num">4</span><b>SHAPE</b><p>PUNCH adds a resonant knee, TONE rolls off the top, EDGE adds harmonics to the sub alone.</p></li>
     <li><span class="num">5</span><b>FINISH</b><p>Output EQ, compression, saturation, gate and a ceiling, then OUT TRIM. BYPASS stays time-aligned.</p></li>
@@ -313,7 +313,7 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="prose">
       <p>The sub's level follows the band's own envelope, so it swells and dies with the note. A <strong>SUB GATE</strong> keeps it silent until the band is really playing, so noise and bleed never drone. When a new hit lands, the band resets its phase, so <strong>identical hits give identical subs</strong>. On a steady kick loop the difference between hit three and hit four measures 0.000000.</p>
-      <p>The narrow band is what keeps the lock. In the lab below, open the band's HIGH edge past the second harmonic and push H2 up: the crossings double, and the divider jumps up an octave. That is the problem the DFC engine was built to solve.</p>
+      <p>The narrow band is what keeps the lock. In the lab below, open the band's HIGH edge past the second harmonic and push H2 up: the crossings double, and the divider jumps up an octave. That is the problem the ROOT engine was built to solve.</p>
     </div>
   </div>
   <div class="lab">
@@ -341,12 +341,12 @@ footer a:hover{color:var(--gold)}
   </ul>
 </section>
 
-<!-- DFC -->
+<!-- ROOT -->
 <div class="sh" id="dfc">Find the fundamental</div>
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <p>Switch the generator to <strong>DFC</strong> and BARYON becomes a pitch-tracking synthesizer, modelled on the subharmonic synthesizer in the NEVE DFC film console and the Bass Character section of Harrison's Bass Flow. Two bands each have a sweepable <strong>CAPTURE</strong> centre from 15 to 160 Hz and a <strong>WIDTH</strong> from one to twelve semitones either side.</p>
+      <p>Switch the generator to <strong>ROOT</strong> and BARYON becomes a pitch-tracking synthesizer, modelled on the subharmonic synthesizer in the NEVE DFC film console and the Bass Character section of Harrison's Bass Flow. Two bands each have a sweepable <strong>CAPTURE</strong> centre from 15 to 160 Hz and a <strong>WIDTH</strong> from one to twelve semitones either side.</p>
       <p>Instead of counting crossings, each band runs a <strong>YIN detector</strong>. It compares a whole frame of the bass with itself at every lag and picks the first lag where the signal truly repeats. A strong second harmonic makes extra crossings, but it does not make the waveform repeat any sooner, so YIN reads the fundamental where a zero-crossing tracker reads the harmonic.</p>
     </div>
     <div class="prose">
@@ -357,24 +357,24 @@ footer a:hover{color:var(--gold)}
   <div class="lab">
     <div class="lab-top">
       <span class="seg" role="group" aria-label="Semitones"><button type="button" data-ds="0" aria-pressed="false">0</button><button type="button" data-ds="-5" aria-pressed="false">−5</button><button type="button" data-ds="-7" aria-pressed="false">−7</button><button type="button" data-ds="-12" aria-pressed="true">−12</button><button type="button" data-ds="-19" aria-pressed="false">−19</button><button type="button" data-ds="-24" aria-pressed="false">−24</button></span>
-      <span>DFC 1 · ONE YIN ANALYSIS, AS THE PLUG-IN RUNS IT</span>
+      <span>ROOT 1 · ONE YIN ANALYSIS, AS THE PLUG-IN RUNS IT</span>
     </div>
     <div class="lab-views">
       <canvas id="dfcyin" width="800" height="560" aria-label="The YIN difference curve across the lags the detector searches, with its threshold, the accepted range shaded, and the lag it picks marked in amber."></canvas>
-      <canvas id="dfcpitch" width="800" height="560" aria-label="A frequency ladder from 10 to 300 hertz: the source's partials, the capture band, what a zero-crossing tracker reads, what the DFC detector finds, and the note it plays."></canvas>
+      <canvas id="dfcpitch" width="800" height="560" aria-label="A frequency ladder from 10 to 300 hertz: the source's partials, the capture band, what a zero-crossing tracker reads, what the ROOT detector finds, and the note it plays."></canvas>
     </div>
-    <div class="readouts"><span>FUNDAMENTAL<b id="d-f0">-</b></span><span>ZERO-CROSSING READS<b id="d-zc">-</b></span><span>DFC FINDS<b id="d-yin">-</b></span><span>PLAYS<b id="d-out">-</b></span></div>
+    <div class="readouts"><span>FUNDAMENTAL<b id="d-f0">-</b></span><span>ZERO-CROSSING READS<b id="d-zc">-</b></span><span>ROOT FINDS<b id="d-yin">-</b></span><span>PLAYS<b id="d-out">-</b></span></div>
     <div class="ctrls" id="dfcctrls"></div>
   </div>
-  <div class="legend"><span><i style="background:var(--grn)"></i>SOURCE PARTIALS</span><span><i style="background:var(--alert)"></i>ZERO-CROSSING READING</span><span><i style="background:var(--amb)"></i>DFC</span><span>CAPTURE BAND-PASS, DECIMATION TO 3 kHz, LAG SEARCH 0.9× LOW TO 2.2× HIGH AND THRESHOLD 0.15 FOLLOW DfcSynthesizer.h · THE SOURCE IS SYNTHETIC</span></div>
+  <div class="legend"><span><i style="background:var(--grn)"></i>SOURCE PARTIALS</span><span><i style="background:var(--alert)"></i>ZERO-CROSSING READING</span><span><i style="background:var(--amb)"></i>ROOT</span><span>CAPTURE BAND-PASS, DECIMATION TO 3 kHz, LAG SEARCH 0.9× LOW TO 2.2× HIGH AND THRESHOLD 0.15 FOLLOW DfcSynthesizer.h · THE SOURCE IS SYNTHETIC</span></div>
   <ul class="rows">
     <li><b>FIRST LOCK</b><span>YIN needs a full frame before it can judge. Until then a level-gated zero-crossing estimate stands in, once three periods agree, so the sub arrives with the note, measured at about 41 ms. YIN takes over the moment it locks.</span></li>
     <li><b>SLIDES</b><span>A jump of more than about a semitone and a half is a new note and retunes in 5 ms. Smaller moves are slides and glide over 25 ms, so a bend sounds smooth instead of stepped.</span></li>
-    <li><b>PUNCH FOLLOWS</b><span>In DFC mode the PUNCH corner rides the note being played, by DFC 1 or DFC 2, so the resonant knee always sits on the sub note itself.</span></li>
+    <li><b>PUNCH FOLLOWS</b><span>In ROOT mode the PUNCH corner rides the note being played, by ROOT 1 or ROOT 2, so the resonant knee always sits on the sub note itself.</span></li>
     <li><b>OCT</b><span>An octave-up layer: the band sum is rectified for its octave-up partials, then softly fuzzed and mixed in at OCT LEVEL. For growl and audibility on small speakers.</span></li>
   </ul>
 
-  <figure class="tabshot"><img src="assets/baryon/dfc.png?v=261013" alt="BARYON in DFC mode: the pitch-tracking generator" width="2324" height="1410" loading="lazy"></figure>
+  <figure class="tabshot"><img src="assets/baryon/dfc_v012.png?v=261029" alt="BARYON in ROOT mode: the pitch-tracking generator" width="1116" height="659" loading="lazy"></figure>
 </section>
 
 <!-- EDGE / CHARACTER -->
@@ -424,7 +424,7 @@ footer a:hover{color:var(--gold)}
     </article>
   </div>
 
-  <figure class="tabshot"><img src="assets/baryon/character.png?v=261013" alt="The CHARACTER tab" width="2324" height="1410" loading="lazy"></figure>
+  <figure class="tabshot"><img src="assets/baryon/character_v012.png?v=261029" alt="The CHARACTER tab" width="1116" height="659" loading="lazy"></figure>
 </section>
 
 <!-- MOTION -->
@@ -441,7 +441,7 @@ footer a:hover{color:var(--gold)}
     <li><b>RETRIG</b><span>Beat-locked to song position in SYNC; in free mode it restarts when the transport starts.</span></li>
   </ul>
 
-  <figure class="tabshot"><img src="assets/baryon/lfo.png?v=261013" alt="The LFO tab" width="2324" height="1410" loading="lazy"></figure>
+  <figure class="tabshot"><img src="assets/baryon/lfo_v012.png?v=261029" alt="The LFO tab" width="1116" height="659" loading="lazy"></figure>
 </section>
 
 <!-- EQ + DYNAMICS -->
@@ -470,10 +470,19 @@ footer a:hover{color:var(--gold)}
     <li><b>GAIN STAGING</b><span>IN TRIM and OUT TRIM at ±24 dB, SUB LEVEL up to 200 %, compressor MAKEUP and PARALLEL, and a master DRY/WET MIX. BYPASS is time-aligned with the processed signal, so A/B never jumps.</span></li>
   </ul>
 
-  <figure class="tabshot trio"><img src="assets/baryon/dynamics.png?v=261013" alt="The DYNAMICS tab" width="2324" height="1410" loading="lazy"><img src="assets/baryon/eq.png?v=261013" alt="The EQ tab" width="2324" height="1410" loading="lazy"><img src="assets/baryon/output.png?v=261013" alt="The OUTPUT tab" width="2324" height="1410" loading="lazy"></figure>
+  <figure class="tabshot trio"><img src="assets/baryon/dynamics_v012.png?v=261029" alt="The DYNAMICS tab" width="1116" height="659" loading="lazy"><img src="assets/baryon/eq_v012.png?v=261029" alt="The EQ tab" width="1116" height="659" loading="lazy"><img src="assets/baryon/output_v012.png?v=261029" alt="The OUTPUT tab" width="1116" height="659" loading="lazy"></figure>
 </section>
 
 <!-- LICENCE -->
+<div class="sh" id="skins">Skins</div>
+<section class="stack">
+  <p>CRT is the default. SYNTHWAVE and ARCADE recolour the whole reactor, the band cells and every control without moving a pixel.</p>
+  <div class="two">
+    <figure style="margin:0"><img src="assets/baryon/skin_synthwave.png?v=261029" width="1116" height="659" alt="BARYON in the SYNTHWAVE skin" loading="lazy" decoding="async" style="width:100%;height:auto;display:block"><figcaption class="cap">SYNTHWAVE</figcaption></figure>
+    <figure style="margin:0"><img src="assets/baryon/skin_arcade.png?v=261029" width="1116" height="659" alt="BARYON in the ARCADE skin" loading="lazy" decoding="async" style="width:100%;height:auto;display:block"><figcaption class="cap">ARCADE</figcaption></figure>
+  </div>
+</section>
+
 <div class="sh" id="licence">The licence</div>
 <section class="two">
   <div class="prose">
@@ -489,7 +498,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
   <article><b>BASS &amp; KICK</b><p>Put weight under a DI bass that never had it, or tighten a kick with PUNCH. Identical hits give identical subs, so a loop stays steady.</p></article>
-  <article><b>808 &amp; SYNTH BASS</b><p>DFC at 0 st reinforces the fundamental of a slide without fighting it; −12 st adds the octave under it and follows every bend.</p></article>
+  <article><b>808 &amp; SYNTH BASS</b><p>ROOT at 0 st reinforces the fundamental of a slide without fighting it; −12 st adds the octave under it and follows every bend.</p></article>
   <article><b>POST &amp; LFE</b><p>Build a sub feed from a full mix or a stem: focus the source with EQ IN, generate, and finish it with the gate and the limiter's ceiling.</p></article>
   <article><b>SOUND DESIGN</b><p>Two octaves down, OCT fuzz on top, an LFO pumping in time and EDGE pushed hard. The low end as an instrument.</p></article>
 </section>
@@ -500,7 +509,7 @@ footer a:hover{color:var(--gold)}
   <table class="specs">
     <tr><th>TYPE</th><td>Subharmonic generator with dynamic EQ, compression, saturation, LFO, gate and look-ahead limiter (insert)</td></tr>
     <tr><th>3-BAND</th><td>3 bands · 20–300 Hz edges · DIVIDE / SYNTH / HYBRID · ÷2 / ÷3 / ÷4 · level 0–200 % · solo</td></tr>
-    <tr><th>DFC</th><td>2 bands · capture 15–160 Hz · width ±1–12 st · 0 to −24 semitones · YIN fundamental tracking · OCT layer</td></tr>
+    <tr><th>ROOT</th><td>2 bands · capture 15–160 Hz · width ±1–12 st · 0 to −24 semitones · YIN fundamental tracking · OCT layer</td></tr>
     <tr><th>SUB</th><td>SUB LEVEL 0–200 % · SUB GATE −80 to −20 dB · PUNCH 20–120 Hz · TONE 40–160 Hz · EDGE 0–24 dB, 6 curves · BASS MONO · WIDTH</td></tr>
     <tr><th>EQ</th><td>Input and output: 24 dB/oct HPF and LPF, one dynamic bell · LINK · LISTEN</td></tr>
     <tr><th>DYNAMICS</th><td>ANANKE true-RMS compressor · gate · true look-ahead brickwall limiter</td></tr>
@@ -797,7 +806,7 @@ function dftMag(x, freqs, len, step) {
   draw();
 })();
 
-// ---------- DFC LAB: capture band, decimation and one YIN analysis (DfcSynthesizer.h) ----------
+// ---------- ROOT LAB: capture band, decimation and one YIN analysis (DfcSynthesizer.h) ----------
 (() => {
   const yc = document.getElementById('dfcyin'), yx = yc.getContext('2d');
   const pc = document.getElementById('dfcpitch'), px = pc.getContext('2d');
@@ -865,7 +874,7 @@ function dftMag(x, freqs, len, step) {
     const fx = v => P.x + Math.log(v / L0) / Math.log(L1 / L0) * P.w;
     px.strokeStyle = C.grid; px.lineWidth = 1;
     for (const v of [10, 20, 30, 50, 100, 200, 300]) { const x = fx(v) + .5; px.beginPath(); px.moveTo(x, 30); px.lineTo(x, PH - 50); px.stroke(); label(px, String(v), x, PH - 26, C.grnMut, 13, 'center'); }
-    const lanes = ['SOURCE', 'CAPTURE', 'ZERO-CROSSING', 'DFC FINDS', 'DFC PLAYS'], ly = k => 70 + k * 92;
+    const lanes = ['SOURCE', 'CAPTURE', 'ZERO-CROSSING', 'ROOT FINDS', 'ROOT PLAYS'], ly = k => 70 + k * 92;
     lanes.forEach((s, k) => { label(px, s, P.x, ly(k) - 30, C.grnMut, 13); px.strokeStyle = C.grid0; px.beginPath(); px.moveTo(P.x, ly(k) + .5); px.lineTo(P.x + P.w, ly(k) + .5); px.stroke(); });
     const tick = (k, v, col, hgt, txt, wd) => { if (!(v >= L0 && v <= L1)) return; const x = fx(v); px.save(); px.strokeStyle = col; px.lineWidth = wd || 3; px.shadowColor = col; px.shadowBlur = 8; px.beginPath(); px.moveTo(x, ly(k)); px.lineTo(x, ly(k) - hgt); px.stroke(); px.restore(); if (txt) label(px, txt, clamp(x + 6, P.x, P.x + P.w - 120), ly(k) - hgt + 12, col, 13); };
     [[f, a1], [2 * f, a2], [3 * f, a3]].forEach(([v, a], i) => { if (a > 0) tick(0, v, i ? 'rgba(59,248,122,.7)' : C.grn, 10 + 40 * a / .45, i ? 'H' + (i + 1) : 'F ' + noteName(f), i ? 2 : 3); });

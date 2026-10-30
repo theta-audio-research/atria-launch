@@ -205,6 +205,7 @@ footer a:hover{color:var(--gold)}
 }
 
 [data-launch][hidden]{display:none !important}
+.tabshot{margin:var(--s6) 0 0 0;display:grid;gap:var(--s5)} .tabshot img{display:block;width:100%;height:auto;border-radius:8px} .tabshot.duo{grid-template-columns:repeat(2,minmax(0,1fr))} @media (max-width:800px){.tabshot.duo{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -247,7 +248,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top">
-  <img src="assets/eidos/hero.png?v=261029b" alt="The EIDOS panel: QUALITY and LATENCY rows over the graph with its five reduction bands, the REDUCTION plate of eight knobs and the MODES plate" width="1370" height="1000">
+  <img src="assets/eidos/hero_v021.png?v=261029" alt="The EIDOS panel: QUALITY and LATENCY rows over the graph with its five reduction bands, the REDUCTION plate of eight knobs and the MODES plate" width="925" height="668">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -383,6 +384,8 @@ footer a:hover{color:var(--gold)}
     <div class="ctrls four" id="lctrls"></div>
   </div>
   <div class="legend"><span><i style="background:var(--amber)"></i>REMOVED SIGNAL</span><span><i style="background:rgba(240,237,230,.45)"></i>CUT ASKED FOR</span><span><i class="blk" style="background:var(--heat-hot)"></i>CUT LANDED</span><span>COMPUTED FROM THE APPLY STAGES: ZERO-PHASE BINS WITH THE ±2-BIN SMOOTHING, THE CEPSTRAL MINIMUM-PHASE FOLD, AND THE 32-BELL SVF CASCADE · A STATIC CUT, NO DETECTION</span></div>
+
+  <figure class="tabshot duo"><img src="assets/eidos/eidos_min.png?v=261029" alt="EIDOS in MIN, the low-latency engine" width="925" height="668" loading="lazy"><img src="assets/eidos/eidos_ll.png?v=261029" alt="EIDOS in LL, the zero-latency engine" width="925" height="668" loading="lazy"></figure>
 </section>
 
 <!-- BANDS -->
