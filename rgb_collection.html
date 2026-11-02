@@ -1,306 +1,521 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The RGB Collection</title>
+<meta name="description" content="The RGB Collection: six one-knob circuits from THETA Audio Research, sold only as a bundle. Saturation, delay, modulation, transient shaping, compression and limiting. One licence, VST3, AU and AAX for macOS.">
 <link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
 <script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none} a{color:#DCCDBF} a:hover{color:#F0E6D2}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6;position:relative">
+<style>
+/* Same void field, gold hairline section labels and type as gire.html / cathode.html.
+   The bundle's own colour enters through the six circuits: each owns one hue, and the page
+   only ever shows them together. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867;
+  --red:#e0524a; --green:#58c05a; --blue:#717cff; --brown:#bf8f62; --grey:#a9adb4; --black:#ff7a5c;
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+section[id],.sh[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<div style="position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none">
-  <image-slot id="rgb-field" src="assets/rgb/banner-field.jpg?v=260824f" fit="cover" style="width:100%;height:auto;aspect-ratio:1920/1037;display:block" shape="rect" placeholder="RGB Collection field"></image-slot>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,12,0) 0%,rgba(6,8,12,0) 45%,rgba(6,8,12,0.75) 78%,#06080c 100%),linear-gradient(90deg,#06080c 0%,rgba(6,8,12,0) 12%,rgba(6,8,12,0) 88%,#06080c 100%);pointer-events:none"></div>
-</div>
+/* site nav (as gire.html) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(6,8,12,0.88) 0%,rgba(6,8,12,0.55) 62%,rgba(6,8,12,0) 100%);position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* section label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(56px,9vw,112px);letter-spacing:.32em;line-height:1;margin-block:var(--s4) var(--s2);display:flex}
+.wordmark span{display:inline-block;transition:text-shadow .4s,color .4s}
+.wordmark .r{color:var(--red)} .wordmark .g{color:var(--green)} .wordmark .b{color:var(--blue)}
+.subword{font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.62em;color:var(--text-2);margin-bottom:var(--s5)}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.hot{color:var(--gold-hot);border-color:rgba(200,168,107,.45)}
+
+/* the colour wheel */
+.wheel{border:0;border-radius:10px;background:radial-gradient(90% 90% at 50% 40%,#11131a,#05060a 75%);overflow:hidden}
+.wheel svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.wheel .seg path{cursor:pointer;transition:opacity .3s, transform .3s;transform-origin:250px 250px}
+.wheel .seg path:hover{opacity:1}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.55)}
+.well-foot b{font-weight:500;color:var(--gold-hot)}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* banner */
+.banner{position:relative;border-radius:10px;overflow:hidden;border:0}
+.banner img{display:block;width:100%;height:auto}
+.banner .over{position:absolute;inset:auto 0 0 0;padding:var(--s6) var(--s5) var(--s5);background:linear-gradient(180deg,transparent,rgba(6,8,12,.92));display:flex;justify-content:space-between;align-items:end;gap:var(--s4);flex-wrap:wrap}
+.banner .over p{font-family:var(--f-display);font-weight:300;font-size:clamp(18px,2.2vw,26px);max-width:30ch}
+.banner .over span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-3)}
+
+/* the six */
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{--c:var(--gold);border:0;border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;text-decoration:none;color:inherit;transition:transform .25s,border-color .25s,box-shadow .25s;min-width:0}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 40px -18px var(--c)}
+.card .shot{position:relative;background:#000}
+.card .shot img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain}
+.card .body{padding:var(--s4) var(--s5) var(--s5);display:grid;gap:6px;align-content:start}
+.card .nm{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.card .nm b{font-family:var(--f-display);font-weight:600;font-size:18px;letter-spacing:.32em;color:var(--c)}
+.card .nm span{font-family:var(--f-mono);font-size:11px;color:var(--text-3);letter-spacing:.1em}
+.card .role{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-2);text-transform:uppercase}
+.card p{color:var(--text-2);font-size:15.5px}
+
+/* one-knob lab */
+.lab{border:0;border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--c,var(--gold));color:#06080c}
+.lab-mid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:var(--s5);align-items:center;padding:var(--s5) var(--s4)}
+.knob{width:200px;height:200px;justify-self:center;cursor:grab;touch-action:none;user-select:none}
+.knob:active{cursor:grabbing}
+.lab canvas{display:block;width:100%;height:auto;border-radius:6px;background:#07090d;border:0}
+.readouts{display:grid;grid-template-columns:auto 1fr;gap:var(--s2) var(--s5);padding:var(--s3) var(--s4) var(--s4);border-top:1px solid var(--divider);align-items:baseline}
+.readouts .pos{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts .pos b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.readouts p{color:var(--text-2);font-size:15.5px}
+.readouts p b{color:var(--text);font-weight:400}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em;margin-top:var(--s3)}
+
+/* chain */
+.path{border:0;border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:700px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid var(--c);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:30px;line-height:1;color:var(--c)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:14.5px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+
+/* one key */
+.key{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.key li{list-style:none;border:0;border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.key .num{font-family:var(--f-display);font-weight:200;font-size:40px;line-height:1;color:var(--gold)}
+.key b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.24em}
+.key p{color:var(--text-2);font-size:15.5px}
+.dots{display:flex;gap:6px;margin-top:2px}
+.dots i{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 10px -2px var(--c)}
+.dots.off i{background:transparent;border:1px solid var(--c);box-shadow:none}
+
+/* depth: one panel per circuit */
+.deep{display:grid;gap:var(--s5)}
+.circ{--c:var(--gold);border:0;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);background:linear-gradient(110deg,color-mix(in srgb,var(--c) 14%,#0c0c10) 0%,#0c0c10 55%)}
+.circ:nth-child(even){grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.circ:nth-child(even) .txt{order:2}
+.circ .txt{padding:var(--s6) var(--s5);display:grid;gap:var(--s3);align-content:start}
+.circ .hd{display:flex;align-items:baseline;gap:var(--s4);flex-wrap:wrap}
+.circ .hd b{font-family:var(--f-display);font-weight:600;font-size:26px;letter-spacing:.34em;color:var(--c)}
+.circ .hd span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.circ h3{font-weight:300;font-size:clamp(20px,2.2vw,26px);line-height:1.25}
+.circ p{color:var(--text-2);font-size:15.5px}
+.circ .lab2{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--text-3);text-transform:uppercase;margin-top:var(--s2)}
+.ctl{display:flex;flex-wrap:wrap;gap:6px}
+.ctl span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--text);border:1px solid color-mix(in srgb,var(--c) 45%,#242230);background:rgba(0,0,0,.25);border-radius:3px;padding:4px 8px}
+.ctl.pre span{color:var(--text-2);border-style:dashed}
+.circ .pic{background:#000;display:flex;align-items:center;justify-content:center;min-height:100%}
+.circ .pic img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:0;border-radius:10px;background:var(--panel);padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center;position:relative;overflow:hidden}
+.price::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--red),var(--green),var(--blue),var(--brown),var(--grey),var(--black))}
+.price .lbl{font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--gold)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:64px;letter-spacing:.06em;color:var(--text);line-height:1.1}
+.price .sub{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;color:var(--text-3);text-transform:uppercase}
+.price p{color:var(--text-2);max-width:54ch}
+.price .btn{min-width:min(340px,100%)}
+.price .dots{margin-block:var(--s2)}
+
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:1fr}
+  .six{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .key{grid-template-columns:1fr}
+  .circ,.circ:nth-child(even){grid-template-columns:1fr}
+  .circ:nth-child(even) .txt{order:0}
+  .lab-mid{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .six{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .specs th{width:40%}
+  .wordmark{letter-spacing:.22em}
+  .readouts{grid-template-columns:1fr}
+  .banner .over{position:static;background:var(--panel);padding:var(--s4)}
+}
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6;position:relative;z-index:1">
+<div class="wrap">
 
-  <header style="text-align:center;height:calc(43vw - 90px);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 74px 0">
-    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:-1px">THE RGB COLLECTION</h1>
-    <p style="font-weight:300;font-size:16px;letter-spacing:0.04em;color:#b9b6ae;margin:0">Six circuits. Six colors. One knob at the center of each.</p>
-  </header>
-
-  <section data-screen-label="RGB row" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 30px;margin:0 auto 40px auto;max-width:1050px">
-    <div id="rgb-red-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#990000;box-shadow:0 0 12px rgba(153,0,0,0.6);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">RED</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#B04040">036_RED &middot; v0.0.1</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(153,0,0,0.14),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openRed }}"><image-slot id="rgb-red" src="assets/rgb/red.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="RED capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Saturation and distortion, warm to hot.</p>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Six-circuit bundle · Lab note #011</div>
+    <h1 class="wordmark" aria-label="RGB"><span class="r">R</span><span class="g">G</span><span class="b">B</span></h1>
+    <div class="subword">THE RGB COLLECTION</div>
+    <div class="lede">
+      <p>Saturation, delay, modulation, transient shaping, compression and limiting. Every circuit puts one knob in the middle of the screen and does something worth hearing the moment you turn it.</p>
+      <p>They are built as a set, sold as a set and licensed as a set. Install once, try all six for 14 days, and one key unlocks the lot.</p>
     </div>
-    <div id="rgb-green-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#009900;box-shadow:0 0 12px rgba(0,153,0,0.55);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">GREEN</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#3E8E3E">037_GRN &middot; v0.0.1</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(0,153,0,0.12),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGreen }}"><image-slot id="rgb-green" src="assets/rgb/green.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREEN capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Delay with detuned tails.</p>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=RGB%20COLLECTION%20updates" data-notify="RGB COLLECTION">Notify me at launch</a>
+      <a class="btn ghost" href="#six">Meet the six</a>
     </div>
-    <div id="rgb-blue-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#000099;box-shadow:0 0 12px rgba(0,0,153,0.65);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">BLUE</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#5A5AC0">038_BLU &middot; v0.0.1</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(0,0,153,0.16),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlue }}"><image-slot id="rgb-blue" src="assets/rgb/blue.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLUE capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Watery modulation.</p>
+    <div class="chips"><span class="chip hot">$99 · bundle only</span><span class="chip">6 plug-ins</span><span class="chip">1 licence</span><span class="chip">14-day trial</span><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS 11+ · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="wheel">
+      <svg id="wheel" viewBox="0 0 500 500" role="img" aria-label="The six RGB circuits arranged around one knob. Choose a colour to see what it does.">
+        <defs>
+          <radialGradient id="kg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#2a2d36"/><stop offset="1" stop-color="#0b0c10"/></radialGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+        </defs>
+        <g class="seg" id="segs"></g>
+        <circle cx="250" cy="250" r="92" fill="url(#kg)" stroke="#2c2f3a" stroke-width="2"/>
+        <circle id="ring" cx="250" cy="250" r="100" fill="none" stroke="#c8a86b" stroke-width="2" opacity=".7"/>
+        <line id="ptr" x1="250" y1="162" x2="250" y2="186" stroke="#f0ede6" stroke-width="4" stroke-linecap="round"/>
+        <text id="wName" x="250" y="262" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="600" font-size="22" letter-spacing="7" fill="#f0ede6">RED</text>
+        <text id="wRole" x="250" y="286" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="2" fill="#8d8779">SATURATION</text>
+      </svg>
+      <div class="well-foot"><span>CIRCUIT <b id="wCode">036_RED</b></span><span id="wLine">Distortion with weight.</span></div>
     </div>
-  </section>
+    <div class="tagline">CHOOSE A COLOUR</div>
+  </div>
+</section>
 
-  <section data-screen-label="Neutral row" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 30px;margin:0 auto 90px auto;max-width:1050px">
-    <div id="rgb-brown-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#4A2A18;box-shadow:0 0 12px rgba(74,42,24,0.7);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">BROWN</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8A6A50">039_BRN &middot; v0.1.29</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(74,42,24,0.35),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBrown }}"><image-slot id="rgb-brown" src="assets/rgb/brown.png?v=260824" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BROWN capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Bilateral transient. Zero at center: reduce one way, raise the other.</p>
+<!-- THE SIX -->
+<div class="sh" id="six">The six</div>
+<section class="six">
+  <a class="card" href="#red" style="--c:var(--red)"><div class="shot"><img src="assets/rgb/red.png?v=261101" alt="RED, the saturation circuit"></div><div class="body"><div class="nm"><b>RED</b><span>036_RED</span></div><div class="role">Saturation / distortion</div><p>Weight, warmth and heat, with AUTO LEVEL so louder never fools you.</p></div></a>
+  <a class="card" href="#green" style="--c:var(--green)"><div class="shot"><img src="assets/rgb/green.png?v=261101" alt="GREEN, the delay circuit"></div><div class="body"><div class="nm"><b>GREEN</b><span>037_GRN</span></div><div class="role">Delay / detuned tails</div><p>Tap the knob for tempo, turn it and the repeats drift out of tune.</p></div></a>
+  <a class="card" href="#blue" style="--c:var(--blue)"><div class="shot"><img src="assets/rgb/blue.png?v=261101" alt="BLUE, the modulation circuit"></div><div class="body"><div class="nm"><b>BLUE</b><span>038_BLU</span></div><div class="role">Modulation / liquid core</div><p>From stereo shimmer to undertow, in CLEAR, DEEP and ABYSS.</p></div></a>
+  <a class="card" href="#brown" style="--c:var(--brown)"><div class="shot"><img src="assets/rgb/brown.png?v=261101" alt="BROWN, the transient shaper"></div><div class="body"><div class="nm"><b>BROWN</b><span>039_BRN</span></div><div class="role">Bilateral transient</div><p>Left softens the hit, right sharpens it, centre does nothing at all.</p></div></a>
+  <a class="card" href="#grey" style="--c:var(--grey)"><div class="shot"><img src="assets/rgb/grey.png?v=261101d" alt="GREY, the compressor"></div><div class="body"><div class="nm"><b>GREY</b><span>040_GRY</span></div><div class="role">Compressor</div><p>Gentle levelling to firm control, with makeup gain handled for you.</p></div></a>
+  <a class="card" href="#black" style="--c:var(--black)"><div class="shot"><img src="assets/rgb/black.png?v=261101d" alt="BLACK, the limiter and clipper"></div><div class="body"><div class="nm"><b>BLACK</b><span>041_BLK</span></div><div class="role">Limiter / clipper</div><p>Peak limiting that turns into assertive clipping. The last thing on the bus.</p></div></a>
+</section>
+
+<!-- ONE KNOB LAB -->
+<div class="sh" id="knob">Turn one knob</div>
+<section class="lab" aria-label="Interactive: what each circuit's knob does">
+  <div class="lab-top">
+    <span>ONE KNOB · <span id="lName">RED</span></span>
+    <span class="seg" role="group" aria-label="Choose a circuit" id="labSeg"></span>
+  </div>
+  <div class="lab-mid">
+    <svg class="knob" id="knob" viewBox="0 0 200 200" role="slider" tabindex="0" aria-label="Main knob" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35">
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#1a1c20" stroke-width="8" stroke-linecap="round" stroke-dasharray="405 540" transform="rotate(135 100 100)"/>
+      <circle id="kArc" cx="100" cy="100" r="86" fill="none" stroke="#e0524a" stroke-width="8" stroke-linecap="round" stroke-dasharray="0 540" transform="rotate(135 100 100)"/>
+      <circle cx="100" cy="100" r="66" fill="url(#kg2)" stroke="#2c2f3a" stroke-width="2"/>
+      <defs><radialGradient id="kg2" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#2a2d36"/><stop offset="1" stop-color="#0b0c10"/></radialGradient></defs>
+      <line id="kPtr" x1="100" y1="100" x2="100" y2="46" stroke="#f0ede6" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <canvas id="scope" width="1200" height="440" aria-label="A drawing of what the knob does to a signal at this setting"></canvas>
+  </div>
+  <div class="readouts">
+    <div class="pos">KNOB <b id="kVal">35</b></div>
+    <p id="kText">Drag the knob, scroll on it or use the arrow keys.</p>
+  </div>
+</section>
+<p class="cap">Drawings of each knob's behaviour, made for this page to show the shape of the change. They are illustrations, not the plug-ins' audio.</p>
+
+<!-- IN DEPTH -->
+<div class="sh" id="depth">The circuits</div>
+<section class="deep">
+
+  <article class="circ" id="red" style="--c:var(--red)">
+    <div class="txt">
+      <div class="hd"><b>RED</b><span>036_RED · Saturation / distortion</span></div>
+      <h3>Distortion with weight</h3>
+      <p>Turn the central control to add harmonic richness, low-mid body and controlled intensity. Subtle settings bring depth and cohesion; push it for thick saturation and rounded peaks.</p>
+      <p>AUTO LEVEL is on by default: it holds the output at the loudness of the input, so turning RED up changes the sound, not the volume. A smooth peak compressor keeps the punch and a clean clipper catches what is left, with 4× oversampling behind it all.</p>
+      <div class="lab2">Advanced</div>
+      <div class="ctl"><span>DRIVE</span><span>BODY</span><span>BITE</span><span>SHAPE</span><span>DYNAMICS</span><span>MIX</span><span>OUTPUT</span><span>LINKED / DUAL</span><span>AUTO LEVEL</span></div>
     </div>
-    <div id="rgb-grey-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#3A3A3A;box-shadow:0 0 12px rgba(58,58,58,0.8);flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">GREY</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#7A7D82">040_GRY &middot; v0.0.1</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(120,124,130,0.10),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openGrey }}"><image-slot id="rgb-grey" src="assets/rgb/grey.png?v=260824d" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="GREY capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Compressor.</p>
+    <div class="pic"><img src="assets/rgb/red.png?v=261101" alt="RED's panel" loading="lazy"></div>
+  </article>
+
+  <article class="circ" id="green" style="--c:var(--green)">
+    <div class="txt">
+      <div class="hd"><b>GREEN</b><span>037_GRN · Delay / detuned tails</span></div>
+      <h3>Delay, pulled out of shape</h3>
+      <p>Tap the main knob to set the tempo, or switch on HOST SYNC and follow the session. Then turn it: wet level, feedback, detune, drift, diffusion, width and tone move together along one curve, from a clean echo to a wide field of shifting repeats.</p>
+      <p>Every pass adds a little opposing pitch movement and a little darkness, so the tail widens and fades like it is going somewhere. Pull TONE down and the echoes start to swim. STEREO PONG bounces it all across the field.</p>
+      <div class="lab2">Advanced</div>
+      <div class="ctl"><span>TIME</span><span>FEEDBACK</span><span>DETUNE</span><span>DRIFT</span><span>DIFFUSION</span><span>TONE</span><span>WIDTH</span><span>MIX</span><span>STEREO PONG</span><span>HOST SYNC</span></div>
     </div>
-    <div id="rgb-black-card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #242230;padding-top:16px;margin-bottom:18px;gap:10px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;gap:11px"><span style="width:11px;height:11px;background:#000000;border:1px solid #242230;box-sizing:border-box;flex-shrink:0"></span><span style="font-size:17px;letter-spacing:7px;color:#f0ede6;font-weight:700">BLACK</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">041_BLK &middot; v0.0.1</span>
-      </div>
-      <div style="background:radial-gradient(60% 60% at 50% 45%,rgba(20,26,30,0.6),transparent 72%)">
-        <div style="overflow:hidden;border-radius:2px;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.02)" onClick="{{ openBlack }}"><image-slot id="rgb-black" src="assets/rgb/black.png?v=260824d" style="width:100%;aspect-ratio:1332/1370;display:block" shape="rect" placeholder="BLACK capture"></image-slot></div>
-      </div>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:16px 0 0 0;text-align:center;text-wrap:pretty">Limiter and clipper.</p>
+    <div class="pic"><img src="assets/rgb/green.png?v=261101" alt="GREEN's panel" loading="lazy"></div>
+  </article>
+
+  <article class="circ" id="blue" style="--c:var(--blue)">
+    <div class="txt">
+      <div class="hd"><b>BLUE</b><span>038_BLU · Modulation / liquid core</span></div>
+      <h3>Turn sound into motion</h3>
+      <p>One macro coordinates width, phase, delay, feedback and an evolving irregularity, so the movement feels alive rather than looped. Low settings add gentle depth; the top of the range is wide, unstable and still musical.</p>
+      <p>Three water modes: <strong style="color:var(--text);font-weight:400">CLEAR</strong> for crisp phase detail, <strong style="color:var(--text);font-weight:400">DEEP</strong> for wide liquid movement, <strong style="color:var(--text);font-weight:400">ABYSS</strong> for dark, slow, delay-driven depth.</p>
+      <div class="lab2">Advanced</div>
+      <div class="ctl"><span>RATE</span><span>DEPTH</span><span>MIX</span><span>TONE</span><span>FEEDBACK</span><span>DRIFT</span><span>ENTROPY</span><span>SLOW TIDE</span><span>FEEDBACK POLARITY</span></div>
     </div>
-  </section>
+    <div class="pic"><img src="assets/rgb/blue.png?v=261101" alt="BLUE's panel" loading="lazy"></div>
+  </article>
 
-  <section data-screen-label="Collection notes" style="max-width:1050px;margin:0 auto 60px auto">
-    <div style="text-align:center;margin-bottom:6px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C8A86B;letter-spacing:4px;text-transform:uppercase">// COLLECTION_NOTES // ONE ENTRY PER CIRCUIT</span>
+  <article class="circ" id="brown" style="--c:var(--brown)">
+    <div class="txt">
+      <div class="hd"><b>BROWN</b><span>039_BRN · Bilateral transient</span></div>
+      <h3>Shape the hit. Hold the weight.</h3>
+      <p>Turn left to soften attacks and shorten sustain. Turn right to sharpen transients and bring the body forward. Centre is zero processing.</p>
+      <p>Behind the knob is the transient engine from HORME, moving attack and sustain together from one broadband detector, so the whole sound moves as one with no band splitting. Zero latency, so it sits anywhere.</p>
+      <div class="lab2">Advanced</div>
+      <div class="ctl"><span>ATTACK</span><span>SUSTAIN</span><span>DECAY</span><span>DETECTOR FILTERS</span><span>MIX</span><span>OUTPUT</span></div>
     </div>
+    <div class="pic"><img src="assets/rgb/brown.png?v=261101" alt="BROWN's panel" loading="lazy"></div>
+  </article>
 
-    <article id="copy-red" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#990000;box-shadow:0 0 12px rgba(153,0,0,0.6);flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">RED</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#B04040">036_RED &middot; SATURATION / DISTORTION</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Distortion with weight</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">RED is a one-knob distortion designed to make sounds feel bigger, warmer and more alive. Turn the central control to add harmonic richness, low-mid body and controlled intensity. At subtle settings, RED brings depth and cohesion. Push it further for thick saturation, rounded peaks and unmistakable color.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">More body. More energy. No level surprises.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">RED automatically balances its output as the distortion increases, helping you make honest decisions without being distracted by volume changes. A smooth peak compressor maintains punch, while the final clean clipper catches excess transients without flattening the sound.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One knob when you want it. Deeper control when you need it.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">The main interface keeps RED fast and instinctive. Open the Advanced panel to shape the finer details:</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DRIVE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">BODY</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">BITE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">SHAPE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DYNAMICS</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">MIX</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">OUTPUT</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">LINKED / DUAL STEREO</span></div>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Automatic leveling, 4&times; oversampling and clean output protection remain active behind the scenes.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Built for anything that needs weight.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Use RED to add substance to drums, reinforce bass, warm synths, energize guitars, thicken vocals or give an entire mix more density. From barely-there enhancement to heavy velvet saturation, RED stays musical throughout its range.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">See the sound come alive.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">RED&rsquo;s connective visual field responds to the incoming audio, contracting into a quiet membrane at rest and expanding into an energetic web as the sound intensifies.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Factory sounds included.</h4>
-<p style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;line-height:2.1;color:#8d8779;margin:0 0 20px 0;max-width:820px">SURFACE TENSION &middot; WARM GLUE &middot; DEEP POCKET &middot; PEAK TAMER &middot; RED DRUMS &middot; HEAVY VELVET &middot; EDGE CONTROL &middot; PARALLEL HEAT</p>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">Make it heavier. Add RED to your signal. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// AU + VST3 // macOS</span></p>
-    </article>
-
-    <article id="copy-green" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#009900;box-shadow:0 0 12px rgba(0,153,0,0.55);flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">GREEN</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#3E8E3E">037_GRN &middot; DELAY / DETUNED TAILS</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Delay, pulled out of shape</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">GREEN is a one-knob delay and echo built around detuned, drifting tails. Set the tempo by tapping the main control, then turn it to move from a restrained echo to a wide, diffused field of shifting repeats. Your delay time stays locked, the knob controls the character and intensity around it.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One knob. A whole ecosystem of echoes.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Turn GREEN to increase the wet level, feedback, detune, drift, diffusion, width and tonal depth together. Every part of the sound evolves along one carefully tuned musical curve. At lower settings, repeats remain clean and controlled. Push further and they spread, darken, soften and move increasingly out of tune.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Tap. Turn. Let it grow.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Tap the main knob to set the tempo. GREEN detects and averages your rhythm, then locks the delay to a quarter-note pulse. Changing the knob afterward won&rsquo;t disturb the timing.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Detuned tails</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Every pass through the feedback path accumulates subtle opposing pitch movement. The center stays grounded while the tail becomes wider, less stable and more alive.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Stereo Pong</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Activate Stereo Pong to send the repeats alternating across the stereo field. Each bounce continues through GREEN&rsquo;s detuning, diffusion, tone and drift architecture.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Go deeper when you want to</h4>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">TIME</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">FEEDBACK</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DETUNE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DRIFT</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DIFFUSION</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">TONE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">WIDTH</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">MIX</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">STEREO PONG</span></div>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Use GREEN as a focused one-knob effect or shape every part of its delay architecture.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Audio-reactive interface</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">GREEN&rsquo;s trench-tunnel field moves with the sound. It accelerates with incoming audio and audible repeats, then rapidly falls back to a slow crawl as the signal disappears. The interface doesn&rsquo;t simply decorate the effect, it reflects its energy.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Factory sounds</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Start with clean spaces, dark dub echoes, moving stereo delays, diffused ambient tails and dedicated ping-pong designs.</p>
-<p style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:1.5px;line-height:2.1;color:#8d8779;margin:0 0 20px 0;max-width:820px">SURFACE TENSION &middot; GREEN ROOM &middot; CANOPY &middot; VIRIDIAN &middot; NIGHT GROWTH &middot; GLASSHOUSE &middot; BOUNCING MOSS &middot; NEON PONG &middot; DUB VINE</p>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">Echoes don&rsquo;t have to repeat themselves. Tap the tempo. Turn the knob. Let the tail drift somewhere else. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// AU + VST3 // macOS</span></p>
-    </article>
-
-    <article id="copy-blue" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#000099;box-shadow:0 0 12px rgba(0,0,153,0.65);flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">BLUE</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#5A5AC0">038_BLU &middot; LIQUID CORE / MODULATION</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Turn sound into motion</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BLUE is a fluid modulation effect that moves between subtle stereo shimmer and deep, turbulent transformation. Its single macro control coordinates width, phase, delay, feedback and evolving irregularity, creating movement that feels alive rather than looped.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One control. An entire body of water.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">At low settings, BLUE adds gentle depth and spatial motion. Turn it further and the sound begins to bend, ripple and spread. At its highest settings, BLUE becomes wide, aggressive and beautifully unstable, while remaining musical and controlled.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Three water modes</h4>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:4px 0 18px 0;max-width:820px"><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">CLEAR</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Bright, focused movement with crisp phase detail.</span></div><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">DEEP</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Wide, fluid modulation with a balanced liquid character.</span></div><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">ABYSS</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Dark, slow, immersive motion with powerful delay-driven depth.</span></div></div>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">A living interface</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BLUE&rsquo;s vortex responds directly to the incoming audio. At silence, it becomes still. As the signal grows, the field expands outward from the central control, turning the interface into a visible reflection of the sound.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Beneath the surface</h4>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">RATE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DEPTH</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">MIX</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">TONE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">FEEDBACK</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">DRIFT</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">ENTROPY</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">SLOW TIDE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">FEEDBACK POLARITY</span></div>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Or stay on the surface and let the BLUE macro conduct the entire effect.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">From shimmer to undertow.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Subtle enough for vocals and keys. Wide enough for synths and guitars. Aggressive enough to pull drums, loops and textures into entirely new shapes.</p>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">Enter the water. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// BLUE v0.0.1 LIQUID CORE // AU + VST3 // macOS</span></p>
-    </article>
-
-    <article id="copy-brown" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#4A2A18;box-shadow:0 0 12px rgba(74,42,24,0.7);flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">BROWN</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8A6A50">039_BRN &middot; BILATERAL TRANSIENT</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Shape the hit. Hold the weight.</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BROWN is a one-knob transient shaper built for fast, musical control. Turn left to soften attacks and reduce sustain. Turn right to sharpen transients and bring the body forward. Return to the centre for zero processing. No hunting through parameters. No interruption to the session. Just immediate control over how a sound strikes, breathes and sits in the mix.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One knob. Two directions.</h4>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:4px 0 18px 0;max-width:820px"><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">REDUCE &minus;</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Tame hard attacks, shorten sustain and push sounds deeper into the mix.</span></div><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">CENTRE 0</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Transparent neutral position with no transient shaping.</span></div><div style="border:1px solid #242230;background:#131E24;padding:16px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:#DCCDBF;display:block;margin-bottom:8px">RAISE +</span><span style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae">Add definition, increase sustain and give drums, bass, percussion and recorded material more presence.</span></div></div>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Simple on the surface. Serious underneath.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Behind BROWN&rsquo;s single performance control is the transient engine from HORME, combining attack and sustain shaping into one carefully balanced movement. For detailed work, open the Advanced panel to access the complete multiband transient system.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Built to move</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BROWN&rsquo;s rectilinear data weave responds to the incoming audio. Lines extend, structures flicker and windows open as the signal drives the plug-in, then settle into a quiet, static texture at silence. The display follows the sound, not the clock.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Features</h4>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">BILATERAL ONE-KNOB SHAPING</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">ATTACK + SUSTAIN IN ONE MOVE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">TRANSPARENT CENTRE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">SIX-BAND ADVANCED CONTROLS</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">AUDIO-REACTIVE DATA WEAVE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">ZERO-LATENCY</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">PRESET MANAGEMENT</span></div>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">Give every sound the right shape. Transient control without the detour. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// AU + VST3 // macOS</span></p>
-    </article>
-
-    <article id="copy-grey" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#3A3A3A;box-shadow:0 0 12px rgba(58,58,58,0.8);flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">GREY</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#7A7D82">040_GRY &middot; COMPRESSOR</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Compression, without the complication</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">GREY is a one-knob compressor designed to control peaks, strengthen dynamics and keep your output level consistent, without interrupting your creative flow.</p>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Turn the central control to move from gentle levelling to firm, confident compression. Behind the simplicity, GREY carefully coordinates threshold, ratio, knee, attack, hold and release. Its always-on automatic makeup gain restores the body of the signal while preserving the reduced peaks.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">The display reads the music</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">The animated pin matrix responds directly to the music: quiet signals form a subtle suspended skyline, while stronger compression fills the surface with movement and amber gain-reduction flashes.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One knob. Complete dynamics control.</h4>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">INTELLIGENT MULTI-PARAMETER COMPRESSION</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">AUTOMATIC OUTPUT-LEVEL MATCHING</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">SMOOTH PEAK REDUCTION</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">PROGRAM-RESPONSIVE VISUAL FEEDBACK</span></div>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">GREY gives you the control of a full compressor with the immediacy of a single decision.</p>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">Turn it up. Bring the peaks down. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// AU + VST3 // macOS</span></p>
-    </article>
-
-    <article id="copy-black" style="border-top:1px solid #242230;padding:40px 0 16px 0">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px">
-        <span style="display:flex;align-items:center;gap:12px"><span style="width:11px;height:11px;background:#000000;border:1px solid #242230;box-sizing:border-box;flex-shrink:0"></span><span style="font-size:22px;letter-spacing:9px;color:#f0ede6;font-weight:700">BLACK</span></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">041_BLK &middot; LIMITER / CLIPPER</span>
-      </div>
-      <h3 style="font-weight:300;font-size:19px;letter-spacing:2.5px;color:#DCCDBF;text-transform:uppercase;margin:0 0 16px 0">Limit. Clip. Control.</h3>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BLACK is a one-knob limiter and clipper built to make loudness feel immediate. Turn the central control to move seamlessly from controlled peak limiting into assertive clipping. Low settings tighten and contain. Push further for density, impact and unmistakable edge.</p>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">The circular labyrinth responds to the processing itself, expanding as BLACK works, thickening under pressure and flashing coral when peaks are caught.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">One knob. A complete dynamics path.</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">The main control coordinates drive, limiting and clipping as one continuous gesture. It gives you a wide usable range without forcing you to manage a wall of parameters. Fast to set. Easy to trust. Capable of serious weight.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Shape the impact</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Open the Advanced panel when you need precise control.</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px 0;max-width:820px"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">LIMIT-TO-CLIP BALANCE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">OUTPUT CEILING</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">LOOKAHEAD</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">RELEASE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">AUTO RELEASE</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">STEREO LINK</span><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0ede6;border:1px solid #242230;padding:6px 10px;background:#131E24">UP TO 8&times; OVERSAMPLING</span></div>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Built for the final push</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">Use BLACK to control unpredictable peaks, add density to drums, push a mix forward or drive sounds into hard-edged clipping. At subtle settings, it stays composed. At maximum pressure, it does not pretend to be polite.</p>
-<h4 style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:3px;color:#C8A86B;text-transform:uppercase;margin:30px 0 12px 0">Responsive by design</h4>
-<p style="font-weight:300;font-size:16px;line-height:1.75;color:#b9b6ae;margin:0 0 14px 0;max-width:820px;text-wrap:pretty">BLACK&rsquo;s interface is connected directly to its processing. The labyrinth remains close to rest when little is being asked of the plug-in. As limiting increases, the field expands and its lines become heavier. Coral highlights appear only when BLACK is actively reducing or clipping peaks. You see the pressure as clearly as you hear it.</p>
-<p style="font-weight:300;font-size:16px;letter-spacing:1px;color:#f0ede6;margin:0">One knob between control and destruction. <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#8d8779">// AU + VST3 // macOS</span></p>
-    </article>
-  </section>
-
-  <section data-screen-label="Bundle" style="margin:20px auto 40px auto;max-width:600px;text-align:center">
-    <span style="display:block;margin:0 0 18px 0;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.42em;color:#c8a86b;text-transform:uppercase">The bundle</span>
-    <div style="background:rgba(200,168,107,.04);border-radius:6px;padding:40px">
-      <div style="display:flex;align-items:baseline;justify-content:center;gap:14px;margin:0 0 10px 0">
-        <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:56px;letter-spacing:0.04em;color:#f0ede6;line-height:1">$99</span>
-      </div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779;margin:0 0 26px 0">Sold as a bundle only · all six circuits · one licence</p>
-      <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 0 30px 0;text-wrap:pretty">RED, GREEN, BLUE, BROWN, GREY and BLACK, sold together as one collection. In calibration now.</p>
-      <a href="mailto:info@theta.audio?subject=RGB%20COLLECTION%20updates" data-notify="RGB COLLECTION" style="display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:0 24px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;border:1px solid #c8a86b;transition:background 0.2s,color 0.2s;background:#c8a86b;color:#06080c;font-weight:500" style-hover="background:#ffc867;color:#06080c">NOTIFY ME AT LAUNCH</a>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#6E6764;margin:18px 0 0 0">macOS · Apple Silicon · VST3 / AU</p>
+  <article class="circ" id="grey" style="--c:var(--grey)">
+    <div class="txt">
+      <div class="hd"><b>GREY</b><span>040_GRY · Compressor</span></div>
+      <h3>Compression, without the complication</h3>
+      <p>Turn the central control to move from gentle levelling to firm, confident compression. GREY coordinates threshold, ratio, knee, attack, hold and release for you, and its automatic makeup gain restores the body while the peaks stay down.</p>
+      <p>The pin-matrix display reads the music: a quiet skyline at rest, amber flashes when it is working. Open Advanced for the full compressor.</p>
     </div>
-  </section>
-</main>
+    <div class="pic"><img src="assets/rgb/grey.png?v=261101d" alt="GREY's panel" loading="lazy"></div>
+  </article>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #011 // RGB COLLECTION</span>
-</footer>
+  <article class="circ" id="black" style="--c:var(--black)">
+    <div class="txt">
+      <div class="hd"><b>BLACK</b><span>041_BLK · Limiter / clipper</span></div>
+      <h3>Limit. Clip. Control.</h3>
+      <p>One knob moves from controlled peak limiting into assertive clipping, coordinating drive, limiting and clipping as one gesture. Low settings tighten and contain; at maximum pressure it does not pretend to be polite.</p>
+      <p>The circular labyrinth thickens under pressure and flashes coral when peaks are caught. AUTO LEVEL lets you hear the shape of the limiting, not just more volume.</p>
+      <div class="lab2">Advanced</div>
+      <div class="ctl"><span>LIMIT-TO-CLIP BALANCE</span><span>OUTPUT CEILING</span><span>LOOKAHEAD</span><span>RELEASE</span><span>AUTO RELEASE</span><span>STEREO LINK</span><span>AUTO LEVEL</span><span>UP TO 16× OVERSAMPLING</span></div>
+    </div>
+    <div class="pic"><img src="assets/rgb/black.png?v=261101d" alt="BLACK's panel" loading="lazy"></div>
+  </article>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<!-- SPECS -->
+<div class="sh" id="specs">Specs</div>
+<table class="specs">
+  <tr><th>IN THE BUNDLE</th><td>RED, GREEN, BLUE, BROWN, GREY and BLACK. Sold together only.</td></tr>
+  <tr><th>FORMATS</th><td>VST3, AU and AAX, in one installer</td></tr>
+  <tr><th>SYSTEM</th><td>macOS 11 Big Sur or later · Apple Silicon and Intel (universal)</td></tr>
+  <tr><th>LICENCE</th><td>One key unlocks all six on one Mac. Deactivate from any of the six to move it.</td></tr>
+  <tr><th>TRIAL</th><td>14 days, every feature, shared by all six</td></tr>
+  <tr><th>LATENCY</th><td>GREEN, BLUE, BROWN and GREY: zero · RED: 28 samples · BLACK: its lookahead, about 5 ms by default</td></tr>
+</table>
+
+<!-- PRICE -->
+<div class="sh" id="buy">The bundle</div>
+<section class="price">
+  <span class="lbl">THE RGB COLLECTION</span>
+  <strong>$99</strong>
+  <span class="sub">Sold as a bundle only · all six circuits · one licence</span>
+  <div class="dots"><i style="--c:var(--red)"></i><i style="--c:var(--green)"></i><i style="--c:var(--blue)"></i><i style="--c:var(--brown)"></i><i style="--c:var(--grey)"></i><i style="--c:var(--black)"></i></div>
+  <p>RED, GREEN, BLUE, BROWN, GREY and BLACK in one installer, unlocked by one key, with a 14-day trial of the whole collection. Launching soon.</p>
+  <a class="btn primary" href="mailto:info@theta.audio?subject=RGB%20COLLECTION%20updates" data-notify="RGB COLLECTION">Notify me at launch</a>
+  <span class="sub">macOS 11+ · Apple Silicon and Intel · AU / VST3 / AAX</span>
+</section>
+
+<footer><span>LAB NOTE #011 // RGB COLLECTION</span><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(function(){
+'use strict';
+const C = [
+  {k:'RED',  code:'036_RED',role:'SATURATION',  hex:'#e0524a',line:'Distortion with weight.'},
+  {k:'GREEN',code:'037_GRN',role:'DELAY',       hex:'#58c05a',line:'Delay, pulled out of shape.'},
+  {k:'BLUE', code:'038_BLU',role:'MODULATION',  hex:'#717cff',line:'Turn sound into motion.'},
+  {k:'BROWN',code:'039_BRN',role:'TRANSIENTS',  hex:'#bf8f62',line:'Shape the hit. Hold the weight.'},
+  {k:'GREY', code:'040_GRY',role:'COMPRESSOR',  hex:'#a9adb4',line:'Compression, without the complication.'},
+  {k:'BLACK',code:'041_BLK',role:'LIMIT / CLIP',hex:'#ff7a5c',line:'Limit. Clip. Control.'}
+];
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openRed: this._mk('assets/rgb/red.png?v=260824', 1332, 1332 / 1370),
-      openGreen: this._mk('assets/rgb/green.png?v=260824', 1332, 1332 / 1370),
-      openBlue: this._mk('assets/rgb/blue.png?v=260824', 1332, 1332 / 1370),
-      openBrown: this._mk('assets/rgb/brown.png?v=260824', 1332, 1332 / 1370),
-      openGrey: this._mk('assets/rgb/grey.png?v=260824d', 1332, 1332 / 1370),
-      openBlack: this._mk('assets/rgb/black.png?v=260824d', 1332, 1332 / 1370),
-    };
-  }
+/* ---------- hero wheel ---------- */
+const segs=document.getElementById('segs');
+const R0=112,R1=226,gap=0.035;
+let wSel=0,wAuto=true;
+C.forEach((c,i)=>{
+  const a0=-Math.PI/2+i*Math.PI/3+gap, a1=-Math.PI/2+(i+1)*Math.PI/3-gap;
+  const p=(r,a)=>[250+r*Math.cos(a),250+r*Math.sin(a)];
+  const [x0,y0]=p(R1,a0),[x1,y1]=p(R1,a1),[x2,y2]=p(R0,a1),[x3,y3]=p(R0,a0);
+  const d=`M${x0} ${y0} A${R1} ${R1} 0 0 1 ${x1} ${y1} L${x2} ${y2} A${R0} ${R0} 0 0 0 ${x3} ${y3}Z`;
+  const g=el('g',{});
+  const glow=el('path',{d,fill:c.hex,filter:'url(#glow)',opacity:'0'}); glow.dataset.glow=i;
+  const path=el('path',{d,fill:c.hex,opacity:'.35',tabindex:'0','aria-label':c.k}); path.dataset.i=i;
+  const am=(a0+a1)/2,[tx,ty]=p((R0+R1)/2,am);
+  const t=el('text',{x:tx,y:ty+4,'text-anchor':'middle','font-family':'Montserrat,sans-serif','font-weight':'600','font-size':'13','letter-spacing':'4',fill:'#06080c','pointer-events':'none'}); t.textContent=c.k;
+  g.append(glow,path,t); segs.append(g);
+  const pick=()=>{wAuto=false;selectWheel(i);};
+  path.addEventListener('mouseenter',pick); path.addEventListener('click',pick); path.addEventListener('focus',pick);
+});
+function selectWheel(i){
+  wSel=i;const c=C[i];
+  segs.querySelectorAll('path[data-i]').forEach(p=>p.setAttribute('opacity',+p.dataset.i===i?'1':'.32'));
+  segs.querySelectorAll('path[data-glow]').forEach(p=>p.setAttribute('opacity',+p.dataset.glow===i?'.55':'0'));
+  const ang=i*60+30;
+  document.getElementById('ptr').setAttribute('transform',`rotate(${ang} 250 250)`);
+  document.getElementById('ring').setAttribute('stroke',c.hex);
+  document.getElementById('wName').textContent=c.k;
+  document.getElementById('wRole').textContent=c.role;
+  document.getElementById('wCode').textContent=c.code;
+  document.getElementById('wCode').style.color=c.hex;
+  document.getElementById('wLine').textContent=c.line;
 }
+selectWheel(0);
+setInterval(()=>{if(wAuto)selectWheel((wSel+1)%6);},2400);
+
+/* ---------- one-knob lab ---------- */
+const seg=document.getElementById('labSeg');
+let L=0, v=35;
+C.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.textContent=c.k;b.style.setProperty('--c',c.hex);b.setAttribute('aria-pressed',i===0);b.onclick=()=>{L=i;seg.querySelectorAll('button').forEach((x,j)=>x.setAttribute('aria-pressed',j===i));v=i===3?50:35;update();};seg.append(b);});
+const TXT={
+  RED:[[0,'<b>Barely there.</b> A little low-mid body and cohesion; you feel it more than hear it.'],[34,'<b>Warm and thick.</b> Harmonics fill in and peaks round off. AUTO LEVEL keeps the loudness where it was.'],[70,'<b>Hot.</b> Heavy velvet saturation with the punch held by the peak compressor and clean clipper.']],
+  GREEN:[[0,'<b>Clean echo.</b> A few controlled repeats, locked to your tapped tempo.'],[34,'<b>Spreading.</b> More feedback and width; each repeat drifts a little further out of tune.'],[70,'<b>A whole ecosystem.</b> Diffused, detuned, darkening tails that keep moving after you stop.']],
+  BLUE:[[0,'<b>Shimmer.</b> Gentle depth and spatial movement, good on vocals and keys.'],[34,'<b>Liquid.</b> The sound bends, ripples and widens.'],[70,'<b>Undertow.</b> Wide, aggressive and beautifully unstable, still musical.']],
+  BROWN:[[0,'<b>Reduce.</b> Softer attacks, shorter sustain: the hit sits back in the mix.'],[45,'<b>Centre.</b> Zero processing. The sound passes untouched.'],[56,'<b>Raise.</b> Sharper transients and more sustain: the hit jumps forward.']],
+  GREY:[[0,'<b>Levelling.</b> Light, slow gain riding that keeps a performance even.'],[34,'<b>Control.</b> Firmer compression; makeup gain brings the body back.'],[70,'<b>Firm.</b> Peaks held hard, sustain lifted, amber all over the display.']],
+  BLACK:[[0,'<b>Contain.</b> Clean peak limiting that tightens without colour.'],[34,'<b>Density.</b> Limiting does the heavy lifting; a little clipping adds edge.'],[70,'<b>Destruction.</b> Assertive clipping. It does not pretend to be polite.']]
+};
+const knob=document.getElementById('knob'), arc=document.getElementById('kArc'), kptr=document.getElementById('kPtr');
+const cv=document.getElementById('scope'), ctx=cv.getContext('2d');
+function update(){
+  const c=C[L];
+  document.getElementById('lName').textContent=c.k;
+  document.getElementById('lName').style.color=c.hex;
+  arc.setAttribute('stroke',c.hex);
+  arc.setAttribute('stroke-dasharray',`${405*v/100} 540`);
+  kptr.setAttribute('transform',`rotate(${-135+270*v/100} 100 100)`);
+  knob.setAttribute('aria-valuenow',Math.round(v));
+  document.getElementById('kVal').textContent=c.k==='BROWN'?((v-50)>0?'+':'')+Math.round((v-50)*2):Math.round(v);
+  const t=TXT[c.k]; let s=t[0][1]; for(const [th,x] of t) if(v>=th) s=x;
+  document.getElementById('kText').innerHTML=s;
+}
+/* drawing */
+let ph=0;
+function draw(){
+  const W=cv.width,H=cv.height,c=C[L],x=v/100;ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#161a26';ctx.lineWidth=1;
+  for(let i=1;i<8;i++){ctx.beginPath();ctx.moveTo(i*W/8,0);ctx.lineTo(i*W/8,H);ctx.stroke();}
+  ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+  const mid=H/2, A=H*0.36;
+  const plot=(f,col,w,alpha)=>{ctx.globalAlpha=alpha;ctx.strokeStyle=col;ctx.lineWidth=w;ctx.beginPath();for(let i=0;i<=W;i+=3){const y=mid-f(i/W)*A;i?ctx.lineTo(i,y):ctx.moveTo(i,y);}ctx.stroke();ctx.globalAlpha=1;};
+  const sine=u=>Math.sin(u*Math.PI*2*3+ph);
+  if(c.k==='RED'){
+    const d=1+x*9, n=Math.tanh(d);
+    plot(sine,'#3a3846',2,1);
+    plot(u=>Math.tanh(d*sine(u))/n*0.92,c.hex,4,1);
+  } else if(c.k==='GREEN'){
+    const fb=0.35+x*0.55;
+    for(let r=0;r<10;r++){const amp=Math.pow(fb,r);if(amp<0.03)break;
+      const pos=0.06+r*0.095, wid=0.015+r*0.008*x*1.5, det=Math.sin(ph*0.7+r)*x*0.012*r;
+      plot(u=>{const z=(u-pos-det)/wid;return amp*Math.exp(-z*z)*Math.cos(z*(6-r*0.4*x));},c.hex,3,0.35+0.65*amp);}
+  } else if(c.k==='BLUE'){
+    plot(sine,'#3a3846',2,1);
+    for(let k=0;k<3;k++){const dep=x*(0.6+k*0.3);
+      plot(u=>Math.sin(u*Math.PI*6+ph+dep*Math.sin(u*Math.PI*2*(1+k*0.6)+ph*0.6+k))*(0.85-k*0.18)*(1+0.15*x*Math.sin(ph+u*9+k)),c.hex,3-k*0.8,0.9-k*0.25);}
+  } else if(c.k==='BROWN'){
+    const b=(x-0.5)*2; // -1..+1
+    const env=(u,g)=>{const t=(u*3)%1;const att=Math.exp(-t*(18))*(1+g*1.2);const sus=Math.exp(-t*(3.2-g*1.6))*0.55;return Math.max(0,Math.min(1.25,att*0.6+sus));};
+    plot(u=>env(u,0)*Math.sin(u*Math.PI*2*36),'#3a3846',1.5,1);
+    plot(u=>env(u,b)*Math.sin(u*Math.PI*2*36),c.hex,2.2,1);
+    plot(u=>env(u,b),c.hex,3,0.9); plot(u=>-env(u,b),c.hex,3,0.9);
+  } else if(c.k==='GREY'){
+    const env=u=>0.25+0.75*Math.pow(Math.abs(Math.sin(u*Math.PI*2*1.6+ph*0.3)),3);
+    const comp=u=>{const e=env(u),th=1-x*0.65,r=1+x*7;const o=e>th?th+(e-th)/r:e;return o*(1+x*0.55);};
+    plot(u=>env(u)*Math.sin(u*Math.PI*2*30),'#3a3846',1.5,1);
+    plot(u=>comp(u)*Math.sin(u*Math.PI*2*30),c.hex,2.2,1);
+    plot(comp,'#ffb340',2,0.8);
+  } else {
+    const d=1+x*3.5, ceil=0.8, clip=x;
+    const sig=u=>(Math.sin(u*Math.PI*2*3+ph)*0.7+Math.sin(u*Math.PI*2*11+ph*1.3)*0.3)*d;
+    plot(u=>Math.max(-1.3,Math.min(1.3,sig(u)/d*1.0)),'#3a3846',2,1);
+    plot(u=>{const s=sig(u);const lim=Math.tanh(s/ceil)*ceil;const hard=Math.max(-ceil,Math.min(ceil,s));return (lim*(1-clip)+hard*clip);},c.hex,4,1);
+    ctx.setLineDash([6,8]);plot(()=>ceil,'#ff7a5c',1,0.6);plot(()=>-ceil,'#ff7a5c',1,0.6);ctx.setLineDash([]);
+  }
+  ph+=0.02; requestAnimationFrame(draw);
+}
+let drag=null;
+knob.addEventListener('pointerdown',e=>{drag={y:e.clientY,v};knob.setPointerCapture(e.pointerId);});
+knob.addEventListener('pointermove',e=>{if(!drag)return;v=Math.max(0,Math.min(100,drag.v+(drag.y-e.clientY)*0.5));update();});
+knob.addEventListener('pointerup',()=>drag=null);
+knob.addEventListener('wheel',e=>{e.preventDefault();v=Math.max(0,Math.min(100,v-Math.sign(e.deltaY)*3));update();},{passive:false});
+knob.addEventListener('keydown',e=>{if(['ArrowUp','ArrowRight'].includes(e.key)){v=Math.min(100,v+2);update();e.preventDefault();}if(['ArrowDown','ArrowLeft'].includes(e.key)){v=Math.max(0,v-2);update();e.preventDefault();}});
+update(); draw();
+})();
 </script>
 </body>
 </html>

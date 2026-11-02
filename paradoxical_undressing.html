@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PARADOXICAL UNDRESSING Product Page</title>
+<meta name="description" content="PARADOXICAL UNDRESSING strips a sound layer by layer, makes what is left larger and hotter, then rebuilds it from its own slivers in a new order. VST3 and AU for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching gire.html. Single dark look by choice: THETA marketing pages live on the void theme.
+   PARADOXICAL UNDRESSING's own colour enters only where the plug-in draws it: the thermal ramp
+   (violet, magenta, amber, white-hot), the ice-blue chrome and the frosted glass panels. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --violet:#7b4dff; --mag:#e04fb0; --amber:#ffb340; --hot:#fff2e6; --ice:#8fd3ff; --teal:#6ec0b6;
+  --glass:rgba(150,140,220,.06); --glass-line:rgba(160,190,255,.16); --plate:#120a1c;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note,body.hide-notes .notes-only{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.maker{display:flex;align-items:center;gap:14px;margin-bottom:var(--s4)}
+.maker img{height:44px;width:auto;display:block}
+.maker span{font-family:var(--f-wide);font-variation-settings:'wdth' 125;font-weight:500;font-size:10px;letter-spacing:.38em;color:var(--gold)}
+.price .mark{height:56px;width:auto;display:block}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(24px,3.2vw,40px);letter-spacing:.32em;line-height:1.18;margin-block:var(--s4) var(--s4);color:var(--text)}
+.wordmark span{display:block}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--mag)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+
+/* the thermal well: the plug-in's own frosted plate */
+.well{border:1px solid var(--glass-line);border-radius:14px;background:radial-gradient(120% 120% at 50% 0%,#1c1030,#0a0612 70%);overflow:hidden;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(220,225,255,.55)}
+.well-head .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mag);box-shadow:0 0 8px var(--mag);margin-right:8px;vertical-align:1px}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(160,190,255,.10);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(220,225,255,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.well-ctrl{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s3);align-items:center;padding:var(--s3) var(--s4) var(--s4);font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.22em;color:var(--gold)}
+.well-ctrl input{width:100%;accent-color:var(--mag)}
+.well-ctrl output{font-family:var(--f-mono);font-weight:400;letter-spacing:0;color:var(--text);font-variant-numeric:tabular-nums;min-width:4ch;text-align:right}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--mag);color:#14060f}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:680px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#1a0f26;stroke:#5b3a8a;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.re{stroke:var(--mag);animation-duration:2.2s}
+.path .flow.dry{stroke:var(--ice)}
+@keyframes flow{to{stroke-dashoffset:-34}}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* state ladder */
+.ladder{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s3)}
+.ladder li{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4);display:grid;gap:6px;align-content:start;min-width:0;transition:border-color .3s,box-shadow .3s}
+.ladder li.on{border-color:rgba(224,79,176,.6);box-shadow:0 0 24px rgba(224,79,176,.12) inset}
+.ladder .rng{font-family:var(--f-mono);font-size:11px;color:var(--text-3);letter-spacing:.08em}
+.ladder b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.ladder p{font-size:14.5px;color:var(--text-2)}
+
+/* lab */
+.lab{border:1px solid var(--glass-line);border-radius:14px;background:var(--well);display:grid;overflow:hidden}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--mag)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:var(--mag);color:#14060f;border-color:var(--mag)}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:8px;vertical-align:middle;margin-right:6px;border-radius:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.card-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;color:var(--gold-hot)}
+.card p{color:var(--text-2);font-size:15.5px}
+.card .glyph{height:40px;display:flex;align-items:center}
+.card .glyph svg{height:40px;width:auto;overflow:visible}
+
+/* shots and audio */
+.shot{margin:0;display:grid;gap:var(--s2)}
+.shot img{width:100%;height:auto;border:0;display:block}
+.shot figcaption{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0;border-radius:10px}
+.listen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.clip{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);min-width:0}
+.clip .vn{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3);flex-wrap:wrap}
+.clip .vn b{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.26em;color:var(--gold-hot)}
+.clip .vn span{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.08em}
+.clip p{color:var(--text-2);font-size:15.5px}
+.clip audio{width:100%;height:40px;color-scheme:dark}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(224,79,176,.10),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:40px;letter-spacing:.14em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .cards,.listen{grid-template-columns:minmax(0,1fr)}
+  .who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ladder{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.ladder{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+  .wordmark{letter-spacing:.22em}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="maker"><img src="assets/paradoxical/theta-wave-gold.svg?v=261102" alt="THETA" width="160" height="94"><span>THETA AUDIO RESEARCH</span></div>
+    <div class="eyebrow">Perceptual de-processor · Version 0.2.8</div>
+    <h1 class="wordmark"><span>PARADOXICAL</span><span>UNDRESSING</span></h1>
+    <div class="lede">
+      <p>PARADOXICAL UNDRESSING takes a sound apart into seven perceptual layers: space, stereo, harmonics, texture, body, transient and the core underneath them. One knob, UNDRESS, peels them away in order. As they go, what is left is made larger, hotter and more detailed, so a fully stripped sound comes out louder than it went in.</p>
+      <p>Then RE-DRESS puts it back together wrong. The sound is rebuilt from its own slivers, out of order, reversed, smeared and pitched, on your grid or on your hits.</p>
+      <p>Paradoxical undressing is the name for the moment someone freezing to death feels burning hot and pulls their clothes off. The plug-in does the same thing to audio.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=PARADOXICAL%20UNDRESSING%20launch" data-notify="PARADOXICAL UNDRESSING">Notify me at launch</a>
+      <a class="btn ghost" href="#listen">Hear it</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">macOS · Apple Silicon and Intel</span><span class="chip soon">Windows · coming soon</span></div>
+  </div>
+  <div>
+    <div class="well">
+      <div class="well-head"><span><span class="dot"></span>THERMAL SCAN</span><span id="h-state">DRESSED</span></div>
+      <canvas id="scan" width="1100" height="820" aria-label="The plug-in's layer field: six nested boxes, one per removable layer, around the core. Move UNDRESS and the boxes collapse in the plug-in's own order while the core grows and heats up."></canvas>
+      <div class="well-ctrl"><label for="undress">UNDRESS</label><input type="range" id="undress" min="0" max="100" value="0" step="1"><output id="undress-v">0%</output></div>
+      <div class="well-foot"><span>LAYERS <b id="h-layers">7.0/7</b></span><span>MAKE-UP <b id="h-gain">+0.0 dB</b></span><span>STATE <b id="h-state2">DRESSED</b></span></div>
+    </div>
+    <div class="tagline">MOVE UNDRESS TO STRIP THE LAYERS</div>
+  </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6)">
+  <img src="assets/paradoxical/redress_view.webp?v=261102" alt="The PARADOXICAL UNDRESSING panel on the RE-DRESS page, with the gold THETA wave in the header: the thermal scan with its nested layer boxes at the top, the RE-DRESS amount with the four orders SHARDS, REWIND, SMEAR and PRISM, the CUT and REASSEMBLY knobs, the dice, and the 16-step PATTERN along the bottom" width="1600" height="1233">
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="sh" id="how">How it works</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>Every sound you hear is wearing layers: the room around it, the width of the stereo image, the overtones, the grain and air, the sustain that gives it weight, the attack that gives it impact. You never hear them separately. PARADOXICAL UNDRESSING separates them.</p>
+      <p>It runs a short-time spectral analysis on the mid and side of your signal and sorts every frequency bin, every few milliseconds, into one of seven layers. <strong>Because the layers partition the spectrum and share its phase, they sum back to the input</strong>: on real music the seven of them null against the untouched signal at −93 dB.</p>
+    </div>
+    <div class="prose">
+      <p>UNDRESS takes the layers away one after another, outside in. The core, the strongest persistent partials wherever they sit, is never removable. Whatever has been removed, the <strong>paradox make-up</strong> gives back part of the lost loudness to what is left, so the survivors swell instead of fading. At full UNDRESS with everything else neutral the output sits about 7.5 dB above the dressed signal. That is the effect.</p>
+      <p>The stripped sound then goes through RE-DRESS, three modules of colour and a level-matched output. The picture on the panel is drawn from the same analysis, so what you see collapse is what you hear go.</p>
+    </div>
+  </div>
+  <div class="path">
+    <svg viewBox="0 0 1040 230" role="img" aria-label="Signal path: input, the seven-layer split, UNDRESS presences, the paradox make-up, RE-DRESS reassembly, THERMAL and PROXIMITY, INSTABILITY, then MIX against the latency-aligned dry signal and OUT">
+      <text x="14" y="122">IN</text>
+      <path class="wire" d="M40 118 H96"/><path class="flow" d="M40 118 H96"/>
+      <rect class="stage" x="96" y="88" width="110" height="60" rx="4"/><text class="lbl" x="151" y="112" text-anchor="middle">SPLIT</text><text x="151" y="132" text-anchor="middle">7 LAYERS</text>
+      <path class="wire" d="M206 118 H236"/><path class="flow" d="M206 118 H236"/>
+      <rect class="stage" x="236" y="88" width="110" height="60" rx="4"/><text class="lbl" x="291" y="112" text-anchor="middle">UNDRESS</text><text x="291" y="132" text-anchor="middle">PRESENCES</text>
+      <path class="wire" d="M346 118 H376"/><path class="flow" d="M346 118 H376"/>
+      <rect class="stage" x="376" y="88" width="110" height="60" rx="4"/><text class="lbl" x="431" y="112" text-anchor="middle">MAKE-UP</text><text x="431" y="132" text-anchor="middle">PARADOX</text>
+      <path class="wire" d="M486 118 H516"/><path class="flow" d="M486 118 H516"/>
+      <rect class="stage" x="516" y="88" width="120" height="60" rx="4" style="stroke:#8a3a78"/><text class="lbl" x="576" y="112" text-anchor="middle">RE-DRESS</text><text x="576" y="132" text-anchor="middle">12 BANDS</text>
+      <path class="wire" d="M576 148 V186 H446"/><path class="flow re" d="M576 186 H446"/>
+      <text x="300" y="206" style="fill:var(--mag)">2.5 s HISTORY · FEEDBACK · HOLD</text>
+      <path class="wire" d="M636 118 H666"/><path class="flow" d="M636 118 H666"/>
+      <rect class="box" x="666" y="88" width="104" height="60" rx="4"/><text class="lbl" x="718" y="112" text-anchor="middle">THERMAL</text><text x="718" y="132" text-anchor="middle">PROXIMITY</text>
+      <path class="wire" d="M770 118 H796"/><path class="flow" d="M770 118 H796"/>
+      <rect class="box" x="796" y="88" width="110" height="60" rx="4"/><text class="lbl" x="851" y="112" text-anchor="middle">INSTABILITY</text><text x="851" y="132" text-anchor="middle">PANIC · WIDEN</text>
+      <path class="wire" d="M906 118 H934"/><path class="flow" d="M906 118 H934"/>
+      <path class="wire" d="M60 118 V40 H954 V98"/><path class="flow dry" d="M60 40 H954"/>
+      <text x="500" y="30" text-anchor="middle" style="fill:var(--ice)">DRY · LATENCY-ALIGNED</text>
+      <circle class="box" cx="954" cy="118" r="20"/><text class="lbl" x="954" y="122" text-anchor="middle">MIX</text>
+      <path class="wire" d="M974 118 H1000"/><path class="flow" d="M974 118 H1000"/>
+      <text x="1002" y="122">OUT</text>
+    </svg>
+  </div>
+  <ol class="steps">
+    <li><span class="num">1</span><b>SPLIT</b><p>A spectral analysis on mid and side sorts the sound into SPACE, STEREO, HARMONICS, TEXTURE, BODY, TRANSIENT and the core.</p></li>
+    <li><span class="num">2</span><b>STRIP</b><p>UNDRESS fades each layer out over its own stretch of the knob, outside in. Any layer can be taken off the macro and set by hand.</p></li>
+    <li><span class="num">3</span><b>SWELL</b><p>The paradox make-up gives back part of what was removed to what is left. PARADOX sets how much.</p></li>
+    <li><span class="num">4</span><b>REBUILD</b><p>RE-DRESS reassembles the sound from its last 2.5 seconds, in twelve bands, sliver by sliver, in a new order.</p></li>
+    <li><span class="num">5</span><b>COLOUR</b><p>THERMAL, PROXIMITY and INSTABILITY heat, chill, close in or unsettle the result before MIX and OUT.</p></li>
+  </ol>
+</section>
+
+<!-- STATES -->
+<div class="sh" id="states">The five states</div>
+<section class="stack">
+  <div class="prose"><p>The panel names where you are on the UNDRESS knob. These are the plug-in's own words, and the card lights up as you move the knob in the thermal scan above.</p></div>
+  <ol class="ladder" id="ladder">
+    <li data-s="0"><span class="rng">0 – 12%</span><b>DRESSED</b><p>Normal audio. Every perceptual layer intact: space, stereo, harmonics, texture, body, transient.</p></li>
+    <li data-s="1"><span class="rng">13 – 37%</span><b>EXPOSED</b><p>Subtle reduction of masking and processing. Detail that was buried starts to move forward.</p></li>
+    <li data-s="2"><span class="rng">38 – 62%</span><b>NAKED</b><p>Transient, stereo and spatial information begin disappearing. The core grows to fill the frame.</p></li>
+    <li data-s="3"><span class="rng">63 – 87%</span><b>VULNERABLE</b><p>The remaining harmonic and temporal information becomes extremely prominent. Uncomfortably close.</p></li>
+    <li data-s="4"><span class="rng">88 – 100%</span><b>PARADOXICAL</b><p>Stripped to an extreme state while internal detail becomes strangely intense.</p></li>
+  </ol>
+  <figure class="shot">
+    <img src="assets/paradoxical/main_view.webp?v=261102" alt="The MAIN page at UNDRESS 0, DRESSED: the thermal scan with every layer box in place, the UNDRESS iris, the STATE, SURFACE, LAYERS, DENSITY, DRIFT and SCAN readouts, and the THERMAL, PROXIMITY, INSTABILITY and OUTPUT modules" width="1600" height="1233" loading="lazy">
+    <figcaption>THE MAIN PAGE · DRESSED · ALL 7 LAYERS IN PLACE</figcaption>
+  </figure>
+</section>
+
+<!-- RE-DRESS LAB -->
+<div class="sh" id="redress">RE-DRESS</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>RE-DRESS keeps the last 2.5 seconds of the sound, every bin's level and its true phase advance, mid and side. It cuts the spectrum into <strong>twelve overlapping bands, each with its own read head</strong>. A head plays a sliver from somewhere in that history, then jumps. A drum hit's top end can land after its body, a phrase can come back reversed, a note can smear into a cloud of itself.</p>
+      <p>The joins are a phase vocoder's: each output bin advances by the true frequency of the bin it reads, so slivers meet in any order, at any speed and any pitch, without clicks. Each sliver keeps its own loudness contour, so a reversed hit swells backwards, and the rebuilt sound still stops when the source does.</p>
+    </div>
+    <div class="prose">
+      <p><strong>FEED</strong> says what gets rebuilt. On WHOLE, the default, the whole sound is recorded and the dry sound fades out as RE-DRESS rises, so at 100% you hear only the rebuild. On TAKEN only what UNDRESS removed comes back, laid over what it kept.</p>
+      <p>The lab below draws the twelve read heads. The top strip is the history, a drum loop on twelve bands with low frequencies at the bottom. The bottom strip is what RE-DRESS plays: every cell is coloured by the moment of history its band is reading.</p>
+    </div>
+  </div>
+  <div class="lab">
+    <div class="lab-top">
+      <span class="seg" role="group" aria-label="Order">
+        <button type="button" data-mode="0" aria-pressed="true">SHARDS</button><button type="button" data-mode="1" aria-pressed="false">REWIND</button><button type="button" data-mode="2" aria-pressed="false">SMEAR</button><button type="button" data-mode="3" aria-pressed="false">PRISM</button>
+      </span>
+      <span class="toggles">
+        <button type="button" class="tog" id="t-grid" aria-pressed="true">SYNC GRID</button>
+        <button type="button" class="tog" id="t-pattern" aria-pressed="false">PATTERN</button>
+        <button type="button" class="tog" id="t-hold" aria-pressed="false">HOLD</button>
+        <button type="button" class="tog" id="t-reset">DEFAULTS</button>
+      </span>
+    </div>
+    <canvas id="lab" width="1600" height="680" aria-label="Twelve bands over time. Top: the history, a drum loop. Bottom: the rebuilt output, each cell coloured by the moment of history its band reads, so the reordering is visible."></canvas>
+    <div class="readouts"><span>ORDER<b id="r-mode">SHARDS</b></span><span>SLIVER<b id="r-sliver">-</b></span><span>SLIVERS / S<b id="r-rate">-</b></span><span>SILENT<b id="r-gap">-</b></span><span>REVERSED<b id="r-rev">-</b></span></div>
+    <div class="ctrls" id="ctrls"></div>
+  </div>
+  <div class="legend"><span><i style="background:linear-gradient(90deg,#7b4dff,#e04fb0,#ffb340,#fff2e6)"></i>HOW FAR BACK A BAND READS · RECENT TO 2.5 s</span><span><i style="background:#2a3a55"></i>DRY STEP · PATTERN OFF</span><span>ILLUSTRATION OF THE READ HEADS · NOT A RECORDING</span></div>
+</section>
+
+<!-- ORDERS -->
+<div class="sh" id="orders">The four orders</div>
+<section class="cards">
+  <article class="card"><div class="glyph"><svg viewBox="0 0 60 40" aria-hidden="true"><g fill="#e04fb0"><rect x="2" y="22" width="5" height="5"/><rect x="11" y="12" width="5" height="5"/><rect x="20" y="28" width="5" height="5"/><rect x="29" y="8" width="5" height="5"/><rect x="38" y="20" width="5" height="5"/><rect x="47" y="14" width="5" height="5"/></g></svg></div><div class="card-name">SHARDS</div><p>The sound reshuffled. Every jump picks a new point anywhere in SPAN and plays forward from there. All twelve bands move together, so you hear the sound reordered, not shredded. On a 1/16 grid with SHAPE up, this is the plucked glitch.</p></article>
+  <article class="card"><div class="glyph"><svg viewBox="0 0 60 40" aria-hidden="true"><path d="M50 8 L30 20 L50 32 M34 8 L14 20 L34 32" fill="none" stroke="#e04fb0" stroke-width="2.5"/></svg></div><div class="card-name">REWIND</div><p>Each sliver plays the recent past backwards. Because slivers keep their own contour, a hit comes back as a swell that cuts off where the attack was. Long slivers on TAPE are the classic reverse tail.</p></article>
+  <article class="card"><div class="glyph"><svg viewBox="0 0 60 40" aria-hidden="true"><path d="M4 14 H56 M10 20 H52 M4 26 H48" fill="none" stroke="#e04fb0" stroke-width="2.5"/></svg></div><div class="card-name">SMEAR</div><p>Each band crawls through the past at a quarter speed with slivers three times longer, and each keeps its own clock. The one mode that does not move as a block: a note dissolves into a slowly turning cloud of itself.</p></article>
+  <article class="card"><div class="glyph"><svg viewBox="0 0 60 40" aria-hidden="true"><g stroke="#e04fb0" stroke-width="3"><path d="M4 32 H14"/><path d="M16 26 H26"/><path d="M28 20 H38"/><path d="M40 14 H50"/><path d="M52 8 H58"/></g></svg></div><div class="card-name">PRISM</div><p>The bands move together, each at its own delay on a staircase, and the staircase rotates every sliver. Highs arrive before lows, then after them. A transient fans out into a short spectral arpeggio.</p></article>
+  <article class="card"><div class="card-name">FEED · SYNC · HOLD</div><p><b class="k">SYNC</b> FREE, GRID or HITS. On GRID, SLIVER becomes a note length from 1/32 to a bar, triplets and dotted included, and every jump lands on the host's grid. On HITS a new sliver starts on every onset in the source, read from an earlier one. <b class="k">HOLD</b> stops recording and keeps replaying what is in the history.</p></article>
+  <article class="card"><div class="card-name">THE DICE</div><p>Per-sliver chances. <b class="k">REVERSE</b> plays it backwards, <b class="k">REPEAT</b> plays the last sliver again for a stutter, <b class="k">PITCH</b> throws it up or down an octave or a fifth, <b class="k">GAP</b> makes it silence. Bands jumping together share one roll, so a stutter stutters the whole sound.</p></article>
+</section>
+
+<!-- CONTROLS -->
+<div class="sh" id="controls">Cut and reassembly</div>
+<section class="stack">
+  <ul class="rows">
+    <li><b>SLIVER</b><span>Sliver length, about 15 to 430 ms, varied at random by ×0.6 to ×1.4 per sliver and crossfaded so nothing clicks. On SYNC GRID it is a note length.</span></li>
+    <li><b>SPAN</b><span>How far back a sliver can come from: 0.25 to 2.5 seconds.</span></li>
+    <li><b>SHAPE</b><span>Each sliver's own decay, from its full length down to a 12 ms pluck, so even a sustained pad comes back as hits.</span></li>
+    <li><b>WARP</b><span>Bends each band's phase advance, mid and side apart, up to about ±66 Hz at 48 kHz, re-dealt per sliver and now and then within one.</span></li>
+    <li><b>SHIFT</b><span>Reads the spectrum from up to an octave below or above, ±12 semitones.</span></li>
+    <li><b>FORMANT</b><span>±12 semitones of body with the pitch held still. The partials stay put while the envelope over them moves, so a voice grows or shrinks without changing note. Shape, not level: on pink noise it moves less than 0.1 dB.</span></li>
+    <li><b>FEEDBACK</b><span>The rebuilt sound goes back into its own history, up to 0.85, level-compensated so it changes what you hear and not how loud. At the top an echo loses 1.4 dB a pass. The tail is reported to the host.</span></li>
+    <li><b>PLAYBACK · AGE</b><span>CLEAN, TAPE (wow, flutter and run-downs), VINYL (off-centre wow, brakes, crackle, worn lows and highs, lows to mono) or DIGITAL (merged detail, coarse levels, cut top, stepped speed), scaled by AGE.</span></li>
+    <li><b>KEEP LOWS</b><span>OFF, or 30 to 400 Hz. Below it the dry sound stays solid and nothing is rebuilt, through a fourth-order crossover. The sub under a glitch stays a sub.</span></li>
+  </ul>
+</section>
+
+<!-- XY + PATTERN -->
+<div class="sh" id="xy">X-Y pad and pattern</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>The X-Y PAD</strong> holds four complete RE-DRESS sounds, one in each corner: amount, order, sliver, formant, span, warp, shift, sync, the dice, feedback, playback, age, shape and keep lows. The dot blends them. Continuous controls blend smoothly, and order, sync and playback come from the nearest corner. X and Y are automatable, so one lane can travel from a plucked stutter to a long reversed tape smear.</p>
+      <p>The knobs always show the corner you are editing. Until you set a corner yourself, the other three start from the other orders, so the pad makes sense the first time you switch it on.</p>
+    </div>
+    <div class="prose">
+      <p><strong>PATTERN</strong> is a 16-step on and off sequencer on the host's beat, with its own clock at the host tempo when the transport is stopped. Lit steps play RE-DRESS as set, dark steps play the dry sound, and an ON step after an OFF one starts a fresh sliver. RATE runs 1/32 to 1/2 with triplets, LENGTH 1 to 16. Click to flip a step, drag to paint, shift-click to end the pattern there.</p>
+      <p>Every step, corner and switch is part of the patch: presets, A/B, undo and saved sessions keep all of it.</p>
+    </div>
+  </div>
+  <figure class="shot"><img src="assets/paradoxical/xy_pad.webp?v=261102" alt="The RE-DRESS panel with the X-Y PAD on: corners A SHARDS, B REWIND on TAPE with dice, C SMEAR with FEEDBACK and WARP, D PRISM on DIGITAL with dice, the dot in the middle, and the PATTERN row underneath" width="1600" height="525" loading="lazy"><figcaption>X-Y PAD ON · KNOBS / PAD SWAPS CUT AND REASSEMBLY FOR THE PAD</figcaption></figure>
+</section>
+
+<!-- LISTEN -->
+<div class="sh" id="listen">Hear it</div>
+<section class="stack">
+  <div class="prose"><p>Each clip plays the dry source first, then the same passage through PARADOXICAL UNDRESSING. Rendered offline from the plug-in, latency-compensated and not level-boosted.</p></div>
+  <div class="listen">
+    <article class="clip"><div class="vn"><b>SPLINTER</b><span>PRESET · TRANSFORMED</span></div><p>SHARDS on a 1/16 grid, REPEAT 35%, REVERSE 15%, GAP 20%, SHAPE 35%, TAPE at 40%. Plucked glitch slices with dropouts.</p><audio controls preload="none" src="assets/paradoxical/audio/splinter.mp3"></audio></article>
+    <article class="clip"><div class="vn"><b>PLUCKED</b><span>RE-DRESS · SHAPE</span></div><p>Slivers turned into hits by SHAPE, a hard start and gone within 50 to 100 ms, with KEEP LOWS holding the sub.</p><audio controls preload="none" src="assets/paradoxical/audio/plucked.mp3"></audio></article>
+    <article class="clip"><div class="vn"><b>PATTERN</b><span>DRUMS · GATED SHARDS</span></div><p>The 16-step pattern x.xx.xx.x.xx.x.x gating RE-DRESS against the dry drums.</p><audio controls preload="none" src="assets/paradoxical/audio/pattern_drums.mp3"></audio></article>
+    <article class="clip"><div class="vn"><b>X-Y PAD</b><span>VOICE · FOUR CORNERS</span></div><p>A voice through corners A, B, D and C in turn, then the dot in the middle, where all four blend.</p><audio controls preload="none" src="assets/paradoxical/audio/xy_voice.mp3"></audio></article>
+  </div>
+</section>
+
+<!-- MODULES -->
+<div class="sh" id="modules">The modules</div>
+<section class="stack">
+  <div class="prose"><p>Each module has an ON switch that plays its controls at neutral while keeping their values, so you can A/B a module without losing your settings. The switches are part of the patch.</p></div>
+  <ul class="rows">
+    <li><b>THERMAL</b><span><span class="k">HEAT</span> drives up to +11 dB into an asymmetric soft clipper with a low-mid warmth bell, oversampled four times so its harmonics do not fold back into the detail the plug-in is exposing. <span class="k">COLD</span> is a level-neutral spectral tilt, ±14 dB around 1 kHz, that also pulls the saturation back toward clean.</span></li>
+    <li><b>PROXIMITY</b><span><span class="k">INTIMACY</span> moves the sound from 118 cm to 8 cm away, a growing low shelf and presence bell. <span class="k">EXPOSURE</span> is upward unmasking: detail sitting under the spectral envelope is lifted forward, up to 14 dB.</span></li>
+    <li><b>INSTABILITY</b><span><span class="k">PANIC</span> is drift and flutter, up to ±48 cents, plus spectral dropouts the scan draws as gaps. <span class="k">REVERSE</span> keeps the layers and over-processes them instead. <span class="k">NAKED</span> is an alternate-bin comb. <span class="k">WIDEN</span> re-spatialises the stripped core, which is mono by construction at full UNDRESS.</span></li>
+    <li><b>OUTPUT</b><span><span class="k">MIX</span> against the latency-aligned dry signal, <span class="k">OUT</span> ±12 dB, and <span class="k">PARADOX</span>: at 100% the full swell, at 0 honest subtraction, where taking a layer away makes it quieter like a fader would.</span></li>
+    <li><b>LAYERS</b><span>The rack. Every layer gets a presence from 0 to 200%, below 100% removing it and above boosting it, and a character control: <span class="k">FREEZE</span> on SPACE holds the tail from one second to forever, <span class="k">WIDTH</span> on STEREO, <span class="k">SHIFT</span> on HARMONICS, <span class="k">GRAIN</span> on TEXTURE, <span class="k">DRIVE</span> on BODY, <span class="k">SNAP</span> on TRANSIENT and <span class="k">SUB</span> an octave under the core.</span></li>
+  </ul>
+  <div class="two">
+    <figure class="shot"><img src="assets/paradoxical/layers_view.webp?v=261102" alt="The LAYERS page: a presence pill and a character knob for each layer" width="1200" height="925" loading="lazy"><figcaption>LAYERS · THE RACK</figcaption></figure>
+    <figure class="shot"><img src="assets/paradoxical/presets_view.webp?v=261102" alt="The PRESETS page with the five banks" width="1200" height="925" loading="lazy"><figcaption>PRESETS · FIVE BANKS</figcaption></figure>
+  </div>
+</section>
+
+<!-- PRESETS -->
+<div class="sh" id="presets">Presets</div>
+<section class="stack">
+  <ul class="rows">
+    <li><b>INTIMATE</b><span>Closer than the microphone. Close, Whisper, Skin, Breath, Near.</span></li>
+    <li><b>COLD</b><span>Sterile, clinical, microscopic. Clinical, Sterile, Frozen, Empty, White Room.</span></li>
+    <li><b>EXPOSED</b><span>Masking removed, detail forward. Naked, Bare, Unmasked, Revealed, Vulnerable.</span></li>
+    <li><b>EXTREME</b><span>The processor fights itself. Panic, Hypothermia, Paradox, Overexposed, Collapse.</span></li>
+    <li><b>TRANSFORMED</b><span>Stripped, then rebuilt from its own slivers. Shattered, Rewound, Cathedral, Prism, Giant, Beat Repeat, Tape Memory, Broken Record, Crushed Echo, Octave Dice, Splinter, Gated Shards.</span></li>
+  </ul>
+  <p class="small">A/B slots and a 12-step undo live in the header and survive closing the window. Double-click any control to return it to its default.</p>
+</section>
+
+<!-- WHO -->
+<div class="sh" id="who">Who it is for</div>
+<section class="who">
+  <article><b>PRODUCERS</b><p>Glitch, stutter and reverse on the beat from one insert, with a pattern and an X-Y pad to perform it, and KEEP LOWS so the kick and sub stay where they were.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>Take a source down to its skeleton, freeze the room it was in, and rebuild it smeared, pitched and out of order. FORMANT changes the size of a thing without changing its note.</p></article>
+  <article><b>MIX ENGINEERS</b><p>The layers sum back to the input, so a light touch of UNDRESS and EXPOSURE pulls buried detail forward without EQ. PARADOX at 0 makes the comparison honest.</p></article>
+  <article><b>SCORE &amp; AMBIENT</b><p>SMEAR and FEEDBACK turn a phrase into a slowly turning cloud of itself, and HOLD keeps it turning after the source has gone.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Perceptual de-processor and spectral reassembler (insert)</td></tr>
+    <tr><th>LAYERS</th><td>SPACE · STEREO · HARMONICS · TEXTURE · BODY · TRANSIENT, plus the core, which is never removed. Each 0–200% with a character control</td></tr>
+    <tr><th>RE-DRESS</th><td>Four orders (SHARDS, REWIND, SMEAR, PRISM) · twelve bands · 2.5 s history · FEED WHOLE / TAKEN · SYNC FREE / GRID / HITS · four dice · FEEDBACK · four PLAYBACK characters · FORMANT ±12 st</td></tr>
+    <tr><th>PERFORMANCE</th><td>X-Y pad over four full RE-DRESS corners · 16-step PATTERN on the host beat</td></tr>
+    <tr><th>LATENCY</th><td>1276 samples at 48 kHz (26.6 ms), reported to the host; the dry path is aligned to match</td></tr>
+    <tr><th>PRESETS</th><td>32 factory presets in five banks, plus INIT · A/B · 12-step undo</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · activate once online, then runs offline · perpetual</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)<br>Windows (VST3): coming soon</td></tr>
+  </table>
+  <div class="prose">
+    <p>Tested against its own claims: the seven layers null against the input at −93 dB, an engaged bypass nulls at −148 dB, with nothing removed RE-DRESS nulls against itself switched off, and the audio thread allocates nothing while every control moves. auval and pluginval at strictness 10 pass on the AU and the VST3.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <img class="mark" src="assets/paradoxical/theta-wave-gold.svg?v=261102" alt="" width="96" height="56">
+  <div class="eyebrow">PARADOXICAL UNDRESSING</div>
+  <div class="amt"><strong>IN CALIBRATION</strong></div>
+  <p>PARADOXICAL UNDRESSING is in its final calibration runs. Leave your address and you will hear the day it deploys. The trial will be the same installer everyone buys, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=PARADOXICAL%20UNDRESSING%20launch" data-notify="PARADOXICAL UNDRESSING">Notify me at launch</a>
+    <a class="btn ghost" href="#listen">Hear it</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 / AU · WINDOWS COMING SOON</div>
+</section>
+
+<footer><a href="store.html">THETA STORE</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+const reduce = false;
+const TAU = Math.PI*2;
+
+/* notes toggle */
+const nt=document.getElementById('notes');
+if(nt) nt.addEventListener('change',()=>document.body.classList.toggle('hide-notes',!nt.checked));
+
+/* thermal ramp, after Source/gui/Theme.h: violet -> magenta -> amber -> white-hot */
+const RAMP=[[0,[60,40,140]],[.3,[123,77,255]],[.55,[224,79,176]],[.8,[255,179,64]],[1,[255,242,230]]];
+function ramp(t){t=Math.max(0,Math.min(1,t));for(let i=1;i<RAMP.length;i++){if(t<=RAMP[i][0]){const a=RAMP[i-1],b=RAMP[i],f=(t-a[0])/(b[0]-a[0]);return a[1].map((v,k)=>Math.round(v+(b[1][k]-v)*f));}}return RAMP[RAMP.length-1][1];}
+function rgba(c,a){return `rgba(${c[0]},${c[1]},${c[2]},${a})`;}
+function fit(cv){const r=cv.getBoundingClientRect();const d=Math.min(2,window.devicePixelRatio||1);const w=Math.round(r.width*d),h=Math.round(r.width*d*cv.height/cv.width);if(w>0&&(cv.width!==w||cv.height!==h)){cv.width=w;cv.height=h;}}
+
+/* ================= the layer field, after Source/Parameters.h ================= */
+const LAYERS=['SPACE','STEREO','HARMONICS','TEXTURE','BODY','TRANSIENT'];
+const STATES=['DRESSED','EXPOSED','NAKED','VULNERABLE','PARADOXICAL'];
+function presence(i,u){const s=0.04+i*0.145;return 1-Math.max(0,Math.min(1,(u-s)/0.30));}
+function stateIndex(u){return u<.125?0:u<.375?1:u<.625?2:u<.875?3:4;}
+/* make-up: gain=(sum in / sum kept)^0.62, clamped 0.25..4 (LayerEngine). The page models the
+   six removable layers as equal shares of 3/4 of the level and the core as the last quarter. */
+function makeup(u){let kept=0.25;for(let i=0;i<6;i++)kept+=0.125*presence(i,u);return Math.min(4,Math.max(.25,Math.pow(1/kept,0.62)));}
+
+const scan=document.getElementById('scan'), sx=scan.getContext('2d');
+const uIn=document.getElementById('undress');
+let U=0, Ushow=0;
+function hash(n){n=Math.sin(n*127.1+311.7)*43758.5453;return n-Math.floor(n);}
+function drawScan(t){
+  fit(scan);const W=scan.width,H=scan.height,s=W/1100,ts=W/scan.getBoundingClientRect().width;
+  Ushow+= (U-Ushow)*0.12;const u=Ushow;
+  sx.clearRect(0,0,W,H);
+  // graph paper
+  sx.strokeStyle='rgba(140,150,220,.06)';sx.lineWidth=1;
+  for(let x=0;x<W;x+=40*s){sx.beginPath();sx.moveTo(x,0);sx.lineTo(x,H);sx.stroke();}
+  for(let y=0;y<H;y+=40*s){sx.beginPath();sx.moveTo(0,y);sx.lineTo(W,y);sx.stroke();}
+  const cx=W/2, cy=H*0.55;
+  // nested boxes, outermost = SPACE
+  sx.font=`${Math.round(10.5*ts)}px "JetBrains Mono",monospace`;sx.textBaseline='middle';
+  for(let i=0;i<6;i++){
+    const p=presence(i,u);
+    const full=1-i*0.13; const k=0.18+(full-0.18)*Math.pow(p,0.8);
+    const bw=W*0.86*k, bh=H*0.74*k;
+    const x0=cx-bw/2,y0=cy-bh/2;
+    const a=0.05+0.6*p;
+    sx.strokeStyle=`rgba(170,190,255,${a})`;sx.lineWidth=1.4*s;
+    const c=18*s;
+    sx.beginPath();
+    sx.moveTo(x0,y0+c);sx.lineTo(x0,y0);sx.lineTo(x0+c,y0);
+    sx.moveTo(x0+bw-c,y0);sx.lineTo(x0+bw,y0);sx.lineTo(x0+bw,y0+c);
+    sx.moveTo(x0,y0+bh-c);sx.lineTo(x0,y0+bh);sx.lineTo(x0+c,y0+bh);
+    sx.moveTo(x0+bw-c,y0+bh);sx.lineTo(x0+bw,y0+bh);sx.lineTo(x0+bw,y0+bh-c);
+    sx.stroke();
+    sx.font=`${Math.round(10.5*ts)}px "JetBrains Mono",monospace`;
+    if(p>0.02 && bw>(sx.measureText(LAYERS[i]+'100.0').width+30*ts+2*c)){
+      const lab=LAYERS[i], tw=sx.measureText(lab).width+12*ts, lx=x0+c+6*s, ly=y0;
+      sx.fillStyle=`rgba(12,10,24,${0.85*p+0.1})`;sx.fillRect(lx,ly-8*ts,tw,16*ts);
+      sx.strokeStyle=`rgba(170,190,255,${0.5*p})`;sx.strokeRect(lx,ly-8*ts,tw,16*ts);
+      sx.fillStyle=`rgba(225,230,255,${0.9*p})`;sx.fillText(lab,lx+6*ts,ly+0);
+      const v=(p*100).toFixed(1), vw=sx.measureText(v).width+10*ts, vx=x0+bw-c-6*s-vw;
+      sx.fillStyle=`rgba(12,10,24,${0.85*p+0.1})`;sx.fillRect(vx,ly-8*ts,vw,16*ts);
+      sx.strokeStyle=`rgba(170,190,255,${0.5*p})`;sx.strokeRect(vx,ly-8*ts,vw,16*ts);
+      sx.fillStyle=`rgba(225,230,255,${0.9*p})`;sx.fillText(v,vx+5*ts,ly+0);
+    }
+  }
+  // the core: bars that grow and heat as layers go
+  const g=makeup(u); const heat=Math.min(1,0.25+u*0.75);
+  const n=44, span=W*(0.36+0.48*u), bwid=span/n;
+  const glow=sx.createRadialGradient(cx,cy,0,cx,cy,span*0.75);
+  glow.addColorStop(0,rgba(ramp(heat*0.85),0.22+0.25*u));glow.addColorStop(1,'rgba(0,0,0,0)');
+  sx.fillStyle=glow;sx.fillRect(cx-span,cy-span,span*2,span*2);
+  for(let j=0;j<n;j++){
+    const f=j/(n-1), env=Math.sin(Math.PI*f)**0.6;
+    const wob=reduce?0.5:0.5+0.5*Math.sin(t*0.0021*(1+hash(j)*2)+j*1.7);
+    const h=H*0.07*(1+2.6*u)*Math.sqrt(g)*env*(0.35+0.65*hash(j*3.1))*(0.6+0.4*wob);
+    const col=ramp(heat*(0.55+0.45*env*wob));
+    const x=cx-span/2+j*bwid+bwid*0.2;
+    const gr=sx.createLinearGradient(0,cy-h,0,cy+h);
+    gr.addColorStop(0,rgba(col,0));gr.addColorStop(0.5,rgba(col,0.95));gr.addColorStop(1,rgba(col,0));
+    sx.fillStyle=gr;sx.fillRect(x,cy-h,Math.max(1,bwid*0.55),h*2);
+  }
+  sx.strokeStyle=rgba(ramp(heat),0.9);sx.lineWidth=2*s;sx.beginPath();sx.moveTo(cx-span/2,cy);sx.lineTo(cx+span/2,cy);sx.stroke();
+  // FUNDAMENTAL tag
+  const ft='FUNDAMENTAL';const fw=sx.measureText(ft).width+12*ts;
+  sx.fillStyle='rgba(12,10,24,.9)';sx.fillRect(cx-fw/2,cy-H*0.07*(1+2.6*u)-26*ts,fw,16*ts);
+  sx.strokeStyle='rgba(170,190,255,.5)';sx.strokeRect(cx-fw/2,cy-H*0.07*(1+2.6*u)-26*ts,fw,16*ts);
+  sx.fillStyle='rgba(235,235,255,.95)';sx.fillText(ft,cx-fw/2+6*ts,cy-H*0.07*(1+2.6*u)-18*ts);
+}
+const ladder=[...document.querySelectorAll('#ladder li')];
+function readScan(){
+  U=uIn.value/100; const si=stateIndex(U);
+  document.getElementById('undress-v').textContent=uIn.value+'%';
+  let L=1;for(let i=0;i<6;i++)L+=presence(i,U);
+  document.getElementById('h-layers').textContent=(Math.floor(L*10)/10).toFixed(1)+'/7';
+  document.getElementById('h-gain').textContent='+'+(20*Math.log10(makeup(U))).toFixed(1)+' dB';
+  document.getElementById('h-state').textContent=STATES[si];
+  document.getElementById('h-state2').textContent=STATES[si];
+  ladder.forEach(li=>li.classList.toggle('on',+li.dataset.s===si));
+}
+uIn.addEventListener('input',readScan);readScan();
+
+/* ================= the RE-DRESS lab: twelve read heads ================= */
+const lab=document.getElementById('lab'), lx=lab.getContext('2d');
+const NB=12, BPM=120, STEP=60/BPM/4, SPANMAX=2.5, VIEW=4.0;
+const DEF={mode:0,sliver:35,span:40,shape:0,gap:0,rev:0,grid:true,pattern:false,hold:false};
+let P=Object.assign({},DEF);
+const PAT='x.xx.xx.x.xx.x.x';
+const MODES=['SHARDS','REWIND','SMEAR','PRISM'];
+// the history: a 16-step drum loop on twelve bands (0 = lowest)
+const KICK=[0,6,8,11], SNARE=[4,12], HATS=[0,2,4,6,8,10,12,14], BASS=[0,3,6,8,10,14];
+function src(b,tau){
+  if(tau<0)return 0;
+  const step=Math.floor(tau/STEP), ph=tau-step*STEP, s16=((step%16)+16)%16;let v=0;
+  // contributions of the last few steps
+  for(let back=0;back<4;back++){
+    const s=((s16-back)%16+16)%16, dt=ph+back*STEP;
+    if(KICK.includes(s)) v+= (b<3?1:b<5?0.5:0.08)*Math.exp(-dt/0.11);
+    if(SNARE.includes(s)) v+= (b>=3&&b<=8?0.9:b>8?0.45:0.1)*Math.exp(-dt/0.09);
+    if(HATS.includes(s)) v+= (b>=9?0.75:0)*Math.exp(-dt/0.03);
+    if(BASS.includes(s)) v+= (b===1||b===2?0.55:b===3?0.3:0)*Math.exp(-dt/0.35);
+  }
+  return Math.min(1,v);
+}
+function rnd(a,b){return hash(a*91.7+b*13.3+7.1);}
+function sliverLen(){ if(P.grid){const opts=[1/32,1/16,1/8,1/4];const k=Math.min(3,Math.floor(P.sliver/26));return 60/BPM*4*opts[k];} return 0.015+(0.43-0.015)*Math.pow(P.sliver/100,1.6); }
+function spanSec(){return 0.25+(SPANMAX-0.25)*P.span/100;}
+/* for output time t and band b: which history time is read, and with what gain */
+function readHead(t,b){
+  let L=sliverLen(); let bandKey=0, tt=t;
+  if(P.mode===2){L*=3;bandKey=b+1;tt=t+hash(b*5.3)*L;}           // SMEAR: own clock per band, 3x longer
+  const k=Math.floor(tt/L), s0=k*L-(bandKey?hash(b*5.3)*L:0), into=t-s0;
+  const sp=spanSec();
+  const r1=rnd(k,bandKey), rGap=rnd(k,bandKey+40), rRev=rnd(k,bandKey+80);
+  if(P.gap>0 && rGap<P.gap/100) return [null,0,k];
+  let reversed = rRev < P.rev/100;
+  let src_t;
+  const anchor = P.hold ? Math.min(s0, holdAt) : s0;
+  if(P.mode===0){ const off=0.05+r1*sp; src_t = reversed? anchor-off+L-into : anchor-off+into; }
+  else if(P.mode===1){ src_t = reversed? anchor-L+into : anchor-into; reversed=!reversed; }
+  else if(P.mode===2){ const off=0.05+r1*sp; src_t = anchor-off+into*0.25; }
+  else { const rot=k%NB; const off=((b+rot)%NB+1)/NB*sp; src_t = reversed? anchor-off+L-into : anchor-off+into; }
+  if(P.hold) src_t = holdAt - ((holdAt - src_t) % Math.max(0.5,sp));
+  let gain=1; if(P.shape>0){const tc=Math.exp(Math.log(L)+(Math.log(0.012)-Math.log(L))*P.shape/100);gain=Math.exp(-into/tc);}
+  return [src_t,gain,k];
+}
+let holdAt=0;
+function drawLab(now){
+  fit(lab);const W=lab.width,H=lab.height,s=W/lab.getBoundingClientRect().width;
+  lx.clearRect(0,0,W,H);
+  const t1=now, t0=t1-VIEW;
+  const padL=Math.min(70,W/s*0.09)*s, padR=12*s, gap=26*s, topY=20*s;
+  const rowH=(H-topY-gap-26*s)/2/NB;
+  const cols=Math.round(320), cw=(W-padL-padR)/cols;
+  lx.font=`${Math.round(10.5*s)}px "JetBrains Mono",monospace`;lx.textBaseline='middle';
+  lx.fillStyle='rgba(200,168,107,.85)';lx.fillText('HISTORY',6*s,topY+rowH*NB/2);lx.fillText('OUT',6*s,topY+rowH*NB+gap+rowH*NB/2);
+  let slivers=new Set(), silent=0, revd=0, total=0;
+  for(let c=0;c<cols;c++){
+    const t=t0+(c+0.5)/cols*VIEW;
+    const step=Math.floor(t/STEP), patOn=!P.pattern || PAT[((step%16)+16)%16]==='x';
+    for(let b=0;b<NB;b++){
+      // history
+      const hv=P.hold && t>holdAt ? 0 : src(b,t);
+      const yH=topY+(NB-1-b)*rowH;
+      if(hv>0.02){lx.fillStyle=`rgba(170,200,240,${Math.min(1,0.12+0.85*hv)})`;lx.fillRect(padL+c*cw,yH+1,cw+0.5,rowH-2);}
+      // output
+      const yO=topY+NB*rowH+gap+(NB-1-b)*rowH;
+      if(!patOn){const v=src(b,t);if(v>0.02){lx.fillStyle=`rgba(80,110,160,${0.2+0.6*v})`;lx.fillRect(padL+c*cw,yO+1,cw+0.5,rowH-2);}continue;}
+      const [st,gain,k]=readHead(t,b);
+      if(b===0){slivers.add(k);total++; if(st===null)silent++;}
+      if(st===null) continue;
+      const v=src(b,st)*gain;
+      if(v>0.02){const age=Math.max(0,Math.min(1,(t-st)/SPANMAX));lx.fillStyle=rgba(ramp(0.3+0.7*age),Math.min(1,0.18+v));lx.fillRect(padL+c*cw,yO+1,cw+0.5,rowH-2);}
+    }
+  }
+  // grid lines on beats
+  lx.strokeStyle='rgba(200,168,107,.18)';lx.lineWidth=1;
+  for(let bt=Math.ceil(t0/(STEP*4))*STEP*4;bt<t1;bt+=STEP*4){const x=padL+(bt-t0)/VIEW*(W-padL-padR);lx.beginPath();lx.moveTo(x,topY-8*s);lx.lineTo(x,H-22*s);lx.stroke();}
+  lx.fillStyle='rgba(141,135,121,.9)';lx.fillText('−4 s',padL,H-10*s);lx.textAlign='right';lx.fillText('NOW',W-padR,H-10*s);lx.textAlign='left';
+  // readouts
+  const L=sliverLen()*(P.mode===2?3:1);
+  document.getElementById('r-mode').textContent=MODES[P.mode];
+  document.getElementById('r-sliver').textContent= P.grid? ['1/32','1/16','1/8','1/4'][Math.min(3,Math.floor(P.sliver/26))]+(P.mode===2?' ×3':'') : Math.round(L*1000)+' ms';
+  document.getElementById('r-rate').textContent=(1/L).toFixed(1);
+  document.getElementById('r-gap').textContent=Math.round(P.gap)+'%';
+  document.getElementById('r-rev').textContent=(P.mode===1?'ALL · ':'')+Math.round(P.rev)+'%';
+}
+// controls
+const CTRL=[['sliver','SLIVER',0,100],['span','SPAN',0,100],['shape','SHAPE',0,100],['gap','DICE GAP',0,60],['rev','DICE REVERSE',0,100]];
+const box=document.getElementById('ctrls');
+function fmt(id,v){ if(id==='span')return spanSec().toFixed(2)+' s'; if(id==='sliver')return P.grid?['1/32','1/16','1/8','1/4'][Math.min(3,Math.floor(v/26))]:Math.round(sliverLen()*1000)+' ms'; return Math.round(v)+'%'; }
+CTRL.forEach(([id,name,mn,mx])=>{const d=document.createElement('div');d.className='ctrl';d.innerHTML=`<label for="c-${id}">${name}<output id="o-${id}"></output></label><input type="range" id="c-${id}" min="${mn}" max="${mx}" step="1" value="${P[id]}">`;box.appendChild(d);
+  d.querySelector('input').addEventListener('input',e=>{P[id]=+e.target.value;syncOut();});});
+function syncOut(){CTRL.forEach(([id])=>{document.getElementById('o-'+id).textContent=fmt(id,P[id]);document.getElementById('c-'+id).value=P[id];});
+  document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.mode===P.mode)));
+  document.getElementById('t-grid').setAttribute('aria-pressed',String(P.grid));
+  document.getElementById('t-pattern').setAttribute('aria-pressed',String(P.pattern));
+  document.getElementById('t-hold').setAttribute('aria-pressed',String(P.hold));}
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{P.mode=+b.dataset.mode;syncOut();}));
+document.getElementById('t-grid').addEventListener('click',()=>{P.grid=!P.grid;syncOut();});
+document.getElementById('t-pattern').addEventListener('click',()=>{P.pattern=!P.pattern;syncOut();});
+document.getElementById('t-hold').addEventListener('click',()=>{P.hold=!P.hold;holdAt=clock;syncOut();});
+document.getElementById('t-reset').addEventListener('click',()=>{P=Object.assign({},DEF);syncOut();});
+syncOut();
+
+/* animation: only while on screen */
+let clock=4, last=null; const vis=new Map();
+const io=new IntersectionObserver(es=>es.forEach(e=>vis.set(e.target,e.isIntersecting)),{rootMargin:'100px'});
+io.observe(scan);io.observe(lab);
+function frame(ts){
+  const dt=last===null?0:Math.min(0.1,(ts-last)/1000);last=ts;
+  if(!reduce) clock+=dt*0.5;           // the lab runs at half speed so the slivers can be followed
+  if(vis.get(scan)!==false) drawScan(ts);
+  if(vis.get(lab)!==false) drawLab(clock);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+<script src="./download-gate.js"></script>
+</body>
+</html>

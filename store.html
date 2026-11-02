@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="mobile.css">
 <script src="./image-slot.js"></script>
 <script src="./subscribe.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}@keyframes pu-store-spin{to{transform:rotate(360deg)}}
+<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}@keyframes pu-store-spin{to{transform:rotate(360deg)}}details[data-collapse]>summary::-webkit-details-marker{display:none}details[data-collapse][open]>summary [data-store-btn]{background:transparent;color:#f3ece0}
 </style>
 <style>
 @media (max-width:960px){ [data-tar-nav] [data-links] [data-hide-sm]{display:none !important} }
@@ -97,11 +97,16 @@
     <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
       <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#c8a86b;border-radius:50%;box-shadow:0 0 10px rgba(200,168,107,.6)"></span>
       <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
-        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">ALCHEMY COLLECTION</span>
-        <span style="font-size:9px;letter-spacing:4px;color:#6E6764;font-weight:400;text-transform:uppercase">// SIX TOOLS</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase;line-height:1.9;text-align:left">ALCHEMY<br>COLLECTION</span>
       </div>
     </div>
-    <div data-store-grid style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px">
+    <details data-collapse style="flex:1;min-width:0">
+      <summary data-sr style="list-style:none;cursor:pointer;min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(200,168,107,.10),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(200,168,107,.16),transparent 55%),#0c0c10">
+        <div style="width:120px;height:120px;border-radius:8px;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(200,168,107,.18)"><img src="assets/color/cover-cinder.png?v=260907" alt="ALCHEMY COLLECTION" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(22px,2.8vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">ALCHEMY <span style="color:#c8a86b">COLLECTION</span></span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">Six sonic exploration tools.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">$25 each with code ALCHEMY50</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9fd3c2">AVAILABLE</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">View all six</span></div>
+      </summary>
+      <div data-store-grid style="margin-top:22px;flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px">
       <a href="cinder.html" style="display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;padding:18px;border:1px solid transparent;transition:0.4s" style-hover="background:rgba(200,168,107,.06)">
         <div style="width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:flex-start"><img src="assets/cinder/hero_v110.png?v=261010" alt="CINDER" style="width:100%;height:100%;object-fit:contain;object-position:left center;display:block"></div>
         <div style="display:flex;flex-direction:column;justify-content:center"><span style="font-family:'Montserrat',sans-serif;font-size:20px;letter-spacing:0.24em;color:#f0ede6;text-transform:uppercase;font-weight:200;margin-bottom:6px">CINDER</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8d8779">Distortion &amp; Saturation</span></div>
@@ -134,6 +139,7 @@
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9fd3c2">AVAILABLE</span><span style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:14px;letter-spacing:0.06em;color:#8d8779;text-decoration:line-through">$50</span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:18px;letter-spacing:0.06em;color:#f0ede6">$25</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;color:#06080c;background:#c8a86b;border-radius:3px;padding:2px 6px;text-transform:uppercase;white-space:nowrap">Sale</span></span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Buy / Trial</span></div>
       </a>
     </div>
+    </details>
   </div>
 
   <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
@@ -144,24 +150,25 @@
       </div>
     </div>
     <div style="flex:1;min-width:0;display:flex;flex-direction:column">
-      <a data-sr href="alchemy_index.html" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:40px;text-decoration:none;color:inherit;padding:34px 36px;border-radius:2px;background:#06080c repeating-linear-gradient(to bottom,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);transition:0.4s" style-hover="background:#0c0d12 repeating-linear-gradient(to bottom,rgba(255,255,255,.024) 0 1px,transparent 1px 3px)">
+      <a data-sr href="alchemy_index.html" style="min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:40px;text-decoration:none;color:inherit;padding:34px 36px;border-radius:2px;background:#06080c repeating-linear-gradient(to bottom,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);transition:0.4s" style-hover="background:#0c0d12 repeating-linear-gradient(to bottom,rgba(255,255,255,.024) 0 1px,transparent 1px 3px)">
         <div style="display:flex;flex-direction:column;gap:16px;min-width:0"><img src="assets/alchemy_index/brand/lockup_vhs.webp?v=261021" alt="Alchemy Index" style="width:100%;max-width:520px;height:auto;aspect-ratio:2400/664;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8f96">Thirty-five modules in one rack</span></div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#c8a86b">COMING SOON</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Notify me</span></div>
       </a>
     </div>
   </div>
+
   <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
     <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
       <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#C8A86B;border-radius:50%;box-shadow:0 0 10px #C8A86B"></span>
       <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
-        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">PENROSE ULTRA</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">DIFFERENTIAL</span>
       </div>
     </div>
     <div style="flex:1;min-width:0;display:flex;flex-direction:column">
-      <a data-sr href="penrose_ultra.html" style="display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(95,168,216,.10),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(95,168,216,.16),transparent 55%),#0c0c10">
-        <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(95,168,216,.18)"><img src="assets/penrose_ultra/core-spectrum.webp?v=261004" alt="PENROSE ULTRA" style="width:100%;height:100%;object-fit:cover;display:block;animation:pu-store-spin 240s linear infinite"></div>
-        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(24px,3vw,36px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">PENROSE <span style="color:#c8a86b">ULTRA</span></span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">Your mix, finished.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">All-in-one mixing tools for content creation</span></div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Join the beta</span></div>
+      <a data-sr href="differential.html" style="min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(200,232,170,.08),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(200,232,170,.14),transparent 55%),#0c0c10">
+        <div style="width:120px;height:120px;border-radius:8px;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(200,232,170,.16)"><img src="assets/differential/panel_v0342.png?v=261101" alt="DIFFERENTIAL" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(22px,2.8vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">DIFFERENTIAL</span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">An intentional difference library.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">Fragment glitch processor</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Notify me</span></div>
       </a>
     </div>
   </div>
@@ -170,36 +177,16 @@
     <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
       <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#c8a86b;border-radius:50%;box-shadow:0 0 10px rgba(200,168,107,.6)"></span>
       <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
-        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">RGB COLLECTION</span>
-        <span style="font-size:9px;letter-spacing:4px;color:#6E6764;font-weight:400;text-transform:uppercase">// BUNDLE</span>
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase;line-height:1.9;text-align:left">MIXING<br>COLLECTION</span>
       </div>
     </div>
-    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
-      <a data-sr href="rgb_collection.html" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:40px;text-decoration:none;color:inherit;padding:34px 36px;border-radius:6px;background:linear-gradient(90deg,rgba(12,21,25,.92) 0%,rgba(12,21,25,.72) 60%,rgba(12,21,25,.55) 100%),url('assets/rgb/banner-field.jpg?v=260824f') center/cover no-repeat;transition:0.4s" style-hover="background:linear-gradient(90deg,rgba(12,21,25,.82) 0%,rgba(12,21,25,.55) 60%,rgba(12,21,25,.35) 100%),url('assets/rgb/banner-field.jpg?v=260824f') center/cover no-repeat">
-        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-          <span style="display:flex;gap:8px;align-items:center"><span style="width:11px;height:11px;background:#990000;flex-shrink:0"></span><span style="width:11px;height:11px;background:#009900;flex-shrink:0"></span><span style="width:11px;height:11px;background:#000099;flex-shrink:0"></span><span style="width:11px;height:11px;background:#4A2A18;flex-shrink:0"></span><span style="width:11px;height:11px;background:#3A3A3A;flex-shrink:0"></span><span style="width:11px;height:11px;background:#000000;flex-shrink:0;outline:1px solid #3a3534"></span></span>
-          <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(24px,3vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6;text-transform:uppercase">THE RGB COLLECTION</span>
-          <span style="font-weight:300;font-size:16px;color:#b9b6ae">Six circuits. Six colors. One knob at the center of each.</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">Bundle only · all six circuits · one licence</span>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span>
-          <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:40px;letter-spacing:.04em;color:#f0ede6;line-height:1">$99</span>
-          <span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Notify me</span>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
-    <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
-      <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#c8a86b;border-radius:50%;box-shadow:0 0 10px rgba(200,168,107,.6)"></span>
-      <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
-        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">MIXING COLLECTION</span>
-        <span style="font-size:9px;letter-spacing:4px;color:#6E6764;font-weight:400;text-transform:uppercase">// THE WORKING CHAIN</span>
-      </div>
-    </div>
-    <div data-store-grid style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px">
+    <details data-collapse style="flex:1;min-width:0">
+      <summary data-sr style="list-style:none;cursor:pointer;min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(126,200,220,.10),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(126,200,220,.16),transparent 55%),#0c0c10">
+        <div style="width:120px;height:120px;border-radius:8px;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(126,200,220,.18)"><img src="assets/baryon/sub_v012.png" alt="MIXING COLLECTION" style="width:100%;height:100%;object-fit:cover;object-position:40% 40%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(22px,2.8vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">MIXING <span style="color:#c8a86b">COLLECTION</span></span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">Six working tools for the mix.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">$49.50 each with code MIXING50</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9fd3c2">AVAILABLE</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">View all six</span></div>
+      </summary>
+      <div data-store-grid style="margin-top:22px;flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px">
       <a href="ananke.html" style="display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;padding:18px;border:1px solid transparent;transition:0.4s" style-hover="background:rgba(200,168,107,.06)">
         <div style="width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:flex-start"><img src="assets/ananke/hero_v022.png?v=261029" alt="ANANKE" style="width:100%;height:100%;object-fit:contain;object-position:left center;display:block"></div>
         <div style="display:flex;flex-direction:column;justify-content:center"><span style="font-family:'Montserrat',sans-serif;font-size:20px;letter-spacing:0.24em;color:#f0ede6;text-transform:uppercase;font-weight:200;margin-bottom:6px">ANANKE</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8d8779">Decoupled Feed-Forward Compressor</span></div>
@@ -229,6 +216,63 @@
         <div style="width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:flex-start"><img src="assets/pneuma/hero_v0200.png?v=261029d" alt="PNEUMA" style="width:100%;height:100%;object-fit:contain;object-position:left center;display:block"></div>
         <div style="display:flex;flex-direction:column;justify-content:center"><span style="font-family:'Montserrat',sans-serif;font-size:20px;letter-spacing:0.24em;color:#f0ede6;text-transform:uppercase;font-weight:200;margin-bottom:6px">PNEUMA</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8d8779">Dynamic Equaliser</span></div>
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:14px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">DEVELOPMENT</span><span style="display:flex;align-items:baseline;gap:8px"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:14px;letter-spacing:0.06em;color:#8d8779;text-decoration:line-through">$99</span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:18px;letter-spacing:0.06em;color:#f0ede6">$49.50</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.12em;color:#06080c;background:#c8a86b;border-radius:3px;padding:2px 6px;text-transform:uppercase;white-space:nowrap">Sale</span></span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid rgba(243,236,224,0.4);background:transparent;color:#f3ece0;transition:0.3s">Notify me</span></div>
+      </a>
+    </div>
+    </details>
+  </div>
+
+  <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
+    <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
+      <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#C8A86B;border-radius:50%;box-shadow:0 0 10px #C8A86B"></span>
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase;line-height:1.9;text-align:left">PARADOXICAL<br>UNDRESSING</span>
+      </div>
+    </div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <a data-sr href="paradoxical_undressing.html" style="min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(214,92,200,.10),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(214,92,200,.16),transparent 55%),#0c0c10">
+        <div style="width:120px;height:120px;border-radius:8px;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(214,92,200,.18)"><img src="assets/paradoxical/main_view.webp?v=261101" alt="PARADOXICAL UNDRESSING" style="width:100%;height:100%;object-fit:cover;object-position:40% 35%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(22px,2.8vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">PARADOXICAL <span style="color:#c8a86b">UNDRESSING</span></span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">Strip a sound, layer by layer.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">Perceptual de-processor</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Notify me</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
+    <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
+      <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#C8A86B;border-radius:50%;box-shadow:0 0 10px #C8A86B"></span>
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">PENROSE ULTRA</span>
+      </div>
+    </div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <a data-sr href="penrose_ultra.html" style="min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:36px;text-decoration:none;color:inherit;padding:30px 36px;border-radius:8px;border:1px solid #242230;background:radial-gradient(120% 140% at 0% 50%,rgba(95,168,216,.10),transparent 55%),#0c0c10;transition:0.4s" style-hover="border-color:#7a6840;background:radial-gradient(120% 140% at 0% 50%,rgba(95,168,216,.16),transparent 55%),#0c0c10">
+        <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;flex-shrink:0;box-shadow:0 0 40px rgba(95,168,216,.18)"><img src="assets/penrose_ultra/core-spectrum.webp?v=261004" alt="PENROSE ULTRA" style="width:100%;height:100%;object-fit:cover;display:block;animation:pu-store-spin 240s linear infinite"></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(24px,3vw,36px);letter-spacing:.28em;line-height:1.1;color:#f0ede6">PENROSE <span style="color:#c8a86b">ULTRA</span></span><span style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;color:#b9b6ae">Your mix, finished.</span><span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">All-in-one mixing tools for content creation</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span><span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Join the beta</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div data-sg style="display:flex;width:100%;max-width:1120px;margin-bottom:72px;position:relative">
+    <div data-ss style="flex:0 0 50px;display:flex;align-items:flex-start;justify-content:center;border-right:1px solid #242230;padding-right:40px;margin-right:40px;padding-top:25px;position:relative">
+      <span style="position:absolute;top:25px;right:-4px;width:7px;height:7px;background:#c8a86b;border-radius:50%;box-shadow:0 0 10px rgba(200,168,107,.6)"></span>
+      <div style="writing-mode:vertical-rl;transform:rotate(180deg);display:flex;flex-direction:row;align-items:center;gap:15px;white-space:nowrap">
+        <span style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.42em;color:#f0ede6;font-weight:500;text-transform:uppercase">RGB COLLECTION</span>
+      </div>
+    </div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <a data-sr href="rgb_collection.html" style="min-height:237px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:40px;text-decoration:none;color:inherit;padding:34px 36px;border-radius:6px;background:linear-gradient(90deg,rgba(12,21,25,.92) 0%,rgba(12,21,25,.72) 60%,rgba(12,21,25,.55) 100%),url('assets/rgb/banner-field.jpg?v=260824f') center/cover no-repeat;transition:0.4s" style-hover="background:linear-gradient(90deg,rgba(12,21,25,.82) 0%,rgba(12,21,25,.55) 60%,rgba(12,21,25,.35) 100%),url('assets/rgb/banner-field.jpg?v=260824f') center/cover no-repeat">
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <span style="display:flex;gap:8px;align-items:center"><span style="width:11px;height:11px;background:#990000;flex-shrink:0"></span><span style="width:11px;height:11px;background:#009900;flex-shrink:0"></span><span style="width:11px;height:11px;background:#000099;flex-shrink:0"></span><span style="width:11px;height:11px;background:#4A2A18;flex-shrink:0"></span><span style="width:11px;height:11px;background:#3A3A3A;flex-shrink:0"></span><span style="width:11px;height:11px;background:#000000;flex-shrink:0;outline:1px solid #3a3534"></span></span>
+          <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(24px,3vw,34px);letter-spacing:.28em;line-height:1.1;color:#f0ede6;text-transform:uppercase">THE RGB COLLECTION</span>
+          <span style="font-weight:300;font-size:16px;color:#b9b6ae">Six circuits. Six colors. One knob at the center of each.</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:#8d8779">Bundle only · all six circuits · one licence</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:15px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#c8a86b">COMING SOON</span>
+          <span style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:40px;letter-spacing:.04em;color:#f0ede6;line-height:1">$99</span>
+          <span data-store-btn style="align-self:flex-end;width:auto;display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;border:1px solid #f3ece0;background:#f3ece0;color:#06080c;transition:0.3s">Notify me</span>
+        </div>
       </a>
     </div>
   </div>
