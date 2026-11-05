@@ -252,7 +252,7 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Three-circuit distortion · Version 1.0</div>
+    <div class="eyebrow">Three-circuit distortion · Version 1.3.1</div>
     <h1 class="wordmark">CINDER</h1>
     <div class="lede">
       <p>Three waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe, and a transfer curve drawn by the same code that processes your audio.</p>
@@ -297,12 +297,12 @@ footer a:hover{color:var(--gold)}
       <p><strong>Even harmonics read as thickness. Odd harmonics read as edge.</strong> A curve that treats the top and bottom halves the same makes odd ones. A curve that treats them differently adds the even ones.</p>
     </div>
     <div class="prose">
-      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>TONE</strong>, <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
+      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>EQ</strong> brings in an eight-band curve you draw, before or after the circuit. <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
       <p>One header owns the curve. The audio path, the display and the test harness all evaluate it, so the picture cannot drift from the sound.</p>
     </div>
   </div>
   <div class="path">
-    <svg viewBox="0 0 1080 240" role="img" aria-label="CINDER's signal path: input, 4x upsampler, the shaper with DRIVE, BIAS, TUBE, IRON and VAR, moved by SAG and the LFO, 4x downsampler, DC block, TONE, MIX against the delayed dry signal, OUTPUT, AUTO LEVEL and the true-peak ceiling, output">
+    <svg viewBox="0 0 1080 240" role="img" aria-label="CINDER's signal path: input, 4x upsampler, the shaper with DRIVE, BIAS, TUBE, IRON and VAR, moved by SAG and the LFO, 4x downsampler, DC block, the EQ (set POST DRIVE; PRE DRIVE puts it ahead of the shaper), MIX against the delayed dry signal, OUTPUT, AUTO LEVEL and the true-peak ceiling, output">
       <text x="10" y="132">IN</text>
       <path class="wire" d="M34 128 H70"/><path class="flow" d="M34 128 H70"/>
       <rect class="box" x="70" y="102" width="86" height="52" rx="4"/><text class="lbl" x="113" y="124" text-anchor="middle">UP 4×</text><text x="113" y="142" text-anchor="middle">63 TAP</text>
@@ -313,7 +313,7 @@ footer a:hover{color:var(--gold)}
       <path class="wire" d="M480 128 H506"/><path class="flow" d="M480 128 H506"/>
       <rect class="box" x="506" y="102" width="80" height="52" rx="4"/><text class="lbl" x="546" y="124" text-anchor="middle">DC</text><text x="546" y="142" text-anchor="middle">10 Hz</text>
       <path class="wire" d="M586 128 H610"/><path class="flow" d="M586 128 H610"/>
-      <rect class="box" x="610" y="102" width="88" height="52" rx="4"/><text class="lbl" x="654" y="124" text-anchor="middle">TONE</text><text x="654" y="142" text-anchor="middle">TILT 800 Hz</text>
+      <rect class="box" x="610" y="102" width="88" height="52" rx="4"/><text class="lbl" x="654" y="124" text-anchor="middle">EQ</text><text x="654" y="142" text-anchor="middle">8 BANDS</text>
       <path class="wire" d="M698 128 H724"/><path class="flow" d="M698 128 H724"/>
       <circle class="box" cx="744" cy="128" r="20"/><text class="lbl" x="744" y="132" text-anchor="middle">MIX</text>
       <path class="wire" d="M52 128 V44 H744 V108"/><path class="flow" d="M52 44 H744"/>
@@ -335,7 +335,7 @@ footer a:hover{color:var(--gold)}
     <li><span class="num">1</span><b>LIFT</b><p>The signal is upsampled four times, so the harmonics the curve makes have room above the audio band.</p></li>
     <li><span class="num">2</span><b>BEND</b><p>The shaper bends it, with antiderivative anti-aliasing around the nonlinearity. TUBE and IRON reshape the curve, VAR detunes the right channel.</p></li>
     <li><span class="num">3</span><b>RETURN</b><p>The downsampler brings it back to your session's rate, and a 10 Hz blocker takes out the DC an asymmetric curve leaves.</p></li>
-    <li><span class="num">4</span><b>VOICE</b><p>TONE tilts the result around 800 Hz. MIX blends it with the dry signal, delayed so the two stay in phase.</p></li>
+    <li><span class="num">4</span><b>VOICE</b><p>EQ brings in the curve you draw in its panel, after the circuit or, set PRE DRIVE, ahead of it. MIX blends it with the dry signal, delayed so the two stay in phase.</p></li>
     <li><span class="num">5</span><b>LEVEL</b><p>OUTPUT trims, then AUTO LEVEL matches the loudness to the input and holds the ceiling at −0.3 dB true peak.</p></li>
   </ol>
 </section>
@@ -358,7 +358,7 @@ footer a:hover{color:var(--gold)}
     <div class="readouts"><span>THD<b id="r-thd">-</b></span><span>H2<b id="r-h2">-</b></span><span>H3<b id="r-h3">-</b></span><span>PEAK IN 0.72 → OUT<b id="r-out">-</b></span></div>
     <div class="ctrls" id="ctrls"></div>
   </div>
-  <div class="legend"><span><i style="background:var(--cream)"></i>OUTPUT · LEFT</span><span><i style="background:var(--ember)"></i>RIGHT, WHEN VAR IS UP</span><span><i style="background:rgba(242,233,220,.25)"></i>INPUT</span><span>MEMORYLESS MODEL · BEFORE TONE, MIX AND AUTO LEVEL</span></div>
+  <div class="legend"><span><i style="background:var(--cream)"></i>OUTPUT · LEFT</span><span><i style="background:var(--ember)"></i>RIGHT, WHEN VAR IS UP</span><span><i style="background:rgba(242,233,220,.25)"></i>INPUT</span><span>MEMORYLESS MODEL · BEFORE THE EQ, MIX AND AUTO LEVEL</span></div>
 </section>
 
 <!-- CIRCUITS -->
@@ -414,8 +414,8 @@ footer a:hover{color:var(--gold)}
       <p>0 to 100. A level follower pulls the drive down as the signal gets loud, up to 9 dB at 100, reacting in about 20 ms and recovering over about 250 ms. It ducks on the transient and breathes back in behind it: sustained material distorts less than the hit that started it. At SAG 100 the third harmonic falls from −11.7 dB to −17.9 dB.</p>
     </article>
     <article class="knob-card" data-knob="tone">
-      <div class="knob-name">TONE · MIX · OUTPUT</div>
-      <p>TONE is a ±12 dB tilt around 800 Hz: at +12 it measures −6.00 dB at 100 Hz and +6.00 dB at 8 kHz. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
+      <div class="knob-name">EQ · MIX · OUTPUT</div>
+      <p>EQ runs −100 to +100 % and sets how much of the curve you draw is heard: 0 is no EQ at all, +100 % is the curve as drawn, and turning left plays it upside down. Right-click the knob or click the word EQ to open the panel: a 24 dB/oct high-pass and low-pass, a low shelf, four bells and a high shelf, each with FREQ, GAIN (±18 dB) and Q, PRE or POST DRIVE. Sessions saved with the old TONE knob open sounding the same. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
     </article>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:20px">
@@ -461,7 +461,7 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <div class="prose">
     <p>Most distortion plug-ins show you a curve. Very few show you their curve: the picture is usually drawn by separate code from a simplified model, so it drifts exactly where you care most, at the extremes and once a second stage is involved. CINDER's display evaluates the same header as the audio, so the curve bends because the shaper bent.</p>
-    <p>The THD line in the corner goes a step further. It is not predicted from the curve at all. CINDER finds the fundamental in your input and reads every harmonic of it in the audio leaving the plug-in, after TONE, MIX, OUTPUT and AUTO LEVEL: <span class="k">THD 23.0 %  @ 1.00 kHz</span>. Feed it a chord or noise and it reads <span class="k">THD --</span> rather than print a number that means nothing. <strong>The build refuses to ship if that reading disagrees with an independent analysis of the same audio by more than half a decibel.</strong></p>
+    <p>The THD line in the corner goes a step further. It is not predicted from the curve at all. CINDER finds the fundamental in your input and reads every harmonic of it in the audio leaving the plug-in, after the EQ, MIX, OUTPUT and AUTO LEVEL: <span class="k">THD 23.0 %  @ 1.00 kHz</span>. Feed it a chord or noise and it reads <span class="k">THD --</span> rather than print a number that means nothing. <strong>The build refuses to ship if that reading disagrees with an independent analysis of the same audio by more than half a decibel.</strong></p>
   </div>
   <div class="prose">
     <ul class="keys">
@@ -471,7 +471,7 @@ footer a:hover{color:var(--gold)}
       <li><i style="background:linear-gradient(90deg,rgba(242,233,220,.2) 1px,transparent 1px) 0 0/4px 100%"></i><span><strong>56 filaments</strong> rise from the axis to meet the curve, densest near the middle where most audio lives. Their heights are echoed as ticks on the left edge: where the ticks crowd, levels are being squeezed together.</span></li>
       <li><i style="background:radial-gradient(var(--ember) 30%,rgba(240,130,79,.2) 60%,transparent 70%)"></i><span><strong>The ember dot</strong> is a strong input, 0.72 of full scale, meeting the curve: the "you are here" for a loud passage.</span></li>
     </ul>
-    <p class="small">The curves follow DRIVE, CIRCUIT, BIAS, TUBE, IRON and VAR, and stay still otherwise; the display repaints only when one of them moves. TONE, SAG, MIX, OUTPUT and AUTO LEVEL act after the curve. Only the THD line follows the audio.</p>
+    <p class="small">The curves follow DRIVE, CIRCUIT, BIAS, TUBE, IRON and VAR, and stay still otherwise; the display repaints only when one of them moves. EQ, SAG, MIX, OUTPUT and AUTO LEVEL are not drawn into it. Only the THD line follows the audio.</p>
   </div>
 </section>
 
@@ -500,10 +500,10 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <div class="prose">
     <p>CINDER runs as a fully working trial for seven days from the first time it loads, and the line at the bottom of the window counts down the days left. When the trial ends without activation, CINDER goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
-    <p class="small">Sandboxed hosts such as GarageBand keep their own copy of your Library, so activate CINDER in Logic Pro, Live, Pro Tools or another standard host.</p>
+    <p class="small">GarageBand and other sandboxed hosts keep their own copy of your Library. CINDER looks past it to your real one, so an activation in Logic Pro, Live or Pro Tools counts there too.</p>
   </div>
   <div class="prose">
-    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Activation needs an internet connection once; after that CINDER works offline. One licence covers three computers, and DEACTIVATE THIS COMPUTER frees a seat so you can move it without writing to us.</p>
+    <p>Click the licence line, paste the key from your purchase email and press ACTIVATE. Keys bought from KVR and other THETA resellers start with THETA- and activate the same way. Activation needs an internet connection once; after that CINDER works offline. One licence covers three computers, an activation covers every user account on that Mac, and DEACTIVATE THIS COMPUTER frees a seat so you can move it without writing to us.</p>
     <p><strong>An activated copy is never silenced by a licence problem.</strong> After a hardware change, or with the activation server out of reach, it keeps making sound and asks you to reactivate.</p>
   </div>
 </section>
@@ -522,14 +522,14 @@ footer a:hover{color:var(--gold)}
   <table class="specs">
     <tr><th>TYPE</th><td>Three-circuit distortion (insert)</td></tr>
     <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder)</td></tr>
-    <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · TONE · SAG · MIX · OUTPUT · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
+    <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · EQ · SAG · MIX · OUTPUT · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
     <tr><th>LFO</th><td>Depth 0–100 % on DRIVE (±12 dB) or BIAS (±1.00) · RATE 0.05–20 Hz or tempo SYNC, 4 BAR to 1/32 with triplets · SINE, TRI, SQR, S&amp;H</td></tr>
     <tr><th>PROCESSING</th><td>4× oversampling, 63-tap up / 35-tap down, first-order ADAA around the nonlinearity</td></tr>
     <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBTP ceiling</td></tr>
     <tr><th>LATENCY</th><td>44 samples at every rate and in every mode, reported to the host</td></tr>
     <tr><th>CHANNELS</th><td>Mono, mono to stereo, stereo</td></tr>
     <tr><th>PRESETS</th><td>Four factory sounds (INIT, RUST BUS, EMBER LEAD, ASH FOLD) in the host's own preset menu; your own presets with save and save as</td></tr>
-    <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
+    <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · one activation covers every user account on a Mac · activate once online, then runs offline</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
   </table>
