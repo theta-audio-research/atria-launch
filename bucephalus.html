@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BUCEPHALUS Product Page</title>
+<meta name="description" content="BUCEPHALUS is a stereo modulation delay with a clean core: independent left and right times, three input time slots, a nine-knob tail inside the loop, and Ducking, Motion, Rhythm, Character and Diffusion. VST3 for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching gire.html and penrose_ultra.html. Single dark look by choice: THETA marketing pages live on the void theme.
+   BUCEPHALUS's own colour enters only where the plug-in draws it: the navy glass, the cyan input field,
+   the lavender delay core and the blue-to-purple echo walls. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* BUCEPHALUS: echo-walls plate, the plug-in's navy glass with cyan and lavender */
+:root{--cyan:#5ec4dc;--lav:#a98cf2;--violet:#8a5cf0;--navy:#0d1426}
+.well.bu{border-color:#2a2550;background:radial-gradient(120% 120% at 50% 0%,#1a1840,#070a16 70%)}
+.well.bu .well-head{color:rgba(220,215,255,.6)}
+.well.bu .well-foot{color:rgba(220,215,255,.6)}
+.well.bu .well-foot b{color:var(--lav)}
+.seg.bu button[aria-pressed="true"]{background:var(--lav);color:#0b0a1a}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid var(--divider);padding-top:var(--s3);display:grid;gap:var(--s2);align-content:start}
+.steps .num{font-family:var(--f-mono);font-size:11px;color:var(--text-3);letter-spacing:.12em}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold)}
+.steps p{font-size:15px;color:var(--text-2)}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Stereo modulation delay · Version 0.5.0</div>
+    <h1 class="wordmark">BUCEPHALUS</h1>
+    <div class="lede">
+      <p>BUCEPHALUS is a stereo delay with independent left and right times, three time effects in front of it, nine tail effects inside its feedback loop, and five pages of tools for ducking, motion, rhythm, character and diffusion.</p>
+      <p>It is built to one rule: only clean sources go round the loop. Repeats can be stuttered, shuffled, frozen, driven and dirtied, but nothing that smears is allowed into the core, so the tail never turns to mud.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=BUCEPHALUS%20launch" data-notify="BUCEPHALUS">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip soon">AU · AAX TO FOLLOW</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="well bu">
+      <div class="well-head"><span>ECHO WALLS · 4.5 S</span>
+        <span class="seg bu" role="group" aria-label="Feedback for the picture">
+          <button type="button" data-fb="0.35" aria-pressed="false">35%</button><button type="button" data-fb="0.6" aria-pressed="true">60%</button><button type="button" data-fb="0.85" aria-pressed="false">85%</button>
+        </span>
+      </div>
+      <canvas id="walls" width="1200" height="760" aria-label="An illustration of the BUCEPHALUS echo walls: each repeat enters at the centre and travels outward, left repeats every 375 ms to the left, right repeats every 500 ms to the right, fading with feedback."></canvas>
+      <div class="well-foot"><span>L <b>375 MS</b> · R <b>500 MS</b></span><span>FEEDBACK <b id="w-fb">60%</b></span></div>
+    </div>
+    <div class="tagline">NOW AT CENTRE · HISTORY TRAVELS OUT</div>
+  </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/bucephalus/hero_v050_live.png?v=261106b" width="1160" height="1101" alt="The BUCEPHALUS glass panel playing the KETT preset: the MAIN, DUCKING, MOTION, RHYTHM, CHARACTER and DIFFUSION tabs, the Echo walls display bent by live repeats, the Listen card and IN, WET and OUT meters, the Feedback corona at 67.9% beside left and right times of 900.3 and 2319.5 ms, and the INPUT, DELAY CORE and TAIL cards below">
+</section>
+
+<div class="sh" id="core">A clean delay core</div>
+<section class="two">
+  <div class="prose">
+    <p>Most delays let anything into the loop, and every pass through a reverb-like stage blurs the next one. A few repeats in, the tail is a wash. <strong>BUCEPHALUS only feeds its core with clean sources:</strong> the dry signal, the repeats themselves, stutters, shuffled slices and frozen loops.</p>
+    <p>Those sources can be pushed hard. They can be reversed, grained, gated, filtered, crushed into tape or bucket-brigade colour, and driven. But anything that smears sits after the repeats, on what you hear, never on what goes back round.</p>
+  </div>
+  <div class="prose">
+    <p>The rule is tested, not just intended. A single click is sent through every input effect at extreme settings and has to come out as a handful of clean clicks. A diffused wash is run through the same test as the control, and it has to fail.</p>
+    <p>That is why Diffusion lives on the listening return. It scatters the echoes you hear, and the loop carries on repeating the clean ones.</p>
+  </div>
+</section>
+
+<div class="sh" id="path">Signal path</div>
+<section class="stack">
+  <ol class="steps">
+    <li><span class="num">1</span><b>INPUT</b><p>Three time slots in series before the delay: Gated stutter, Slice shuffle or Freeze / recapture, in any order.</p></li>
+    <li><span class="num">2</span><b>DELAY CORE</b><p>Independent left and right times, 50 ms to 4 s, free, tapped or synced to the host. Feedback and Character work here.</p></li>
+    <li><span class="num">3</span><b>TAIL</b><p>Nine effects inside the feedback loop, so every repeat is treated again on its way round.</p></li>
+    <li><span class="num">4</span><b>RETURN</b><p>Ducking, Diffusion, Tone and Air shape what you hear without touching what is stored in the loop.</p></li>
+    <li><span class="num">5</span><b>OUTPUT</b><p>Dry, Return and Master levels, then a smooth peak ceiling just under full scale.</p></li>
+  </ol>
+</section>
+
+<div class="sh" id="input">Input time slots</div>
+<section class="two">
+  <div class="prose">
+    <p>Three slots run one after another in front of the delay. Each can hold any of the three time effects, including the same one twice, and each has its own Amount, where zero is off. Click 1, 2 or 3 to open that slot's controls. A slot keeps its settings when you change its type, so you can try another and come back.</p>
+    <p>Slots sync to the delay's clock, from 1/64 to 1/2, or run free in milliseconds. <strong>CAPTURE</strong> takes a new stutter or freeze on demand. The dry signal is never delayed by any of it.</p>
+  </div>
+  <ul class="rows">
+    <li><b>GATED STUTTER</b><span>Audio crossing the trigger is captured, then played back as a burst of repeats. Set the slice, the repeat rate, how many repeats, the pulse width, and Accelerate to tighten the burst up to four times as it goes.</span></li>
+    <li><b>SLICE SHUFFLE</b><span>Records phrases and plays the last one back in a new order while it records the next. Two to sixteen slices, a shuffle amount, and reversal of individual slices.</span></li>
+    <li><b>FREEZE / RECAPTURE</b><span>Holds a stereo loop after the source stops. Recapture on demand or every one to eight loop lengths, with Overdub to blend the held loop into the next one.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="tail">The tail, inside the loop</div>
+<section class="two">
+  <div class="prose">
+    <p>The Tail card has nine knobs, and every one of them is its own effect. There are no mode menus and no enable buttons: turn a knob up from zero and it is in, and they all run together.</p>
+    <p>Because the tail sits inside the feedback loop, a repeat goes through it again on every pass. A little Grain becomes more grain with each echo; a High-pass thins the tail as it fades; Width pushes the repeats further out each time round, with gain compensation so the loop stays under control even at 92% feedback.</p>
+  </div>
+  <ul class="rows">
+    <li><b>REVERSE · GRAIN</b><span>Each with its own amount and history. Zero bypasses the stage.</span></li>
+    <li><b>PAN · WIDTH · CROSSFEED</b><span>Independent. Width runs from mono through normal to double side width.</span></li>
+    <li><b>TREMOLO</b><span>A full-depth sine, 0 to 12 Hz.</span></li>
+    <li><b>GATE</b><span>A real threshold gate, about −72 dB to 0 dB, stereo-linked, with no hard switching.</span></li>
+    <li><b>HIGH-PASS · LOW-PASS</b><span>Separate 12 dB per octave filters that can work together.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="tools">Core tools</div>
+<section class="stack">
+  <div class="prose"><p>Five tabs sit beside MAIN. Each opens a page of tools under the echo walls, which keep running while you work. Every page has its own ON switch.</p></div>
+  <ul class="rows">
+    <li><b>DUCKING</b><span>Turns the repeats down while you play and lets them back up when you stop. Amount up to 30 dB, Recovery from 20 ms to 2 s. It acts on what you hear, so the stored repeats are never erased.</span></li>
+    <li><b>MOTION</b><span>Two LFOs (sine, triangle or smooth drift, free or synced) and an envelope follower, sent to delay time, tail pan, width, low-pass, each input slot's Amount, or return level. A shared stereo phase spreads them across left and right.</span></li>
+    <li><b>RHYTHM</b><span>An alternating rhythm engine: straight, dotted and triplet divisions from 1/64 to a bar, a separate first echo, swing up to 45%, and Alternate reduction to drop every second echo.</span></li>
+    <li><b>CHARACTER</b><span>Clean, Tape, BBD and Early digital voicings, with input and feedback drive up to 24 dB. Bias, Sag and Rounding shape the loop; Tone and Air colour the return only. An HQ mode adds more oversampling.</span></li>
+    <li><b>DIFFUSION</b><span>A four-stage stereo all-pass network that scatters the echoes on the listening return, with Amount and Size. It never feeds back into the core.</span></li>
+  </ul>
+  <figure class="faceshot" style="max-width:760px;justify-self:center;width:100%">
+    <img src="assets/bucephalus/character_v050.png?v=261106" width="1160" height="1080" alt="The BUCEPHALUS Character page: the Character menu set to Tape, Input drive, Feedback drive, Bias, Sag and Rounding knobs, Tone and Air below, and the HQ oversampling switch, with the factory preset Warehouse / evolved loaded">
+    <figcaption class="cap">THE CHARACTER PAGE · WAREHOUSE / EVOLVED</figcaption>
+  </figure>
+</section>
+
+<div class="sh" id="character">Character</div>
+<section class="two">
+  <div class="prose">
+    <p>The four voicings are original, not emulations of particular units. <strong>Tape</strong> rounds the peaks and limits the bandwidth. <strong>BBD</strong> gets darker as the repeat time gets longer, with a little grit. <strong>Early digital</strong> brings 13-bit-style grain and a narrow top end.</p>
+    <p>Input drive saturates what goes into the delay. Feedback drive saturates only what comes back round, so the first echo is never touched by it and each pass after that gets a little warmer.</p>
+  </div>
+  <div class="prose">
+    <p>Every drive stage runs oversampled with anti-aliasing, so pushing it hard adds harmonics, not the harsh, inharmonic fizz of aliasing. At full drive the alias products in the audible band sit more than 60 dB under the note.</p>
+    <p>With Clean selected and no drive, the delay is bit-for-bit a plain delay, and the plug-in adds no latency.</p>
+  </div>
+</section>
+
+<div class="sh" id="walls">Echo walls</div>
+<section class="two">
+  <div class="prose">
+    <p>The display in the middle of the panel shows what the delay is actually doing. Wet audio enters at the centre and travels outward, left repeats to the left and right repeats to the right. Each repeat bends the walls by how loud it is, and by where its energy sits: bass bends the lower lines, treble the upper ones.</p>
+    <p><strong>Nothing in it is invented.</strong> Every line, the glow behind the glass and the turning Feedback corona come from the measured wet signal. When the repeats stop, the walls go flat.</p>
+  </div>
+  <div class="prose">
+    <p>The Listen card switches between the stereo output, <strong>Input delta</strong> and <strong>Tail delta</strong>. A delta plays only what that bank adds or takes away, so you can hear exactly what the stutter, the gate or the filters are doing. Each bank also has its own Bypass.</p>
+    <p><strong>A / B</strong> holds two complete sounds to switch between. <strong>Mix lock</strong> keeps your Dry / wet and levels where they are while you browse presets.</p>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>PRODUCERS</b><p>Put synced, independent left and right repeats on a vocal or a lead, duck them under the phrase, and let them bloom in the gaps.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>Freeze a moment, shuffle it, stutter it, and send it round a loop that degrades it into tape or bucket-brigade colour without ever turning to mush.</p></article>
+  <article><b>MIX ENGINEERS</b><p>A delay you can leave on a return: clean at Clean, measured gain staging, a peak ceiling, and Delta buttons to hear exactly what each bank adds.</p></article>
+  <article><b>DUB &amp; AMBIENT</b><p>Push feedback, drive the loop and ride the tail filters. Repeats darken and thicken pass by pass, and Clear tails is one click away.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Stereo modulation delay (insert or return)</td></tr>
+    <tr><th>DELAY CORE</th><td>Independent left and right times, 50 ms to 4 s · host sync with separate L/R divisions · tap tempo · manual BPM · feedback with DC blocking and soft saturation</td></tr>
+    <tr><th>INPUT</th><td>Three time slots in series: Gated stutter, Slice shuffle, Freeze / recapture · Bypass and Delta</td></tr>
+    <tr><th>TAIL</th><td>Reverse, Grain, Pan, Width, Crossfeed, Tremolo, Gate, High-pass, Low-pass, inside the loop · Bypass and Delta</td></tr>
+    <tr><th>CORE TOOLS</th><td>Ducking · Motion (2 LFOs and an envelope follower) · Rhythm · Character (Clean, Tape, BBD, Early digital) · Diffusion</td></tr>
+    <tr><th>OUTPUT</th><td>Dry / wet · Dry level and Delay return, mute to +12 dB · Master −24 to +6 dB · sample-peak ceiling just under 0 dBFS</td></tr>
+    <tr><th>LATENCY</th><td>None reported</td></tr>
+    <tr><th>PRESETS</th><td>10 factory programs · user presets with save and save as · A / B · Mix lock</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit and AAX to follow</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
+  </table>
+  <div class="prose">
+    <p>Stereo in, stereo out. Every control can be typed into: click a value, enter <span class="k">375 ms</span> or <span class="k">2.5k</span>, and press Enter. Shift-drag for fine moves, double-click for the default.</p>
+    <p class="small">BUCEPHALUS's voicings are original designs. All product names referenced are trademarks of their respective owners, and no affiliation or endorsement is implied.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">BUCEPHALUS</div>
+  <p>BUCEPHALUS is in development. The delay core, the input slots, the tail and all five core tools are working; we are finishing it before release.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=BUCEPHALUS%20launch" data-notify="BUCEPHALUS">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* Echo walls, simplified: left repeats every 375 ms travel left, right repeats every 500 ms travel right,
+   each one bending the contour lines by its level. An illustration, not the plug-in's analyser. */
+const cv=document.getElementById('walls');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height,mid=W/2,cy=H/2,LINES=22,SPAN=4.5;
+let fb=0.6;const t0=performance.now();
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('[data-fb]').forEach(b=>b.addEventListener('click',()=>{
+  fb=parseFloat(b.dataset.fb);document.querySelectorAll('[data-fb]').forEach(o=>o.setAttribute('aria-pressed',o===b?'true':'false'));
+  document.getElementById('w-fb').textContent=Math.round(fb*100)+'%';if(reduce)draw(2.2);}));
+function level(age,period){ // sum of repeats already sounded, at a point 'age' seconds back in the history
+  let v=0;const PH=2.0; // a phrase every 2 s
+  for(let k=0;k<12;k++){const d=age-k*period;const tp=((d%PH)+PH)%PH;if(d<0)break;v+=Math.pow(fb,k)*Math.exp(-tp*4.5)*Math.min(1,tp*30);}
+  return Math.min(1,v);}
+function draw(now){
+  x.fillStyle='#070a16';x.fillRect(0,0,W,H);
+  const g=x.createRadialGradient(mid,cy,10,mid,cy,W*.5);g.addColorStop(0,'rgba(138,92,240,.22)');g.addColorStop(1,'rgba(7,10,22,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+  for(const side of [-1,1]){
+    const period=side<0?0.375:0.5;
+    for(let i=0;i<LINES;i++){
+      const base=(i/(LINES-1)-.5)*2; // -1..1
+      x.beginPath();
+      for(let p=0;p<=120;p++){
+        const f=p/120,age=f*SPAN,X=mid+side*f*(W*.46);
+        const lv=level(now+0-age+SPAN,period)*(1-.55*f);
+        const band=1-Math.abs(base)*.3;
+        const Y=cy+base*(H*.30)*(.35+.9*lv*band)*(1-.2*f);
+        p?x.lineTo(X,Y):x.moveTo(X,Y);}
+      const a=.18+.5*(1-Math.abs(base));
+      x.strokeStyle=side<0?`rgba(94,196,220,${a*.8})`:`rgba(169,140,242,${a})`;x.lineWidth=1.3;x.stroke();}
+  }
+  x.strokeStyle='rgba(169,140,242,.9)';x.lineWidth=2;x.beginPath();x.moveTo(40,cy);x.lineTo(W-40,cy);x.stroke();
+  x.font='600 26px "JetBrains Mono",monospace';x.fillStyle='rgba(240,237,230,.8)';x.fillText('L',20,cy-14);x.fillText('R',W-40,cy-14);
+}
+function loop(){draw((performance.now()-t0)/1000);requestAnimationFrame(loop);}
+if(reduce)draw(2.2);else loop();
+})();
+</script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
+</body>
+</html>

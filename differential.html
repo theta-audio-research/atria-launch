@@ -241,7 +241,7 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Fragment glitch processor · Version 0.34.2</div>
+    <div class="eyebrow">Fragment glitch processor · Version 0.35.3</div>
     <h1 class="wordmark">DIFFERENTIAL</h1>
     <div class="lede">
       <p>DIFFERENTIAL cuts your sound into fragments, from 1,024 samples down to 32, and gives each one its own treatment from a library of ten. An eight-step pattern decides which treatment lands where, so neighbouring moments of the same sound come out different from each other.</p>
@@ -267,7 +267,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/differential/panel_v0342.png?v=261102" width="1000" height="786" alt="The DIFFERENTIAL panel with the THETA wave logo and the factory preset Shifted Beat loaded: the CUT, BEND and DIRT rings across the top with CHOP, REPEAT, MOTION, PITCH, CRUSH and COLOR, the file strip in the middle, ROLL and WILD at 80%, MIX and LOW KEEP on the right, and the STRETCH row along the bottom">
+  <img src="assets/differential/panel_v0353.png?v=261106b" width="1000" height="817" alt="The DIFFERENTIAL 0.35.3 glass panel with the THETA wave logo: the CUT, BEND and DIRT rings, drawn as stepped glass tiers over a star chart, across the top with CHOP, REPEAT, MOTION, PITCH, CRUSH and COLOR, the file strip in the middle, the INDUSTRIAL character, ROLL and WILD at 80%, MIX and LOW KEEP on the right, and the STRETCH row along the bottom">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -363,7 +363,7 @@ footer a:hover{color:var(--gold)}
       <p><strong>CRUSH</strong> raises the intensity and every slot's amount at once. <strong>COLOR</strong> is centred too: left warms the sound with saturation, right brightens it with harder edges and more bite.</p>
     </article>
   </div>
-  <p class="small">Each ring has a HOLD button, which keeps ROLL's hands off it, and a LANE button, which opens its MOTION lane.</p>
+  <p class="small">Grab a ring anywhere: the centre disc moves the inner control, and everything else on the ring moves the outer one. Each ring has a HOLD button, which keeps ROLL's hands off it, and a LANE button, which opens its MOTION lane.</p>
 </section>
 
 <!-- ROLL -->
@@ -371,7 +371,7 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <div class="prose">
     <p>ROLL deals a new take: new treatments in the slots, a new pattern and seed, and new positions for every ring that is not held. <strong>Every take is kept.</strong> The arrows either side of ROLL walk back through them, and an earlier take comes back exactly, so you can roll ten times and keep the third.</p>
-    <p>WILD, under ROLL, sets how far it goes. At low settings ROLL stays near what you have. At the default of 80% it reaches the full range of the rings. Pitch follows WILD too: wilder takes transpose more often and further, by plain intervals, up to two octaves, and sometimes add STEPS, pitch that jumps rather than slides. ROLL never adds a sliding glide. It always returns PITCH to centre and builds from there.</p>
+    <p>WILD, under ROLL, sets how far it goes. At low settings ROLL stays near what you have. At the default of 80% it reaches the full range of the rings. Pitch follows WILD too: wilder takes transpose more often and further, by plain intervals, up to two octaves, but never more than an octave down. ROLL never adds STEPS or a sliding glide, so a take cannot pulse the bass of a loop in and out like a tremolo. STEPS is still there for you to choose yourself. It always returns PITCH to centre and builds from there.</p>
   </div>
   <div class="prose">
     <p><strong>ROLL leaves your setup alone.</strong> FUTZ, STRETCH, LOW KEEP, the MOTION lanes, HIT, MIX and WILD itself belong to you: ROLL, RANDOMIZE and UNDO never change them. Your loaded file, playhead and loop region stay where they are too.</p>
@@ -640,8 +640,8 @@ function render(st){
 /* ROLL: the plug-in's own rules, simplified (PluginProcessor.cpp pickPitch, ring reach) */
 function pickPitch(r,wild){
   const widest=wild<0.34?7:wild<0.67?12:24;
-  const ints=[0,3,4,5,7,12,19,24].filter(v=>v<=widest);
-  if(r()<0.25+0.7*wild){const v=ints[1+Math.floor(r()*(ints.length-1))]||0;return r()<0.5?-v:v;}
+  const ints=[3,5,7,12,19,24].filter(v=>v<=widest);
+  if(r()<0.25+0.7*wild){const down=r()<0.5,ok=down?ints.filter(v=>v<=12):ints;const v=ok[Math.floor(r()*ok.length)];return down?-v:v;}
   return 0;
 }
 function roll(st,r){

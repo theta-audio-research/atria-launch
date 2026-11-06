@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RING BEARER Product Page</title>
+<meta name="description" content="RING BEARER is a 16x oversampled ring modulator: sine, triangle or square carrier, Keep Lows, Drive and The Forge, Motion and texture, and live Fork, Light and Curtain views of the sidebands. VST3 for macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching gire.html and penrose_ultra.html. Single dark look by choice: THETA marketing pages live on the void theme.
+   RING BEARER's own colour enters only where the plug-in draws it: teal for input, ember for the
+   lower sideband, gold for the upper one, on black-green glass. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* RING BEARER: the Fork plate, black-green glass with teal, ember and gold */
+:root{--ember:#e87850}
+.well.rb .well-head b{color:var(--gold-hot);font-weight:500}
+.well.rb .well-foot{gap:var(--s4)}
+.well.rb .well-foot input[type=range]{flex:1;min-width:120px;accent-color:var(--teal)}
+.seg.rb button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Ring modulator · Version 0.4.6</div>
+    <h1 class="wordmark">RING BEARER</h1>
+    <div class="lede">
+      <p>RING BEARER multiplies your sound by a carrier tone. Every note you put in comes out as two: one at its frequency minus the carrier, one at its frequency plus it. Bells, metal, radio voices and broken harmony live in the space between them.</p>
+      <p>It runs at sixteen times oversampling, so the sidebands stay clean, and it can keep your low end out of the effect entirely. The centre of the panel shows the split happening, measured from your own audio.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=RING%20BEARER%20launch" data-notify="RING BEARER">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip soon">AU · AAX TO FOLLOW</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="well rb">
+      <div class="well-head"><span>THE FORK · CARRIER <b id="f-c">110</b> HZ</span>
+        <span class="seg rb" role="group" aria-label="Carrier shape for the picture">
+          <button type="button" data-shape="1" aria-pressed="true">SINE</button><button type="button" data-shape="3" aria-pressed="false">TRI</button><button type="button" data-shape="5" aria-pressed="false">SQR</button>
+        </span>
+      </div>
+      <canvas id="fork" width="1200" height="760" aria-label="An illustration of The Fork view: three input partials drawn in teal, each splitting into a lower sideband in ember and an upper sideband in gold, on a logarithmic frequency axis from 50 Hz to 2 kHz."></canvas>
+      <div class="well-foot"><label for="f-car">CARRIER</label><input id="f-car" type="range" min="20" max="900" step="1" value="110"><span>INPUT <b>A3 · E4 · A4</b></span></div>
+    </div>
+    <div class="tagline">TEAL IN · EMBER MINUS · GOLD PLUS</div>
+  </div>
+</section>
+
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/ring_bearer/hero_v046.png?v=261106" width="1100" height="984" alt="The RING BEARER glass panel with the gold THETA wave mark: the passage menu, the FORK, LIGHT, CURTAIN, FREEZE and ANIMATE view buttons, input and output meters either side of a 135.6 Hz carrier readout, The Fork display with teal input lines splitting into sidebands, the sideband guide and spectrum strip, and the Carrier Shape, Motion / Texture, Tone, Keep Lows and Tune controls above the Carrier, Depth, Drive, Stereo, Mix and Output knobs">
+</section>
+
+<div class="sh" id="how">What a ring modulator does</div>
+<section class="two">
+  <div class="prose">
+    <p>At full Depth, the wet signal is your input multiplied by the carrier. Put in a 440 Hz sine with the carrier at 110 Hz and you get <span class="k">330 Hz</span> and <span class="k">550 Hz</span>, and no 440 at all. Neither new note is a harmonic of the original, which is why ring modulation sounds metallic rather than distorted.</p>
+    <p>Turn the carrier down below about 20 Hz and the two sidebands sit so close together that you hear them as a tremolo. Turn it up and the sound breaks apart into bells.</p>
+  </div>
+  <div class="prose">
+    <p><strong>Carrier Shape</strong> picks a sine, triangle or square carrier. Triangle and square add odd harmonics of the carrier, and each one forks your input again, so the result gets denser. They are built from a limited series of harmonics, not hard-edged waves, so they never alias.</p>
+    <p><strong>Tune</strong> switches the carrier between free Hz, from 0.5 Hz to 4 kHz, and a musical note and octave, from C−1 to B7 at A4 = 440 Hz. A tuned carrier keeps the sidebands in a key.</p>
+  </div>
+</section>
+
+<div class="sh" id="controls">The controls</div>
+<section class="stack">
+  <div class="prose"><p>Six knobs across the bottom do the main work. Under each one the panel gives it a second name.</p></div>
+  <ul class="rows">
+    <li><b>CARRIER · THE RING</b><span>The carrier frequency, 0.5 Hz to 4 kHz, or a note when Tune is in note mode.</span></li>
+    <li><b>DEPTH · THE INFLUENCE</b><span>From your sound unchanged to full ring modulation.</span></li>
+    <li><b>DRIVE</b><span>0 to 24 dB of saturation, with The Forge behind it. The button above it puts the drive before the ring or after it, on the finished wet signal.</span></li>
+    <li><b>STEREO · THE DIVIDE</b><span>Up to 180° between the left and right carriers, so the two sides modulate differently.</span></li>
+    <li><b>MIX · THE PASSAGE</b><span>A latency-compensated blend of dry and wet.</span></li>
+    <li><b>OUTPUT · THE RETURN</b><span>−24 to +6 dB.</span></li>
+  </ul>
+  <p class="small">Above them: Carrier Shape, Motion, Tone (a low-pass on the wet signal, from 200 Hz to open), Keep Lows and Tune.</p>
+</section>
+
+<div class="sh" id="lows">Keep Lows</div>
+<section class="two">
+  <div class="prose">
+    <p>Ring modulating a bass line moves its fundamental to two new places, and the bottom of the mix goes with it. <strong>Keep Lows</strong> splits the sound before the effect, anywhere up to 1 kHz, and sends only the top through the ring, the drive and Tone. The lows pass straight through and rejoin afterwards.</p>
+  </div>
+  <div class="prose">
+    <p>The split is a gentle complementary crossover, so with the effect dry the two halves add back up to the original. Off is the default.</p>
+  </div>
+</section>
+
+<div class="sh" id="forge">Drive and The Forge</div>
+<section class="two">
+  <div class="prose">
+    <p>Drive saturates the signal at sixteen times oversampling before it reaches the ring. Switch it to <strong>POST</strong> and it acts on the finished wet sound instead, after the ring and Tone, at the session's sample rate.</p>
+    <p>Click <strong>ADVANCED</strong> under Drive, or right-click the knob, to open The Forge: the full saturation stage behind that one knob.</p>
+  </div>
+  <ul class="rows">
+    <li><b>CURVE · CASCADE</b><span>Soft, round or smooth curves, in one to four stages.</span></li>
+    <li><b>ASYMMETRY · HEADROOM</b><span>Bias for even harmonics, and ±6 dB around the knee.</span></li>
+    <li><b>SAG</b><span>Loud passages lower the rails by up to 15%, so the drive gives under pressure.</span></li>
+    <li><b>TRANSIENT PRESERVE</b><span>Lets attacks through cleaner than the body of the note.</span></li>
+    <li><b>HF ROUNDING · BLEND</b><span>Softens the top edge, and blends clean with driven at the same Drive setting.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="motion">Motion and texture</div>
+<section class="two">
+  <div class="prose">
+    <p>The Motion knob moves the carrier up and down by up to 24 semitones, free from 0.02 to 12 Hz or synced from four bars to a sixteenth. The sidebands slide with it.</p>
+    <p>Click <strong>MOTION / TEXTURE</strong> to break the wet sound up further: overlapping grains, a patterned stutter locked to your host's tempo, and a pitch warp of up to ±12 semitones. All of it starts at zero, where it changes nothing.</p>
+  </div>
+  <ul class="rows">
+    <li><b>GRAIN</b><span>Amount, 10 to 150 ms grain size, and Scatter over the last 100 ms.</span></li>
+    <li><b>STUTTER</b><span>Straight, Pairs, Broken or Gallop patterns in 1/8, 1/16, 1/32 or 1/16 triplet steps, with a Gate for each step.</span></li>
+    <li><b>PITCH WARP</b><span>Drifts the audio itself, separately from the carrier, at the Motion rate.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="views">Seeing the split</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p>The centre display has three views. <strong>The Fork</strong> finds up to eight of the strongest notes in your input and draws each one splitting at the live carrier: teal for what went in, ember for the note minus the carrier, gold for the note plus it. With a triangle or square carrier the extra forks appear too. The clean lows from Keep Lows run straight through.</p>
+      <p><strong>Light</strong> and <strong>Curtain</strong> turn the output spectrum into coloured light, where colour is pitch and brightness is energy. Curtain lets the last few seconds fall down the screen, with the carrier drawn as a white line.</p>
+    </div>
+    <div class="prose">
+      <p>Every view is measured from the audio, with a spectrum strip underneath on a 20 Hz to 20 kHz scale. The <strong>sideband guide</strong> names the strongest input note and the two frequencies the carrier is turning it into.</p>
+      <p>Input and output meters sit either side, with peak, RMS and clip warnings. <strong>Freeze</strong> holds the picture while the meters stay live.</p>
+    </div>
+  </div>
+  <figure class="faceshot" style="max-width:760px;justify-self:center;width:100%">
+    <img src="assets/ring_bearer/curtain_v046.png?v=261106" width="1100" height="984" alt="The RING BEARER panel in Curtain view: the output spectrum drawn as falling coloured light, violet in the lows through teal to green in the mids, with the carrier as a white vertical line">
+    <figcaption class="cap">CURTAIN VIEW · COLOUR IS PITCH, THE WHITE LINE IS THE CARRIER</figcaption>
+  </figure>
+</section>
+
+<div class="sh" id="passages">Passages</div>
+<section class="two">
+  <div class="prose">
+    <p>Presets are called passages. The factory set includes CANINERY, TERMINAL YOYO and The Long Walk, and the first <strong>artist passages</strong>, starting with ilosit's PEW PEW PEW PEW, each under the artist's own heading.</p>
+  </div>
+  <div class="prose">
+    <p>Save your own from the passage menu. Every control is captured, including The Forge and Motion / Texture. A star marks a passage you've changed, and a changed factory passage saves as a copy, never over the original.</p>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>SOUND DESIGNERS</b><p>Robot voices, bells, transmissions and metal from any source, with a tuned carrier when it needs to sit in a key.</p></article>
+  <article><b>PRODUCERS</b><p>Keep Lows holds the bass and kick while the top end rings. Motion and stutter lock to the bar.</p></article>
+  <article><b>GUITAR &amp; SYNTH</b><p>Slow carriers for tremolo and movement, fast ones for clang, and The Forge for grit before or after the ring.</p></article>
+  <article><b>EXPERIMENTERS</b><p>Watch The Fork split your sound in real time and learn exactly which carrier gives which sidebands.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Ring modulator (insert)</td></tr>
+    <tr><th>CARRIER</th><td>0.5 Hz to 4 kHz free, or note C−1 to B7 (A4 = 440 Hz) · sine, triangle or square · Stereo offset 0 to 180°</td></tr>
+    <tr><th>ENGINE</th><td>16× minimum-phase oversampling · Keep Lows crossover, Off to 1 kHz · Tone low-pass, 200 Hz to open</td></tr>
+    <tr><th>DRIVE</th><td>0 to 24 dB, pre ring or post · The Forge: curve, cascade, asymmetry, headroom, sag, transient preserve, HF rounding, blend, compensation</td></tr>
+    <tr><th>MOTION</th><td>Carrier movement up to 24 st, free or host-synced · grain, patterned stutter, pitch warp ±12 st</td></tr>
+    <tr><th>DISPLAY</th><td>The Fork, Light and Curtain views · sideband guide · 20 Hz to 20 kHz spectrum · L/R peak and RMS meters · Freeze</td></tr>
+    <tr><th>PRESETS</th><td>Factory and artist passages · user passages with save and save as</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit and AAX to follow</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
+  </table>
+  <div class="prose">
+    <p>Mono and stereo. Every control automates and recalls with the session.</p>
+    <p class="small">RING BEARER's voicings are original designs. All product names referenced are trademarks of their respective owners, and no affiliation or endorsement is implied.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">RING BEARER</div>
+  <p>RING BEARER is in development. The ring, The Forge, Motion / Texture and all three views are working; we are finishing it before release.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=RING%20BEARER%20launch" data-notify="RING BEARER">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* The Fork, simplified: three input partials (A3, E4, A4) each split into f-c and f+c,
+   plus 3c and 5c forks for triangle and square carriers. Log axis 20 Hz to 20 kHz. */
+const cv=document.getElementById('fork');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height,L=50,R=W-40;
+const IN=[220,329.6,440];let car=110,shape=1;
+const X=f=>L+(R-L)*Math.log(f/50)/Math.log(40);
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const sl=document.getElementById('f-car'),lab=document.getElementById('f-c');
+sl.addEventListener('input',()=>{car=+sl.value;lab.textContent=car;if(reduce)draw(0);});
+document.querySelectorAll('[data-shape]').forEach(b=>b.addEventListener('click',()=>{shape=+b.dataset.shape;
+  document.querySelectorAll('[data-shape]').forEach(o=>o.setAttribute('aria-pressed',o===b?'true':'false'));if(reduce)draw(0);}));
+function branch(fx,tx,top,bot,col,a,w){x.strokeStyle=col.replace('A',a);x.lineWidth=w;x.beginPath();x.moveTo(fx,top);x.bezierCurveTo(fx,top+(bot-top)*.55,tx,top+(bot-top)*.45,tx,bot);x.stroke();}
+function draw(t){
+  x.fillStyle='#050d0c';x.fillRect(0,0,W,H);
+  const g=x.createRadialGradient(W*.4,H*.2,10,W*.4,H*.2,W*.7);g.addColorStop(0,'rgba(79,168,154,.14)');g.addColorStop(1,'rgba(5,13,12,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
+  const top=120,bot=H-130;
+  x.strokeStyle='rgba(223,230,200,.10)';x.lineWidth=1;
+  x.font='20px "JetBrains Mono",monospace';x.fillStyle='rgba(223,230,200,.45)';
+  for(const f of [50,100,200,500,1000,2000]){const px=X(f);x.beginPath();x.moveTo(px,top-20);x.lineTo(px,H-60);x.stroke();x.fillText(f>=1000?(f/1000)+'k':f,px-(f===2000?30:8),H-30);}
+  x.fillStyle='rgba(110,192,182,.8)';x.fillText('INPUT',L,top-40);x.fillStyle='rgba(232,120,80,.8)';x.fillText('OUTPUT',L,bot+50);
+  const c=car*(1+(reduce?0:0.04*Math.sin(t*0.6)));
+  for(const [i,f] of IN.entries()){
+    const fx=X(f),amp=1-i*.18;
+    x.strokeStyle=`rgba(110,192,182,${.9*amp})`;x.lineWidth=3;x.beginPath();x.moveTo(fx,top);x.lineTo(fx,top+20);x.stroke();
+    x.fillStyle='rgba(110,192,182,.9)';x.beginPath();x.arc(fx,top,6,0,Math.PI*2);x.fill();
+    for(let h=1;h<=shape;h+=2){
+      const cc=c*h,w=h===1?3:1.6,a=(h===1?.95:.45)*amp;
+      const lo=Math.abs(f-cc),hi=f+cc;
+      if(lo>=50)branch(fx,X(lo),top+20,bot,'rgba(232,120,80,A)',a,w);
+      if(hi<=2000)branch(fx,X(hi),top+20,bot,'rgba(255,200,103,A)',a,w);
+    }
+  }
+  x.strokeStyle='rgba(242,242,236,.55)';x.setLineDash([6,8]);x.lineWidth=1.5;x.beginPath();x.moveTo(X(c),top-20);x.lineTo(X(c),H-60);x.stroke();x.setLineDash([]);
+  x.fillStyle='rgba(242,242,236,.7)';x.fillText('CARRIER',X(c)+8,top-24);
+}
+function loop(now){draw(now/1000);requestAnimationFrame(loop);}
+if(reduce)draw(0);else requestAnimationFrame(loop);
+})();
+</script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
+</body>
+</html>
