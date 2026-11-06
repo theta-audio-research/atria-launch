@@ -203,6 +203,9 @@ footer a:hover{color:var(--gold)}
 }
 
 </style>
+<style>
+.hpromo{border-radius:10px;overflow:hidden}.hpromo img{display:block;width:100%;height:auto}
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -235,22 +238,7 @@ footer a:hover{color:var(--gold)}
     <div class="chips"><span class="chip hot">$99 · bundle only</span><span class="chip">6 plug-ins</span><span class="chip">1 licence</span><span class="chip">7-day trial</span><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS 11+ · Apple Silicon and Intel</span></div>
   </div>
   <div>
-    <div class="wheel">
-      <svg id="wheel" viewBox="0 0 500 500" role="img" aria-label="The six RGB circuits arranged around one knob. Choose a colour to see what it does.">
-        <defs>
-          <radialGradient id="kg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#2a2d36"/><stop offset="1" stop-color="#0b0c10"/></radialGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
-        </defs>
-        <g class="seg" id="segs"></g>
-        <circle cx="250" cy="250" r="92" fill="url(#kg)" stroke="#2c2f3a" stroke-width="2"/>
-        <circle id="ring" cx="250" cy="250" r="100" fill="none" stroke="#c8a86b" stroke-width="2" opacity=".7"/>
-        <line id="ptr" x1="250" y1="162" x2="250" y2="186" stroke="#f0ede6" stroke-width="4" stroke-linecap="round"/>
-        <text id="wName" x="250" y="262" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="600" font-size="22" letter-spacing="7" fill="#f0ede6">RED</text>
-        <text id="wRole" x="250" y="286" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="2" fill="#8d8779">SATURATION</text>
-      </svg>
-      <div class="well-foot"><span>CIRCUIT <b id="wCode">036_RED</b></span><span id="wLine">Distortion with weight.</span></div>
-    </div>
-    <div class="tagline">CHOOSE A COLOUR</div>
+    <div class="hpromo"><img src="assets/rgb/promo.jpg" alt="The RGB Collection: six circuits, six colours"></div>
   </div>
 </section>
 
@@ -404,39 +392,7 @@ const C = [
 const NS='http://www.w3.org/2000/svg';
 const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
 
-/* ---------- hero wheel ---------- */
-const segs=document.getElementById('segs');
-const R0=112,R1=226,gap=0.035;
-let wSel=0,wAuto=true;
-C.forEach((c,i)=>{
-  const a0=-Math.PI/2+i*Math.PI/3+gap, a1=-Math.PI/2+(i+1)*Math.PI/3-gap;
-  const p=(r,a)=>[250+r*Math.cos(a),250+r*Math.sin(a)];
-  const [x0,y0]=p(R1,a0),[x1,y1]=p(R1,a1),[x2,y2]=p(R0,a1),[x3,y3]=p(R0,a0);
-  const d=`M${x0} ${y0} A${R1} ${R1} 0 0 1 ${x1} ${y1} L${x2} ${y2} A${R0} ${R0} 0 0 0 ${x3} ${y3}Z`;
-  const g=el('g',{});
-  const glow=el('path',{d,fill:c.hex,filter:'url(#glow)',opacity:'0'}); glow.dataset.glow=i;
-  const path=el('path',{d,fill:c.hex,opacity:'.35',tabindex:'0','aria-label':c.k}); path.dataset.i=i;
-  const am=(a0+a1)/2,[tx,ty]=p((R0+R1)/2,am);
-  const t=el('text',{x:tx,y:ty+4,'text-anchor':'middle','font-family':'Montserrat,sans-serif','font-weight':'600','font-size':'13','letter-spacing':'4',fill:'#06080c','pointer-events':'none'}); t.textContent=c.k;
-  g.append(glow,path,t); segs.append(g);
-  const pick=()=>{wAuto=false;selectWheel(i);};
-  path.addEventListener('mouseenter',pick); path.addEventListener('click',pick); path.addEventListener('focus',pick);
-});
-function selectWheel(i){
-  wSel=i;const c=C[i];
-  segs.querySelectorAll('path[data-i]').forEach(p=>p.setAttribute('opacity',+p.dataset.i===i?'1':'.32'));
-  segs.querySelectorAll('path[data-glow]').forEach(p=>p.setAttribute('opacity',+p.dataset.glow===i?'.55':'0'));
-  const ang=i*60+30;
-  document.getElementById('ptr').setAttribute('transform',`rotate(${ang} 250 250)`);
-  document.getElementById('ring').setAttribute('stroke',c.hex);
-  document.getElementById('wName').textContent=c.k;
-  document.getElementById('wRole').textContent=c.role;
-  document.getElementById('wCode').textContent=c.code;
-  document.getElementById('wCode').style.color=c.hex;
-  document.getElementById('wLine').textContent=c.line;
-}
-selectWheel(0);
-setInterval(()=>{if(wAuto)selectWheel((wSel+1)%6);},2400);
+
 
 /* ---------- one-knob lab ---------- */
 const seg=document.getElementById('labSeg');
