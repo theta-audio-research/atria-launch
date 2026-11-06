@@ -79,7 +79,8 @@ body.hide-notes .note{display:none}
 .chip.soon{border-style:dashed;color:var(--text-3)}
 
 /* the display well: CATHARSIS's DARK card face, gold top edge */
-.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--panel);overflow:hidden;position:relative}
+/* the display wells: GLASS skin frame, as the PNEUMA page */
+.well{border:1px solid rgba(255,255,255,.08);border-top:1px solid rgba(227,194,122,.85);border-radius:4px;background:var(--panel);overflow:hidden;position:relative}
 .well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
 .well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
 .well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
@@ -240,8 +241,8 @@ footer a:hover{color:var(--gold)}
   </div>
   <div>
     <div class="well">
-      <div class="well-head"><span>DARK · MULTIBAND · LIVE</span><span>REMOVED −24 dB</span></div>
-      <canvas id="hero" width="1040" height="660" aria-label="CATHARSIS's display in its DARK skin. A voice over location room tone runs through the multiband engine. The faint gold mass in the top half is the input spectrum and the twelve amber dots are the band handles. The purple fill hanging below the centre line is what is being removed right now: deep in the gaps between phrases, almost nothing while the voice speaks."></canvas>
+      <div class="well-head"><span>GLASS · MULTIBAND · LIVE</span><span>REMOVED −24 dB</span></div>
+      <canvas id="hero" width="1040" height="660" aria-label="CATHARSIS's display in its GLASS skin. A voice over location room tone runs through the multiband engine. The faint gold mass in the top half is the input spectrum and the twelve amber dots are the band handles. The purple fill hanging below the centre line is what is being removed right now: deep in the gaps between phrases, almost nothing while the voice speaks."></canvas>
       <div class="well-foot"><span>GAPS <b id="h-gap" class="heat">-</b></span><span>NOW <b id="h-now">-</b></span><span>LATENCY <b>0 SAMPLES</b></span></div>
     </div>
     <div class="tagline">GOLD IS THE INPUT · PURPLE IS WHAT LEAVES</div>
@@ -249,7 +250,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top">
-  <img src="assets/catharsis/hero_glass.png?v=261105" alt="The CATHARSIS panel in its GLASS skin: the ENGINE switch, the twelve band handles over the display, and the REDUCTION, PROFILE and MODES sections etched into one frosted pane" width="914" height="566">
+  <img src="assets/catharsis/hero_v071.png?v=261106c" alt="The CATHARSIS v0.7.1 panel in its GLASS skin: the MULTIBAND and SPECTRAL engine switch, the twelve band handles over the display, and the REDUCTION, PROFILE and MODES sections" width="1920" height="1262">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -505,12 +506,31 @@ footer a:hover{color:var(--gold)}
 <script>
 (() => {
 'use strict';
-const RM = false;
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 // CATHARSIS DARK tokens (ThetaColors.h applyDark)
 const C = {
-  bg:'#06080c', card:'#0c0c10', grid:'#111420', divider:'#111420', label:'#707070', gold:'#c8a86b', goldHot:'#ffc867', goldMuted:'#9e8b65',
+  bg:'#06080c', card:'#0c0c10', grid:'rgba(255,255,255,.063)', divider:'rgba(255,255,255,.063)', label:'#a9adb6', gold:'#e3c27a', goldHot:'#ffc867', goldMuted:'#9e8b65',
   silver:'#b0b0b0', amber:'#e09a34', heatLo:'#3e2178', heatMid:'#5a2bb0', heatHi:'#7e3ae0', heatPeak:'#9e44ff', cream:'#f0ede6', text3:'#8d8779'
 };
+// GLASS backdrop, as ThetaGlass::paintBackdrop with the GLASS skin tokens (ThetaColors.h applyGlassLayer,
+// shared by every mixing plug-in): ground gradient, four light pools, the veil, then the well darkening.
+// Same function as the PNEUMA page, taking a rectangle so split displays get one backdrop per pane.
+function glassRect(ctx, x, y, w, h, old) {
+  if (window.__mkBefore) { ctx.fillStyle = old || '#06080c'; ctx.fillRect(x, y, w, h); return; }
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  const g0 = ctx.createLinearGradient(x, y, x + w, y + h); g0.addColorStop(0, '#0c1020'); g0.addColorStop(1, '#1a100c');
+  ctx.fillStyle = g0; ctx.fillRect(x, y, w, h);
+  const pools = [[-.08, -.06, .52, [31, 151, 171], .70], [.92, .36, .58, [201, 134, 46], .65], [.40, 1.04, .52, [168, 42, 88], .65], [.56, -.04, .26, [216, 196, 142], .25]];
+  for (const [px, py, pr, c, a] of pools) {
+    const cx = x + px * w, cy = y + py * h, r = pr * w, rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    rg.addColorStop(0, `rgba(${c},${a})`); rg.addColorStop(.4, `rgba(${c},${a * .55})`); rg.addColorStop(1, `rgba(${c},0)`);
+    ctx.fillStyle = rg; ctx.fillRect(x, y, w, h);
+  }
+  ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(x, y, w, h);
+  ctx.fillStyle = 'rgba(0,0,0,.40)'; ctx.fillRect(x, y, w, h);
+  ctx.restore();
+}
+
 const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 const SR = 48000;
 
@@ -746,7 +766,7 @@ class Display {
   draw() {
     const ctx = this.ctx, d = this.d, W = this.cv.width, H = this.cv.height, E = this.ch.E, fs = this.o.fs || 15;
     const midY = d.y + d.h * .5, Hbot = d.h * .5 - 7, top = d.y + 14;
-    ctx.fillStyle = C.card; ctx.fillRect(0, 0, W, H);
+    glassRect(ctx, 0, 0, W, H, '#0c0c10');
     // decade grid
     ctx.font = `${fs - 2}px ${MONO}`; ctx.textAlign = 'center';
     for (const f of [100, 1000, 10000]) {
@@ -903,8 +923,8 @@ const ambTxt = v => v < .05 ? 'OFF' : Math.round(20 * Math.log10(v * .01)) + ' d
     disp.sel = sel; disp.draw();
     // time panel
     const W = tc.width, H = tc.height, top = { y: 18, h: 380 }, gr = { y: 432, h: 150 };
-    tx.fillStyle = C.bg; tx.fillRect(0, 0, W, H);
-    for (let x = 0; x < W; x += 2) { const i = (head + Math.floor(x / W * N)) % N; if (TK[i]) { tx.fillStyle = 'rgba(200,168,107,.06)'; tx.fillRect(x, top.y, 2, top.h); } }
+    glassRect(tx, 0, 0, W, H, '#06080c');
+    for (let x = 0; x < W; x += 2) { const i = (head + Math.floor(x / W * N)) % N; if (TK[i]) { tx.fillStyle = 'rgba(227,194,122,.06)'; tx.fillRect(x, top.y, 2, top.h); } }
     const lo = -110, hi = -20, ly = v => top.y + (hi - clamp(v, lo, hi)) / (hi - lo) * top.h;
     tx.font = `18px ${MONO}`;
     for (let v = -100; v <= -20; v += 20) { const y = Math.round(ly(v)) + .5; tx.strokeStyle = C.grid; tx.lineWidth = 1; tx.beginPath(); tx.moveTo(0, y); tx.lineTo(W, y); tx.stroke(); tx.fillStyle = C.label; tx.fillText(v + ' dB', 6, y - 5); }
@@ -919,7 +939,7 @@ const ambTxt = v => v < .05 ? 'OFF' : Math.round(20 * Math.log10(v * .01)) + ' d
     const li = (head + N - 1) % N;
     tx.fillText('FLOOR + SENS', W - 10, ly(fl[li] + E.sens) - 8); tx.fillStyle = C.silver; tx.fillText('FLOOR', W - 10, ly(fl[li]) + 20); tx.textAlign = 'left';
     // removed strip
-    tx.strokeStyle = '#1d2230'; tx.beginPath(); tx.moveTo(0, gr.y + .5); tx.lineTo(W, gr.y + .5); tx.stroke();
+    tx.strokeStyle = 'rgba(255,255,255,.125)'; tx.beginPath(); tx.moveTo(0, gr.y + .5); tx.lineTo(W, gr.y + .5); tx.stroke();
     tx.fillStyle = heatGrad(tx, gr.y, gr.y + gr.h);
     for (let x = 0; x < W; x += 2) { const v = clamp(-gn[at(x)], 0, 30); if (v < .05) continue; tx.fillRect(x, gr.y, 2, v / 30 * gr.h); }
     tx.fillStyle = C.label; tx.fillText('REMOVED · BAND ' + (sel + 1) + ' · ' + fmtHz(EDGE[sel]) + '–' + fmtHz(EDGE[sel + 1]), 6, gr.y - 8); tx.textAlign = 'right'; tx.fillText('−30 dB', W - 6, gr.y + gr.h - 4); tx.textAlign = 'left';
@@ -973,8 +993,8 @@ const lsaGain = (xi, gam) => { const v = Math.max(xi / (1 + xi) * gam, 1e-6); re
     const amt = V.samt, f0 = fPos(V.sf);
     // ---- floor by frequency ----
     const W = fc.width, H = fc.height, top = 40, bot = H - 40, dMax = 36, dy = dd => top + clamp(dd, 0, dMax) / dMax * (bot - top);
-    fx2.fillStyle = C.card; fx2.fillRect(0, 0, W, H);
-    fx2.fillStyle = 'rgba(200,168,107,.06)'; const xa = fx(250, 0, W), xb = fx(3000, 0, W); fx2.fillRect(xa, top, xb - xa, bot - top);
+    glassRect(fx2, 0, 0, W, H, '#0c0c10');
+    fx2.fillStyle = 'rgba(227,194,122,.06)'; const xa = fx(250, 0, W), xb = fx(3000, 0, W); fx2.fillRect(xa, top, xb - xa, bot - top);
     fx2.font = `18px ${MONO}`; fx2.fillStyle = C.text3; fx2.textAlign = 'center'; fx2.fillText('INTELLIGIBILITY · HOLDS BACK', (xa + xb) / 2, bot - 12); fx2.textAlign = 'left';
     for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f, 0, W)) + .5; fx2.strokeStyle = C.grid; fx2.lineWidth = 1; fx2.beginPath(); fx2.moveTo(x, top); fx2.lineTo(x, bot); fx2.stroke(); fx2.fillStyle = C.label; fx2.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, H - 14); }
     for (let dd = 0; dd <= dMax; dd += 6) { const y = Math.round(dy(dd)) + .5; fx2.strokeStyle = dd === 0 ? '#2a2440' : C.grid; fx2.beginPath(); fx2.moveTo(0, y); fx2.lineTo(W, y); fx2.stroke(); if (dd) { fx2.fillStyle = C.label; fx2.fillText('−' + dd, 6, y - 5); } }
@@ -990,7 +1010,7 @@ const lsaGain = (xi, gam) => { const v = Math.max(xi / (1 + xi) * gam, 1e-6); re
     // ---- gain rule for that bin, against its a-priori SNR (steady state: a-posteriori = 1 + a-priori) ----
     const GW = gc.width, GH = gc.height, L = 64, Rr = GW - 16, T = 40, B = GH - 48, gMin = -42, xmin = -25, xmax = 20;
     const gxp = g => L + (g - xmin) / (xmax - xmin) * (Rr - L), gyp = d => T + (0 - clamp(d, gMin, 0)) / -gMin * (B - T);
-    gx.fillStyle = C.card; gx.fillRect(0, 0, GW, GH); gx.font = `18px ${MONO}`;
+    glassRect(gx, 0, 0, GW, GH, '#0c0c10'); gx.font = `18px ${MONO}`;
     for (let g = -20; g <= 20; g += 10) { const x = Math.round(gxp(g)) + .5; gx.strokeStyle = C.grid; gx.beginPath(); gx.moveTo(x, T); gx.lineTo(x, B); gx.stroke(); gx.fillStyle = C.label; gx.textAlign = 'center'; gx.fillText((g > 0 ? '+' : '') + g, x, B + 22); }
     gx.textAlign = 'left';
     for (let d = 0; d >= -42; d -= 6) { const y = Math.round(gyp(d)) + .5; gx.strokeStyle = d === 0 ? '#2a2440' : C.grid; gx.beginPath(); gx.moveTo(L, y); gx.lineTo(Rr, y); gx.stroke(); gx.fillStyle = C.label; gx.textAlign = 'right'; gx.fillText(String(d), L - 8, y + 5); gx.textAlign = 'left'; }

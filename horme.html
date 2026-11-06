@@ -79,8 +79,9 @@ body.hide-notes .note{display:none}
 .chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px;white-space:nowrap}
 .chip.soon{border-style:dashed;color:var(--text-3)}
 
-/* the hero well: HORME's SIMPLE view in its DARK skin, divider frame, gold top edge */
-.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
+/* the hero well: HORME's SIMPLE view in its GLASS skin, divider frame, gold top edge */
+/* the display wells: GLASS skin frame, as the PNEUMA page */
+.well{border:1px solid rgba(255,255,255,.08);border-top:1px solid rgba(227,194,122,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
 .well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
 .well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
 .well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
@@ -246,7 +247,7 @@ footer a:hover{color:var(--gold)}
   <div>
     <div class="well">
       <div class="well-head"><span>SIMPLE · GAIN RIBBON · LIVE</span><span>±12 dB · 6 s</span></div>
-      <canvas id="hero" width="1040" height="660" aria-label="HORME's SIMPLE view in its DARK skin. A drum loop runs through it with ATTACK up and SUSTAIN down. The grey mirrored shape is the input; the green curve above the line is the gain HORME adds on each hit, the blue curve below is the gain it takes from the tail. At the left, one bar per band shows what each of the six bands is doing right now."></canvas>
+      <canvas id="hero" width="1040" height="660" aria-label="HORME's SIMPLE view in its GLASS skin. A drum loop runs through it with ATTACK up and SUSTAIN down. The grey mirrored shape is the input; the green curve above the line is the gain HORME adds on each hit, the blue curve below is the gain it takes from the tail. At the left, one bar per band shows what each of the six bands is doing right now."></canvas>
       <div class="well-foot"><span>ATTACK <b>+40 %</b></span><span>SUSTAIN <b>−45 %</b></span><span>APPLIED NOW <b id="h-now">-</b></span></div>
     </div>
     <div class="tagline">GREEN ADDS ON THE HIT · BLUE TAKES FROM THE TAIL · GREY IS THE INPUT</div>
@@ -254,7 +255,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top">
-  <img src="assets/horme/hero_glass.png?v=261105" alt="The HORME panel in its GLASS skin: the gain ribbon with its per-band strip, the detection focus and shaping emphasis strip under it, and the SHAPE row of ATTACK, SUSTAIN, DECAY, MIX and OUTPUT" width="880" height="552">
+  <img src="assets/horme/hero_v050.png?v=261106c" alt="The HORME v0.5.0 panel in its GLASS skin: the SIMPLE gain ribbon with its per-band strip, the detection focus and shaping emphasis strip under it, and the SHAPE row of ATTACK, SUSTAIN, DECAY, MIX and OUTPUT" width="1852" height="1234">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -454,7 +455,7 @@ footer a:hover{color:var(--gold)}
     <tr><th>TRANSPARENCY</th><td>At opening settings, output tracks input to within −140 dB (the float noise floor) · MIX 0 returns the input bit for bit</td></tr>
     <tr><th>CHANNELS</th><td>Mono or stereo · left and right detect independently</td></tr>
     <tr><th>EXPORT</th><td>EXPORT IR · 500 ms · 32-bit float stereo WAV</td></tr>
-    <tr><th>VIEW</th><td>SIMPLE and MULTIBAND pages · LIGHT · DARK · NUCLEAR · RETRO</td></tr>
+    <tr><th>VIEW</th><td>SIMPLE and MULTIBAND pages · GLASS · DARK · LIGHT · NUCLEAR · RETRO · SYNTHWAVE</td></tr>
     <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon (arm64) · Developer ID signed, notarized</td></tr>
@@ -486,12 +487,31 @@ footer a:hover{color:var(--gold)}
 <script>
 (() => {
 'use strict';
-const RM = false;
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const C = {
-  bg:'#06080c', grid:'#111420', label:'#5d6068', gold:'#c8a86b', goldHot:'#ffc867', goldDim:'#7a6840',
+  bg:'#06080c', grid:'rgba(255,255,255,.063)', label:'#a9adb6', gold:'#e3c27a', goldHot:'#ffc867', goldDim:'#7a6840',
   boost:'#8ae092', cutLine:'#4aa8c0', focus:'#45e0d8', violet:'#8f7fc9', slate:'#a2b4c4',
   cream:'#f0ede6', text3:'#8d8779', silver:'rgba(176,176,176,.17)'
 };
+// GLASS backdrop, as ThetaGlass::paintBackdrop with the GLASS skin tokens (ThetaColors.h applyGlassLayer,
+// shared by every mixing plug-in): ground gradient, four light pools, the veil, then the well darkening.
+// Same function as the PNEUMA page, taking a rectangle so split displays get one backdrop per pane.
+function glassRect(ctx, x, y, w, h, old) {
+  if (window.__mkBefore) { ctx.fillStyle = old || '#06080c'; ctx.fillRect(x, y, w, h); return; }
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  const g0 = ctx.createLinearGradient(x, y, x + w, y + h); g0.addColorStop(0, '#0c1020'); g0.addColorStop(1, '#1a100c');
+  ctx.fillStyle = g0; ctx.fillRect(x, y, w, h);
+  const pools = [[-.08, -.06, .52, [31, 151, 171], .70], [.92, .36, .58, [201, 134, 46], .65], [.40, 1.04, .52, [168, 42, 88], .65], [.56, -.04, .26, [216, 196, 142], .25]];
+  for (const [px, py, pr, c, a] of pools) {
+    const cx = x + px * w, cy = y + py * h, r = pr * w, rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    rg.addColorStop(0, `rgba(${c},${a})`); rg.addColorStop(.4, `rgba(${c},${a * .55})`); rg.addColorStop(1, `rgba(${c},0)`);
+    ctx.fillStyle = rg; ctx.fillRect(x, y, w, h);
+  }
+  ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(x, y, w, h);
+  ctx.fillStyle = 'rgba(0,0,0,.40)'; ctx.fillRect(x, y, w, h);
+  ctx.restore();
+}
+
 const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
 // notes toggle
@@ -732,16 +752,16 @@ const fmtHz = v => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 1 : 2) + ' kHz' :
     const head = Math.floor(t * 60) + WIN;            // newest slot, wrapping through the loop
     const idx = k => ((head - WIN + 1 + k) % NS + NS) % NS;
     const rb = ribbon(R, idx, WIN);
-    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    glassRect(ctx, 0, 0, W, H, '#06080c');
     // grid: 1 s verticals and the zero spine
     const pxs = plot.w / 6, xFor = k => plot.x + k / (WIN - 1) * plot.w;
     ctx.strokeStyle = 'rgba(17,20,32,1)'; ctx.lineWidth = 1;
     for (let s = 1; s <= 5; s++) { const x = Math.round(plot.x + plot.w - s * pxs) + .5; ctx.beginPath(); ctx.moveTo(x, plot.y); ctx.lineTo(x, plot.y + plot.h); ctx.stroke(); }
-    ctx.strokeStyle = '#1d2230'; ctx.beginPath(); ctx.moveTo(plot.x, z + .5); ctx.lineTo(plot.x + plot.w, z + .5); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,.125)'; ctx.beginPath(); ctx.moveTo(plot.x, z + .5); ctx.lineTo(plot.x + plot.w, z + .5); ctx.stroke();
     drawRibbon(ctx, rb, WIN, xFor, z, half, ampRef);
     gainStubs(ctx, plot.x, z, half, 14);
     ctx.font = `14px ${MONO}`; ctx.fillStyle = C.label; ctx.fillText('6 s', plot.x + 4, plot.y + plot.h + 22);
-    ctx.fillStyle = 'rgba(200,168,107,.7)'; ctx.textAlign = 'right'; ctx.fillText('NOW', plot.x + plot.w, plot.y + plot.h + 22); ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(227,194,122,.7)'; ctx.textAlign = 'right'; ctx.fillText('NOW', plot.x + plot.w, plot.y + plot.h + 22); ctx.textAlign = 'left';
     // band strip: in place, cut grows left, boost grows right, 2 s peak-hold tick
     const cur = idx(WIN - 1);
     ctx.fillStyle = C.label; ctx.font = `13px ${MONO}`; ctx.fillText('BAND', strip.x, plot.y + 4);
@@ -844,10 +864,10 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
   const lvBase = document.createElement('canvas'); lvBase.width = lv.width; lvBase.height = lv.height;
   function drawLoop() {
     const g = lvBase.getContext('2d'), W = lv.width, H = lv.height, top = { y: 34, h: 300 }, rib = { y: 372, h: 200 };
-    g.fillStyle = C.bg; g.fillRect(0, 0, W, H);
+    glassRect(g, 0, 0, W, H, '#06080c');
     g.font = `14px ${MONO}`; g.fillStyle = C.text3; g.fillText('TWO BARS · INPUT AND OUTPUT', 10, 22);
     // beat grid
-    for (let b = 0; b <= 8; b++) { const x = Math.round(b / 8 * (W - 1)) + .5; g.strokeStyle = b % 4 ? C.grid : '#1d2230'; g.beginPath(); g.moveTo(x, top.y); g.lineTo(x, rib.y + rib.h); g.stroke(); }
+    for (let b = 0; b <= 8; b++) { const x = Math.round(b / 8 * (W - 1)) + .5; g.strokeStyle = b % 4 ? C.grid : 'rgba(255,255,255,.125)'; g.beginPath(); g.moveTo(x, top.y); g.lineTo(x, rib.y + rib.h); g.stroke(); }
     const zm = top.y + top.h / 2, N = LOOPX.length, per = N / W;
     const env = (arr, i) => { let mx = 0; const a = Math.floor(i * per), b = Math.floor((i + 1) * per); for (let n = a; n < b; n++) mx = Math.max(mx, Math.abs(arr[n])); return mx; };
     let pk = 0; for (let n = 0; n < N; n++) pk = Math.max(pk, Math.abs(RS.out[n]), Math.abs(LOOPX[n]));
@@ -862,12 +882,12 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
     // ribbon across the loop (no scroll)
     const n = RS.nSlots, rb = ribbon(RS, i => i, n), z = rib.y + rib.h / 2, half = rib.h / 2 - 6;
     let ampRef = 1e-6; for (let i = 0; i < n; i++) ampRef = Math.max(ampRef, rb.amp[i]);
-    g.strokeStyle = '#1d2230'; g.beginPath(); g.moveTo(0, z + .5); g.lineTo(W, z + .5); g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,.125)'; g.beginPath(); g.moveTo(0, z + .5); g.lineTo(W, z + .5); g.stroke();
     drawRibbon(g, rb, n, k => k / (n - 1) * (W - 1), z, half, ampRef);
     gainStubs(g, 0, z, half, 13);
     g.fillStyle = C.text3; g.font = `14px ${MONO}`; g.fillText('APPLIED GAIN', 10, rib.y - 8);
     // hit marker
-    const hxp = RS.hitT / LOOP * W; g.fillStyle = 'rgba(200,168,107,.85)'; g.beginPath(); g.moveTo(hxp - 6, top.y - 2); g.lineTo(hxp + 6, top.y - 2); g.lineTo(hxp, top.y + 8); g.closePath(); g.fill();
+    const hxp = RS.hitT / LOOP * W; g.fillStyle = 'rgba(227,194,122,.85)'; g.beginPath(); g.moveTo(hxp - 6, top.y - 2); g.lineTo(hxp + 6, top.y - 2); g.lineTo(hxp, top.y + 8); g.closePath(); g.fill();
     // stats
     let mx = 0, mn = 0; for (let b = 0; b < 6; b++) for (let i = 0; i < n; i++) { mx = Math.max(mx, RS.tapGain[b][i]); mn = Math.min(mn, RS.tapGain[b][i]); }
     let op = 0; for (let k = 0; k < N; k++) op = Math.max(op, Math.abs(RS.out[k]));
@@ -877,7 +897,7 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
   function drawHit() {
     const g = hx, W = hv.width, H = hv.height, cp = RS.cap, L = cp.lvl.length, xs = i => i / (L - 1) * W;
     const top = { y: 40, h: 300 }, bot = { y: 380, h: 190 };
-    g.fillStyle = C.bg; g.fillRect(0, 0, W, H);
+    glassRect(g, 0, 0, W, H, '#06080c');
     g.font = `14px ${MONO}`; g.fillStyle = C.text3; g.fillText(`${HITNAME[hitSel]} · BAND ${HITBAND[hitSel] + 1} · ${BANDNAME[HITBAND[hitSel]]} Hz · 400 ms`, 10, 24);
     // ms grid
     for (let ms = 0; ms <= 400; ms += 100) { const x = Math.round((ms + 20) / 420 * W) + .5; g.strokeStyle = C.grid; g.beginPath(); g.moveTo(x, top.y); g.lineTo(x, bot.y + bot.h); g.stroke(); g.fillStyle = C.label; g.fillText(ms + ' ms', x + 4, bot.y + bot.h + 22 > H ? H - 6 : bot.y + bot.h + 22); }
@@ -894,7 +914,7 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
     let gm = 3; for (let i = 0; i < L; i++) gm = Math.max(gm, Math.abs(cp.g[i]), Math.abs(cp.ta[i]), Math.abs(cp.ts[i]), Math.abs(cp.td[i]));
     gm = Math.min(12, Math.ceil(gm / 3) * 3);
     const z = bot.y + bot.h / 2, gy = v => z - clamp(v, -gm, gm) / gm * (bot.h / 2 - 4);
-    g.strokeStyle = '#1d2230'; g.beginPath(); g.moveTo(0, z + .5); g.lineTo(W, z + .5); g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,.125)'; g.beginPath(); g.moveTo(0, z + .5); g.lineTo(W, z + .5); g.stroke();
     for (let i = 0; i < L; i += 2) { const v = cp.g[i]; if (Math.abs(v) < .02) continue; g.fillStyle = v > 0 ? 'rgba(138,224,146,.28)' : cutCol(Math.abs(v) / 12, .38); const y = gy(v); g.fillRect(xs(i), Math.min(y, z), 2 * W / L + .6, Math.abs(y - z)); }
     const tl = (arr, col, lw) => { g.strokeStyle = col; g.lineWidth = lw; g.beginPath(); for (let i = 0; i < L; i += 2) { const y = gy(arr[i]); i ? g.lineTo(xs(i), y) : g.moveTo(xs(i), y); } g.stroke(); };
     tl(cp.ta, C.goldHot, 1.6); tl(cp.ts, C.focus, 1.6); tl(cp.td, C.violet, 1.6); tl(cp.g, C.cream, 2.4);
@@ -933,15 +953,15 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
   }
   const cols = [0, 1, 2, 3, 4, 5].map(i => ramp(.42 + i * .116));
   function draw() {
-    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    glassRect(ctx, 0, 0, W, H, '#06080c');
     ctx.font = `14px ${MONO}`;
     for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f)) + .5; ctx.strokeStyle = C.grid; ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H - 36); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(f >= 1000 ? f / 1000 + 'k' : String(f), x + 4, H - 14); }
-    for (let d = 0; d >= -36; d -= 12) { const y = Math.round(yy(d)) + .5; ctx.strokeStyle = d ? C.grid : '#1d2230'; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d + ' dB', 6, y - 5); }
-    XO.forEach(f => { const x = fx(f); ctx.strokeStyle = 'rgba(200,168,107,.25)'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H - 36); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = 'rgba(200,168,107,.75)'; ctx.fillText(f >= 1000 ? f / 1000 + 'k' : String(f), x + 4, 34); });
+    for (let d = 0; d >= -36; d -= 12) { const y = Math.round(yy(d)) + .5; ctx.strokeStyle = d ? C.grid : 'rgba(255,255,255,.125)'; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d + ' dB', 6, y - 5); }
+    XO.forEach(f => { const x = fx(f); ctx.strokeStyle = 'rgba(227,194,122,.25)'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H - 36); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = 'rgba(227,194,122,.75)'; ctx.fillText(f >= 1000 ? f / 1000 + 'k' : String(f), x + 4, 34); });
     curves.forEach((c, i) => {
       const sel = S.solo === i, dim = S.solo >= 0 && !sel;
       ctx.globalAlpha = dim ? .25 : 1;
-      if (sel) { ctx.fillStyle = 'rgba(200,168,107,.10)'; ctx.beginPath(); ctx.moveTo(c[0][0], yy(dbR.bot)); c.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(c[c.length - 1][0], yy(dbR.bot)); ctx.closePath(); ctx.fill(); }
+      if (sel) { ctx.fillStyle = 'rgba(227,194,122,.10)'; ctx.beginPath(); ctx.moveTo(c[0][0], yy(dbR.bot)); c.forEach(p => ctx.lineTo(p[0], p[1])); ctx.lineTo(c[c.length - 1][0], yy(dbR.bot)); ctx.closePath(); ctx.fill(); }
       ctx.strokeStyle = sel ? C.goldHot : cols[i]; ctx.lineWidth = sel ? 3 : 2.2; ctx.beginPath(); c.forEach((p, k) => k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
       ctx.globalAlpha = 1;
       const xc = fx(bandCentre(i)); ctx.fillStyle = dim ? C.label : (sel ? C.goldHot : cols[i]); ctx.textAlign = 'center'; ctx.fillText(BANDNAME[i], xc, yy(-3) + 22); ctx.textAlign = 'left';
@@ -992,7 +1012,7 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
   }
   const nodes = () => [[fx(S.hp), zc], [fx(S.lp), zc], [fx(S.emph[0].f), ey(S.emph[0].d)], [fx(S.emph[1].f), ey(S.emph[1].d)]];
   function draw() {
-    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    glassRect(ctx, 0, 0, W, H, '#06080c');
     ctx.font = `14px ${MONO}`;
     for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f)) + .5; ctx.strokeStyle = C.grid; ctx.beginPath(); ctx.moveTo(x, strip.y); ctx.lineTo(x, strip.y + strip.h); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(f >= 1000 ? f / 1000 + 'k' : String(f), x + 4, strip.y + strip.h + 18); }
     // outside the focus: shaded, because those frequencies no longer trigger
@@ -1001,7 +1021,7 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
     if (S.lp < 19500) ctx.fillRect(fx(S.lp), strip.y, W - fx(S.lp), strip.h);
     XO.forEach(f => { const x = Math.round(fx(f)) + .5; ctx.strokeStyle = 'rgba(17,20,32,.9)'; ctx.setLineDash([3, 5]); ctx.beginPath(); ctx.moveTo(x, strip.y + 16); ctx.lineTo(x, strip.y + strip.h); ctx.stroke(); ctx.setLineDash([]); });
     // dB axis
-    for (const d of [18, 0, -18]) { const y = Math.round(ey(d)) + .5; ctx.strokeStyle = d ? C.grid : '#1d2230'; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W - 44, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.textAlign = 'right'; ctx.fillText((d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d), W - 6, y + 5); ctx.textAlign = 'left'; }
+    for (const d of [18, 0, -18]) { const y = Math.round(ey(d)) + .5; ctx.strokeStyle = d ? C.grid : 'rgba(255,255,255,.125)'; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W - 44, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.textAlign = 'right'; ctx.fillText((d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d), W - 6, y + 5); ctx.textAlign = 'left'; }
     // focus response, drawn on the same axis (a detection curve, not an EQ)
     if (focusOn(S)) {
       ctx.strokeStyle = 'rgba(69,224,216,.55)'; ctx.lineWidth = 1.6; ctx.beginPath();
@@ -1009,10 +1029,10 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
       ctx.stroke();
     }
     // emphasis curve: gold fill + line
-    ctx.fillStyle = 'rgba(200,168,107,.10)'; ctx.beginPath(); ctx.moveTo(0, zc);
+    ctx.fillStyle = 'rgba(227,194,122,.10)'; ctx.beginPath(); ctx.moveTo(0, zc);
     for (let x = 0; x <= W; x += 3) ctx.lineTo(x, ey(clamp(emphDb(S, xf(x)), -18, 18)));
     ctx.lineTo(W, zc); ctx.closePath(); ctx.fill();
-    ctx.strokeStyle = 'rgba(200,168,107,.8)'; ctx.lineWidth = 1.8; ctx.beginPath();
+    ctx.strokeStyle = 'rgba(227,194,122,.8)'; ctx.lineWidth = 1.8; ctx.beginPath();
     for (let x = 0; x <= W; x += 3) { const y = ey(clamp(emphDb(S, xf(x)), -18, 18)); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
     ctx.stroke();
     // the six sample points the DSP actually uses
@@ -1026,7 +1046,7 @@ const playPos = () => AU.playing && AU.ctx ? ((AU.ctx.currentTime - AU.t0) % LOO
       if (i < 2) { ctx.strokeStyle = C.focus; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p[0], p[1], 10, 0, 7); ctx.stroke(); }
       else { ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(p[0], p[1], 11, 0, 7); ctx.fill(); }
       const txt = i === 0 ? (S.hp <= 20.5 ? 'HP Off' : 'HP ' + fmtHz(S.hp)) : i === 1 ? (S.lp >= 19500 ? 'LP Off' : 'LP ' + fmtHz(S.lp)) : fmtHz(S.emph[i - 2].f) + '  ' + (Math.abs(S.emph[i - 2].d) < .05 ? 'Off' : fmtDb(S.emph[i - 2].d));
-      ctx.font = `13px ${MONO}`; ctx.fillStyle = i < 2 ? 'rgba(69,224,216,.85)' : 'rgba(200,168,107,.9)'; ctx.textAlign = 'center';
+      ctx.font = `13px ${MONO}`; ctx.fillStyle = i < 2 ? 'rgba(69,224,216,.85)' : 'rgba(227,194,122,.9)'; ctx.textAlign = 'center';
       const tx = clamp(p[0], 70, W - 110); ctx.fillText(txt, tx, p[1] <= zc ? p[1] + 30 : p[1] - 18); ctx.textAlign = 'left';
     });
     // per-band weights: what each band is allowed to do

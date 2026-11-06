@@ -79,7 +79,8 @@ body.hide-notes .note{display:none}
 .chip.soon{border-style:dashed;color:var(--text-3)}
 
 /* the metering well: ANANKE's DARK "Void" inset, divider frame, gold top edge */
-.well{border:1px solid var(--grid);border-top:1px solid rgba(200,168,107,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
+/* the display wells: GLASS skin frame, as the PNEUMA page */
+.well{border:1px solid rgba(255,255,255,.08);border-top:1px solid rgba(227,194,122,.85);border-radius:4px;background:var(--well);overflow:hidden;position:relative}
 .well canvas{display:block;width:100%;height:auto;touch-action:pan-y}
 .well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4) 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(240,237,230,.55)}
 .well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--grid);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(240,237,230,.6)}
@@ -237,8 +238,8 @@ footer a:hover{color:var(--gold)}
   </div>
   <div>
     <div class="well">
-      <div class="well-head"><span>DARK · TRANSFER · GAIN REDUCTION · LIVE</span><span>4.0 s</span></div>
-      <canvas id="hero" width="1040" height="600" aria-label="ANANKE's metering in its DARK skin. On the left the transfer curve, gold, with the soft knee lit and a dot riding it at the current level. On the right four seconds of a mix bus: the input level, the output in gold, and the gain reduction hanging from the top as a red fill with an amber edge."></canvas>
+      <div class="well-head"><span>GLASS · TRANSFER · GAIN REDUCTION · LIVE</span><span>4.0 s</span></div>
+      <canvas id="hero" width="1040" height="600" aria-label="ANANKE's metering in its GLASS skin. On the left the transfer curve, gold, with the soft knee lit and a dot riding it at the current level. On the right four seconds of a mix bus: the input level, the output in gold, and the gain reduction hanging from the top as a red fill with an amber edge."></canvas>
       <div class="well-foot"><span>GR <b id="h-gr" class="cut">-</b></span><span>AUTO REL <b id="h-rel">-</b></span><span>RELIEF EASING <b id="h-ease">-</b></span></div>
     </div>
     <div class="tagline">RED IS WHAT IT TAKES · GOLD IS WHAT IS LEFT</div>
@@ -246,7 +247,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top">
-  <img src="assets/ananke/hero_glass.png?v=261105" alt="The ANANKE panel in its GLASS skin: one frosted pane with the transfer curve and gain reduction history across the top, then DYNAMICS with the envelope and sidechain controls, CHARACTER with DRIVE, TYPE and ROUTING, and the OUTPUT strip" width="880" height="584">
+  <img src="assets/ananke/hero_v111.png?v=261106c" alt="The ANANKE v1.1.1 panel in its GLASS skin: the transfer curve and gain reduction history across the top, DYNAMICS with the envelope and sidechain controls, CHARACTER with DRIVE, TYPE and ROUTING, and the OUTPUT strip" width="1852" height="1298">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -521,12 +522,31 @@ footer a:hover{color:var(--gold)}
 <script>
 (() => {
 'use strict';
-const RM = false;
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const C = {
-  bg:'#06080c', grid:'#111420', label:'#5d6068', gold:'#c8a86b', goldHot:'#ffc867',
+  bg:'#06080c', grid:'rgba(255,255,255,.063)', label:'#a9adb6', gold:'#e3c27a', goldHot:'#ffc867',
   grFill:'rgba(176,57,42,.38)', grLine:'#d98828', amber:'#e09a34', slate:'#a2b4c4', cut:'#d0553f',
   even:'#ffc867', odd:'#d0553f', cream:'#f0ede6', text3:'#8d8779'
 };
+// GLASS backdrop, as ThetaGlass::paintBackdrop with the GLASS skin tokens (ThetaColors.h applyGlassLayer,
+// shared by every mixing plug-in): ground gradient, four light pools, the veil, then the well darkening.
+// Same function as the PNEUMA page, taking a rectangle so split displays get one backdrop per pane.
+function glassRect(ctx, x, y, w, h, old) {
+  if (window.__mkBefore) { ctx.fillStyle = old || '#06080c'; ctx.fillRect(x, y, w, h); return; }
+  ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  const g0 = ctx.createLinearGradient(x, y, x + w, y + h); g0.addColorStop(0, '#0c1020'); g0.addColorStop(1, '#1a100c');
+  ctx.fillStyle = g0; ctx.fillRect(x, y, w, h);
+  const pools = [[-.08, -.06, .52, [31, 151, 171], .70], [.92, .36, .58, [201, 134, 46], .65], [.40, 1.04, .52, [168, 42, 88], .65], [.56, -.04, .26, [216, 196, 142], .25]];
+  for (const [px, py, pr, c, a] of pools) {
+    const cx = x + px * w, cy = y + py * h, r = pr * w, rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    rg.addColorStop(0, `rgba(${c},${a})`); rg.addColorStop(.4, `rgba(${c},${a * .55})`); rg.addColorStop(1, `rgba(${c},0)`);
+    ctx.fillStyle = rg; ctx.fillRect(x, y, w, h);
+  }
+  ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(x, y, w, h);
+  ctx.fillStyle = 'rgba(0,0,0,.40)'; ctx.fillRect(x, y, w, h);
+  ctx.restore();
+}
+
 const MONO = "'JetBrains Mono', ui-monospace, Menlo, monospace";
 
 // ---------- maths ----------
@@ -659,7 +679,7 @@ function push(rb, i, g, a) { rb.inp[rb.head] = i; rb.gr[rb.head] = g; rb.aux[rb.
 const IN0 = -60, IN1 = 0;
 function drawTransfer(ctx, r, p, dot, fs) {
   const X = d => r.x + (d - IN0) / (IN1 - IN0) * r.w, Y = d => r.y + r.h - (clamp(d, IN0, IN1) - IN0) / (IN1 - IN0) * r.h;
-  ctx.fillStyle = C.bg; ctx.fillRect(r.x, r.y, r.w, r.h);
+  glassRect(ctx, r.x, r.y, r.w, r.h, '#06080c');
   ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.strokeRect(r.x + .5, r.y + .5, r.w - 1, r.h - 1);
   ctx.font = `${fs}px ${MONO}`; ctx.fillStyle = C.label;
   for (let d = -50; d < 0; d += 10) {
@@ -669,7 +689,7 @@ function drawTransfer(ctx, r, p, dot, fs) {
   }
   ctx.strokeStyle = 'rgba(112,112,112,.5)'; ctx.beginPath(); ctx.moveTo(X(IN0), Y(IN0)); ctx.lineTo(X(IN1), Y(IN1)); ctx.stroke();
   const W = p.W * VOICE[p.voice || 0].k;
-  if (W > .01) { const k0 = X(clamp(p.T - W / 2, IN0, IN1)), k1 = X(clamp(p.T + W / 2, IN0, IN1)); ctx.fillStyle = 'rgba(200,168,107,.10)'; ctx.fillRect(k0, r.y, Math.max(1, k1 - k0), r.h); }
+  if (W > .01) { const k0 = X(clamp(p.T - W / 2, IN0, IN1)), k1 = X(clamp(p.T + W / 2, IN0, IN1)); ctx.fillStyle = 'rgba(227,194,122,.10)'; ctx.fillRect(k0, r.y, Math.max(1, k1 - k0), r.h); }
   ctx.strokeStyle = 'rgba(112,112,112,.4)'; ctx.beginPath(); ctx.moveTo(Math.round(X(p.T)) + .5, r.y); ctx.lineTo(Math.round(X(p.T)) + .5, r.y + r.h); ctx.stroke();
   // RANGE floor: where the cap overrides the curve (this page draws it; the plug-in draws the curve alone)
   if (p.range > -59.5) {
@@ -692,7 +712,7 @@ function drawTransfer(ctx, r, p, dot, fs) {
 // This page adds the input level (faint) and output level (gold) under it.
 function drawHistory(ctx, r, rb, opts) {
   const { lvlTop, lvlH, grMax, fs, la } = opts;
-  ctx.fillStyle = C.bg; ctx.fillRect(r.x, r.y, r.w, r.h);
+  glassRect(ctx, r.x, r.y, r.w, r.h, '#06080c');
   ctx.strokeStyle = C.grid; ctx.lineWidth = 1; ctx.strokeRect(r.x + .5, r.y + .5, r.w - 1, r.h - 1);
   ctx.font = `${fs}px ${MONO}`;
   const ly = d => lvlTop + (0 - clamp(d, -60, 0)) / 60 * lvlH;
@@ -738,7 +758,7 @@ function drawHistory(ctx, r, rb, opts) {
     let lastL = -90, lastG = 0;
     while (acc >= 1) { const L = src(), g = compStep(st, L, P); push(rb, L, g); lastL = st.det; lastG = g; acc -= 1; }
     if (lastL > -89) { dotIn += (lastL - dotIn) * .35; dotGr += (lastG - dotGr) * .35; }
-    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H);
+    glassRect(ctx, 0, 0, W, H, '#06080c');
     drawTransfer(ctx, tr, P, { inDb: dotIn, gr: dotGr }, 15);
     drawHistory(ctx, hr, rb, { lvlTop: H * .38, lvlH: H * .6, grMax: 18, fs: 15 });
     if (t - lastTxt > .12 || dt === 0) {
@@ -843,7 +863,7 @@ const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms
     acc += dt * FS * .5;   // half speed: 1.5 s of program fills the panel in 3 s
     while (acc >= 1) { const L = src(); const g = compStep(sA, L, p); push(rb, L, g, sA.crestGr); push(rbPlain, L, compStep(sB, L, plain)); acc -= 1; }
     const Wd = cv.width, Hd = cv.height, la = Math.round(V.la / DT);
-    ctx.fillStyle = C.bg; ctx.fillRect(0, 0, Wd, Hd);
+    glassRect(ctx, 0, 0, Wd, Hd, '#06080c');
     // level panel (top) and GR panel (bottom)
     const top = { y: 20, h: 250 }, gp = { y: 300, h: 200 }, grMax = 24, fs = 14;
     const ly = d => top.y + (0 - clamp(d, -48, 0)) / 48 * top.h, gy = g => gp.y + clamp(g, 0, grMax) / grMax * gp.h;
@@ -851,7 +871,7 @@ const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms
     for (const d of [0, -12, -24, -36, -48]) { const y = Math.round(ly(d)) + .5; ctx.strokeStyle = C.grid; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Wd, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d + ' dB', 6, y - 4); }
     const yT = ly(base.T); ctx.setLineDash([6, 6]); ctx.strokeStyle = 'rgba(240,237,230,.4)'; ctx.beginPath(); ctx.moveTo(0, yT); ctx.lineTo(Wd, yT); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle = 'rgba(240,237,230,.6)'; ctx.fillText('THRESHOLD', Wd - 104, yT - 6);
-    for (let d = 0; d <= grMax; d += 6) { const y = Math.round(gy(d)) + .5; ctx.strokeStyle = d === 0 ? '#1d2230' : C.grid; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Wd, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d ? '−' + d : 'GR 0', 6, y + (d ? -4 : 16)); }
+    for (let d = 0; d <= grMax; d += 6) { const y = Math.round(gy(d)) + .5; ctx.strokeStyle = d === 0 ? 'rgba(255,255,255,.125)' : C.grid; ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(Wd, y); ctx.stroke(); ctx.fillStyle = C.label; ctx.fillText(d ? '−' + d : 'GR 0', 6, y + (d ? -4 : 16)); }
     // per-pixel: output pairs input x[m] with the gain written LA steps later (gain leads by lookahead)
     const pin = [], pout = [], pgA = [], pgB = [], pcr = [];
     let pIn = -120, pOut = -120, hitGr = 0, bedSum = 0, bedN = 0, crMax = 0;
@@ -940,7 +960,7 @@ const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms
   const SPMIN = -100, SPMAX = 6;
   function draw() {
     const m = model(), Wd = g.width, Hd = g.height, sy = d => (SPMAX - clamp(d, SPMIN, SPMAX)) / (SPMAX - SPMIN) * Hd;
-    gx.fillStyle = C.bg; gx.fillRect(0, 0, Wd, Hd);
+    glassRect(gx, 0, 0, Wd, Hd, '#06080c');
     gx.strokeStyle = C.grid; gx.lineWidth = 1; gx.font = `15px ${MONO}`; gx.fillStyle = C.label;
     for (const f of [50, 100, 200, 500, 1000, 2000, 5000, 10000]) { const x = Math.round(fx(f, Wd)) + .5; gx.beginPath(); gx.moveTo(x, 0); gx.lineTo(x, Hd); gx.stroke(); gx.fillText(f >= 1000 ? (f / 1000) + 'k' : String(f), x + 4, Hd - 8); }
     for (const d of [0, -24, -48, -72]) { const y = Math.round(sy(d)) + .5; gx.beginPath(); gx.moveTo(0, y); gx.lineTo(Wd, y); gx.stroke(); gx.fillText(d + ' dBFS', Wd - 98, y + 16); }
@@ -962,7 +982,7 @@ const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms
     line(m.f0, fundDb, C.cream, 'F', 3);
     for (let q = 2; q <= 7; q++) { const f = m.f0 * q; if (f > 20000 || m.h[q - 1] <= 0) continue; const dB = lin2db(m.h[q - 1]); if (dB < SPMIN) continue; line(f, dB, q % 2 ? C.odd : C.even, 'H' + q); }
     // wave panel
-    const W2 = w.width; wx.fillStyle = C.bg; wx.fillRect(0, 0, W2, w.height);
+    const W2 = w.width; glassRect(wx, 0, 0, W2, w.height, '#06080c');
     const top = { x: 30, y: 30, w: W2 - 60, h: 300 }, mid = top.y + top.h / 2;
     wx.strokeStyle = C.grid; wx.lineWidth = 1; wx.beginPath(); wx.moveTo(top.x, mid + .5); wx.lineTo(top.x + top.w, mid + .5); wx.stroke();
     const sc = (top.h / 2 - 10) / Math.max(1.15 * m.A * Math.max(1, m.gT), .02);
