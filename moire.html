@@ -265,7 +265,7 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Deep through-zero flanger · Version 1.2.0</div>
+    <div class="eyebrow">Deep through-zero flanger · Version 1.3.0</div>
     <h1 class="wordmark">MOIR&Eacute;</h1>
     <div class="lede">
       <p>Two combs sliding through each other. MOIR&Eacute; is a real through-zero flanger: the wet delay sweeps past the dry signal instead of stopping short of it, so twice every cycle the two land on top of each other and the sound drops through a hole in itself.</p>
@@ -292,7 +292,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/moire/hero_v120.png?v=261106" width="2140" height="1410" alt="The MOIRÉ v1.2.0 panel at INIT: DEPTH, RATE and LFO SHAPE on the left, the MOIRÉ FIELD display in the middle with NOTCH 833 Hz, SWEEP 0.6-2.6 ms and ORDERS 8 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above the THRU-ZERO and INVERT switches and the AUTO LEVEL meter and selector, and THRU-ZERO: 1.6 MS REPORTED in the footer">
+  <img src="assets/moire/hero_v130.png?v=261107" width="2140" height="1634" alt="The MOIRÉ v1.3.0 panel on HOT TAPE: DEPTH, RATE and LFO SHAPE (SINE, TRI, RAND, SMOOTH, TAPE) on the left, the MOIRÉ FIELD display in the middle with NOTCH 299 HZ, SWEEP 0.3-2.5 MS and ORDERS 7 under it, FEEDBACK, MANUAL, SPREAD and MIX on the right above THRU-ZERO, INVERT and AUTO LEVEL set to CLIP, and a new bottom row with ENV, BARBER set to DOWN, RETRIG set to PLAY and DRIVE at 100 %">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -321,7 +321,7 @@ footer a:hover{color:var(--gold)}
       <rect class="box" x="476" y="56" width="96" height="44" rx="4"/><text class="lbl" x="524" y="75" text-anchor="middle">INVERT</text><text x="524" y="92" text-anchor="middle">± WET</text>
       <path class="wire" d="M572 78 H660 V128"/><path class="flow wet" d="M572 78 H660 V128"/>
       <path class="wire" d="M448 78 V24 H138 V60"/><path class="flow fb" d="M448 78 V24 H138 V60"/>
-      <text x="292" y="18" text-anchor="middle">FEEDBACK ±95 %</text>
+      <text x="292" y="18" text-anchor="middle">FEEDBACK ±95 % · DRIVE</text>
       <rect class="box" x="232" y="186" width="196" height="56" rx="4"/><text class="lbl" x="330" y="209" text-anchor="middle">DRY DELAY</text><text x="330" y="228" text-anchor="middle">THRU-ZERO · MID-SWEEP</text>
       <path class="wire" d="M428 214 H660 V166"/><path class="flow" d="M428 214 H660 V166"/>
       <rect class="box" x="232" y="124" width="96" height="40" rx="4"/><text class="lbl" x="280" y="142" text-anchor="middle">LFO</text><text x="280" y="157" text-anchor="middle">R + SPREAD</text>
@@ -395,7 +395,7 @@ footer a:hover{color:var(--gold)}
     </article>
     <article class="knob-card" data-knob="rate">
       <div class="knob-name">RATE · SHAPE</div>
-      <p>0.02 to 8 Hz, default 0.34, skewed so the slow end has room: about 0.7 Hz at the middle of the throw. SINE is the classic arc. TRI moves at a constant speed. RAND is an 18-step sample-and-hold on a fixed pattern, so it plays the same sequence every pass: a stutter when fast, a slow melody of positions when slow.</p>
+      <p>0.02 to 8 Hz, default 0.34, skewed so the slow end has room: about 0.7 Hz at the middle of the throw. SINE is the classic arc. TRI moves at a constant speed. RAND is an 18-step sample-and-hold on a fixed pattern, so it plays the same sequence every pass: a stutter when fast, a slow melody of positions when slow. SMOOTH is a gliding random wander, and TAPE is a slow push and a quick release, like a thumb on a tape reel.</p>
       <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="feedback">
@@ -413,6 +413,22 @@ footer a:hover{color:var(--gold)}
       <p>MIX is a linear crossfade, 0 to 100 %, default 50. Fifty is the classic full flange, deepest notches, and it is deliberately not equal-power. INVERT, the POL switch, flips the wet path's polarity: peaks become notches, the lowest notch drops to the bottom of the spectrum, and through zero it is the switch that makes the crossing silent.</p>
       <button type="button" class="show" data-show="mix">SHOW IN THE LAB</button>
     </article>
+    <article class="knob-card">
+      <div class="knob-name">DRIVE</div>
+      <p>Tape-style saturation inside the feedback loop, off by default. As FEEDBACK climbs the resonance thickens and limits itself, so the loop cannot run away however hard you push it. Turn it up with a little positive feedback for a hot, compressed jet.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">ENV</div>
+      <p>The input&#39;s level moves the sweep, centred off. Turn it right and loud playing pulls the comb down; turn it left and it pulls it up. Drums and picked notes start to play the flanger.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">BARBER</div>
+      <p>UP or DOWN makes the sweep rise or fall for ever: the classic endless jet, the barber pole. RATE sets its speed, and SPREAD still offsets the right side. OFF is the ordinary back-and-forth sweep.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">RETRIG</div>
+      <p>HIT restarts the sweep on each drum hit or picked note, so every hit gets the same swoosh. PLAY restarts it whenever the host starts playback, so a bounce sounds the same every time. OFF lets it run free.</p>
+    </article>
   </div>
 </section>
 
@@ -421,7 +437,7 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <p>The well in the middle of MOIR&Eacute; has two modes. Click it to switch; the choice is saved with your session.</p>
+      <p>The well in the middle of MOIR&Eacute; shows FIELD, the moir&eacute; itself. This page also draws the comb as SURFACE terrain, because it shows the notches travelling.</p>
       <p><strong>SURFACE</strong> draws the comb's response as terrain. Across is frequency, 60 Hz to 4 kHz on a log scale. Receding is one full LFO cycle in eighteen rows, and the terrain flows toward you at the real LFO rate, so the front ridge, drawn in gold with pink hatching under it, is always the response you are hearing now. The valleys of the first eight notches are traced across the sweep, the first in pink. Hanging from a gold grid above is the complementary comb, what the other INVERT setting would give, so pressing POL visibly swaps the two.</p>
     </div>
     <div class="prose">
@@ -468,7 +484,7 @@ footer a:hover{color:var(--gold)}
 <!-- PRESETS -->
 <div class="sh" id="presets">Factory sounds</div>
 <section class="stack">
-  <div class="prose"><p>Eight factory sounds, in the preset bar on MOIR&Eacute;'s face. Save over one and your version wins; save as and it joins them. Your presets are files in your Library, so every host on the Mac sees the same set. Click a card to load it into the lab.</p></div>
+  <div class="prose"><p>Thirteen factory sounds, in the preset bar on MOIR&Eacute;'s face. The eight below play in the lab; the other five, ENDLESS RISE, ENDLESS FALL, HOT TAPE, DRUM ZIP and WANDER, use DRIVE, ENV, BARBER and RETRIG, which the lab does not model. Save over one and your version wins; save as and it joins them. Your presets are files in your Library, so every host on the Mac sees the same set. Click a card to load it into the lab.</p></div>
   <div class="presets" id="presets-grid"></div>
 </section>
 
@@ -498,16 +514,16 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <table class="specs">
     <tr><th>TYPE</th><td>Stereo through-zero flanger (insert)</td></tr>
-    <tr><th>CONTROLS</th><td>DEPTH · RATE · SHAPE · FEEDBACK · MANUAL · SPREAD · MIX · THRU-ZERO · INVERT · AUTO LEVEL · BYPASS</td></tr>
+    <tr><th>CONTROLS</th><td>DEPTH · RATE · SHAPE · FEEDBACK · MANUAL · SPREAD · MIX · DRIVE · ENV · BARBER · RETRIG · THRU-ZERO · INVERT · AUTO LEVEL · BYPASS</td></tr>
     <tr><th>DELAY</th><td>MANUAL 0.1–20 ms · sweep 2.9 ms at 100 % DEPTH · third-order Lagrange interpolation, left and right independent</td></tr>
-    <tr><th>LFO</th><td>0.02–8 Hz · SINE, TRI, RAND (18-step fixed pattern) · right channel 0–180° ahead (SPREAD)</td></tr>
+    <tr><th>LFO</th><td>0.02–8 Hz · SINE, TRI, RAND (18-step fixed pattern), SMOOTH, TAPE · BARBER UP or DOWN for an endless sweep · RETRIG on HIT or PLAY · right channel 0–180° ahead (SPREAD)</td></tr>
     <tr><th>FEEDBACK</th><td>Bipolar, −95 to +95 %</td></tr>
     <tr><th>THRU-ZERO</th><td>Dry path delayed to the sweep midpoint, rounded to whole samples and reported to the host · off: zero latency</td></tr>
     <tr><th>LATENCY</th><td>THRU-ZERO on: MANUAL + 1.45 ms × DEPTH, up to 21.45 ms (76 samples at 48 kHz at the defaults) · off: 0 · the same in every AUTO LEVEL mode</td></tr>
     <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBFS ceiling, no added latency</td></tr>
-    <tr><th>DISPLAY</th><td>SURFACE (comb terrain, 60 Hz–4 kHz, 18 rows per LFO cycle, 8 notch orders) · FIELD (two meshes, 0–10 kHz) · lit by a 64-band analysis of the input</td></tr>
+    <tr><th>DISPLAY</th><td>MOIRÉ FIELD (two meshes, 0–10 kHz) · lit by a 64-band analysis of the input</td></tr>
     <tr><th>CHANNELS</th><td>Stereo in, stereo out</td></tr>
-    <tr><th>PRESETS</th><td>Eight factory sounds (INIT, TAPE JET, ZERO CROSS, BARBER SLOW, METAL COMB, WIDE WASH, PINBACKER, FRIKKIN LAZERBEAMS); your own presets with save and save as</td></tr>
+    <tr><th>PRESETS</th><td>Thirteen factory sounds (INIT, TAPE JET, ZERO CROSS, BARBER SLOW, METAL COMB, WIDE WASH, PINBACKER, FRIKKIN LAZERBEAMS, ENDLESS RISE, ENDLESS FALL, HOT TAPE, DRUM ZIP, WANDER); your own presets with save and save as</td></tr>
     <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · activate once online, then runs offline</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized</td></tr>

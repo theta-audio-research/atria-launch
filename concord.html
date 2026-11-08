@@ -242,7 +242,7 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Multi-voice chorus · Version 1.2.0</div>
+    <div class="eyebrow">Multi-voice chorus · Version 1.3.0</div>
     <h1 class="wordmark">CONCORD</h1>
     <h2>Eight voices. <em>One shared cycle.</em></h2>
     <div class="lede">
@@ -270,7 +270,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img width="2140" height="1378" src="assets/concord/hero_v120.png?v=261106" alt="The CONCORD v1.2.0 panel: DEPTH, RATE and the VOICES switch on the left, the VOICE BRAID in the middle, DETUNE, DELAY, WIDTH and MIX on the right above BBD MODE, LO-CUT and the AUTO LEVEL switch, and BYPASS and EXPORT IR in the footer">
+  <img width="2140" height="1378" src="assets/concord/hero_v130.png?v=261107" alt="The CONCORD v1.3.0 panel on SLOW ENSEMBLE: DEPTH, RATE with its HZ | SYNC switch and the VOICES switch on the left, the VOICE BRAID in the middle, DETUNE, DELAY, WIDTH, DRIFT, AGE and MIX on the right above BBD MODE, ENSEMBLE, LO-CUT and the AUTO LEVEL switch, and BYPASS and EXPORT IR in the footer">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -283,6 +283,7 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="prose">
       <p>The input is summed to mono and written into one delay line. <strong>VOICES</strong> reads two, four, six or eight taps off it. <strong>DELAY</strong> sets where the taps sit, <strong>DEPTH</strong> how far they swing, <strong>RATE</strong> how fast. <strong>DETUNE</strong> stretches alternate voices' delays up and down around centre, so no two taps land together, and <strong>WIDTH</strong> fans them out across the stereo field, odd voices to one side, even to the other.</p>
+      <p><strong>DRIFT</strong> lets each voice wander on its own, <strong>ENSEMBLE</strong> adds a fast 6 Hz shimmer under the slow sweep, and <strong>AGE</strong> turns BBD into a worn bucket-brigade line. Each is off by default.</p>
       <p><strong>BBD</strong> and <strong>LO-CUT</strong> shape only the wet path. <strong>MIX</strong> blends it with the input, which is never delayed, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison. One header owns the swing; the audio, the display and the test harness all call it, so the picture cannot drift from the sound.</p>
     </div>
   </div>
@@ -386,7 +387,7 @@ footer a:hover{color:var(--gold)}
     </article>
     <article class="knob-card" data-knob="rate">
       <div class="knob-name">RATE</div>
-      <p>0.02 to 8 Hz, default 0.42. Skewed so the slow end, where most chorus lives, gets most of the knob: about 1 Hz at mid-throw. One rate for every voice, because every voice is the same LFO.</p>
+      <p>0.02 to 8 Hz, default 0.42. Skewed so the slow end, where most chorus lives, gets most of the knob: about 1 Hz at mid-throw. One rate for every voice, because every voice is the same LFO. The HZ · SYNC switch under it can lock the cycle to the host tempo.</p>
       <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="voices">
@@ -416,6 +417,22 @@ footer a:hover{color:var(--gold)}
     <article class="knob-card" data-knob="bbd">
       <div class="knob-name">BBD · LO-CUT</div>
       <p>BBD rolls the wet path off around 5.2 kHz, the bandwidth of a bucket-brigade chip. LO-CUT takes the wet path out below 120 Hz, so the low end stays exactly as you recorded it. Both crossfade, so neither clicks.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">DRIFT</div>
+      <p>0 to 100 %, off by default. Each voice wanders on its own, a slow random walk of up to 1.8 ms in delay time and a little in its place in the cycle, so the ensemble never quite repeats. It only uses the room the delay line has left, so it can never push a tap past the floor.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">AGE</div>
+      <p>The bucket-brigade voice, done properly. With BBD on, AGE darkens the ceiling as DELAY lengthens, the way a slower clock does, and adds soft saturation and a little hiss that follows the signal, so silence stays silent. At 0 BBD is the plain 5.2 kHz roll-off, and with BBD off the knob dims and does nothing.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">ENSEMBLE</div>
+      <p>A second, fast LFO at 6 Hz under the slow one: the shimmer of a string machine. Its swing scales with DEPTH, so DEPTH 0 is still a chorus that does not move.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">HZ · SYNC</div>
+      <p>The switch under RATE. HZ is the free rate. SYNC locks one LFO cycle to the host tempo, from 8 bars down to 1/16 with dotted and triplet values, lined up with the bar so the sweep lands in the same place on every pass.</p>
     </article>
   </div>
 </section>
@@ -471,7 +488,7 @@ footer a:hover{color:var(--gold)}
   <div class="prose">
     <p>A chorus changes level as you add voices and push MIX, and louder always sounds better for about a second, so an A/B made while you dial it in is rigged. <strong>AUTO LEVEL matches the output back to the level coming in</strong>, so your ear compares the chorus and not the gain. Every release build checks that TRANSPARENT and GLUE hold a louder patch within 1 dB of its input.</p>
     <p>Four positions at the bottom right of the panel. TRANSPARENT rides the gain slowly and leaves the sound alone. GLUE adds a gentle 2.5:1 compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into the ceiling, loud on purpose. In every working mode no sample passes −0.3 dBFS, and a true-peak stage keeps what lies between the samples under 0 dBTP on a standard meter.</p>
-    <p>OFF is the default, and sessions and presets made before AUTO LEVEL existed open with it off and sound exactly as they did. It stays working under BYPASS, so the level is already matched the moment you release it, and changing mode fades over 10 ms so it never clicks.</p>
+    <p>OFF is the default. It stays working under BYPASS, so the level is already matched the moment you release it, and changing mode fades over 10 ms so it never clicks.</p>
   </div>
   <div class="stack">
     <div class="panel">
@@ -501,7 +518,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
   <article><b>KEYS &amp; SYNTHS</b><p>Two voices for the classic stereo chorus, eight for a string-machine ensemble. SLOW ENSEMBLE and DETUNE PAD are the places to start.</p></article>
-  <article><b>GUITAR &amp; BASS</b><p>Straight onto the mono track in 1.0. LO-CUT keeps a bass's fundamental untouched while the chorus moves above it.</p></article>
+  <article><b>GUITAR &amp; BASS</b><p>Straight onto the mono track. LO-CUT keeps a bass's fundamental untouched while the chorus moves above it.</p></article>
   <article><b>VOCALS</b><p>Low DEPTH and a long DELAY for a doubled, wider vocal, with AUTO LEVEL so the wider version does not win just by being louder.</p></article>
   <article><b>MIX &amp; SOUND DESIGN</b><p>EXPORT IR prints a voicing for a convolver or a sampler. Short DELAY and high DEPTH tip CONCORD into flanging when a part needs to move.</p></article>
 </section>
@@ -513,14 +530,14 @@ footer a:hover{color:var(--gold)}
   <table class="specs">
     <tr><th>TYPE</th><td>Multi-voice stereo chorus (insert)</td></tr>
     <tr><th>VOICES</th><td>2 · 4 · 6 · 8 taps off one delay line, one shared LFO offset by 1/N per voice, summed at 1/√N</td></tr>
-    <tr><th>CONTROLS</th><td>DEPTH · RATE · VOICES · DETUNE · DELAY · WIDTH · MIX · BBD · LO-CUT · AUTO LEVEL · BYPASS · EXPORT IR</td></tr>
-    <tr><th>RANGES</th><td>DEPTH 0–100 % (up to 11.3 ms swing) · RATE 0.02–8 Hz · DELAY 1–40 ms · DETUNE 0–50 · WIDTH 0–100 %</td></tr>
+    <tr><th>CONTROLS</th><td>DEPTH · RATE · HZ | SYNC · VOICES · DETUNE · DELAY · WIDTH · DRIFT · AGE · MIX · BBD · ENSEMBLE · LO-CUT · AUTO LEVEL · BYPASS · EXPORT IR</td></tr>
+    <tr><th>RANGES</th><td>DEPTH 0–100 % (up to 11.3 ms swing) · RATE 0.02–8 Hz, or synced from 8 bars to 1/16 with dotted and triplet values · DELAY 1–40 ms · DETUNE 0–50 · WIDTH 0–100 %</td></tr>
     <tr><th>PROCESSING</th><td>Third-order Lagrange interpolated delay line · BBD 5.2 kHz roll-off and 120 Hz LO-CUT on the wet path only</td></tr>
     <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP · samples to −0.3 dBFS, true peak under 0 dBTP</td></tr>
     <tr><th>LATENCY</th><td>32 samples at every rate and in every mode, reported to the host</td></tr>
     <tr><th>CHANNELS</th><td>Mono in, stereo out · stereo</td></tr>
     <tr><th>EXPORT IR</th><td>24-bit stereo WAV, 250 ms, at the session sample rate</td></tr>
-    <tr><th>PRESETS</th><td>Six factory presets; your own with SAVE and SAVE AS, kept in the plug-in state so they travel with your session</td></tr>
+    <tr><th>PRESETS</th><td>Eight factory presets (INIT, JUNO WASH, DIMENSION D, SIX VOICE, DETUNE PAD, SLOW ENSEMBLE, STRING MACHINE, OLD BUCKET); your own with SAVE and SAVE AS, kept in the plug-in state so they travel with your session</td></tr>
     <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · one activation covers every user account on a Mac · activate once online, then runs offline · perpetual</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized</td></tr>
@@ -534,7 +551,7 @@ footer a:hover{color:var(--gold)}
 <!-- PRICE -->
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
-  <div class="eyebrow">CONCORD · 1.2</div>
+  <div class="eyebrow">CONCORD · 1.3</div>
   <p>CONCORD 1.0 is available now. Every voice count, EXPORT IR, mono tracks, the full panel, nothing withheld.</p>
   <div class="amt"><s>$50</s><strong>$25</strong></div>
   <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>

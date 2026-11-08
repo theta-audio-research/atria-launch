@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GIRE Product Page</title>
-<meta name="description" content="GIRE is a three-engine analog-modelled phaser: JFET, OPTICAL and DUAL. VST3, AU and AAX for macOS, with Windows coming soon.">
+<meta name="description" content="GIRE is a four-engine analog-modelled phaser: JFET, OPTICAL, DUAL and SPIRAL. VST3, AU and AAX for macOS, with Windows coming soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -144,7 +144,7 @@ body.hide-notes .note{display:none}
 .legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
 
 /* voices */
-.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.voices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
 .voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
 .voice canvas{display:block;width:100%;height:auto;background:var(--plate)}
 .voice .body{padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
@@ -247,11 +247,11 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Analog-modelled phaser · Version 1.3.0</div>
+    <div class="eyebrow">Analog-modelled phaser · Version 1.4.0</div>
     <h1 class="wordmark">GIRE</h1>
-    <h2>Three engines. <em>One slow rotation.</em></h2>
+    <h2>Four engines. <em>One slow rotation.</em></h2>
     <div class="lede">
-      <p>GIRE is a 3 Engine Analog Modelled Phaser. The Three Engines: JFET, OPTICAL and DUAL. Think of them as three networks and you get to choose how many allpass stages, how they are tuned against each other, how the control signal reaches them, and how the components disagree.</p>
+      <p>GIRE is a 4 Engine Analog Modelled Phaser. The Four Engines: JFET, OPTICAL, DUAL and SPIRAL. Think of them as four networks and you get to choose how many allpass stages, how they are tuned against each other, how the control signal reaches them, and how the components disagree.</p>
       <p>A gyre is a rotation slow enough that you never see it close. At the bottom of the rate range GIRE takes thirty-three minutes to come back round.</p>
     </div>
     <div class="ctas">
@@ -275,7 +275,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img width="2140" height="1410" src="assets/gire/hero_v130.png?v=261106" alt="The GIRE v1.3.0 panel on DUAL: RATE, DEPTH and MIX on the left, the phase terrain in the middle with NOTCH 139 HZ, CYCLE 0.3 S and STAGES 2×6 under it, CENTER, REGEN, WARMTH and BODY on the right above STAGES, ULTRA SLOW and INVERT, AUTO LEVEL set to OFF, and EXPORT IR in the footer">
+  <img width="2140" height="1410" src="assets/gire/hero_v140.png?v=261107" alt="The GIRE v1.4.0 panel on JFET: the VOICE switch (JFET, OPTICAL, DUAL, SPIRAL), RATE with its SYNC pill, the SHAPE row and DEPTH, FOLLOW and MIX on the left, the phase terrain in the middle with NOTCH 200 HZ, CYCLE 2.4 S and STAGES 4 under it, CENTER, REGEN, WARMTH and BODY on the right above STAGES, ULTRA SLOW, REGEN POLARITY and INVERT, AUTO LEVEL set to OFF, and EXPORT IR in the footer">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -346,7 +346,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- VOICES -->
-<div class="sh" id="voices">The three voices</div>
+<div class="sh" id="voices">The four voices</div>
 <section class="stack">
   <div class="prose"><p>Each picture traces where a voice's stages sit over the last few seconds, low frequencies at the bottom, running at 0.8 Hz so the shape of the sweep shows. Switching voice takes effect on the next block, and the display redraws to match.</p></div>
   <div class="voices">
@@ -365,6 +365,11 @@ footer a:hover{color:var(--gold)}
       <div class="body"><div class="vn"><b>DUAL</b><span>2 × 6 STAGES · 12° APART</span></div>
       <p>Two six-stage machines in series per channel, twelve poles, their LFOs a fixed 12 degrees apart. Each machine has its own feedback loop, limiter and damping. It is wide: parked at CENTER 640, its six notches spread from 84 Hz to 4.7 kHz, where JFET's two sit at 265 Hz and 1.5 kHz. It is the deliberate choice, not the default: on a dense mix four stages is usually all the network a track will take.</p></div>
     </article>
+    <article class="voice">
+      <canvas id="v3" width="720" height="400" aria-label="SPIRAL's three four-stage machines climbing a third of a cycle apart, each fading in and out so the rise never ends"></canvas>
+      <div class="body"><div class="vn"><b>SPIRAL</b><span>3 × 4 STAGES · ENDLESS CLIMB</span></div>
+      <p>A barberpole: three four-stage machines in parallel, a third of a cycle apart. Each one climbs 3.6 octaves at DEPTH 100 and fades in and out on a smooth window, and the three windows always add up to exactly one, so the sweep seems to rise (or fall) for ever without ever arriving. On SPIRAL the SHAPE row becomes CLIMB, UP or DOWN, and FOLLOW spins it faster as you play harder. The panel reads STAGES 3×4.</p></div>
+    </article>
   </div>
   <p class="small">The stage count lives in the DSP where it belongs, shown in the panel, never sold as a knob.</p>
 </section>
@@ -376,7 +381,7 @@ footer a:hover{color:var(--gold)}
   <div class="knobs" id="knobs">
     <article class="knob-card" data-knob="rate">
       <div class="knob-name">RATE · ULTRA SLOW</div>
-      <p>0.01 to 10 Hz, weighted so most of the throw lives in the slow half. This is the hero control because slow is the signature. ULTRA SLOW divides the rate by twenty. At the bottom of the range that is one sweep every 33 minutes: movement you feel across an arrangement rather than hear as an effect. The readout always shows the effective rate.</p>
+      <p>0.01 to 10 Hz, weighted so most of the throw lives in the slow half. This is the hero control because slow is the signature. ULTRA SLOW divides the rate by twenty. At the bottom of the range that is one sweep every 33 minutes: movement you feel across an arrangement rather than hear as an effect. The readout always shows the effective rate. A SYNC pill on its shoulder turns RATE into a division, 1/16 to 32 bars with dotted and triplet values, locked to the host&#39;s tempo and song position so every pass and every bounce sweeps the same way at the same bar. ULTRA SLOW dims while SYNC is on.</p>
       <button type="button" class="show" data-show="rate">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="depth">
@@ -386,7 +391,7 @@ footer a:hover{color:var(--gold)}
     </article>
     <article class="knob-card" data-knob="regen">
       <div class="knob-name">REGEN</div>
-      <p>0 to 95% resonance, soft-limited inside the feedback loop, with high-frequency damping that tightens from 6 kHz to 2.5 kHz as WARMTH rises. It gets sharp and vocal; it never turns into the thin digital scream.</p>
+      <p>0 to 95% resonance, soft-limited inside the feedback loop, with high-frequency damping that tightens from 6 kHz to 2.5 kHz as WARMTH rises. It gets sharp and vocal; it never turns into the thin digital scream. The POLARITY row flips the loop: minus feeds it back inverted, which moves the resonance onto the notches&#39; side for a hollower, more nasal sound.</p>
       <button type="button" class="show" data-show="regen">SHOW IN THE LAB</button>
     </article>
     <article class="knob-card" data-knob="warmth">
@@ -403,6 +408,14 @@ footer a:hover{color:var(--gold)}
       <div class="knob-name">MIX · INVERT</div>
       <p>A linear crossfade, where 50% is the classic full-phase sound. INVERT flips the wet polarity, so peaks become notches.</p>
       <button type="button" class="show" data-show="mix">SHOW IN THE LAB</button>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">SHAPE</div>
+      <p>SINE, the sweep GIRE has always had, then TRI, RAMP and DRIFT, in a row under RATE. RAMP resets on a short S-curve, not a step, so it never clicks. DRIFT is a slow random wander that comes from the cycle count, so it is the same on every bounce.</p>
+    </article>
+    <article class="knob-card">
+      <div class="knob-name">FOLLOW</div>
+      <p>A centre-detent knob between DEPTH and MIX. Turn it right and the input&#39;s level pushes the sweep: on OPTICAL it drives the lamp, and on SPIRAL it spins faster. Turn it left and the wet ducks under your playing and swells back in the gaps. At centre it does nothing.</p>
     </article>
   </div>
 </section>
@@ -503,13 +516,14 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="specs">Technical specifications</div>
 <section class="two">
   <table class="specs">
-    <tr><th>TYPE</th><td>Three-voice analog-modelled phaser (insert)</td></tr>
-    <tr><th>VOICES</th><td>JFET (4 matched stages) · OPTICAL (4 stagger-tuned stages, lamp and photocell) · DUAL (2 × 6 stages in series, machines 12° apart)</td></tr>
+    <tr><th>TYPE</th><td>Four-voice analog-modelled phaser (insert)</td></tr>
+    <tr><th>VOICES</th><td>JFET (4 matched stages) · OPTICAL (4 stagger-tuned stages, lamp and photocell) · DUAL (2 × 6 stages in series, machines 12° apart) · SPIRAL (3 × 4 stages in parallel, a third of a cycle apart, endless climb UP or DOWN)</td></tr>
+    <tr><th>MODULATION</th><td>RATE 0.01–10 Hz, ÷20 with ULTRA SLOW, or SYNC from 1/16 to 32 bars (dotted and triplet) · SHAPE: SINE, TRI, RAMP, DRIFT · FOLLOW: envelope pushes the sweep or ducks the wet · REGEN POLARITY + or −</td></tr>
     <tr><th>STEREO</th><td>Right channel offset 10–15° by voice, never inverted left against right. Mono to mono, mono to stereo, stereo to stereo</td></tr>
     <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBFS ceiling, held under 0 dBTP</td></tr>
     <tr><th>EXPORT</th><td>Impulse response as a 32-bit float WAV at the host's rate</td></tr>
     <tr><th>LATENCY</th><td>36 samples in every mode (0.75 ms at 48 kHz), reported to the host</td></tr>
-    <tr><th>PRESETS</th><td>Six factory sounds (INIT, SMALL ORBIT, SLOW BLOOM, GLASS SWIRL, TWELVE POLE, VAPOR TRAIL); user presets with save and save as, shared across your Mac hosts</td></tr>
+    <tr><th>PRESETS</th><td>Ten factory sounds (INIT, SMALL ORBIT, SLOW BLOOM, GLASS SWIRL, TWELVE POLE, VAPOR TRAIL, BARBER POLE, TOUCH SWEEP, BAR LOCK, HOLLOW DRIFT); user presets with save and save as, shared across your Mac hosts</td></tr>
     <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · activate once online, then runs offline · perpetual</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)<br>Windows (VST3): coming soon</td></tr>
@@ -525,7 +539,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
   <div class="eyebrow">GIRE</div>
-  <p>GIRE is calibrated and available for immediate deployment. All three voices, the full panel, nothing withheld.</p>
+  <p>GIRE is calibrated and available for immediate deployment. All four voices, the full panel, nothing withheld.</p>
   <div class="amt"><s>$50</s><strong>$25</strong></div>
   <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas" style="justify-content:center">
@@ -975,5 +989,19 @@ requestAnimationFrame(frame);
 
 <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 <script src="./download-gate.js"></script>
+<script>
+(function(){const cv=document.getElementById('v3');if(!cv)return;const cx=cv.getContext('2d'),W=cv.width,H=cv.height,TAU=Math.PI*2,HIST=6,RATE=0.32,OCT=3.6,F0=90;
+const yf=f=>H-24-(H-70)*Math.log(f/40)/Math.log(16000/40);const ST=[1,1.9,3.4,6.1];const COL=['255,200,103','46,230,200','198,83,124'];
+function draw(now){const t=now/1000;cx.clearRect(0,0,W,H);cx.font='22px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.32)';
+for(const [f,l] of [[100,'100'],[1000,'1k'],[10000,'10k']]){const y=yf(f);cx.fillRect(60,y,W-76,1);cx.fillText(l,6,y+7);}
+for(let k=0;k<3;k++)for(let s=0;s<4;s++){let prev=null;
+ for(let i=0;i<=160;i++){const tau=t-HIST*(1-i/160);let p=((tau*RATE+k/3)%1+1)%1;const w=Math.pow(Math.sin(Math.PI*p),2);
+  const x=60+(W-80)*i/160,y=yf(F0*ST[s]*Math.pow(2,OCT*p));
+  if(prev&&y<prev.y+40){cx.strokeStyle=`rgba(${COL[k]},${(0.08+0.8*w).toFixed(3)})`;cx.lineWidth=1.2+1.4*w;cx.beginPath();cx.moveTo(prev.x,prev.y);cx.lineTo(x,y);cx.stroke();}
+  prev={x,y,w};}
+ if(prev){cx.fillStyle=`rgba(${COL[k]},${(0.15+0.85*prev.w).toFixed(3)})`;cx.beginPath();cx.arc(W-16,prev.y,4.5,0,TAU);cx.fill();}}
+cx.fillStyle='rgba(242,233,220,.45)';cx.fillText('3 MACHINES · 1/3 CYCLE APART · CLIMB UP',66,32);requestAnimationFrame(draw);}
+requestAnimationFrame(draw);})();
+</script>
 </body>
 </html>
