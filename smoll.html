@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SMOLL Product Page</title>
+<meta name="description" content="SMOLL is a small-room reverb for film and TV: bathrooms, bedrooms, closets, kitchens, hallways, cars and stairwells, from mono to 5.1, with Follow Pan on surround auxes. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching bucephalus.html and gire.html. SMOLL's own look enters only where the plug-in draws it:
+   its light, hand-drawn panel, shown as a paper plate. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
+
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* SMOLL: the plug-in is a light, hand-drawn panel; it enters the page as a paper plate */
+:root{--paper-bg:#f4f4f2;--ink:#1d1f22;--ink-2:#6a6d72;--rule:#d7d8d6}
+.paper{border-radius:10px;background:var(--paper-bg);color:var(--ink);overflow:hidden;display:grid}
+.paper img{display:block;width:100%;height:auto}
+.paper-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3);flex-wrap:wrap;padding:var(--s4) var(--s4) var(--s2)}
+.paper-head span:first-child{font-family:var(--f-display);font-weight:600;font-size:20px;letter-spacing:.01em}
+.paper-meta{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-2)}
+.rooms{display:flex;flex-wrap:wrap;gap:4px;padding:var(--s3) var(--s4) var(--s4);border-top:1px solid var(--rule)}
+.rooms button{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--ink-2);background:transparent;border:1px solid var(--rule);border-radius:5px;min-height:30px;padding:0 9px;cursor:pointer}
+.rooms button[aria-pressed="true"]{background:var(--ink);color:var(--paper-bg);border-color:var(--ink)}
+.rooms button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.face-top img{max-width:960px;margin-inline:auto;border-radius:6px}
+.rooms-t td.h{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3)}
+.rooms-t th{width:24%}
+.price{background:radial-gradient(120% 140% at 100% 0%,rgba(244,244,242,.08),transparent 60%),var(--panel)}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
+  </div>
+</nav>
+
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Small-room reverb · Coming soon</div>
+    <h1 class="wordmark">SMOLL</h1>
+    <div class="lede">
+      <p>SMOLL is a small-room reverb for film and TV: bathrooms, bedrooms, closets, kitchens, hallways, cars and stairwells. The rooms dialogue actually gets recorded in, so ADR and added lines sit where the scene was shot.</p>
+      <p>It runs in mono, stereo, LCR, quad, 5.0 and 5.1. On a surround aux fed by a mono send, the reverb follows the send's panning.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=SMOLL%20launch" data-notify="SMOLL">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">Mono to 5.1</span><span class="chip">macOS · Apple Silicon</span></div>
+  </div>
+  <div>
+    <div class="paper">
+      <div class="paper-head"><span id="rm-name">Bathroom</span><span class="paper-meta" id="rm-meta">Hard tile · 2.4 × 2.8 m · RT 0.42 s</span></div>
+      <img id="rm-img" src="assets/smoll/room_bathroom.png?v=261108" width="1282" height="524" alt="A hand-drawn bathroom: tiled wall, mirror, bath and a waste bin, in SMOLL's sketch style">
+      <div class="rooms" role="group" aria-label="Choose a room">
+        <button type="button" data-rm="0" aria-pressed="true">BATHROOM</button><button type="button" data-rm="1" aria-pressed="false">BEDROOM</button><button type="button" data-rm="2" aria-pressed="false">CLOSET</button><button type="button" data-rm="3" aria-pressed="false">KITCHEN</button><button type="button" data-rm="4" aria-pressed="false">LIVING</button><button type="button" data-rm="5" aria-pressed="false">HALLWAY</button><button type="button" data-rm="6" aria-pressed="false">CAR</button><button type="button" data-rm="7" aria-pressed="false">STAIRWELL</button><button type="button" data-rm="8" aria-pressed="false">STAGE</button>
+      </div>
+    </div>
+    <div class="tagline">NINE ROOMS · ONE CLICK EACH</div>
+  </div>
+</section>
+
+<section class="face-top" style="margin-block:var(--s4) var(--s6,56px)">
+  <img src="assets/smoll/panel.png?v=261108" width="960" height="640" alt="The SMOLL panel: the Bathroom drawn large at top left with its material and size, the strip of nine room thumbnails, the SIZE, DECAY, SOFT / HARD, DISTANCE, PRE-DELAY and MIX knobs, a room map on the right with the source, the mic and FOLLOW PAN, and LOW CUT, HIGH CUT, EARLY / LATE, MOVEMENT and OUTPUT along the bottom">
+</section>
+
+<div class="sh" id="rooms">The rooms</div>
+<section class="stack">
+  <div class="prose"><p>Each room is a real size with a real surface, and SMOLL builds its early reflections from that geometry. Pick one, then move it with six knobs: <strong>Size, Decay, Soft / Hard, Distance, Pre-delay and Mix</strong>.</p></div>
+  <table class="specs rooms-t">
+    <tr><th>ROOM</th><td class="h">SURFACE</td><td class="h">SIZE</td><td class="h">DECAY</td></tr>
+    <tr><th>BATHROOM</th><td>Hard tile</td><td>2.4 × 2.8 m</td><td>0.42 s</td></tr>
+    <tr><th>BEDROOM</th><td>Soft furnishings</td><td>3.6 × 4.0 m</td><td>0.32 s</td></tr>
+    <tr><th>CLOSET</th><td>Tiny and dead</td><td>1.2 × 1.0 m</td><td>0.16 s</td></tr>
+    <tr><th>KITCHEN</th><td>Mixed hard surfaces</td><td>3.0 × 3.8 m</td><td>0.48 s</td></tr>
+    <tr><th>LIVING ROOM</th><td>Larger, softer</td><td>4.5 × 5.5 m</td><td>0.55 s</td></tr>
+    <tr><th>HALLWAY</th><td>Long and narrow</td><td>1.2 × 6.5 m</td><td>0.62 s</td></tr>
+    <tr><th>CAR</th><td>Boxy, low-end heavy</td><td>1.4 × 1.8 m</td><td>0.10 s</td></tr>
+    <tr><th>STAIRWELL</th><td>Hard and tall</td><td>2.6 × 5.0 m, 6 m high</td><td>0.60 s</td></tr>
+    <tr><th>STAGE</th><td>A larger bonus room</td><td>18 × 24 m</td><td>1.60 s</td></tr>
+  </table>
+</section>
+
+<div class="sh" id="place">Place the source</div>
+<section class="two">
+  <div class="prose">
+    <p>The room map on the right of the panel is a plan of the room with the mic at the centre. Drag the source around it, and pull it back from the mic to move a line from close up to across the room.</p>
+    <p>Put SMOLL on a surround aux fed by a mono send and turn on <strong>Follow Pan</strong>: the reverb follows wherever the send is panned. Follow Amount, Centre, Rear and LFE set how much goes where.</p>
+  </div>
+  <div class="prose">
+    <p>Along the bottom: <strong>Low Cut, High Cut, Early / Late, Movement and Output</strong>. Early / Late balances the reflections against the tail; Movement adds a slow, random drift so a long line never sounds frozen.</p>
+    <p>A and B compare two settings, Undo steps back, and Bypass never replays an old tail when you switch back in.</p>
+  </div>
+</section>
+
+<div class="sh" id="sound">Why it doesn't ring</div>
+<section class="stack">
+  <ul class="rows">
+    <li><b>EARLY REFLECTIONS</b><span>An image-source model of the actual room, with the mic at the centre and the source where you put it. Each reflection is jittered slightly, because real walls aren't mirrors, and smeared into a short burst that differs per speaker, so tiny rooms don't comb-filter.</span></li>
+    <li><b>THE TAIL</b><span>A 16-line feedback delay network in which every line feeds every other, with prime delay lengths, an allpass inside each loop and three-band decay where the highs always die first.</span></li>
+    <li><b>MEASURED</b><span>Tuned against real room recordings. The late tail is as rough as the real rooms and as rough as ideal random noise, which is what keeps a small room from sounding metallic.</span></li>
+  </ul>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>DIALOGUE EDITORS</b><p>Match ADR to production in the room it was shot in, without hunting for an impulse response.</p></article>
+  <article><b>RE-RECORDING MIXERS</b><p>One aux for the scene, following each send's pan across 5.1.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>Foley and effects that sound like they happened in the same bathroom as the actors.</p></article>
+  <article><b>PODCAST &amp; AUDIO DRAMA</b><p>Put a scene in a car or a stairwell in one click.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Small-room reverb</td></tr>
+    <tr><th>ROOMS</th><td>Bathroom · bedroom · closet · kitchen · living room · hallway · car · stairwell · stage</td></tr>
+    <tr><th>CHANNELS</th><td>Mono · stereo · LCR · quad · 5.0 · 5.1 · Follow Pan on surround auxes</td></tr>
+    <tr><th>ENGINE</th><td>Image-source early reflections · 16-line feedback delay network with three-band decay</td></tr>
+    <tr><th>CONTROLS</th><td>Size · Decay · Soft / Hard · Distance · Pre-delay · Mix · Low and High Cut · Early / Late · Movement · Output · A/B · Undo · Bypass</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon</td></tr>
+    <tr><th>LICENCE</th><td>Three computers per licence · 7-day trial</td></tr>
+  </table>
+  <div class="prose">
+    <p>Offline bounces render exactly like playback, and the tail never replays after a bypass, a host reset or a pause.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">SMOLL</div>
+  <p>SMOLL is almost ready. All nine rooms, the room map and the surround formats are done, and release is close. Leave your address and we will tell you the day it ships.</p>
+  <div class="amt"><strong>$25</strong></div>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=SMOLL%20launch" data-notify="SMOLL">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON · VST3 · AU · AAX · MONO TO 5.1</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+const R=[['bathroom','Bathroom','Hard tile · 2.4 × 2.8 m · RT 0.42 s'],['bedroom','Bedroom','Soft furnishings · 3.6 × 4.0 m · RT 0.32 s'],['closet','Closet','Tiny and dead · 1.2 × 1.0 m · RT 0.16 s'],['kitchen','Kitchen','Mixed hard surfaces · 3.0 × 3.8 m · RT 0.48 s'],['living','Living room','Larger, softer · 4.5 × 5.5 m · RT 0.55 s'],['hallway','Hallway','Long and narrow · 1.2 × 6.5 m · RT 0.62 s'],['car','Car','Boxy, low-end heavy · 1.4 × 1.8 m · RT 0.10 s'],['stairwell','Stairwell','Hard and tall · 2.6 × 5.0 m · RT 0.60 s'],['stage','Stage','Bonus, larger room · 18 × 24 m · RT 1.60 s']];
+const img=document.getElementById('rm-img'),nm=document.getElementById('rm-name'),mt=document.getElementById('rm-meta');
+R.forEach(r=>{const i=new Image();i.src='assets/smoll/room_'+r[0]+'.png?v=261108';});
+document.querySelectorAll('[data-rm]').forEach(b=>b.addEventListener('click',()=>{const r=R[+b.dataset.rm];img.src='assets/smoll/room_'+r[0]+'.png?v=261108';img.alt='A hand-drawn '+r[1].toLowerCase()+' in SMOLL\'s sketch style';nm.textContent=r[1];mt.textContent=r[2];
+ document.querySelectorAll('[data-rm]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+})();
+</script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
+</body>
+</html>

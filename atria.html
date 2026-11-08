@@ -1,95 +1,452 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ATRIA Product Page</title>
+<meta name="description" content="ATRIA is a sonic exploration instrument: twelve modules behind six macros on three rings, with right-click linking, as an insert effect and as the eight-voice ATRIA PLAYER. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching bucephalus.html and gire.html. ATRIA's own colour enters only where the plug-in draws it:
+   the ember, gold and violet of its three rings. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* ATRIA: the plug-in's three ring colours (ember, gold, violet) on its black field */
+:root{--ember:#e0662a;--ring-gold:#d9b04a;--violet:#7668ff}
+.well.at{border-color:#2a2418;background:radial-gradient(120% 120% at 50% 0%,#15120c,#050507 70%)}
+.well.at .well-head,.well.at .well-foot{color:rgba(240,230,210,.6)}
+.well.at .well-foot b{color:var(--gold-hot)}
+.gen{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--gold);background:transparent;border:1px solid rgba(200,168,107,.55);border-radius:999px;min-height:30px;padding:0 14px;cursor:pointer}
+.gen:hover{background:rgba(200,168,107,.12)}
+.steps{grid-template-columns:repeat(6,minmax(0,1fr))}
+.rows.mac b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.bank{grid-template-columns:repeat(3,minmax(0,1fr))}
+.price{background:radial-gradient(120% 140% at 100% 0%,rgba(118,104,255,.12),transparent 60%),var(--panel)}
+@media (max-width:900px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.bank{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps,.bank{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">ATRIA</h1>
-  </header>
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">ATRIA</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=ATRIA%20updates" data-notify="ATRIA" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<div class="wrap">
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #002 // TERMINAL VERIFIED</span>
-</footer>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Macro performance engine · In development</div>
+    <h1 class="wordmark">A T R I A</h1>
+    <div class="lede">
+      <p>ATRIA is a sonic exploration instrument. Twelve modules (stutter, varispeed, pitch, crush, flange, phase, warble, tube drive and more) sit behind six macros on three rings. Turn one ring and a whole group of modules moves together, each in its own measure.</p>
+      <p>It comes as two plug-ins from one engine: <strong>ATRIA</strong>, an insert effect for anything you feed it, and <strong>ATRIA PLAYER</strong>, an eight-voice synth that plays straight into the same chain.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=ATRIA%20launch" data-notify="ATRIA">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="well at">
+      <div class="well-head"><span>THREE RINGS · SIX MACROS</span><button type="button" class="gen" id="spin">MOVE</button></div>
+      <canvas id="rings" width="1200" height="560" aria-label="An illustration of ATRIA's three macro rings, FLOW, PULSE and DRIVE: rings of glowing dots in orange, gold and violet, with a gold arc showing how far each macro is turned."></canvas>
+      <div class="well-foot"><span>FLOW <b id="r-a">62</b> · PULSE <b id="r-c">48</b> · DRIVE <b id="r-e">35</b></span><span>LINK <b>INNER</b></span></div>
+    </div>
+    <div class="tagline">TURN ONE RING · A DOZEN THINGS MOVE</div>
+  </div>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<section class="face-top" style="margin-block:var(--s4) var(--s6,56px)">
+  <img src="assets/atria/hero_v3131.png?v=261108" width="2652" height="2170" alt="The ATRIA panel: three large rings, FLOW and SHIFT on the left, PULSE and SPACE in the centre, DRIVE and COLOR on the right, each a field of glowing dots with a gold arc for the macro's position; the preset bar above them, and the module cards below in four columns: input stage, C / D engine, chain B and master">
+</section>
+
+<div class="sh" id="idea">The idea</div>
+<section class="two">
+  <div class="prose">
+    <p>Most multi-effects give you a row of modules and a knob for everything. ATRIA gives you the knobs, but you rarely need them. Each of the six macros is a <strong>musical direction</strong>: more motion, more displacement, more pulse, more space, more drive, more colour. Turning one right always means more of that thing.</p>
+    <p>Behind each macro sits a set of weighted links into the modules. FLOW, for example, moves the stutter timing and the warble's speed and drift strongly, the transient release and the flange and phase rates a little, and opens the stereo width a touch.</p>
+  </div>
+  <div class="prose">
+    <p>The links are yours to change. <strong>Right-click any knob</strong> to drive it from a ring, or make it follow another knob, from −100% to +100%; a negative depth inverts it. The factory links show in the same menu, with their depths, so you can retune or remove them.</p>
+    <p>Two link buttons join the rings: <strong>INNER</strong> chains FLOW, PULSE and DRIVE, <strong>OUTER</strong> chains SPACE, COLOR and SHIFT. With a link on, one gesture sweeps three rings at once.</p>
+  </div>
+</section>
+
+<div class="sh" id="rings-sec">Six macros</div>
+<section class="stack">
+  <ul class="rows mac">
+    <li><b><i style="background:#e0662a"></i>A · FLOW</b><span>Smooth to chaotic timing. Stutter timing and the warble's wow and drift lead; flange and phase rates follow.</span></li>
+    <li><b><i style="background:#e0662a"></i>B · SHIFT</b><span>Stable to warped playback. Pitch and varispeed displacement, with the stutter grains and the warble moving in sympathy.</span></li>
+    <li><b><i style="background:#d9b04a"></i>C · PULSE</b><span>Attack and rhythm. The transient shaper and both stutters, from soft and breathing to chopped and punchy.</span></li>
+    <li><b><i style="background:#d9b04a"></i>D · SPACE</b><span>Width and depth. Flange and phase, the stutter's space and the summing amp's stereo spread.</span></li>
+    <li><b><i style="background:#7668ff"></i>E · DRIVE</b><span>Energy. The tube drive, crush and the compressor push harder together.</span></li>
+    <li><b><i style="background:#7668ff"></i>F · COLOR</b><span>Tone, dark to bright, through the drive's tone and air and the tone EQ's tilt.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="path">Signal path</div>
+<section class="stack">
+  <ol class="steps">
+    <li><span class="num">1</span><b>SOURCE</b><p>Your audio, or the PLAYER's eight voices.</p></li>
+    <li><span class="num">2</span><b>TIME</b><p>Transient, stutter A, varispeed and pitch.</p></li>
+    <li><span class="num">3</span><b>SPLIT</b><p>Crush, flange and phase on one branch, the dry signal on the other.</p></li>
+    <li><span class="num">4</span><b>SUM</b><p>The summing amp joins them, then stutter B and warble.</p></li>
+    <li><span class="num">5</span><b>ENERGY</b><p>Premium drive, tone EQ and compressor.</p></li>
+    <li><span class="num">6</span><b>OUT</b><p>Output gain and a lookahead limiter.</p></li>
+  </ol>
+  <div class="prose"><p>The split is the heart of it: the crush, flange and phase branch and the clean branch are summed with their own blend, width, balance and phase, so the dirt sits beside the original instead of replacing it.</p></div>
+</section>
+
+<div class="sh" id="modules">Twelve modules</div>
+<section class="stack">
+  <figure class="faceshot"><img src="assets/atria/modules_v3131.png?v=261108" width="2257" height="1051" alt="The ATRIA module cards in four columns, INPUT STAGE, C / D ENGINE, CHAIN B and MASTER: TRANSIENT, STUTTER A, PITCH / SPEED, CRUSH, FLANGE, PHASE, STUTTER B, WARBLE, OSCILLATOR, SUMMING AMP, PREMIUM DRIVE and COMP / LIM, each with an ON switch and its knobs"></figure>
+  <div class="two">
+    <ul class="rows">
+      <li><b>TRANSIENT</b><span>Attack and release shaping with its own character and gain.</span></li>
+      <li><b>STUTTER A · B</b><span>Two stutters, before and after the split, with space, time, fade, shape and host sync.</span></li>
+      <li><b>PITCH · SPEED</b><span>A pitch shifter and a varispeed from a quarter to four times, with clean splices.</span></li>
+      <li><b>CRUSH</b><span>Bits, rate, dither, fold and noise, the same sound at every sample rate.</span></li>
+      <li><b>FLANGE · PHASE</b><span>A flanger with feedback, manual and width, and an eight-stage phaser with spread and centre.</span></li>
+    </ul>
+    <ul class="rows">
+      <li><b>OSCILLATOR</b><span>Two morphing oscillators with an envelope: a drone to mix in under ATRIA, the voices of ATRIA PLAYER.</span></li>
+      <li><b>WARBLE</b><span>Tape wow, flutter, age, drift and noise, oversampled.</span></li>
+      <li><b>SUMMING AMP</b><span>Joins the two branches: blend, width, level, phase rotation, balance, crosstalk and headroom.</span></li>
+      <li><b>PREMIUM DRIVE</b><span>A tube drive with a parallel blend, tone, focus, body and air.</span></li>
+            <li><b>COMP · LIM</b><span>A stereo-linked compressor, then a 1 ms lookahead limiter on the output, after a tilt tone EQ.</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="sh" id="player">ATRIA PLAYER</div>
+<section class="two">
+  <div class="prose">
+    <p>ATRIA PLAYER is the same engine as an instrument. Eight voices, two oscillators each, render into the head of the chain, so the rings, the stutters, the warble and every link you make process the synth itself.</p>
+    <p>The oscillator morphs continuously from sine through triangle and saw to square, band-limited at every point. The second oscillator detunes against the first by up to 25 cents.</p>
+  </div>
+  <div class="prose">
+    <p>An ADSR envelope, velocity, pitch bend and the sustain pedal. Octave, wave, detune and the envelope are all link targets: let DRIVE morph the wave, or tie the release to SPACE.</p>
+    <p>One licence covers both plug-ins.</p>
+  </div>
+</section>
+
+<div class="sh" id="presets">Presets are patches</div>
+<section class="two">
+  <div class="prose">
+    <p>An ATRIA preset is not a list of knob positions. It stores the <strong>routing</strong>: which ring drives which module, how hard, and which knobs follow which. Load one and you load a way of moving, then play it with the six macros.</p>
+  </div>
+  <div class="bank">
+    <article><b>RINGS</b><ul><li>Flow</li><li>Shift</li><li>Pulse</li><li>Space</li><li>Drive</li><li>Color</li></ul></article>
+    <article><b>LINKS</b><ul><li>Inner Link</li><li>Outer Link</li><li>Cross</li><li>Init</li></ul></article>
+    <article><b>PLAYER</b><ul><li>Player Init</li><li>Player Drift</li></ul></article>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>SOUND DESIGNERS</b><p>Feed it a voice, a door or a drum and sweep one ring until it turns into something else.</p></article>
+  <article><b>PRODUCERS</b><p>Host-synced stutters and a warble on a bus, played live from the rings.</p></article>
+  <article><b>AMBIENT &amp; SCORE</b><p>PLAYER pads through warble, phase and space, with FLOW slowly loosening the timing.</p></article>
+  <article><b>EXPERIMENTERS</b><p>Rewire the links, invert them, chain knob to knob, and save the graph as a preset.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Insert effect (ATRIA) and instrument (ATRIA PLAYER), from one engine</td></tr>
+    <tr><th>MACROS</th><td>Six on three rings: FLOW, SHIFT, PULSE, SPACE, DRIVE, COLOR · INNER and OUTER ring links</td></tr>
+    <tr><th>MODULES</th><td>Transient · stutter A and B · pitch · speed · crush · flange · phase · summing amp · warble · premium drive · tone EQ · compressor · limiter</td></tr>
+    <tr><th>LINKING</th><td>Right-click any knob: drive it from a ring or make it follow another knob, −100% to +100%</td></tr>
+    <tr><th>PLAYER</th><td>8 voices · 2 morphing oscillators per voice · ADSR · velocity, pitch bend, sustain</td></tr>
+    <tr><th>LATENCY</th><td>Constant and reported to the host (about 44 ms at 48 kHz)</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
+  </table>
+  <div class="prose">
+    <p>Modulation is worked out on a fixed grid every 32 samples, so a session sounds the same at any buffer size, and nothing the rings do is ever written back into your automation.</p>
+    <p>The dry path is always delayed to match, so engaging pitch never shifts your timeline.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">ATRIA</div>
+  <p>ATRIA is in development. Both plug-ins, the six rings and the linking are working; we are finishing it before release.</p>
+  <div class="amt"><strong>$99</strong></div>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=ATRIA%20launch" data-notify="ATRIA">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 · AU · AAX · ONE LICENCE, BOTH PLUG-INS</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/atria/hero.png?v=260729', 2200, 2562 / 1016),
-      openModules: this._mk('assets/atria/modules.png?v=260729', 2200, 2278 / 1044),
-    };
+<script>
+(function(){
+'use strict';
+/* Three macro rings: an illustration in ATRIA's colours, not the plug-in's engine. */
+const cv=document.getElementById('rings');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height;
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const C=[[224,102,42],[217,176,74],[118,104,255]],NAMES=['FLOW','PULSE','DRIVE'],SUB=['SHIFT','SPACE','COLOR'];
+const val=[.62,.48,.35],tgt=[.62,.48,.35];
+function rnd(s){return function(){s=(s*16807)%2147483647;return s/2147483647;};}
+const dots=[0,1,2].map(k=>{const r=rnd(1234+k*99),a=[];for(let i=0;i<150;i++)a.push({a:r()*6.283,r:.28+r()*.62,s:.5+r()*1.6,p:r()*6.283});return a;});
+const sats=[0,1,2].map(k=>{const r=rnd(77+k*13),a=[];for(let i=0;i<22;i++)a.push({a:r()*6.283,r:.86+r()*.12,v:(r()-.5)*.12});return a;});
+document.getElementById('spin').addEventListener('click',()=>{for(let i=0;i<3;i++)tgt[i]=.12+Math.random()*.82;if(reduce){val.splice(0,3,...tgt);draw(0);}});
+const out=[document.getElementById('r-a'),document.getElementById('r-c'),document.getElementById('r-e')];
+function draw(t){
+  x.fillStyle='#050507';x.fillRect(0,0,W,H);
+  const R=W*.125,cy=H*.5;
+  for(let k=0;k<3;k++){
+    val[k]+=(tgt[k]-val[k])*.04;const v=val[k],cx=W*(.1667+.3333*k),[r,g,b]=C[k];
+    // macro arc
+    x.lineWidth=R*.2;x.lineCap='butt';x.strokeStyle='rgba(200,168,107,.55)';x.beginPath();x.arc(cx,cy,R*.55,Math.PI,Math.PI+Math.PI*2*v*.75);x.stroke();
+    // inner dots
+    for(const d of dots[k]){const a=d.a+t*.05*(1+v)*(k%2?-1:1),rr=R*d.r*.8,pul=.5+.5*Math.sin(t*d.s+d.p);
+      x.fillStyle=`rgba(${r},${g},${b},${.25+.6*pul*v+.1})`;x.beginPath();x.arc(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr,2+3*d.s*(.4+v*.6),0,7);x.fill();}
+    // satellites + web
+    x.strokeStyle='rgba(255,255,255,.12)';x.lineWidth=1;x.beginPath();
+    const pts=sats[k].map(s=>{const a=s.a+t*s.v*(.5+v);return[cx+Math.cos(a)*R*s.r,cy+Math.sin(a)*R*s.r];});
+    pts.forEach((p,i)=>{const q=pts[(i+3)%pts.length];if(Math.hypot(p[0]-q[0],p[1]-q[1])<R*.7){x.moveTo(p[0],p[1]);x.lineTo(q[0],q[1]);}});x.stroke();
+    x.fillStyle='#f4f1ea';pts.forEach(p=>{x.beginPath();x.arc(p[0],p[1],4.5,0,7);x.fill();});
+    // gold rim and ticks
+    x.strokeStyle='#c8a86b';x.lineWidth=3;x.beginPath();x.arc(cx,cy,R*1.02,0,7);x.stroke();
+    for(let i=0;i<48;i++){const a=i/48*6.283,l=i%12===0?18:i%4===0?11:6;x.lineWidth=i%12===0?3:1.5;x.beginPath();x.moveTo(cx+Math.cos(a)*R*1.02,cy+Math.sin(a)*R*1.02);x.lineTo(cx+Math.cos(a)*(R*1.02-l),cy+Math.sin(a)*(R*1.02-l));x.stroke();}
+    x.fillStyle='#f4f1ea';x.beginPath();x.arc(cx,cy,9,0,7);x.fill();
+    x.font='500 22px Montserrat,sans-serif';x.textAlign='center';x.fillStyle='rgba(240,237,230,.7)';x.fillText(NAMES[k],cx,cy-R*1.12);
+    x.fillText(SUB[k],cx,cy+R*1.2);
+    out[k].textContent=Math.round(v*100);
   }
 }
+let t0=performance.now();function loop(){draw((performance.now()-t0)/1000);requestAnimationFrame(loop);}
+if(reduce)draw(0);else loop();
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

@@ -1,94 +1,408 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>COMPLIANCE Product Page</title>
+<meta name="description" content="COMPLIANCE is a true-peak limiter and BS.1770 loudness and delivery QC tool for stereo to 9.1.6: dialogue-gated measurement, a spec matrix judged from one measurement, DMX SAFE downmix limiting and an exported QC report. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching bucephalus.html and gire.html. COMPLIANCE's own colour enters only where the plug-in draws it:
+   the slate ground, the cyan traces and the verdict pills. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* COMPLIANCE: the plug-in's slate ground, cyan traces, rose standard line and verdict pills */
+:root{--cq-cyan:#5fb4d8;--cq-rose:#e0638a;--cq-amber:#e1a64b;--cq-pass:#4fae8c;--cq-fail:#d86a45}
+.well.cq{border-color:#253341;background:radial-gradient(120% 120% at 50% 0%,#1b2733,#080c11 70%)}
+.well.cq .well-head,.well.cq .well-foot{color:rgba(215,228,238,.6)}
+.well.cq .well-foot b{color:var(--cq-cyan)}
+.pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;border-radius:4px;padding:4px 12px;color:#06110f;background:var(--cq-pass)}
+.pill.fail{background:var(--cq-fail);color:#fff}
+.specgrid{display:flex;flex-wrap:wrap;gap:6px}
+.specgrid span{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--text-2);border:1px solid #2a3a48;border-radius:4px;padding:5px 10px}
+.price{background:radial-gradient(120% 140% at 100% 0%,rgba(95,180,216,.12),transparent 60%),var(--panel)}
+.price strong.tba{font-size:30px}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">COMPLIANCE</h1>
-  </header>
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">COMPLIANCE</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=COMPLIANCE%20updates" data-notify="COMPLIANCE" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<div class="wrap">
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #006 // COMPLIANCE PENDING</span>
-</footer>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">True-peak limiter · Loudness QC · In development</div>
+    <h1 class="wordmark">COMPLIANCE</h1>
+    <div class="lede">
+      <p>COMPLIANCE is a true-peak limiter and a BS.1770 loudness and QC tool in one plug-in, for delivery from stereo up to 9.1.6.</p>
+      <p>It measures the programme and the dialogue, judges the mix against the delivery spec you choose, and tells you which part of the spectrum is pushing you over. The limiter holds the ceiling on every channel.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=COMPLIANCE%20launch" data-notify="COMPLIANCE">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">Stereo to 9.1.6</span><span class="chip">macOS</span></div>
+  </div>
+  <div>
+    <div class="well cq">
+      <div class="well-head"><span>DIALOGUE · SHORT TERM</span><span class="pill" id="verdict">PASS</span></div>
+      <canvas id="lufs" width="1000" height="620" aria-label="An illustration of a loudness timeline: the short-term dialogue loudness wanders around a -27 LKFS target inside a ±2 LU band, with the true-peak ceiling at -2 dBTP above it and the limiter holding the peaks under it."></canvas>
+      <div class="well-foot"><span>TARGET <b>−27.0</b> LKFS · TP <b>−2.0</b> dBTP</span><span>INTEGRATED <b id="integ">−27.1</b></span></div>
+    </div>
+    <div class="tagline">ONE MEASUREMENT · EVERY SPEC</div>
+  </div>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<section class="face-top" style="margin-block:var(--s4) var(--s6,56px)">
+  <img src="assets/compliance/panes_v311.png?v=261108" width="2932" height="1728" alt="The COMPLIANCE panel on the 1770 VIEW, PANES drawing: the raw, live, post, risk and 1770-weighted spectra stacked as glass panes, and the rail on the right with the dialog target at -27.0 LKFS, short-term and integrated loudness, speech percentage, true peak, a FAIL · LOUDNESS verdict and the top-pressure band, BODY">
+</section>
+
+<div class="sh" id="measure">Measure</div>
+<section class="two">
+  <div class="prose">
+    <p>COMPLIANCE measures loudness to <strong>ITU-R BS.1770</strong>, revisions 1 to 4, gated for the whole programme and gated on dialogue. It reads momentary, short-term and integrated loudness, loudness range, true peak and true peak after downmix.</p>
+    <p>It also estimates how much of the programme is <strong>speech</strong>, and when speech drops under 15% or 10%, it switches to the programme measurement the way the delivery specs require.</p>
+  </div>
+  <div class="prose">
+    <p>Measure along the host timeline, so a relocate starts a fresh reading, or continuously while the transport is stopped. Freeze, hold and reset the map at any point.</p>
+    <p>When you are done, <strong>Export QC</strong> writes a report from the same measurement the panel is showing.</p>
+  </div>
+</section>
+
+<div class="sh" id="judge">Judge</div>
+<section class="stack">
+  <div class="prose"><p>Pick a delivery spec in the rail and COMPLIANCE judges every number against it. The <strong>QC view</strong> judges one measurement against eight specs side by side, with a margin ladder for the one you picked, so you see at once which deliveries pass and by how much.</p></div>
+  <div class="specgrid">
+    <span>Netflix</span><span>Netflix &lt;15% dialogue</span><span>Netflix printmaster safe</span><span>Disney 2.0 stereo</span><span>Disney 5.1 / Atmos</span><span>Apple TV+</span><span>EBU R128</span><span>ATSC A/85</span><span>HBO Max</span><span>Amazon Studios</span><span>Spotify</span><span>Apple Music</span><span>YouTube</span><span>Tidal</span><span>Amazon Music</span><span>Custom</span>
+  </div>
+  <div class="prose"><p class="small">Specs as published by each service; check your delivery document for the version that applies to your project.</p></div>
+</section>
+
+<div class="sh" id="see">See why</div>
+<section class="two">
+  <div class="prose">
+    <p>The <strong>1770 view</strong> draws what the meter hears. PANES stacks the raw, live, post-limiter, risk and 1770-weighted spectra as glass panes; STACK shows the measurement chain from input through the pre-filter, RLB weighting, mean square and gating to the integrated value.</p>
+    <p>WEIGHTING, LAYERS and VIEW show the same signal other ways, and QC holds the spec matrix.</p>
+  </div>
+  <div class="prose">
+    <p>The rail names the band under the most pressure, from <strong>RUMBLE, WEIGHT, BODY, CLARITY or AIR</strong>, and one button takes you to it on the BANDS page.</p>
+    <p>A gain-reduction terrain shows what the limiter did to every channel of the live layout, up to 9.1.6.</p>
+  </div>
+</section>
+<figure class="faceshot" style="margin-top:var(--s6)">
+  <img src="assets/compliance/stack_v311.png?v=261108" width="2932" height="1728" alt="The COMPLIANCE 1770 VIEW on the STACK drawing: six planes from INPUT through PRE-FILTER, RLB, MEAN SQUARE and GATING to INTEGRATED, with the rail on the right">
+</figure>
+
+<div class="sh" id="limit">Limit</div>
+<section class="stack">
+  <ul class="rows">
+    <li><b>TRUE-PEAK BRICKWALL</b><span>A lookahead limiter with BS.1770-4 4x true-peak detection on every channel and oversampling up to 32x. Surround and height channels hold the same ceiling as L and R.</span></li>
+    <li><b>LINK MODE</b><span>Pairs, Groups, Global or Multi-Mono, with Front Follow, so a centre-channel line doesn't pump the whole bed.</span></li>
+    <li><b>DMX SAFE</b><span>Limits the fold-down too: a 2.0 downmix to BS.775 is checked with its own 1.5 ms lookahead and trimmed before it can go over.</span></li>
+    <li><b>MULTIBAND</b><span>Five bands (RUMBLE, WEIGHT, BODY, CLARITY, AIR), each with its own soft-knee compressor, before the brickwall. Off by default.</span></li>
+    <li><b>DELTA · VIEW ONLY</b><span>Hear only what the limiter removes, or measure without touching the audio, delay-matched so the host's compensation stays right.</span></li>
+    <li><b>DITHER</b><span>TPDF dither on the output.</span></li>
+  </ul>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>RE-RECORDING MIXERS</b><p>Print to spec, and see before the QC house does which band is holding you back.</p></article>
+  <article><b>POST SUPERVISORS</b><p>One measurement judged against every delivery on the list, and a report to send with the files.</p></article>
+  <article><b>IMMERSIVE MIXERS</b><p>True-peak limiting and downmix checks across 7.1.4 and 9.1.6 beds.</p></article>
+  <article><b>PODCAST &amp; MUSIC</b><p>Hit the streaming targets without guessing at playback gain.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>True-peak limiter · loudness meter · delivery QC</td></tr>
+    <tr><th>MEASUREMENT</th><td>ITU-R BS.1770-1 to -4 · programme and dialogue-gated · momentary, short-term, integrated · LRA · true peak · downmix true peak · speech %</td></tr>
+    <tr><th>LIMITER</th><td>Lookahead true-peak brickwall · 4x true-peak detection · oversampling to 32x · link modes · DMX SAFE · TPDF dither · DELTA · VIEW ONLY</td></tr>
+    <tr><th>DYNAMICS</th><td>Five-band multiband stage, off by default</td></tr>
+    <tr><th>CHANNELS</th><td>Mono, stereo, LCR, quad, 5.0, 5.1, 7.1, 7.1.2, 7.1.4, 9.1.4, 9.1.6 and custom layouts up to 16 channels</td></tr>
+    <tr><th>QC</th><td>Delivery-spec matrix · margin ladder · exported QC report</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 12 or later</td></tr>
+  </table>
+  <div class="prose">
+    <p>The rail, the QC matrix, the header status line and the exported report all read the same measurement, so they never disagree.</p>
+    <p>Bypass is delay-matched, and toggling it never replays audio from before the toggle.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">COMPLIANCE</div>
+  <p>COMPLIANCE is in development. The limiter, the BS.1770 measurement and the QC view are working; we are finishing it before release.</p>
+  <div class="amt"><strong class="tba">Price at launch</strong></div>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=COMPLIANCE%20launch" data-notify="COMPLIANCE">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS · VST3 · AU · AAX · STEREO TO 9.1.6</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/compliance/hero.png?v=260729', 1059, 1059 / 616),
-    };
-  }
+<script>
+(function(){
+'use strict';
+/* Loudness timeline: an illustration, not the plug-in's meter. */
+const cv=document.getElementById('lufs');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height;
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const L=70,R=W-30,T=40,B=H-50,lo=-40,hi=0,y=v=>T+(hi-v)/(hi-lo)*(B-T);
+const N=240;let hist=[],pk=[],ph=0,integ=-27.1;
+function sample(){ph+=.06;const base=-27+3*Math.sin(ph*.35)+1.6*Math.sin(ph*.9+1)+(Math.random()-.5)*.5;const peak=Math.min(-2,base+14+Math.random()*9);return[base,base+14+Math.random()*9,peak];}
+for(let i=0;i<N;i++){const s=sample();hist.push(s[0]);pk.push([s[1],s[2]]);}
+const vd=document.getElementById('verdict'),ig=document.getElementById('integ');
+function draw(){
+  x.fillStyle='#080c11';x.fillRect(0,0,W,H);
+  x.font='500 15px "JetBrains Mono",monospace';x.textAlign='right';
+  for(let v=-40;v<=0;v+=5){x.strokeStyle='rgba(215,228,238,.06)';x.beginPath();x.moveTo(L,y(v));x.lineTo(R,y(v));x.stroke();x.fillStyle='rgba(215,228,238,.35)';x.fillText(v,L-10,y(v)+5);}
+  // target band
+  x.fillStyle='rgba(79,174,140,.12)';x.fillRect(L,y(-25),R-L,y(-29)-y(-25));
+  x.strokeStyle='rgba(224,99,138,.8)';x.setLineDash([6,6]);x.beginPath();x.moveTo(L,y(-27));x.lineTo(R,y(-27));x.stroke();
+  x.strokeStyle='rgba(216,106,69,.9)';x.beginPath();x.moveTo(L,y(-2));x.lineTo(R,y(-2));x.stroke();x.setLineDash([]);
+  x.textAlign='left';x.fillStyle='rgba(216,106,69,.9)';x.fillText('TP −2.0 dBTP',L+8,y(-2)-8);x.fillStyle='rgba(224,99,138,.9)';x.fillText('TARGET −27 LKFS ±2',L+8,y(-29)+22);
+  const dx=(R-L)/(N-1);
+  // short-term trace
+  x.beginPath();hist.forEach((v,i)=>{const X=L+i*dx;i?x.lineTo(X,y(v)):x.moveTo(X,y(v));});
+  x.strokeStyle='#5fb4d8';x.lineWidth=3;x.shadowColor='rgba(95,180,216,.7)';x.shadowBlur=12;x.stroke();x.shadowBlur=0;x.lineWidth=1;
+  x.lineTo(R,B);x.lineTo(L,B);x.closePath();x.fillStyle='rgba(95,180,216,.08)';x.fill();
+  const last=hist[N-1];x.fillStyle='#f0ede6';x.beginPath();x.arc(R,y(last),6,0,7);x.fill();
 }
+function step(){const s=sample();hist.push(s[0]);hist.shift();pk.push([s[1],s[2]]);pk.shift();
+  const m=hist.reduce((a,b)=>a+b,0)/N;integ+= (m-integ)*.05;ig.textContent=(integ<0?'−':'')+Math.abs(integ).toFixed(1);
+  const ok=Math.abs(integ+27)<=2;vd.textContent=ok?'PASS':'FAIL · LOUDNESS';vd.classList.toggle('fail',!ok);draw();}
+draw();if(!reduce)setInterval(step,120);
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>

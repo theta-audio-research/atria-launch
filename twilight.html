@@ -1,109 +1,432 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TWILIGHT Product Page</title>
+<meta name="description" content="TWILIGHT is a motion instrument: five voices you place in a field, linked into an orbiting constellation whose motion modulates the rest of the instrument. Synth or drone. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<style>image-slot::part(frame){background:transparent}#twilight-hero::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching bucephalus.html and gire.html. TWILIGHT's own colour enters only where the plug-in draws it:
+   the slate panels, the ember highlights and the teal beat rings. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* TWILIGHT: the plug-in's slate panels and EMBER / teal accents */
+:root{--emb:#e98a5a;--tl:#7cc3b6;--slate:#141c24}
+.well.tw{border-color:#24323d;background:radial-gradient(120% 120% at 50% 0%,#1a2630,#070b0f 70%)}
+.well.tw .well-head,.well.tw .well-foot{color:rgba(220,230,235,.6)}
+.well.tw .well-foot b{color:var(--emb)}
+.gen{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--emb);background:transparent;border:1px solid rgba(233,138,90,.55);border-radius:999px;min-height:30px;padding:0 14px;cursor:pointer}
+.gen[aria-pressed="false"]{color:var(--text-3);border-color:var(--border)}
+.steps{grid-template-columns:repeat(6,minmax(0,1fr))}
+.pal{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.pal button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-2);background:transparent;border:1px solid var(--border);border-radius:6px;min-height:36px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.pal button i{width:10px;height:10px;border-radius:50%}
+.pal button[aria-pressed="true"]{border-color:var(--emb);color:var(--text)}
+.bank{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bank b small{font-family:var(--f-mono);font-weight:400;color:var(--text-3);letter-spacing:.1em;margin-left:6px}
+.price{background:radial-gradient(120% 140% at 100% 0%,rgba(233,138,90,.12),transparent 60%),var(--panel)}
+.price strong.tba{font-size:30px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.bank{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps,.bank{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">TWILIGHT</h1>
-  </header>
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">TWILIGHT</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=TWILIGHT%20updates" data-notify="TWILIGHT" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<div class="wrap">
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>SYSTEM STABLE // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #005 // CONSTELLATION LINKED</span>
-</footer>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Motion instrument · In development</div>
+    <h1 class="wordmark">TWILIGHT</h1>
+    <div class="lede">
+      <p>Five voices you place in a field. Link them, set them moving, and their motion becomes the modulation that drives the rest of the instrument.</p>
+      <p>Play it as a synth, sixteen voices from your keyboard. Leave it in drone mode and it generates on its own.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=TWILIGHT%20launch" data-notify="TWILIGHT">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">Standalone</span><span class="chip">macOS</span></div>
+  </div>
+  <div>
+    <div class="well tw">
+      <div class="well-head"><span>CONSTELLATION · 5 VOICES</span><button type="button" class="gen" id="link" aria-pressed="true">LINKED</button></div>
+      <canvas id="field" width="1000" height="760" aria-label="An illustration of TWILIGHT's constellation: five voices drawn as glowing bodies in a pan-and-depth field, near at the top and far at the bottom, orbiting a centre under gravity, with tethers drawn from their positions."></canvas>
+      <div class="well-foot"><span>ORBIT <b>0.42</b> · GRAVITY <b id="grav">0.60</b></span><span>PULSE <b>1/4</b></span></div>
+    </div>
+    <div class="tagline">PLACE THE VOICES · LET THEM MOVE</div>
+  </div>
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box;opacity:{{ overlayOpacity }};pointer-events:{{ overlayPointer }};transition:opacity 0.2s ease">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:90vw;max-height:85vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<section class="face-top stack" style="margin-block:var(--s4) var(--s6,56px)">
+  <img id="pal-img" src="assets/twilight/hero_ember.png?v=260801h" width="2562" height="1360" alt="The TWILIGHT panel in the EMBER palette: the four THETA voices on the left with wave, frequency, beat and level, the CONSTELLATION field in the centre, DRIFT, FIELD, FADE and LIMITER to the right, and VOICE LAB, LATTICE, KEYS and TETHERS with the OUTPUT MATRIX along the bottom">
+  <div class="pal" role="group" aria-label="Choose a palette">
+    <button type="button" data-pal="ember" aria-pressed="true"><i style="background:#e98a5a"></i>EMBER</button>
+    <button type="button" data-pal="grove" aria-pressed="false"><i style="background:#8fbf7a"></i>GROVE</button>
+    <button type="button" data-pal="terra" aria-pressed="false"><i style="background:#c9925d"></i>TERRA</button>
+  </div>
+</section>
+
+<div class="sh" id="idea">The idea</div>
+<section class="two">
+  <div class="prose">
+    <p>Most synthesizers modulate with lanes: an LFO here, an envelope there, a matrix to wire them together. TWILIGHT modulates with physics and relationships.</p>
+    <p>Its five voices live in a field. Left to right is stereo position, near to far is presence. Link them and they swing together as one rigid constellation, orbiting under a gravity you control.</p>
+  </div>
+  <div class="prose">
+    <p>That motion is not decoration. Any voice's position can be tethered to any parameter, so the gesture that carries a voice across the room also stirs a grain cloud, opens a reverb or bends another voice's pitch.</p>
+    <p>The voices are relational too. One can follow another at an interval, and a voice can borrow another's groove while keeping its own pitch, then run it backwards or mirrored.</p>
+  </div>
+</section>
+
+<div class="sh" id="constellation">Constellation</div>
+<section class="stack">
+  <ul class="rows">
+    <li><b>THE FIELD</b><span>Five voices in a pan-and-depth field: four oscillators and one you load a sample into. Far voices sit back, quieter and darker; near ones are present and bright.</span></li>
+    <li><b>ORBIT</b><span>Swings the linked voices as a single rigid shape.</span></li>
+    <li><b>GRAVITY</b><span>Draws the constellation inward or flings it wide.</span></li>
+    <li><b>HEAT</b><span>Drives voices harder as they crowd the centre.</span></li>
+    <li><b>GRAVITY PULSE</b><span>Locks the whole field to your host tempo, from 1/1 down to 1/16, so the image collapses and blooms on the beat.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="tethers">Tethers</div>
+<section class="two">
+  <div class="prose">
+    <p>Right-click any knob to tether it: to a voice's position, to gravity itself, or to the note you just played, by pitch, velocity or a fresh random value per keystroke.</p>
+    <p>Eight routes, any eligible parameter, with a bipolar depth you drag straight from the knob's ring. Because the sources are physical, a modulation shape is something you place and watch, not a curve you draw.</p>
+  </div>
+  <div class="prose">
+    <p><strong>Relational voices.</strong> Voices harmonize against each other rather than in isolation, in drone and keyboard modes alike. Change the root and the whole structure follows; inverting a harmony gives its octave complement. Chord presets set the relationships in one move.</p>
+    <p>Each voice has its own wave, frequency, beat, level and pattern, so the four oscillators can beat against one another as binaural pairs.</p>
+  </div>
+</section>
+
+<div class="sh" id="engines">The engines</div>
+<section class="stack">
+  <ol class="steps">
+    <li><span class="num">1</span><b>THETA</b><p>Four oscillator voices and a sample voice.</p></li>
+    <li><span class="num">2</span><b>CONSTELLATION</b><p>Place, link, orbit, gravity and heat.</p></li>
+    <li><span class="num">3</span><b>DRIFT</b><p>Two layers that double and detune into a slowly shifting field.</p></li>
+    <li><span class="num">4</span><b>FIELD</b><p>A shimmer reverb with a grain engine: smear or stutter.</p></li>
+    <li><span class="num">5</span><b>FADE</b><p>A breathing gate, from hard pulse to sidechain duck.</p></li>
+    <li><span class="num">6</span><b>OUTPUT MATRIX</b><p>Ring mod, flanger, stutter and a lookahead limiter.</p></li>
+  </ol>
+  <div class="prose"><p>The ring modulator runs with selectable oversampling, up to 8x, and every stage has its own switch, so TWILIGHT can be one sine voice or the whole machine.</p></div>
+</section>
+
+<div class="sh" id="play">Play it</div>
+<section class="two">
+  <div class="prose">
+    <p>Sixteen-voice polyphony, per-voice envelopes, velocity and your keyboard, in mono or poly. Or leave it in drone mode and let it run: the ambience TWILIGHT was born making is a preset away.</p>
+    <p>Four palettes, <strong>DUSK, EMBER, GROVE and TERRA</strong>, sit in the header. Pick one and it follows you across sessions.</p>
+  </div>
+  <div class="bank">
+    <article><b>ATMOS <small>8</small></b><ul><li>Amber Horizon</li><li>Cathedral Fifths</li><li>Starfall Chimes</li><li>Velvet Strings</li></ul></article>
+    <article><b>MOTION <small>7</small></b><ul><li>Gravity Pulse</li><li>Orbit Halo</li><li>Sidechain Breath</li><li>Tempo Gate</li></ul></article>
+    <article><b>KEYS · LEAD · BASS <small>10</small></b><ul><li>Tine Piano</li><li>Drawbar Organ</li><li>Wide Saw</li><li>Sub Anchor</li></ul></article>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>SCORE &amp; AMBIENT</b><p>Drones that keep moving on their own, with gravity pulsing on the bar.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>Load a sample into the fifth voice and tether a grain cloud to where it sits.</p></article>
+  <article><b>PRODUCERS</b><p>Poly pads, plucks and leads that breathe in time with the host.</p></article>
+  <article><b>SYNTH OWNERS</b><p>Modulation you can see, and move by hand.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Instrument (VST3 instrument · AU music device) and standalone app</td></tr>
+    <tr><th>VOICES</th><td>5 voices: 4 oscillators and 1 sample voice · 16-voice polyphony · per-voice ADSR · drone and keys modes</td></tr>
+    <tr><th>MODULATION</th><td>Constellation with orbit, gravity and heat · 8 tethers · 8 parameter links · host-synced gravity pulse, 1/1 to 1/16</td></tr>
+    <tr><th>EFFECTS</th><td>DRIFT · FIELD reverb with grain smear and stutter · FADE · ring mod (oversampled), flanger, stutter · lookahead limiter</td></tr>
+    <tr><th>PRESETS</th><td>25 THETA presets in ATMOS, MOTION, PAD, KEYS, LEAD, BASS and PLUCK · artist banks · user presets</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX · Standalone</td></tr>
+    <tr><th>SYSTEM</th><td>macOS</td></tr>
+  </table>
+  <div class="prose">
+    <p>Bandlimited oscillators and an oversampled ring modulator, so the high voices stay clean.</p>
+    <p>REC records what you play straight to a file.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">TWILIGHT</div>
+  <p>TWILIGHT is in development. The five voices, the constellation, the tethers and the engines are working; we are finishing it before release.</p>
+  <div class="amt"><strong class="tba">Price at launch</strong></div>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=TWILIGHT%20launch" data-notify="TWILIGHT">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS · VST3 · AU · AAX · STANDALONE</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null, skin: 'ember' };
-
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this._esc);
-  }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-
-  _mk(src, w, r) {
-    return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); };
-  }
-
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      overlayOpacity: z ? 1 : 0,
-      overlayPointer: z ? 'auto' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      isEmber: this.state.skin === 'ember',
-      isGrove: this.state.skin === 'grove',
-      isTerra: this.state.skin === 'terra',
-      pickEmber: () => this.setState({ skin: 'ember' }),
-      pickGrove: () => this.setState({ skin: 'grove' }),
-      pickTerra: () => this.setState({ skin: 'terra' }),
-      skinNote: {"ember":"copper on near-black","grove":"plum and chartreuse","terra":"sage and gold"}[this.state.skin],
-      openHero: this._mk('assets/twilight/hero_' + this.state.skin + '.png?v=260801h', 2562, 2562 / 1360),
-    };
-  }
+<script>
+(function(){
+'use strict';
+/* Palette switch for the panel screenshot */
+const img=document.getElementById('pal-img');
+document.querySelectorAll('[data-pal]').forEach(b=>b.addEventListener('click',()=>{img.src='assets/twilight/hero_'+b.dataset.pal+'.png?v=260801h';img.alt=img.alt.replace(/in the \w+ palette/,'in the '+b.dataset.pal.toUpperCase()+' palette');
+ document.querySelectorAll('[data-pal]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+/* Constellation: an illustration, not the plug-in's engine. */
+const cv=document.getElementById('field');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height,cx=W/2,cy=H/2;
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const V=[{r:.55,a:0,c:'#e98a5a',n:'V1'},{r:.38,a:1.3,c:'#f0b27a',n:'V2'},{r:.62,a:2.6,c:'#7cc3b6',n:'V3'},{r:.3,a:3.9,c:'#d9c27a',n:'V4'},{r:.47,a:5.1,c:'#b9a3e8',n:'SMP'}];
+let linked=true;const btn=document.getElementById('link');
+btn.addEventListener('click',()=>{linked=!linked;btn.setAttribute('aria-pressed',linked?'true':'false');btn.textContent=linked?'LINKED':'FREE';if(reduce)draw(0);});
+const grav=document.getElementById('grav');const trail=V.map(()=>[]);
+function draw(t){
+  x.fillStyle='#070b0f';x.fillRect(0,0,W,H);
+  const R=Math.min(W,H)*.44,g=.6+.25*Math.sin(t*.9);grav.textContent=g.toFixed(2);
+  x.strokeStyle='rgba(220,230,235,.08)';x.lineWidth=1;x.beginPath();x.moveTo(cx-R*1.1,cy);x.lineTo(cx+R*1.1,cy);x.moveTo(cx,cy-R*1.05);x.lineTo(cx,cy+R*1.05);x.stroke();
+  for(const k of [.35,.7,1]){x.beginPath();x.ellipse(cx,cy,R*k,R*k*.8,0,0,7);x.stroke();}
+  x.font='500 18px "JetBrains Mono",monospace';x.fillStyle='rgba(220,230,235,.35)';x.textAlign='left';x.fillText('NEAR',30,40);x.fillText('FAR',30,H-24);x.fillText('L',30,cy-10);x.textAlign='right';x.fillText('R',W-30,cy-10);
+  const P=V.map((v,i)=>{const a=v.a+t*(linked?.35:.2+i*.09)*(linked||i%2?1:-1);const rr=R*v.r*(.75+.35*g);return[cx+Math.cos(a)*rr,cy+Math.sin(a)*rr*.8];});
+  if(linked){x.strokeStyle='rgba(233,138,90,.35)';x.lineWidth=1.5;x.beginPath();P.forEach((p,i)=>{const q=P[(i+1)%P.length];x.moveTo(p[0],p[1]);x.lineTo(q[0],q[1]);});x.stroke();}
+  P.forEach((p,i)=>{const tr=trail[i];tr.push(p);if(tr.length>40)tr.shift();
+    x.strokeStyle=V[i].c;x.globalAlpha=.25;x.lineWidth=3;x.beginPath();tr.forEach((q,j)=>j?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]));x.stroke();x.globalAlpha=1;
+    const near=1-(p[1]-(cy-R))/(2*R);const s=9+near*12;
+    x.shadowColor=V[i].c;x.shadowBlur=30*near+6;x.fillStyle=V[i].c;x.beginPath();x.arc(p[0],p[1],s,0,7);x.fill();x.shadowBlur=0;
+    x.fillStyle='rgba(240,237,230,.75)';x.textAlign='center';x.font='500 16px "JetBrains Mono",monospace';x.fillText(V[i].n,p[0],p[1]-s-10);});
+  x.fillStyle='#e98a5a';x.fillRect(cx-6,cy-6,12,12);
 }
+const t0=performance.now();function loop(){draw((performance.now()-t0)/1000);requestAnimationFrame(loop);}
+if(reduce)draw(0);else loop();
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
