@@ -280,14 +280,10 @@ footer a:hover{color:var(--gold)}
   <div>
     <div class="well">
       <div class="well-head"><span id="h-mode-cap">MOIRÉ FIELD · INIT</span>
-        <span class="seg" role="group" aria-label="Display mode">
-          <button type="button" data-hm="0" aria-pressed="false">SURFACE</button><button type="button" data-hm="1" aria-pressed="true">FIELD</button>
-        </span>
       </div>
-      <canvas id="hero" width="880" height="800" aria-label="MOIRÉ's comb display, drawn with the plug-in's own projection and comb equations at the INIT settings. Click it to switch between SURFACE and FIELD, as you would in the plug-in."></canvas>
+      <canvas id="hero" width="880" height="800" aria-label="MOIRÉ FIELD, drawn with the plug-in's own projection and comb equations at the INIT settings."></canvas>
       <div class="well-foot"><span>NOTCH <b id="h-notch">-</b></span><span>SWEEP <b id="h-sweep">-</b></span><span>ORDERS <b id="h-orders">-</b></span></div>
     </div>
-    <div class="tagline">CLICK THE DISPLAY TO CHANGE MODE</div>
   </div>
 </section>
 
@@ -437,25 +433,16 @@ footer a:hover{color:var(--gold)}
 <section class="stack">
   <div class="two">
     <div class="prose">
-      <p>The well in the middle of MOIR&Eacute; shows FIELD, the moir&eacute; itself. This page also draws the comb as SURFACE terrain, because it shows the notches travelling.</p>
-      <p><strong>SURFACE</strong> draws the comb's response as terrain. Across is frequency, 60 Hz to 4 kHz on a log scale. Receding is one full LFO cycle in eighteen rows, and the terrain flows toward you at the real LFO rate, so the front ridge, drawn in gold with pink hatching under it, is always the response you are hearing now. The valleys of the first eight notches are traced across the sweep, the first in pink. Hanging from a gold grid above is the complementary comb, what the other INVERT setting would give, so pressing POL visibly swaps the two.</p>
-    </div>
-    <div class="prose">
       <p><strong>FIELD</strong> is the moir&eacute; the plug-in is named after, and it is not decoration. A moir&eacute; is two regular patterns beating against each other, and a stereo flanger makes exactly two: the left comb and the right. FIELD draws each as a window screen whose pitch is that channel's comb, laid over the other. SPREAD turns the screens apart, up to 12° at 180, and offsets their pitch in time, so as the sweep runs the fringes slide. Where both screens agree the field turns pink. At SPREAD 0 it is one screen, which is what SPREAD 0 does to your stereo image.</p>
-      <p><strong>Both modes follow the input.</strong> The processor analyses what is coming in, 64 bands from 20 Hz to 20 kHz, and ridges and lines are lit by the energy at their frequency, so a notch carving through a bass note shows bright and a notch in empty air is a faint line. When the input drops below −45 dBFS the picture rests and the corner reads IDLE; it picks up again at the LFO's real phase when sound returns.</p>
+      <p><strong>FIELD follows the input.</strong> The processor analyses what is coming in, 64 bands from 20 Hz to 20 kHz, and lines are lit by the energy at their frequency, so a notch carving through a bass note shows bright and a notch in empty air is a faint line. When the input drops below −45 dBFS the picture rests and the corner reads IDLE; it picks up again at the LFO's real phase when sound returns.</p>
     </div>
-  </div>
-  <div class="voices">
-    <article class="voice">
-      <canvas id="d-surf" width="880" height="800" aria-label="SURFACE mode at the BARBER SLOW preset"></canvas>
-      <div class="body"><div class="vn"><b>SURFACE</b><span>BARBER SLOW</span></div>
-      <p>Full depth, a triangle LFO and 60 % feedback, with the notch valleys bending across the eighteen rows of one cycle.</p></div>
-    </article>
+    <div class="voices" style="grid-template-columns:minmax(0,1fr);align-self:start">
     <article class="voice">
       <canvas id="d-field" width="880" height="800" aria-label="FIELD mode at the WIDE WASH preset"></canvas>
       <div class="body"><div class="vn"><b>FIELD</b><span>WIDE WASH</span></div>
       <p>SPREAD at 180°: the two screens are 12° apart and their pitches breathe out of step, so the fringes cross the well.</p></div>
     </article>
+    </div>
   </div>
   <p class="small">Drawn in your browser with the plug-in's own projections, row counts and comb equation, lit by a fixed pink-noise stand-in for your input. In the plug-in the light comes from the audio.</p>
 
@@ -705,7 +692,7 @@ const heroCv=document.getElementById('hero');
 function setHeroMode(m){hero.mode=m;document.querySelectorAll('[data-hm]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.hm===m?'true':'false'));
   document.getElementById('h-mode-cap').textContent=(m?'MOIRÉ FIELD':'COMB SURFACE')+' · INIT';hero.acc=1;}
 document.querySelectorAll('[data-hm]').forEach(b=>b.addEventListener('click',()=>setHeroMode(+b.dataset.hm)));
-heroCv.addEventListener('click',()=>setHeroMode(hero.mode?0:1));
+
 {const p=hero.p;document.getElementById('h-notch').textContent=Math.round(1/(2*tauMs(p,0)*0.001))+' Hz';
  document.getElementById('h-sweep').textContent=p.manual.toFixed(1)+'-'+(p.manual+p.depth*0.01*SWEEP_SPAN_MS).toFixed(1)+' ms';
  document.getElementById('h-orders').textContent=ordersDrawn(p);}
@@ -820,7 +807,6 @@ function drawLab(dt){
 }
 
 /* ================= display demos ================= */
-const dSurf={p:Object.assign({},PRESETS[3].v),phase:0,cv:document.getElementById('d-surf')};
 const dField={p:Object.assign({},PRESETS[5].v),phase:0.1,cv:document.getElementById('d-field'),acc:1};
 
 /* ================= auto level illustration ================= */
@@ -861,8 +847,8 @@ document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dat
 /* ================= main loop: only what is on screen is drawn ================= */
 const visible=new Set();
 if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?visible.add(e.target):visible.delete(e.target)),{rootMargin:'120px'});
-  [heroCv,document.getElementById('resp'),dSurf.cv,dField.cv,lvCv].forEach(el=>io.observe(el));}
-else [heroCv,document.getElementById('resp'),dSurf.cv,dField.cv,lvCv].forEach(el=>visible.add(el));
+  [heroCv,document.getElementById('resp'),dField.cv,lvCv].forEach(el=>io.observe(el));}
+else [heroCv,document.getElementById('resp'),dField.cv,lvCv].forEach(el=>visible.add(el));
 const FIELD_DT=1/15;
 function drawDisplay(o,dt,mode){o.phase+=o.p.rate*dt;o.phase-=Math.floor(o.phase);
   if(mode===1){o.acc=(o.acc||0)+dt;if(o.acc<FIELD_DT)return;o.acc=0;paintField(o.cv,o.p,o.phase);}else paintSurface(o.cv,o.p,o.phase);}
@@ -872,13 +858,12 @@ function frame(now){
   runDemo(now);
   if(visible.has(heroCv)){if(hero.mode===1){hero.cv=heroCv;drawDisplay(hero,dt,1);}else{hero.cv=heroCv;drawDisplay(hero,dt,0);}}else{hero.phase+=hero.p.rate*dt;}
   if(visible.has(document.getElementById('resp')))drawLab(dt);else{labPhase+=lab.rate*dt;labPhase-=Math.floor(labPhase);}
-  if(visible.has(dSurf.cv))drawDisplay(dSurf,dt,0);
   if(visible.has(dField.cv))drawDisplay(dField,dt,1);
   if(visible.has(lvCv))drawLevel(dt);
   requestAnimationFrame(frame);
 }
 // draw everything once so a still page reads complete
-loadPreset(0);hero.cv=heroCv;paintSurface(heroCv,hero.p,0);drawLab(0);paintSurface(dSurf.cv,dSurf.p,0);paintField(dField.cv,dField.p,0.1);drawLevel(0);
+loadPreset(0);hero.cv=heroCv;paintField(heroCv,hero.p,0);drawLab(0);paintField(dField.cv,dField.p,0.1);drawLevel(0);
 requestAnimationFrame(frame);
 })();
 </script>
