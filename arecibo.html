@@ -1,97 +1,515 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ARECIBO Product Page</title>
+<meta name="description" content="ARECIBO is a polyphonic synthesizer in receiver language: two oscillators and five layers, a transmission sequencer with a glitch lane, the DIFFERENTIAL fragment engine, ring modulation and delay from RING BEARER and BUCEPHALUS, a space rack, macros and an XY pad. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-<style>image-slot::part(frame){background:transparent}#arecibo-hero::part(ring),#arecibo-source::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching bucephalus.html and gire.html. ARECIBO's own colour enters only where the plug-in draws it:
+   the cyan glass, the lime envelopes and the gold macro handles. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:440px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* ARECIBO: the plug-in's cyan glass, lime envelopes and gold handles */
+:root{--cy:#5fd8e6;--cy-dim:#2b6f78;--lime:#b9e35a;--rose:#f06a8a;--abyss:#04121a}
+.well.ar{border-color:#17414a;background:radial-gradient(120% 120% at 50% 0%,#0c2a33,#03080c 70%)}
+.well.ar .well-head,.well.ar .well-foot{color:rgba(200,240,245,.6)}
+.well.ar .well-foot b{color:var(--cy)}
+.gen{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--cy);background:transparent;border:1px solid rgba(95,216,230,.55);border-radius:999px;min-height:30px;padding:0 14px;cursor:pointer}
+.gen:hover{background:rgba(95,216,230,.12)}
+.steps{grid-template-columns:repeat(6,minmax(0,1fr))}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tabs button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-2);background:transparent;border:1px solid var(--border);border-radius:6px;min-height:36px;padding:0 14px;cursor:pointer}
+.tabs button span{color:var(--text-3);margin-right:8px}
+.tabs button[aria-pressed="true"]{border-color:var(--cy);color:var(--cy);box-shadow:0 0 18px rgba(95,216,230,.18) inset}
+.viewer{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--s6);align-items:start;margin-top:var(--s5)}
+.viewer img{width:100%;height:auto;display:block;border:0}
+.viewer .prose h3{font-weight:300;font-size:24px;letter-spacing:.04em;color:var(--text)}
+.viewer .prose .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--cy)}
+.bank{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bank b small{font-family:var(--f-mono);font-weight:400;color:var(--text-3);letter-spacing:.1em;margin-left:6px}
+.char{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s2)}
+.char span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--cy);border:1px solid rgba(95,216,230,.35);border-radius:4px;padding:3px 9px}
+@media (max-width:900px){.viewer{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.bank{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps,.bank{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">ARECIBO</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">ARECIBO</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=ARECIBO%20updates" data-notify="ARECIBO" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Polyphonic synthesizer · In development</div>
+    <h1 class="wordmark">ARECIBO</h1>
+    <div class="lede">
+      <p>ARECIBO is a polyphonic synthesizer that speaks in receiver language. Two oscillators and five layers make the voice; a transmission sequencer, a glitch engine and a fragment engine break it up; ring modulation, delay and a rack of spaces carry it out.</p>
+      <p>Everything plays from the keyboard. Hold a chord and the sequencer moves the whole chord in key. Turn one face knob and several parameters move together, always from the sound you saved.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=ARECIBO%20launch" data-notify="ARECIBO">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="well ar">
+      <div class="well-head"><span>TRANSMISSION SEQUENCER · 16 STEPS</span><button type="button" class="gen" id="gen">GENERATE</button></div>
+      <canvas id="seq" width="1200" height="760" aria-label="An illustration of the ARECIBO transmission sequencer: sixteen steps drawn as scale-degree bars above and below a centre line, a gate strip under them, and glitch tags such as STUTTER, LOSS and SCAN on some steps, lighting as the playhead passes."></canvas>
+      <div class="well-foot"><span>KEY <b>C MINOR</b> · RATE <b>1/16</b></span><span>GLITCH <b id="glitch">—</b></span></div>
+    </div>
+    <div class="tagline">HOLD A CHORD · THE STEPS MOVE IT IN KEY</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #004 // TERMINAL VERIFIED</span>
-</footer>
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/arecibo/panel_voice.png?v=261108" width="1120" height="1040" alt="The ARECIBO panel on the VOICE page with the ARECIBO starting point loaded: OSC A and OSC B with their wave pictures, the FILTER curve with cutoff at 3.2 kHz, the seven page tabs, the LAYERS mixer with SUB, STACK, NOISE, AIR and CLOUD columns, the unison fan in the VOICE card, and the shelf of AMP ENV, MOD ENV, LFO 1, LFO 2, seven MACROS and the XY · DICE pad">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<div class="sh" id="voice">The voice</div>
+<section class="two">
+  <div class="prose">
+    <p>Each voice starts with <strong>two oscillators</strong>: sine, warm, saw, pulse, triangle or noise, each with its own shape, level, octave and tune. Oscillator B can frequency-modulate A or ring it. You drag the wave picture itself to change its shape.</p>
+    <p>Under them sit <strong>five layers</strong> with their own faders: a sub an octave down, a stack at a fixed interval up to two octaves, coloured noise, air, and a cloud of detuned partials that beats slowly against the note.</p>
+  </div>
+  <div class="prose">
+    <p>Up to 16 voices, played poly, mono or legato, with glide and a unison fan you widen and detune by dragging. A single filter switches between low-pass, band-pass, high-pass and notch, with drive, key tracking and velocity.</p>
+    <p>Two envelopes, two LFOs with six shapes including sample-and-hold and a smooth drift, mod wheel and pressure, and a <strong>twelve-route modulation matrix</strong>: drag a handle from the shelf onto any knob to make a route.</p>
+  </div>
+</section>
+
+<div class="sh" id="path">Signal path</div>
+<section class="stack">
+  <ol class="steps">
+    <li><span class="num">1</span><b>VOICE</b><p>Two oscillators, five layers and the filter, up to 16 voices.</p></li>
+    <li><span class="num">2</span><b>INTERFERENCE</b><p>Rhythmic glitches on the grid: stutter, loss, bits, scan, stop.</p></li>
+    <li><span class="num">3</span><b>DIFFERENTIAL</b><p>The fragment engine, on the whole mix or inside every voice.</p></li>
+    <li><span class="num">4</span><b>FX</b><p>A ring modulator and a stereo delay.</p></li>
+    <li><span class="num">5</span><b>SPACE</b><p>A rack of eight modules, from ensemble to worn tape.</p></li>
+    <li><span class="num">6</span><b>OUTPUT</b><p>An eight-band EQ, Quorra warp and a final wall stage.</p></li>
+  </ol>
+</section>
+
+<div class="sh" id="pages">Seven pages, one panel</div>
+<section class="stack">
+  <div class="prose"><p>The sound row, the shelf and the macros stay on screen. The seven tabs between them open each part of the chain, and none of the pages scroll.</p></div>
+  <div class="tabs" role="group" aria-label="Choose a page">
+    <button type="button" data-p="0" aria-pressed="true"><span>01</span>VOICE</button>
+    <button type="button" data-p="1" aria-pressed="false"><span>02</span>MOD</button>
+    <button type="button" data-p="2" aria-pressed="false"><span>03</span>INTERFERENCE</button>
+    <button type="button" data-p="3" aria-pressed="false"><span>04</span>DIFFERENTIAL</button>
+    <button type="button" data-p="4" aria-pressed="false"><span>05</span>FX</button>
+    <button type="button" data-p="5" aria-pressed="false"><span>06</span>SPACE</button>
+    <button type="button" data-p="6" aria-pressed="false"><span>07</span>OUTPUT</button>
+  </div>
+  <div class="viewer">
+    <img id="pv-img" src="assets/arecibo/panel_voice.png?v=261108" width="1120" height="1040" alt="">
+    <div class="prose">
+      <div class="tag" id="pv-tag">01 · VOICE</div>
+      <h3 id="pv-h">Layers and unison</h3>
+      <p id="pv-p"></p>
+    </div>
+  </div>
+</section>
+
+<div class="sh" id="interference">Interference and the transmission sequencer</div>
+<section class="two">
+  <div class="prose">
+    <p>Interference is a glitch engine that does not wobble. Every event starts on the grid, does its job and gets out of the way. The five bars on the page are the controls: drag them to set how often each kind of event fires.</p>
+    <p>The <strong>transmission sequencer</strong> has sixteen steps. Held keys are the roots: each step strikes every held note, moved by its scale degree and snapped back into key, so a chord sequences as a chord. Lock it to the host and the pattern sits on the bar; leave it free and it starts from the first key you play.</p>
+  </div>
+  <ul class="rows">
+    <li><b>STUTTER · RATCHET</b><span>Captures a slice from 1/4 to 1/64 of a beat and repeats it. Ratchet halves the slice on every repeat.</span></li>
+    <li><b>LOSS</b><span>Rhythmic dropouts, gate-chopped on an eighth or sixteenth grid with millisecond fades.</span></li>
+    <li><b>BITS</b><span>Bursts of decimation and bit reduction, redrawn every sixteenth so it crackles rather than hums.</span></li>
+    <li><b>SCAN · REVERSE · STOP</b><span>Scale-locked pitch jumps, the audio just played run backwards, and a tape-stop pull-down.</span></li>
+    <li><b>FRAGMENT · SHATTER</b><span>Sequencer steps that hand the signal to DIFFERENTIAL for their length.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="differential">DIFFERENTIAL inside</div>
+<section class="two">
+  <div class="prose">
+    <p>The fragment engine from <a href="differential.html">DIFFERENTIAL</a> runs inside ARECIBO, after Interference. Pick a character, then push it with four macros: <strong>Chop</strong>, <strong>Repeat</strong>, <strong>Motion</strong> and <strong>Crush</strong>, plus a bipolar Colour and Mix.</p>
+    <div class="char"><span>CUT</span><span>SHRED</span><span>SCATTER</span><span>METAL</span><span>CRUSH</span><span>VOWEL</span><span>BEND</span><span>GHOST</span></div>
+  </div>
+  <div class="prose">
+    <p>Run it on the whole mix, or <strong>inside every voice</strong>, so each note fragments on its own. Eight slot cards can each take an operation of their own, with Tone and Drive.</p>
+    <p>Beside it, <strong>Bounce</strong> lays one of sixteen bouncing-gap patterns over every bar of the host. Switched off, both are exact bypasses with no latency.</p>
+  </div>
+</section>
+
+<div class="sh" id="fx">Ring modulation and delay</div>
+<section class="two">
+  <div class="prose">
+    <p>The FX page carries two THETA plug-ins reduced to a synth player's controls. The <strong>ring modulator</strong> comes from <a href="ring_bearer.html">RING BEARER</a>: a carrier that bends from sine to a band-limited square, a slow swing on its pitch, a crossover that keeps the lows clean, and drive. Set it to track and the carrier follows the note you play.</p>
+  </div>
+  <div class="prose">
+    <p>The <strong>delay</strong> comes from <a href="bucephalus.html">BUCEPHALUS</a>: free or host-synced time, feedback to 92%, grain or reverse in the loop, width, tone and Freeze. The repeats sit after the echo cloud, so they carry the whole sound.</p>
+  </div>
+</section>
+
+<div class="sh" id="space">The space rack</div>
+<section class="stack">
+  <div class="prose"><p>Eight modules sit in a rack, each with its own power light. Click one and it opens large beside the list, with its picture as the control.</p></div>
+  <ul class="rows">
+    <li><b>ENSEMBLE</b><span>A warm, wandering chorus with three taps a side: Chorus, Wide, or String for the dense shimmer of string machines. The lows stay solid and centred.</span></li>
+    <li><b>DRIFT · BREATHE</b><span>Slow pitch drift across the voices, and a swell that breathes in and out.</span></li>
+    <li><b>FIELD</b><span>A room you shape by dragging its corner, with pre-delay, damping and shimmer.</span></li>
+    <li><b>PULSE · PAN</b><span>A synced volume gate and stereo movement.</span></li>
+    <li><b>TAPE</b><span>A worn transport on the whole output: wow, drift, flutter, age, hiss and dust. Below about 120 Hz the motion is shared, so the sub stays steady.</span></li>
+    <li><b>EVOLVE</b><span>Slowly drifts the colour of the patch (filter, shapes, FM, cloud, detune and drive) while pitch, envelopes and timing stay where you left them. Every move shows on the panel.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="shelf">Macros, XY and Dice</div>
+<section class="two">
+  <div class="prose">
+    <p>Seven face knobs: <strong>Signal, Texture, Interference, Tape, Field, Drift and Motion</strong>. Each moves several parameters at once. At the centre the patch is exactly as saved; turn right to add, left to take away. Turn Drift up and a module that was off engages, fading in from silence.</p>
+    <p>The <strong>XY · Dice</strong> pad scans two macros at once. It can move on its own (orbit, figure eight, bounce, wander) in time with the host, or follow a path you draw on it with REC.</p>
+  </div>
+  <div class="prose">
+    <p>Along the top: <strong>Dice</strong> rolls a new sound around the one you have, <strong>Variation</strong> nudges it, and <strong>Undo</strong> steps back to where you were. <strong>Keep tuning</strong> holds your pitch settings while you explore.</p>
+    <p><strong>Capture</strong> records what you play straight to a WAV file.</p>
+  </div>
+</section>
+
+<div class="sh" id="presets">Starting points</div>
+<section class="stack">
+  <div class="prose"><p>59 factory sounds, browsed by category from the preset bar. The ARECIBO starting point is two detuned saws through a warm low-pass, a touch of cloud, a short echo and a small room: play it, then turn the face knobs.</p></div>
+  <div class="bank">
+    <article><b>BASS <small>9</small></b><ul><li>Ground Wave Sub</li><li>Twin Carrier Reese Bass</li><li>Sideband Growl Bass</li><li>Dub Relay Bass</li></ul></article>
+    <article><b>PADS <small>9</small></b><ul><li>Eclipse Drift Pad</li><li>Relay Choir Pad</li><li>VHS Dusk Pad</li><li>Perihelion Bloom</li></ul></article>
+    <article><b>SEQUENCES <small>10</small></b><ul><li>Transponder Twelve Seq</li><li>Broken Uplink Seq</li><li>Squelch Acid Seq</li><li>Dub Station Seq</li></ul></article>
+    <article><b>KEYS · BELLS <small>9</small></b><ul><li>Dust Lantern Keys</li><li>Dusted Minor Nine</li><li>Warped Reel Keys</li><li>Station Bell Stack</li></ul></article>
+    <article><b>LEADS · PLUCKS <small>12</small></b><ul><li>Night Whistle Lead</li><li>Dead Air Glide Lead</li><li>Kalimba Beacon Pluck</li><li>Tape Skank Pluck</li></ul></article>
+    <article><b>FX · TEXTURES <small>9</small></b><ul><li>Solar Wind Sweep FX</li><li>Telemetry Blip FX</li><li>Orbital Signal Chirps</li><li>Broken Reel</li></ul></article>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>PRODUCERS</b><p>Hold a chord, lock the sequencer to the bar and let the glitch lane break it up on the beat.</p></article>
+  <article><b>SOUND DESIGNERS</b><p>Ring the carrier against the note, fragment each voice on its own, and record the result with Capture.</p></article>
+  <article><b>AMBIENT &amp; SCORE</b><p>Long pads through ensemble, field and worn tape, with Evolve drifting the colour under a held chord.</p></article>
+  <article><b>BEAT MAKERS</b><p>Bass, plucks and stabs that stutter, drop out and bounce in time with the host.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Polyphonic synthesizer (instrument)</td></tr>
+    <tr><th>VOICE</th><td>Up to 16 voices · poly, mono, legato · glide · unison · 2 oscillators (sine, warm, saw, pulse, triangle, noise) with FM and ring · sub, stack, noise, air and cloud layers</td></tr>
+    <tr><th>FILTER</th><td>Low-pass, band-pass, high-pass, notch · drive, envelope, key and velocity</td></tr>
+    <tr><th>MODULATION</th><td>Amp and mod envelopes · 2 LFOs, 6 shapes, free or synced · mod wheel, pressure, velocity, pitch bend, sustain · 12-route matrix · 7 macros · XY pad with motion and recorded paths</td></tr>
+    <tr><th>SEQUENCING</th><td>16-step transmission sequencer with scale lock and glitch lane · arpeggiator (up, down, up/down, random, as played, chord)</td></tr>
+    <tr><th>EFFECTS</th><td>Interference · DIFFERENTIAL fragment engine · Bounce · ring modulator · stereo delay · ensemble, drift, breathe, field, pulse, pan, tape · 8-band output EQ · Quorra · wall stage</td></tr>
+    <tr><th>PRESETS</th><td>59 factory sounds in 9 categories · user presets · Dice, Variation, Undo</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
+  </table>
+  <div class="prose">
+    <p>Stereo out, MIDI in. Notes, pedal and pitch bend land at their exact sample position, and the sequencer and Bounce follow the host's song position.</p>
+    <p>The pictures are the controls: drag a wave, a filter curve, a delay tap or a room corner to play it, and double-click to reset. Hover a knob to see its value.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">ARECIBO</div>
+  <p>ARECIBO is in development. The voice, the sequencer, all seven pages and the 59 starting points are working; we are finishing it before release.</p>
+  <div class="amt"><strong>$99</strong></div>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=ARECIBO%20launch" data-notify="ARECIBO">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 · AU</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
+<script>
+(function(){
+'use strict';
+/* Page viewer */
+const P=[
+ ['voice','01 · VOICE','Layers and unison','The layer mixer under the sound row: drag a column for its level, click its tag for wave, interval or colour. Beside it, the unison fan: drag sideways for width, up and down for detune. Drift and Warmth give every voice a slightly different life.'],
+ ['mod','02 · MOD','The routes in use','The matrix lists only the routes you have made, up to twelve. Drag a MOD handle from the shelf onto any knob to add one. The LFO detail and the Perform card hold the mod wheel and pressure.'],
+ ['interference','03 · INTERFERENCE','Glitches on the grid','The five bars set how often Stutter, Loss, Bits, Scan and Stop fire. Under them, the transmission sequencer: sixteen degree bars, gate strips and a glitch tag on any step. The arpeggiator sits beside it.'],
+ ['differential','04 · DIFFERENTIAL','Fragments, per voice','Eight slot cards over the Chop and Repeat puck. Choose a character, push it with the macros, or give a slot an operation of its own. Bounce sits on the right, laying gaps over the bar.'],
+ ['fx','05 · FX','Ring and delay','The carrier wave is the ring modulator control: drag it for carrier and depth. The delay taps are the delay control: drag the first tap for time, up for feedback. Freeze holds the repeats.'],
+ ['space','06 · SPACE','The rack','Eight modules with power lights on the left; the chosen one opens large on the right. Here, Field: drag the room corner to size it.'],
+ ['output','07 · OUTPUT','Output surgery','An eight-band EQ drawn on the graph, Quorra warp beside it, and the wall stage that sets the final ceiling.']];
+const img=document.getElementById('pv-img'),tag=document.getElementById('pv-tag'),h=document.getElementById('pv-h'),p=document.getElementById('pv-p');
+function show(i){const d=P[i];img.src='assets/arecibo/panel_'+d[0]+'.png?v=261108';img.alt='The ARECIBO panel on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
+ document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==String(i)?'true':'false'));}
+document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.p)));
+show(2);
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
+/* Transmission sequencer, simplified: an illustration, not the plug-in's engine. */
+const cv=document.getElementById('seq');if(!cv)return;
+const x=cv.getContext('2d'),W=cv.width,H=cv.height,N=16,G=['STUTTER','LOSS','BITS','SCAN','STOP','RATCHET','REVERSE'];
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+let steps=[];
+function generate(){steps=[];for(let i=0;i<N;i++){const on=Math.random()<.78||i===0;steps.push({deg:on?Math.round((Math.random()*2-1)*(i%4===0?3:7)):0,on,acc:on&&Math.random()<.3,g:on&&Math.random()<.22?G[(Math.random()*G.length)|0]:null});}}
+generate();
+document.getElementById('gen').addEventListener('click',()=>{generate();if(reduce)draw(0);});
+const out=document.getElementById('glitch');let last=-1;const t0=performance.now();
+function draw(t){
+  const step=Math.floor(t/0.125)%N,frac=(t/0.125)%1;
+  x.fillStyle='#03080c';x.fillRect(0,0,W,H);
+  const gl=x.createRadialGradient(W/2,H*.45,10,W/2,H*.45,W*.55);gl.addColorStop(0,'rgba(95,216,230,.10)');gl.addColorStop(1,'rgba(3,8,12,0)');x.fillStyle=gl;x.fillRect(0,0,W,H);
+  // dot grid
+  x.fillStyle='rgba(95,216,230,.10)';for(let gx=30;gx<W;gx+=40)for(let gy=30;gy<H;gy+=40)x.fillRect(gx,gy,2,2);
+  const L=60,R=W-60,cw=(R-L)/N,cy=H*.42,unit=H*.04;
+  x.strokeStyle='rgba(95,216,230,.35)';x.lineWidth=1.5;x.beginPath();x.moveTo(L,cy);x.lineTo(R,cy);x.stroke();
+  for(let i=0;i<N;i++){
+    const s=steps[i],X=L+i*cw+cw*.14,w=cw*.72,hot=i===step;
+    x.fillStyle=hot?'rgba(95,216,230,.12)':'rgba(255,255,255,.025)';x.fillRect(L+i*cw+3,H*.08,cw-6,H*.62);
+    if(s.on){const hh=Math.max(6,Math.abs(s.deg)*unit+8),y=s.deg>=0?cy-hh:cy;
+      const a=hot?1-frac*.45:.55;x.fillStyle=`rgba(95,216,230,${a})`;x.fillRect(X,y,w,hh);
+      x.fillStyle='rgba(240,250,252,.9)';x.fillRect(X,s.deg>=0?y:y+hh-3,w,3);
+      if(hot){x.shadowColor='rgba(95,216,230,.9)';x.shadowBlur=30;x.fillRect(X,s.deg>=0?y:y+hh-3,w,3);x.shadowBlur=0;}}
+    // gate strip
+    x.fillStyle=s.on?(hot?'#5fd8e6':'rgba(95,216,230,.45)'):'rgba(255,255,255,.06)';x.fillRect(X,H*.74,w,10);
+    // accent
+    if(s.acc){x.fillStyle='#c8a86b';x.beginPath();x.arc(X+w/2,H*.79,6,0,7);x.fill();}
+    // glitch tag
+    if(s.g){x.save();x.translate(X+w/2,H*.92);x.rotate(-Math.PI/2.6);x.font='600 17px "JetBrains Mono",monospace';x.textAlign='left';
+      x.fillStyle=hot?'#f06a8a':'rgba(240,106,138,.55)';x.fillText(s.g,-6,6);x.restore();}
+    x.font='500 15px "JetBrains Mono",monospace';x.textAlign='center';x.fillStyle=hot?'#f0ede6':'rgba(240,237,230,.35)';x.fillText(String(i+1),X+w/2,H*.06);
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this._esc); }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/arecibo/hero.png', 2200, 2294 / 1386),
-      openSource: this._mk('assets/arecibo/source.png', 2200, 2294 / 1758),
-      openSight: this._mk('assets/arecibo/sight.png?v=260729', 1700, 1922 / 1944),
-    };
-  }
+  if(step!==last){last=step;const g=steps[step].g;out.textContent=g||'—';out.style.color=g?'#f06a8a':'';}
 }
+function loop(){draw((performance.now()-t0)/1000);requestAnimationFrame(loop);}
+if(reduce)draw(0);else loop();
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
