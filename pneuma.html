@@ -166,6 +166,16 @@ canvas.drag{cursor:grab;touch-action:none}
 .who p{font-size:15.5px;color:var(--text-2)}
 .face-top{margin-block:0 var(--s6)}
 .face-top img{display:block;width:100%;height:auto;max-width:100%}
+/* hero: the BODY / SATURATION / AIR plates fold away and back (built from hero_v120.png) */
+.pn-fold{position:relative;aspect-ratio:1448/1250}
+.face-top .pn-fold img{position:absolute;left:0;top:0;width:100%;height:100%}
+.pn-fold .pn-top{animation:pn-clip 9s cubic-bezier(.65,0,.35,1) infinite}
+.pn-fold .pn-cap{position:absolute;left:0;top:96.32%;width:100%;height:3.68%;background:url(assets/pneuma/hero_v120.png?v=261108) no-repeat 0 100%/100% 2717.4%;animation:pn-cap 9s cubic-bezier(.65,0,.35,1) infinite}
+.face-top .pn-fold img.pn-color{left:85.91%;top:71.76%;width:10.98%;height:2.88%;opacity:0;animation:pn-color 9s linear infinite}
+@keyframes pn-clip{0%,35%{clip-path:inset(0 0 3.6% 0)}43%,80%{clip-path:inset(0 0 25.84% 0)}88%,100%{clip-path:inset(0 0 3.6% 0)}}
+@keyframes pn-cap{0%,35%{transform:translateY(0)}43%,80%{transform:translateY(-604.35%)}88%,100%{transform:translateY(0)}}
+@keyframes pn-color{0%,35%{opacity:0}37%,80%{opacity:1}82%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.pn-fold .pn-top,.pn-fold .pn-cap,.face-top .pn-fold img.pn-color{animation:none}}
 .keys{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
 .keys li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);color:var(--text-2);font-size:16px}
 .keys i{display:block;width:22px;height:22px;margin-top:2px;border-radius:50%}
@@ -249,7 +259,11 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top">
-  <img src="assets/pneuma/hero_v120.png?v=261108" alt="The PNEUMA v1.2.0 panel in its DARK skin: the EQ graph with its analyzer and seven bands, the gold curve glowing where PUSH drives the bands, the CHARACTER switch, the selected band strip with the channel, dynamics and harmonics controls, and the BODY, SATURATION and AIR plates" width="1448" height="1250">
+  <div class="pn-fold">
+    <img class="pn-top" src="assets/pneuma/hero_v120.png?v=261108" alt="The PNEUMA v1.2.0 panel in its DARK skin: the EQ graph with its analyzer and seven bands, the gold curve glowing where PUSH drives the bands, the CHARACTER switch, the selected band strip with the channel, dynamics and harmonics controls, and the BODY, SATURATION and AIR plates. They fold away under the selected band strip and slide back out, the way the COLOR button shows and hides them." width="1448" height="1250">
+    <img class="pn-color" src="assets/pneuma/hero_v120_color_closed.png?v=261109" alt="" width="159" height="36">
+    <div class="pn-cap" aria-hidden="true"></div>
+  </div>
 </section>
 
 <!-- HOW IT WORKS -->
