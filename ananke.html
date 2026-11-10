@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ANANKE Product Page</title>
-<meta name="description" content="ANANKE is a feed-forward compressor with a Peak to RMS detector, transient relief, a crest-protection path, a shapeable sidechain and EMBER analog character in Tube, Diode and Bright. Constant 3.5 ms latency. VST3, AU and AAX for macOS.">
+<meta name="description" content="ANANKE is a feed-forward compressor with a Peak to RMS detector, transient relief, a crest-protection path, a shapeable sidechain and EMBER analog character in Tube, Diode and Bright. Lookahead up to 20 ms. VST3, AU and AAX for macOS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -259,15 +259,15 @@ footer a:hover{color:var(--gold)}
       <p>ANANKE splits that trade into separate controls. The main path rides the level. RELIEF loosens it only during a transient, CREST adds a fast peak-only path above it, and RANGE sets the most it may ever take.</p>
     </div>
     <div class="prose">
-      <p>The audio is always delayed by a fixed <strong>3.5 ms</strong>, and the detector listens to the undelayed signal, so <strong>LOOKAHEAD</strong> just moves where the gain lands inside that budget. The latency the host sees never changes when you turn it.</p>
+      <p>The detector listens to the undelayed signal and the audio is delayed by <strong>LOOKAHEAD</strong>, up to <strong>20 ms</strong>, so the gain is already moving when a transient arrives. That delay is the latency the host sees: at 0 ms ANANKE adds none. Changing it glides to the new value, so it never clicks.</p>
       <p>After the gain, <strong>EMBER</strong> adds analog colour, or colours the input before it is compressed. <strong>MIX</strong> blends with the time-aligned dry, <strong>MAKEUP</strong> and <strong>AUTO GAIN</strong> restore level, and a 5 ms crossfaded <strong>BYPASS</strong> compares without a click.</p>
     </div>
   </div>
   <div class="path">
-    <svg viewBox="0 0 1080 300" role="img" aria-label="ANANKE's signal path. Audio: input, a fixed 3.5 millisecond delay, the gain, the CHARACTER stage before or after the gain, MIX with the time-aligned dry, MAKEUP, a crossfaded BYPASS, output. Key: the input or an external sidechain, the sidechain filters, the Peak to RMS detector, the gain computer, the envelope, then RANGE, RELIEF and CREST, which set the gain.">
+    <svg viewBox="0 0 1080 300" role="img" aria-label="ANANKE's signal path. Audio: input, the lookahead delay, 0 to 20 milliseconds, the gain, the CHARACTER stage before or after the gain, MIX with the time-aligned dry, MAKEUP, a crossfaded BYPASS, output. Key: the input or an external sidechain, the sidechain filters, the Peak to RMS detector, the gain computer, the envelope, then RANGE, RELIEF and CREST, which set the gain.">
       <text x="10" y="88">IN</text>
       <path class="wire" d="M34 84 H64"/><path class="flow" d="M34 84 H64"/>
-      <rect class="box" x="64" y="60" width="104" height="48" rx="4"/><text class="lbl" x="116" y="81" text-anchor="middle">DELAY</text><text x="116" y="98" text-anchor="middle">3.5 MS FIXED</text>
+      <rect class="box" x="64" y="60" width="104" height="48" rx="4"/><text class="lbl" x="116" y="81" text-anchor="middle">DELAY</text><text x="116" y="98" text-anchor="middle">0–20 MS</text>
       <path class="wire" d="M168 84 H204"/><path class="flow" d="M168 84 H204"/>
       <rect class="hot" x="204" y="60" width="96" height="48" rx="4"/><text class="lbl" x="252" y="81" text-anchor="middle" style="fill:var(--gr-line)">GAIN</text><text x="252" y="98" text-anchor="middle">× LINKED</text>
       <path class="wire" d="M300 84 H336"/><path class="flow" d="M300 84 H336"/>
@@ -295,7 +295,7 @@ footer a:hover{color:var(--gold)}
       <path class="wire" d="M816 234 H844"/><path class="flow ctl" d="M816 234 H844"/>
       <rect class="key" x="844" y="210" width="150" height="48" rx="4"/><text class="lbl" x="919" y="231" text-anchor="middle">RANGE · RELIEF</text><text x="919" y="248" text-anchor="middle">+ CREST PATH</text>
       <path class="wire" d="M919 210 V160 H252 V108"/><path class="flow ctl" d="M919 210 V160 H252 V108"/>
-      <text x="300" y="152" style="fill:var(--text-3)">GAIN LEADS THE AUDIO BY LOOKAHEAD, 0–3.5 MS</text>
+      <text x="300" y="152" style="fill:var(--text-3)">GAIN LEADS THE AUDIO BY LOOKAHEAD, 0–20 MS</text>
       <text x="20" y="286" style="fill:var(--text-3)">SIDECHAIN BUS · MONO OR STEREO · LINK 0–100 % · STEREO OR MID-SIDE</text>
     </svg>
   </div>
@@ -314,7 +314,7 @@ footer a:hover{color:var(--gold)}
   <div class="two">
     <div class="prose">
       <p>The gain computer is a classic soft knee. Below the knee the signal passes untouched. Above it, every dB over the threshold comes out as 1/RATIO of a dB, and across the knee the two meet on a smooth curve, <strong>KNEE</strong> dB wide. RATIO runs from 1:1 to ∞:1, so the top of the knob is a limiter.</p>
-      <p><strong>RANGE</strong> is a floor on the gain reduction: at its default of −6 dB, ANANKE can never take more than 6 dB, whatever the ratio says. That makes a high ratio safe to reach for. Pull RANGE to the bottom for unlimited reduction.</p>
+      <p><strong>RANGE</strong> is a floor on the gain reduction: set it to −6 dB and ANANKE can never take more than 6 dB, whatever the ratio says. That makes a high ratio safe to reach for. At the bottom (its default, Off) the reduction is unlimited.</p>
     </div>
     <div class="prose">
       <p>The envelope is a smooth, decoupled peak detector (Giannoulis and Reiss): <strong>ATTACK</strong> and <strong>RELEASE</strong> act separately, so a long release never slows the attack. <strong>AUTO REL</strong> makes the release depend on the program: light, brief reduction recovers in 40 ms, deep sustained reduction in up to 500 ms, blended on a slow average of how hard it has been working.</p>
@@ -364,7 +364,7 @@ footer a:hover{color:var(--gold)}
     </div>
     <div class="prose">
       <p><strong>CREST</strong> adds a second detector: pure peak, a hard knee, the same ratio, and a 0.15 ms attack. It only engages when a peak climbs more than CREST dB above the threshold, so the main path can ride the level gently on RMS while the fast path catches the plosive or the rim shot that would get through. The two combine on whichever asks for more, and RANGE caps both. At the top of its travel CREST is off, an exact null.</p>
-      <p><strong>DETECT</strong> blends the main detector between peak and RMS, 45 % RMS by default. <strong>LOOKAHEAD</strong> moves the gain up to 3.5 ms ahead of the audio. <strong>HOLD</strong> freezes the envelope after the last attack before it releases.</p>
+      <p><strong>DETECT</strong> blends the main detector between peak and RMS, 45 % RMS by default. <strong>LOOKAHEAD</strong> moves the gain up to 20 ms ahead of the audio. <strong>HOLD</strong> freezes the envelope after the last attack before it releases.</p>
     </div>
   </div>
   <div class="lab">
@@ -444,14 +444,14 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <div class="prose">
     <p>Compression is easy to overdo because the ear adapts to it. ANANKE gives you three ways to hear only the change. <strong>DELTA</strong> plays what the compressor removes, time-aligned: if you hear the body of the vocal in there, it is working too hard. <strong>CHARACTER DELTA</strong> plays only the harmonics EMBER adds. <strong>SC LISTEN</strong> plays the detector's key.</p>
-    <p>The metering sits across the top: the transfer curve with its knee, and a scrolling gain-reduction history you can drag to zoom in time, next to an integrated loudness readout to <strong>BS.1770-4</strong>.</p>
+    <p>The metering sits across the top: the transfer curve with its knee, and a scrolling gain-reduction history you can drag to zoom in time, with the input and output waveforms drawn underneath (the <strong>WAVE</strong> switch hides them), next to an integrated loudness readout to <strong>BS.1770-4</strong>. A thin ring around <strong>THRESH</strong> shows the live input level, so you can set the threshold against the signal. Double-click any value to type it in.</p>
   </div>
   <ul class="rows">
     <li><b>A / B</b><span>Two full settings slots and COPY, to compare two approaches without losing either.</span></li>
-    <li><b>PRESETS</b><span>Save and save as, in the plug-in's own menu. DEFAULT is always there to return to.</span></li>
+    <li><b>PRESETS</b><span>Eleven factory presets for vocals, dialogue, drums, bass, instruments, the mix bus, sidechain ducking and a peak limiter, plus your own with save and save as. DEFAULT is always there to return to.</span></li>
     <li><b>AUTO GAIN</b><span>Adds half the reduction a 0 dBFS peak would see, capped by RANGE, so bypass comparisons stay fair. MAKEUP adds on top.</span></li>
     <li><b>BYPASS</b><span>A 5 ms crossfade that keeps the delay, so it never clicks and never moves the track in time. The host's own bypass drives it too, and the detector keeps running, so it comes back at the right gain.</span></li>
-    <li><b>VIEW</b><span>Resizable window. Six skins, each a frosted glass pane over its own light: GLASS, DARK, LIGHT, NUCLEAR, RETRO and SYNTHWAVE. Oversampling OFF, 2× or 4× around the whole compressor.</span></li>
+    <li><b>VIEW</b><span>Resizable window that reopens at the size you left it. Six skins, each a frosted glass pane over its own light: GLASS, DARK, LIGHT, NUCLEAR, RETRO and SYNTHWAVE. Oversampling OFF, 2× or 4× around the whole compressor.</span></li>
   </ul>
 </section>
 
@@ -459,7 +459,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="licence">The licence</div>
 <section class="two">
   <div class="prose">
-    <p>ANANKE runs as a fully working trial for seven days from the first time it loads, and the brand bar counts down the days left. When the trial ends without activation, ANANKE goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
+    <p>ANANKE runs as a fully working trial for fourteen days from the first time it loads, and the brand bar counts down the days left. When the trial ends without activation, ANANKE goes silent until you activate it. A licence unlocks the same install in place, no reinstall.</p>
     <p class="small">Keys from the THETA store and from THETA resellers both work. Reseller keys start with THETA-.</p>
   </div>
   <div class="prose">
@@ -482,16 +482,16 @@ footer a:hover{color:var(--gold)}
   <table class="specs">
     <tr><th>TYPE</th><td>Feed-forward compressor with analog character (insert) · mono or stereo · optional sidechain input</td></tr>
     <tr><th>DYNAMICS</th><td>THRESH −60–0 dB · RATIO 1:1–∞:1 · KNEE 0–24 dB · ATTACK 0.1–200 ms · RELEASE 5–1000 ms or AUTO (40–500 ms) · HOLD 0–500 ms · RANGE 0 to −60 dB / Off · RELIEF 0–100 %</td></tr>
-    <tr><th>DETECTION</th><td>Peak ↔ RMS blend, RMS window 1–50 ms · CREST path +3 to +30 dB above threshold, or off · LOOKAHEAD 0–3.5 ms · LINK 0–100 % · Stereo or Mid-Side</td></tr>
+    <tr><th>DETECTION</th><td>Peak ↔ RMS blend, RMS window 1–50 ms · CREST path +3 to +30 dB above threshold, or off · LOOKAHEAD 0–20 ms · LINK 0–100 % · Stereo or Mid-Side</td></tr>
     <tr><th>VOICE</th><td>CLEAN · WARM (optical) · PUNCH (fast VCA)</td></tr>
     <tr><th>SIDECHAIN</th><td>Internal or external key · HPF 20–400 Hz · LPF 200 Hz–20 kHz · bell 200 Hz–8 kHz ±12 dB · LISTEN</td></tr>
     <tr><th>CHARACTER</th><td>EMBER: TUBE · DIODE · BRIGHT · DRIVE 0–100 % · PRE or POST · ADAA anti-aliased, half-power makeup</td></tr>
     <tr><th>OUTPUT</th><td>MAKEUP −12 to +24 dB · AUTO GAIN · MIX 0–100 %</td></tr>
-    <tr><th>METERING</th><td>Transfer curve · gain-reduction history, zoomable · integrated LUFS (BS.1770-4)</td></tr>
+    <tr><th>METERING</th><td>Transfer curve · gain-reduction history with input / output waveforms, zoomable · input level ring on THRESH · integrated LUFS (BS.1770-4)</td></tr>
     <tr><th>MONITORING</th><td>DELTA · CHARACTER DELTA · SC LISTEN</td></tr>
-    <tr><th>LATENCY</th><td>Constant 3.5 ms (168 samples at 48 kHz), reported to the host; LOOKAHEAD moves inside it. Oversampling 2× or 4× adds its filter delay, also reported.</td></tr>
-    <tr><th>PRESETS</th><td>Save and save as, in the plug-in's own menu · A/B with copy</td></tr>
-    <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · one activation per Mac · activate once online, then runs offline</td></tr>
+    <tr><th>LATENCY</th><td>Equal to LOOKAHEAD, 0–20 ms (3.5 ms = 168 samples at 48 kHz by default), reported to the host. Oversampling 2× or 4× adds its filter delay, also reported.</td></tr>
+    <tr><th>PRESETS</th><td>Eleven factory presets · save and save as, in the plug-in's own menu · A/B with copy · type-in values</td></tr>
+    <tr><th>LICENCE</th><td>14-day full trial · one licence, three computers · one activation per Mac · activate once online, then runs offline</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools, listed under Dynamics)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 Big Sur or later · Universal: Apple Silicon and Intel · Developer ID signed, notarized</td></tr>
   </table>
@@ -504,13 +504,13 @@ footer a:hover{color:var(--gold)}
 <!-- PRICE -->
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
-  <div class="eyebrow" id="price-ver">ANANKE · 1.1</div>
+  <div class="eyebrow" id="price-ver">ANANKE · 1.3.1</div>
   <p>A compressor that holds the level and leaves the transients, a crest path and a shapeable sidechain, three analog voices, and the tools to hear exactly what it changes. Nothing withheld.</p>
   <div class="amt"><s>$99</s><strong>$49.50</strong></div>
-  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
+  <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for fourteen days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas" style="justify-content:center">
     <a class="btn primary" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/05446b6f-aad2-43de-9134-b9b263d2e5c0?embed=1" data-launch>Acquire ANANKE · $49.50</a>
-    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4a46ee37-5d7e-44eb-8465-d30df537b30e?embed=1" data-launch>Try 7 days free</a>
+    <a class="btn ghost" href="https://thetaaudiuo.lemonsqueezy.com/checkout/buy/4a46ee37-5d7e-44eb-8465-d30df537b30e?embed=1" data-launch>Try 14 days free</a>
   </div>
   <div class="cap">MACOS UNIVERSAL · VST3 / AU / AAX INCLUDED</div>
 </section>
@@ -848,7 +848,7 @@ const fmtMs = v => v < 10 ? v.toFixed(2) + ' ms' : v < 100 ? v.toFixed(1) + ' ms
     { id: 'relief', name: 'RELIEF', min: 0, max: 100, step: 1, v: 60, cls: 'gr', fmt: v => v < .5 ? 'Off' : v + ' %' },
     { id: 'crest', name: 'CREST', min: 0, max: 1000, step: 1, v: CREST.i(9), fmt: v => { const c = CREST.f(v); return c >= 29.5 ? 'Off' : '+' + c.toFixed(1) + ' dB'; } },
     { id: 'blend', name: 'DETECT', min: 0, max: 100, step: 1, v: 45, fmt: v => v < .5 ? 'Peak' : v > 99.5 ? 'RMS' : v + '% RMS' },
-    { id: 'la', name: 'LOOKAHEAD', min: 0, max: 3.5, step: .05, v: 1, fmt: v => v.toFixed(2) + ' ms' },
+    { id: 'la', name: 'LOOKAHEAD', min: 0, max: 20, step: .05, v: 1, fmt: v => v.toFixed(2) + ' ms' },
     { id: 'hold', name: 'HOLD', min: 0, max: 1000, step: 1, v: 0, fmt: v => { const h = HOLD.f(v); return h < .5 ? 'Off' : Math.round(h) + ' ms'; } }
   ], () => {});
   segGroup('data-tsrc', v => { kind = v === 0 ? 1 : 0; src = makeSource(kind); });
