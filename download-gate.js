@@ -44,7 +44,7 @@
 
   /* confirmed policy: one installer per product; it runs 14 days unlicensed, then a licence unlocks it */
   var TRIAL_TERM = '14 days unlicensed';
-  var TRIAL_DAYS = 14;
+  var TRIAL_DAYS = 7;
 
   var ROLES = ['Composer', 'Mixer / re-recording', 'Sound designer / editor', 'Producer / artist', 'Post supervisor', 'Hobbyist', 'Other'];
   var SOURCES = ['A friend or colleague', 'Instagram', 'YouTube', 'A forum or Reddit', 'Search', 'At work / on a show', 'Other'];
