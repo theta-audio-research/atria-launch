@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CATHARSIS Product Page</title>
-<meta name="description" content="CATHARSIS is dialogue noise reduction with two engines: a zero-latency 12-band multiband expander for picture and live work, and a spectral MMSE-LSA engine for the deepest clean-up. It keeps a steady bed of the real room instead of gating to silence. VST3, AU and AAX for macOS.">
+<meta name="description" content="CATHARSIS is dialogue noise reduction with two engines: a zero-latency 12-band multiband expander for picture and live work, and a spectral MMSE-LSA engine built to run live in your mix session, with no rendering. It keeps a steady bed of the real room instead of gating to silence. VST3, AU and AAX for macOS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -230,7 +230,7 @@ footer a:hover{color:var(--gold)}
     <div class="eyebrow">Dialogue noise reduction · Two engines</div>
     <h1 class="wordmark">CATHARSIS</h1>
     <div class="lede">
-      <p>Room tone, air conditioning, traffic and preamp hiss come out from under the dialogue, and the words stay as they were spoken. MULTIBAND does it in twelve bands with zero latency, so it can sit on a live chain or against picture. SPECTRAL works bin by bin for the deepest clean-up, at 512 samples.</p>
+      <p>Room tone, air conditioning, traffic and preamp hiss come out from under the dialogue, and the words stay as they were spoken. MULTIBAND does it in twelve bands with zero latency, so it can sit on a live chain or against picture. SPECTRAL works bin by bin for the deepest clean-up, and it is built to run live in your mix session: an insert that plays in real time with every other track, not a file you send off and render.</p>
       <p>CATHARSIS only ever subtracts. It never resynthesises a voice and never invents a sound. AMBIENCE keeps a steady bed of the real room, so a gap sounds like a quiet room instead of the tape stopping.</p>
     </div>
     <div class="ctas">
@@ -344,16 +344,17 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- SPECTRAL -->
-<div class="sh" id="spectral">Spectral · bin by bin</div>
+<div class="sh" id="spectral">Spectral · live in the mix</div>
 <section class="stack">
   <div class="two">
     <div class="prose">
+      <p><strong>The point of SPECTRAL is to use spectral noise reduction live, in the mix session.</strong> Spectral clean-up usually means leaving the session: process a clip, render it, listen, go back. SPECTRAL sits on the dialogue track as an ordinary insert and plays in real time with everything else, so you hear the clean-up in context with the music and effects, and AMOUNT and AMBIENCE stay open until the final pass.</p>
       <p><strong>SPECTRAL works on 257 frequency bins at once,</strong> from a 512-point transform with half-overlapping frames. Every bin carries its own estimate of the room's power, from a tracker that weighs, frame by frame, how likely it is that speech is present in that bin. It follows a changing room within a fraction of a second, without mistaking held vowels for noise.</p>
       <p>The gain for each bin is the Ephraim-Malah log-spectral amplitude estimator, the classical answer to the warbling "musical noise" a plain spectral subtractor leaves behind. CATHARSIS weights it by that speech-presence probability, so bins that are almost certainly room go straight to the floor, and bins that might be voice are given the benefit of the doubt.</p>
     </div>
     <div class="prose">
       <p>The floor is not flat. AMOUNT digs <strong>deeper where noise lives and speech does not</strong>, under 100 Hz and above 10 kHz, and holds back across 250 Hz to 3 kHz, where intelligibility lives. The curve is smooth in frequency, because a step in a gain floor is itself something the ear can find.</p>
-      <p>The engine reports 512 samples, 10.7 ms at 48 kHz, and the host compensates. Measured at AMOUNT 24 with a captured profile: <strong>gaps down 25 dB, words down 0.2 dB</strong>.</p>
+      <p>The engine reports 512 samples, 10.7 ms at 48 kHz, and the host compensates. That is all it costs to run live: the dialogue stays in sync with the picture and the rest of the mix, and the bounce is the same as what you heard. Measured at AMOUNT 24 with a captured profile: <strong>gaps down 25 dB, words down 0.2 dB</strong>.</p>
     </div>
   </div>
   <div class="lab">
@@ -455,7 +456,7 @@ footer a:hover{color:var(--gold)}
 
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
-  <article><b>DIALOGUE EDITORS</b><p>Production sound with a hum, a fan or traffic under it. LEARN a clean patch of room, set AMBIENCE so the cuts still breathe, and let the editorial stay invisible.</p></article>
+  <article><b>DIALOGUE EDITORS</b><p>Production sound with a hum, a fan or traffic under it. LEARN a clean patch of room, set AMBIENCE so the cuts still breathe, and let the editorial stay invisible. SPECTRAL stays live on the track, so the clean-up can still be adjusted in the mix.</p></article>
   <article><b>PODCAST &amp; VO</b><p>Home studios with a computer fan or a hiss in the preamp. SUGGEST gets most rooms most of the way in one click; SPECTRAL takes the rest.</p></article>
   <article><b>FIELD &amp; DOC</b><p>Interviews in rooms you could not choose. AUTO follows a changing location, and nothing is ever resynthesised, so the words are exactly the words that were said.</p></article>
   <article><b>BROADCAST &amp; LIVE</b><p>MULTIBAND adds no delay, so it can sit on a microphone channel, a stream or a talkback chain without moving the voice off the picture.</p></article>
@@ -489,7 +490,7 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
   <div class="eyebrow" id="price-ver">CATHARSIS · 0.7</div>
-  <p>Two engines, twelve bands at zero latency, the spectral estimator for the hard cases, LEARN, SUGGEST and AMBIENCE. Nothing withheld.</p>
+  <p>Two engines, twelve bands at zero latency, the spectral engine live in your mix session, LEARN, SUGGEST and AMBIENCE. Nothing withheld.</p>
   <div class="amt"><s>$99</s><strong>$49.50</strong></div>
   <p>Launch sale. Use code <span class="code">MIXING50</span> at checkout for 50% off. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas" style="justify-content:center">

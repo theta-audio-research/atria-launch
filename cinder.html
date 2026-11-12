@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CINDER Product Page</title>
-<meta name="description" content="CINDER is a three-circuit distortion with a transfer display drawn by the code that shapes your audio, an LFO, and AUTO LEVEL held under −0.3 dBTP. VST3, AU and AAX for macOS.">
+<meta name="description" content="CINDER is a five-circuit distortion with a transfer display drawn by the code that shapes your audio, an LFO and an EQ that moves, and AUTO LEVEL held under −0.3 dBTP. VST3, AU and AAX for macOS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -252,10 +252,10 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Three-circuit distortion · Version 1.4.0</div>
+    <div class="eyebrow">Five-circuit distortion · Version 1.5.0</div>
     <h1 class="wordmark">CINDER</h1>
     <div class="lede">
-      <p>Three waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe, and a transfer curve drawn by the same code that processes your audio.</p>
+      <p>Five waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe and the EQ move, and a transfer curve drawn by the same code that processes your audio.</p>
       <p>AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume, and nothing leaves above −0.3 dB true peak. 44 samples of latency, at every sample rate.</p>
     </div>
     <div class="ctas">
@@ -268,7 +268,7 @@ footer a:hover{color:var(--gold)}
     <div class="well">
       <div class="well-head"><span>TRANSFER · LFO ON DRIVE</span>
         <span class="seg" role="group" aria-label="Circuit for the hero display">
-          <button type="button" data-hc="0" aria-pressed="true">EMBER</button><button type="button" data-hc="1" aria-pressed="false">CHAR</button><button type="button" data-hc="2" aria-pressed="false">ASH</button>
+          <button type="button" data-hc="0" aria-pressed="true">EMBER</button><button type="button" data-hc="1" aria-pressed="false">CHAR</button><button type="button" data-hc="2" aria-pressed="false">ASH</button><button type="button" data-hc="3" aria-pressed="false">FLINT</button><button type="button" data-hc="4" aria-pressed="false">SLAG</button>
         </span>
       </div>
       <canvas id="hero" width="880" height="800" aria-label="CINDER's transfer display, drawn from the plug-in's own shaper. An LFO sweeps DRIVE so the curve bends and relaxes. Drag sideways to move DRIVE."></canvas>
@@ -279,7 +279,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/cinder/hero_v140.png?v=261106" alt="The CINDER v1.4.0 panel: DRIVE 14.0 on CHAR with BIAS and LFO under it, the transfer display in the middle with OS, KERNEL and LATENCY under it, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
+  <img src="assets/cinder/hero_v150.png?v=261112" alt="The CINDER v1.5.0 panel: DRIVE 12.0 on EMBER, with the five-way CIRCUIT switch (EMBER, CHAR, ASH, FLINT, SLAG) and BIAS and LFO under it, undo, redo and A | B in the header, the transfer display in the middle with OS, KERNEL and LATENCY under it, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -297,7 +297,7 @@ footer a:hover{color:var(--gold)}
       <p><strong>Even harmonics read as thickness. Odd harmonics read as edge.</strong> A curve that treats the top and bottom halves the same makes odd ones. A curve that treats them differently adds the even ones.</p>
     </div>
     <div class="prose">
-      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>EQ</strong> brings in an eight-band curve you draw, before or after the circuit. <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
+      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>EQ</strong> brings in an eight-band curve you draw, before or after the circuit, and the LFO or your playing can move its bands. <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
       <p>One header owns the curve. The audio path, the display and the test harness all evaluate it, so the picture cannot drift from the sound.</p>
     </div>
   </div>
@@ -307,7 +307,7 @@ footer a:hover{color:var(--gold)}
       <path class="wire" d="M34 128 H70"/><path class="flow" d="M34 128 H70"/>
       <rect class="box" x="70" y="102" width="86" height="52" rx="4"/><text class="lbl" x="113" y="124" text-anchor="middle">UP 4×</text><text x="113" y="142" text-anchor="middle">63 TAP</text>
       <path class="wire" d="M156 128 H190"/><path class="flow os" d="M156 128 H190"/>
-      <rect class="hot" x="190" y="92" width="170" height="72" rx="4"/><text class="lbl" x="275" y="116" text-anchor="middle">SHAPER · ADAA</text><text x="275" y="136" text-anchor="middle">EMBER · CHAR · ASH</text><text x="275" y="153" text-anchor="middle">+ TUBE · IRON · VAR</text>
+      <rect class="hot" x="190" y="92" width="170" height="72" rx="4"/><text class="lbl" x="275" y="116" text-anchor="middle">SHAPER · ADAA</text><text x="275" y="136" text-anchor="middle">FIVE CIRCUITS</text><text x="275" y="153" text-anchor="middle">+ TUBE · IRON · VAR</text>
       <path class="wire" d="M360 128 H394"/><path class="flow os" d="M360 128 H394"/>
       <rect class="box" x="394" y="102" width="86" height="52" rx="4"/><text class="lbl" x="437" y="124" text-anchor="middle">DOWN 4×</text><text x="437" y="142" text-anchor="middle">35 TAP</text>
       <path class="wire" d="M480 128 H506"/><path class="flow" d="M480 128 H506"/>
@@ -347,7 +347,7 @@ footer a:hover{color:var(--gold)}
   <div class="lab">
     <div class="lab-top">
       <span class="seg" role="group" aria-label="Circuit">
-        <button type="button" data-lc="0" aria-pressed="true">EMBER</button><button type="button" data-lc="1" aria-pressed="false">CHAR</button><button type="button" data-lc="2" aria-pressed="false">ASH</button>
+        <button type="button" data-lc="0" aria-pressed="true">EMBER</button><button type="button" data-lc="1" aria-pressed="false">CHAR</button><button type="button" data-lc="2" aria-pressed="false">ASH</button><button type="button" data-lc="3" aria-pressed="false">FLINT</button><button type="button" data-lc="4" aria-pressed="false">SLAG</button>
       </span>
       <span class="toggles"><button type="button" class="tog" id="t-reset">DEFAULTS</button></span>
     </div>
@@ -362,7 +362,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <!-- CIRCUITS -->
-<div class="sh" id="circuits">The three circuits</div>
+<div class="sh" id="circuits">The five circuits</div>
 <section class="stack">
   <div class="prose"><p>Each picture is a sine going through one circuit while its DRIVE climbs from 3 to 21 dB and back. The faint line is what goes in, the bright one what comes out. Every circuit normalises its own output, so more drive brings more harmonics and more compression, not just more level.</p></div>
   <div class="voices">
@@ -380,6 +380,16 @@ footer a:hover{color:var(--gold)}
       <canvas id="c2" width="720" height="400" aria-label="A sine through ASH: the curve turns back on itself and the waveform folds"></canvas>
       <div class="body"><div class="vn"><b>ASH</b><span>WAVEFOLDER · SINE</span></div>
       <p>A wavefolder. Instead of flattening as the signal gets loud, the curve turns back on itself and folds, so more DRIVE makes the tone stranger rather than just dirtier: buzzy and full of upper harmonics. Past the first fold it stops sounding like clipping and starts sounding like a new instrument. It is the setting that will not behave, and it is on the panel for that reason.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="c3" width="720" height="400" aria-label="A sine through FLINT: clean up to the knee, then the peaks are cut off flat"></canvas>
+      <div class="body"><div class="vn"><b>FLINT</b><span>HARD DIODE CLIP</span></div>
+      <p>A hard diode clipper. The curve is a straight line up to 80 % of full output, bends over a short knee and then stays flat: below the knee the signal passes clean, past it the peaks are cut off square. Symmetric like EMBER, so the second harmonic sits 120 dB down, but far brighter and more aggressive. The edge of a pedal clipper, for guitars, drums and anything that should bite rather than bloom.</p></div>
+    </article>
+    <article class="voice">
+      <canvas id="c4" width="720" height="400" aria-label="A sine through SLAG: the positive half rounds off towards full scale, the negative half flattens at about a third of it"></canvas>
+      <div class="body"><div class="vn"><b>SLAG</b><span>GERMANIUM · LOPSIDED</span></div>
+      <p>An asymmetric, germanium-style rectifier. The positive half rounds off smoothly towards full scale; the negative half flattens early, at about a third of it. The lopsided result is thick with even harmonics, the second only 18 dB below the fundamental, and it turns fuzzy and gated as you push DRIVE. Bass, synths and lo-fi textures.</p></div>
     </article>
   </div>
 </section>
@@ -417,6 +427,18 @@ footer a:hover{color:var(--gold)}
       <div class="knob-name">EQ · MIX · OUTPUT</div>
       <p>EQ runs −100 to +100 % and sets how much of the curve you draw is heard: 0 is no EQ at all, +100 % is the curve as drawn, and turning left plays it upside down. Right-click the knob or click the word EQ to open the panel: a 24 dB/oct high-pass and low-pass, a low shelf, four bells and a high shelf, each with FREQ, GAIN (±18 dB) and Q, PRE or POST DRIVE. Sessions saved with the old TONE knob open sounding the same. MIX is a parallel blend against a delay-matched dry leg, linear, and transparent to −288 dB at zero. OUTPUT trims −18 to +12 dB, within 1% of its marking.</p>
     </article>
+    <article class="knob-card" data-knob="input">
+      <div class="knob-name">INPUT · BALANCE</div>
+      <p>INPUT trims −18 to +18 dB at the very start of the chain, before SAG, DRIVE and the circuit, so a quiet or a hot source reaches the circuit where it responds the way you want and DRIVE is left for the colour. It moves the dry signal MIX blends in too, so a parallel blend keeps its balance. BALANCE shares DRIVE out unevenly between the two channels, up to 6 dB less on one side and 6 dB more on the other.</p>
+    </article>
+    <article class="knob-card" data-knob="chmode">
+      <div class="knob-name">L/R · M/S</div>
+      <p>L/R distorts left and right. M/S distorts the middle of the stereo image and the sides separately and puts them back together, so a kick, bass or lead vocal in the centre sounds the same while the wide parts break up their own way. BALANCE and VAR then work on middle against sides: WIDE SIDES drives the edges harder, SOLID CENTRE the middle. Switching glides over a fiftieth of a second.</p>
+    </article>
+    <article class="knob-card" data-knob="quality">
+      <div class="knob-name">QUALITY</div>
+      <p>Click the line under the display to run the circuit at 4×, 8× or 16× oversampling. 4× is clean on almost everything and is the default; 8× and 16× give the harmonics further to go before they fold back down, for bright, heavily driven material and a final bounce, at roughly 1.6 and 2.5 times the CPU. The latency stays at 44 samples at all three, so nothing shifts in your session.</p>
+    </article>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:20px">
 
@@ -424,6 +446,11 @@ footer a:hover{color:var(--gold)}
       <img src="assets/cinder/cinder_v110_eq.png?v=261011" alt="The CINDER v1.1.0 EQ options open: an eight-node curve set POST DRIVE, with band 6 a bell at 4.08 kHz, +12.8 dB, Q 1.60, and the AMOUNT, RESET and FLAT controls" width="2140" height="1410" loading="lazy">
       <figcaption class="cap">EQ OPTIONS OPEN · POST DRIVE</figcaption>
     </figure>
+    <div class="prose">
+      <p><strong>The EQ can move.</strong> Under each band's FREQ, GAIN and Q sit three MOD dials: MOD F sweeps the band's frequency up to ±4 octaves (every band, the high- and low-pass included), MOD G moves its gain up to ±18 dB, and MOD Q narrows or widens a bell up to ±2 octaves.</p>
+      <p>The header picks what moves them. LFO MOD uses the LFO's own wave, at its rate, sync and shape. ENV MOD uses the envelope follower, so a band moves further the louder you play. At PRE DRIVE a swept bell is a wah going into the circuit; at POST DRIVE it sweeps what comes out. With ENV MOD, a negative MOD G on a bell around 5 to 8 kHz dips only when the signal is loud, like a de-esser, and a positive MOD F on the low-pass opens the top up as you dig in.</p>
+      <p>While a band moves, the curve on the graph moves with the sound and the two ends of its swing are drawn dashed. Every MOD dial is 0 by default, and at 0 the band is exactly the EQ it was.</p>
+    </div>
   </div>
 </section>
 
@@ -438,6 +465,7 @@ footer a:hover{color:var(--gold)}
     <div class="prose">
       <p>On DRIVE it pulses the amount of distortion; on BIAS it rocks the even-harmonic lean back and forth and changes the colour more than the amount. SQR flips between two settings and S&amp;H jumps to a new one each cycle, and every edge goes through a 3 ms smoother so a jump never clicks.</p>
       <p>Free-running, the sweep starts from the same point every time the host starts the plug-in, and S&amp;H draws from a fixed seed, so the same passage renders the same samples. Everything in the panel automates and saves with your session and your presets.</p>
+      <p><strong>Or let your playing move it.</strong> Set SOURCE to ENVELOPE and the knob becomes the depth of an envelope follower that pushes DRIVE (or BIAS) up with the input level, so loud notes break up more than quiet ones: at 100 a full-level input adds 12 dB of DRIVE. ATTACK runs 1 to 200 ms and RELEASE 10 to 1000 ms. It is the opposite of SAG, which backs the drive off as you play harder; use one, the other, or both against each other.</p>
     </div>
   </div>
   <div class="lab">
@@ -480,7 +508,7 @@ footer a:hover{color:var(--gold)}
 <section class="two">
   <div class="prose">
     <p>Turn up a distortion and it gets louder. Louder sounds better, reliably, to everyone, for about a second, so every comparison you make while dialling one in is rigged. <strong>AUTO LEVEL holds the output where your input was</strong>, so moving DRIVE changes the tone and leaves the volume alone. Twelve decibels of DRIVE move the output by 0.08 dB with it working, where the same move is 9.56 dB with it off.</p>
-    <p>One switch, four positions, no knobs to set. TRANSPARENT rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor, the way a bus compressor sits on a mix. CLIP drives 9 dB into that clipper on purpose: loud, without the fizz a plain clipper folds back down the spectrum. TRANSPARENT and GLUE land within 0.1 dB of each other, so switching between them is a character decision.</p>
+    <p>One switch, four positions, no knobs to set. TRANSPARENT rides the gain slowly enough that you cannot hear it move, and lets an anti-aliased clipper take the fast peaks. GLUE adds a 2.5:1 soft-knee compressor, the way a bus compressor sits on a mix. CLIP is a squeeze: it pushes 6 dB into a soft clipper that rounds the peaks over the last 6 dB under the ceiling, then takes the same 6 dB back out, so the peaks are held in without a hard edge of its own. All three land within half a decibel of each other, so switching between them is a character decision, not a volume control.</p>
     <p>A short true-peak limiter sits behind every working mode, so the ceiling holds between the samples too, where a converter or an encoder will find it: driven sines up to 15 kHz and hard transients, measured 16× oversampled, never reach 0 dBTP. OFF never limits, and it is the default. Mode changes fade over 10 ms, and BYPASS takes AUTO LEVEL out with everything else.</p>
   </div>
   <div class="stack">
@@ -492,6 +520,19 @@ footer a:hover{color:var(--gold)}
       </div>
     </div>
     <div class="cap">ILLUSTRATION · THE 9.56 dB AND 0.08 dB FIGURES ARE MEASURED IN THE RELEASE HARNESS</div>
+  </div>
+</section>
+
+<!-- PRESETS / UNDO / AB -->
+<div class="sh" id="presets">Presets, undo and A/B</div>
+<section class="two">
+  <div class="prose">
+    <p>Eighteen factory presets sit in the bar at the top right, from INIT and RUST BUS to TOUCH AMP, PULSE, WIDE SIDES, FLINT EDGE and SLAG FUZZ, and in your host's own preset menu. Every one sets every control, and all but INIT are trimmed to come out at roughly the level that went in. Two arrows step to the previous and next preset, and an ember dot shows when you have changed something since loading one.</p>
+    <p>SAVE and SAVE AS write ordinary files you can copy between machines or send to a collaborator. SAVE AS DEFAULT makes every new CINDER open with the settings you have now, and OPEN PRESET FILE loads one from anywhere on disk.</p>
+  </div>
+  <div class="prose">
+    <p><strong>Undo and redo</strong> step back and forward through what you have done on CINDER's face: each knob move, switch, typed value or preset recall is one step, up to 100, and Cmd-Z works when your host passes the keys on.</p>
+    <p><strong>A | B</strong> holds two complete settings to flip between. Click B, change it, then click A and B to hear one against the other; A→B copies the one you are on into the other slot. Both slots save with your session. The window sizes from 75 to 150 %, and CINDER remembers the size you pick.</p>
   </div>
 </section>
 
@@ -511,24 +552,25 @@ footer a:hover{color:var(--gold)}
 <div class="sh" id="who">Who it is for</div>
 <section class="who">
   <article><b>MIX ENGINEERS</b><p>RUST BUS is parallel warmth for a whole mix or a drum bus. AUTO LEVEL means pushing DRIVE never wins an A/B on volume alone, and TRANSPARENT holds the ceiling without being heard.</p></article>
-  <article><b>GUITAR, BASS &amp; VOCALS</b><p>CHAR's asymmetry and a touch of BIAS give an amp-like bite without an amp sim. TUBE adds body without bite, IRON the reverse. EMBER LEAD is the place to start.</p></article>
+  <article><b>GUITAR, BASS &amp; VOCALS</b><p>CHAR's asymmetry and a touch of BIAS give an amp-like bite without an amp sim. TUBE adds body without bite, IRON the reverse. EMBER LEAD is the place to start, and FLINT EDGE when it should bite harder.</p></article>
   <article><b>DRUMS</b><p>SAG ducks the drive on the hit and lets it breathe back in behind, so the tail opens out. MIX keeps the transient while the crunch sits under it.</p></article>
-  <article><b>SOUND DESIGN</b><p>ASH folds instead of flattening; sweep DRIVE and every change of shape is a new timbre. Put the LFO on it, add VAR for width, and expect OUTPUT well below zero.</p></article>
+  <article><b>SOUND DESIGN</b><p>ASH folds instead of flattening; sweep DRIVE and every change of shape is a new timbre. Put the LFO on it, add VAR for width, and expect OUTPUT well below zero. SLAG FUZZ sputters and gates; sweep an EQ band with ENV MOD for a filter that follows your playing.</p></article>
 </section>
 
 <!-- SPECS -->
 <div class="sh" id="specs">Technical specifications</div>
 <section class="two">
   <table class="specs">
-    <tr><th>TYPE</th><td>Three-circuit distortion (insert)</td></tr>
-    <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder)</td></tr>
-    <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · EQ · SAG · MIX · OUTPUT · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
-    <tr><th>LFO</th><td>Depth 0–100 % on DRIVE (±12 dB) or BIAS (±1.00) · RATE 0.05–20 Hz or tempo SYNC, 4 BAR to 1/32 with triplets · SINE, TRI, SQR, S&amp;H</td></tr>
-    <tr><th>PROCESSING</th><td>4× oversampling, 63-tap up / 35-tap down, first-order ADAA around the nonlinearity</td></tr>
+    <tr><th>TYPE</th><td>Five-circuit distortion (insert)</td></tr>
+    <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder) · FLINT (hard diode clip) · SLAG (germanium rectifier)</td></tr>
+    <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · EQ · SAG · MIX · INPUT · BALANCE · OUTPUT · L/R | M/S · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
+    <tr><th>LFO</th><td>Depth 0–100 % on DRIVE (±12 dB) or BIAS (±1.00) · RATE 0.05–20 Hz or tempo SYNC, 4 BAR to 1/32 with triplets · SINE, TRI, SQR, S&amp;H · or an envelope follower, ATTACK 1–200 ms, RELEASE 10–1000 ms</td></tr>
+    <tr><th>EQ</th><td>8 bands, PRE or POST DRIVE: 24 dB/oct high- and low-pass, low shelf, four bells, high shelf · per-band MOD F (±4 oct), MOD G (±18 dB), MOD Q (±2 oct) from the LFO or the envelope</td></tr>
+    <tr><th>PROCESSING</th><td>4×, 8× or 16× oversampling (QUALITY), 63-tap up / 35-tap down at 4×, first-order ADAA around the nonlinearity</td></tr>
     <tr><th>OUTPUT</th><td>AUTO LEVEL: OFF · TRANSPARENT · GLUE · CLIP, −0.3 dBTP ceiling</td></tr>
     <tr><th>LATENCY</th><td>44 samples at every rate and in every mode, reported to the host</td></tr>
     <tr><th>CHANNELS</th><td>Mono, mono to stereo, stereo</td></tr>
-    <tr><th>PRESETS</th><td>Four factory sounds (INIT, RUST BUS, EMBER LEAD, ASH FOLD) in the host's own preset menu; your own presets with save and save as</td></tr>
+    <tr><th>PRESETS</th><td>Eighteen factory sounds in the bar and in the host's own preset menu · previous / next arrows · save, save as, save as default · undo / redo (100 steps) · A | B compare</td></tr>
     <tr><th>LICENCE</th><td>7-day full trial · one licence, three computers · one activation covers every user account on a Mac · activate once online, then runs offline</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX (Pro Tools)</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
@@ -543,8 +585,8 @@ footer a:hover{color:var(--gold)}
 <!-- PRICE -->
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
-  <div class="eyebrow">CINDER · 1.4</div>
-  <p>CINDER 1.0 is calibrated and available for immediate deployment. Three circuits, the LFO, the full panel, nothing withheld.</p>
+  <div class="eyebrow">CINDER · 1.5</div>
+  <p>CINDER 1.5 is calibrated and available for immediate deployment. Five circuits, the LFO, the moving EQ, the full panel, nothing withheld.</p>
   <div class="amt"><s>$50</s><strong>$25</strong></div>
   <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas" style="justify-content:center">
@@ -580,6 +622,8 @@ class Waveshape{
     if(this.mode===2)return Math.sin(this.w*(x+this.off));
     const t=this.g*(x+this.off);
     if(this.mode===1)return t>=0?Math.tanh(0.7*t):Math.tanh(1.4*t);
+    if(this.mode===3){const a=Math.abs(t);if(a<=0.8)return t;const y=a>=1.2?1:1-(1.2-a)*(1.2-a)/0.8;return t<0?-y:y;}
+    if(this.mode===4)return t>=0?-Math.expm1(-Math.min(t,60)):0.35*Math.expm1(1.6*Math.max(t,-60));
     return Math.tanh(t);}
   normalized(x){return (this.raw(x)-this.z)/this.m;}
 }
@@ -678,7 +722,7 @@ let heroCentre=14;const heroLfo=new Lfo();
 })();
 document.querySelectorAll('[data-hc]').forEach(b=>b.addEventListener('click',()=>{hero.circuit=+b.dataset.hc;
   document.querySelectorAll('[data-hc]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
-  document.getElementById('h-circ').textContent=['EMBER','CHAR','ASH'][hero.circuit];}));
+  document.getElementById('h-circ').textContent=['EMBER','CHAR','ASH','FLINT','SLAG'][hero.circuit];}));
 function drawHero(dt){
   const s=heroLfo.step(dt,0.18,0);
   hero.drive=Math.min(36,Math.max(0,heroCentre+0.6*12*s));
@@ -775,9 +819,9 @@ function drawLab(dt){
 }
 
 /* ================= CIRCUITS ================= */
-const cPhase=[0,0,0];
+const cPhase=[0,0,0,0,0];
 function drawCircuits(t){
-  for(let c=0;c<3;c++){const cv=document.getElementById('c'+c),cx=cv.getContext('2d');const W=cv.width,H=cv.height;
+  for(let c=0;c<5;c++){const cv=document.getElementById('c'+c),cx=cv.getContext('2d');const W=cv.width,H=cv.height;
     cx.clearRect(0,0,W,H);
     const drive=12-9*Math.cos(TAU*t/9);
     const fn=new Shaper().set(c,drive,0,0,0);
@@ -787,7 +831,7 @@ function drawCircuits(t){
     const tr=(g,col,w)=>{cx.strokeStyle=col;cx.lineWidth=w;cx.beginPath();for(let i=0;i<=300;i++){const u=i/300;const s=0.8*Math.sin(TAU*(2.5*u-t*0.25));const y=mid-g(s)*amp;const x=ml+u*(W-ml-mr);i?cx.lineTo(x,y):cx.moveTo(x,y);}cx.stroke();};
     tr(s=>s,'rgba(242,233,220,.22)',2);
     tr(s=>fn.f(s)-m,'#f2e9dc',3);
-    cx.font='22px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.45)';cx.fillText(['TANH · BOTH HALVES ALIKE','NEGATIVE HALF SQUASHED 2×','SIN · THE CURVE FOLDS BACK'][c],ml,34);
+    cx.font='22px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.45)';cx.fillText(['TANH · BOTH HALVES ALIKE','NEGATIVE HALF SQUASHED 2×','SIN · THE CURVE FOLDS BACK','CLEAN, THEN CUT OFF FLAT','TOP ROUNDS, BOTTOM FLATTENS'][c],ml,34);
     const h=harmonics(fn);
     cx.fillStyle='#f0824f';cx.textAlign='right';cx.fillText('DRIVE '+drive.toFixed(0)+' dB · H2 '+fmtH(h.ratio[2]),W-mr,H-18);cx.textAlign='left';
   }
@@ -838,13 +882,13 @@ const lc=document.getElementById('level'),lv=lc.getContext('2d');
 let alMode=1;const alHist=[];
 document.querySelectorAll('[data-al]').forEach(b=>b.addEventListener('click',()=>{alMode=+b.dataset.al;
   document.querySelectorAll('[data-al]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
-  document.getElementById('al-move').textContent=alMode===0?'9.56 dB':alMode===3?'HELD · LOUD BY DESIGN':'0.08 dB';}));
+  document.getElementById('al-move').textContent=alMode===0?'9.56 dB':alMode===3?'0.08 dB · PEAKS HELD':'0.08 dB';}));
 function drawLevel(now){
   const W=lc.width,H=lc.height;lv.clearRect(0,0,W,H);
   const t=now/1000,cyc=(t%10)/10,drv=12*(cyc<0.5?cyc*2:2-cyc*2);
   // programme at -14 dBFS; OFF rises 9.56 dB across 12 dB of DRIVE (harness figure)
   const off=-14+9.56*drv/12;
-  const outLvl=[off,-14+0.08*drv/12,-14+0.08*drv/12,-7][alMode];
+  const outLvl=[off,-14+0.08*drv/12,-14+0.08*drv/12,-14+0.08*drv/12][alMode];
   alHist.push({t,drv,lvl:outLvl,off});while(alHist.length&&t-alHist[0].t>8)alHist.shift();
   const ml=56,mr=20,top=78,bot=H-64;const yd=d=>top+(bot-top)*(0-d)/24;
   lv.font='17px "JetBrains Mono",monospace';lv.textAlign='right';
@@ -856,7 +900,8 @@ function drawLevel(now){
   for(let i=0;i<alHist.length;i++){const h=alHist[i];const x=xt(h);
     let pk=h.lvl+6+2.5*Math.sin(h.t*9)*Math.sin(h.t*2.3);
     if(alMode===2)pk=h.lvl+6+(pk-h.lvl-6)/2.5;
-    if(alMode!==0)pk=Math.min(-0.3,pk+(alMode===3?2:0));
+    if(alMode===3)pk=h.lvl+3+(pk-h.lvl-3)/3;
+    if(alMode!==0)pk=Math.min(-0.3,pk);
     i?lv.lineTo(x,yd(Math.min(0,pk))):lv.moveTo(x,yd(Math.min(0,pk)));}
   for(let i=alHist.length-1;i>=0;i--){const h=alHist[i];lv.lineTo(xt(h),yd(h.lvl-8));}
   lv.closePath();lv.fillStyle=alMode===3?'rgba(240,130,79,.20)':'rgba(242,233,220,.10)';lv.fill();

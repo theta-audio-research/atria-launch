@@ -222,18 +222,18 @@ footer a:hover{color:var(--gold)}
 .chips{display:flex;flex-wrap:wrap}
 .chip{white-space:nowrap;height:auto}
 
-/* ARECIBO: the plug-in's cyan glass, lime envelopes and gold handles */
-:root{--cy:#5fd8e6;--cy-dim:#2b6f78;--lime:#b9e35a;--rose:#f06a8a;--abyss:#04121a}
-.well.ar{border-color:#17414a;background:radial-gradient(120% 120% at 50% 0%,#0c2a33,#03080c 70%)}
-.well.ar .well-head,.well.ar .well-foot{color:rgba(200,240,245,.6)}
+/* ARECIBO: the plug-in's EMBER glass (coral-orange), lime envelopes and gold handles */
+:root{--cy:#ff8a5a;--cy-dim:#8a2e1b;--lime:#b9e35a;--rose:#f06a8a;--abyss:#04121a}
+.well.ar{border-color:#4a2417;background:radial-gradient(120% 120% at 50% 0%,#2a140c,#0a0605 70%)}
+.well.ar .well-head,.well.ar .well-foot{color:rgba(245,222,208,.6)}
 .well.ar .well-foot b{color:var(--cy)}
-.gen{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--cy);background:transparent;border:1px solid rgba(95,216,230,.55);border-radius:999px;min-height:30px;padding:0 14px;cursor:pointer}
-.gen:hover{background:rgba(95,216,230,.12)}
+.gen{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--cy);background:transparent;border:1px solid rgba(255,138,90,.55);border-radius:999px;min-height:30px;padding:0 14px;cursor:pointer}
+.gen:hover{background:rgba(255,138,90,.12)}
 .steps{grid-template-columns:repeat(6,minmax(0,1fr))}
 .tabs{display:flex;flex-wrap:wrap;gap:6px}
 .tabs button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-2);background:transparent;border:1px solid var(--border);border-radius:6px;min-height:36px;padding:0 14px;cursor:pointer}
 .tabs button span{color:var(--text-3);margin-right:8px}
-.tabs button[aria-pressed="true"]{border-color:var(--cy);color:var(--cy);box-shadow:0 0 18px rgba(95,216,230,.18) inset}
+.tabs button[aria-pressed="true"]{border-color:var(--cy);color:var(--cy);box-shadow:0 0 18px rgba(255,138,90,.18) inset}
 .viewer{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--s6);align-items:start;margin-top:var(--s5)}
 .viewer img{width:100%;height:auto;display:block;border:0}
 .viewer .prose h3{font-weight:300;font-size:24px;letter-spacing:.04em;color:var(--text)}
@@ -241,7 +241,7 @@ footer a:hover{color:var(--gold)}
 .bank{grid-template-columns:repeat(3,minmax(0,1fr))}
 .bank b small{font-family:var(--f-mono);font-weight:400;color:var(--text-3);letter-spacing:.1em;margin-left:6px}
 .char{display:flex;flex-wrap:wrap;gap:6px;margin-top:var(--s2)}
-.char span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--cy);border:1px solid rgba(95,216,230,.35);border-radius:4px;padding:3px 9px}
+.char span{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--cy);border:1px solid rgba(255,138,90,.35);border-radius:4px;padding:3px 9px}
 @media (max-width:900px){.viewer{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.bank{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.steps,.bank{grid-template-columns:minmax(0,1fr)}}
 </style>
@@ -285,7 +285,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/arecibo/panel_voice.png?v=261108" width="1120" height="1040" alt="The ARECIBO panel on the VOICE page with the ARECIBO starting point loaded: OSC A and OSC B with their wave pictures, the FILTER curve with cutoff at 3.2 kHz, the seven page tabs, the LAYERS mixer with SUB, STACK, NOISE, AIR and CLOUD columns, the unison fan in the VOICE card, and the shelf of AMP ENV, MOD ENV, LFO 1, LFO 2, seven MACROS and the XY · DICE pad">
+  <img src="assets/arecibo/panel_voice.png?v=261111" width="1120" height="1040" alt="The ARECIBO panel on the VOICE page with the ARECIBO starting point loaded: OSC A and OSC B with their wave pictures, the FILTER curve with cutoff at 3.2 kHz, the seven page tabs, the LAYERS mixer with SUB, STACK, NOISE, AIR and CLOUD columns, the unison fan in the VOICE card, and the shelf of AMP ENV, MOD ENV, LFO 1, LFO 2, seven MACROS and the XY · DICE pad">
 </section>
 
 <div class="sh" id="voice">The voice</div>
@@ -296,7 +296,19 @@ footer a:hover{color:var(--gold)}
   </div>
   <div class="prose">
     <p>Up to 16 voices, played poly, mono or legato, with glide and a unison fan you widen and detune by dragging. A single filter switches between low-pass, band-pass, high-pass and notch, with drive, key tracking and velocity.</p>
-    <p>Two envelopes, two LFOs with six shapes including sample-and-hold and a smooth drift, mod wheel and pressure, and a <strong>twelve-route modulation matrix</strong>: drag a handle from the shelf onto any knob to make a route.</p>
+    <p>Two envelopes, two LFOs with six shapes including sample-and-hold and a smooth drift, mod wheel and pressure, and <strong>twelve modulation routes that reach any knob</strong>: right-click a knob or value to pick a source, or drag a handle from the shelf onto it.</p>
+  </div>
+</section>
+
+<div class="sh" id="morph">Modulation and the morph pad</div>
+<section class="two">
+  <div class="prose">
+    <p><strong>Every knob is a target.</strong> Right-click any knob or value box, on any page, and choose what moves it and by how much: an envelope, an LFO, a macro, the mod wheel or pressure. Or drag a MOD handle from the shelf and drop it on the knob. A ring around the knob shows the route.</p>
+    <p>Twelve routes play at once, and they add on top of the sound you saved, so taking one away puts the patch back exactly as it was.</p>
+  </div>
+  <div class="prose">
+    <p>The <strong>morph pad</strong> fills the MOD page. Its four corners each hold a sound: dial something in, click a corner to store it, and do the same for the others. Then drag the puck across the pad to blend between all four.</p>
+    <p>Only what the corners disagree on moves; everything else stays live under your hands, and the macros and routes still play on top. The corners are saved with the preset.</p>
   </div>
 </section>
 
@@ -308,13 +320,13 @@ footer a:hover{color:var(--gold)}
     <li><span class="num">3</span><b>DIFFERENTIAL</b><p>The fragment engine, on the whole mix or inside every voice.</p></li>
     <li><span class="num">4</span><b>FX</b><p>A ring modulator and a stereo delay.</p></li>
     <li><span class="num">5</span><b>SPACE</b><p>A rack of eight modules, from ensemble to worn tape.</p></li>
-    <li><span class="num">6</span><b>OUTPUT</b><p>An eight-band EQ, Quorra warp and a final wall stage.</p></li>
+    <li><span class="num">6</span><b>OUTPUT</b><p>An eight-band EQ with dynamics on every band, Quorra warp and a final wall stage.</p></li>
   </ol>
 </section>
 
 <div class="sh" id="pages">Seven pages, one panel</div>
 <section class="stack">
-  <div class="prose"><p>The sound row, the shelf and the macros stay on screen. The seven tabs between them open each part of the chain, and none of the pages scroll.</p></div>
+  <div class="prose"><p>The whole window is one sheet of warm glass. The sound row, the shelf and the macros stay on screen; the seven tabs between them open each part of the chain, and none of the pages scroll.</p></div>
   <div class="tabs" role="group" aria-label="Choose a page">
     <button type="button" data-p="0" aria-pressed="true"><span>01</span>VOICE</button>
     <button type="button" data-p="1" aria-pressed="false"><span>02</span>MOD</button>
@@ -325,7 +337,7 @@ footer a:hover{color:var(--gold)}
     <button type="button" data-p="6" aria-pressed="false"><span>07</span>OUTPUT</button>
   </div>
   <div class="viewer">
-    <img id="pv-img" src="assets/arecibo/panel_voice.png?v=261108" width="1120" height="1040" alt="">
+    <img id="pv-img" src="assets/arecibo/panel_voice.png?v=261111" width="1120" height="1040" alt="">
     <div class="prose">
       <div class="tag" id="pv-tag">01 · VOICE</div>
       <h3 id="pv-h">Layers and unison</h3>
@@ -423,9 +435,9 @@ footer a:hover{color:var(--gold)}
     <tr><th>TYPE</th><td>Polyphonic synthesizer (instrument)</td></tr>
     <tr><th>VOICE</th><td>Up to 16 voices · poly, mono, legato · glide · unison · 2 oscillators (sine, warm, saw, pulse, triangle, noise) with FM and ring · sub, stack, noise, air and cloud layers</td></tr>
     <tr><th>FILTER</th><td>Low-pass, band-pass, high-pass, notch · drive, envelope, key and velocity</td></tr>
-    <tr><th>MODULATION</th><td>Amp and mod envelopes · 2 LFOs, 6 shapes, free or synced · mod wheel, pressure, velocity, pitch bend, sustain · 12-route matrix · 7 macros · XY pad with motion and recorded paths</td></tr>
+    <tr><th>MODULATION</th><td>Amp and mod envelopes · 2 LFOs, 6 shapes, free or synced · mod wheel, pressure, velocity, pitch bend, sustain · 12 routes, any knob a target · morph pad with four stored corners · 7 macros · XY pad with motion and recorded paths</td></tr>
     <tr><th>SEQUENCING</th><td>16-step transmission sequencer with scale lock and glitch lane · arpeggiator (up, down, up/down, random, as played, chord)</td></tr>
-    <tr><th>EFFECTS</th><td>Interference · DIFFERENTIAL fragment engine · Bounce · ring modulator · stereo delay · ensemble, drift, breathe, field, pulse, pan, tape · 8-band output EQ · Quorra · wall stage</td></tr>
+    <tr><th>EFFECTS</th><td>Interference · DIFFERENTIAL fragment engine · Bounce · ring modulator · stereo delay · ensemble, drift, breathe, field, pulse, pan, tape · 8-band output EQ with per-band dynamics · Quorra · wall stage</td></tr>
     <tr><th>PRESETS</th><td>59 factory sounds in 9 categories · user presets · Dice, Variation, Undo</td></tr>
     <tr><th>FORMATS</th><td>VST3 · Audio Unit</td></tr>
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
@@ -457,14 +469,14 @@ footer a:hover{color:var(--gold)}
 /* Page viewer */
 const P=[
  ['voice','01 · VOICE','Layers and unison','The layer mixer under the sound row: drag a column for its level, click its tag for wave, interval or colour. Beside it, the unison fan: drag sideways for width, up and down for detune. Drift and Warmth give every voice a slightly different life.'],
- ['mod','02 · MOD','The routes in use','The matrix lists only the routes you have made, up to twelve. Drag a MOD handle from the shelf onto any knob to add one. The LFO detail and the Perform card hold the mod wheel and pressure.'],
+ ['mod','02 · MOD','The morph pad','Four corners, four stored sounds: click a corner to store what you hear, then drag the puck to blend between them. Beside it, the LFO detail and the Perform card for the mod wheel and pressure.'],
  ['interference','03 · INTERFERENCE','Glitches on the grid','The five bars set how often Stutter, Loss, Bits, Scan and Stop fire. Under them, the transmission sequencer: sixteen degree bars, gate strips and a glitch tag on any step. The arpeggiator sits beside it.'],
  ['differential','04 · DIFFERENTIAL','Fragments, per voice','Eight slot cards over the Chop and Repeat puck. Choose a character, push it with the macros, or give a slot an operation of its own. Bounce sits on the right, laying gaps over the bar.'],
  ['fx','05 · FX','Ring and delay','The carrier wave is the ring modulator control: drag it for carrier and depth. The delay taps are the delay control: drag the first tap for time, up for feedback. Freeze holds the repeats.'],
  ['space','06 · SPACE','The rack','Eight modules with power lights on the left; the chosen one opens large on the right. Here, Field: drag the room corner to size it.'],
- ['output','07 · OUTPUT','Output surgery','An eight-band EQ drawn on the graph, Quorra warp beside it, and the wall stage that sets the final ceiling.']];
+ ['output','07 · OUTPUT','Output surgery','Drag a numbered node on the EQ screen for frequency and gain; the knobs below follow the band you picked, with dynamics, attack and release. Quorra shows its warp as an orbit you drag, and the wall stage shows one hit under the ceiling.']];
 const img=document.getElementById('pv-img'),tag=document.getElementById('pv-tag'),h=document.getElementById('pv-h'),p=document.getElementById('pv-p');
-function show(i){const d=P[i];img.src='assets/arecibo/panel_'+d[0]+'.png?v=261108';img.alt='The ARECIBO panel on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
+function show(i){const d=P[i];img.src='assets/arecibo/panel_'+d[0]+'.png?v=261111';img.alt='The ARECIBO panel on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
  document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==String(i)?'true':'false'));}
 document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.p)));
 show(2);
@@ -481,20 +493,20 @@ const out=document.getElementById('glitch');let last=-1;const t0=performance.now
 function draw(t){
   const step=Math.floor(t/0.125)%N,frac=(t/0.125)%1;
   x.fillStyle='#03080c';x.fillRect(0,0,W,H);
-  const gl=x.createRadialGradient(W/2,H*.45,10,W/2,H*.45,W*.55);gl.addColorStop(0,'rgba(95,216,230,.10)');gl.addColorStop(1,'rgba(3,8,12,0)');x.fillStyle=gl;x.fillRect(0,0,W,H);
+  const gl=x.createRadialGradient(W/2,H*.45,10,W/2,H*.45,W*.55);gl.addColorStop(0,'rgba(255,138,90,.10)');gl.addColorStop(1,'rgba(10,6,5,0)');x.fillStyle=gl;x.fillRect(0,0,W,H);
   // dot grid
-  x.fillStyle='rgba(95,216,230,.10)';for(let gx=30;gx<W;gx+=40)for(let gy=30;gy<H;gy+=40)x.fillRect(gx,gy,2,2);
+  x.fillStyle='rgba(255,138,90,.10)';for(let gx=30;gx<W;gx+=40)for(let gy=30;gy<H;gy+=40)x.fillRect(gx,gy,2,2);
   const L=60,R=W-60,cw=(R-L)/N,cy=H*.42,unit=H*.04;
-  x.strokeStyle='rgba(95,216,230,.35)';x.lineWidth=1.5;x.beginPath();x.moveTo(L,cy);x.lineTo(R,cy);x.stroke();
+  x.strokeStyle='rgba(255,138,90,.35)';x.lineWidth=1.5;x.beginPath();x.moveTo(L,cy);x.lineTo(R,cy);x.stroke();
   for(let i=0;i<N;i++){
     const s=steps[i],X=L+i*cw+cw*.14,w=cw*.72,hot=i===step;
-    x.fillStyle=hot?'rgba(95,216,230,.12)':'rgba(255,255,255,.025)';x.fillRect(L+i*cw+3,H*.08,cw-6,H*.62);
+    x.fillStyle=hot?'rgba(255,138,90,.12)':'rgba(255,255,255,.025)';x.fillRect(L+i*cw+3,H*.08,cw-6,H*.62);
     if(s.on){const hh=Math.max(6,Math.abs(s.deg)*unit+8),y=s.deg>=0?cy-hh:cy;
-      const a=hot?1-frac*.45:.55;x.fillStyle=`rgba(95,216,230,${a})`;x.fillRect(X,y,w,hh);
+      const a=hot?1-frac*.45:.55;x.fillStyle=`rgba(255,138,90,${a})`;x.fillRect(X,y,w,hh);
       x.fillStyle='rgba(240,250,252,.9)';x.fillRect(X,s.deg>=0?y:y+hh-3,w,3);
-      if(hot){x.shadowColor='rgba(95,216,230,.9)';x.shadowBlur=30;x.fillRect(X,s.deg>=0?y:y+hh-3,w,3);x.shadowBlur=0;}}
+      if(hot){x.shadowColor='rgba(255,138,90,.9)';x.shadowBlur=30;x.fillRect(X,s.deg>=0?y:y+hh-3,w,3);x.shadowBlur=0;}}
     // gate strip
-    x.fillStyle=s.on?(hot?'#5fd8e6':'rgba(95,216,230,.45)'):'rgba(255,255,255,.06)';x.fillRect(X,H*.74,w,10);
+    x.fillStyle=s.on?(hot?'#ff8a5a':'rgba(255,138,90,.45)'):'rgba(255,255,255,.06)';x.fillRect(X,H*.74,w,10);
     // accent
     if(s.acc){x.fillStyle='#c8a86b';x.beginPath();x.arc(X+w/2,H*.79,6,0,7);x.fill();}
     // glitch tag
