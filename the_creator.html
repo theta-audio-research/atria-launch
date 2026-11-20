@@ -241,6 +241,18 @@ footer a:hover{color:var(--gold)}
 .skin-grid figcaption{font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.24em;color:var(--gold);text-align:center}
 @media (max-width:900px){.viewer{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:520px){.steps,.skin-grid{grid-template-columns:minmax(0,1fr)}}
+.tabshot{margin:0 0 var(--s6) 0;display:grid;gap:var(--s2)}
+.tabshot img{width:100%;height:auto;display:block;border:0}
+.tabshot figcaption{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;color:var(--gold-hot);text-align:center}
+.tabshot figcaption span{color:var(--text-3);margin-right:8px}
+.face-top .tabshot{margin:0}
+.tabgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.tabgrid a{display:grid;gap:var(--s2);text-decoration:none}
+.tabgrid img{width:100%;height:auto;display:block;border:1px solid var(--border);transition:border-color .2s}
+.tabgrid a:hover img{border-color:var(--gold)}
+.tabgrid span{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--text-2);text-align:center}
+.tabgrid span b{font-weight:400;color:var(--text-3);margin-right:8px}
+@media (max-width:900px){.tabgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -286,11 +298,9 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
-<section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/creator4/panel_partial.png?v=261119" width="1120" height="800" alt="THE CREATOR on the PARTIAL page with a note held: the four layer overviews, DENSITY with MODE and the MID and SIDE counts, the PHASE and CEPSTRUM pad with every sounding partial drawn as a dot under the source and played outlines, TIME and SHAPE with QUANT, LOCO, GLIDE and WAVE, the knob deck, PERFORM with four macros, and the keyboard">
-</section>
 
 <div class="sh" id="wand">The wand</div>
+<figure class="tabshot"><img src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="THE CREATOR on the SOURCE page: the loaded sound as a field of light, the wand tools (WAND, BOX, LASSO, BRUSH, LINE, CLEAR, INVERT) with SIZE and SOFT, the four layer slots A to D, the knob deck, PERFORM with four macros, and the keyboard"><figcaption><span>01</span>SOURCE</figcaption></figure>
 <section class="two">
   <div class="prose">
     <p>Every recording is a stack of layers: a fundamental here, a shimmer of harmonics there, a breath of noise across the top. THE CREATOR draws all of it as a <strong>field of light</strong>, one mark for every point of energy, so small changes in the sound show.</p>
@@ -315,6 +325,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <div class="sh" id="engines">Three engines</div>
+<figure class="tabshot"><img src="assets/creator4/panel_voice.png?v=261119" width="1120" height="800" alt="THE CREATOR on the VOICE page: the ENGINE row with ELASTIC, RESAMPLE and PARTIAL, play mode, sustain, harmony and unison"><figcaption><span>02</span>VOICE</figcaption></figure>
 <section class="voices">
   <article class="knob-card"><div class="knob-name">ELASTIC</div><h3>Speed and pitch, apart</h3><p>Stretch a note from quarter speed to four times while it sounds, and transpose two octaves either way without changing its length. Grab the knob mid-chord and the sound follows.</p></article>
   <article class="knob-card"><div class="knob-name">RESAMPLE</div><h3>The tape-style coupling</h3><p>Pitch and speed move together, like a sampler or a varispeed deck. Higher notes play faster and brighter, lower ones slower and darker.</p></article>
@@ -322,6 +333,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <div class="sh" id="partial">PARTIAL resynthesis</div>
+<figure class="tabshot"><img src="assets/creator4/panel_partial.png?v=261119" width="1120" height="800" alt="THE CREATOR on the PARTIAL page with a note held: DENSITY with MODE and the MID and SIDE counts, the PHASE and CEPSTRUM pad with every sounding partial as a dot under the source and played outlines, and TIME and SHAPE with QUANT, LOCO, GLIDE and WAVE"><figcaption><span>06</span>PARTIAL</figcaption></figure>
 <section class="two">
   <div class="prose">
     <p>Switch the VOICE page's ENGINE row to <strong>PARTIAL</strong> and THE CREATOR analyses the layer into its partials: up to 1,024 in the middle of the image and 512 at the sides, so a stereo sound keeps its width. <strong>MODE</strong> chooses which ones a smaller count keeps: the loudest, the longest-lived, the harmonics of the note, or one from every band.</p>
@@ -337,19 +349,25 @@ footer a:hover{color:var(--gold)}
   </ul>
 </section>
 
-<div class="sh" id="morph">Morph and motion</div>
+<div class="sh" id="morph">The morph ball</div>
+<figure class="tabshot"><img src="assets/creator4/panel_morph.png?v=261119" width="1120" height="800" alt="THE CREATOR on the MORPH page: the pad with the ball, the four corner selectors A to D, FLAT, ORBIT, QUAD, SEED, and MOVE X and MOVE Y"><figcaption><span>03</span>MORPH</figcaption></figure>
 <section class="two">
   <div class="prose">
     <p>The <strong>MORPH</strong> page is the pad alone. Engage QUAD and the ball becomes a vector mixer: each corner solos a layer, the centre blends all four. Drag it, orbit it, or <strong>throw</strong> it, and it bounces off the walls with real momentum while the mix rides along.</p>
     <p>Or load four complete sounds into the corners and glide between them. RND scatters each parameter's path so no two journeys match, and ORBIT sets the ball circling on its own.</p>
   </div>
-  <div class="prose">
-    <p>The <strong>MOTION</strong> page holds two LFOs with five shapes, including a slow Drift, free or synced to the host. They and the mod wheel reach thirteen targets: filter, echo, space and level; pitch, speed, grain and both axes of the morph ball; and PARTIAL's shift, transpose, phase and cepstrum.</p>
-    <p>On the MORPH page, MOVE X and MOVE Y put an LFO or the wheel on each axis of the pad, and the blend plays itself.</p>
-  </div>
+  <div class="prose"><p>MOVE X and MOVE Y put LFO 1, LFO 2 or the mod wheel on each axis of the pad, with their own depth, and the blend plays itself.</p></div>
+</section>
+
+<div class="sh" id="motion">Motion</div>
+<figure class="tabshot"><img src="assets/creator4/panel_motion.png?v=261119" width="1120" height="800" alt="THE CREATOR on the MOTION page: two LFOs with shape, rate and sync, and the routes from the LFOs and mod wheel to their targets"><figcaption><span>04</span>MOTION</figcaption></figure>
+<section class="two">
+  <div class="prose"><p>The <strong>MOTION</strong> page holds two LFOs with five shapes, including a slow Drift, free or synced to the host.</p></div>
+  <div class="prose"><p>They and the mod wheel reach thirteen targets: filter, echo, space and level; pitch, speed, grain and both axes of the morph ball; and PARTIAL's shift, transpose, phase and cepstrum.</p></div>
 </section>
 
 <div class="sh" id="fx">Effects and SLO-MO</div>
+<figure class="tabshot"><img src="assets/creator4/panel_fx.png?v=261119" width="1120" height="800" alt="THE CREATOR on the FX page: DIST, CHORUS and ECHO across the top; SLO-MO with DILATE, TAPE and PAD, SPACE with FREEZE, and ROUTING with EXPORT IR below"><figcaption><span>05</span>FX</figcaption></figure>
 <section class="two">
   <div class="prose">
     <p>The FX page runs the whole chain inline: drive (soft, fold or crush), chorus, a tempo-synced echo with ping-pong, and a space with FREEZE. The filter, grain and send levels stay on the knob deck below. Flip ROUTING to <strong>SEND</strong> and each layer feeds the four effects on its own, so one layer can drown in echo while its neighbour stays dry.</p>
@@ -376,22 +394,14 @@ footer a:hover{color:var(--gold)}
 
 <div class="sh" id="pages">Six pages, one pane of glass</div>
 <section class="stack">
-  <div class="prose"><p>The whole window is one pane of glass. The knob deck, PERFORM and the keyboard stay on screen; the six tabs between them open each part of the instrument, and none of the pages scroll.</p></div>
-  <div class="tabs" role="group" aria-label="Choose a page">
-    <button type="button" data-p="0" aria-pressed="true"><span>01</span>SOURCE</button>
-    <button type="button" data-p="1" aria-pressed="false"><span>02</span>VOICE</button>
-    <button type="button" data-p="2" aria-pressed="false"><span>03</span>MORPH</button>
-    <button type="button" data-p="3" aria-pressed="false"><span>04</span>MOTION</button>
-    <button type="button" data-p="4" aria-pressed="false"><span>05</span>FX</button>
-    <button type="button" data-p="5" aria-pressed="false"><span>06</span>PARTIAL</button>
-  </div>
-  <div class="viewer">
-    <img id="pv-img" src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="">
-    <div class="prose">
-      <div class="tag" id="pv-tag">01 · SOURCE</div>
-      <h3 id="pv-h">The field of light</h3>
-      <p id="pv-p"></p>
-    </div>
+  <div class="prose"><p>The whole window is one pane of glass. The knob deck, PERFORM and the keyboard stay on screen; the six tabs between them open each part of the instrument, and none of the pages scroll. Click a page to jump to it.</p></div>
+  <div class="tabgrid">
+    <a href="#wand"><img src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="The SOURCE page"><span><b>01</b>SOURCE</span></a>
+    <a href="#engines"><img src="assets/creator4/panel_voice.png?v=261119" width="1120" height="800" alt="The VOICE page"><span><b>02</b>VOICE</span></a>
+    <a href="#morph"><img src="assets/creator4/panel_morph.png?v=261119" width="1120" height="800" alt="The MORPH page"><span><b>03</b>MORPH</span></a>
+    <a href="#motion"><img src="assets/creator4/panel_motion.png?v=261119" width="1120" height="800" alt="The MOTION page"><span><b>04</b>MOTION</span></a>
+    <a href="#fx"><img src="assets/creator4/panel_fx.png?v=261119" width="1120" height="800" alt="The FX page"><span><b>05</b>FX</span></a>
+    <a href="#partial"><img src="assets/creator4/panel_partial.png?v=261119" width="1120" height="800" alt="The PARTIAL page"><span><b>06</b>PARTIAL</span></a>
   </div>
 </section>
 
@@ -463,19 +473,6 @@ footer a:hover{color:var(--gold)}
 <script>
 (function(){
 'use strict';
-/* Page viewer */
-const P=[
- ['source','01 · SOURCE','The field of light','The loaded sound drawn as marks of light, with the wand selection lit. Click to find a partial, drag to paint, alt-drag to erase. The four layer slots, A to D, sit beside it.'],
- ['voice','02 · VOICE','Engine, play and sustain','The ENGINE row picks ELASTIC, RESAMPLE or PARTIAL. Beside it: how a recording answers your keys, how a held note sustains, harmony and unison.'],
- ['morph','03 · MORPH','The ball','The pad alone. Engage QUAD to mix the four layers by position, or store four complete sounds in the corners and glide between them. Throw the ball and it bounces.'],
- ['motion','04 · MOTION','LFOs and routes','Two LFOs with five shapes, free or synced, and the mod wheel, each routed to the targets you choose.'],
- ['fx','05 · FX','The chain, inline','Drive, chorus and echo across the top; the SLO-MO core (DILATE, TAPE or PAD), the space and the routing below. EXPORT IR prints the rack to a WAV file.'],
- ['partial','06 · PARTIAL','Partials, live','Every partial a dot while you play, with the source and played outlines. Drag across the pad for PHASE, up it for CEPSTRUM, and shape the rest with the knobs beside it.']];
-const img=document.getElementById('pv-img'),tag=document.getElementById('pv-tag'),h=document.getElementById('pv-h'),p=document.getElementById('pv-p');
-function show(i){const d=P[i];img.src='assets/creator4/panel_'+d[0]+'.png?v=261119';img.alt='The THE CREATOR panel on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
- document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==String(i)?'true':'false'));}
-document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.p)));
-show(0);
 /* Skin switcher in the hero */
 const si=document.getElementById('skin-img'),sn=document.getElementById('skin-name');
 document.querySelectorAll('[data-s]').forEach(b=>b.addEventListener('click',()=>{
