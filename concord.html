@@ -135,15 +135,6 @@ a{color:var(--gold)}
 .legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
 .legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
 
-/* voice counts */
-.voices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
-.voice{border:1px solid var(--border);border-radius:8px;background:var(--panel);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
-.voice canvas{display:block;width:100%;height:auto;background:linear-gradient(158deg,var(--brass-hi),var(--brass-low))}
-.voice .body{padding:var(--s4) var(--s4) var(--s5);display:grid;gap:var(--s3);align-content:start}
-.voice .vn{display:grid;gap:2px}
-.voice .vn b{font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacing:.24em;color:var(--gold)}
-.voice .vn span{font-family:var(--f-mono);font-size:11px;color:var(--text-3);letter-spacing:.08em}
-.voice p{color:var(--text-2);font-size:15px}
 
 /* knob cards */
 .knobs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
@@ -202,7 +193,7 @@ footer a:hover{color:var(--gold)}
 
 @media (max-width:900px){
   .hero,.two,.lab-views{grid-template-columns:minmax(0,1fr)}
-  .voices,.knobs,.who{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .knobs,.who{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ctrls{grid-template-columns:repeat(3,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .site-nav{position:static}
@@ -210,7 +201,7 @@ footer a:hover{color:var(--gold)}
 }
 @media (max-width:520px){
   .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .voices,.knobs,.who,.steps{grid-template-columns:minmax(0,1fr)}
+  .knobs,.who,.steps{grid-template-columns:minmax(0,1fr)}
   .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
   .specs th{width:40%}
   .site-nav .links a{padding:6px 10px;letter-spacing:2px}
@@ -345,34 +336,6 @@ footer a:hover{color:var(--gold)}
     <div class="ctrls" id="ctrls"></div>
   </div>
   <div class="legend"><span><i style="background:var(--cream)"></i>VOICE · ONE RIBBON EACH</span><span><i style="background:var(--teal)"></i>CHORD TIE · EVERY VOICE AT ONE INSTANT</span><span><i style="background:var(--gold-hot)"></i>PLAYHEAD</span><span>THE PANEL LIGHTS WITH YOUR AUDIO; HERE IT FOLLOWS A STAND-IN PHRASE</span></div>
-</section>
-
-<!-- VOICES -->
-<div class="sh" id="voices">Two to eight voices</div>
-<section class="stack">
-  <div class="prose"><p>Each picture shows the shared LFO as a ring with one dot per voice, a fixed share of the cycle apart, and beside it each voice's place in the stereo field, lifting as its delay grows. Changing VOICES dips the wet path for 8 ms, swaps the count at the bottom of the dip and comes back up, so even a stepped control does not click.</p></div>
-  <div class="voices">
-    <article class="voice">
-      <canvas id="v2" width="720" height="400" aria-label="Two voices, half a cycle apart, one left and one right"></canvas>
-      <div class="body"><div class="vn"><b>2 VOICES</b><span>½ CYCLE APART</span></div>
-      <p>One voice each side, opposite in phase: as one delay grows the other shrinks. The classic stereo chorus, and the widest image for the fewest voices.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="v4" width="720" height="400" aria-label="Four voices, a quarter cycle apart, two pairs stepping outward"></canvas>
-      <div class="body"><div class="vn"><b>4 VOICES</b><span>¼ CYCLE APART</span></div>
-      <p>The default. Two pairs, the inner one near centre and the outer one at the edges, so the ensemble has a middle as well as width.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="v6" width="720" height="400" aria-label="Six voices, a sixth of a cycle apart"></canvas>
-      <div class="body"><div class="vn"><b>6 VOICES</b><span>⅙ CYCLE APART</span></div>
-      <p>Three pairs stepping outward. The sweeps overlap enough that the movement smooths into a sheen rather than a wobble.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="v8" width="720" height="400" aria-label="Eight voices, an eighth of a cycle apart"></canvas>
-      <div class="body"><div class="vn"><b>8 VOICES</b><span>⅛ CYCLE APART</span></div>
-      <p>Four pairs, an eighth of a cycle apart: an ensemble. Summed at 1/√8, so it is denser, not louder.</p></div>
-    </article>
-  </div>
 </section>
 
 <!-- CONTROLS -->
@@ -771,27 +734,6 @@ function drawLab(t,dt){
   document.getElementById('r-gain').textContent='1/√'+lab.voices+' = '+(1/Math.sqrt(lab.voices)).toFixed(2);
 }
 
-/* ================= VOICE COUNTS ================= */
-const vPhase={2:0.0,4:0.1,6:0.2,8:0.3};
-function drawVoiceCard(N,dt){
-  const cv=document.getElementById('v'+N),cx=cv.getContext('2d');const W=cv.width,H=cv.height;cx.clearRect(0,0,W,H);
-  vPhase[N]=(vPhase[N]+dt*0.22)%1;const ph=vPhase[N];
-  const e={voices:N,depth:55,detune:14,base:14,width:78};
-  const rx=175,ry=200,R=130;
-  cx.strokeStyle='rgba(242,233,220,.18)';cx.lineWidth=3;cx.beginPath();cx.arc(rx,ry,R,0,TAU);cx.stroke();
-  cx.font='30px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.5)';cx.textAlign='center';cx.fillText('LFO',rx,ry+10);
-  const fl=380,fr=690,fy=310;const xP=p=>(fl+fr)/2+p*(fr-fl);
-  cx.fillStyle='rgba(242,233,220,.16)';cx.fillRect(fl,fy,fr-fl,2);
-  cx.font='28px "JetBrains Mono",monospace';cx.fillStyle='rgba(242,233,220,.45)';cx.fillText('L',fl+8,fy+40);cx.fillText('R',fr-8,fy+40);
-  for(let i=0;i<N;i++){const a=TAU*(ph+i/N)-Math.PI/2;const x=rx+R*Math.cos(a),y=ry+R*Math.sin(a);
-    const s=Math.sin(TAU*(ph+i/N));const px=xP(pan(e,i)),py=fy-110-s*80;
-    cx.strokeStyle=rgba(i%2?TEAL:CREAM,.22);cx.lineWidth=1.5;cx.beginPath();cx.moveTo(px,fy);cx.lineTo(px,py);cx.stroke();
-    cx.fillStyle=i%2?rgba(TEAL,1):'#f2e9dc';cx.beginPath();cx.arc(x,y,16,0,TAU);cx.fill();
-    cx.beginPath();cx.arc(px,py,15,0,TAU);cx.fill();}
-  cx.font='28px "JetBrains Mono",monospace';cx.textAlign='left';cx.fillStyle='rgba(242,233,220,.5)';cx.fillText('PAN × DELAY',fl,52);
-  cx.fillStyle='#ffc867';cx.textAlign='right';cx.fillText('1/√'+N+' = '+(1/Math.sqrt(N)).toFixed(2),W-24,H-22);cx.textAlign='left';
-}
-
 /* ================= MONO ================= */
 const mc=document.getElementById('monoplot'),mx=mc.getContext('2d');
 let monoPhase=0;
@@ -896,7 +838,7 @@ document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dat
 });
 
 /* ================= main loop: draw only what is on screen ================= */
-const IDS=['hero','labbraid','v2','v4','v6','v8','monoplot','irplot','level'];
+const IDS=['hero','labbraid','monoplot','irplot','level'];
 const seen=new Set();
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(en=>{en.isIntersecting?seen.add(en.target.id):seen.delete(en.target.id);}),{rootMargin:'120px'});
@@ -908,14 +850,13 @@ function frame(now){
   runDemo(now);
   if(seen.has('hero'))drawHero(t,dt);
   if(seen.has('labbraid'))drawLab(t,dt);else lab.phase=(lab.phase+dt*lab.rate)%1;
-  for(const N of [2,4,6,8])if(seen.has('v'+N))drawVoiceCard(N,dt);
   if(seen.has('monoplot'))drawMono(dt,t);
   if(seen.has('irplot')){const key=[lab.voices,lab.depth,lab.detune,lab.base,lab.width].join();if(key!==irKey){irKey=key;renderIR(lab);}drawIR();}
   drawLevel(now);
   requestAnimationFrame(frame);
 }
 // prime every canvas so a page captured before the first animation frame reads complete
-{const n0=performance.now();for(let i=0;i<160;i++)drawLevel(n0-(160-i)*50);drawHero(n0/1000,0);drawLab(n0/1000,0);for(const N of [2,4,6,8])drawVoiceCard(N,0);drawMono(0,n0/1000);drawIR();}
+{const n0=performance.now();for(let i=0;i<160;i++)drawLevel(n0-(160-i)*50);drawHero(n0/1000,0);drawLab(n0/1000,0);drawMono(0,n0/1000);drawIR();}
 requestAnimationFrame(frame);
 })();
 </script>

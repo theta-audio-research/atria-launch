@@ -468,13 +468,6 @@ footer a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- PRESETS -->
-<div class="sh" id="presets">Factory sounds</div>
-<section class="stack">
-  <div class="prose"><p>Thirteen factory sounds, in the preset bar on MOIR&Eacute;'s face. The eight below play in the lab; the other five, ENDLESS RISE, ENDLESS FALL, HOT TAPE, DRUM ZIP and WANDER, use DRIVE, ENV, BARBER and RETRIG, which the lab does not model. Save over one and your version wins; save as and it joins them. Your presets are files in your Library, so every host on the Mac sees the same set. Click a card to load it into the lab.</p></div>
-  <div class="presets" id="presets-grid"></div>
-</section>
-
 <!-- LICENCE -->
 <div class="sh" id="licence">The licence</div>
 <section class="two">
@@ -828,10 +821,8 @@ function drawLevel(dt){
   document.getElementById('al-fb').textContent=(fb>0.5?'+':'')+Math.round(fb)+' %';
 }
 
-/* ================= preset cards ================= */
 const fmtP=v=>`DEPTH ${v.depth} · ${v.rate} Hz ${['SINE','TRI','RAND'][v.shape]} · FB ${v.feedback>0?'+':''}${v.feedback} · ${v.manual} ms · ${v.spread}° · MIX ${v.mix} · ${v.thruZero?'TZ':'NO TZ'}${v.invert?' · POL':''} · ${AL_NAMES[v.autolevel]}`;
-document.getElementById('presets-grid').innerHTML=PRESETS.map((p,i)=>`<button type="button" class="preset" data-preset="${i}"><b>${p.name}</b><span>${fmtP(p.v)}</span><p>${p.d}</p></button>`).join('');
-document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{loadPreset(+b.dataset.preset);document.getElementById('lab').scrollIntoView({behavior:'smooth',block:'start'});}));
+
 
 /* ================= knob glyphs on the control cards ================= */
 const KNOBDEF={manual:[0.6,0.1,20,'0.60 ms',0.4],depth:[68,0,100,'68 %'],rate:[0.34,0.02,8,'0.34 Hz',0.28],feedback:[0,-95,95,'0 %'],spread:[90,0,180,'90°'],mix:[50,0,100,'50 %']};

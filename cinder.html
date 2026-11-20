@@ -377,39 +377,6 @@ footer a:hover{color:var(--gold)}
   <div class="legend"><span><i style="background:var(--cream)"></i>OUTPUT · LEFT</span><span><i style="background:var(--ember)"></i>RIGHT, WHEN VAR IS UP</span><span><i style="background:rgba(242,233,220,.25)"></i>INPUT</span><span>MEMORYLESS MODEL · BEFORE THE EQ, MIX AND AUTO LEVEL</span></div>
 </section>
 
-<!-- CIRCUITS -->
-<div class="sh" id="circuits">The five circuits</div>
-<section class="stack">
-  <div class="prose"><p>Each picture is a sine going through one circuit while its DRIVE climbs from 3 to 21 dB and back. The faint line is what goes in, the bright one what comes out. Every circuit normalises its own output, so more drive brings more harmonics and more compression, not just more level.</p></div>
-  <div class="voices">
-    <article class="voice">
-      <canvas id="c0" width="720" height="400" aria-label="A sine through EMBER: both halves round off the same way"></canvas>
-      <div class="body"><div class="vn"><b>EMBER</b><span>SYMMETRIC · TANH</span></div>
-      <p>A symmetric soft clipper: a hyperbolic tangent, so both halves of the waveform round off the same way. Mostly odd harmonics, with the second sitting 126 dB down. It compresses peaks and thickens without changing the character of the source. The neutral, always-works setting: warmth and glue rather than dirt.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="c1" width="720" height="400" aria-label="A sine through CHAR: the negative half is squashed twice as hard as the positive half"></canvas>
-      <div class="body"><div class="vn"><b>CHAR</b><span>ASYMMETRIC · 0.7 / 1.4</span></div>
-      <p>The same soft clipping, asymmetric: the negative half is squashed twice as hard as the positive half, the way a triode stage clips. That mismatch puts real second harmonic into the signal, 26 dB below the fundamental where EMBER's is 126 dB down: a hundred decibels of difference from one button. Thicker and more forward, with an amp-like bite.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="c2" width="720" height="400" aria-label="A sine through ASH: the curve turns back on itself and the waveform folds"></canvas>
-      <div class="body"><div class="vn"><b>ASH</b><span>WAVEFOLDER · SINE</span></div>
-      <p>A wavefolder. Instead of flattening as the signal gets loud, the curve turns back on itself and folds, so more DRIVE makes the tone stranger rather than just dirtier: buzzy and full of upper harmonics. Past the first fold it stops sounding like clipping and starts sounding like a new instrument. It is the setting that will not behave, and it is on the panel for that reason.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="c3" width="720" height="400" aria-label="A sine through FLINT: clean up to the knee, then the peaks are cut off flat"></canvas>
-      <div class="body"><div class="vn"><b>FLINT</b><span>HARD DIODE CLIP</span></div>
-      <p>A hard diode clipper. The curve is a straight line up to 80 % of full output, bends over a short knee and then stays flat: below the knee the signal passes clean, past it the peaks are cut off square. Symmetric like EMBER, so the second harmonic sits 120 dB down, but far brighter and more aggressive. The edge of a pedal clipper, for guitars, drums and anything that should bite rather than bloom.</p></div>
-    </article>
-    <article class="voice">
-      <canvas id="c4" width="720" height="400" aria-label="A sine through SLAG: the positive half rounds off towards full scale, the negative half flattens at about a third of it"></canvas>
-      <div class="body"><div class="vn"><b>SLAG</b><span>GERMANIUM · LOPSIDED</span></div>
-      <p>An asymmetric, germanium-style rectifier. The positive half rounds off smoothly towards full scale; the negative half flattens early, at about a third of it. The lopsided result is thick with even harmonics, the second only 18 dB below the fundamental, and it turns fuzzy and gated as you push DRIVE. Bass, synths and lo-fi textures.</p></div>
-    </article>
-  </div>
-</section>
-
 <!-- FORGE -->
 <div class="sh" id="forge">FORGE · The circuit you draw</div>
 <section class="stack">
@@ -1115,7 +1082,7 @@ let last=performance.now(),looping=true;
 function frame(now){
   const dt=Math.min(0.1,(now-last)/1000);last=now;
   runDemo(now);
-  drawHero(dt);drawLab(dt);drawCircuits(now/1000);drawLfo(now,dt);drawLevel(now);
+  drawHero(dt);drawLab(dt);drawLfo(now,dt);drawLevel(now);
   if(!reduce||demo)requestAnimationFrame(frame);else looping=false;
 }
 function kick(){if(reduce&&!looping){looping=true;last=performance.now();requestAnimationFrame(frame);}}
