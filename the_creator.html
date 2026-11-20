@@ -253,6 +253,21 @@ footer a:hover{color:var(--gold)}
 .tabgrid span{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--text-2);text-align:center}
 .tabgrid span b{font-weight:400;color:var(--text-3);margin-right:8px}
 @media (max-width:900px){.tabgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pv .tabs{justify-content:center;gap:10px}
+.pv .tabs button{font-size:14px;letter-spacing:.18em;min-height:48px;padding:0 22px;color:var(--text);border:1px solid rgba(200,168,107,.55);background:rgba(200,168,107,.06);border-radius:6px;transition:background .2s,border-color .2s,color .2s}
+.pv .tabs button span{color:var(--gold)}
+.pv .tabs button:hover{border-color:var(--gold-hot);background:rgba(200,168,107,.16);color:var(--gold-hot)}
+.pv .tabs button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--bg);box-shadow:0 0 22px rgba(255,200,103,.28);font-weight:500}
+.pv .tabs button[aria-pressed="true"] span{color:rgba(6,8,12,.6)}
+.pv .tabs-hint{text-align:center;font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--text-3);margin-bottom:calc(-1 * var(--s3))}
+@media (max-width:520px){.pv .tabs button{flex:1 1 40%;padding:0 12px;font-size:13px}}
+.pv-shot{display:block;width:100%;height:auto;border:0}
+.pv-cap{display:grid;gap:var(--s2);justify-items:center;text-align:center;max-width:68ch;margin:0 auto}
+.pv-cap .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--gold-hot)}
+.pv-cap h3{font-weight:300;font-size:24px;letter-spacing:.04em}
+.pv-cap p{color:var(--text-2)}
+.pv-cap p.small{color:var(--text-3);font-size:14px;margin-top:var(--s2)}
+.pv .sh{margin-top:var(--s6)}
 </style>
 </head>
 <body>
@@ -295,6 +310,26 @@ footer a:hover{color:var(--gold)}
       </div></div>
     </div>
     <div class="tagline">EVERY RECORDING IS AN INSTRUMENT</div>
+  </div>
+</section>
+
+<div class="sh" id="pages">Six pages, one pane of glass</div>
+<section class="stack pv">
+  <div class="tabs-hint">CLICK A PAGE</div>
+  <div class="tabs" role="group" aria-label="Choose a page">
+    <button type="button" data-p="0" aria-pressed="true"><span>01</span>SOURCE</button>
+    <button type="button" data-p="1" aria-pressed="false"><span>02</span>VOICE</button>
+    <button type="button" data-p="2" aria-pressed="false"><span>03</span>MORPH</button>
+    <button type="button" data-p="3" aria-pressed="false"><span>04</span>MOTION</button>
+    <button type="button" data-p="4" aria-pressed="false"><span>05</span>FX</button>
+    <button type="button" data-p="5" aria-pressed="false"><span>06</span>PARTIAL</button>
+  </div>
+  <img id="pv-img" class="pv-shot" src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="THE CREATOR on the SOURCE page">
+  <div class="pv-cap">
+    <div class="tag" id="pv-tag">01 · SOURCE</div>
+    <h3 id="pv-h">The field of light</h3>
+    <p id="pv-p">The loaded sound drawn as marks of light, with the wand selection lit. Click to find a partial, drag to paint, alt-drag to erase. The four layer slots, A to D, sit beside it.</p>
+    <p class="small">The whole window is one pane of glass. The knob deck, PERFORM and the keyboard stay on screen; the six tabs between them open each part of the instrument, and none of the pages scroll.</p>
   </div>
 </section>
 
@@ -392,19 +427,6 @@ footer a:hover{color:var(--gold)}
   </ol>
 </section>
 
-<div class="sh" id="pages">Six pages, one pane of glass</div>
-<section class="stack">
-  <div class="prose"><p>The whole window is one pane of glass. The knob deck, PERFORM and the keyboard stay on screen; the six tabs between them open each part of the instrument, and none of the pages scroll. Click a page to jump to it.</p></div>
-  <div class="tabgrid">
-    <a href="#wand"><img src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="The SOURCE page"><span><b>01</b>SOURCE</span></a>
-    <a href="#engines"><img src="assets/creator4/panel_voice.png?v=261119" width="1120" height="800" alt="The VOICE page"><span><b>02</b>VOICE</span></a>
-    <a href="#morph"><img src="assets/creator4/panel_morph.png?v=261119" width="1120" height="800" alt="The MORPH page"><span><b>03</b>MORPH</span></a>
-    <a href="#motion"><img src="assets/creator4/panel_motion.png?v=261119" width="1120" height="800" alt="The MOTION page"><span><b>04</b>MOTION</span></a>
-    <a href="#fx"><img src="assets/creator4/panel_fx.png?v=261119" width="1120" height="800" alt="The FX page"><span><b>05</b>FX</span></a>
-    <a href="#partial"><img src="assets/creator4/panel_partial.png?v=261119" width="1120" height="800" alt="The PARTIAL page"><span><b>06</b>PARTIAL</span></a>
-  </div>
-</section>
-
 <div class="sh" id="skins">Eleven skins</div>
 <section class="stack">
   <div class="prose"><p>THE CREATOR keeps its own look in eleven skins. Six are the original spectral palettes, <strong>INFERNO, GLACIER, VIRIDIS, GOLD, ULTRA and SILVER</strong>; five are printed skins that recolour the whole pane, <strong>SURVEY, ACID, BLUEPRINT, NIGHT and RING BEARER</strong>. The skin is a view setting, so it never changes the sound.</p></div>
@@ -471,6 +493,21 @@ footer a:hover{color:var(--gold)}
 </div>
 
 <script>
+(function(){
+'use strict';
+/* Page viewer under the hero */
+const P=[
+ ['source','01 · SOURCE','The field of light','The loaded sound drawn as marks of light, with the wand selection lit. Click to find a partial, drag to paint, alt-drag to erase. The four layer slots, A to D, sit beside it.'],
+ ['voice','02 · VOICE','Engine, play and sustain','The ENGINE row picks ELASTIC, RESAMPLE or PARTIAL. Beside it: how a recording answers your keys, how a held note sustains, harmony and unison.'],
+ ['morph','03 · MORPH','The ball','The pad alone. Engage QUAD to mix the four layers by position, or store four complete sounds in the corners and glide between them. Throw the ball and it bounces.'],
+ ['motion','04 · MOTION','LFOs and routes','Two LFOs with five shapes, free or synced, and the mod wheel, each routed to the targets you choose.'],
+ ['fx','05 · FX','The chain, inline','Drive, chorus and echo across the top; the SLO-MO core (DILATE, TAPE or PAD), the space and the routing below. EXPORT IR prints the rack to a WAV file.'],
+ ['partial','06 · PARTIAL','Partials, live','Every partial a dot while you play, with the source and played outlines. Drag across the pad for PHASE, up it for CEPSTRUM, and shape the rest with the knobs beside it.']];
+const img=document.getElementById('pv-img'),tag=document.getElementById('pv-tag'),h=document.getElementById('pv-h'),p=document.getElementById('pv-p');
+function show(i){const d=P[i];img.src='assets/creator4/panel_'+d[0]+'.png?v=261119';img.alt='THE CREATOR on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
+ document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==String(i)?'true':'false'));}
+document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.p)));
+})();
 (function(){
 'use strict';
 /* Skin switcher in the hero */
