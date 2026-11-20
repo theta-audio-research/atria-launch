@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CINDER Product Page</title>
-<meta name="description" content="CINDER is a five-circuit distortion with a transfer display drawn by the code that shapes your audio, an LFO and an EQ that moves, and AUTO LEVEL held under −0.3 dBTP. VST3, AU and AAX for macOS.">
+<meta name="description" content="CINDER is a distortion with five circuits and a sixth you draw yourself, a transfer display drawn by the code that shapes your audio, an LFO and an EQ that moves, and AUTO LEVEL held under −0.3 dBTP. VST3, AU and AAX for macOS.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
@@ -141,6 +141,10 @@ body.hide-notes .note{display:none}
 .ctrl.on input[type=range]{accent-color:var(--ember)}
 .toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
 .tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:6px 10px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{color:var(--cream);border-color:var(--ember)}
+#labcurve.forge{cursor:crosshair;touch-action:none}
+#forgebar[hidden]{display:none}
+#forgebar .ctrl{width:min(220px,100%)}
 .legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
 .legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
 
@@ -252,10 +256,10 @@ footer a:hover{color:var(--gold)}
 <!-- HERO -->
 <section class="hero" id="top">
   <div>
-    <div class="eyebrow">Five-circuit distortion · Version 1.5.0</div>
+    <div class="eyebrow">Five circuits and one you draw · Version 1.6.1</div>
     <h1 class="wordmark">CINDER</h1>
     <div class="lede">
-      <p>Five waveshaping circuits, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe and the EQ move, and a transfer curve drawn by the same code that processes your audio.</p>
+      <p>Five waveshaping circuits and FORGE, a sixth you draw yourself, a saturation stage that puts even and odd harmonics on their own knobs, an LFO that makes the drive breathe and the EQ move, and a transfer curve drawn by the same code that processes your audio.</p>
       <p>AUTO LEVEL holds the loudness still while you drive it, so turning the knob changes the tone and not the volume, and nothing leaves above −0.3 dB true peak. 44 samples of latency, at every sample rate.</p>
     </div>
     <div class="ctas">
@@ -279,7 +283,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/cinder/hero_v150.png?v=261112" alt="The CINDER v1.5.0 panel: DRIVE 12.0 on EMBER, with the five-way CIRCUIT switch (EMBER, CHAR, ASH, FLINT, SLAG) and BIAS and LFO under it, undo, redo and A | B in the header, the transfer display in the middle with OS, KERNEL and LATENCY under it, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
+  <img src="assets/cinder/hero_v161.png?v=261119" alt="The CINDER v1.6.1 panel on the RUST BUS preset with FORGE picked on the CIRCUIT switch (EMBER, CHAR, ASH, FLINT, SLAG, FORGE), DRIVE 6.0 with BIAS and LFO under it, undo, redo and A | B in the header, the transfer display turned into a drawing board with NODES, DRAW, SYM, EDGE, A | B, SPARK and MOULDS along its top, a drawn curve with two nodes wearing LFO and envelope rings, and MORPH and MOD under it, OS, KERNEL and LATENCY below, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -297,7 +301,7 @@ footer a:hover{color:var(--gold)}
       <p><strong>Even harmonics read as thickness. Odd harmonics read as edge.</strong> A curve that treats the top and bottom halves the same makes odd ones. A curve that treats them differently adds the even ones.</p>
     </div>
     <div class="prose">
-      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>EQ</strong> brings in an eight-band curve you draw, before or after the circuit, and the LFO or your playing can move its bands. <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
+      <p>Everything in CINDER decides the shape of that curve or what happens after it. <strong>DRIVE</strong> pushes the signal into the bend. <strong>CIRCUIT</strong> picks the bend, or <strong>FORGE</strong> lets you draw it. <strong>BIAS</strong> slides the signal off centre. <strong>TUBE</strong> and <strong>IRON</strong> reshape the harmonics, <strong>VAR</strong> lets the two channels disagree, <strong>SAG</strong> and the <strong>LFO</strong> move the drive on their own. <strong>EQ</strong> brings in an eight-band curve you draw, before or after the circuit, and the LFO or your playing can move its bands. <strong>MIX</strong> and <strong>OUTPUT</strong> follow, and <strong>AUTO LEVEL</strong> takes the volume out of the comparison.</p>
       <p>One header owns the curve. The audio path, the display and the test harness all evaluate it, so the picture cannot drift from the sound.</p>
     </div>
   </div>
@@ -307,7 +311,7 @@ footer a:hover{color:var(--gold)}
       <path class="wire" d="M34 128 H70"/><path class="flow" d="M34 128 H70"/>
       <rect class="box" x="70" y="102" width="86" height="52" rx="4"/><text class="lbl" x="113" y="124" text-anchor="middle">UP 4×</text><text x="113" y="142" text-anchor="middle">63 TAP</text>
       <path class="wire" d="M156 128 H190"/><path class="flow os" d="M156 128 H190"/>
-      <rect class="hot" x="190" y="92" width="170" height="72" rx="4"/><text class="lbl" x="275" y="116" text-anchor="middle">SHAPER · ADAA</text><text x="275" y="136" text-anchor="middle">FIVE CIRCUITS</text><text x="275" y="153" text-anchor="middle">+ TUBE · IRON · VAR</text>
+      <rect class="hot" x="190" y="92" width="170" height="72" rx="4"/><text class="lbl" x="275" y="116" text-anchor="middle">SHAPER · ADAA</text><text x="275" y="136" text-anchor="middle">FIVE CIRCUITS · FORGE</text><text x="275" y="153" text-anchor="middle">+ TUBE · IRON · VAR</text>
       <path class="wire" d="M360 128 H394"/><path class="flow os" d="M360 128 H394"/>
       <rect class="box" x="394" y="102" width="86" height="52" rx="4"/><text class="lbl" x="437" y="124" text-anchor="middle">DOWN 4×</text><text x="437" y="142" text-anchor="middle">35 TAP</text>
       <path class="wire" d="M480 128 H506"/><path class="flow" d="M480 128 H506"/>
@@ -343,13 +347,25 @@ footer a:hover{color:var(--gold)}
 <!-- LAB -->
 <div class="sh" id="lab">The curve lab</div>
 <section class="stack">
-  <div class="prose"><p>This is CINDER's shaper running in your browser. On the left is the transfer display as the plug-in draws it. On the right a 0.72 sine, the level the ember dot marks, goes through that curve: the faint trace is what went in, the cream one is what came out, and the bars underneath are the harmonics it gained, the second up to the seventh, in decibels below the fundamental.</p></div>
+  <div class="prose"><p>This is CINDER's shaper running in your browser. On the left is the transfer display as the plug-in draws it; pick FORGE and it becomes the drawing board, where you shape the curve yourself. On the right a 0.72 sine, the level the ember dot marks, goes through that curve: the faint trace is what went in, the cream one is what came out, and the bars underneath are the harmonics it gained, the second up to the seventh, in decibels below the fundamental.</p></div>
   <div class="lab">
     <div class="lab-top">
       <span class="seg" role="group" aria-label="Circuit">
-        <button type="button" data-lc="0" aria-pressed="true">EMBER</button><button type="button" data-lc="1" aria-pressed="false">CHAR</button><button type="button" data-lc="2" aria-pressed="false">ASH</button><button type="button" data-lc="3" aria-pressed="false">FLINT</button><button type="button" data-lc="4" aria-pressed="false">SLAG</button>
+        <button type="button" data-lc="0" aria-pressed="true">EMBER</button><button type="button" data-lc="1" aria-pressed="false">CHAR</button><button type="button" data-lc="2" aria-pressed="false">ASH</button><button type="button" data-lc="3" aria-pressed="false">FLINT</button><button type="button" data-lc="4" aria-pressed="false">SLAG</button><button type="button" data-lc="5" aria-pressed="false">FORGE</button>
       </span>
       <span class="toggles"><button type="button" class="tog" id="t-reset">DEFAULTS</button></span>
+    </div>
+    <div class="lab-top" id="forgebar" hidden>
+      <span class="seg" role="group" aria-label="FORGE tool"><button type="button" data-ft="0" aria-pressed="true">NODES</button><button type="button" data-ft="1" aria-pressed="false">DRAW</button></span>
+      <span class="toggles">
+        <button type="button" class="tog" id="f-sym" aria-pressed="false">SYM</button>
+        <button type="button" class="tog" id="f-edge">EDGE: HOLD</button>
+        <span class="seg" role="group" aria-label="Drawing"><button type="button" data-fs="0" aria-pressed="true">A</button><button type="button" data-fs="1" aria-pressed="false">B</button></span>
+        <button type="button" class="tog" id="f-spark">SPARK</button>
+      </span>
+      <span class="seg" role="group" aria-label="Moulds" id="f-moulds"></span>
+      <span id="forgemorph"></span>
+      <span>DRAG A NODE · DOUBLE-CLICK ADDS OR REMOVES · RIGHT-CLICK: SMOOTH, CORNER, JUMP · DRAW: SKETCH ACROSS THE BOARD</span>
     </div>
     <div class="lab-views">
       <canvas id="labcurve" class="rust" width="880" height="800" aria-label="The transfer display at the lab's settings"></canvas>
@@ -393,6 +409,25 @@ footer a:hover{color:var(--gold)}
     </article>
   </div>
 </section>
+
+<!-- FORGE -->
+<div class="sh" id="forge">FORGE · The circuit you draw</div>
+<section class="stack">
+  <div class="two">
+    <div class="prose">
+      <p><strong>Five circuits are someone's idea of a curve. FORGE is yours.</strong> It is the sixth pill on the CIRCUIT switch, and it turns the transfer display into a drawing board: input level runs left to right, output bottom to top, and the curve you draw is the curve your audio goes through. DRIVE, BIAS, TUBE, IRON, VAR and everything after the circuit work on a drawing exactly as they do on the other five.</p>
+      <p>With <strong>NODES</strong>, drag a node to move it, double-click to add or remove one, and right-click a node for its kind: SMOOTH, where the curve flows through it; CORNER, a sharp angle; or JUMP, a step in the curve that rings all the way up the spectrum. With <strong>DRAW</strong>, sketch freehand and CINDER keeps the fewest nodes that follow your hand, up to 64. <strong>SYM</strong> mirrors one half onto the other, so both halves of the waveform are treated alike and the harmonics stay mostly odd.</p>
+      <p>What you draw is what plays. A drawing is not stretched to full level the way the built-in circuits are, so a small drawing is a quiet one. The dotted curve behind it shows what DRIVE makes of it at the current setting.</p>
+    </div>
+    <div class="prose">
+      <p><strong>EDGE</strong> decides what happens when DRIVE pushes the signal past the ends of your drawing. HOLD stays at the end value and clips, FOLD runs back along the drawing like a wavefolder with a fold you drew, and WRAP starts again from the other end.</p>
+      <p><strong>A | B</strong> holds two drawings, and <strong>MORPH</strong> blends one into the other. MOD lets the LFO or the envelope follower move MORPH, so the curve itself changes shape with the beat or with your playing. Single nodes can move too: right-click one, pick MOVED BY LFO or ENVELOPE, and drag the ring that appears around it to set how far it travels.</p>
+      <p>Need a starting point? <strong>MOULDS</strong> has eight: LINE, SOFT, KNEE, FOLDBACK, RECTIFY, STAIRS, S-BEND and DEAD ZONE. <strong>SPARK</strong> makes a curve nobody drew, a different one each click. Drawings save with your session and your presets, undo, redo and A/B carry them, and the same anti-aliasing that guards the five circuits runs on everything you draw.</p>
+      <p><strong>Try it in the <a href="#lab">curve lab</a> above:</strong> pick FORGE and the display becomes the drawing board.</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- CONTROLS -->
 <div class="sh" id="controls">The controls</div>
@@ -499,6 +534,7 @@ footer a:hover{color:var(--gold)}
       <li><i style="background:linear-gradient(90deg,rgba(242,233,220,.2) 1px,transparent 1px) 0 0/4px 100%"></i><span><strong>56 filaments</strong> rise from the axis to meet the curve, densest near the middle where most audio lives. Their heights are echoed as ticks on the left edge: where the ticks crowd, levels are being squeezed together.</span></li>
       <li><i style="background:radial-gradient(var(--ember) 30%,rgba(240,130,79,.2) 60%,transparent 70%)"></i><span><strong>The ember dot</strong> is a strong input, 0.72 of full scale, meeting the curve: the "you are here" for a loud passage.</span></li>
     </ul>
+    <p class="small">With FORGE picked, the display becomes the drawing board: the bright curve is your drawing with its nodes, and the dotted curve behind it is what DRIVE makes of it at the current setting.</p>
     <p class="small">The curves follow DRIVE, CIRCUIT, BIAS, TUBE, IRON and VAR, and stay still otherwise; the display repaints only when one of them moves. EQ, SAG, MIX, OUTPUT and AUTO LEVEL are not drawn into it. Only the THD line follows the audio.</p>
   </div>
 </section>
@@ -531,7 +567,7 @@ footer a:hover{color:var(--gold)}
     <p>SAVE and SAVE AS write ordinary files you can copy between machines or send to a collaborator. SAVE AS DEFAULT makes every new CINDER open with the settings you have now, and OPEN PRESET FILE loads one from anywhere on disk.</p>
   </div>
   <div class="prose">
-    <p><strong>Undo and redo</strong> step back and forward through what you have done on CINDER's face: each knob move, switch, typed value or preset recall is one step, up to 100, and Cmd-Z works when your host passes the keys on.</p>
+    <p><strong>Undo and redo</strong> step back and forward through what you have done on CINDER's face: each knob move, switch, typed value, preset recall or edit of a FORGE drawing is one step, up to 100, and Cmd-Z works when your host passes the keys on.</p>
     <p><strong>A | B</strong> holds two complete settings to flip between. Click B, change it, then click A and B to hear one against the other; A→B copies the one you are on into the other slot. Both slots save with your session. The window sizes from 75 to 150 %, and CINDER remembers the size you pick.</p>
   </div>
 </section>
@@ -554,15 +590,16 @@ footer a:hover{color:var(--gold)}
   <article><b>MIX ENGINEERS</b><p>RUST BUS is parallel warmth for a whole mix or a drum bus. AUTO LEVEL means pushing DRIVE never wins an A/B on volume alone, and TRANSPARENT holds the ceiling without being heard.</p></article>
   <article><b>GUITAR, BASS &amp; VOCALS</b><p>CHAR's asymmetry and a touch of BIAS give an amp-like bite without an amp sim. TUBE adds body without bite, IRON the reverse. EMBER LEAD is the place to start, and FLINT EDGE when it should bite harder.</p></article>
   <article><b>DRUMS</b><p>SAG ducks the drive on the hit and lets it breathe back in behind, so the tail opens out. MIX keeps the transient while the crunch sits under it.</p></article>
-  <article><b>SOUND DESIGN</b><p>ASH folds instead of flattening; sweep DRIVE and every change of shape is a new timbre. Put the LFO on it, add VAR for width, and expect OUTPUT well below zero. SLAG FUZZ sputters and gates; sweep an EQ band with ENV MOD for a filter that follows your playing.</p></article>
+  <article><b>SOUND DESIGN</b><p>ASH folds instead of flattening; sweep DRIVE and every change of shape is a new timbre. Put the LFO on it, add VAR for width, and expect OUTPUT well below zero. SLAG FUZZ sputters and gates; sweep an EQ band with ENV MOD for a filter that follows your playing. Or open FORGE, press SPARK until something surprises you, set EDGE to FOLD and put a ring on a node.</p></article>
 </section>
 
 <!-- SPECS -->
 <div class="sh" id="specs">Technical specifications</div>
 <section class="two">
   <table class="specs">
-    <tr><th>TYPE</th><td>Five-circuit distortion (insert)</td></tr>
-    <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder) · FLINT (hard diode clip) · SLAG (germanium rectifier)</td></tr>
+    <tr><th>TYPE</th><td>Five-circuit distortion with a drawable sixth (insert)</td></tr>
+    <tr><th>CIRCUITS</th><td>EMBER (symmetric soft clip) · CHAR (asymmetric soft clip) · ASH (wavefolder) · FLINT (hard diode clip) · SLAG (germanium rectifier) · FORGE (your own drawn curve)</td></tr>
+    <tr><th>FORGE</th><td>Up to 64 nodes, SMOOTH, CORNER or JUMP · NODES or freehand DRAW · SYM · EDGE: HOLD, FOLD or WRAP · two drawings, A | B, with MORPH and MOD from the LFO or envelope · any node moved by the LFO or envelope · 8 MOULDS · SPARK · anti-aliased like the five circuits</td></tr>
     <tr><th>CONTROLS</th><td>DRIVE · BIAS · LFO · EQ · SAG · MIX · INPUT · BALANCE · OUTPUT · L/R | M/S · TUBE · IRON · VAR · AUTO LEVEL · BYPASS</td></tr>
     <tr><th>LFO</th><td>Depth 0–100 % on DRIVE (±12 dB) or BIAS (±1.00) · RATE 0.05–20 Hz or tempo SYNC, 4 BAR to 1/32 with triplets · SINE, TRI, SQR, S&amp;H · or an envelope follower, ATTACK 1–200 ms, RELEASE 10–1000 ms</td></tr>
     <tr><th>EQ</th><td>8 bands, PRE or POST DRIVE: 24 dB/oct high- and low-pass, low shelf, four bells, high shelf · per-band MOD F (±4 oct), MOD G (±18 dB), MOD Q (±2 oct) from the LFO or the envelope</td></tr>
@@ -585,8 +622,8 @@ footer a:hover{color:var(--gold)}
 <!-- PRICE -->
 <div class="sh" id="price">Deployment status</div>
 <section class="price">
-  <div class="eyebrow">CINDER · 1.5</div>
-  <p>CINDER 1.5 is calibrated and available for immediate deployment. Five circuits, the LFO, the moving EQ, the full panel, nothing withheld.</p>
+  <div class="eyebrow">CINDER · 1.6</div>
+  <p>CINDER 1.6 is calibrated and available for immediate deployment. Five circuits and FORGE, the LFO, the moving EQ, the full panel, nothing withheld.</p>
   <div class="amt"><s>$50</s><strong>$25</strong></div>
   <p>Launch sale. Use code <span class="code">ALCHEMY50</span> at checkout. The trial is the same installer, unlicensed for seven days; a licence unlocks it in place, no reinstall.</p>
   <div class="ctas" style="justify-content:center">
@@ -758,7 +795,7 @@ function makeSliders(box,defs,target,onUser){
   }
   return out;}
 Object.assign(sliders,makeSliders(document.getElementById('ctrls'),CTRL,lab,()=>stopDemo()));
-function setLabCircuit(v){lab.circuit=v;document.querySelectorAll('[data-lc]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.lc===v?'true':'false'));}
+function setLabCircuit(v){lab.circuit=v;document.querySelectorAll('[data-lc]').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.lc===v?'true':'false'));showForge(v===5);}
 document.querySelectorAll('[data-lc]').forEach(b=>b.addEventListener('click',()=>{stopDemo();setLabCircuit(+b.dataset.lc);}));
 document.getElementById('t-reset').addEventListener('click',()=>{stopDemo();for(const k in sliders)sliders[k].set(DEFAULTS[k]);setLabCircuit(0);});
 
@@ -807,8 +844,10 @@ function drawWave(cx,W,H,fn,fnR,phase){
   return h;}
 function drawLab(dt){
   wavePhase=(wavePhase+dt*0.12)%1;
-  const fn=drawDisplay(lcv,lab,{});
-  const fnR=lab.var>0?shaperFor(rightVariant(lab)):null;
+  const forgeOn=lab.circuit===5;
+  const fn=forgeOn?forgeShaper(lab):drawDisplay(lcv,lab,{});
+  if(forgeOn)drawForgeBoard(fn);
+  const fnR=!forgeOn&&lab.var>0?shaperFor(rightVariant(lab)):null;
   const h=drawWave(lw,lwv.width,lwv.height,fn,fnR,wavePhase);
   // the display's own readout is measured from audio; here it is the memoryless prediction
   const cx=lcv.getContext('2d');cx.font='8px "JetBrains Mono",monospace';cx.textAlign='right';cx.fillStyle=rgba(EMBER,.70);cx.fillText('THD '+h.thd.toFixed(1)+' %  @ 0.72 SINE',414,380);cx.textAlign='left';
@@ -924,6 +963,152 @@ document.querySelectorAll('[data-knob]').forEach(card=>{const k=KNOBDEF[card.dat
   const ptr=P(a,30),from=bip?0:a0;
   card.insertAdjacentHTML('afterbegin',`<svg viewBox="-64 -64 128 140" aria-hidden="true">${ticks}<path class="arc-track" d="${arc(a0,a1,46)}"/><path class="arc-val" d="${arc(from,Math.abs(a-from)<0.5?from+0.5:a,46)}"/><circle class="knob-face" r="36"/><line class="knob-ptr" x1="${(ptr[0]*0.35).toFixed(1)}" y1="${(ptr[1]*0.35).toFixed(1)}" x2="${ptr[0]}" y2="${ptr[1]}"/><text class="knob-num" y="72">${k[3]}</text></svg>`);
 });
+
+/* ================= FORGE, after Source/CinderForge.h ================= */
+const FC=256, FCW=2/FC; // the plug-in samples 1024 straight pieces; 256 is plenty on screen
+const SM=0,CO=1,JU=2;
+const N=(x,y,yo,k)=>({x,y,yo:yo===undefined?y:yo,k:k===undefined?SM:k});
+const MOULDS=['LINE','SOFT','KNEE','FOLDBACK','RECTIFY','STAIRS','S-BEND','DEAD ZONE'];
+function mould(i){switch(i){
+  case 1:return [N(-1,-1,-1,CO),N(-.5,-.82),N(0,0),N(.5,.82),N(1,1,1,CO)];
+  case 2:return [N(-1,-.8,-.8,CO),N(-.4,-.7,-.7,CO),N(.4,.7,.7,CO),N(1,.8,.8,CO)];
+  case 3:return [N(-1,-.2,-.2,CO),N(-.55,-1),N(0,0),N(.55,1),N(1,.2,.2,CO)];
+  case 4:return [N(-1,1,1,CO),N(0,0,0,CO),N(1,1,1,CO)];
+  case 5:return [N(-1,-1,-1,CO),N(-.6,-1,-.5,JU),N(-.2,-.5,0,JU),N(.2,0,.5,JU),N(.6,.5,1,JU),N(1,1,1,CO)];
+  case 6:return [N(-1,-1,-1,CO),N(-.6,-.25),N(-.25,-.45),N(0,0),N(.25,.45),N(.6,.25),N(1,1,1,CO)];
+  case 7:return [N(-1,-1,-1,CO),N(-.25,0,0,CO),N(.25,0,0,CO),N(1,1,1,CO)];
+  default:return [N(-1,-1,-1,CO),N(1,1,1,CO)];}}
+function spark(seed){
+  let st=(Math.imul(seed,2654435761)+0x9e3779b9)>>>0;
+  const next=()=>{st^=st<<13;st>>>=0;st^=st>>>17;st^=st<<5;st>>>=0;return (st&0xffffff)/0x1000000;};
+  const cl=v=>Math.min(1,Math.max(-1,v));
+  const inner=3+Math.floor(next()*5),wild=.25+.6*next();
+  const a=[N(-1,-1+.5*next()*wild,undefined,CO)];
+  for(let i=0;i<inner;i++){const x=-1+2*(i+.25+.5*next())/inner;const y=cl(Math.tanh(1.6*x)+(next()-.5)*2*wild);
+    const r=next();const k=r<.7?SM:r<.9?CO:JU;const o=k===JU?cl(y+(next()-.5)*wild):y;a.push(N(x,y,o,k));}
+  a.push(N(1,1-.5*next()*wild,undefined,CO));a[0].yo=a[0].y;a[a.length-1].yo=a[a.length-1].y;return a;}
+function sampleSlot(nodes){
+  const n=nodes.length,y=new Float64Array(FC+1),sec=[],sIn=[],sOut=[];
+  for(let k=0;k<n-1;k++)sec[k]=(nodes[k+1].y-nodes[k].yo)/Math.max(1e-9,nodes[k+1].x-nodes[k].x);
+  for(let k=0;k<n;k++){const first=k===0,last=k===n-1;const b=first?sec[0]:sec[k-1],a=last?sec[n-2]:sec[k];
+    if(nodes[k].k!==SM||first||last){sIn[k]=b;sOut[k]=a;}else{const s=b*a>0?2*b*a/(b+a):0;sIn[k]=sOut[k]=s;}}
+  let k=0;
+  for(let i=0;i<=FC;i++){const t=-1+i*FCW;while(k<n-2&&t>=nodes[k+1].x)k++;
+    const p=nodes[k],q=nodes[k+1],h=Math.max(1e-9,q.x-p.x),u=Math.min(1,Math.max(0,(t-p.x)/h)),u2=u*u,u3=u2*u;
+    const v=(2*u3-3*u2+1)*p.yo+(u3-2*u2+u)*h*sOut[k]+(-2*u3+3*u2)*q.y+(u3-u2)*h*sIn[k+1];
+    y[i]=Math.min(1,Math.max(-1,v));}
+  y[FC]=nodes[n-1].y;return y;}
+const forge={slots:[[N(-1,-1,-1,CO),N(-.55,.11),N(.05,-.29),N(1,1,1,CO)],mould(1)],slot:0,tool:0,sym:false,edge:0,morph:0,seed:1};
+const EDGES=['HOLD','FOLD','WRAP'];
+let fGrid=null,fDirty=true;
+function forgeGrid(){if(!fDirty)return fGrid;const a=sampleSlot(forge.slots[0]),b=sampleSlot(forge.slots[1]),m=forge.morph/100;
+  fGrid=new Float64Array(FC+1);for(let i=0;i<=FC;i++)fGrid[i]=a[i]+(b[i]-a[i])*m;fDirty=false;return fGrid;}
+function gridAt(g,t){const p=(Math.min(1,Math.max(-1,t))+1)/FCW;const i=Math.min(FC-1,Math.floor(p));return g[i]+(g[i+1]-g[i])*(p-i);}
+function curveValue(g,t){
+  if(t>=-1&&t<=1)return gridAt(g,t);
+  if(forge.edge===0)return t<0?g[0]:g[FC];
+  if(forge.edge===2)return gridAt(g,t-2*Math.floor((t+1)*.5));
+  const r=t+1-4*Math.floor((t+1)*.25);return gridAt(g,r<=2?r-1:3-r);}
+function forgeShaper(p){const g=forgeGrid(),G=Math.pow(10,p.drive/20),off=.22*p.bias;
+  let hi=-1e9,lo=1e9;for(let i=0;i<=FC;i++){hi=Math.max(hi,g[i]);lo=Math.min(lo,g[i]);}
+  const raw=x=>curveValue(g,G*(x+off)),z=raw(0),m=Math.max(1,Math.abs(hi-z),Math.abs(lo-z));
+  const base=x=>(raw(x)-z)/m,a=.35*p.tube/100,b=.45*p.iron/100;
+  if(!(a>0||b>0))return {f:base};
+  // TUBE and IRON over every value the drawing can give, as CinderShaper.h does for FORGE
+  const from=(lo-z)/m,to=(hi-z)/m;let m2=1;for(let i=0;i<=100;i++){const y=from+(to-from)*i/100;m2=Math.max(m2,Math.abs(y+a*y*y+b*y*y*y));}
+  return {f:x=>{const y=base(x);return (y+a*y*y+b*y*y*y)/m2;}};}
+
+const fcv=lcv;const isForge=()=>lab.circuit===5;
+const FX=x=>231+185*x, FY=y=>192-162*y;
+let fStroke=null,fDrag=null,fWave=0;
+function drawForgeBoard(fn){
+  const cx=fcv.getContext('2d');const sx=fcv.width/440,sy=fcv.height/400;
+  cx.setTransform(1,0,0,1,0,0);cx.clearRect(0,0,fcv.width,fcv.height);cx.setTransform(sx,0,0,sy,0,0);
+  const sh=cx.createLinearGradient(0,0,0,84);sh.addColorStop(0,'rgba(0,0,0,.28)');sh.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=sh;cx.fillRect(0,0,440,90);
+  cx.lineWidth=1;cx.strokeStyle=rgba(CREAM,.07);cx.strokeRect(46,30,370,324);
+  cx.strokeStyle=rgba(CREAM,.04);cx.beginPath();cx.moveTo(138.5,30);cx.lineTo(138.5,354);cx.moveTo(323.5,30);cx.lineTo(323.5,354);cx.moveTo(46,111);cx.lineTo(416,111);cx.moveTo(46,273);cx.lineTo(416,273);cx.stroke();
+  cx.strokeStyle=rgba(CREAM,.07);cx.beginPath();cx.moveTo(231,30);cx.lineTo(231,354);cx.moveTo(46,192);cx.lineTo(416,192);cx.stroke();
+  cx.strokeStyle=rgba(CREAM,.10);cx.beginPath();cx.moveTo(46,354);cx.lineTo(416,30);cx.stroke();
+  // what DRIVE makes of it
+  cx.setLineDash([2,3]);curve(cx,x=>fn.f(x),rgba(CREAM,.38),1);cx.setLineDash([]);
+  // the other drawing, faint
+  const og=sampleSlot(forge.slots[1-forge.slot]);curve(cx,x=>gridAt(og,x),rgba(CREAM,.12),1);
+  // the morphed curve in ember when MORPH is up
+  const g=forgeGrid();
+  if(forge.morph>0)curve(cx,x=>gridAt(g,x),rgba(EMBER,.8),1.4);
+  // the drawing being edited, with a soft glow
+  const sg=sampleSlot(forge.slots[forge.slot]);
+  cx.save();cx.shadowColor='rgba(242,233,220,.55)';cx.shadowBlur=8;
+  cx.strokeStyle=rgba(CREAM,.95);cx.lineWidth=2;cx.beginPath();for(let i=0;i<=FC;i++){const px=FX(-1+i*FCW),py=FY(sg[i]);i?cx.lineTo(px,py):cx.moveTo(px,py);}cx.stroke();cx.restore();
+  // nodes
+  const nodes=forge.slots[forge.slot];
+  nodes.forEach((n,i)=>{const end=i===0||i===nodes.length-1;
+    if(n.k===JU){cx.strokeStyle=rgba(EMBER,.6);cx.beginPath();cx.moveTo(FX(n.x),FY(n.y));cx.lineTo(FX(n.x),FY(n.yo));cx.stroke();
+      cx.fillStyle='#231613';cx.strokeStyle='#f0824f';cx.lineWidth=1.5;cx.beginPath();cx.rect(FX(n.x)-3.5,FY(n.yo)-3.5,7,7);cx.fill();cx.stroke();}
+    cx.fillStyle='#231613';cx.strokeStyle='#f0824f';cx.lineWidth=1.6;cx.beginPath();
+    if(end||n.k===CO){cx.save();cx.translate(FX(n.x),FY(n.y));cx.rotate(Math.PI/4);cx.rect(-4,-4,8,8);cx.restore();}else cx.arc(FX(n.x),FY(n.y),4.6,0,TAU);
+    cx.fill();cx.stroke();});
+  if(fStroke&&fStroke.length>1){cx.strokeStyle=rgba(EMBER,.9);cx.lineWidth=1.5;cx.beginPath();fStroke.forEach((p,i)=>i?cx.lineTo(FX(p.x),FY(p.y)):cx.moveTo(FX(p.x),FY(p.y)));cx.stroke();}
+  cx.font='500 8.5px "JetBrains Mono",monospace';cx.fillStyle=rgba(CREAM,.42);cx.textAlign='left';cx.fillText('T R A N S F E R   ·   F O R G E',20,22);
+  cx.textAlign='right';cx.fillText('· · ·  AT DRIVE '+lab.drive.toFixed(1),414,22);
+  cx.textAlign='left';cx.fillStyle=rgba(CREAM,.34);cx.font='8px "JetBrains Mono",monospace';cx.fillText('IN × forge(x) × OUT  ·  EDITING '+(forge.slot?'B':'A')+'  ·  EDGE '+EDGES[forge.edge],20,384);
+}
+// editing
+function fPt(e){const r=fcv.getBoundingClientRect();const dx=(e.clientX-r.left)/r.width*440,dy=(e.clientY-r.top)/r.height*400;
+  return {x:Math.min(1,Math.max(-1,(dx-231)/185)),y:Math.min(1,Math.max(-1,(192-dy)/162)),dx,dy};}
+function fHit(p){const nodes=forge.slots[forge.slot];let best=null,bd=11;
+  nodes.forEach((n,i)=>{const d=Math.hypot(FX(n.x)-p.dx,FY(n.y)-p.dy);if(d<bd){bd=d;best={i,h:'y'};}
+    if(n.k===JU){const d2=Math.hypot(FX(n.x)-p.dx,FY(n.yo)-p.dy);if(d2<bd){bd=d2;best={i,h:'yo'};}}});return best;}
+function fSymmetrise(right){
+  const nodes=forge.slots[forge.slot];
+  const half=nodes.filter(n=>right?n.x>1e-3:n.x<-1e-3).map(n=>right?n:N(-n.x,-n.yo,-n.y,n.k));
+  const out=[];for(let i=half.length-1;i>=0;i--){const n=half[i];out.push(N(-n.x,-n.yo,-n.y,n.k));}
+  out.push(N(0,0,0,SM));half.forEach(n=>out.push(N(n.x,n.y,n.yo,n.k)));
+  forge.slots[forge.slot]=out;}
+function fChanged(p){if(forge.sym)fSymmetrise(p?p.x>=0:true);fDirty=true;kick();}
+fcv.addEventListener('contextmenu',e=>{if(!isForge())return;e.preventDefault();if(forge.tool)return;const p=fPt(e),h=fHit(p);if(!h)return;
+  const nodes=forge.slots[forge.slot],n=nodes[h.i];if(h.i===0||h.i===nodes.length-1)return;
+  n.k=(n.k+1)%3;if(n.k===JU)n.yo=Math.min(1,Math.max(-1,n.y+(n.y>0.6?-.3:.3)));else n.yo=n.y;fChanged(n);});
+fcv.addEventListener('dblclick',e=>{if(!isForge()||forge.tool)return;const p=fPt(e),h=fHit(p);const nodes=forge.slots[forge.slot];
+  if(h){if(h.i>0&&h.i<nodes.length-1)nodes.splice(h.i,1);}
+  else if(nodes.length<64){let i=1;while(i<nodes.length&&nodes[i].x<p.x)i++;if(p.x>nodes[i-1].x+.01&&p.x<nodes[i].x-.01)nodes.splice(i,0,N(p.x,p.y));}
+  fChanged(p);});
+fcv.addEventListener('pointerdown',e=>{if(!isForge()||e.button!==0)return;stopDemo();const p=fPt(e);fcv.setPointerCapture(e.pointerId);
+  if(forge.tool===1){fStroke=[p];kick();return;}
+  const h=fHit(p);if(h)fDrag=h;});
+fcv.addEventListener('pointermove',e=>{if(!isForge())return;const p=fPt(e);
+  if(fStroke){fStroke.push(p);kick();return;}
+  if(!fDrag)return;const nodes=forge.slots[forge.slot],n=nodes[fDrag.i];
+  if(fDrag.h==='yo'){n.yo=p.y;}else{n.y=p.y;if(n.k!==JU)n.yo=p.y;
+    if(fDrag.i>0&&fDrag.i<nodes.length-1)n.x=Math.min(nodes[fDrag.i+1].x-.01,Math.max(nodes[fDrag.i-1].x+.01,p.x));}
+  fChanged(n);});
+function rdp(pts,eps){if(pts.length<3)return pts;const a=pts[0],b=pts[pts.length-1];let md=0,mi=0;
+  for(let i=1;i<pts.length-1;i++){const p=pts[i];const d=Math.abs((b.y-a.y)*p.x-(b.x-a.x)*p.y+b.x*a.y-b.y*a.x)/Math.hypot(b.y-a.y,b.x-a.x||1e-9);if(d>md){md=d;mi=i;}}
+  if(md<=eps)return [a,b];return rdp(pts.slice(0,mi+1),eps).slice(0,-1).concat(rdp(pts.slice(mi),eps));}
+fcv.addEventListener('pointerup',()=>{fDrag=null;if(!fStroke)return;
+  const pts=fStroke.slice().sort((a,b)=>a.x-b.x);fStroke=null;if(pts.length<2||pts[pts.length-1].x-pts[0].x<.02){kick();return;}
+  // one height per small bin, then the fewest nodes that follow the hand
+  const bins=[];for(const p of pts){const k=Math.round(p.x*100);if(!bins.length||bins[bins.length-1].k!==k)bins.push({k,x:p.x,y:p.y});else bins[bins.length-1].y=p.y;}
+  const nodes=forge.slots[forge.slot],x0=bins[0].x,x1=bins[bins.length-1].x;
+  let eps=.015,keep=rdp(bins,eps);const room=64-nodes.filter(n=>n.x<x0||n.x>x1).length;while(keep.length>room){eps*=1.5;keep=rdp(bins,eps);}
+  const out=nodes.filter(n=>n.x<x0-.005);
+  keep.forEach(p=>{if(p.x<=-1+1e-3)out.push(N(-1,p.y,p.y,CO));else if(p.x>=1-1e-3)out.push(N(1,p.y,p.y,CO));else out.push(N(p.x,p.y));});
+  nodes.filter(n=>n.x>x1+.005).forEach(n=>out.push(n));
+  if(out[0].x>-1)out.unshift(N(-1,out[0].y,out[0].y,CO));if(out[out.length-1].x<1)out.push(N(1,out[out.length-1].y,out[out.length-1].y,CO));
+  forge.slots[forge.slot]=out;fChanged({x:(x0+x1)/2});});
+document.querySelectorAll('[data-ft]').forEach(b=>b.addEventListener('click',()=>{forge.tool=+b.dataset.ft;document.querySelectorAll('[data-ft]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));}));
+document.querySelectorAll('[data-fs]').forEach(b=>b.addEventListener('click',()=>{forge.slot=+b.dataset.fs;document.querySelectorAll('[data-fs]').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));kick();}));
+const fSym=document.getElementById('f-sym');fSym.addEventListener('click',()=>{forge.sym=!forge.sym;fSym.setAttribute('aria-pressed',forge.sym?'true':'false');fChanged(null);});
+const fEdge=document.getElementById('f-edge');fEdge.addEventListener('click',()=>{forge.edge=(forge.edge+1)%3;fEdge.textContent='EDGE: '+EDGES[forge.edge];fDirty=true;});
+document.getElementById('f-spark').addEventListener('click',()=>{forge.seed++;forge.slots[forge.slot]=spark(forge.seed*7919);fChanged(null);});
+const mBox=document.getElementById('f-moulds');
+MOULDS.forEach((m,i)=>{const b=document.createElement('button');b.type='button';b.textContent=m;b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',()=>{forge.slots[forge.slot]=mould(i);fChanged(null);});mBox.appendChild(b);});
+makeSliders(document.getElementById('forgemorph'),[{id:'morph',label:'MORPH A → B',min:0,max:100,step:1,fmt:v=>Math.round(v)+' %'}],forge,()=>{fDirty=true;});
+let forgePicked=false;
+function showForge(on){document.getElementById('forgebar').hidden=!on;lcv.classList.toggle('forge',on);
+  lcv.setAttribute('aria-label',on?"FORGE's drawing board: drag the nodes, double-click to add or remove one, right-click to change its kind":"The transfer display at the lab's settings");
+  if(on&&!forgePicked){forgePicked=true;if(lab.drive===DEFAULTS.drive)sliders.drive.set(6);}}
 
 /* ================= main loop ================= */
 let last=performance.now(),looping=true;

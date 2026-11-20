@@ -1,107 +1,490 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="_ds/theta-audio-research-29821d4a-a9f2-48bd-9772-a4177af0dc9e/fonts/fonts.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE CREATOR Product Page</title>
+<meta name="description" content="THE CREATOR turns any recording into a playable instrument: wand-select sounds in a spectral view, stack four layers, rebuild them from their partials, morph, slow and play. For macOS, VST3, AU and AAX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="mobile.css">
-<script src="./image-slot.js"></script>
-<script src="./download-gate.js"></script>
-<style>image-slot::part(frame){background:transparent}image-slot::part(ring){display:none}</style>
-</helmet>
-<div style="background:#06080c;color:#b9b6ae;font-family:'Rubik',sans-serif;margin:0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;line-height:1.6">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@200;300;500;600&family=Rubik:wght@300;400;500&display=swap">
+<style>
+/* Layout: one long column on the THETA void field, sections split by centred gold hairline labels,
+   matching arecibo.html. THE CREATOR's own colour enters only through the real panel screenshots. */
+:root{
+  color-scheme: dark;
+  --bg:#06080c; --panel:#0c0c10; --well:#030506; --border:#242230; --divider:#161a26;
+  --text:#f0ede6; --text-2:#b9b6ae; --text-3:#8d8779;
+  --gold:#c8a86b; --gold-hot:#ffc867; --gold-dim:#7a6840;
+  --cream:#eef0c8; --haze:#4fa89a; --teal:#6ec0b6; --ice:#8fc4ff; --paper:#f6efe4;
+  --plate:#071412;
+  --note:#9fd3c2; --note-bg:rgba(29,158,117,.08); --note-line:rgba(29,158,117,.45);
+  --f-display:'Montserrat',ui-sans-serif,system-ui,sans-serif;
+  --f-body:'Rubik',ui-sans-serif,system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-wide:'Archivo','Montserrat',ui-sans-serif,sans-serif;
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:72px;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{margin:0;color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.6;font-weight:300}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 var(--s8)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--gold)}
+.sh[id],section[id]{scroll-margin-top:110px}
+:focus-visible{outline:2px solid var(--gold-hot);outline-offset:3px}
 
-<nav style="padding:10px 60px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#06080c;position:sticky;top:0;z-index:100">
-  <a href="index.html" aria-label="Theta Audio Research" style="min-height:64px;display:flex;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 0.4s" style-hover="opacity:0.82"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
-  
-  <div style="display:flex;gap:20px">
-    <a href="index.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">RETURN_TO_LAB</a>
-    <a href="store.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">STORE</a>
-    <a href="account.html" style="color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:700;border:1px solid #3A3534;padding:8px 16px;transition:0.3s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">ACCOUNT</a>
+/* site nav (as live site) */
+.site-nav{font-family:var(--f-display);padding:10px clamp(16px,4vw,60px);display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:100;border-bottom:1px solid rgba(200,168,107,.12)}
+.site-nav .home{min-height:64px;display:flex;align-items:center;gap:18px;text-decoration:none}
+.site-nav .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.site-nav .links a{color:#DCCDBF;text-decoration:none;font-size:9px;letter-spacing:3px;font-weight:600;border:1px solid #3A3534;padding:8px 14px;transition:.3s;text-transform:uppercase}
+.site-nav .links a:hover{background:#DCCDBF;color:#0C1519}
+.site-nav .links a.free{color:#A6DCA6;border-color:#6E9B6E}
+.notes-toggle{display:flex;align-items:center;gap:var(--s2);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--note);cursor:pointer;user-select:none}
+.notes-toggle input{accent-color:var(--note);width:15px;height:15px;margin:0}
+
+/* production notes (proposal only; strip before publishing) */
+.note{border:1px dashed var(--note-line);background:var(--note-bg);border-radius:6px;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:12.5px;line-height:1.55;color:var(--note);font-weight:400}
+.note b{font-weight:500;letter-spacing:.12em;margin-right:6px}
+body.hide-notes .note{display:none}
+
+/* section heading: label between gold hairlines */
+.sh{display:flex;align-items:center;gap:var(--s4);margin-block:var(--s8) var(--s6);font-family:var(--f-display);font-weight:500;font-size:12px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;text-align:center}
+.sh::before,.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45))}
+.sh::after{background:linear-gradient(90deg,rgba(200,168,107,.45),transparent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:var(--s7);align-items:center;padding-block:var(--s7) var(--s5)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--text-3);text-transform:uppercase}
+.wordmark{font-family:var(--f-display);font-weight:200;font-size:clamp(26px,3.5vw,42px);letter-spacing:.24em;line-height:1.05;margin-block:var(--s4) var(--s4);color:var(--text);white-space:nowrap}
+@media (max-width:900px){.wordmark{font-size:clamp(24px,6.2vw,48px)}}
+.hero h2{font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.3;margin-bottom:var(--s4)}
+.hero h2 em,.h2 em{font-style:normal;color:var(--gold)}
+.lede{color:var(--text-2);max-width:56ch;display:grid;gap:var(--s3)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 var(--s5);border-radius:4px;font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid var(--gold);transition:background .2s,color .2s;white-space:nowrap}
+.btn.primary{background:var(--gold);color:var(--bg);font-weight:500}
+.btn.primary:hover{background:var(--gold-hot)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn.ghost:hover{background:rgba(200,168,107,.1)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.chip.soon{border-style:dashed;color:var(--text-3)}
+.chip{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-2);border:1px solid var(--border);border-radius:4px;padding:4px 9px}
+
+/* the fragment well: DIFFERENTIAL's own star-chart plate */
+.well{border:1px solid #1d3a35;border-radius:10px;background:radial-gradient(120% 120% at 30% 0%,#10302b,#050d0c 70%);overflow:hidden;position:relative}
+.well canvas{display:block;width:100%;height:auto}
+.well-head{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:rgba(242,233,220,.55)}
+.well-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid rgba(242,233,220,.08);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:rgba(242,233,220,.6)}
+.well-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+.tagline{text-align:center;font-family:var(--f-display);font-weight:500;font-size:11px;letter-spacing:.42em;color:var(--text-3);margin-top:var(--s3)}
+
+/* ROLL: the plug-in's own teal-to-pale-yellow bar */
+.roll{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.24em;color:#0b1a17;border:0;border-radius:999px;min-height:36px;padding:0 var(--s6);cursor:pointer;background:linear-gradient(90deg,var(--haze),var(--cream))}
+.roll:hover{filter:brightness(1.08)}
+.arrow{font-family:var(--f-mono);font-size:13px;color:var(--text);background:transparent;border:1px solid rgba(242,233,220,.35);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.arrow:disabled{opacity:.3;cursor:default}
+
+/* segmented buttons */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:4px;background:var(--well);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;padding:7px 12px;border:0;border-radius:3px;background:transparent;color:var(--text-2);cursor:pointer;min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--teal);color:#06110f}
+.seg.gold button[aria-pressed="true"]{background:var(--gold);color:var(--bg)}
+
+/* prose */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);align-items:start}
+.prose{display:grid;gap:var(--s4);max-width:62ch;min-width:0}
+.prose p{color:var(--text-2)}
+.prose p strong{color:var(--text);font-weight:400}
+.h2{font-weight:300;font-size:clamp(26px,3.4vw,38px);line-height:1.2;letter-spacing:.01em;margin-bottom:var(--s2)}
+.stack{display:grid;gap:var(--s5)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);letter-spacing:.06em}
+.k{font-family:var(--f-mono);font-size:.9em;color:var(--text);letter-spacing:.04em}
+
+/* signal path */
+.path{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow-x:auto}
+.path svg{display:block;width:100%;min-width:640px;height:auto}
+.path text{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;fill:var(--text-2)}
+.path .lbl{font-family:var(--f-display);font-weight:600;font-size:11px;letter-spacing:.2em;fill:var(--gold)}
+.path .box{fill:#0c0c10;stroke:#2e2c3a;stroke-width:1.2}
+.path .stage{fill:#0a1c19;stroke:#2f6b61;stroke-width:1.2}
+.path .wire{fill:none;stroke:#3a3846;stroke-width:1.4}
+.path .flow{fill:none;stroke:var(--gold-hot);stroke-width:1.6;stroke-dasharray:3 14;animation:flow 1.6s linear infinite}
+.path .flow.low{stroke:var(--teal);animation-duration:2.2s}
+@keyframes flow{to{stroke-dashoffset:-34}}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s4)}
+.steps li{border-top:1px solid rgba(200,168,107,.45);padding-top:var(--s3);display:grid;gap:6px;align-content:start;min-width:0}
+.steps .num{font-family:var(--f-display);font-weight:200;font-size:34px;line-height:1;color:var(--gold)}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em}
+.steps p{color:var(--text-2);font-size:15px}
+
+/* lab */
+.lab{border:1px solid var(--border);border-radius:10px;background:var(--well);display:grid}
+.lab-top{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-bottom:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.lab canvas{display:block;width:100%;height:auto}
+.readouts{display:flex;gap:var(--s5);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--text-3)}
+.readouts b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums;margin-left:8px}
+.ctrls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4) var(--s5);padding:var(--s5) var(--s4);border-top:1px solid var(--divider)}
+.ctrl{display:grid;gap:4px;align-content:start;min-width:0}
+.ctrl label{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.18em;color:var(--gold)}
+.ctrl label output{font-family:var(--f-mono);font-weight:400;color:var(--text);letter-spacing:0;font-variant-numeric:tabular-nums}
+.ctrl input[type=range]{width:100%;accent-color:var(--teal)}
+.ctrl .ring{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--text-3)}
+.ctrl.on label{color:var(--gold-hot)}
+.toggles{display:flex;gap:var(--s3);align-items:center;flex-wrap:wrap}
+.tog{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:6px 12px;cursor:pointer;background:transparent;min-height:32px}
+.tog[aria-pressed="true"]{background:linear-gradient(90deg,var(--haze),var(--cream));color:#06110f;border-color:transparent}
+.legend{display:flex;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-3)}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:6px}
+
+/* ring cards */
+.voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s5)}
+.knob-card{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.knob-card svg{width:150px;height:150px;justify-self:center;overflow:visible}
+.knob-name{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.24em;text-align:center;color:var(--gold-hot)}
+.knob-card h3{font-weight:300;font-size:19px;line-height:1.3;text-align:center}
+.knob-card p{color:var(--text-2);font-size:15.5px}
+.arc-track{fill:none;stroke:#1a2422;stroke-width:4;stroke-linecap:round}
+.arc-val{fill:none;stroke:var(--cream);stroke-width:4;stroke-linecap:round}
+.arc-in{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round}
+.globe{fill:url(#globe)}
+.dot{fill:var(--cream)}
+.knob-num{font-family:var(--f-mono);font-size:11px;fill:var(--text-3);text-anchor:middle;letter-spacing:.12em}
+.tick{stroke:#2a3a37;stroke-width:1.2}
+.fine{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-3);border-top:1px solid var(--divider);padding-top:var(--s3)}
+
+/* panels */
+.panel{border:1px solid var(--border);border-radius:8px;background:var(--well);overflow:hidden}
+.panel canvas{display:block;width:100%;height:auto}
+.panel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;padding:var(--s3) var(--s4);border-top:1px solid var(--divider);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-3)}
+.panel-foot b{color:var(--gold-hot);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.rows li{display:grid;grid-template-columns:190px minmax(0,1fr);gap:var(--s4);border-top:1px solid var(--divider);padding-top:var(--s3)}
+.rows b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold);padding-top:3px}
+.rows span{color:var(--text-2);font-size:16px}
+.rows.fx b i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:0}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.who article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.who b{font-family:var(--f-display);font-weight:600;font-size:13px;letter-spacing:.22em;color:var(--gold-hot)}
+.who p{font-size:15.5px;color:var(--text-2)}
+.faceshot{margin:0;display:grid;gap:var(--s2)}
+.faceshot img{width:100%;height:auto;border:0;display:block}
+.bank{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+.bank article{border:1px solid var(--border);border-radius:8px;background:var(--panel);padding:var(--s4) var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.bank b{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-hot)}
+.bank ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;font-size:14.5px;color:var(--text-2)}
+
+/* specs */
+.specs{width:100%;border-collapse:collapse;font-size:15.5px}
+.specs th,.specs td{text-align:left;padding:var(--s3) 0;border-bottom:1px solid var(--divider);vertical-align:top}
+.specs th{font-family:var(--f-display);font-weight:500;font-size:11.5px;letter-spacing:.2em;color:var(--text-3);width:30%;padding-right:var(--s4)}
+.specs td{color:var(--text-2)}
+
+/* price */
+.price{border:1px solid var(--border);border-radius:8px;background:radial-gradient(120% 140% at 100% 0%,rgba(79,168,154,.12),transparent 60%),var(--panel);padding:var(--s6) var(--s5);text-align:center;display:grid;gap:var(--s3);justify-items:center}
+.price .amt{display:flex;align-items:baseline;gap:var(--s4)}
+.price s{font-family:var(--f-display);font-weight:200;font-size:22px;letter-spacing:.08em;color:var(--text-3)}
+.price strong{font-family:var(--f-display);font-weight:200;font-size:48px;letter-spacing:.08em;color:var(--text)}
+.price p{color:var(--text-2);max-width:56ch}
+.code{font-family:var(--f-mono);color:var(--gold-hot);letter-spacing:.12em}
+footer{margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;color:var(--text-3)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--gold)}
+.small{font-size:14px;color:var(--text-3)}
+
+@media (max-width:900px){
+  .hero,.two{grid-template-columns:minmax(0,1fr)}
+  .voices{grid-template-columns:minmax(0,1fr)}
+  .who,.bank{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .site-nav{position:static}
+  .site-nav .home{min-height:52px}
+}
+@media (max-width:520px){
+  .ctrls,.who,.steps,.bank{grid-template-columns:minmax(0,1fr)}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .specs th{width:40%}
+  .site-nav .links a{padding:6px 10px;letter-spacing:2px}
+}
+
+.face-top img{display:block;width:100%;height:auto;max-width:100%;border:0}
+.hero > div:last-child{width:100%;max-width:520px;justify-self:center}
+.chips{display:flex;flex-wrap:wrap}
+.chip{white-space:nowrap;height:auto}
+
+/* THE CREATOR: the hero well holds the real SOURCE page; the skin keys swap it */
+.well.cr{border-color:var(--border);background:var(--panel)}
+.well.cr img{display:block;width:100%;height:auto}
+.well.cr .well-foot{justify-content:center}
+.knob-card .knob-name{margin-top:var(--s2)}
+.steps{grid-template-columns:repeat(6,minmax(0,1fr))}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tabs button{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;color:var(--text-2);background:transparent;border:1px solid var(--border);border-radius:6px;min-height:36px;padding:0 14px;cursor:pointer}
+.tabs button span{color:var(--text-3);margin-right:8px}
+.tabs button[aria-pressed="true"]{border-color:var(--gold-hot);color:var(--gold-hot);box-shadow:0 0 18px rgba(255,200,103,.14) inset}
+.viewer{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:var(--s6);align-items:start;margin-top:var(--s5)}
+.viewer img{width:100%;height:auto;display:block;border:0}
+.viewer .prose h3{font-weight:300;font-size:24px;letter-spacing:.04em;color:var(--text)}
+.viewer .prose .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--gold-hot)}
+.skin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5)}
+.skin-grid figure{margin:0;display:grid;gap:var(--s2)}
+.skin-grid img{width:100%;height:auto;display:block}
+.skin-grid figcaption{font-family:var(--f-display);font-weight:600;font-size:11.5px;letter-spacing:.24em;color:var(--gold);text-align:center}
+@media (max-width:900px){.viewer{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:520px){.steps,.skin-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="home" href="index.html" aria-label="Theta Audio Research"><img src="assets/logo/tar/tar-mark-cream.svg?v=261027" alt="TAR" style="height:34px;width:auto;display:block"></a>
+  <div class="links">
+    <a href="index.html">RETURN_TO_LAB</a>
+    <a href="store.html">STORE</a>
+    <a href="free.html" class="free">FREE</a>
+    <a href="support.html">SUPPORT</a>
+    <a href="account.html">ACCOUNT</a>
   </div>
 </nav>
 
-<main style="flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 72px clamp(16px,4vw,40px);box-sizing:border-box;font-size:17px;line-height:1.6;font-weight:300;color:#f0ede6">
-  <header data-screen-label="Title" style="padding:48px 0 32px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#8d8779;text-transform:uppercase">THETA Audio Research</div>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:200;font-size:clamp(34px,5.6vw,62px);letter-spacing:0.28em;line-height:1.1;margin:16px 0 0 0;color:#f0ede6">THE CREATOR</h1>
-  </header>
+<div class="wrap">
 
-  <section style="max-width:640px;margin:110px auto 120px auto;text-align:center">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;color:#8d8779;text-transform:uppercase;font-weight:700;display:block;margin-bottom:26px">// IN_DEVELOPMENT</span>
-    <h1 style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:34px;letter-spacing:11px;color:#f0ede6;text-transform:uppercase;margin:0 0 24px 0">THE CREATOR</h1>
-    <p style="font-weight:300;font-size:16px;line-height:1.7;color:#b9b6ae;margin:0 auto 44px auto;max-width:460px;text-wrap:pretty">On the bench. Leave your address and we will send one notice the day it ships. Nothing else.</p>
-    <a href="mailto:info@theta.audio?subject=THE%20CREATOR%20updates" data-notify="THE CREATOR" style="display:inline-block;border:1px solid #DCCDBF;color:#DCCDBF;padding:22px 46px;text-decoration:none;font-weight:700;font-size:11px;letter-spacing:6px;transition:0.4s;text-transform:uppercase" style-hover="background:#DCCDBF;color:#0C1519">NOTIFY_ME_AT_LAUNCH</a>
-  </section>
-</main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="eyebrow">Spectral resynthesis instrument · In development</div>
+    <h1 class="wordmark">THE CREATOR</h1>
+    <div class="lede">
+      <p>THE CREATOR turns any recording into an instrument you play from the keyboard. Drop in a sound and it appears as a field of light. Touch the parts you want with the wand, and those parts become the instrument: key-tracked, polyphonic, at full fidelity.</p>
+      <p>Load four sounds at once and every key plays all four. Blend them with a ball you can throw, rebuild them from their partials, slow the whole machine to a crawl, and print the effects as an impulse response.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="mailto:info@theta.audio?subject=THE%20CREATOR%20launch" data-notify="THE CREATOR">Notify me at launch</a>
+    </div>
+    <div class="chips"><span class="chip">VST3</span><span class="chip">AU</span><span class="chip">AAX</span><span class="chip">macOS · Apple Silicon and Intel</span></div>
+  </div>
+  <div>
+    <div class="well cr">
+      <div class="well-head"><span>THE SOURCE PAGE · 11 SKINS</span><span id="skin-name">RING BEARER</span></div>
+      <img id="skin-img" src="assets/creator4/source_ringbearer.png?v=261119" width="1120" height="800" alt="THE CREATOR's SOURCE page in the RING BEARER skin: a recording drawn as a field of light, the wand selection, the four layer slots and the knob deck">
+      <div class="well-foot"><div class="seg gold" role="group" aria-label="Choose a skin" id="skin-keys">
+        <button type="button" data-s="ringbearer" aria-pressed="true">RING BEARER</button>
+        <button type="button" data-s="blueprint" aria-pressed="false">BLUEPRINT</button>
+        <button type="button" data-s="acid" aria-pressed="false">ACID</button>
+        <button type="button" data-s="night" aria-pressed="false">NIGHT</button>
+      </div></div>
+    </div>
+    <div class="tagline">EVERY RECORDING IS AN INSTRUMENT</div>
+  </div>
+</section>
 
-<footer style="max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px clamp(16px,4vw,40px) 40px clamp(16px,4vw,40px);border-top:1px solid rgba(200,168,107,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#8d8779">
-  <span>THETA AUDIO RESEARCH // 2026</span>
-  <a href="https://www.youtube.com/@ThetaAudioResearch" target="_blank" rel="noopener" style="color:#8d8779;text-decoration:none" style-hover="color:#c8a86b">YOUTUBE</a>
-  <span>LAB NOTE #008 // THE CREATOR ALPHA</span>
-</footer>
+<section class="face-top" style="margin-block:0 var(--s6,56px)">
+  <img src="assets/creator4/panel_partial.png?v=261119" width="1120" height="800" alt="THE CREATOR on the PARTIAL page with a note held: the four layer overviews, DENSITY with MODE and the MID and SIDE counts, the PHASE and CEPSTRUM pad with every sounding partial drawn as a dot under the source and played outlines, TIME and SHAPE with QUANT, LOCO, GLIDE and WAVE, the knob deck, PERFORM with four macros, and the keyboard">
+</section>
 
-<div onClick="{{ closeZoom }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:{{ overlayDisplay }};align-items:center;justify-content:center;cursor:zoom-out;padding:40px;box-sizing:border-box">
-  <img ref="{{ setZoomImg }}" onClick="{{ stopClick }}" style="max-width:92vw;max-height:88vh;width:{{ zoomedWidth }}px;aspect-ratio:{{ zoomedRatio }};object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,0.6);border-radius:2px;cursor:zoom-out">
+<div class="sh" id="wand">The wand</div>
+<section class="two">
+  <div class="prose">
+    <p>Every recording is a stack of layers: a fundamental here, a shimmer of harmonics there, a breath of noise across the top. THE CREATOR draws all of it as a <strong>field of light</strong>, one mark for every point of energy, so small changes in the sound show.</p>
+    <p>Click a harmonic and the <strong>wand</strong> finds the whole partial under your cursor and follows its connected energy. SIZE sets its reach, from a sliver of one harmonic to a whole gesture. Drag to paint, alt-drag to erase, or draw a lasso round a region.</p>
+  </div>
+  <div class="prose">
+    <p><strong>INVERT</strong> keeps everything except what you touched. <strong>SOFT</strong> feathers the edge of a selection from surgical to melted. Zoom in for the fine work.</p>
+    <p>Whatever you select is what plays. Imports WAV, AIFF, FLAC, MP3, M4A and OGG, and a saved patch carries its own audio, so you share an instrument, not a file hunt.</p>
+  </div>
+</section>
+
+<div class="sh" id="layers">Four sounds, one key</div>
+<section class="two">
+  <div class="prose">
+    <p>Load a sound into each of the <strong>four layers</strong>, A to D, and every key you press plays them together. Each layer keeps its own selection, gain, pan and tune, and a strip of the four files runs along the top of every page.</p>
+    <p>Choose how a recording answers your keys: <strong>ALL</strong> plays every selection at once, <strong>STEP</strong> plays one selection per note in order, <strong>RANDOM</strong> rolls the dice per note.</p>
+  </div>
+  <div class="prose">
+    <p><strong>SUSTAIN</strong> holds a selection for as long as you hold the key: LOOP crossfades, BOUNCE ping-pongs with no seam, FREEZE hangs one instant in the air, GRAIN turns it to weather. Two seconds of found sound becomes an endless pad.</p>
+    <p><strong>HARMONY</strong> stacks notes on every key: an octave up or down, a fifth, an octave and fifth, or the three pad stacks OCTAVES, WIDE and SUB, detuned a few cents apart so they beat gently like a unison.</p>
+  </div>
+</section>
+
+<div class="sh" id="engines">Three engines</div>
+<section class="voices">
+  <article class="knob-card"><div class="knob-name">ELASTIC</div><h3>Speed and pitch, apart</h3><p>Stretch a note from quarter speed to four times while it sounds, and transpose two octaves either way without changing its length. Grab the knob mid-chord and the sound follows.</p></article>
+  <article class="knob-card"><div class="knob-name">RESAMPLE</div><h3>The tape-style coupling</h3><p>Pitch and speed move together, like a sampler or a varispeed deck. Higher notes play faster and brighter, lower ones slower and darker.</p></article>
+  <article class="knob-card"><div class="knob-name">PARTIAL</div><h3>Rebuilt from its partials</h3><p>The sound is taken apart into hundreds of moving sine partials and played back as an additive synth, so you can reshape it in ways a sampler cannot. It has a page of its own.</p></article>
+</section>
+
+<div class="sh" id="partial">PARTIAL resynthesis</div>
+<section class="two">
+  <div class="prose">
+    <p>Switch the VOICE page's ENGINE row to <strong>PARTIAL</strong> and THE CREATOR analyses the layer into its partials: up to 1,024 in the middle of the image and 512 at the sides, so a stereo sound keeps its width. <strong>MODE</strong> chooses which ones a smaller count keeps: the loudest, the longest-lived, the harmonics of the note, or one from every band.</p>
+    <p>The PARTIAL page shows every partial as a dot while you play, with the source and the played note drawn as outlines over them, and a count of how many are sounding.</p>
+  </div>
+  <ul class="rows">
+    <li><b>PHASE</b><span>Across the pad. How the partials line up: as recorded, all on one clock for the sharpest pulse, or spread out for the smoothest wash.</span></li>
+    <li><b>CEPSTRUM</b><span>Up the pad. Smooths each partial's level towards the overall shape of the sound, from detailed to a soft outline.</span></li>
+    <li><b>TRANSPOSE · SHIFT</b><span>Move the partials up to four octaves, and move the formant (the vowel of the sound) on its own.</span></li>
+    <li><b>LOCO</b><span>Pulls every partial onto the harmonics of the note you play, so noise and inharmonic sounds start to sing in key.</span></li>
+    <li><b>QUANT · LATCH</b><span>Holds the partials still and moves them on a grid, from 1/64 to two bars, synced to the host.</span></li>
+    <li><b>WAVE</b><span>Plays every partial on sine, triangle, saw, square, stepped or pulse, or on a wave you load yourself.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="morph">Morph and motion</div>
+<section class="two">
+  <div class="prose">
+    <p>The <strong>MORPH</strong> page is the pad alone. Engage QUAD and the ball becomes a vector mixer: each corner solos a layer, the centre blends all four. Drag it, orbit it, or <strong>throw</strong> it, and it bounces off the walls with real momentum while the mix rides along.</p>
+    <p>Or load four complete sounds into the corners and glide between them. RND scatters each parameter's path so no two journeys match, and ORBIT sets the ball circling on its own.</p>
+  </div>
+  <div class="prose">
+    <p>The <strong>MOTION</strong> page holds two LFOs with five shapes, including a slow Drift, free or synced to the host. They and the mod wheel reach thirteen targets: filter, echo, space and level; pitch, speed, grain and both axes of the morph ball; and PARTIAL's shift, transpose, phase and cepstrum.</p>
+    <p>On the MORPH page, MOVE X and MOVE Y put an LFO or the wheel on each axis of the pad, and the blend plays itself.</p>
+  </div>
+</section>
+
+<div class="sh" id="fx">Effects and SLO-MO</div>
+<section class="two">
+  <div class="prose">
+    <p>The FX page runs the whole chain inline: drive (soft, fold or crush), chorus, a tempo-synced echo with ping-pong, and a space with FREEZE. The filter, grain and send levels stay on the knob deck below. Flip ROUTING to <strong>SEND</strong> and each layer feeds the four effects on its own, so one layer can drown in echo while its neighbour stays dry.</p>
+    <p><strong>EXPORT IR</strong> prints the rack as it stands to a WAV impulse response, ready to load in any convolver.</p>
+  </div>
+  <ul class="rows">
+    <li><b>SLO-MO · DILATE</b><span>Pull the throttle and everything slows together: the notes, the echoes, the LFOs. Past ×8 the echoes regenerate and a crystal engine shatters the sound into reversed shards.</span></li>
+    <li><b>SLO-MO · TAPE</b><span>A tape stop and start with its own curve, on a key you hold.</span></li>
+    <li><b>SLO-MO · PAD</b><span>Captures what you play and smears it into a drifting, blooming pad.</span></li>
+  </ul>
+</section>
+
+<div class="sh" id="path">Signal path</div>
+<section class="stack">
+  <ol class="steps">
+    <li><span class="num">1</span><b>SOURCE</b><p>Up to four recordings, each with its own wand selection.</p></li>
+    <li><span class="num">2</span><b>VOICE</b><p>Elastic, Resample or Partial, up to 32 voices, with harmony and unison.</p></li>
+    <li><span class="num">3</span><b>MORPH</b><p>The ball mixes the four layers or glides between four stored sounds.</p></li>
+    <li><span class="num">4</span><b>MOTION</b><p>Two LFOs and the mod wheel on thirteen targets.</p></li>
+    <li><span class="num">5</span><b>FX</b><p>Drive, chorus, echo and space, in series or per layer, plus filter and grain.</p></li>
+    <li><span class="num">6</span><b>SLO-MO</b><p>Dilate, tape stop or pad, then the output level.</p></li>
+  </ol>
+</section>
+
+<div class="sh" id="pages">Six pages, one pane of glass</div>
+<section class="stack">
+  <div class="prose"><p>The whole window is one pane of glass. The knob deck, PERFORM and the keyboard stay on screen; the six tabs between them open each part of the instrument, and none of the pages scroll.</p></div>
+  <div class="tabs" role="group" aria-label="Choose a page">
+    <button type="button" data-p="0" aria-pressed="true"><span>01</span>SOURCE</button>
+    <button type="button" data-p="1" aria-pressed="false"><span>02</span>VOICE</button>
+    <button type="button" data-p="2" aria-pressed="false"><span>03</span>MORPH</button>
+    <button type="button" data-p="3" aria-pressed="false"><span>04</span>MOTION</button>
+    <button type="button" data-p="4" aria-pressed="false"><span>05</span>FX</button>
+    <button type="button" data-p="5" aria-pressed="false"><span>06</span>PARTIAL</button>
+  </div>
+  <div class="viewer">
+    <img id="pv-img" src="assets/creator4/panel_source.png?v=261119" width="1120" height="800" alt="">
+    <div class="prose">
+      <div class="tag" id="pv-tag">01 · SOURCE</div>
+      <h3 id="pv-h">The field of light</h3>
+      <p id="pv-p"></p>
+    </div>
+  </div>
+</section>
+
+<div class="sh" id="skins">Eleven skins</div>
+<section class="stack">
+  <div class="prose"><p>THE CREATOR keeps its own look in eleven skins. Six are the original spectral palettes, <strong>INFERNO, GLACIER, VIRIDIS, GOLD, ULTRA and SILVER</strong>; five are printed skins that recolour the whole pane, <strong>SURVEY, ACID, BLUEPRINT, NIGHT and RING BEARER</strong>. The skin is a view setting, so it never changes the sound.</p></div>
+  <div class="skin-grid">
+    <figure><img src="assets/creator4/source_acid.png?v=261119" width="1120" height="800" alt="THE CREATOR in the ACID skin"><figcaption>ACID</figcaption></figure>
+    <figure><img src="assets/creator4/source_blueprint.png?v=261119" width="1120" height="800" alt="THE CREATOR in the BLUEPRINT skin"><figcaption>BLUEPRINT</figcaption></figure>
+    <figure><img src="assets/creator4/source_night.png?v=261119" width="1120" height="800" alt="THE CREATOR in the NIGHT skin"><figcaption>NIGHT</figcaption></figure>
+    <figure><img src="assets/creator4/source_ringbearer.png?v=261119" width="1120" height="800" alt="THE CREATOR in the RING BEARER skin"><figcaption>RING BEARER</figcaption></figure>
+  </div>
+</section>
+
+<div class="sh" id="presets">Patches and macros</div>
+<section class="two">
+  <div class="prose">
+    <p>Factory patches arrive with their own source audio, so every one plays the moment it opens. Each carries <strong>four named macros</strong> on the PERFORM strip: one knob moves up to eight parameters at once, and the patch keeps its own values underneath.</p>
+    <p>Right-click a macro to assign it. Step through patches with the arrows in the PATCH bar, and save your own.</p>
+  </div>
+  <div class="bank" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    <article><b>PADS</b><ul><li>Velvet Horizon</li><li>Choir Bloom</li><li>Glass Cathedral</li><li>Breath Field</li></ul></article>
+    <article><b>SYNTHS · KEYS</b><ul><li>Saw Stab</li><li>Sub Square</li><li>FM Keys</li><li>Glass Pluck</li></ul></article>
+    <article><b>DESIGN</b><ul><li>Shattered Choir</li><li>Pad Machine</li><li>Vowel Machine</li><li>Tape Saw Lead</li></ul></article>
+  </div>
+</section>
+
+<section class="who" style="margin-top:var(--s8)">
+  <article><b>SOUND DESIGNERS</b><p>Wand one moment out of a field recording, rebuild it from its partials and pull it into key with LOCO.</p></article>
+  <article><b>PRODUCERS</b><p>Turn a vocal chop or a machine hum into a playable pad in seconds, then throw the ball across four layers.</p></article>
+  <article><b>AMBIENT &amp; SCORE</b><p>Freeze an instant, stack it in octaves with HARMONY and slow everything down with SLO-MO.</p></article>
+  <article><b>BEAT MAKERS</b><p>STEP through slices on each note, quantise the partials to the bar and print the echo as an IR.</p></article>
+</section>
+
+<!-- SPECS -->
+<div class="sh" id="specs">Technical specifications</div>
+<section class="two">
+  <table class="specs">
+    <tr><th>TYPE</th><td>Spectral resynthesis instrument</td></tr>
+    <tr><th>SOURCE</th><td>4 sample layers · wand, paint, lasso, INVERT, SOFT · imports WAV, AIFF, FLAC, MP3, M4A, OGG</td></tr>
+    <tr><th>VOICE</th><td>Up to 32 voices · ELASTIC, RESAMPLE and PARTIAL engines · play ALL, STEP, RANDOM · sustain LOOP, BOUNCE, FREEZE, GRAIN · HARMONY (7 modes) · unison</td></tr>
+    <tr><th>PARTIAL</th><td>Up to 1,024 mid and 512 side partials · MODE loud, stable, harmonic, spread · PHASE × CEPSTRUM pad · TRANSPOSE ±48 st · formant SHIFT ±24 st · LOCO · QUANT 1/64 to 2/1 · 7 waves including your own</td></tr>
+    <tr><th>MODULATION</th><td>Morph pad with QUAD vector mix and four stored sounds · 2 LFOs, 5 shapes, free or synced · mod wheel · 13 targets · 4 macros</td></tr>
+    <tr><th>EFFECTS</th><td>Drive (soft, fold, crush), chorus, echo, space with freeze · filter · grain · master in series or send per layer · SLO-MO dilate, tape, pad · Export IR</td></tr>
+    <tr><th>PATCHES</th><td>Factory bank with embedded audio · user patches (.creator) · four named macros per patch</td></tr>
+    <tr><th>FORMATS</th><td>VST3 · Audio Unit · AAX</td></tr>
+    <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal)</td></tr>
+  </table>
+  <div class="prose">
+    <p>Stereo out, MIDI in. Sessions recall every layer, selection and mix; samples are referenced by file, with relink, and a sound with no file behind it is saved inside the session.</p>
+    <p>Every build runs a test suite before it ships: a full selection must rebuild the recording, a selection must reject what lies outside it, pitch shifts must land on frequency at the same length, and the exported IR must match the rack it came from. If a control is on the panel, it does what it says.</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sh" id="price">Deployment status</div>
+<section class="price">
+  <div class="eyebrow">THE CREATOR</div>
+  <p>THE CREATOR is in development. The wand, the four layers, all three engines and all six pages are working; we are finishing it for version 1.0.</p>
+  <div class="ctas" style="justify-content:center">
+    <a class="btn primary" href="mailto:info@theta.audio?subject=THE%20CREATOR%20launch" data-notify="THE CREATOR">Notify me at launch</a>
+  </div>
+  <div class="cap">MACOS APPLE SILICON AND INTEL · VST3 · AU · AAX</div>
+</section>
+
+<footer><a href="store.html">ALL THETA PLUG-INS</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { zoomed: null, heroOn: false, secOn: false };
-  componentDidMount() {
-    this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
-    document.addEventListener('keydown', this._esc);
-    // the base image sits fixed at opacity 1 (no hole, no transition, never touched); the
-    // overlay image toggles opacity 0<->1 with a CSS transition, so it fades straight into
-    // and back out of the base with no third state and no brightness dip.
-    this._heroCycle = setInterval(() => this.setState(s => ({ heroOn: !s.heroOn })), 5000);
-    this._secCycle = setInterval(() => this.setState(s => ({ secOn: !s.secOn })), 5600);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this._esc);
-    clearInterval(this._heroCycle);
-    clearInterval(this._secCycle);
-  }
-  componentDidUpdate() {
-    const el = this._zoomImgEl;
-    if (!el) return;
-    const want = this.state.zoomed ? this.state.zoomed.src : null;
-    if (this._lastZoomSrc === want) return;
-    this._lastZoomSrc = want;
-    if (want) el.src = want; else el.removeAttribute('src');
-  }
-  _mk(src, w, r) { return (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ zoomed: { src, w, r } }); }; }
-  renderVals() {
-    const z = this.state.zoomed;
-    return {
-      overlayDisplay: z ? 'flex' : 'none',
-      zoomedWidth: z ? z.w : 0,
-      zoomedRatio: z ? z.r : 1,
-      setZoomImg: (el) => { this._zoomImgEl = el; if (el && z && z.src) { el.src = z.src; this._lastZoomSrc = z.src; } },
-      closeZoom: () => this.setState({ zoomed: null }),
-      stopClick: (e) => e.stopPropagation(),
-      heroTopOpacity: this.state.heroOn ? 1 : 0,
-      openHero: this._mk(this.state.heroOn ? 'assets/creator/hero_night2.png?v=260819c' : 'assets/creator/hero.png?v=260819c', 2332, 2332 / 1730),
-      secTopOpacity: this.state.secOn ? 1 : 0,
-      openSecondary: this._mk(this.state.secOn ? 'assets/creator/hero_acid.png?v=260819' : 'assets/creator/secondary.png?v=260819', 2332, 2332 / 1730),
-    };
-  }
-}
+<script>
+(function(){
+'use strict';
+/* Page viewer */
+const P=[
+ ['source','01 · SOURCE','The field of light','The loaded sound drawn as marks of light, with the wand selection lit. Click to find a partial, drag to paint, alt-drag to erase. The four layer slots, A to D, sit beside it.'],
+ ['voice','02 · VOICE','Engine, play and sustain','The ENGINE row picks ELASTIC, RESAMPLE or PARTIAL. Beside it: how a recording answers your keys, how a held note sustains, harmony and unison.'],
+ ['morph','03 · MORPH','The ball','The pad alone. Engage QUAD to mix the four layers by position, or store four complete sounds in the corners and glide between them. Throw the ball and it bounces.'],
+ ['motion','04 · MOTION','LFOs and routes','Two LFOs with five shapes, free or synced, and the mod wheel, each routed to the targets you choose.'],
+ ['fx','05 · FX','The chain, inline','Drive, chorus and echo across the top; the SLO-MO core (DILATE, TAPE or PAD), the space and the routing below. EXPORT IR prints the rack to a WAV file.'],
+ ['partial','06 · PARTIAL','Partials, live','Every partial a dot while you play, with the source and played outlines. Drag across the pad for PHASE, up it for CEPSTRUM, and shape the rest with the knobs beside it.']];
+const img=document.getElementById('pv-img'),tag=document.getElementById('pv-tag'),h=document.getElementById('pv-h'),p=document.getElementById('pv-p');
+function show(i){const d=P[i];img.src='assets/creator4/panel_'+d[0]+'.png?v=261119';img.alt='The THE CREATOR panel on the '+d[1].slice(5)+' page';tag.textContent=d[1];h.textContent=d[2];p.textContent=d[3];
+ document.querySelectorAll('[data-p]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p==String(i)?'true':'false'));}
+document.querySelectorAll('[data-p]').forEach(b=>b.addEventListener('click',()=>show(+b.dataset.p)));
+show(0);
+/* Skin switcher in the hero */
+const si=document.getElementById('skin-img'),sn=document.getElementById('skin-name');
+document.querySelectorAll('[data-s]').forEach(b=>b.addEventListener('click',()=>{
+ si.src='assets/creator4/source_'+b.dataset.s+'.png?v=261119';sn.textContent=b.textContent;si.alt='THE CREATOR\'s SOURCE page in the '+b.textContent+' skin';
+ document.querySelectorAll('[data-s]').forEach(c=>c.setAttribute('aria-pressed',c===b?'true':'false'));}));
+})();
 </script>
+
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script src="./download-gate.js"></script>
 </body>
 </html>
