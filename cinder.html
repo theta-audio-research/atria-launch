@@ -283,7 +283,7 @@ footer a:hover{color:var(--gold)}
 </section>
 
 <section class="face-top" style="margin-block:0 var(--s6,56px)">
-  <img src="assets/cinder/hero_v161.png?v=261119" alt="The CINDER v1.6.1 panel on the RUST BUS preset with FORGE picked on the CIRCUIT switch (EMBER, CHAR, ASH, FLINT, SLAG, FORGE), DRIVE 6.0 with BIAS and LFO under it, undo, redo and A | B in the header, the transfer display turned into a drawing board with NODES, DRAW, SYM, EDGE, A | B, SPARK and MOULDS along its top, a drawn curve with two nodes wearing LFO and envelope rings, and MORPH and MOD under it, OS, KERNEL and LATENCY below, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
+  <img src="assets/cinder/hero_v170.png?v=261123" alt="The CINDER v1.7.0 panel with FORGE picked on the CIRCUIT switch (EMBER, CHAR, ASH, FLINT, SLAG, FORGE), DRIVE 11.6 with BIAS and LFO under it, undo, redo and A | B in the header, the transfer display as a drawing board with NODES, DRAW, SYM, EDGE: HOLD, A | B, SPARK and MOULDS along its top, a drawn S-shaped curve with a node wearing a modulation ring, MORPH and MOD under it, OS, KERNEL and LATENCY below, EQ, SAG, MIX, INPUT, BALANCE and OUTPUT with the L/R and M/S switch, the SATURATION row with TUBE, IRON and VAR, and AUTO LEVEL set to OFF" width="2140" height="1410">
 </section>
 
 <!-- HOW IT WORKS -->
@@ -445,8 +445,8 @@ footer a:hover{color:var(--gold)}
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin-top:20px">
 
     <figure class="faceshot" style="margin:0">
-      <img src="assets/cinder/cinder_v110_eq.png?v=261011" alt="The CINDER v1.1.0 EQ options open: an eight-node curve set POST DRIVE, with band 6 a bell at 4.08 kHz, +12.8 dB, Q 1.60, and the AMOUNT, RESET and FLAT controls" width="2140" height="1410" loading="lazy">
-      <figcaption class="cap">EQ OPTIONS OPEN · POST DRIVE</figcaption>
+      <img src="assets/cinder/cinder_v170_eq.png?v=261123" alt="The CINDER v1.7.0 EQ panel open, POST DRIVE with LFO MOD lit: an eight-node curve with the high- and low-pass closing in, band 4 a bell at 687 Hz, -9.1 dB, Q 1.00, its MOD F, MOD G and MOD Q dials under it, AMOUNT +100 %, RESET and FLAT, and the EQ knob at +100" width="2140" height="1410" loading="lazy">
+      <figcaption class="cap">EQ OPTIONS OPEN · POST DRIVE · LFO MOD</figcaption>
     </figure>
     <div class="prose">
       <p><strong>The EQ can move.</strong> Under each band's FREQ, GAIN and Q sit three MOD dials: MOD F sweeps the band's frequency up to ±4 octaves (every band, the high- and low-pass included), MOD G moves its gain up to ±18 dB, and MOD Q narrows or widens a bell up to ±2 octaves.</p>
@@ -463,6 +463,7 @@ footer a:hover{color:var(--gold)}
     <div class="prose">
       <p>The LFO knob sits beside BIAS, and it is the depth. At 100 it swings DRIVE 12 dB either side of wherever DRIVE is set, or BIAS a full 1.00 either side, and the swing never takes either past its own range. At 0 it is off, and CINDER sounds exactly as it did before the LFO existed: sessions and presets from earlier versions open there.</p>
       <p><strong>Right-click the knob, or click the word LFO under it,</strong> and its options open over the panel. RATE runs 0.05 to 20 Hz. SYNC locks the sweep to your host's tempo and, while the transport runs, to the bar line, with DIVISION from 4 bars down to 1/32, triplets included. SHAPE is SINE, TRI, SQR or S&amp;H, and TARGET is DRIVE or BIAS.</p>
+      <p><strong>It can move more than DRIVE.</strong> The right-hand column of the panel, ALSO MOVES, has five small knobs that let the same sweep, or the envelope follower, move the EQ knob, MIX, and the SATURATION row's TUBE, IRON and VAR. Each is its own depth from −100 to +100 %, apart from the LFO knob, so you can pulse MIX with no DRIVE movement at all, and a minus depth turns the swing round. At +100 % a knob swings its whole travel either side of where you set it, never past its ends, and every moved knob wears the same ember ring as DRIVE. At 0, the default, it stays exactly where you set it.</p>
     </div>
     <div class="prose">
       <p>On DRIVE it pulses the amount of distortion; on BIAS it rocks the even-harmonic lean back and forth and changes the colour more than the amount. SQR flips between two settings and S&amp;H jumps to a new one each cycle, and every edge goes through a 3 ms smoother so a jump never clicks.</p>
@@ -482,7 +483,7 @@ footer a:hover{color:var(--gold)}
     <div class="ctrls four" id="lfoctrls"></div>
   </div>
   <figure class="faceshot">
-    <img src="assets/cinder/cinder_v110_lfo.png?v=261011" alt="The CINDER v1.1.0 panel with the LFO options open: SOURCE LFO or ENVELOPE, TARGET BIAS, RATE 9.36 Hz, SYNC and DIVISION, SHAPE SQR, and the ENVELOPE FOLLOWER ATTACK and RELEASE controls" width="2140" height="1410" loading="lazy">
+    <img src="assets/cinder/cinder_v170_lfo.png?v=261123" alt="The CINDER v1.7.0 panel on FORGE with the LFO options open: SOURCE LFO, TARGET DRIVE, RATE 1.00 Hz, SYNC and DIVISION, SHAPE SINE, the ENVELOPE FOLLOWER ATTACK and RELEASE, and the ALSO MOVES column with EQ +40, MIX +18, TUBE +44, IRON -100 and VAR +100" width="2140" height="1410" loading="lazy">
   </figure>
 </section>
 
@@ -580,7 +581,7 @@ footer a:hover{color:var(--gold)}
     <tr><th>SYSTEM</th><td>macOS 11 or later · Apple Silicon and Intel (universal) · Developer ID signed, notarized<br>Windows (VST3): coming soon</td></tr>
   </table>
   <div class="prose">
-    <p>CINDER shares its AUTO LEVEL output stage with the rest of the Alchemy Index, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
+    <p>CINDER shares its AUTO LEVEL output stage with the rest of the Theorem Collection, so level-matched A/Bs work the same way across THETA's plug-ins.</p>
     <p>No amp sim, no cabinet, no convolution. A single-purpose distortion and the small set of utility controls that make one usable on a bus.</p>
     
   </div>
@@ -601,7 +602,7 @@ footer a:hover{color:var(--gold)}
   
 </section>
 
-<footer><a href="color_collection.html">PART OF THE ALCHEMY INDEX</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
+<footer><a href="color_collection.html">PART OF THE THEOREM COLLECTION</a><span>THETA AUDIO RESEARCH // 2026</span><a href="https://www.youtube.com/@ThetaAudioResearch">YOUTUBE</a></footer>
 </div>
 
 <script>
