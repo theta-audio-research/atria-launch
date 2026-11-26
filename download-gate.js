@@ -42,8 +42,8 @@
     accent: '#C8A86B', accentLt: C.cream, accentDim: '#C8A86B', line: C.lineDim
   };
 
-  /* confirmed policy: one installer per product; it runs 14 days unlicensed, then a licence unlocks it */
-  var TRIAL_TERM = '14 days unlicensed';
+  /* confirmed policy: one installer per product; it runs 7 days unlicensed, then a licence unlocks it */
+  var TRIAL_TERM = '7 days unlicensed';
   var TRIAL_DAYS = 7;
 
   var ROLES = ['Composer', 'Mixer / re-recording', 'Sound designer / editor', 'Producer / artist', 'Post supervisor', 'Hobbyist', 'Other'];
@@ -189,8 +189,8 @@
     panel.appendChild(el('h2', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:26px;letter-spacing:8px;text-transform:uppercase;color:' + T.accentLt + ';margin:0 0 10px 0', plugin));
     panel.appendChild(el('p', 'font-family:Montserrat,sans-serif;font-weight:300;font-size:12px;line-height:1.8;color:' + C.dim + ';margin:0 0 28px 0',
       notify ? 'We\u2019ll email you the moment it ships, and your welcome note carries the THETA instruments that are already free.'
-             : pending ? 'The same installer everyone buys, running unlicensed for fourteen days. Answer all four and the link comes to you.'
-             : trial ? 'The same installer everyone buys. It runs unlicensed for fourteen days, every module, no quality reduction, and a licence turns it permanent in place.'
+             : pending ? 'The same installer everyone buys, running unlicensed for seven days. Answer all four and the link comes to you.'
+             : trial ? 'The same installer everyone buys. It runs unlicensed for seven days, every module, no quality reduction, and a licence turns it permanent in place.'
              : store ? 'Leave your address and we hand you straight to the secure checkout with it filled in. The installer arrives by email, no account, no unlock.'
              : 'Tell us where to send it. No account, no unlock, the download starts immediately.'));
 
