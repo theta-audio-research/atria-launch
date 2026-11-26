@@ -40,7 +40,10 @@
   </header>
 
   <div style="margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-    <div style="overflow:hidden;border-radius:2px"><image-slot id="cathode-hero" src="assets/cathode/hero.png?v=260929t" onClick="{{ openHero }}" style="width:100%;aspect-ratio:2652/1650;transition:transform 0.5s cubic-bezier(0.2,0.6,0.2,1);cursor:zoom-in" style-hover="transform:scale(1.03)" shape="rect" placeholder="CATHODE User Interface"></image-slot></div>
+    <div id="cathode-hero" style="position:relative;overflow:hidden;border-radius:2px;background:#000;">
+      <video ref="{{ setHeroVideo }}" src="assets/cathode/cathode_walkthrough_16x9.mp4?v=261126" poster="assets/cathode/cathode_walkthrough_16x9_poster.jpg?v=261126" autoplay muted loop playsinline preload="auto" width="1920" height="1080" style="width:100%;aspect-ratio:16/9;height:auto;display:block" aria-label="CATHODE walkthrough: a tour of the plug-in, module by module, from HEAD and LOCK through RECEIVER, PHOSPHOR, INTERFERENCE and CRUSH to LFO TOOLS"></video>
+      <button type="button" onClick="{{ toggleHeroSound }}" aria-label="{{ heroSoundAria }}" style="position:absolute;right:clamp(8px,1.4vw,14px);bottom:clamp(8px,1.4vw,14px);display:flex;align-items:center;gap:8px;padding:clamp(5px,0.8vw,9px) clamp(8px,1.3vw,14px);border:1px solid rgba(200,168,107,.55);border-radius:4px;background:rgba(6,8,12,.72);color:#c8a86b;font-family:'JetBrains Mono',monospace;font-size:clamp(9px,1vw,11px);letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background 0.2s" style-hover="background:rgba(200,168,107,.18)">{{ heroSoundLabel }}</button>
+    </div>
   </div>
 
   <div style="max-width:850px;margin:0 auto 60px auto;border-left:1px solid #CFC5B6;padding-left:40px">
@@ -288,7 +291,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { zoomed: null };
+  state = { zoomed: null, heroSound: false };
   componentDidMount() {
     this._esc = (e) => { if (e.key === 'Escape') this.setState({ zoomed: null }); };
     document.addEventListener('keydown', this._esc);
@@ -319,7 +322,24 @@ class Component extends DCLogic {
       },
       closeZoom: () => this.setState({ zoomed: null }),
       stopClick: (e) => e.stopPropagation(),
-      openHero: this._mk('assets/cathode/hero.png?v=260929t', 2652, 2652 / 1650),
+      heroSoundLabel: this.state.heroSound ? '■ Sound off' : '▶ Sound on',
+      heroSoundAria: this.state.heroSound ? 'Mute the walkthrough' : 'Play the walkthrough with sound from the start',
+      setHeroVideo: (el) => {
+        if (!el || this._heroEl === el) return;
+        this._heroEl = el;
+        el.loop = true; el.muted = true; el.defaultMuted = true; el.playsInline = true; el.autoplay = true;
+        const go = () => { const p = el.play(); if (p && p.catch) p.catch(() => {}); };
+        go(); el.addEventListener('loadeddata', go, { once: true });
+      },
+      toggleHeroSound: (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const el = this._heroEl; if (!el) return;
+        const on = !this.state.heroSound;
+        if (on) { el.currentTime = 0; el.muted = false; el.volume = 1; }
+        else { el.muted = true; }
+        const p = el.play(); if (p && p.catch) p.catch(() => {});
+        this.setState({ heroSound: on });
+      },
       openLock: this._mk('assets/cathode/lock_clean.png?v=260929', 1028, 1028 / 1384),
       openHead: this._mk('assets/cathode/head_clean.png?v=260929', 1028, 1028 / 1376),
       openReceiver: this._mk('assets/cathode/receiver_clean.png?v=260929', 1016, 1016 / 1380),
